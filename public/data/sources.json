@@ -1,0 +1,133 @@
+{
+  "_meta": {
+    "schema_version": "sukaiyuan-site-preview-1.1",
+    "generated_at_utc": "2026-07-20T00:00:00Z",
+    "publication_layer": "previewable",
+    "preview_approved": true,
+    "deployment_authorized": false,
+    "must_not_deploy": true,
+    "approval_scope": "local_preview_three_anchor_metadata_and_short_claims_only_v7r4_safe_subset",
+    "exporter_version": "1.3.6",
+    "authority_schema_version": "public-export-generation-manifest-1.0",
+    "authority_layout_version": "public-export-generation-2.0",
+    "generation_id": "gen-be85198ed9f3663e20903ab7011b8ca234ed7fe10a3f3e7f170730d9d8352a7e",
+    "generation_manifest_sha256": "c32ec1d4c3b931677de19ce5c462e788b5966d7820334c4b5016f71c80d302c0",
+    "research_snapshot_id": "源数据工作版-2026-07-20-v7",
+    "research_input_sha256": {
+      "01-来源登记表.csv": "a03e4f66e1fb784deb704e3c2dcc7e73d220991935d42bbca13ef12603611121",
+      "03-核心主张.csv": "214f8d24e7c043134dadfe3babdc06eb83aa67064bd0901a5b2c0079340ea004",
+      "04-实体与别名.csv": "955f3ee1d6f123703d7274f41279fbcb70ddace00b7bc128f8c19fc5d23d2f2e",
+      "05-关系图谱.csv": "6879b3c052665290ec72a15abbf8f41b4d953528ab093ebdbc47325f32b42b90",
+      "05-知识图谱.json": "f26aacf9b540181fcff15605d1b8c6a75f6df00b1b092c25e0f0c360b0429f70"
+    },
+    "source_counts": {
+      "sources": 5,
+      "claims": 5,
+      "nodes": 7,
+      "edges": 5
+    },
+    "preview_anchor_years": [
+      1933,
+      1936,
+      1942
+    ],
+    "source_scope_counts": {
+      "body-verified": 4,
+      "metadata-only": 1
+    },
+    "source_manifest_file_sha256": "ecb002c79051ae46b5efbd8a035933c26faea4fdabdd8400ff0bc4df708bb145",
+    "disclaimer": "V7R4权威代次中真实公开层数据的本地预览；不含扫描件、全文转录、家属私密材料或P2/P3。当前只显示1933、1936、1942三组文献记录；1929记录与苏开元—苏凯元身份桥因混合来源依赖暂缓显示。同名记录不构成连续生平，发起人的亲属关系也未在当前公开证据层内核验。未经发起人最终确认，不得部署或公开发布。"
+  },
+  "sources": [
+    {
+      "source_id": "SRC-002",
+      "title": "绥行纪略（本地转录；原载国立清华大学校刊）",
+      "representation_of": "SRC-013",
+      "source_type": "同期文章的本地文字转录",
+      "work_id": "WORK-ZHU-SUIXING",
+      "edition_id": "ED-LOCAL-DOCX-R1",
+      "carrier_status": "transcription-verified-against-official-facsimile",
+      "creator_or_publisher": "朱自清／国立清华大学校刊",
+      "date_or_range": "作于1936-11-22；刊于1936-11-26，第792号",
+      "evidence_tier": "A",
+      "public_tier": "P1",
+      "public_url": "",
+      "content_scope": "body-verified",
+      "verified_extent": "第5段（平地泉）；与SRC-013第792号第2版相核；文末出版信息",
+      "total_extent_known": "unknown unless the locator explicitly says complete",
+      "unread_extent": "all extent outside the registered locator; total may be unknown"
+    },
+    {
+      "source_id": "SRC-013",
+      "title": "《绥行纪略》官方数字影印（《国立清华大学校刊》第792号）",
+      "representation_of": "",
+      "source_type": "同期校刊官方数字影印",
+      "work_id": "WORK-ZHU-SUIXING",
+      "edition_id": "ED-TSINGHUA-0792-OFFICIAL-DIGITAL",
+      "carrier_status": "official-digitized-facsimile-verified",
+      "creator_or_publisher": "朱自清／国立清华大学校刊；清华大学图书馆数字化",
+      "date_or_range": "1936-11-26（第792号；2026-07-18核验）",
+      "evidence_tier": "A",
+      "public_tier": "P0",
+      "public_url": "https://thujournal.lib.tsinghua.edu.cn/swfPath/glqhdxxk/0792.pdf",
+      "content_scope": "body-verified",
+      "verified_extent": "整期PDF共2页（第1—2版）均已打开并核对刊载范围；逐字核验限第2版中下部《绥行纪略》内CL-013/014对应连续段；条目sysID=81937；文章页PDF：https://thujournal.lib.tsinghua.edu.cn/swfPath/glqhdxxk/0792/0792-01-08-01.pdf",
+      "total_extent_known": "整期PDF共2页（第1—2版；本地整期PDF的pdfinfo页数已核）",
+      "unread_extent": "第1—2版中除已登记刊载信息与《绥行纪略》CL-013/014对应连续段外的其他正文，未作逐字核验"
+    },
+    {
+      "source_id": "SRC-039",
+      "title": "《国民政府公报》第1075号",
+      "representation_of": "",
+      "source_type": "同期政府公报数字影印",
+      "work_id": "WORK-GOV-GAZETTE-1075",
+      "edition_id": "ED-NCCU-FACSIMILE-1075",
+      "carrier_status": "official-digitized-facsimile",
+      "creator_or_publisher": "国民政府／国立政治大学图书馆数字化",
+      "date_or_range": "1933-03-09",
+      "evidence_tier": "A",
+      "public_tier": "P0",
+      "public_url": "https://gpost.lib.nccu.edu.tw/GovIMG/2/22image/1075.pdf",
+      "content_scope": "body-verified",
+      "verified_extent": "PDF物理页3附近军职任命表；官职库索引逐字给出李英夫任七十三师参谋处长及苏开元任七十二师二一八旅四三五团团长",
+      "total_extent_known": "unknown unless the locator explicitly says complete",
+      "unread_extent": "all extent outside the registered locator; total may be unknown"
+    },
+    {
+      "source_id": "SRC-042",
+      "title": "中华民国政府官职资料库：蘇開元任职页",
+      "representation_of": "",
+      "source_type": "官方数据库索引",
+      "work_id": "WORK-NCCU-GPOST-SU-KAIYUAN",
+      "edition_id": "ED-NCCU-GPOST-LIVE",
+      "carrier_status": "nonindependent-index-after-originals",
+      "creator_or_publisher": "国立政治大学图书馆",
+      "date_or_range": "记录涵盖1933-03-09、1935-05-24；核验2026-07-19",
+      "evidence_tier": "B",
+      "public_tier": "P0",
+      "public_url": "https://gpost.lib.nccu.edu.tw/view_career.php?name=%E8%98%87%E9%96%8B%E5%85%83",
+      "content_scope": "metadata-only",
+      "verified_extent": "姓名页共2笔：七十二师二一八旅四三五团团长；陆军步兵中校",
+      "total_extent_known": "unknown",
+      "unread_extent": "underlying body and attachments not established"
+    },
+    {
+      "source_id": "SRC-095",
+      "title": "JACAR：其一《第八战区编成表》（除胡宗南军、回教军）",
+      "representation_of": "",
+      "source_type": "同期日军参谋部战斗序列档案数字影印",
+      "work_id": "WORK-JACAR-EIGHTH-WAR-AREA-OOB-1942",
+      "edition_id": "ED-JACAR-C13031948700",
+      "carrier_status": "official-archive-facsimile",
+      "creator_or_publisher": "戊集团参谋部调制印刷／防卫省防卫研究所／JACAR",
+      "date_or_range": "1942-08上旬",
+      "evidence_tier": "A",
+      "public_tier": "P0",
+      "public_url": "https://www.jacar.archives.go.jp/das/meta/C13031948700",
+      "content_scope": "body-verified",
+      "verified_extent": "Ref.C13031948700；原PDF物理页2顶部‘第八战区副司令傅作义指挥部队’机关人员；JACAR元数据翻刻同段",
+      "total_extent_known": "unknown unless the locator explicitly says complete",
+      "unread_extent": "all extent outside the registered locator; total may be unknown"
+    }
+  ]
+}

@@ -1,0 +1,201 @@
+node_modules
+dist
+.DS_Store
+*.swp
+.git/*
+__pycache__/
+*.pyc
+*.tsbuildinfo
+.venv/*
+*.o
+*.a
+/vendor
+*.egg-info/
+/.env
+.env
+.env.*
+!.env.example
+.cozeproj/reduction
+
+# JS/TS bundlers & build outputs
+.next
+.nuxt
+.turbo
+.vercel
+.parcel-cache
+.cache
+coverage
+storybook-static
+
+# Package manager artifacts
+.pnp*
+.npm
+
+# Python tooling
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+
+# Go tooling
+bin/
+*.test
+
+# Editor / IDE
+.vscode/
+.idea/
+*.iml
+
+# OS / misc
+Thumbs.db
+ehthumbs.db
+
+# Logs
+output.log
+*.log
+*.log.*
+logs/
+
+# 视频文件
+*.mp4
+*.avi
+*.mov
+*.wmv
+*.flv
+*.mkv
+*.webm
+*.m4v
+*.mpeg
+*.mpg
+*.3gp
+*.f4v
+*.rmvb
+*.vob
+
+# 归档文件
+*.iso
+*.dmg
+*.rar
+*.zip
+*.gz
+
+# 文档类也默认加入
+*.pdf
+*.docx
+*.doc
+*.xlsx
+*.xls
+*.ppt
+*.pptx
+*.xlsx
+*.csv
+
+# Preview files
+.preview
+
+# CodeGraph index
+.codegraph
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+# Production build
+dist/
+build/
+out/
+.next/
+.rsbuild/
+# Testing
+coverage/
+*.lcov
+.nyc_output
+# Environment variables
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+.preview-data.lock
+private-runtime/
+media-exports/
+public/media-exports/
+.media-exports/
+local-source-map.json
+
+# Novel pages containing family images or uncleared third-party facsimiles.
+# They exist in the local reader but must never enter the private repository.
+/public/novel/hero-wuming/pages/page-006.webp
+/public/novel/hero-wuming/pages/page-014.webp
+/public/novel/hero-wuming/pages/page-022.webp
+/public/novel/hero-wuming/pages/page-028.webp
+/public/novel/hero-wuming/pages/page-047.webp
+/public/novel/hero-wuming/pages/page-116.webp
+/public/novel/hero-wuming/pages/page-177.webp
+/public/novel/hero-wuming/pages-responsive/page-006.webp
+/public/novel/hero-wuming/pages-responsive/page-014.webp
+/public/novel/hero-wuming/pages-responsive/page-022.webp
+/public/novel/hero-wuming/pages-responsive/page-028.webp
+/public/novel/hero-wuming/pages-responsive/page-047.webp
+/public/novel/hero-wuming/pages-responsive/page-116.webp
+/public/novel/hero-wuming/pages-responsive/page-177.webp
+
+*.pem
+*.key
+*.p12
+*.pfx
+*.cer
+*.crt
+auth.json
+credentials*.json
+.openai/hosting.json
+# Diagnostic reports
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+# Cache
+.cache/
+.parcel-cache/
+.eslintcache
+.stylelintcache
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+node-compile-cache/
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.swo
+*~
+# OS files
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Desktop.ini
+# Temporary files
+*.tmp
+*.temp
+.tmp/
+.temp/
+# Optional files
+*.tgz
+*.tar
+# TypeScript
+*.tsbuildinfo
+# Misc
+.coze-logs
+.codegraph/

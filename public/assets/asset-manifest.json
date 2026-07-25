@@ -1,0 +1,57 @@
+{
+  "schema_version": "local-preview-assets-1.0",
+  "deployment_authorized": false,
+  "must_not_deploy": true,
+  "assets": [
+    {
+      "path": "assets/sukaiyuan/1936-sui-xing-ji-lue-proof.png",
+      "sha256": "c94a3d5dcd0cede08ce46f13d050df06445841d51918f382cf24f99baf794861",
+      "kind": "historical_source_crop",
+      "source_id": "SRC-013",
+      "derived_from": "《国立清华大学校刊》第792号第2版官方数字影印的局部裁切",
+      "annotation": "红线与放大镜由网页样式叠加，不嵌入原图",
+      "rights_scope": "local_internal_preview_only",
+      "publishable": false
+    },
+    {
+      "path": "assets/personal/botanical-sprig.png",
+      "sha256": "866b8270343c9e5b072f0117a3dd6629cad364f587ff00a10990a2dd847bcfcc",
+      "kind": "generated_decorative",
+      "source_id": null,
+      "derived_from": "本项目本地生成的装饰性植物图",
+      "annotation": "纯装饰，页面以空替代文本处理",
+      "rights_scope": "local_internal_preview_only",
+      "publishable": false
+    },
+    {
+      "path": "assets/personal/jian-zhen-xiao-tu-lv-portrait.jpg",
+      "sha256": "c2f8ee8b959c7e4dbe436d36448612438dd4c2f0b95988e2cc5f30602973b8fb",
+      "kind": "user_provided_identity_portrait",
+      "source_id": null,
+      "derived_from": "站主于 2026-07-24 明确提供并授权用于本地个人 IP 页面审阅的头像原图",
+      "annotation": "真人肖像；仅用于站主个人介绍、署名和联系信任链，不用于历史人物证据或研究数据",
+      "rights_scope": "local_internal_preview_only",
+      "publishable": false
+    },
+    {
+      "path": "assets/personal/jian-zhen-xiao-tu-lv-wechat-qr.png",
+      "sha256": "2c8c4be306589303f9c5160f1f1a87095f0a7df1c92ca3fa31c73c081d5b50a8",
+      "kind": "user_provided_contact_qr",
+      "source_id": null,
+      "derived_from": "站主于 2026-07-24 明确提供并授权用于本地联系区审阅的微信二维码原图",
+      "annotation": "保持原图完整，不裁切、不改码；仅作为站主联系入口",
+      "rights_scope": "local_internal_preview_only",
+      "publishable": false
+    },
+    {
+      "path": "assets/editorial/fiction-north-city-collage-v1.png",
+      "sha256": "c44ca5a63a4695f369bca6fab0cfc9fc719f7c1882fefa69515511f5009ceab2",
+      "kind": "generated_editorial_fiction",
+      "source_id": null,
+      "derived_from": "本项目使用 OpenAI 图像生成制作的全合成小说概念图",
+      "annotation": "无真人肖像、无历史原件；页面须显示“AI 艺术想象，不是历史照片”",
+      "rights_scope": "local_internal_preview_only",
+      "publishable": false
+    }
+  ]
+}

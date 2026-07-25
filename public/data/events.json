@@ -1,0 +1,157 @@
+{
+  "_meta": {
+    "schema_version": "sukaiyuan-site-preview-1.1",
+    "generated_at_utc": "2026-07-20T00:00:00Z",
+    "publication_layer": "previewable",
+    "preview_approved": true,
+    "deployment_authorized": false,
+    "must_not_deploy": true,
+    "approval_scope": "local_preview_three_anchor_metadata_and_short_claims_only_v7r4_safe_subset",
+    "exporter_version": "1.3.6",
+    "authority_schema_version": "public-export-generation-manifest-1.0",
+    "authority_layout_version": "public-export-generation-2.0",
+    "generation_id": "gen-be85198ed9f3663e20903ab7011b8ca234ed7fe10a3f3e7f170730d9d8352a7e",
+    "generation_manifest_sha256": "c32ec1d4c3b931677de19ce5c462e788b5966d7820334c4b5016f71c80d302c0",
+    "research_snapshot_id": "源数据工作版-2026-07-20-v7",
+    "research_input_sha256": {
+      "01-来源登记表.csv": "a03e4f66e1fb784deb704e3c2dcc7e73d220991935d42bbca13ef12603611121",
+      "03-核心主张.csv": "214f8d24e7c043134dadfe3babdc06eb83aa67064bd0901a5b2c0079340ea004",
+      "04-实体与别名.csv": "955f3ee1d6f123703d7274f41279fbcb70ddace00b7bc128f8c19fc5d23d2f2e",
+      "05-关系图谱.csv": "6879b3c052665290ec72a15abbf8f41b4d953528ab093ebdbc47325f32b42b90",
+      "05-知识图谱.json": "f26aacf9b540181fcff15605d1b8c6a75f6df00b1b092c25e0f0c360b0429f70"
+    },
+    "source_counts": {
+      "sources": 5,
+      "claims": 5,
+      "nodes": 7,
+      "edges": 5
+    },
+    "preview_anchor_years": [
+      1933,
+      1936,
+      1942
+    ],
+    "source_scope_counts": {
+      "body-verified": 4,
+      "metadata-only": 1
+    },
+    "source_manifest_file_sha256": "ecb002c79051ae46b5efbd8a035933c26faea4fdabdd8400ff0bc4df708bb145",
+    "disclaimer": "V7R4权威代次中真实公开层数据的本地预览；不含扫描件、全文转录、家属私密材料或P2/P3。当前只显示1933、1936、1942三组文献记录；1929记录与苏开元—苏凯元身份桥因混合来源依赖暂缓显示。同名记录不构成连续生平，发起人的亲属关系也未在当前公开证据层内核验。未经发起人最终确认，不得部署或公开发布。"
+  },
+  "events": [
+    {
+      "event_id": "EV-1933-03-09",
+      "date_start": "1933-03-09",
+      "date_end": "1933-03-09",
+      "date_precision": "exact",
+      "year": 1933,
+      "month": 3,
+      "day": 9,
+      "title": "1933年公报刊载“蘇開元”团长任命记录",
+      "description": "公报任命蘇開元为陆军第七十二师第二百十八旅第四百三十五团团长。",
+      "category": "military",
+      "location": "",
+      "context": "《国民政府公报》第1075号",
+      "people": [
+        "公报中的“蘇開元”记录对象"
+      ],
+      "status": "working_verified",
+      "evidence_tier": "A",
+      "claim_ids": [
+        "CL-092"
+      ],
+      "source_ids": [
+        "SRC-039",
+        "SRC-042"
+      ],
+      "carrier_count": 2,
+      "independence_count": 1,
+      "scene_eligible": false,
+      "identity_link_statuses": [
+        "candidate"
+      ],
+      "identity_anchor_ids": [
+        "SRC-039",
+        "SRC-042"
+      ],
+      "note": "只证明公报刊载该姓名任命；不能外推实际到任、离任日期或完整任期，也不能与其他同名记录自动并人。"
+    },
+    {
+      "event_id": "EV-1936-11-21",
+      "date_start": "1936-11-21",
+      "date_end": "1936-11-21",
+      "date_precision": "exact",
+      "year": 1936,
+      "month": 11,
+      "day": 21,
+      "title": "1936年朱自清记下“留守司令苏开元团长”",
+      "description": "《绥行纪略》记录该称谓，并记下苏开元对学生救国会组织独立性的态度。",
+      "category": "social",
+      "location": "平地泉（今集宁一带）",
+      "context": "朱自清《绥行纪略》",
+      "people": [
+        "朱自清文中的“苏开元”记录对象",
+        "朱自清"
+      ],
+      "status": "working_verified",
+      "evidence_tier": "A",
+      "claim_ids": [
+        "CL-013",
+        "CL-014"
+      ],
+      "source_ids": [
+        "SRC-002",
+        "SRC-013"
+      ],
+      "carrier_count": 2,
+      "independence_count": 1,
+      "scene_eligible": false,
+      "identity_link_statuses": [
+        "candidate"
+      ],
+      "identity_anchor_ids": [
+        "SRC-002",
+        "SRC-013"
+      ],
+      "note": "只保留为朱自清在1936年11月21日的见闻和用语；转录与影印同源，该姓名记录与其他年份的人物连接仍是candidate。"
+    },
+    {
+      "event_id": "EV-1942-08",
+      "date_start": "1942-08",
+      "date_end": "1942-08",
+      "date_precision": "month",
+      "year": 1942,
+      "month": 8,
+      "day": null,
+      "title": "1942年日方编成表列“蘇開元”为高级参议",
+      "description": "1942年8月《第八战区编成表》在傅作义指挥部队项下并列李大超、蘇開元为高级参议。此处只陈述该表如何记载。",
+      "category": "military",
+      "location": "",
+      "context": "《第八战区编成表》傅作义指挥部队项下",
+      "people": [
+        "编成表中的“蘇開元”记录对象",
+        "编成表中的“李大超”姓名记录"
+      ],
+      "status": "working_verified",
+      "evidence_tier": "A",
+      "claim_ids": [
+        "CL-167",
+        "CL-168"
+      ],
+      "source_ids": [
+        "SRC-095"
+      ],
+      "carrier_count": 1,
+      "independence_count": 1,
+      "scene_eligible": false,
+      "identity_link_statuses": [
+        "candidate",
+        "not-applicable"
+      ],
+      "identity_anchor_ids": [
+        "SRC-095"
+      ],
+      "note": "只陈述日方编成表如何列示；不能替代中方任命令，不能证明权限与任期，也不能与其他同名记录自动并人。"
+    }
+  ]
+}

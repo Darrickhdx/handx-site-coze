@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "project": "Handx web0.1",
+  "must_not_deploy": true,
+  "source_generated_at_utc": "2026-07-20T09:45:43.517517+00:00",
+  "inputs": {
+    "legacy_html": {
+      "filename": "苏开元知识图谱-交互版.html",
+      "sha256": "8a74e35d98264fd0db53e20b5fe0b3cd1192eeada8bc577d9e5fa5af19b62113"
+    },
+    "legacy_graph": {
+      "filename": "graph-data.json",
+      "sha256": "43bb5acaacd98fdc7ae2f34f23a61cd84940379ad8bf2ca66300275f252498d1"
+    },
+    "audit_graph": {
+      "filename": "05-知识图谱-公开版.json",
+      "sha256": "bc050f39e676a2bc347456fad4b4d0f87c2702993f012e39f8b16eef4bc0fd99"
+    },
+    "legacy_crosswalk": {
+      "filename": "28-旧知识图谱交叉映射.csv",
+      "sha256": "771893e8c699f90408dc3fea951c83c007cc74cd1deb925791d6ad2d64e484ec"
+    },
+    "source_registry": {
+      "filename": "01-来源登记表.csv",
+      "sha256": "f3dba7877465018387abaca74c8b8adb4fe5df8fb4d0903f4a3efab84ecc5442"
+    }
+  },
+  "counts": {
+    "audit_sources": 131,
+    "audit_claims": 211,
+    "audit_nodes": 229,
+    "audit_edges": 127,
+    "legacy_nodes": 107,
+    "legacy_edges": 151,
+    "crosswalk_records": 258
+  },
+  "privacy": {
+    "allowed_public_tiers": [
+      "P0",
+      "P1"
+    ],
+    "legacy_detail_included": false,
+    "absolute_paths_included": false,
+    "crosswalk_creates_facts": false
+  },
+  "outputs": {
+    "audit-graph.json": "ca0325a38ea803e42985026c4552e061584f760457dfd56f84c9ac2b729c870c",
+    "legacy-graph.json": "6188ad4157eeede6f1e982d6116c20c3919402758a3acc17ce47cd8d3dcd49c6",
+    "legacy-crosswalk.json": "a3dea5c79d8678479f751614bb603e879c359095f717667ac52147ae917fd1da"
+  }
+}

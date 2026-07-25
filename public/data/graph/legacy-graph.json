@@ -1,0 +1,5060 @@
+{
+  "schema_version": "1.0",
+  "layer": "legacy_clue_only",
+  "warning": "这是旧研究候选索引，不是事实图。旧详情、A/B/C评级和关系均未迁移为新版事实；请通过迁移裁决与新版主张重新核验。",
+  "source_digest": "43bb5acaacd98fdc7ae2f34f23a61cd84940379ad8bf2ca66300275f252498d1",
+  "source_built": "2026-07-18",
+  "periods": [
+    "1907-1922",
+    "1922-1928",
+    "1929-1936",
+    "1937-1945",
+    "1946-1949",
+    "1949-1964"
+  ],
+  "nodes": [
+    {
+      "id": "su-kaiyuan",
+      "label": "苏开元",
+      "group": "person",
+      "subgroup": "传主",
+      "period": "1907-1964",
+      "title": "傅作义部将领、中共秘密党员（存疑双挂）、公安干部",
+      "legacy_reliability": "A",
+      "migration": {
+        "legacy_key": "su-kaiyuan",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [
+          "P-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [
+          "CL-001",
+          "CL-002",
+          "CL-003",
+          "CL-005",
+          "CL-006",
+          "CL-008",
+          "CL-009",
+          "CL-010",
+          "CL-011",
+          "CL-012",
+          "CL-013",
+          "CL-014",
+          "CL-015",
+          "CL-016",
+          "CL-017",
+          "CL-019",
+          "CL-020",
+          "CL-021",
+          "CL-022",
+          "CL-023",
+          "CL-024",
+          "CL-025",
+          "CL-026",
+          "CL-027",
+          "CL-028",
+          "CL-029",
+          "CL-030",
+          "CL-031",
+          "CL-040",
+          "CL-041",
+          "CL-070",
+          "CL-079",
+          "CL-080",
+          "CL-082",
+          "CL-083",
+          "CL-092",
+          "CL-093",
+          "CL-110",
+          "CL-111",
+          "CL-132",
+          "CL-137",
+          "CL-138",
+          "CL-139",
+          "CL-141",
+          "CL-142",
+          "CL-143",
+          "CL-144",
+          "CL-145",
+          "CL-146",
+          "CL-147",
+          "CL-148",
+          "CL-149",
+          "CL-150",
+          "CL-151",
+          "CL-152",
+          "CL-168",
+          "CL-170",
+          "CL-172",
+          "CL-177",
+          "CL-178",
+          "CL-179"
+        ],
+        "risk_flags": [
+          "danger:入党|共产党|地下|潜伏|康原",
+          "danger:延安|军调|剿匪|剿总"
+        ],
+        "decision": "仅保留为旧研究索引；不得迁移旧节点详情、评级或因果。"
+      }
+    },
+    {
+      "id": "su-kuiyi",
+      "label": "苏揆一",
+      "group": "person",
+      "subgroup": "家族",
+      "period": "1946-1949",
+      "title": "苏开元之父",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "su-kuiyi",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [
+          "danger:入党|共产党|地下|潜伏|康原"
+        ],
+        "decision": "仅保留为旧研究索引；不得迁移旧节点详情、评级或因果。"
+      }
+    },
+    {
+      "id": "guo-songling",
+      "label": "郭松龄",
+      "group": "person",
+      "subgroup": "东北军-讲武堂系",
+      "period": "1922-1928",
+      "title": "奉军将领、东北国民军总司令，苏的恩师",
+      "legacy_reliability": "A",
+      "migration": {
+        "legacy_key": "guo-songling",
+        "migration_status": "mapped_index_only",
+        "new_entity_ids": [
+          "P-008"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "仅映射实体索引；旧节点整体A/B/C与详情均不继承。"
+      }
+    },
+    {
+      "id": "han-shuxiu",
+      "label": "韩淑秀",
+      "group": "person",
+      "subgroup": "东北军-讲武堂系",
+      "period": "1922-1928",
+      "title": "郭松龄夫人",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "han-shuxiu",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "zhang-xueliang",
+      "label": "张学良",
+      "group": "person",
+      "subgroup": "东北军-讲武堂系",
+      "period": "1922-1928",
+      "title": "东北军统帅、教导队兼队长",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "zhang-xueliang",
+        "migration_status": "mapped_index_only",
+        "new_entity_ids": [
+          "P-014"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "仅映射实体索引；旧节点整体A/B/C与详情均不继承。"
+      }
+    },
+    {
+      "id": "wei-yisan",
+      "label": "魏益三",
+      "group": "person",
+      "subgroup": "东北军-讲武堂系",
+      "period": "1922-1928",
+      "title": "教导队队附、东北国民军第五军军长",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "wei-yisan",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "lv-zhengcao",
+      "label": "吕正操",
+      "group": "person",
+      "subgroup": "东北军-讲武堂系",
+      "period": "1922-1928",
+      "title": "教导队一期、讲武堂五期同榜同学",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "lv-zhengcao",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "he-chengpu",
+      "label": "何成璞",
+      "group": "person",
+      "subgroup": "留日同学",
+      "period": "1929-1936",
+      "title": "郭选送留日陆大学员、苏入傅部的引荐人",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "he-chengpu",
+        "migration_status": "candidate_identity_split",
+        "new_entity_ids": [
+          "P-013",
+          "P-026"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [
+          "CL-052",
+          "CL-053",
+          "CL-054",
+          "CL-070",
+          "CL-074",
+          "CL-075",
+          "CL-076",
+          "CL-077",
+          "CL-104",
+          "CL-105",
+          "CL-106",
+          "CL-107",
+          "CL-108"
+        ],
+        "risk_flags": [
+          "ambiguous-entity-match"
+        ],
+        "decision": "新版强制分流；须逐条主张核验，禁止选择性并人。"
+      }
+    },
+    {
+      "id": "xu-zhijia",
+      "label": "徐之佳",
+      "group": "person",
+      "subgroup": "留日同学",
+      "period": "1937-1945",
+      "title": "中央军师长、留日士官生第二十期同期（炮科）",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "xu-zhijia",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [
+          "danger:延安|军调|剿匪|剿总"
+        ],
+        "decision": "仅保留为旧研究索引；不得迁移旧节点详情、评级或因果。"
+      }
+    },
+    {
+      "id": "sheng-shicai",
+      "label": "盛世才",
+      "group": "person",
+      "subgroup": "留日同学",
+      "period": "1922-1928",
+      "title": "郭选送留日陆大学员",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "sheng-shicai",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "shu-yuzhang",
+      "label": "舒玉璋",
+      "group": "person",
+      "subgroup": "留日同学",
+      "period": "1922-1928",
+      "title": "教导队/留日同学，舒玉瓒之兄",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "shu-yuzhang",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "fu-zuoyi",
+      "label": "傅作义",
+      "group": "person",
+      "subgroup": "傅作义系",
+      "period": "1929-1936",
+      "title": "苏的二十年长官，信任与猜忌并存",
+      "legacy_reliability": "A",
+      "migration": {
+        "legacy_key": "fu-zuoyi",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [
+          "P-007"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [
+          "CL-018",
+          "CL-063",
+          "CL-064",
+          "CL-066",
+          "CL-084",
+          "CL-133",
+          "CL-134"
+        ],
+        "risk_flags": [
+          "danger:延安|军调|剿匪|剿总"
+        ],
+        "decision": "仅保留为旧研究索引；不得迁移旧节点详情、评级或因果。"
+      }
+    },
+    {
+      "id": "li-yingfu",
+      "label": "李英夫",
+      "group": "person",
+      "subgroup": "傅作义系",
+      "period": "1929-1936",
+      "title": "傅作义副官长、苏最密切的战友与传记作者",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "li-yingfu",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [
+          "P-005",
+          "P-030",
+          "P-033"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [
+          "CL-033",
+          "CL-034",
+          "CL-035",
+          "CL-036",
+          "CL-037",
+          "CL-038",
+          "CL-039",
+          "CL-040",
+          "CL-041",
+          "CL-069",
+          "CL-070",
+          "CL-078",
+          "CL-102",
+          "CL-103",
+          "CL-157",
+          "CL-158",
+          "CL-159",
+          "CL-174",
+          "CL-175"
+        ],
+        "risk_flags": [
+          "danger:策反|开城|和平解放|广安门"
+        ],
+        "decision": "仅保留为旧研究索引；不得迁移旧节点详情、评级或因果。"
+      }
+    },
+    {
+      "id": "li-dachao",
+      "label": "李大超",
+      "group": "person",
+      "subgroup": "傅作义系",
+      "period": "1929-1936",
+      "title": "留日同学、四大金刚之一",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "li-dachao",
+        "migration_status": "candidate_identity_split",
+        "new_entity_ids": [
+          "P-017",
+          "P-020",
+          "P-029"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [
+          "CL-044",
+          "CL-045",
+          "CL-046",
+          "CL-048",
+          "CL-049",
+          "CL-051",
+          "CL-070",
+          "CL-072",
+          "CL-073",
+          "CL-160",
+          "CL-162",
+          "CL-163",
+          "CL-164",
+          "CL-169",
+          "CL-170"
+        ],
+        "risk_flags": [
+          "ambiguous-entity-match"
+        ],
+        "decision": "新版强制分流；须逐条主张核验，禁止选择性并人。"
+      }
+    },
+    {
+      "id": "meng-wenzhong",
+      "label": "孟文仲",
+      "group": "person",
+      "subgroup": "傅作义系",
+      "period": "1937-1945",
+      "title": "四大金刚之一、第一游击区副司令",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "meng-wenzhong",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "dong-qiwu",
+      "label": "董其武",
+      "group": "person",
+      "subgroup": "傅作义系",
+      "period": "1929-1936",
+      "title": "436团团长→218旅旅长，绥远起义将领",
+      "legacy_reliability": "A",
+      "migration": {
+        "legacy_key": "dong-qiwu",
+        "migration_status": "mapped_index_only",
+        "new_entity_ids": [
+          "P-028"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [
+          "CL-112"
+        ],
+        "risk_flags": [],
+        "decision": "仅映射实体索引；旧节点整体A/B/C与详情均不继承。"
+      }
+    },
+    {
+      "id": "zeng-yanyi",
+      "label": "曾延毅",
+      "group": "person",
+      "subgroup": "傅作义系",
+      "period": "1929-1936",
+      "title": "218旅旅长（1932），苏的直接上级",
+      "legacy_reliability": "A",
+      "migration": {
+        "legacy_key": "zeng-yanyi",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "sun-lanfeng",
+      "label": "孙兰峰",
+      "group": "person",
+      "subgroup": "傅作义系",
+      "period": "1929-1936",
+      "title": "421团团长→211旅旅长，百灵庙战役副指挥",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "sun-lanfeng",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [
+          "danger:病逝|出生|生卒"
+        ],
+        "decision": "仅保留为旧研究索引；不得迁移旧节点详情、评级或因果。"
+      }
+    },
+    {
+      "id": "miao-yutian",
+      "label": "苗玉田",
+      "group": "person",
+      "subgroup": "傅作义系",
+      "period": "1929-1936",
+      "title": "天津警备司令部参谋处长，苏首任直属长官",
+      "legacy_reliability": "C",
+      "migration": {
+        "legacy_key": "miao-yutian",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "wang-ying",
+      "label": "王英",
+      "group": "person",
+      "subgroup": "军统与对手",
+      "period": "1929-1936",
+      "title": "伪大汉义军总司令，1936年战场敌手",
+      "legacy_reliability": "A",
+      "migration": {
+        "legacy_key": "wang-ying",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "liu-xiaoxian",
+      "label": "刘效贤",
+      "group": "person",
+      "subgroup": "傅作义系",
+      "period": "1937-1945",
+      "title": "自卫军第二路总指挥，第一游击区辖部",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "liu-xiaoxian",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "guo-changqing",
+      "label": "郭长清",
+      "group": "person",
+      "subgroup": "傅作义系",
+      "period": "1937-1945",
+      "title": "自卫军第五路/游击部队师长，苏部下",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "guo-changqing",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "liu-wanchun",
+      "label": "刘万春",
+      "group": "person",
+      "subgroup": "傅作义系",
+      "period": "1937-1945",
+      "title": "第二游击区司令（平行职务）",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "liu-wanchun",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "chen-bingqian",
+      "label": "陈炳谦",
+      "group": "person",
+      "subgroup": "傅作义系",
+      "period": "1937-1945",
+      "title": "35军参谋长、绥干团副主任",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "chen-bingqian",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "li-shijie",
+      "label": "李世杰",
+      "group": "person",
+      "subgroup": "傅作义系",
+      "period": "1937-1945",
+      "title": "绥干团继任教育长",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "li-shijie",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "yan-youwen",
+      "label": "阎又文",
+      "group": "person",
+      "subgroup": "傅作义系",
+      "period": "1937-1945",
+      "title": "傅部机要秘书、绥干团秘书室主任、中共秘密党员",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "yan-youwen",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "shu-yuzan",
+      "label": "舒玉瓒",
+      "group": "person",
+      "subgroup": "傅作义系",
+      "period": "1937-1945",
+      "title": "二战区北路军前总少校参谋，智救刘澜涛的合作者",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "shu-yuzan",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "wei-jianqing",
+      "label": "卫建庆",
+      "group": "person",
+      "subgroup": "傅作义系",
+      "period": "1937-1945",
+      "title": "傅驻榆林办事处处长，1942年告发者",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "wei-jianqing",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [
+          "danger:延安|军调|剿匪|剿总"
+        ],
+        "decision": "仅保留为旧研究索引；不得迁移旧节点详情、评级或因果。"
+      }
+    },
+    {
+      "id": "wang-xintang",
+      "label": "王新堂",
+      "group": "person",
+      "subgroup": "傅作义系",
+      "period": "1937-1945",
+      "title": "傅部宪兵队长，奉命捕苏者",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "wang-xintang",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "wang-boxiang",
+      "label": "王伯祥",
+      "group": "person",
+      "subgroup": "傅作义系",
+      "period": "1937-1945",
+      "title": "马鸿逵部马全良师参谋长，1943年庇护者",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "wang-boxiang",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "ren-zhaotong",
+      "label": "任兆同",
+      "group": "person",
+      "subgroup": "傅作义系",
+      "period": "1946-1949",
+      "title": "傅部情报处长，1948年苏的情报来源",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "ren-zhaotong",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "luan-leshan",
+      "label": "栾乐山",
+      "group": "person",
+      "subgroup": "傅作义系",
+      "period": "1946-1949",
+      "title": "河北保安部队师长、被策反者",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "luan-leshan",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [
+          "danger:策反|开城|和平解放|广安门"
+        ],
+        "decision": "仅保留为旧研究索引；不得迁移旧节点详情、评级或因果。"
+      }
+    },
+    {
+      "id": "liu-ruming",
+      "label": "刘汝明",
+      "group": "person",
+      "subgroup": "傅作义系",
+      "period": "1946-1949",
+      "title": "原察哈尔省主席（间接关联）",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "liu-ruming",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "nan-hanchen",
+      "label": "南汉宸",
+      "group": "person",
+      "subgroup": "中共线",
+      "period": "1937-1945",
+      "title": "苏的入党介绍人、单线领导人",
+      "legacy_reliability": "A",
+      "migration": {
+        "legacy_key": "nan-hanchen",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [
+          "P-009"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [
+          "CL-062",
+          "CL-063",
+          "CL-064",
+          "CL-065"
+        ],
+        "risk_flags": [
+          "danger:入党|共产党|地下|潜伏|康原",
+          "danger:延安|军调|剿匪|剿总"
+        ],
+        "decision": "仅保留为旧研究索引；不得迁移旧节点详情、评级或因果。"
+      }
+    },
+    {
+      "id": "guan-xiangying",
+      "label": "关向应",
+      "group": "person",
+      "subgroup": "中共线",
+      "period": "1937-1945",
+      "title": "八路军120师政委，苏自述入党介绍人之一",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "guan-xiangying",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [
+          "danger:入党|共产党|地下|潜伏|康原"
+        ],
+        "decision": "仅保留为旧研究索引；不得迁移旧节点详情、评级或因果。"
+      }
+    },
+    {
+      "id": "feng-jiping",
+      "label": "冯基平",
+      "group": "person",
+      "subgroup": "中共线",
+      "period": "1929-1936",
+      "title": "苏的思想引路人、地下工作搭档，后任北京市公安局长",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "feng-jiping",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [
+          "P-022"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [
+          "CL-039"
+        ],
+        "risk_flags": [
+          "danger:入党|共产党|地下|潜伏|康原"
+        ],
+        "decision": "仅保留为旧研究索引；不得迁移旧节点详情、评级或因果。"
+      }
+    },
+    {
+      "id": "qiao-peixin",
+      "label": "乔培新",
+      "group": "person",
+      "subgroup": "中共线",
+      "period": "1937-1945",
+      "title": "中共党员、包头县县长，被苏放走者",
+      "legacy_reliability": "A",
+      "migration": {
+        "legacy_key": "qiao-peixin",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [
+          "P-010"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [
+          "CL-018",
+          "CL-055",
+          "CL-056",
+          "CL-057",
+          "CL-058",
+          "CL-059",
+          "CL-060",
+          "CL-061",
+          "CL-079",
+          "CL-080",
+          "CL-081",
+          "CL-083",
+          "CL-089",
+          "CL-090",
+          "CL-132",
+          "CL-133",
+          "CL-134",
+          "CL-135",
+          "CL-136",
+          "CL-137"
+        ],
+        "risk_flags": [
+          "danger:入党|共产党|地下|潜伏|康原",
+          "danger:乔培新事件|放走|营救",
+          "danger:延安|军调|剿匪|剿总"
+        ],
+        "decision": "仅保留为旧研究索引；不得迁移旧节点详情、评级或因果。"
+      }
+    },
+    {
+      "id": "ye-jianying",
+      "label": "叶剑英",
+      "group": "person",
+      "subgroup": "中共线",
+      "period": "1937-1945",
+      "title": "延安接见者；1973年为苏亲笔写证明信",
+      "legacy_reliability": "A",
+      "migration": {
+        "legacy_key": "ye-jianying",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [
+          "P-016"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [
+          "danger:延安|军调|剿匪|剿总"
+        ],
+        "decision": "仅保留为旧研究索引；不得迁移旧节点详情、评级或因果。"
+      }
+    },
+    {
+      "id": "zhou-enlai",
+      "label": "周恩来",
+      "group": "person",
+      "subgroup": "历史大人物",
+      "period": "1937-1945",
+      "title": "1937年大同会傅，间接引发傅对苏的猜疑",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "zhou-enlai",
+        "migration_status": "mapped_index_only",
+        "new_entity_ids": [
+          "P-011"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [
+          "CL-027"
+        ],
+        "risk_flags": [],
+        "decision": "仅映射实体索引；旧节点整体A/B/C与详情均不继承。"
+      }
+    },
+    {
+      "id": "zhu-de",
+      "label": "朱德",
+      "group": "person",
+      "subgroup": "历史大人物",
+      "period": "1937-1945",
+      "title": "第18集团军总司令，延安高参室的制度性上级",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "zhu-de",
+        "migration_status": "mapped_index_only",
+        "new_entity_ids": [
+          "P-012"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [
+          "CL-027"
+        ],
+        "risk_flags": [],
+        "decision": "仅映射实体索引；旧节点整体A/B/C与详情均不继承。"
+      }
+    },
+    {
+      "id": "zhou-sicheng",
+      "label": "周思诚",
+      "group": "person",
+      "subgroup": "中共线",
+      "period": "1937-1945",
+      "title": "延安十八集团军高参室主任（中将参议），苏的延安上级",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "zhou-sicheng",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "lv-lin",
+      "label": "吕林",
+      "group": "person",
+      "subgroup": "中共线",
+      "period": "1937-1945",
+      "title": "中共党员、1942年延安接待人",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "lv-lin",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [
+          "danger:入党|共产党|地下|潜伏|康原"
+        ],
+        "decision": "仅保留为旧研究索引；不得迁移旧节点详情、评级或因果。"
+      }
+    },
+    {
+      "id": "liu-lantao",
+      "label": "刘澜涛·罗瑞卿",
+      "group": "person",
+      "subgroup": "中共线",
+      "period": "1937-1945",
+      "title": "智救事件被营救者（存疑C+）",
+      "legacy_reliability": "C",
+      "migration": {
+        "legacy_key": "liu-lantao",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "liu-zhiqing",
+      "label": "刘志清",
+      "group": "person",
+      "subgroup": "中共线",
+      "period": "1949-1964",
+      "title": "1973年致信叶剑英为苏请证者",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "liu-zhiqing",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "dai-li",
+      "label": "戴笠",
+      "group": "person",
+      "subgroup": "军统与对手",
+      "period": "1937-1945",
+      "title": "军统首脑，乔培新事件的发端者",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "dai-li",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "shi-hong",
+      "label": "史弘",
+      "group": "person",
+      "subgroup": "军统与对手",
+      "period": "1946-1949",
+      "title": "华北剿总二处处长、军统头子，当面试探者",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "shi-hong",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [
+          "danger:入党|共产党|地下|潜伏|康原"
+        ],
+        "decision": "仅保留为旧研究索引；不得迁移旧节点详情、评级或因果。"
+      }
+    },
+    {
+      "id": "chen-jicheng",
+      "label": "陈继承",
+      "group": "person",
+      "subgroup": "军统与对手",
+      "period": "1946-1949",
+      "title": "华北剿总副总司令（中央系），七五事件推责者",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "chen-jicheng",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "ma-yi",
+      "label": "马毅",
+      "group": "person",
+      "subgroup": "北平名流",
+      "period": "1946-1949",
+      "title": "东北《民报》社长，七五事件抬棺游行同盟",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "ma-yi",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "ji-qingyi",
+      "label": "纪清漪",
+      "group": "person",
+      "subgroup": "北平名流",
+      "period": "1946-1949",
+      "title": "著名大律师，七五事件抬棺游行同盟",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "ji-qingyi",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "zhu-ziqing",
+      "label": "朱自清",
+      "group": "person",
+      "subgroup": "北平名流",
+      "period": "1929-1936",
+      "title": "清华教授，1936年平地泉会面的目击记录者",
+      "legacy_reliability": "A",
+      "migration": {
+        "legacy_key": "zhu-ziqing",
+        "migration_status": "mapped_index_only",
+        "new_entity_ids": [
+          "P-006"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [
+          "CL-013",
+          "CL-032"
+        ],
+        "risk_flags": [],
+        "decision": "仅映射实体索引；旧节点整体A/B/C与详情均不继承。"
+      }
+    },
+    {
+      "id": "zeng-zhaolun",
+      "label": "曾昭抡",
+      "group": "person",
+      "subgroup": "北平名流",
+      "period": "1929-1936",
+      "title": "北大教授，1936年慰问团团长、目击记录者",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "zeng-zhaolun",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "fan-changjiang",
+      "label": "范长江",
+      "group": "person",
+      "subgroup": "北平名流",
+      "period": "1929-1936",
+      "title": "《大公报》记者，五个民族英雄报道者",
+      "legacy_reliability": "A",
+      "migration": {
+        "legacy_key": "fan-changjiang",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "da-milingsulong",
+      "label": "达密凌苏龙",
+      "group": "person",
+      "subgroup": "北平名流",
+      "period": "1929-1936",
+      "title": "正黄旗总管兼东四旗剿匪司令，画报同版人物",
+      "legacy_reliability": "A",
+      "migration": {
+        "legacy_key": "da-milingsulong",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "peng-yubin",
+      "label": "彭毓斌",
+      "group": "person",
+      "subgroup": "傅作义系",
+      "period": "1929-1936",
+      "title": "骑1师师长，绥东五个民族英雄同列者",
+      "legacy_reliability": "A",
+      "migration": {
+        "legacy_key": "peng-yubin",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "hong-lisheng",
+      "label": "洪力生",
+      "group": "person",
+      "subgroup": "公安战线",
+      "period": "1949-1964",
+      "title": "原张学良西安绥署办公厅主任秘书，1949年案件线索人",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "hong-lisheng",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [
+          "danger:公安|洪力生|李安东|炮击天安门"
+        ],
+        "decision": "仅保留为旧研究索引；不得迁移旧节点详情、评级或因果。"
+      }
+    },
+    {
+      "id": "li-andong",
+      "label": "李安东·山口隆一",
+      "group": "person",
+      "subgroup": "公安战线",
+      "period": "1949-1964",
+      "title": "1950年炮击天安门案特务（侦破对象）",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "li-andong",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [
+          "danger:公安|洪力生|李安东|炮击天安门"
+        ],
+        "decision": "仅保留为旧研究索引；不得迁移旧节点详情、评级或因果。"
+      }
+    },
+    {
+      "id": "guo-lingye",
+      "label": "郭灵野",
+      "group": "person",
+      "subgroup": "北平名流",
+      "period": "1946-1949",
+      "title": "1947年兰州汇款转交人，身份不明",
+      "legacy_reliability": "C",
+      "migration": {
+        "legacy_key": "guo-lingye",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "feng-yuxiang",
+      "label": "冯玉祥",
+      "group": "person",
+      "subgroup": "历史大人物",
+      "period": "1922-1928",
+      "title": "国民军统帅，1926年资助苏再度赴日",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "feng-yuxiang",
+        "migration_status": "mapped_index_only",
+        "new_entity_ids": [
+          "P-015"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "仅映射实体索引；旧节点整体A/B/C与详情均不继承。"
+      }
+    },
+    {
+      "id": "he-yingqin",
+      "label": "何应钦",
+      "group": "person",
+      "subgroup": "历史大人物",
+      "period": "1922-1928",
+      "title": "1928年南京接见归国学生、1933年令傅部怀柔布防",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "he-yingqin",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "zhang-zuolin",
+      "label": "张作霖",
+      "group": "person",
+      "subgroup": "历史大人物",
+      "period": "1922-1928",
+      "title": "奉系首领，1925年通缉苏（赤化罪）",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "zhang-zuolin",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "yang-yuting",
+      "label": "杨宇霆",
+      "group": "person",
+      "subgroup": "历史大人物",
+      "period": "1922-1928",
+      "title": "奉军士官派首领，杀郭松龄者",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "yang-yuting",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "e-birth",
+      "label": "出生",
+      "group": "event",
+      "subgroup": "生平节点",
+      "period": "1907-1922",
+      "title": "1907年1月22日生于黑龙江青冈县兴化镇",
+      "legacy_reliability": "A",
+      "migration": {
+        "legacy_key": "e-birth",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [
+          "danger:病逝|出生|生卒"
+        ],
+        "decision": "仅保留为旧研究索引；不得迁移旧节点详情、评级或因果。"
+      }
+    },
+    {
+      "id": "e-jiaodaodui",
+      "label": "考入军士教导队",
+      "group": "event",
+      "subgroup": "求学从军",
+      "period": "1922-1928",
+      "title": "1922年7月入东三省陆军军士教导队第一期",
+      "legacy_reliability": "A",
+      "migration": {
+        "legacy_key": "e-jiaodaodui",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "e-jiangwutang",
+      "label": "考入讲武堂五期",
+      "group": "event",
+      "subgroup": "求学从军",
+      "period": "1922-1928",
+      "title": "1923年考入东三省陆军讲武堂第五期步兵科",
+      "legacy_reliability": "A",
+      "migration": {
+        "legacy_key": "e-jiangwutang",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "e-fanfeng",
+      "label": "郭松龄反奉·回国参战",
+      "group": "event",
+      "subgroup": "重大转折",
+      "period": "1922-1928",
+      "title": "1925年11月奉郭电召回国参加反奉战役",
+      "legacy_reliability": "A",
+      "migration": {
+        "legacy_key": "e-fanfeng",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "e-zhuidaohui",
+      "label": "东京追悼大会",
+      "group": "event",
+      "subgroup": "重大转折",
+      "period": "1922-1928",
+      "title": "1926年春参与主持郭松龄东京追悼大会",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "e-zhuidaohui",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "e-wusan",
+      "label": "五三惨案·退学回国",
+      "group": "event",
+      "subgroup": "重大转折",
+      "period": "1922-1928",
+      "title": "1928年5月抗议五三惨案被陆士退学，东京驿举旗搏斗",
+      "legacy_reliability": "A",
+      "migration": {
+        "legacy_key": "e-wusan",
+        "migration_status": "mapped_index_only",
+        "new_entity_ids": [
+          "E-011"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [
+          "CL-109",
+          "CL-115"
+        ],
+        "risk_flags": [],
+        "decision": "仅映射实体索引；旧节点整体A/B/C与详情均不继承。"
+      }
+    },
+    {
+      "id": "e-rufubu",
+      "label": "入傅作义部",
+      "group": "event",
+      "subgroup": "生平节点",
+      "period": "1929-1936",
+      "title": "1929年经何成璞介绍任天津警备司令部中校参谋",
+      "legacy_reliability": "A",
+      "migration": {
+        "legacy_key": "e-rufubu",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "e-zhongyuan",
+      "label": "中原大战",
+      "group": "event",
+      "subgroup": "战役",
+      "period": "1929-1936",
+      "title": "1930年随傅部参战（冯阎方），升上校参谋",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "e-zhongyuan",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [
+          "danger:延安|军调|剿匪|剿总"
+        ],
+        "decision": "仅保留为旧研究索引；不得迁移旧节点详情、评级或因果。"
+      }
+    },
+    {
+      "id": "e-435tuan",
+      "label": "任435团团长·曾旅清乡",
+      "group": "event",
+      "subgroup": "生平节点",
+      "period": "1929-1936",
+      "title": "1932年起任35军73师218旅435团上校团长",
+      "legacy_reliability": "A",
+      "migration": {
+        "legacy_key": "e-435tuan",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "e-fengjiping",
+      "label": "与冯基平建立联系",
+      "group": "event",
+      "subgroup": "地下线",
+      "period": "1929-1936",
+      "title": "1931年11月经李英夫介绍在集宁与中共党员冯基平会面",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "e-fengjiping",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "e-huairou",
+      "label": "怀柔抗战",
+      "group": "event",
+      "subgroup": "战役",
+      "period": "1929-1936",
+      "title": "1933年5月率435团于怀柔京密公路阻击日军铃木旅团",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "e-huairou",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "e-suiyuan",
+      "label": "绥远抗战·平地泉城防",
+      "group": "event",
+      "subgroup": "战役",
+      "period": "1929-1936",
+      "title": "1936年11-12月任平地泉（集宁）城防/留守/守备司令",
+      "legacy_reliability": "A",
+      "migration": {
+        "legacy_key": "e-suiyuan",
+        "migration_status": "mapped_index_only",
+        "new_entity_ids": [
+          "E-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [
+          "CL-015"
+        ],
+        "risk_flags": [],
+        "decision": "仅映射实体索引；旧节点整体A/B/C与详情均不继承。"
+      }
+    },
+    {
+      "id": "e-wuyingxiong",
+      "label": "大公报五个民族英雄",
+      "group": "event",
+      "subgroup": "荣誉",
+      "period": "1929-1936",
+      "title": "1936年11月23日范长江报道列苏为绥东五个民族英雄之一",
+      "legacy_reliability": "A",
+      "migration": {
+        "legacy_key": "e-wuyingxiong",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "e-datong",
+      "label": "大同送周恩来",
+      "group": "event",
+      "subgroup": "地下线",
+      "period": "1937-1945",
+      "title": "1937年8月24日傅送周恩来后追问'硕朋和他们见面了没有'",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "e-datong",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [
+          "danger:入党|共产党|地下|潜伏|康原"
+        ],
+        "decision": "仅保留为旧研究索引；不得迁移旧节点详情、评级或因果。"
+      }
+    },
+    {
+      "id": "e-rudang",
+      "label": "保德入党",
+      "group": "event",
+      "subgroup": "重大转折",
+      "period": "1937-1945",
+      "title": "1938年在山西保德县由南汉宸（及关向应）介绍加入中共",
+      "legacy_reliability": "A",
+      "migration": {
+        "legacy_key": "e-rudang",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [
+          "danger:入党|共产党|地下|潜伏|康原"
+        ],
+        "decision": "仅保留为旧研究索引；不得迁移旧节点详情、评级或因果。"
+      }
+    },
+    {
+      "id": "e-youjiqu",
+      "label": "任第一游击区司令",
+      "group": "event",
+      "subgroup": "生平节点",
+      "period": "1937-1945",
+      "title": "1940年6月起任绥远第一游击区司令（孟文仲副）",
+      "legacy_reliability": "A",
+      "migration": {
+        "legacy_key": "e-youjiqu",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "e-qiaoshijian",
+      "label": "乔培新事件",
+      "group": "event",
+      "subgroup": "重大转折",
+      "period": "1937-1945",
+      "title": "1940冬-1941年3月奉命逮捕乔培新而故意放走，因此被撤职",
+      "legacy_reliability": "A",
+      "migration": {
+        "legacy_key": "e-qiaoshijian",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [
+          "E-003"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [
+          "CL-082"
+        ],
+        "risk_flags": [
+          "danger:乔培新事件|放走|营救",
+          "danger:延安|军调|剿匪|剿总"
+        ],
+        "decision": "仅保留为旧研究索引；不得迁移旧节点详情、评级或因果。"
+      }
+    },
+    {
+      "id": "e-shizuishan",
+      "label": "石咀山两次脱险",
+      "group": "event",
+      "subgroup": "地下线",
+      "period": "1937-1945",
+      "title": "1941-1943年在石咀山隐蔽，两次经李英夫报信脱捕",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "e-shizuishan",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [
+          "danger:延安|军调|剿匪|剿总",
+          "danger:两次脱险|抚慰金"
+        ],
+        "decision": "仅保留为旧研究索引；不得迁移旧节点详情、评级或因果。"
+      }
+    },
+    {
+      "id": "e-yanan",
+      "label": "延安之行",
+      "group": "event",
+      "subgroup": "重大转折",
+      "period": "1937-1945",
+      "title": "1942年夏经盐池、榆林赴延安，任高参室高参（化名康原）",
+      "legacy_reliability": "A",
+      "migration": {
+        "legacy_key": "e-yanan",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [
+          "E-004"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [
+          "danger:延安|军调|剿匪|剿总"
+        ],
+        "decision": "仅保留为旧研究索引；不得迁移旧节点详情、评级或因果。"
+      }
+    },
+    {
+      "id": "e-huifubu",
+      "label": "重回傅部",
+      "group": "event",
+      "subgroup": "生平节点",
+      "period": "1937-1945",
+      "title": "1945年8月骑自行车到包头见李英夫后重回傅部任少将高参",
+      "legacy_reliability": "A",
+      "migration": {
+        "legacy_key": "e-huifubu",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "e-juntiaobu",
+      "label": "军调部集宁小组",
+      "group": "event",
+      "subgroup": "地下线",
+      "period": "1946-1949",
+      "title": "1946年初任国民党第12战区驻集宁军调小组代表",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "e-juntiaobu",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [
+          "danger:入党|共产党|地下|潜伏|康原",
+          "danger:延安|军调|剿匪|剿总"
+        ],
+        "decision": "仅保留为旧研究索引；不得迁移旧节点详情、评级或因果。"
+      }
+    },
+    {
+      "id": "e-fuweijin",
+      "label": "兰州抚慰金汇款",
+      "group": "event",
+      "subgroup": "存疑节点",
+      "period": "1946-1949",
+      "title": "1947年2月第十二战区长官部汇'抚慰金'至兰州苏开元",
+      "legacy_reliability": "A",
+      "migration": {
+        "legacy_key": "e-fuweijin",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [
+          "danger:两次脱险|抚慰金"
+        ],
+        "decision": "仅保留为旧研究索引；不得迁移旧节点详情、评级或因果。"
+      }
+    },
+    {
+      "id": "e-qiwu",
+      "label": "七五事件·抬棺游行",
+      "group": "event",
+      "subgroup": "地下线",
+      "period": "1946-1949",
+      "title": "1948年7月配合北平城工部发动抬棺游行；遭史弘试探",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "e-qiwu",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "e-cefan",
+      "label": "策反栾乐山",
+      "group": "event",
+      "subgroup": "地下线",
+      "period": "1946-1949",
+      "title": "1949年1月持李英夫函策动栾乐山允诺广安门开城",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "e-cefan",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [
+          "danger:策反|开城|和平解放|广安门"
+        ],
+        "decision": "仅保留为旧研究索引；不得迁移旧节点详情、评级或因果。"
+      }
+    },
+    {
+      "id": "e-heping",
+      "label": "北平和平解放",
+      "group": "event",
+      "subgroup": "重大转折",
+      "period": "1946-1949",
+      "title": "1949年1月随部起义（起义人员表在册）；1月31日解放军入城",
+      "legacy_reliability": "A",
+      "migration": {
+        "legacy_key": "e-heping",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [
+          "E-005"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [
+          "CL-023"
+        ],
+        "risk_flags": [
+          "danger:延安|军调|剿匪|剿总",
+          "danger:策反|开城|和平解放|广安门"
+        ],
+        "decision": "仅保留为旧研究索引；不得迁移旧节点详情、评级或因果。"
+      }
+    },
+    {
+      "id": "e-honglisheng",
+      "label": "洪力生案",
+      "group": "event",
+      "subgroup": "公安侦破",
+      "period": "1949-1964",
+      "title": "1949年冬侦破11人特务暗杀小组",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "e-honglisheng",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [
+          "danger:公安|洪力生|李安东|炮击天安门"
+        ],
+        "decision": "仅保留为旧研究索引；不得迁移旧节点详情、评级或因果。"
+      }
+    },
+    {
+      "id": "e-liandong",
+      "label": "李安东案（炮击天安门）",
+      "group": "event",
+      "subgroup": "公安侦破",
+      "period": "1949-1964",
+      "title": "1950年参与侦破李安东、山口隆一等七人炮击天安门案",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "e-liandong",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [
+          "danger:公安|洪力生|李安东|炮击天安门"
+        ],
+        "decision": "仅保留为旧研究索引；不得迁移旧节点详情、评级或因果。"
+      }
+    },
+    {
+      "id": "e-bingshi",
+      "label": "病逝",
+      "group": "event",
+      "subgroup": "生平节点",
+      "period": "1949-1964",
+      "title": "1964或1965年患偏瘫病逝北京（卒年双挂）",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "e-bingshi",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [
+          "danger:病逝|出生|生卒"
+        ],
+        "decision": "仅保留为旧研究索引；不得迁移旧节点详情、评级或因果。"
+      }
+    },
+    {
+      "id": "e-yejianxin",
+      "label": "叶剑英证明信",
+      "group": "event",
+      "subgroup": "身后",
+      "period": "1949-1964",
+      "title": "1973年7月8日叶剑英应刘志清之请为苏亲笔写证明信",
+      "legacy_reliability": "A",
+      "migration": {
+        "legacy_key": "e-yejianxin",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "o-jiaodaodui",
+      "label": "东三省陆军军士教导队",
+      "group": "org",
+      "subgroup": "东北军",
+      "period": "1922-1928",
+      "title": "1922年张学良、郭松龄创设；苏为一期学兵、二期班长",
+      "legacy_reliability": "A",
+      "migration": {
+        "legacy_key": "o-jiaodaodui",
+        "migration_status": "mapped_index_only",
+        "new_entity_ids": [
+          "O-009"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [
+          "CL-008"
+        ],
+        "risk_flags": [],
+        "decision": "仅映射实体索引；旧节点整体A/B/C与详情均不继承。"
+      }
+    },
+    {
+      "id": "o-jiangwutang",
+      "label": "东三省陆军讲武堂",
+      "group": "org",
+      "subgroup": "东北军",
+      "period": "1922-1928",
+      "title": "苏1923年入第五期步兵科，1925年10月毕业",
+      "legacy_reliability": "A",
+      "migration": {
+        "legacy_key": "o-jiangwutang",
+        "migration_status": "mapped_index_only",
+        "new_entity_ids": [
+          "O-010"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [
+          "CL-008"
+        ],
+        "risk_flags": [],
+        "decision": "仅映射实体索引；旧节点整体A/B/C与详情均不继承。"
+      }
+    },
+    {
+      "id": "o-chengcheng",
+      "label": "成城学校",
+      "group": "org",
+      "subgroup": "留日",
+      "period": "1922-1928",
+      "title": "东京牛込区陆士预备补习学校，苏1925/1926年两度在此",
+      "legacy_reliability": "A",
+      "migration": {
+        "legacy_key": "o-chengcheng",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "o-rikushi",
+      "label": "日本陆军士官学校（20期）",
+      "group": "org",
+      "subgroup": "留日",
+      "period": "1922-1928",
+      "title": "苏1927.10入中华队（留日士官生第二十期）步兵科，1928年5月被退学（肄业）",
+      "legacy_reliability": "A",
+      "migration": {
+        "legacy_key": "o-rikushi",
+        "migration_status": "mapped_index_only",
+        "new_entity_ids": [
+          "O-011"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [
+          "CL-009",
+          "CL-038",
+          "CL-115"
+        ],
+        "risk_flags": [],
+        "decision": "仅映射实体索引；旧节点整体A/B/C与详情均不继承。"
+      }
+    },
+    {
+      "id": "o-tianjin",
+      "label": "天津警备司令部",
+      "group": "org",
+      "subgroup": "傅系",
+      "period": "1929-1936",
+      "title": "苏1929年任参谋处中校参谋（入傅部起点）",
+      "legacy_reliability": "A",
+      "migration": {
+        "legacy_key": "o-tianjin",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "o-435tuan",
+      "label": "35军73师218旅435团",
+      "group": "org",
+      "subgroup": "傅系",
+      "period": "1929-1936",
+      "title": "苏1932-1937年任上校团长，驻平地泉、陶林",
+      "legacy_reliability": "A",
+      "migration": {
+        "legacy_key": "o-435tuan",
+        "migration_status": "mapped_index_only",
+        "new_entity_ids": [
+          "O-002"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [
+          "CL-096"
+        ],
+        "risk_flags": [],
+        "decision": "仅映射实体索引；旧节点整体A/B/C与详情均不继承。"
+      }
+    },
+    {
+      "id": "o-7jituan",
+      "label": "第7集团军参谋处",
+      "group": "org",
+      "subgroup": "傅系",
+      "period": "1937-1945",
+      "title": "苏1937年8月起任少将处长，参加察南、忻口、太原诸役",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "o-7jituan",
+        "migration_status": "mapped_index_only",
+        "new_entity_ids": [
+          "O-004"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "仅映射实体索引；旧节点整体A/B/C与详情均不继承。"
+      }
+    },
+    {
+      "id": "o-ganxun",
+      "label": "干训所→军政干校二分校→绥干团",
+      "group": "org",
+      "subgroup": "傅系",
+      "period": "1937-1945",
+      "title": "三机构一脉相承；苏历任所长（1937）、教育长（1938-41）",
+      "legacy_reliability": "A",
+      "migration": {
+        "legacy_key": "o-ganxun",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "o-youjiqu",
+      "label": "绥远第一游击区司令部",
+      "group": "org",
+      "subgroup": "傅系",
+      "period": "1937-1945",
+      "title": "苏1940年6月-1941年2月任司令，孟文仲副司令",
+      "legacy_reliability": "A",
+      "migration": {
+        "legacy_key": "o-youjiqu",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "o-gaocan",
+      "label": "十八集团军总部高参室",
+      "group": "org",
+      "subgroup": "中共",
+      "period": "1937-1945",
+      "title": "延安王家坪；苏1942年8月起化名康原任高参",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "o-gaocan",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [
+          "danger:入党|共产党|地下|潜伏|康原"
+        ],
+        "decision": "仅保留为旧研究索引；不得迁移旧节点详情、评级或因果。"
+      }
+    },
+    {
+      "id": "o-12zhanqu",
+      "label": "第12战区司令长官部",
+      "group": "org",
+      "subgroup": "傅系",
+      "period": "1937-1945",
+      "title": "苏1945年8月起任少将高参；1947年汇'抚慰金'的汇款方",
+      "legacy_reliability": "A",
+      "migration": {
+        "legacy_key": "o-12zhanqu",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    },
+    {
+      "id": "o-juntiao",
+      "label": "军调部集宁小组",
+      "group": "org",
+      "subgroup": "国共和谈",
+      "period": "1946-1949",
+      "title": "1946年初美国共三方小组，苏任国方代表",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "o-juntiao",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [
+          "O-008"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [
+          "CL-021"
+        ],
+        "risk_flags": [
+          "danger:延安|军调|剿匪|剿总"
+        ],
+        "decision": "仅保留为旧研究索引；不得迁移旧节点详情、评级或因果。"
+      }
+    },
+    {
+      "id": "o-huabei",
+      "label": "华北剿匪总司令部",
+      "group": "org",
+      "subgroup": "傅系",
+      "period": "1946-1949",
+      "title": "苏1947年12月起任少将高参、荣誉军人管理处代处长",
+      "legacy_reliability": "A",
+      "migration": {
+        "legacy_key": "o-huabei",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [
+          "danger:延安|军调|剿匪|剿总"
+        ],
+        "decision": "仅保留为旧研究索引；不得迁移旧节点详情、评级或因果。"
+      }
+    },
+    {
+      "id": "o-gongan",
+      "label": "北京市公安局第三处",
+      "group": "org",
+      "subgroup": "公安",
+      "period": "1949-1964",
+      "title": "苏1949年3月起任处长，公安隐蔽战线十几年",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "o-gongan",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [
+          "O-005"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [
+          "CL-025"
+        ],
+        "risk_flags": [
+          "danger:公安|洪力生|李安东|炮击天安门"
+        ],
+        "decision": "仅保留为旧研究索引；不得迁移旧节点详情、评级或因果。"
+      }
+    },
+    {
+      "id": "o-juntong",
+      "label": "军统局",
+      "group": "org",
+      "subgroup": "对手",
+      "period": "1937-1945",
+      "title": "戴笠系统：1941年密电、1948年试探与谋害计划",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "o-juntong",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [
+          "danger:延安|军调|剿匪|剿总"
+        ],
+        "decision": "仅保留为旧研究索引；不得迁移旧节点详情、评级或因果。"
+      }
+    },
+    {
+      "id": "o-yimeng",
+      "label": "中共伊盟工委",
+      "group": "org",
+      "subgroup": "中共",
+      "period": "1937-1945",
+      "title": "乔培新事件的接应组织（负责人杨一木、李维新）",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "o-yimeng",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [
+          "danger:延安|军调|剿匪|剿总"
+        ],
+        "decision": "仅保留为旧研究索引；不得迁移旧节点详情、评级或因果。"
+      }
+    },
+    {
+      "id": "o-beiping-chenggongbu",
+      "label": "中共北平城工部",
+      "group": "org",
+      "subgroup": "中共",
+      "period": "1946-1949",
+      "title": "1948年苏配合其开展七五事件后斗争",
+      "legacy_reliability": "B",
+      "migration": {
+        "legacy_key": "o-beiping-chenggongbu",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "legacy-edge-001",
+      "from": "su-kaiyuan",
+      "to": "su-kuiyi",
+      "label": "父子；父宅作联络据点",
+      "period": "1946-1949",
+      "migration": {
+        "legacy_key": "legacy-edge-001",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-002",
+      "from": "guo-songling",
+      "to": "su-kaiyuan",
+      "label": "恩师：录取、选送留日、电召参战",
+      "period": "1922-1928",
+      "migration": {
+        "legacy_key": "legacy-edge-002",
+        "migration_status": "endpoint_only",
+        "new_entity_ids": [
+          "P-001",
+          "P-008"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点可定位但新版没有同关系；保留为待核关系问题。"
+      }
+    },
+    {
+      "id": "legacy-edge-003",
+      "from": "guo-songling",
+      "to": "han-shuxiu",
+      "label": "夫妻，同遭杀害",
+      "period": "1922-1928",
+      "migration": {
+        "legacy_key": "legacy-edge-003",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-008"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-004",
+      "from": "guo-songling",
+      "to": "o-jiaodaodui",
+      "label": "创办",
+      "period": "1922-1928",
+      "migration": {
+        "legacy_key": "legacy-edge-004",
+        "migration_status": "endpoint_only",
+        "new_entity_ids": [
+          "O-009",
+          "P-008"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点可定位但新版没有同关系；保留为待核关系问题。"
+      }
+    },
+    {
+      "id": "legacy-edge-005",
+      "from": "guo-songling",
+      "to": "o-jiangwutang",
+      "label": "主持录取第五期",
+      "period": "1922-1928",
+      "migration": {
+        "legacy_key": "legacy-edge-005",
+        "migration_status": "endpoint_only",
+        "new_entity_ids": [
+          "O-010",
+          "P-008"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点可定位但新版没有同关系；保留为待核关系问题。"
+      }
+    },
+    {
+      "id": "legacy-edge-006",
+      "from": "guo-songling",
+      "to": "e-fanfeng",
+      "label": "起兵统帅，兵败被害",
+      "period": "1922-1928",
+      "migration": {
+        "legacy_key": "legacy-edge-006",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-008"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-007",
+      "from": "guo-songling",
+      "to": "e-zhuidaohui",
+      "label": "被追悼者",
+      "period": "1922-1928",
+      "migration": {
+        "legacy_key": "legacy-edge-007",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-008"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-008",
+      "from": "zhang-xueliang",
+      "to": "o-jiaodaodui",
+      "label": "兼队长",
+      "period": "1922-1928",
+      "migration": {
+        "legacy_key": "legacy-edge-008",
+        "migration_status": "endpoint_only",
+        "new_entity_ids": [
+          "O-009",
+          "P-014"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点可定位但新版没有同关系；保留为待核关系问题。"
+      }
+    },
+    {
+      "id": "legacy-edge-009",
+      "from": "zhang-xueliang",
+      "to": "fu-zuoyi",
+      "label": "1930年收编傅部并派四大金刚",
+      "period": "1929-1936",
+      "migration": {
+        "legacy_key": "legacy-edge-009",
+        "migration_status": "endpoint_only",
+        "new_entity_ids": [
+          "P-007",
+          "P-014"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点可定位但新版没有同关系；保留为待核关系问题。"
+      }
+    },
+    {
+      "id": "legacy-edge-010",
+      "from": "zhang-xueliang",
+      "to": "guo-songling",
+      "label": "绝对信任的搭档→敌对",
+      "period": "1922-1928",
+      "migration": {
+        "legacy_key": "legacy-edge-010",
+        "migration_status": "endpoint_only",
+        "new_entity_ids": [
+          "P-008",
+          "P-014"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点可定位但新版没有同关系；保留为待核关系问题。"
+      }
+    },
+    {
+      "id": "legacy-edge-011",
+      "from": "zhang-zuolin",
+      "to": "guo-songling",
+      "label": "反奉对象；下令杀郭",
+      "period": "1922-1928",
+      "migration": {
+        "legacy_key": "legacy-edge-011",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-008"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-012",
+      "from": "zhang-zuolin",
+      "to": "su-kaiyuan",
+      "label": "以'赤化'罪通缉",
+      "period": "1922-1928",
+      "migration": {
+        "legacy_key": "legacy-edge-012",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-013",
+      "from": "yang-yuting",
+      "to": "guo-songling",
+      "label": "政敌；遣人杀害",
+      "period": "1922-1928",
+      "migration": {
+        "legacy_key": "legacy-edge-013",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-008"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-014",
+      "from": "wei-yisan",
+      "to": "o-jiaodaodui",
+      "label": "队附（苏的教官）",
+      "period": "1922-1928",
+      "migration": {
+        "legacy_key": "legacy-edge-014",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "O-009"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-015",
+      "from": "lv-zhengcao",
+      "to": "su-kaiyuan",
+      "label": "教导队/讲武堂同榜同学",
+      "period": "1922-1928",
+      "migration": {
+        "legacy_key": "legacy-edge-015",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-016",
+      "from": "shu-yuzhang",
+      "to": "su-kaiyuan",
+      "label": "教导队/留日同学",
+      "period": "1922-1928",
+      "migration": {
+        "legacy_key": "legacy-edge-016",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-017",
+      "from": "shu-yuzhang",
+      "to": "shu-yuzan",
+      "label": "兄弟",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-017",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-018",
+      "from": "feng-yuxiang",
+      "to": "su-kaiyuan",
+      "label": "1926年资助再度赴日",
+      "period": "1922-1928",
+      "migration": {
+        "legacy_key": "legacy-edge-018",
+        "migration_status": "endpoint_only",
+        "new_entity_ids": [
+          "P-001",
+          "P-015"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点可定位但新版没有同关系；保留为待核关系问题。"
+      }
+    },
+    {
+      "id": "legacy-edge-019",
+      "from": "feng-yuxiang",
+      "to": "guo-songling",
+      "label": "反奉盟约",
+      "period": "1922-1928",
+      "migration": {
+        "legacy_key": "legacy-edge-019",
+        "migration_status": "endpoint_only",
+        "new_entity_ids": [
+          "P-008",
+          "P-015"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点可定位但新版没有同关系；保留为待核关系问题。"
+      }
+    },
+    {
+      "id": "legacy-edge-020",
+      "from": "sheng-shicai",
+      "to": "e-zhuidaohui",
+      "label": "共同主持",
+      "period": "1922-1928",
+      "migration": {
+        "legacy_key": "legacy-edge-020",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-021",
+      "from": "he-chengpu",
+      "to": "su-kaiyuan",
+      "label": "1929年引荐入傅部",
+      "period": "1929-1936",
+      "migration": {
+        "legacy_key": "legacy-edge-021",
+        "migration_status": "mapped_index_only",
+        "new_entity_ids": [
+          "P-001",
+          "P-013",
+          "P-026"
+        ],
+        "new_relation_ids": [
+          "REL-064"
+        ],
+        "candidate_claim_ids": [
+          "CL-070"
+        ],
+        "risk_flags": [],
+        "decision": "仅说明新版存在同端点关系；旧边标签与可靠度不继承，须阅读新版主张。"
+      }
+    },
+    {
+      "id": "legacy-edge-022",
+      "from": "he-chengpu",
+      "to": "e-zhuidaohui",
+      "label": "共同主持",
+      "period": "1922-1928",
+      "migration": {
+        "legacy_key": "legacy-edge-022",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-013",
+          "P-026"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-023",
+      "from": "he-yingqin",
+      "to": "e-wusan",
+      "label": "南京接见归国学生",
+      "period": "1922-1928",
+      "migration": {
+        "legacy_key": "legacy-edge-023",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "E-011"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-024",
+      "from": "he-yingqin",
+      "to": "e-huairou",
+      "label": "急电傅部布防",
+      "period": "1929-1936",
+      "migration": {
+        "legacy_key": "legacy-edge-024",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-025",
+      "from": "su-kaiyuan",
+      "to": "e-birth",
+      "label": "传主",
+      "period": "1907-1922",
+      "migration": {
+        "legacy_key": "legacy-edge-025",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-026",
+      "from": "su-kaiyuan",
+      "to": "e-jiaodaodui",
+      "label": "一期学兵",
+      "period": "1922-1928",
+      "migration": {
+        "legacy_key": "legacy-edge-026",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-027",
+      "from": "su-kaiyuan",
+      "to": "e-jiangwutang",
+      "label": "五期学员",
+      "period": "1922-1928",
+      "migration": {
+        "legacy_key": "legacy-edge-027",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-028",
+      "from": "su-kaiyuan",
+      "to": "e-fanfeng",
+      "label": "上尉营附参战，遭通缉",
+      "period": "1922-1928",
+      "migration": {
+        "legacy_key": "legacy-edge-028",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-029",
+      "from": "su-kaiyuan",
+      "to": "e-zhuidaohui",
+      "label": "主持者之一（名单具名）",
+      "period": "1922-1928",
+      "migration": {
+        "legacy_key": "legacy-edge-029",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-030",
+      "from": "su-kaiyuan",
+      "to": "e-wusan",
+      "label": "学潮骨干，被退学",
+      "period": "1922-1928",
+      "migration": {
+        "legacy_key": "legacy-edge-030",
+        "migration_status": "endpoint_only",
+        "new_entity_ids": [
+          "E-011",
+          "P-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点可定位但新版没有同关系；保留为待核关系问题。"
+      }
+    },
+    {
+      "id": "legacy-edge-031",
+      "from": "su-kaiyuan",
+      "to": "o-jiaodaodui",
+      "label": "一期学兵→二期班长",
+      "period": "1922-1928",
+      "migration": {
+        "legacy_key": "legacy-edge-031",
+        "migration_status": "mapped_index_only",
+        "new_entity_ids": [
+          "O-009",
+          "P-001"
+        ],
+        "new_relation_ids": [
+          "REL-005"
+        ],
+        "candidate_claim_ids": [
+          "CL-008"
+        ],
+        "risk_flags": [],
+        "decision": "仅说明新版存在同端点关系；旧边标签与可靠度不继承，须阅读新版主张。"
+      }
+    },
+    {
+      "id": "legacy-edge-032",
+      "from": "su-kaiyuan",
+      "to": "o-jiangwutang",
+      "label": "第五期步兵科毕业",
+      "period": "1922-1928",
+      "migration": {
+        "legacy_key": "legacy-edge-032",
+        "migration_status": "mapped_index_only",
+        "new_entity_ids": [
+          "O-010",
+          "P-001"
+        ],
+        "new_relation_ids": [
+          "REL-005B"
+        ],
+        "candidate_claim_ids": [
+          "CL-008"
+        ],
+        "risk_flags": [],
+        "decision": "仅说明新版存在同端点关系；旧边标签与可靠度不继承，须阅读新版主张。"
+      }
+    },
+    {
+      "id": "legacy-edge-033",
+      "from": "su-kaiyuan",
+      "to": "o-chengcheng",
+      "label": "1925/1926两度补习",
+      "period": "1922-1928",
+      "migration": {
+        "legacy_key": "legacy-edge-033",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-034",
+      "from": "su-kaiyuan",
+      "to": "o-rikushi",
+      "label": "20期步兵科，1928肄业",
+      "period": "1922-1928",
+      "migration": {
+        "legacy_key": "legacy-edge-034",
+        "migration_status": "mapped_index_only",
+        "new_entity_ids": [
+          "O-011",
+          "P-001"
+        ],
+        "new_relation_ids": [
+          "REL-006"
+        ],
+        "candidate_claim_ids": [
+          "CL-009"
+        ],
+        "risk_flags": [],
+        "decision": "仅说明新版存在同端点关系；旧边标签与可靠度不继承，须阅读新版主张。"
+      }
+    },
+    {
+      "id": "legacy-edge-035",
+      "from": "su-kaiyuan",
+      "to": "e-rufubu",
+      "label": "任中校参谋",
+      "period": "1929-1936",
+      "migration": {
+        "legacy_key": "legacy-edge-035",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-036",
+      "from": "su-kaiyuan",
+      "to": "o-tianjin",
+      "label": "参谋处中校参谋（1929）",
+      "period": "1929-1936",
+      "migration": {
+        "legacy_key": "legacy-edge-036",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-037",
+      "from": "su-kaiyuan",
+      "to": "e-zhongyuan",
+      "label": "参战，升上校参谋",
+      "period": "1929-1936",
+      "migration": {
+        "legacy_key": "legacy-edge-037",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-038",
+      "from": "su-kaiyuan",
+      "to": "o-435tuan",
+      "label": "上校团长（1932-1937）",
+      "period": "1929-1936",
+      "migration": {
+        "legacy_key": "legacy-edge-038",
+        "migration_status": "endpoint_only",
+        "new_entity_ids": [
+          "O-002",
+          "P-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点可定位但新版没有同关系；保留为待核关系问题。"
+      }
+    },
+    {
+      "id": "legacy-edge-039",
+      "from": "su-kaiyuan",
+      "to": "e-435tuan",
+      "label": "任团长、参与清乡",
+      "period": "1929-1936",
+      "migration": {
+        "legacy_key": "legacy-edge-039",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-040",
+      "from": "su-kaiyuan",
+      "to": "e-fengjiping",
+      "label": "与中共建立联系",
+      "period": "1929-1936",
+      "migration": {
+        "legacy_key": "legacy-edge-040",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-041",
+      "from": "su-kaiyuan",
+      "to": "e-huairou",
+      "label": "435团指挥官",
+      "period": "1929-1936",
+      "migration": {
+        "legacy_key": "legacy-edge-041",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-042",
+      "from": "su-kaiyuan",
+      "to": "e-suiyuan",
+      "label": "平地泉城防/留守/守备司令",
+      "period": "1929-1936",
+      "migration": {
+        "legacy_key": "legacy-edge-042",
+        "migration_status": "mapped_index_only",
+        "new_entity_ids": [
+          "E-001",
+          "P-001"
+        ],
+        "new_relation_ids": [
+          "REL-013"
+        ],
+        "candidate_claim_ids": [
+          "CL-015"
+        ],
+        "risk_flags": [],
+        "decision": "仅说明新版存在同端点关系；旧边标签与可靠度不继承，须阅读新版主张。"
+      }
+    },
+    {
+      "id": "legacy-edge-043",
+      "from": "su-kaiyuan",
+      "to": "e-wuyingxiong",
+      "label": "受表彰团长",
+      "period": "1929-1936",
+      "migration": {
+        "legacy_key": "legacy-edge-043",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-044",
+      "from": "su-kaiyuan",
+      "to": "o-7jituan",
+      "label": "参谋处少将处长（1937.8）",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-044",
+        "migration_status": "endpoint_only",
+        "new_entity_ids": [
+          "O-004",
+          "P-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点可定位但新版没有同关系；保留为待核关系问题。"
+      }
+    },
+    {
+      "id": "legacy-edge-045",
+      "from": "su-kaiyuan",
+      "to": "e-datong",
+      "label": "被猜疑对象（未与会）",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-045",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-046",
+      "from": "su-kaiyuan",
+      "to": "e-rudang",
+      "label": "秘密入党",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-046",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [
+          "P-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [
+          "danger:入党|共产党|地下|潜伏|康原"
+        ],
+        "decision": "旧关系语义含高风险因果；即使端点可映射，也不得迁移为事实边。"
+      }
+    },
+    {
+      "id": "legacy-edge-047",
+      "from": "su-kaiyuan",
+      "to": "o-ganxun",
+      "label": "所长（1937）→教育长（1938-41）",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-047",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-048",
+      "from": "su-kaiyuan",
+      "to": "o-youjiqu",
+      "label": "司令（1940.6-1941.2）",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-048",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-049",
+      "from": "su-kaiyuan",
+      "to": "e-youjiqu",
+      "label": "任司令",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-049",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-050",
+      "from": "su-kaiyuan",
+      "to": "e-qiaoshijian",
+      "label": "抗命放人者，被撤职",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-050",
+        "migration_status": "mapped_index_only",
+        "new_entity_ids": [
+          "E-003",
+          "P-001"
+        ],
+        "new_relation_ids": [
+          "REL-079"
+        ],
+        "candidate_claim_ids": [
+          "CL-082"
+        ],
+        "risk_flags": [],
+        "decision": "仅说明新版存在同端点关系；旧边标签与可靠度不继承，须阅读新版主张。"
+      }
+    },
+    {
+      "id": "legacy-edge-051",
+      "from": "su-kaiyuan",
+      "to": "e-shizuishan",
+      "label": "被通缉者，两次脱险",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-051",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [
+          "P-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [
+          "danger:两次脱险|抚慰金"
+        ],
+        "decision": "旧关系语义含高风险因果；即使端点可映射，也不得迁移为事实边。"
+      }
+    },
+    {
+      "id": "legacy-edge-052",
+      "from": "su-kaiyuan",
+      "to": "e-yanan",
+      "label": "化装赴延安",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-052",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [
+          "E-004",
+          "P-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [
+          "danger:延安|军调|剿匪|剿总"
+        ],
+        "decision": "旧关系语义含高风险因果；即使端点可映射，也不得迁移为事实边。"
+      }
+    },
+    {
+      "id": "legacy-edge-053",
+      "from": "su-kaiyuan",
+      "to": "o-gaocan",
+      "label": "高参，化名康原（1942.8）",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-053",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [
+          "P-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [
+          "danger:入党|共产党|地下|潜伏|康原"
+        ],
+        "decision": "旧关系语义含高风险因果；即使端点可映射，也不得迁移为事实边。"
+      }
+    },
+    {
+      "id": "legacy-edge-054",
+      "from": "su-kaiyuan",
+      "to": "e-huifubu",
+      "label": "重回虎穴任少将高参",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-054",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-055",
+      "from": "su-kaiyuan",
+      "to": "o-12zhanqu",
+      "label": "少将高级参谋（1945.8）",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-055",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-056",
+      "from": "su-kaiyuan",
+      "to": "e-juntiaobu",
+      "label": "国方代表（实为秘密党员）",
+      "period": "1946-1949",
+      "migration": {
+        "legacy_key": "legacy-edge-056",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-057",
+      "from": "su-kaiyuan",
+      "to": "o-juntiao",
+      "label": "驻集宁代表（1946）",
+      "period": "1946-1949",
+      "migration": {
+        "legacy_key": "legacy-edge-057",
+        "migration_status": "mapped_index_only",
+        "new_entity_ids": [
+          "O-008",
+          "P-001"
+        ],
+        "new_relation_ids": [
+          "REL-019"
+        ],
+        "candidate_claim_ids": [
+          "CL-021"
+        ],
+        "risk_flags": [],
+        "decision": "仅说明新版存在同端点关系；旧边标签与可靠度不继承，须阅读新版主张。"
+      }
+    },
+    {
+      "id": "legacy-edge-058",
+      "from": "su-kaiyuan",
+      "to": "e-fuweijin",
+      "label": "收款人（郭灵野转）",
+      "period": "1946-1949",
+      "migration": {
+        "legacy_key": "legacy-edge-058",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-059",
+      "from": "su-kaiyuan",
+      "to": "o-huabei",
+      "label": "少将高参、荣管处代处长（1947.12）",
+      "period": "1946-1949",
+      "migration": {
+        "legacy_key": "legacy-edge-059",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-060",
+      "from": "su-kaiyuan",
+      "to": "e-qiwu",
+      "label": "城工部配合者",
+      "period": "1946-1949",
+      "migration": {
+        "legacy_key": "legacy-edge-060",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-061",
+      "from": "su-kaiyuan",
+      "to": "e-cefan",
+      "label": "策反者",
+      "period": "1946-1949",
+      "migration": {
+        "legacy_key": "legacy-edge-061",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [
+          "P-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [
+          "danger:策反|开城|和平解放|广安门"
+        ],
+        "decision": "旧关系语义含高风险因果；即使端点可映射，也不得迁移为事实边。"
+      }
+    },
+    {
+      "id": "legacy-edge-062",
+      "from": "su-kaiyuan",
+      "to": "e-heping",
+      "label": "起义人员（在册）",
+      "period": "1946-1949",
+      "migration": {
+        "legacy_key": "legacy-edge-062",
+        "migration_status": "mapped_index_only",
+        "new_entity_ids": [
+          "E-005",
+          "P-001"
+        ],
+        "new_relation_ids": [
+          "REL-021"
+        ],
+        "candidate_claim_ids": [
+          "CL-023"
+        ],
+        "risk_flags": [],
+        "decision": "仅说明新版存在同端点关系；旧边标签与可靠度不继承，须阅读新版主张。"
+      }
+    },
+    {
+      "id": "legacy-edge-063",
+      "from": "su-kaiyuan",
+      "to": "o-beiping-chenggongbu",
+      "label": "配合工作（1948）",
+      "period": "1946-1949",
+      "migration": {
+        "legacy_key": "legacy-edge-063",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-064",
+      "from": "su-kaiyuan",
+      "to": "o-gongan",
+      "label": "第三处处长（1949.3起）",
+      "period": "1949-1964",
+      "migration": {
+        "legacy_key": "legacy-edge-064",
+        "migration_status": "mapped_index_only",
+        "new_entity_ids": [
+          "O-005",
+          "P-001"
+        ],
+        "new_relation_ids": [
+          "REL-022"
+        ],
+        "candidate_claim_ids": [
+          "CL-025"
+        ],
+        "risk_flags": [],
+        "decision": "仅说明新版存在同端点关系；旧边标签与可靠度不继承，须阅读新版主张。"
+      }
+    },
+    {
+      "id": "legacy-edge-065",
+      "from": "su-kaiyuan",
+      "to": "e-honglisheng",
+      "label": "承办侦破",
+      "period": "1949-1964",
+      "migration": {
+        "legacy_key": "legacy-edge-065",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-066",
+      "from": "su-kaiyuan",
+      "to": "e-liandong",
+      "label": "参与侦破",
+      "period": "1949-1964",
+      "migration": {
+        "legacy_key": "legacy-edge-066",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-067",
+      "from": "su-kaiyuan",
+      "to": "e-bingshi",
+      "label": "传主",
+      "period": "1949-1964",
+      "migration": {
+        "legacy_key": "legacy-edge-067",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-068",
+      "from": "su-kaiyuan",
+      "to": "e-yejianxin",
+      "label": "被证明对象",
+      "period": "1949-1964",
+      "migration": {
+        "legacy_key": "legacy-edge-068",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-069",
+      "from": "fu-zuoyi",
+      "to": "su-kaiyuan",
+      "label": "二十年长官：信任与猜忌并存",
+      "period": "1929-1936",
+      "migration": {
+        "legacy_key": "legacy-edge-069",
+        "migration_status": "endpoint_only",
+        "new_entity_ids": [
+          "P-001",
+          "P-007"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点可定位但新版没有同关系；保留为待核关系问题。"
+      }
+    },
+    {
+      "id": "legacy-edge-070",
+      "from": "fu-zuoyi",
+      "to": "o-tianjin",
+      "label": "兼司令",
+      "period": "1929-1936",
+      "migration": {
+        "legacy_key": "legacy-edge-070",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-007"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-071",
+      "from": "fu-zuoyi",
+      "to": "o-7jituan",
+      "label": "总司令",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-071",
+        "migration_status": "endpoint_only",
+        "new_entity_ids": [
+          "O-004",
+          "P-007"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点可定位但新版没有同关系；保留为待核关系问题。"
+      }
+    },
+    {
+      "id": "legacy-edge-072",
+      "from": "fu-zuoyi",
+      "to": "o-ganxun",
+      "label": "兼所长/校长/团主任",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-072",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-007"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-073",
+      "from": "fu-zuoyi",
+      "to": "o-12zhanqu",
+      "label": "司令长官",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-073",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-007"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-074",
+      "from": "fu-zuoyi",
+      "to": "o-huabei",
+      "label": "总司令",
+      "period": "1946-1949",
+      "migration": {
+        "legacy_key": "legacy-edge-074",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-007"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-075",
+      "from": "fu-zuoyi",
+      "to": "e-datong",
+      "label": "会晤周恩来后猜疑苏",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-075",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-007"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-076",
+      "from": "fu-zuoyi",
+      "to": "e-qiaoshijian",
+      "label": "下达逮捕令、盛怒撤职",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-076",
+        "migration_status": "endpoint_only",
+        "new_entity_ids": [
+          "E-003",
+          "P-007"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点可定位但新版没有同关系；保留为待核关系问题。"
+      }
+    },
+    {
+      "id": "legacy-edge-077",
+      "from": "fu-zuoyi",
+      "to": "e-juntiaobu",
+      "label": "指派苏任代表",
+      "period": "1946-1949",
+      "migration": {
+        "legacy_key": "legacy-edge-077",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-007"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-078",
+      "from": "fu-zuoyi",
+      "to": "e-heping",
+      "label": "宣告北平和平解放",
+      "period": "1946-1949",
+      "migration": {
+        "legacy_key": "legacy-edge-078",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [
+          "E-005",
+          "P-007"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [
+          "danger:策反|开城|和平解放|广安门"
+        ],
+        "decision": "旧关系语义含高风险因果；即使端点可映射，也不得迁移为事实边。"
+      }
+    },
+    {
+      "id": "legacy-edge-079",
+      "from": "fu-zuoyi",
+      "to": "e-suiyuan",
+      "label": "绥远抗战总指挥",
+      "period": "1929-1936",
+      "migration": {
+        "legacy_key": "legacy-edge-079",
+        "migration_status": "endpoint_only",
+        "new_entity_ids": [
+          "E-001",
+          "P-007"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点可定位但新版没有同关系；保留为待核关系问题。"
+      }
+    },
+    {
+      "id": "legacy-edge-080",
+      "from": "li-yingfu",
+      "to": "su-kaiyuan",
+      "label": "最密切战友：报信救险、藏匿、作传",
+      "period": "1929-1936",
+      "migration": {
+        "legacy_key": "legacy-edge-080",
+        "migration_status": "mapped_index_only",
+        "new_entity_ids": [
+          "P-001",
+          "P-005",
+          "P-030",
+          "P-033"
+        ],
+        "new_relation_ids": [
+          "REL-033",
+          "REL-034"
+        ],
+        "candidate_claim_ids": [
+          "CL-040",
+          "CL-041"
+        ],
+        "risk_flags": [],
+        "decision": "仅说明新版存在同端点关系；旧边标签与可靠度不继承，须阅读新版主张。"
+      }
+    },
+    {
+      "id": "legacy-edge-081",
+      "from": "li-yingfu",
+      "to": "e-rufubu",
+      "label": "同入傅部",
+      "period": "1929-1936",
+      "migration": {
+        "legacy_key": "legacy-edge-081",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-005",
+          "P-030",
+          "P-033"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-082",
+      "from": "li-yingfu",
+      "to": "e-fengjiping",
+      "label": "介绍人",
+      "period": "1929-1936",
+      "migration": {
+        "legacy_key": "legacy-edge-082",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-005",
+          "P-030",
+          "P-033"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-083",
+      "from": "li-yingfu",
+      "to": "e-shizuishan",
+      "label": "两次报信救苏",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-083",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-005",
+          "P-030",
+          "P-033"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-084",
+      "from": "li-yingfu",
+      "to": "e-cefan",
+      "label": "写亲笔信",
+      "period": "1946-1949",
+      "migration": {
+        "legacy_key": "legacy-edge-084",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-005",
+          "P-030",
+          "P-033"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-085",
+      "from": "li-yingfu",
+      "to": "fu-zuoyi",
+      "label": "副官长",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-085",
+        "migration_status": "endpoint_only",
+        "new_entity_ids": [
+          "P-005",
+          "P-007",
+          "P-030",
+          "P-033"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点可定位但新版没有同关系；保留为待核关系问题。"
+      }
+    },
+    {
+      "id": "legacy-edge-086",
+      "from": "li-dachao",
+      "to": "su-kaiyuan",
+      "label": "留日同学、四大金刚同僚",
+      "period": "1929-1936",
+      "migration": {
+        "legacy_key": "legacy-edge-086",
+        "migration_status": "mapped_index_only",
+        "new_entity_ids": [
+          "P-001",
+          "P-017",
+          "P-020",
+          "P-029"
+        ],
+        "new_relation_ids": [
+          "REL-124"
+        ],
+        "candidate_claim_ids": [
+          "CL-170"
+        ],
+        "risk_flags": [],
+        "decision": "仅说明新版存在同端点关系；旧边标签与可靠度不继承，须阅读新版主张。"
+      }
+    },
+    {
+      "id": "legacy-edge-087",
+      "from": "li-dachao",
+      "to": "e-rufubu",
+      "label": "同入傅部",
+      "period": "1929-1936",
+      "migration": {
+        "legacy_key": "legacy-edge-087",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-017",
+          "P-020",
+          "P-029"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-088",
+      "from": "meng-wenzhong",
+      "to": "o-youjiqu",
+      "label": "副司令",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-088",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-089",
+      "from": "meng-wenzhong",
+      "to": "liu-lantao",
+      "label": "连夜送过黄河",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-089",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-090",
+      "from": "shu-yuzan",
+      "to": "su-kaiyuan",
+      "label": "扣密电先告苏（智救事件）",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-090",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-091",
+      "from": "shu-yuzan",
+      "to": "liu-lantao",
+      "label": "营救发起者",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-091",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [
+          "danger:乔培新事件|放走|营救"
+        ],
+        "decision": "旧关系语义含高风险因果；即使端点可映射，也不得迁移为事实边。"
+      }
+    },
+    {
+      "id": "legacy-edge-092",
+      "from": "dong-qiwu",
+      "to": "o-435tuan",
+      "label": "兄弟团436团长→218旅长",
+      "period": "1929-1936",
+      "migration": {
+        "legacy_key": "legacy-edge-092",
+        "migration_status": "endpoint_only",
+        "new_entity_ids": [
+          "O-002",
+          "P-028"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点可定位但新版没有同关系；保留为待核关系问题。"
+      }
+    },
+    {
+      "id": "legacy-edge-093",
+      "from": "dong-qiwu",
+      "to": "e-wuyingxiong",
+      "label": "五英雄同列",
+      "period": "1929-1936",
+      "migration": {
+        "legacy_key": "legacy-edge-093",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-028"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-094",
+      "from": "dong-qiwu",
+      "to": "e-suiyuan",
+      "label": "红格尔图出击指挥",
+      "period": "1929-1936",
+      "migration": {
+        "legacy_key": "legacy-edge-094",
+        "migration_status": "endpoint_only",
+        "new_entity_ids": [
+          "E-001",
+          "P-028"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点可定位但新版没有同关系；保留为待核关系问题。"
+      }
+    },
+    {
+      "id": "legacy-edge-095",
+      "from": "zeng-yanyi",
+      "to": "o-435tuan",
+      "label": "218旅旅长（苏的上级）",
+      "period": "1929-1936",
+      "migration": {
+        "legacy_key": "legacy-edge-095",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "O-002"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-096",
+      "from": "zeng-yanyi",
+      "to": "e-435tuan",
+      "label": "率两团清乡",
+      "period": "1929-1936",
+      "migration": {
+        "legacy_key": "legacy-edge-096",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-097",
+      "from": "sun-lanfeng",
+      "to": "e-suiyuan",
+      "label": "百灵庙战斗副指挥",
+      "period": "1929-1936",
+      "migration": {
+        "legacy_key": "legacy-edge-097",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "E-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-098",
+      "from": "peng-yubin",
+      "to": "e-wuyingxiong",
+      "label": "五英雄同列",
+      "period": "1929-1936",
+      "migration": {
+        "legacy_key": "legacy-edge-098",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-099",
+      "from": "peng-yubin",
+      "to": "e-suiyuan",
+      "label": "红格尔图前线指挥",
+      "period": "1929-1936",
+      "migration": {
+        "legacy_key": "legacy-edge-099",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "E-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-100",
+      "from": "miao-yutian",
+      "to": "o-tianjin",
+      "label": "参谋处长（苏的长官）",
+      "period": "1929-1936",
+      "migration": {
+        "legacy_key": "legacy-edge-100",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-101",
+      "from": "wang-ying",
+      "to": "e-suiyuan",
+      "label": "进犯之敌（大汉义军）",
+      "period": "1929-1936",
+      "migration": {
+        "legacy_key": "legacy-edge-101",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "E-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-102",
+      "from": "da-milingsulong",
+      "to": "e-suiyuan",
+      "label": "绥东痛击王英；画报同版",
+      "period": "1929-1936",
+      "migration": {
+        "legacy_key": "legacy-edge-102",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "E-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-103",
+      "from": "fan-changjiang",
+      "to": "e-wuyingxiong",
+      "label": "报道作者",
+      "period": "1929-1936",
+      "migration": {
+        "legacy_key": "legacy-edge-103",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-104",
+      "from": "zhu-ziqing",
+      "to": "e-suiyuan",
+      "label": "1936.11.21平地泉会面记录",
+      "period": "1929-1936",
+      "migration": {
+        "legacy_key": "legacy-edge-104",
+        "migration_status": "endpoint_only",
+        "new_entity_ids": [
+          "E-001",
+          "P-006"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点可定位但新版没有同关系；保留为待核关系问题。"
+      }
+    },
+    {
+      "id": "legacy-edge-105",
+      "from": "zeng-zhaolun",
+      "to": "e-suiyuan",
+      "label": "1936.12.10参观工事记录",
+      "period": "1929-1936",
+      "migration": {
+        "legacy_key": "legacy-edge-105",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "E-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-106",
+      "from": "liu-xiaoxian",
+      "to": "o-youjiqu",
+      "label": "辖部：自卫军第二路",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-106",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-107",
+      "from": "guo-changqing",
+      "to": "o-youjiqu",
+      "label": "辖部师长",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-107",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-108",
+      "from": "liu-wanchun",
+      "to": "o-youjiqu",
+      "label": "平行：第二游击区司令",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-108",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-109",
+      "from": "chen-bingqian",
+      "to": "o-ganxun",
+      "label": "绥干团副主任",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-109",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-110",
+      "from": "li-shijie",
+      "to": "o-ganxun",
+      "label": "继任教育长",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-110",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-111",
+      "from": "yan-youwen",
+      "to": "o-ganxun",
+      "label": "秘书室主任（同僚）",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-111",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-112",
+      "from": "nan-hanchen",
+      "to": "su-kaiyuan",
+      "label": "入党介绍人、单线领导",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-112",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [
+          "P-001",
+          "P-009"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [
+          "danger:入党|共产党|地下|潜伏|康原"
+        ],
+        "decision": "旧关系语义含高风险因果；即使端点可映射，也不得迁移为事实边。"
+      }
+    },
+    {
+      "id": "legacy-edge-113",
+      "from": "nan-hanchen",
+      "to": "e-rudang",
+      "label": "介绍人",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-113",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-009"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-114",
+      "from": "nan-hanchen",
+      "to": "e-yanan",
+      "label": "关系引路（叶信确认）",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-114",
+        "migration_status": "endpoint_only",
+        "new_entity_ids": [
+          "E-004",
+          "P-009"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点可定位但新版没有同关系；保留为待核关系问题。"
+      }
+    },
+    {
+      "id": "legacy-edge-115",
+      "from": "guan-xiangying",
+      "to": "e-rudang",
+      "label": "介绍人之一（苏自述）",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-115",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-116",
+      "from": "feng-jiping",
+      "to": "su-kaiyuan",
+      "label": "思想引路人、地下搭档",
+      "period": "1929-1936",
+      "migration": {
+        "legacy_key": "legacy-edge-116",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [
+          "P-001",
+          "P-022"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [
+          "danger:入党|共产党|地下|潜伏|康原"
+        ],
+        "decision": "旧关系语义含高风险因果；即使端点可映射，也不得迁移为事实边。"
+      }
+    },
+    {
+      "id": "legacy-edge-117",
+      "from": "feng-jiping",
+      "to": "e-fengjiping",
+      "label": "宣传队负责人",
+      "period": "1929-1936",
+      "migration": {
+        "legacy_key": "legacy-edge-117",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-022"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-118",
+      "from": "feng-jiping",
+      "to": "e-yanan",
+      "label": "带苏入敌占区实习",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-118",
+        "migration_status": "endpoint_only",
+        "new_entity_ids": [
+          "E-004",
+          "P-022"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点可定位但新版没有同关系；保留为待核关系问题。"
+      }
+    },
+    {
+      "id": "legacy-edge-119",
+      "from": "qiao-peixin",
+      "to": "e-qiaoshijian",
+      "label": "被放走者",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-119",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [
+          "E-003",
+          "P-010"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [
+          "danger:乔培新事件|放走|营救"
+        ],
+        "decision": "旧关系语义含高风险因果；即使端点可映射，也不得迁移为事实边。"
+      }
+    },
+    {
+      "id": "legacy-edge-120",
+      "from": "qiao-peixin",
+      "to": "o-yimeng",
+      "label": "向工委汇报，经其赴延安",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-120",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [
+          "P-010"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [
+          "danger:延安|军调|剿匪|剿总"
+        ],
+        "decision": "旧关系语义含高风险因果；即使端点可映射，也不得迁移为事实边。"
+      }
+    },
+    {
+      "id": "legacy-edge-121",
+      "from": "dai-li",
+      "to": "e-qiaoshijian",
+      "label": "密电发端者",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-121",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "E-003"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-122",
+      "from": "dai-li",
+      "to": "o-juntong",
+      "label": "首脑",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-122",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-123",
+      "from": "o-yimeng",
+      "to": "e-qiaoshijian",
+      "label": "接应转移",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-123",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "E-003"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-124",
+      "from": "wang-xintang",
+      "to": "e-shizuishan",
+      "label": "奉命捕苏者",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-124",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-125",
+      "from": "wei-jianqing",
+      "to": "e-yanan",
+      "label": "榆林告发者",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-125",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "E-004"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-126",
+      "from": "xu-zhijia",
+      "to": "e-yanan",
+      "label": "助过前线",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-126",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "E-004"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-127",
+      "from": "wang-boxiang",
+      "to": "e-shizuishan",
+      "label": "1943年庇护者",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-127",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-128",
+      "from": "ye-jianying",
+      "to": "su-kaiyuan",
+      "label": "延安接见；1973年作证",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-128",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [
+          "P-001",
+          "P-016"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [
+          "danger:延安|军调|剿匪|剿总"
+        ],
+        "decision": "旧关系语义含高风险因果；即使端点可映射，也不得迁移为事实边。"
+      }
+    },
+    {
+      "id": "legacy-edge-129",
+      "from": "ye-jianying",
+      "to": "e-yanan",
+      "label": "接见者",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-129",
+        "migration_status": "endpoint_only",
+        "new_entity_ids": [
+          "E-004",
+          "P-016"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点可定位但新版没有同关系；保留为待核关系问题。"
+      }
+    },
+    {
+      "id": "legacy-edge-130",
+      "from": "ye-jianying",
+      "to": "e-yejianxin",
+      "label": "写信人",
+      "period": "1949-1964",
+      "migration": {
+        "legacy_key": "legacy-edge-130",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-016"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-131",
+      "from": "liu-zhiqing",
+      "to": "e-yejianxin",
+      "label": "请证人",
+      "period": "1949-1964",
+      "migration": {
+        "legacy_key": "legacy-edge-131",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-132",
+      "from": "zhou-sicheng",
+      "to": "o-gaocan",
+      "label": "主任",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-132",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-133",
+      "from": "zhu-de",
+      "to": "o-gaocan",
+      "label": "直接领导",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-133",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-012"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-134",
+      "from": "lv-lin",
+      "to": "e-yanan",
+      "label": "奉南汉宸命接待苏",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-134",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "E-004"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-135",
+      "from": "zhou-enlai",
+      "to": "e-datong",
+      "label": "会晤傅作义",
+      "period": "1937-1945",
+      "migration": {
+        "legacy_key": "legacy-edge-135",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-011"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-136",
+      "from": "shi-hong",
+      "to": "e-qiwu",
+      "label": "当面试探苏",
+      "period": "1946-1949",
+      "migration": {
+        "legacy_key": "legacy-edge-136",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-137",
+      "from": "shi-hong",
+      "to": "o-juntong",
+      "label": "华北剿总二处处长",
+      "period": "1946-1949",
+      "migration": {
+        "legacy_key": "legacy-edge-137",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [
+          "danger:延安|军调|剿匪|剿总"
+        ],
+        "decision": "旧关系语义含高风险因果；即使端点可映射，也不得迁移为事实边。"
+      }
+    },
+    {
+      "id": "legacy-edge-138",
+      "from": "chen-jicheng",
+      "to": "e-qiwu",
+      "label": "高干会推责傅作义",
+      "period": "1946-1949",
+      "migration": {
+        "legacy_key": "legacy-edge-138",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-139",
+      "from": "ma-yi",
+      "to": "e-qiwu",
+      "label": "抬棺游行同盟",
+      "period": "1946-1949",
+      "migration": {
+        "legacy_key": "legacy-edge-139",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-140",
+      "from": "ji-qingyi",
+      "to": "e-qiwu",
+      "label": "抬棺游行同盟",
+      "period": "1946-1949",
+      "migration": {
+        "legacy_key": "legacy-edge-140",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-141",
+      "from": "ren-zhaotong",
+      "to": "su-kaiyuan",
+      "label": "1948年情报来源",
+      "period": "1946-1949",
+      "migration": {
+        "legacy_key": "legacy-edge-141",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-142",
+      "from": "luan-leshan",
+      "to": "e-cefan",
+      "label": "被策反者，允诺开城",
+      "period": "1946-1949",
+      "migration": {
+        "legacy_key": "legacy-edge-142",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [
+          "danger:策反|开城|和平解放|广安门"
+        ],
+        "decision": "旧关系语义含高风险因果；即使端点可映射，也不得迁移为事实边。"
+      }
+    },
+    {
+      "id": "legacy-edge-143",
+      "from": "luan-leshan",
+      "to": "e-heping",
+      "label": "随部起义",
+      "period": "1946-1949",
+      "migration": {
+        "legacy_key": "legacy-edge-143",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "E-005"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-144",
+      "from": "liu-ruming",
+      "to": "su-kaiyuan",
+      "label": "旧宅为藏身处（间接）",
+      "period": "1946-1949",
+      "migration": {
+        "legacy_key": "legacy-edge-144",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-145",
+      "from": "guo-lingye",
+      "to": "e-fuweijin",
+      "label": "汇款转交人",
+      "period": "1946-1949",
+      "migration": {
+        "legacy_key": "legacy-edge-145",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-146",
+      "from": "o-12zhanqu",
+      "to": "e-fuweijin",
+      "label": "汇款方（抚慰金）",
+      "period": "1946-1949",
+      "migration": {
+        "legacy_key": "legacy-edge-146",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [
+          "danger:两次脱险|抚慰金"
+        ],
+        "decision": "旧关系语义含高风险因果；即使端点可映射，也不得迁移为事实边。"
+      }
+    },
+    {
+      "id": "legacy-edge-147",
+      "from": "hong-lisheng",
+      "to": "e-honglisheng",
+      "label": "报案线索人",
+      "period": "1949-1964",
+      "migration": {
+        "legacy_key": "legacy-edge-147",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-148",
+      "from": "li-andong",
+      "to": "e-liandong",
+      "label": "侦破对象",
+      "period": "1949-1964",
+      "migration": {
+        "legacy_key": "legacy-edge-148",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-149",
+      "from": "feng-jiping",
+      "to": "o-gongan",
+      "label": "北京市公安局长（公开史实）",
+      "period": "1949-1964",
+      "migration": {
+        "legacy_key": "legacy-edge-149",
+        "migration_status": "blocked_for_fact",
+        "new_entity_ids": [
+          "O-005",
+          "P-022"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [
+          "danger:公安|洪力生|李安东|炮击天安门"
+        ],
+        "decision": "旧关系语义含高风险因果；即使端点可映射，也不得迁移为事实边。"
+      }
+    },
+    {
+      "id": "legacy-edge-150",
+      "from": "o-juntong",
+      "to": "su-kaiyuan",
+      "label": "1948年末献计谋害",
+      "period": "1946-1949",
+      "migration": {
+        "legacy_key": "legacy-edge-150",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [
+          "P-001"
+        ],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    },
+    {
+      "id": "legacy-edge-151",
+      "from": "o-beiping-chenggongbu",
+      "to": "e-qiwu",
+      "label": "领导抬棺游行斗争",
+      "period": "1946-1949",
+      "migration": {
+        "legacy_key": "legacy-edge-151",
+        "migration_status": "legacy_candidate",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": [],
+        "decision": "端点或关系未闭合；仅作旧研究线索。"
+      }
+    }
+  ]
+}

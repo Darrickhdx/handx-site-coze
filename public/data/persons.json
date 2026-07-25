@@ -1,0 +1,77 @@
+{
+  "_meta": {
+    "schema_version": "sukaiyuan-site-preview-1.1",
+    "generated_at_utc": "2026-07-20T00:00:00Z",
+    "publication_layer": "previewable",
+    "preview_approved": true,
+    "deployment_authorized": false,
+    "must_not_deploy": true,
+    "approval_scope": "local_preview_three_anchor_metadata_and_short_claims_only_v7r4_safe_subset",
+    "exporter_version": "1.3.6",
+    "authority_schema_version": "public-export-generation-manifest-1.0",
+    "authority_layout_version": "public-export-generation-2.0",
+    "generation_id": "gen-be85198ed9f3663e20903ab7011b8ca234ed7fe10a3f3e7f170730d9d8352a7e",
+    "generation_manifest_sha256": "c32ec1d4c3b931677de19ce5c462e788b5966d7820334c4b5016f71c80d302c0",
+    "research_snapshot_id": "源数据工作版-2026-07-20-v7",
+    "research_input_sha256": {
+      "01-来源登记表.csv": "a03e4f66e1fb784deb704e3c2dcc7e73d220991935d42bbca13ef12603611121",
+      "03-核心主张.csv": "214f8d24e7c043134dadfe3babdc06eb83aa67064bd0901a5b2c0079340ea004",
+      "04-实体与别名.csv": "955f3ee1d6f123703d7274f41279fbcb70ddace00b7bc128f8c19fc5d23d2f2e",
+      "05-关系图谱.csv": "6879b3c052665290ec72a15abbf8f41b4d953528ab093ebdbc47325f32b42b90",
+      "05-知识图谱.json": "f26aacf9b540181fcff15605d1b8c6a75f6df00b1b092c25e0f0c360b0429f70"
+    },
+    "source_counts": {
+      "sources": 5,
+      "claims": 5,
+      "nodes": 7,
+      "edges": 5
+    },
+    "preview_anchor_years": [
+      1933,
+      1936,
+      1942
+    ],
+    "source_scope_counts": {
+      "body-verified": 4,
+      "metadata-only": 1
+    },
+    "source_manifest_file_sha256": "ecb002c79051ae46b5efbd8a035933c26faea4fdabdd8400ff0bc4df708bb145",
+    "disclaimer": "V7R4权威代次中真实公开层数据的本地预览；不含扫描件、全文转录、家属私密材料或P2/P3。当前只显示1933、1936、1942三组文献记录；1929记录与苏开元—苏凯元身份桥因混合来源依赖暂缓显示。同名记录不构成连续生平，发起人的亲属关系也未在当前公开证据层内核验。未经发起人最终确认，不得部署或公开发布。"
+  },
+  "persons": [
+    {
+      "entity_id": "P-001",
+      "entity_type": "Person",
+      "canonical_label": "苏开元",
+      "variant_label": "蘇開元",
+      "alias_group": "CI-SU-001",
+      "identity_status": "candidate identity cluster; separate person tracks; direct identity bridge not closed",
+      "valid_time_start": "",
+      "valid_time_end": "",
+      "public_tier": "P1",
+      "source_ids": [
+        "SRC-002",
+        "SRC-013",
+        "SRC-039",
+        "SRC-042",
+        "SRC-095"
+      ],
+      "provenance_redacted": true
+    },
+    {
+      "entity_id": "P-006",
+      "entity_type": "Person",
+      "canonical_label": "朱自清",
+      "variant_label": "朱自清",
+      "alias_group": "",
+      "identity_status": "identified author/witness",
+      "valid_time_start": "1898",
+      "valid_time_end": "1948",
+      "public_tier": "P0",
+      "source_ids": [
+        "SRC-002"
+      ],
+      "provenance_redacted": false
+    }
+  ]
+}

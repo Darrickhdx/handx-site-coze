@@ -1,0 +1,5 @@
+#!/bin/sh
+set -eu
+
+pnpm release:verify
+pnpm gate:local
