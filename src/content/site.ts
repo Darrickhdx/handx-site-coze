@@ -1,104 +1,150 @@
 import {
   Bot,
-  BookMarked,
+  BookOpenText,
+  Boxes,
+  Cpu,
+  FileText,
   GitBranch,
+  Layers3,
+  Network,
   type LucideIcon,
-  NotebookPen,
-  Route,
-  Sparkles,
 } from 'lucide-react';
 
-export type HomeSection = {
-  id: string;
+export type PrimaryNavigationItem = {
+  href: string;
+  label: string;
+  activePaths: readonly string[];
+};
+
+export const primaryNavigation: readonly PrimaryNavigationItem[] = [
+  {
+    href: '/about',
+    label: '关于我',
+    activePaths: ['/about'],
+  },
+  {
+    href: '/ai',
+    label: 'AI 与产品',
+    activePaths: ['/ai', '/studio'],
+  },
+  {
+    href: '/sukaiyuan',
+    label: '苏开元',
+    activePaths: [
+      '/sukaiyuan',
+      '/graph',
+      '/wiki',
+      '/archives',
+      '/topics',
+      '/novel',
+      '/person',
+      '/persons',
+      '/events',
+      '/timeline',
+      '/controversies',
+      '/methodology',
+      '/legacy',
+    ],
+  },
+  {
+    href: '/discover',
+    label: '文章',
+    activePaths: ['/discover'],
+  },
+] as const;
+
+export type AiProof = {
+  number: string;
   eyebrow: string;
   title: string;
   description: string;
-  status: string;
-  href: string;
-  linkLabel: string;
+  note: string;
   icon: LucideIcon;
-  accent: 'forest' | 'oxblood' | 'amber' | 'ink';
 };
 
-export const homeSections: HomeSection[] = [
-  {
-    id: 'sukaiyuan-project',
-    eyebrow: '旗舰项目 01',
-    title: '档案现场',
-    description: '从 1936 年一行同期记录进入：看原件、读上下文，也看清它暂时不能证明什么。',
-    status: '人物专题与原件阅览已开放',
-    href: '/sukaiyuan',
-    linkLabel: '进入苏开元计划',
-    icon: GitBranch,
-    accent: 'forest',
-  },
-  {
-    id: 'stories',
-    eyebrow: '专题与选题',
-    title: '发现',
-    description: '把人物、事件、未解问题和技术方法写成普通读者也愿意读完、愿意分享的故事。',
-    status: '首批 3 篇完整专题已上线',
-    href: '/discover',
-    linkLabel: '浏览最新专题',
-    icon: BookMarked,
-    accent: 'oxblood',
-  },
-  {
-    id: 'ai-lab',
-    eyebrow: '方法与实践',
-    title: 'AI 实验室',
-    description: '公开从杂乱文件、来源台账、知识图谱到网站与内容矩阵的真实工作流。',
-    status: '第一篇方法长文已上线',
-    href: '/discover/ai-family-history',
-    linkLabel: '阅读 AI 家族史方法',
-    icon: Bot,
-    accent: 'amber',
-  },
-  {
-    id: 'fiction',
-    eyebrow: '小说与影视',
-    title: '创作室',
-    description: '让史料与想象各归其位：已核史实、合理外推、纯虚构始终清楚标记。',
-    status: '3 篇审计样章可读',
-    href: '/novel',
-    linkLabel: '进入小说试读',
-    icon: NotebookPen,
-    accent: 'ink',
-  },
-];
-
-export const firstVisitPaths = [
+export const aiProofs: readonly AiProof[] = [
   {
     number: '01',
-    icon: Sparkles,
-    title: '先读一篇真正的故事',
-    description: '从朱自清留下的一行文字开始，六分钟读懂一份原件的力量与边界。',
-    href: '/discover/1936-pingdiquan',
-    label: '阅读首篇专题',
+    eyebrow: 'AI × 硬件',
+    title: '让模型能力进入真实设备',
+    description: '从场景、传感器和边缘能力出发，把 AI 变成可制造、可部署、可维护的终端产品。',
+    note: '能力来自二十多年软硬一体产品实践',
+    icon: Cpu,
   },
   {
     number: '02',
-    icon: Bot,
-    title: '再看 AI 怎样参与这项研究',
-    description: '从来源去重、身份分流到知识图谱，看 AI 如何提高效率，又怎样被证据边界约束。',
-    href: '/discover/ai-family-history',
-    label: '阅读 AI 方法',
+    eyebrow: 'AI × 行业系统',
+    title: '让新能力接进旧世界',
+    description: '理解支付、零售和运营系统的真实约束，让 AI 改善流程，而不是只停留在演示。',
+    note: '重点是系统连接、业务闭环与规模化落地',
+    icon: Boxes,
   },
   {
     number: '03',
-    icon: Route,
-    title: '最后认识背后的人',
-    description: '了解鉴真小秃驴二十多年的产品经历，以及为什么把 AI 用到产业现场和家族史里。',
-    href: '/about',
-    label: '认识网站发起人',
+    eyebrow: 'AI × 个人知识',
+    title: '一个人也能做复杂知识工程',
+    description: '以苏开元计划为样本，连接来源台账、知识图谱、写作、网站与多媒体内容。',
+    note: '技术提高效率，历史判断仍回到材料',
+    icon: Network,
   },
-];
+] as const;
 
-export const knowledgeNodes = [
-  { id: 'sukaiyuan', label: '苏开元计划', note: '旗舰项目', href: '/sukaiyuan', tone: 'primary' },
-  { id: 'pingdiquan', label: '1936 · 平地泉', note: '同期记录', href: '/sukaiyuan#pingdiquan', tone: 'forest' },
-  { id: 'zhuziqing', label: '朱自清', note: '《绥行纪略》', href: '/persons', tone: 'ink' },
-  { id: 'originals', label: '原件', note: '影印与定位', href: '/archives', tone: 'amber' },
-  { id: 'graph', label: '知识图谱', note: '人物与事件', href: '/graph', tone: 'forest' },
-  { id: 'notes', label: '研究日志', note: '方法与未解', href: '/methodology', tone: 'ink' },
+export type SelectedContent = {
+  href: string;
+  kind: string;
+  title: string;
+  description: string;
+  meta: string;
+  icon: LucideIcon;
+};
+
+export const selectedContents: readonly SelectedContent[] = [
+  {
+    href: '/discover/1936-pingdiquan',
+    kind: '给历史读者',
+    title: '朱自清在平地泉遇见了谁？',
+    description: '从一行 1936 年同期记录进入苏开元故事，也看清一份原件能证明什么、不能证明什么。',
+    meta: '约 6 分钟',
+    icon: FileText,
+  },
+  {
+    href: '/discover/ai-family-history',
+    kind: '给 AI 实践者',
+    title: '怎样用 AI 重建一段家族史',
+    description: '从混乱文件到来源台账、人物关系和可读叙事，一套仍在持续迭代的真实工作流。',
+    meta: '方法手记',
+    icon: Bot,
+  },
+  {
+    href: '/novel',
+    kind: '给小说读者',
+    title: '《英雄无名》全文阅读',
+    description: '182 页、32 章。史实、合理外推与文学虚构分层标记，小说不反向充当史料。',
+    meta: '完整本地审阅版',
+    icon: BookOpenText,
+  },
+] as const;
+
+export const suKaiyuanArchiveGroups = [
+  {
+    title: '先看懂关系',
+    description: '用图谱认识人物、事件与材料之间的连接。',
+    href: '/graph',
+    label: '打开知识图谱',
+    icon: GitBranch,
+  },
+  {
+    title: '再查具体条目',
+    description: '按人物、事件、机构、地点和文献进入 Wiki。',
+    href: '/wiki',
+    label: '进入人物与事件 Wiki',
+    icon: Layers3,
+  },
+  {
+    title: '最后回到原件',
+    description: '查看来源身份、原文定位、保存状态与公开入口。',
+    href: '/archives',
+    label: '进入原件阅览室',
+    icon: FileText,
+  },
 ] as const;

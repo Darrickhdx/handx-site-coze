@@ -2,43 +2,19 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { BookOpen, ChevronDown, Menu, X } from 'lucide-react';
+import { ArrowUpRight, BookOpen, Menu, X } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
+import { primaryNavigation } from '@/content/site';
 import { cn } from '@/lib/utils';
-
-const navItems = [
-  { href: '/discover', label: '发现', activePath: '/discover' },
-  { href: '/topics', label: '话题专题', activePath: '/topics' },
-  { href: '/sukaiyuan', label: '苏开元', activePath: '/sukaiyuan' },
-  { href: '/graph', label: '知识图谱', activePath: '/graph' },
-  { href: '/novel', label: '小说全文', activePath: '/novel' },
-  { href: '/studio', label: '家族史工作室', activePath: '/studio' },
-  { href: '/about', label: '关于我', activePath: '/about' },
-];
-
-const researchItems = [
-  { href: '/person', label: '苏开元人物页' },
-  { href: '/timeline', label: '断片时间线' },
-  { href: '/persons', label: '人物索引' },
-  { href: '/events', label: '事件索引' },
-  { href: '/wiki', label: '人物与事件 Wiki' },
-  { href: '/archives', label: '原件阅览室' },
-  { href: '/controversies', label: '未解问题' },
-  { href: '/methodology', label: '研究方法' },
-  { href: '/about#contact', label: '提供线索与联系' },
-];
 
 export function SiteHeader() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [mobileResearchOpen, setMobileResearchOpen] = useState(false);
-  const [researchOpen, setResearchOpen] = useState(false);
   const mobileButtonRef = useRef<HTMLButtonElement>(null);
   const mobileNavigationRef = useRef<HTMLElement>(null);
 
   const closeMobileMenu = (restoreFocus = false) => {
     setMobileOpen(false);
-    setMobileResearchOpen(false);
     if (restoreFocus) {
       window.requestAnimationFrame(() => mobileButtonRef.current?.focus());
     }
@@ -46,8 +22,6 @@ export function SiteHeader() {
 
   useEffect(() => {
     setMobileOpen(false);
-    setMobileResearchOpen(false);
-    setResearchOpen(false);
   }, [pathname]);
 
   useEffect(() => {
@@ -58,18 +32,19 @@ export function SiteHeader() {
         closeMobileMenu(true);
       }
     };
+
     document.addEventListener('keydown', handleEscape);
     window.requestAnimationFrame(() => {
       mobileNavigationRef.current?.querySelector<HTMLAnchorElement>('a')?.focus();
     });
+
     return () => document.removeEventListener('keydown', handleEscape);
   }, [mobileOpen]);
 
-  const isActive = (path?: string) => {
-    if (!path) return false;
-    if (path === '/') return pathname === '/';
-    return pathname === path || pathname.startsWith(`${path}/`);
-  };
+  const pathMatches = (path: string) =>
+    pathname === path || (path !== '/' && pathname.startsWith(`${path}/`));
+
+  const isActive = (paths: readonly string[]) => paths.some(pathMatches);
 
   return (
     <header className="sticky top-0 z-40 border-b border-foreground/10 bg-background/95 backdrop-blur-md">
@@ -88,78 +63,39 @@ export function SiteHeader() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-4 lg:flex" aria-label="主导航">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              data-amplitude-event="master_navigation_opened"
-              data-amplitude-destination={item.href}
-              className={cn(
-                'relative py-2 text-[13px] font-medium transition-colors after:absolute after:right-0 after:bottom-0 after:left-0 after:h-px after:origin-left after:bg-primary after:transition-transform',
-                isActive(item.activePath)
-                  ? 'text-primary after:scale-x-100'
-                  : 'text-muted-foreground after:scale-x-0 hover:text-foreground hover:after:scale-x-100'
-              )}
-              aria-current={isActive(item.activePath) ? 'page' : undefined}
-            >
-              {item.label}
-            </Link>
-          ))}
+        <div className="hidden items-center gap-7 lg:flex">
+          <nav className="flex items-center gap-6" aria-label="主导航">
+            {primaryNavigation.map((item) => {
+              const active = isActive(item.activePaths);
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  data-amplitude-event="master_navigation_opened"
+                  data-amplitude-destination={item.href}
+                  className={cn(
+                    'relative py-2 text-[13px] font-medium transition-colors after:absolute after:right-0 after:bottom-0 after:left-0 after:h-px after:origin-left after:bg-primary after:transition-transform',
+                    active
+                      ? 'text-primary after:scale-x-100'
+                      : 'text-muted-foreground after:scale-x-0 hover:text-foreground hover:after:scale-x-100'
+                  )}
+                  aria-current={active ? 'page' : undefined}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+          </nav>
 
-          <div
-            className="relative"
-            onMouseEnter={() => setResearchOpen(true)}
-            onMouseLeave={() => setResearchOpen(false)}
-            onBlur={(event) => {
-              if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
-                setResearchOpen(false);
-              }
-            }}
-            onKeyDown={(event) => {
-              if (event.key === 'Escape') {
-                setResearchOpen(false);
-                event.currentTarget.querySelector<HTMLButtonElement>('button')?.focus();
-              }
-            }}
+          <Link
+            href="/about#contact"
+            className="inline-flex min-h-10 items-center gap-2 border border-foreground/20 px-4 text-xs font-semibold tracking-[0.08em] text-foreground transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"
+            data-amplitude-event="header_contact_opened"
           >
-            <button
-              className={cn(
-                'flex items-center gap-1 py-2 text-[13px] font-medium transition-colors',
-                researchItems.some((item) => isActive(item.href))
-                  ? 'text-primary'
-                  : 'text-muted-foreground hover:text-foreground'
-              )}
-              onClick={() => setResearchOpen(!researchOpen)}
-              aria-expanded={researchOpen}
-              aria-haspopup="true"
-            >
-              研究档案
-              <ChevronDown className={cn('size-3.5 transition-transform', researchOpen && 'rotate-180')} />
-            </button>
-            {researchOpen && (
-              <div className="absolute right-0 top-full z-50 mt-2 w-48 border border-foreground/15 bg-card py-2 shadow-float">
-                {researchItems.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    data-amplitude-event="header_research_archive_opened"
-                    data-amplitude-destination={item.href}
-                    onClick={() => setResearchOpen(false)}
-                    className={cn(
-                      'block px-4 py-2.5 text-sm transition-colors',
-                      isActive(item.href)
-                        ? 'bg-primary/5 text-primary'
-                        : 'text-muted-foreground hover:bg-muted hover:text-foreground'
-                    )}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
-        </nav>
+            联系合作
+            <ArrowUpRight className="size-3.5" aria-hidden="true" />
+          </Link>
+        </div>
 
         <button
           ref={mobileButtonRef}
@@ -183,62 +119,36 @@ export function SiteHeader() {
           className="max-h-[calc(100svh-4.25rem)] overflow-y-auto border-t border-foreground/10 bg-card lg:hidden"
           aria-label="移动端主导航"
         >
-          <div className="px-4 py-4">
-            <div className="space-y-1">
-              {navItems.map((item) => (
+          <div className="space-y-1 px-4 py-4">
+            {primaryNavigation.map((item) => {
+              const active = isActive(item.activePaths);
+              return (
                 <Link
                   key={item.href}
                   href={item.href}
                   data-amplitude-event="mobile_master_navigation_opened"
                   data-amplitude-destination={item.href}
                   className={cn(
-                    'block px-3 py-3 text-sm font-medium transition-colors',
-                    isActive(item.activePath)
+                    'block min-h-11 px-3 py-3 text-sm font-medium transition-colors',
+                    active
                       ? 'bg-primary/10 text-primary'
                       : 'text-muted-foreground hover:bg-muted hover:text-foreground'
                   )}
                   onClick={() => closeMobileMenu()}
-                  aria-current={isActive(item.activePath) ? 'page' : undefined}
+                  aria-current={active ? 'page' : undefined}
                 >
                   {item.label}
                 </Link>
-              ))}
-            </div>
-
-            <div className="mt-4 border-t border-foreground/10 pt-4">
-              <button
-                type="button"
-                className="flex min-h-11 w-full items-center justify-between gap-3 px-3 text-left text-[11px] font-semibold tracking-[0.16em] text-muted-foreground uppercase"
-                onClick={() => setMobileResearchOpen((open) => !open)}
-                aria-expanded={mobileResearchOpen}
-                aria-controls="mobile-research-navigation"
-              >
-                苏开元研究档案
-                <ChevronDown className={cn('size-4 transition-transform', mobileResearchOpen && 'rotate-180')} />
-              </button>
-              {mobileResearchOpen && (
-                <div id="mobile-research-navigation" className="space-y-1">
-                  {researchItems.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      data-amplitude-event="mobile_research_archive_opened"
-                      data-amplitude-destination={item.href}
-                      className={cn(
-                        'block px-3 py-3 text-sm font-medium transition-colors',
-                        isActive(item.href)
-                          ? 'bg-primary/10 text-primary'
-                          : 'text-muted-foreground hover:bg-muted hover:text-foreground'
-                      )}
-                      onClick={() => closeMobileMenu()}
-                      aria-current={isActive(item.href) ? 'page' : undefined}
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
+              );
+            })}
+            <Link
+              href="/about#contact"
+              className="mt-3 flex min-h-11 items-center justify-between border border-foreground/15 px-3 py-3 text-sm font-semibold text-foreground"
+              onClick={() => closeMobileMenu()}
+            >
+              联系合作
+              <ArrowUpRight className="size-4" aria-hidden="true" />
+            </Link>
           </div>
         </nav>
       )}

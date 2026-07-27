@@ -5,10 +5,8 @@ import {
   Archive,
   FileKey2,
   Mail,
-  MessageSquareText,
   Network,
   ScanSearch,
-  Share2,
   ShieldCheck,
 } from 'lucide-react';
 import { profile, profileHighlights } from '@/content/profile';
@@ -88,47 +86,6 @@ export default function StudioPage() {
                 </article>
               );
             })}
-          </div>
-        </div>
-      </section>
-
-      <section className="border-t border-foreground/15 bg-white/30 py-14 sm:py-20">
-        <div className="personal-shell">
-          <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-start lg:gap-16">
-            <div>
-              <p className="personal-kicker">
-                <span aria-hidden="true" />
-                Owner tools
-              </p>
-              <h2 className="personal-heading mt-6">两项只在本机开放的主人工作台。</h2>
-              <p className="mt-5 text-sm leading-7 text-muted-foreground">
-                它们不是公开后台：不连接平台账号，也不会绕过事实、权利或评论审核。
-              </p>
-            </div>
-            <div className="grid gap-px border border-foreground/15 bg-foreground/15 sm:grid-cols-2">
-              <Link href="/studio/media" className="group bg-[#f4f0e8] p-6 sm:p-8">
-                <Share2 className="size-6 text-primary" strokeWidth={1.4} aria-hidden="true" />
-                <h3 className="mt-6 font-serif text-2xl font-semibold">媒体矩阵审稿台</h3>
-                <p className="mt-3 text-sm leading-7 text-muted-foreground">
-                  生成固定为 review_only 的平台视觉、文案和 ZIP；人工复核后再自行发布。
-                </p>
-                <span className="story-text-link mt-6">
-                  打开工作台
-                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-                </span>
-              </Link>
-              <Link href="/studio/comments" className="group bg-[#f4f0e8] p-6 sm:p-8">
-                <MessageSquareText className="size-6 text-primary" strokeWidth={1.4} aria-hidden="true" />
-                <h3 className="mt-6 font-serif text-2xl font-semibold">小说评论审核</h3>
-                <p className="mt-3 text-sm leading-7 text-muted-foreground">
-                  使用本机管理员令牌批准、拒绝、标记垃圾或撤回评论；公开章节只显示已批准内容。
-                </p>
-                <span className="story-text-link mt-6">
-                  打开审核队列
-                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-                </span>
-              </Link>
-            </div>
           </div>
         </div>
       </section>

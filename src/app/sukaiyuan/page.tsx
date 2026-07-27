@@ -2,127 +2,91 @@ import Image from 'next/image';
 import Link from 'next/link';
 import {
   ArrowRight,
-  CircleDot,
+  BookOpenText,
   FileSearch,
-  MapPin,
+  Mail,
   Quote,
-  Scale,
-  UsersRound,
 } from 'lucide-react';
-import {
-  dataMeta,
-  eventRecords,
-  sourceById,
-} from '@/lib/research-data';
-import { cn } from '@/lib/utils';
+import { ProjectSectionNav } from '@/components/project-section-nav';
+import { suKaiyuanArchiveGroups } from '@/content/site';
+import { graphManifest } from '@/lib/graph-wiki-data';
 
-const officialFacsimile = sourceById.get('SRC-013');
-const localTranscript = sourceById.get('SRC-002');
-
-const archiveEntries = [
-  {
-    href: '/person',
-    eyebrow: '人物档案',
-    title: '苏开元：从已知记录开始',
-    description: '查看三组同名材料、身份边界，以及哪些经历仍不能连成一条生平。',
-    event: 'person_archive_opened',
-  },
-  {
-    href: '/archives',
-    eyebrow: '史料阅览室',
-    title: '打开原件与来源说明',
-    description: '查看载体关系、原文定位与公开入口；同源转录不会被重复计算。',
-    event: 'evidence_archive_opened',
-  },
-  {
-    href: '/controversies',
-    eyebrow: '尚未解决',
-    title: '我们还不知道什么',
-    description: '不同年份的同名记录、史料空白与不能外推的内容都在这里明确保留。',
-    event: 'open_questions_opened',
-  },
-] as const;
-
-export default function HomePage() {
+export default function SuKaiyuanPage() {
   return (
     <div className="story-home overflow-hidden">
+      <ProjectSectionNav />
+
       <section className="sukaiyuan-hero border-b border-white/10 text-[#f3efe7]">
-        <div className="story-shell grid min-h-[calc(100svh-6.5rem)] items-center gap-14 py-14 lg:grid-cols-[minmax(0,0.84fr)_minmax(34rem,1.16fr)] lg:gap-16 lg:py-20">
+        <div className="story-shell grid min-h-[calc(100svh-9.75rem)] gap-12 py-12 lg:grid-cols-[minmax(0,0.88fr)_minmax(31rem,1.12fr)] lg:items-start lg:gap-14 lg:py-14">
           <div className="relative z-10 max-w-[45rem]">
             <div className="sukaiyuan-project-label">
-              <span>旗舰项目</span>
+              <span>家族史旗舰项目</span>
               <strong>01</strong>
             </div>
-
-            <h1 className="sukaiyuan-title mt-9">寻找苏开元</h1>
-            <p className="mt-5 font-serif text-2xl leading-relaxed text-[#d7cfc2] sm:text-3xl">
-              一个普通人，如何穿过一个大时代。
+            <h1 className="sukaiyuan-title mt-7">寻找苏开元</h1>
+            <p className="mt-4 font-serif text-2xl leading-relaxed text-[#d7cfc2] sm:text-3xl">
+              我的曾祖父，和一个仍未被历史完整解释的名字。
+            </p>
+            <p className="mt-6 max-w-2xl text-base leading-8 text-[#bdb9b0] sm:text-lg">
+              我想知道，他究竟经历过什么，又如何被卷入二十世纪中国的巨大变动。
+              这不是一份已经完成的传记，而是一场公开保留证据、冲突与空白的长期寻找。
             </p>
 
-            <p className="mt-8 max-w-2xl text-base leading-8 text-[#bdb9b0] sm:text-lg">
-              一边是家族记忆中的曾祖父，一边是 1936 年朱自清笔下的“留守司令苏开元团长”。
-              我们从这条同期记录出发，寻找二者之间能够被查证的连接。
-            </p>
-
-            <div className="sukaiyuan-research-status">
-              <strong>研究状态</strong>
-              <span>1936 年文献中出现该姓名和称谓，已经核对；与家族人物是否为同一人，尚未证实。</span>
-              <Link href="/controversies">查看未解问题</Link>
-            </div>
-
-            <div className="sukaiyuan-years mt-10" aria-label="目前找到的三个文献年份">
-              <span className="sukaiyuan-year"><strong>1933</strong> 公报任命记录</span>
-              <span className="sukaiyuan-year is-focus"><strong>1936</strong> 平地泉记录</span>
-              <span className="sukaiyuan-year"><strong>1942</strong> 日方编成表记录</span>
-            </div>
-
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
-              <a href="#pingdiquan" data-amplitude-event="story_started" className="story-button personal-button-light">
-                从 1936 年开始
-                <ArrowRight className="size-4" />
-              </a>
-              <Link href="/archives#SRC-013" data-amplitude-event="hero_evidence_opened" className="personal-dark-link">
-                打开这份原件
-                <ArrowRight className="size-4" />
+            <div className="mt-7 flex flex-col gap-4 sm:flex-row sm:items-center">
+              <Link
+                href="/discover/1936-pingdiquan"
+                data-amplitude-event="sukaiyuan_story_started"
+                className="story-button personal-button-light"
+              >
+                先读第一个故事
+                <ArrowRight className="size-4" aria-hidden="true" />
               </Link>
+              <a href="#archive" className="personal-dark-link">
+                浏览研究资料库
+                <ArrowRight className="size-4" aria-hidden="true" />
+              </a>
+            </div>
+
+            <div className="mt-7 grid gap-px overflow-hidden border border-white/15 bg-white/15 text-xs leading-6 sm:grid-cols-3">
+              <div className="bg-[#1d2524] p-4">
+                <strong className="block text-[#f3efe7]">目前知道</strong>
+                <p className="mt-2 text-[#aaa69f]">1936 年同期文献确有“苏开元团长”。</p>
+              </div>
+              <div className="bg-[#1d2524] p-4">
+                <strong className="block text-[#f3efe7]">仍待确认</strong>
+                <p className="mt-2 text-[#aaa69f]">这位记录对象是否就是家族人物。</p>
+              </div>
+              <div className="bg-[#1d2524] p-4">
+                <strong className="block text-[#f3efe7]">建议下一步</strong>
+                <p className="mt-2 text-[#aaa69f]">先读 1936 年专题，再按需进入资料库。</p>
+              </div>
             </div>
           </div>
 
           <aside className="sukaiyuan-document-stage" aria-label="朱自清《绥行纪略》同期影印件">
             <div className="sukaiyuan-document-meta">
-              <p>1936 · 清华校刊第 792 号</p>
+              <p>故事从这里开始 · 1936</p>
               <span className="sukaiyuan-document-type">
-                第三方官方数字影印局部 · SRC-013 · 本地审阅
+                《国立清华大学校刊》第 792 号 · 第三方影印局部
               </span>
             </div>
-            <Link href="/archives#SRC-013" className="sukaiyuan-document-sheet group">
+            <Link href="/discover/1936-pingdiquan" className="sukaiyuan-document-sheet group">
               <Image
                 src="/assets/sukaiyuan/1936-sui-xing-ji-lue-proof.png"
-                alt="朱自清《绥行纪略》同期校刊影印局部，文中可见平地泉及留守司令苏开元团长的文字记录"
+                alt="朱自清《绥行纪略》同期校刊影印局部，文中可见留守司令苏开元团长的文字记录"
                 width={1835}
                 height={1035}
                 className="h-full w-full object-cover grayscale transition-transform duration-500 group-hover:scale-[1.015]"
                 sizes="(min-width: 1024px) 52vw, 100vw"
                 priority
               />
-              <span className="sukaiyuan-document-marker" aria-hidden="true" />
-              <span className="sukaiyuan-document-loupe" aria-hidden="true">
-                <Image
-                  src="/assets/sukaiyuan/1936-sui-xing-ji-lue-proof.png"
-                  alt=""
-                  width={1835}
-                  height={1035}
-                  className="h-full w-full scale-[2.65] object-cover object-[58%_58%] grayscale"
-                  sizes="160px"
-                />
-              </span>
               <span className="sukaiyuan-document-action">
-                查看来源记录与官方影印
-                <ArrowRight className="size-4" />
+                读懂这份原件
+                <ArrowRight className="size-4" aria-hidden="true" />
               </span>
             </Link>
             <p className="mt-3 text-[11px] leading-5 tracking-wide text-[#aaa69f]">
-              第三方史料局部仅供本地研究审阅，不随本站文章授权；本站红线与放大镜为阅读标注，不属于原始影印件。
+              第三方史料局部仅供本地研究审阅，不随本站文章授权。
             </p>
             <blockquote className="sukaiyuan-hero-quote">
               <Quote className="size-5 shrink-0 text-[#c38a82]" strokeWidth={1.5} aria-hidden="true" />
@@ -130,244 +94,154 @@ export default function HomePage() {
             </blockquote>
           </aside>
         </div>
-        <div className="story-shell suikaiyuan-mission">
-          <p>从一份家族记忆出发，建立一个可查证、可连接、也承认未知的人物档案。</p>
-          <span className="sukaiyuan-mission-label">Family memory × public history</span>
-        </div>
       </section>
 
-      <section id="pingdiquan" className="scroll-mt-28 py-20 sm:py-28 lg:py-36">
-        <div className="story-shell grid gap-12 lg:grid-cols-[15rem_minmax(0,1fr)] lg:gap-24">
-          <div className="lg:sticky lg:top-32 lg:self-start">
-            <p className="story-date text-primary">11.21</p>
-            <p className="mt-3 text-sm tracking-[0.18em] text-muted-foreground uppercase">1936 · 平地泉</p>
-            <div className="mt-7 h-px w-full bg-foreground/15" />
-            <p className="mt-6 flex items-start gap-2 text-sm leading-6 text-muted-foreground">
-              <MapPin className="mt-0.5 size-4 shrink-0 text-primary" />
-              平地泉，今集宁一带
-            </p>
-          </div>
-
-          <div className="max-w-4xl">
-            <p className="story-kicker">文献深读 01</p>
-            <h2 className="story-heading mt-4 max-w-3xl">朱自清的文字，究竟记录了什么</h2>
-
-            <div className="mt-9 max-w-3xl space-y-6 text-lg leading-9 text-muted-foreground">
-              <p>
-                朱自清在《绥行纪略》中写到，1936 年 11 月 21 日在平地泉“遇留守司令苏开元团长”。
-                这里能够核验的是文章在指定位置出现了这一称谓，不是对人物身份的确认。
-              </p>
-              <p>
-                这份材料能说明：朱自清在指定日期与地点写到一位同名团长。它还不能说明：
-                这就是家族记忆中的苏开元，更不能独自支撑他的性格、现场对白或完整履历。
-              </p>
-            </div>
-
-            <div className="mt-14 grid gap-8 border-y border-foreground/15 py-9 md:grid-cols-2 md:gap-12">
-              <div>
-                <div className="flex items-center gap-2 text-sm font-semibold text-confirmed">
-                  <CircleDot className="size-4" />
-                  文本中可以核对
-                </div>
-                <p className="mt-4 leading-7 text-muted-foreground">
-                  文章记载的日期、地点、称谓，以及这段文字在同期校刊中的刊载位置。
-                </p>
-              </div>
-              <div>
-                <div className="flex items-center gap-2 text-sm font-semibold text-candidate">
-                  <Scale className="size-4" />
-                  身份上仍不能确认
-                </div>
-                <p className="mt-4 leading-7 text-muted-foreground">
-                  这位同名记录对象就是家族记忆中的苏开元，也不能自动把 1933、1936、1942
-                  三份记录合并为同一个人的连续生平。
-                </p>
-              </div>
-            </div>
-
-            <Link
-              href="/events"
-              data-amplitude-event="historical_context_opened"
-              className="story-text-link mt-8"
-            >
-              查看这条记录的完整来源登记
-              <ArrowRight className="size-4" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <section className="story-dark py-20 text-[#f3efe7] sm:py-28 lg:py-32">
-        <div className="story-shell">
-          <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_24rem] lg:items-end">
-            <div>
-              <p className="story-kicker text-[#c38a82]">不是一条传记年表</p>
-              <h2 className="story-heading mt-4 max-w-3xl text-[#f3efe7]">三个年份，两段尚未被证明的空白</h2>
-            </div>
-            <p className="text-base leading-7 text-[#bcb8b0]">
-              名字相同，不等于人物相同。这里展示的是三次彼此分离的文献出现，
-              空白本身也是研究结论的一部分。
-            </p>
-          </div>
-
-          <div className="mt-16 grid gap-0 lg:grid-cols-3">
-            {eventRecords.map((event, index) => (
-              <article
-                key={event.event_id}
-                className={cn(
-                  'story-fragment relative border-t border-white/20 py-9 lg:min-h-[25rem] lg:border-t-0 lg:border-l lg:px-9',
-                  event.year === 1936 && 'story-fragment-focus',
-                  index === eventRecords.length - 1 && 'lg:border-r'
-                )}
-              >
-                <p className="story-fragment-year">{event.year}</p>
-                <p className="mt-6 text-xs font-semibold tracking-[0.17em] text-[#c38a82] uppercase">
-                  {event.context}
-                </p>
-                <h3 className="mt-4 story-quote text-2xl leading-snug text-[#f3efe7]">{event.title}</h3>
-                <p className="mt-5 text-sm leading-7 text-[#aaa69f]">{event.description}</p>
-                <p className="mt-7 border-t border-white/15 pt-5 text-xs leading-6 text-[#aaa69f]">
-                  与家族人物的关系：{event.identity_link_statuses.includes('candidate') ? '尚未确认' : '不适用'}
-                </p>
-              </article>
-            ))}
-          </div>
-
-          <div className="mt-10 flex flex-col items-start justify-between gap-5 border-t border-white/20 pt-7 sm:flex-row sm:items-center">
-            <p className="max-w-3xl text-sm leading-7 text-[#aaa69f]">
-              1933 与 1942 的记录不是 1936 事件的前后章节。当前找到的材料还不能跨越这些年份。
-            </p>
-            <Link
-              href="/timeline"
-              data-amplitude-event="fragment_timeline_opened"
-              className="story-text-link shrink-0 text-[#f3efe7] after:bg-[#f3efe7]"
-            >
-              查看断片时间线
-              <ArrowRight className="size-4" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 sm:py-28 lg:py-36">
-        <div className="story-shell grid gap-14 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-24">
+      <section id="pingdiquan" className="scroll-mt-32 border-b border-foreground/15 py-20 sm:py-28">
+        <div className="story-shell grid gap-12 lg:grid-cols-[0.68fr_1.32fr] lg:gap-24">
           <div>
-            <p className="story-kicker">一条证据的两种载体</p>
-            <h2 className="story-heading mt-4">我们如何知道这句话存在</h2>
-            <p className="mt-7 max-w-xl text-lg leading-8 text-muted-foreground">
-              影印件帮助核对原貌，转录帮助检索文字。它们指向同一篇《绥行纪略》，
-              因此只能算一个独立来源，而不是两份互相印证的证据。
+            <p className="personal-kicker">
+              <span aria-hidden="true" />
+              Start with a story
             </p>
-            <Link
-              href="/methodology"
-              data-amplitude-event="methodology_opened"
-              className="story-text-link mt-8"
-            >
-              读懂我们的证据方法
-              <ArrowRight className="size-4" />
-            </Link>
+            <p className="mt-8 font-serif text-6xl italic text-primary/25">1936</p>
           </div>
-
-          <div className="border-y border-foreground/15">
-            <div className="grid gap-4 border-b border-foreground/15 py-7 sm:grid-cols-[7rem_minmax(0,1fr)]">
-              <p className="text-xs font-semibold tracking-[0.18em] text-primary uppercase">官方影印</p>
-              <div>
-                <h3 className="story-quote text-xl leading-8 text-foreground">{officialFacsimile?.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-muted-foreground">负责核对版面、原文位置与文献身份。</p>
-              </div>
+          <div className="max-w-4xl">
+            <p className="story-kicker">第一站 · 平地泉</p>
+            <h2 className="story-heading mt-4">朱自清在平地泉遇见了谁？</h2>
+            <div className="mt-8 max-w-3xl space-y-5 text-lg leading-9 text-muted-foreground">
+              <p>
+                1936 年 11 月 21 日，朱自清在《绥行纪略》中记下：
+                他在平地泉遇到“留守司令苏开元团长”。这行文字让一个姓名重新出现在确切的日期、地点与版面中。
+              </p>
+              <p>
+                但它没有告诉我们，这个人是不是我的曾祖父。完整专题会带你看原文、现场背景、能够确认的事实，
+                以及为什么研究必须停在尚未证明的地方。
+              </p>
             </div>
-            <div className="grid gap-4 border-b border-foreground/15 py-7 sm:grid-cols-[7rem_minmax(0,1fr)]">
-              <p className="text-xs font-semibold tracking-[0.18em] text-primary uppercase">本地转录</p>
-              <div>
-                <h3 className="story-quote text-xl leading-8 text-foreground">{localTranscript?.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-muted-foreground">负责检索与逐句对照，不增加独立来源数。</p>
-              </div>
-            </div>
-            <div className="grid gap-4 py-7 sm:grid-cols-[7rem_minmax(0,1fr)]">
-              <p className="text-xs font-semibold tracking-[0.18em] text-primary uppercase">核验结论</p>
-              <div className="flex flex-wrap gap-x-8 gap-y-3 text-sm text-muted-foreground">
-                <span>A 级同期材料</span>
-                <span>2 个载体</span>
-                <span>1 个独立来源</span>
-                <span>人物身份：仍待连接</span>
-              </div>
-            </div>
+            <Link href="/discover/1936-pingdiquan" className="story-button story-button-primary mt-9">
+              阅读完整故事
+              <ArrowRight className="size-4" aria-hidden="true" />
+            </Link>
           </div>
         </div>
       </section>
 
-      <section className="border-y border-foreground/10 bg-surface-container-lowest py-20 sm:py-28">
+      <section id="archive" className="scroll-mt-32 py-20 sm:py-28">
         <div className="story-shell">
-          <div className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:gap-24">
+          <div className="grid gap-8 border-b border-foreground/15 pb-9 lg:grid-cols-[0.72fr_1.28fr] lg:items-end lg:gap-20">
             <div>
-              <p className="story-kicker">继续追索</p>
-              <h2 className="story-heading mt-4">一个名字，仍在等待更多材料</h2>
-              <p className="mt-7 text-base leading-8 text-muted-foreground">
-                这个网站不替空白编故事。它把已经找到的证据摆出来，也把下一步需要寻找的材料说清楚。
+              <p className="personal-kicker">
+                <span aria-hidden="true" />
+                Research archive
+              </p>
+              <h2 className="personal-heading mt-6">故事之后，再进入资料库。</h2>
+            </div>
+            <div>
+              <p className="max-w-2xl text-base leading-8 text-muted-foreground">
+                图谱负责看关系，Wiki 负责查具体条目，原件库负责把每个判断带回来源。
+                它们是同一套资料的三种入口，不再互相争抢读者。
+              </p>
+              <p className="mt-3 text-xs leading-6 text-muted-foreground">
+                当前研究快照：{graphManifest.counts.audit_nodes} 个实体 · {graphManifest.counts.audit_claims} 条主张 · {graphManifest.counts.audit_sources} 份来源
               </p>
             </div>
+          </div>
 
-            <div className="divide-y divide-foreground/15 border-y border-foreground/15">
-              {archiveEntries.map((entry, index) => (
+          <div className="grid gap-px overflow-hidden border-x border-b border-foreground/15 bg-foreground/15 lg:grid-cols-3">
+            {suKaiyuanArchiveGroups.map((item, index) => {
+              const Icon = item.icon;
+              return (
                 <Link
-                  key={entry.href}
-                  href={entry.href}
-                  data-amplitude-event={entry.event}
-                  className="group grid gap-5 py-7 transition-colors hover:text-primary sm:grid-cols-[2.5rem_minmax(0,1fr)_auto] sm:items-center"
+                  key={item.href}
+                  href={item.href}
+                  className="group flex min-h-[22rem] flex-col bg-background p-7 transition-colors hover:bg-card sm:p-9"
                 >
-                  <span className="text-sm tabular-nums text-muted-foreground">0{index + 1}</span>
-                  <span>
-                    <span className="block text-xs font-semibold tracking-[0.16em] text-primary uppercase">{entry.eyebrow}</span>
-                    <span className="story-quote mt-2 block text-2xl leading-snug text-foreground group-hover:text-primary">
-                      {entry.title}
-                    </span>
-                    <span className="mt-2 block max-w-2xl text-sm leading-6 text-muted-foreground">{entry.description}</span>
+                  <div className="flex items-center justify-between">
+                    <span className="font-serif text-3xl italic text-primary/30">0{index + 1}</span>
+                    <Icon className="size-6 text-primary" strokeWidth={1.4} aria-hidden="true" />
+                  </div>
+                  <h3 className="mt-12 font-serif text-2xl font-semibold">{item.title}</h3>
+                  <p className="mt-4 text-sm leading-7 text-muted-foreground">{item.description}</p>
+                  <span className="story-text-link mt-auto">
+                    {item.label}
+                    <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
                   </span>
-                  <ArrowRight className="hidden size-5 text-primary transition-transform group-hover:translate-x-1 sm:block" />
                 </Link>
-              ))}
+              );
+            })}
+          </div>
+
+          <div className="mt-7 flex flex-wrap gap-x-6 gap-y-3 text-sm text-muted-foreground">
+            <Link href="/topics" className="underline decoration-foreground/20 underline-offset-4 hover:text-primary">
+              查看研究专题
+            </Link>
+            <Link href="/timeline" className="underline decoration-foreground/20 underline-offset-4 hover:text-primary">
+              查看断片时间线
+            </Link>
+            <Link href="/controversies" className="underline decoration-foreground/20 underline-offset-4 hover:text-primary">
+              查看仍未解决的问题
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-y border-foreground/15 bg-[#eee9df] py-20 sm:py-28">
+        <div className="story-shell grid gap-14 lg:grid-cols-[minmax(27rem,1.05fr)_minmax(0,0.95fr)] lg:items-center lg:gap-20">
+          <Link href="/novel" className="fiction-home-image group">
+            <Image
+              src="/assets/editorial/fiction-north-city-collage-v1.png"
+              alt="虚构北城雪夜、旧纸、空椅与缺页账簿组成的抽象小说概念拼贴"
+              width={1586}
+              height={992}
+              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.012]"
+              sizes="(min-width: 1024px) 52vw, 100vw"
+            />
+            <span>AI 艺术想象 · 不是历史照片</span>
+          </Link>
+
+          <div>
+            <p className="personal-kicker">
+              <span aria-hidden="true" />
+              Literary extension
+            </p>
+            <BookOpenText className="mt-8 size-7 text-primary" strokeWidth={1.4} aria-hidden="true" />
+            <h2 className="personal-heading mt-6">《英雄无名》：让空白变成文学，但不冒充历史。</h2>
+            <p className="mt-7 max-w-xl text-base leading-8 text-muted-foreground">
+              小说以真实时代和已核材料为骨架，对话、行动细节与部分人物关系属于合理外推或纯虚构。
+              读者可以阅读 182 页、32 章全文；小说内容不会反向进入研究图谱。
+            </p>
+            <div className="mt-7 border-l-2 border-primary pl-5 text-sm leading-7 text-muted-foreground">
+              历史研究回答“目前知道什么”；小说追问“一个人在不知道结局时，会怎样选择”。
             </div>
+            <Link href="/novel" className="story-button story-button-primary mt-9">
+              进入全文阅读
+              <ArrowRight className="size-4" aria-hidden="true" />
+            </Link>
           </div>
         </div>
       </section>
 
       <section className="py-20 sm:py-24">
-        <div className="story-shell">
-          <div className="grid overflow-hidden border border-foreground/15 bg-card lg:grid-cols-[1.08fr_0.92fr]">
-            <div className="p-7 sm:p-10 lg:p-14">
-              <div className="flex size-11 items-center justify-center rounded-full border border-primary/25 text-primary">
-                <FileSearch className="size-5" />
-              </div>
-              <h2 className="story-heading mt-7 max-w-2xl">这是一项由家族记忆发起、由证据约束的寻找</h2>
-              <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
-                发起人自述与苏开元有曾祖孙关系；这份家族关系尚未在当前已公开的材料中完成核验。
-                AI 可以协助整理和发现线索，但不作历史证据。
-              </p>
-              <Link
-                href="/about"
-                data-amplitude-event="research_participation_opened"
-                className="story-text-link mt-8"
-              >
-                了解项目与参与方式
-                <ArrowRight className="size-4" />
-              </Link>
+        <div className="story-shell grid overflow-hidden border border-foreground/15 bg-card lg:grid-cols-[1fr_auto] lg:items-center">
+          <div className="p-7 sm:p-10 lg:p-12">
+            <div className="flex size-11 items-center justify-center rounded-full border border-primary/25 text-primary">
+              <FileSearch className="size-5" aria-hidden="true" />
             </div>
-            <div className="story-boundary flex flex-col justify-between p-7 text-[#f3efe7] sm:p-10 lg:p-14">
-              <div>
-                <div className="flex items-center gap-2 text-xs font-semibold tracking-[0.16em] text-[#c38a82] uppercase">
-                  <UsersRound className="size-4" />
-                  本地审阅边界
-                </div>
-                <p className="story-quote mt-7 text-2xl leading-relaxed">
-                  公开承认未知，
-                  <br />比用传奇填满空白更接近一个真实的人。
-                </p>
-              </div>
-              <div className="mt-12 border-t border-white/20 pt-6 text-xs leading-6 text-[#aaa69f]">
-                <p>资料版本：{dataMeta.research_snapshot_id}</p>
-                <p className="mt-1">部分依赖混合来源的内容仍暂缓 · 仅供本地审阅</p>
-              </div>
-            </div>
+            <h2 className="story-heading mt-7 max-w-3xl">你手里也许就有下一块拼图。</h2>
+            <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
+              如果你知道苏开元、李英夫、李大超，或掌握相关部队、地点和档案线索，欢迎提供来源标题、年代、馆藏、档号与页码。
+              家属原件和私人材料默认不公开。
+            </p>
+          </div>
+          <div className="flex flex-col gap-3 border-t border-foreground/15 p-7 lg:min-w-72 lg:border-l lg:border-t-0 lg:p-9">
+            <Link href="/about#contact" className="story-button story-button-primary">
+              提供线索
+              <Mail className="size-4" aria-hidden="true" />
+            </Link>
+            <Link href="/about" className="story-text-link">
+              认识项目发起人
+              <ArrowRight className="size-4" aria-hidden="true" />
+            </Link>
           </div>
         </div>
       </section>

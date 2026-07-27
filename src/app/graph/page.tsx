@@ -11,11 +11,11 @@ import {
   Network,
   Route,
 } from 'lucide-react';
+import { ProjectSectionNav } from '@/components/project-section-nav';
 import { RelationGraph, type GraphNode } from '@/components/relation-graph';
 import { ResearchGraphExplorer } from '@/components/research-graph-explorer';
 import { graphStoryRoutes } from '@/content/editorial';
 import {
-  edgeRecords,
   graphEdges,
   graphNodes,
   nodeById,
@@ -75,6 +75,7 @@ export default function GraphPage() {
 
   return (
     <div className="graph-story-page overflow-hidden">
+      <ProjectSectionNav />
       <section className="border-b border-foreground/15">
         <div className="personal-shell grid gap-10 py-14 sm:py-20 lg:grid-cols-[minmax(0,0.85fr)_minmax(28rem,1.15fr)] lg:items-end lg:gap-20">
           <div>

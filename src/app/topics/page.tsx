@@ -6,6 +6,7 @@ import {
   ShieldCheck,
   Waypoints,
 } from 'lucide-react';
+import { ProjectSectionNav } from '@/components/project-section-nav';
 import {
   getMediaEligibleTopicParagraphs,
   getTopicParagraphs,
@@ -33,6 +34,7 @@ const laboratoryRules = [
 export default function TopicsPage() {
   return (
     <div className="min-h-screen bg-[#f4f0e8]">
+      <ProjectSectionNav />
       <section className="border-b border-foreground/15 bg-[#202827] text-[#f3efe7]">
         <div className="personal-shell grid gap-10 py-16 sm:py-24 lg:grid-cols-[minmax(0,0.72fr)_minmax(28rem,1.28fr)] lg:items-end lg:gap-20">
           <div>

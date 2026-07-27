@@ -18,10 +18,10 @@ export default function DiscoverPage() {
           <div>
             <p className="personal-kicker">
               <span aria-hidden="true" />
-              Discover
+              Stories &amp; notes
             </p>
             <h1 className="personal-display mt-7 text-[clamp(3.6rem,7vw,7rem)] font-semibold leading-[0.94] tracking-[-0.06em]">
-              发现
+              文章与手记
             </h1>
           </div>
           <div className="max-w-2xl">
@@ -31,8 +31,8 @@ export default function DiscoverPage() {
               再变成读者愿意带走的故事。
             </p>
             <p className="mt-6 max-w-xl text-base leading-8 text-muted-foreground">
-              这里不是研究报告目录。每篇文章都从一个具体悬念出发，回到原件、人物与未解之处；
-              史实、推断和文学创作始终分层。
+              历史故事、AI 方法与长期项目手记。每篇文章都从一个具体问题出发，
+              让研究过程变成普通读者也愿意读完的内容。
             </p>
           </div>
         </div>
@@ -42,7 +42,7 @@ export default function DiscoverPage() {
         <div className="personal-shell">
           <div className="flex flex-col justify-between gap-5 border-b border-foreground/15 pb-8 md:flex-row md:items-end">
             <div>
-              <p className="story-kicker">现在值得读</p>
+              <p className="story-kicker">从这里开始读</p>
               <h2 className="mt-4 font-serif text-4xl font-semibold tracking-[-0.035em] sm:text-5xl">首批三篇完整专题</h2>
             </div>
             <p className="text-sm text-muted-foreground">全部可读 · 全部标明内容层</p>

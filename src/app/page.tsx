@@ -2,298 +2,166 @@ import Image from 'next/image';
 import Link from 'next/link';
 import {
   ArrowRight,
-  Clock3,
-  Cpu,
-  FileText,
+  FileSearch,
   Mail,
-  Network,
-  PenTool,
+  ShieldCheck,
 } from 'lucide-react';
-import { featuredStories } from '@/content/editorial';
-import { profile, profileHighlights } from '@/content/profile';
-import { firstVisitPaths, homeSections, knowledgeNodes } from '@/content/site';
+import { profile } from '@/content/profile';
+import { aiProofs, selectedContents } from '@/content/site';
+
+const trustProofs = [
+  {
+    value: '20 年+',
+    label: '智能终端、移动支付与线下商业系统（本人履历）',
+  },
+  {
+    value: '0 → 1',
+    label: '支付终端、收银硬件与多传感商业系统（本人履历）',
+  },
+  {
+    value: '中国 × 日本',
+    label: '参与中国支付设备与日本贩卖机终端产品化（本人履历）',
+  },
+] as const;
 
 export default function HomePage() {
   return (
     <div className="personal-home overflow-hidden">
       <section className="personal-hero border-b border-foreground/15">
-        <div className="personal-shell grid min-h-[calc(100svh-7.5rem)] items-center gap-14 py-14 lg:grid-cols-[minmax(0,1.05fr)_minmax(29rem,0.95fr)] lg:gap-12 lg:py-20">
-          <div className="relative z-10 max-w-[43rem]">
+        <div className="personal-shell grid min-h-[calc(100svh-7.5rem)] items-center gap-10 py-10 lg:grid-cols-[minmax(0,1.02fr)_minmax(24rem,0.72fr)] lg:gap-16 lg:py-12">
+          <div className="relative z-10 max-w-[45rem]">
             <p className="personal-kicker">
               <span aria-hidden="true" />
-              AI × Hardware × Product × Story
+              AI product builder · Family storyteller
             </p>
-
-            <Link href="/about" className="personal-identity-lockup mt-7">
-              <Image
-                src={profile.portrait}
-                alt={`${profile.displayName}的黑白头像`}
-                width={839}
-                height={1024}
-                className="personal-identity-avatar"
-                sizes="72px"
-                priority
-              />
-              <span>
-                <strong>{profile.displayName}</strong>
-                <small>{profile.title}</small>
-              </span>
-              <ArrowRight className="size-4" aria-hidden="true" />
-            </Link>
-
-            <h1 className="personal-display mt-7 text-[clamp(3.25rem,4.8vw,5.4rem)] font-semibold leading-[1.04] tracking-[-0.055em]">
-              让 AI 进入真实世界，
-              <span className="mt-2 block text-accent">也照亮一段家族记忆。</span>
+            <p className="mt-6 text-sm font-semibold tracking-[0.15em] text-primary uppercase">
+              {profile.displayName}
+            </p>
+            <h1 className="personal-display mt-4 text-[clamp(3.15rem,4.9vw,5.2rem)] font-semibold leading-[1.01] tracking-[-0.058em]">
+              把 AI 变成
+              <span className="block text-accent">真实世界里的产品。</span>
             </h1>
-
-            <p className="mt-8 max-w-2xl text-lg leading-9 text-muted-foreground sm:text-xl">
-              {profile.shortBio}
+            <p className="mt-6 max-w-2xl font-serif text-xl leading-relaxed text-foreground sm:text-2xl">
+              我是一个把 AI 带进硬件与行业系统的产品人，也在用同一套方法重建曾祖父苏开元的家族史。
             </p>
-            <p className="mt-3 max-w-2xl text-xs leading-6 text-muted-foreground">
-              职业履历由本人提供；项目公开资料只核验产品与时代背景，不替代个人任职证明。
+            <p className="mt-4 max-w-2xl text-base leading-8 text-muted-foreground">
+              二十多年软硬一体与行业产品经验。现在专注 AI × 硬件 × 行业系统，
+              并公开记录一个人如何借助 AI 完成复杂知识工程。
             </p>
-
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
+            <div className="mt-7 flex flex-col gap-4 sm:flex-row sm:items-center">
               <Link
-                href="/about"
+                href="/ai"
                 className="story-button personal-button-primary"
                 data-amplitude-event="home_profile_opened"
               >
-                认识我与 AI 实践
-                <ArrowRight className="size-4" />
+                看 AI 与产品实践
+                <ArrowRight className="size-4" aria-hidden="true" />
               </Link>
               <Link
-                href="/sukaiyuan"
+                href="/discover/1936-pingdiquan"
                 className="story-text-link"
                 data-amplitude-event="home_sukaiyuan_opened"
               >
-                进入苏开元计划
-                <ArrowRight className="size-4" />
+                读 1936 年的故事
+                <ArrowRight className="size-4" aria-hidden="true" />
               </Link>
             </div>
           </div>
 
-          <div className="personal-map-wrap" aria-label="从苏开元计划通往历史事件、人物、原件与研究方法的知识路径">
-            <div className="personal-map-heading">
-              <p>当前旗舰实践 · 寻找苏开元</p>
-              <span>连线只表示阅读路径，不代表人物关系、身份或因果结论</span>
+          <Link
+            href="/about"
+            className="group relative mx-auto w-full max-w-[27rem] border border-foreground/15 bg-card p-3 shadow-float"
+            aria-label={`认识${profile.displayName}`}
+          >
+            <div className="relative aspect-[4/5] overflow-hidden bg-muted">
+              <Image
+                src={profile.portrait}
+                alt={`${profile.displayName}的黑白头像`}
+                fill
+                priority
+                sizes="(min-width: 1024px) 34vw, 86vw"
+                className="object-cover transition-transform duration-700 group-hover:scale-[1.015]"
+              />
             </div>
-
-            <div className="personal-map" role="group" aria-label="苏开元计划阅读导航">
-              <span className="map-line map-line-one" aria-hidden="true" />
-              <span className="map-line map-line-two" aria-hidden="true" />
-              <span className="map-line map-line-three" aria-hidden="true" />
-              <span className="map-line map-line-four" aria-hidden="true" />
-              <span className="map-line map-line-five" aria-hidden="true" />
-
-              {knowledgeNodes.map((node) => (
-                <Link
-                  key={node.id}
-                  href={node.href}
-                  className={`map-node map-node-${node.id} map-node-${node.tone}`}
-                  data-amplitude-event="knowledge_node_opened"
-                  data-amplitude-node={node.id}
-                >
-                  <strong>{node.label}</strong>
-                  <span>{node.note}</span>
-                </Link>
-              ))}
-
-              <Link
-                href="/archives#SRC-013"
-                className="map-document group"
-                data-amplitude-event="hero_document_opened"
-              >
-                <Image
-                  src="/assets/sukaiyuan/1936-sui-xing-ji-lue-proof.png"
-                  alt="1936 年朱自清《绥行纪略》同期校刊影印局部，包含苏开元团长的文字记录"
-                  width={1835}
-                  height={1035}
-                  className="h-full w-full object-cover grayscale"
-                  sizes="(min-width: 1024px) 420px, 100vw"
-                  priority
-                />
-                <span>
-                  第三方史料 · 本地审阅
-                  <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
-                </span>
-              </Link>
+            <div className="flex items-center justify-between gap-5 px-2 pb-1 pt-4">
+              <span>
+                <strong className="block font-serif text-xl">{profile.displayName}</strong>
+                <span className="mt-1 block text-xs text-muted-foreground">{profile.title}</span>
+              </span>
+              <ArrowRight className="size-5 text-primary transition-transform group-hover:translate-x-1" aria-hidden="true" />
             </div>
-
-            <div className="personal-map-foot">
-              <p>{knowledgeNodes.length} 个探索入口 · 阅读路径回到材料 · 空白仍然保留</p>
-              <Link href="/graph">
-                查看当前研究图谱
-                <Network className="size-4" />
-              </Link>
-            </div>
-          </div>
+          </Link>
         </div>
       </section>
 
-      <section id="start-here" className="scroll-mt-28 border-b border-foreground/15 py-20 sm:py-28">
-        <div className="personal-shell">
-          <div className="grid gap-10 lg:grid-cols-[0.74fr_1.26fr] lg:gap-20">
-            <div>
-              <p className="personal-kicker">
-                <span aria-hidden="true" />
-                Start here
-              </p>
-              <h2 className="personal-heading mt-6">第一次来，沿着这条路走。</h2>
-              <p className="mt-6 max-w-lg text-base leading-8 text-muted-foreground">
-                先进入一个真实问题，再看 AI 怎样参与整理与表达，最后认识背后的人。每个入口都回到可核对的材料和真实实践。
-              </p>
-            </div>
-
-            <div className="border-y border-foreground/15">
-              {firstVisitPaths.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <Link
-                    key={item.number}
-                    href={item.href}
-                    className="personal-path group"
-                    data-amplitude-event="first_visit_step_opened"
-                    data-amplitude-step={item.number}
-                  >
-                    <span className="personal-path-number">{item.number}</span>
-                    <Icon className="size-5 text-primary" strokeWidth={1.6} aria-hidden="true" />
-                    <span className="personal-path-copy">
-                      <strong>{item.title}</strong>
-                      <span className="personal-path-description">{item.description}</span>
-                    </span>
-                    <span className="personal-path-link">
-                      {item.label}
-                      <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-                    </span>
-                  </Link>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="border-b border-foreground/15 py-20 sm:py-28">
-        <div className="personal-shell">
-          <div className="flex flex-col justify-between gap-7 border-b border-foreground/15 pb-9 lg:flex-row lg:items-end">
-            <div>
-              <p className="personal-kicker">
-                <span aria-hidden="true" />
-                Latest stories
-              </p>
-              <h2 className="personal-heading mt-6">现在，可以真正读点什么。</h2>
-            </div>
-            <div className="max-w-xl">
-              <p className="text-base leading-8 text-muted-foreground">
-                三篇完整专题已经把研究后台翻译成读者路径：一个历史现场、一个身份谜题、一套 AI 方法。
-              </p>
-              <Link href="/discover" className="story-text-link mt-5">
-                查看全部专题
-                <ArrowRight className="size-4" />
-              </Link>
-            </div>
-          </div>
-
-          <div className="grid gap-px overflow-hidden border-x border-b border-foreground/15 bg-foreground/15 lg:grid-cols-3">
-            {featuredStories.map((story) => (
-              <Link
-                key={story.slug}
-                href={story.href}
-                className="group flex min-h-[25rem] flex-col bg-background p-7 transition-colors hover:bg-card sm:p-9"
-                data-amplitude-event="home_featured_story_opened"
-                data-amplitude-story={story.slug}
-              >
-                <div className="flex items-center justify-between gap-4 text-xs">
-                  <span className="font-semibold tracking-[0.16em] text-primary uppercase">{story.layer}</span>
-                  <span className="font-serif text-3xl italic text-primary/30">{story.number}</span>
-                </div>
-                <h3 className="mt-12 font-serif text-3xl font-semibold leading-snug tracking-[-0.03em]">{story.title}</h3>
-                <p className="mt-5 text-sm leading-7 text-muted-foreground">{story.dek}</p>
-                <div className="mt-auto flex items-end justify-between gap-4 border-t border-foreground/15 pt-5">
-                  <span className="inline-flex items-center gap-1.5 text-xs text-muted-foreground">
-                    <Clock3 className="size-3.5" aria-hidden="true" />
-                    {story.readTime}
-                  </span>
-                  <ArrowRight className="size-4 text-primary transition-transform group-hover:translate-x-1" />
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="projects" className="scroll-mt-28 py-20 sm:py-28 lg:py-32">
-        <div className="personal-shell">
-          <div className="flex flex-col justify-between gap-7 border-b border-foreground/15 pb-9 lg:flex-row lg:items-end">
-            <div>
-              <p className="personal-kicker">
-                <span aria-hidden="true" />
-                Four paths
-              </p>
-              <h2 className="personal-heading mt-6">四条线索，一份共同的个人档案。</h2>
-            </div>
-            <p className="max-w-xl text-base leading-8 text-muted-foreground">
-              档案、专题、AI 方法与小说已经各有可读内容；家族史工作室则把这套流程继续做成可复用的服务。
+      <section className="border-b border-foreground/15 py-16 sm:py-20">
+        <div className="personal-shell grid gap-10 lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)] lg:items-start lg:gap-20">
+          <div>
+            <p className="personal-kicker">
+              <span aria-hidden="true" />
+              What I bring
+            </p>
+            <h2 className="personal-heading mt-6">先解决真实问题，再谈技术有多新。</h2>
+            <p className="mt-6 max-w-lg text-base leading-8 text-muted-foreground">
+              我更关心一项能力能不能接进设备、系统和业务现场，最后成为用户愿意使用、团队能够维护的产品。
             </p>
           </div>
-
-          <div className="personal-sections-grid">
-            {homeSections.map((section, index) => {
-              const Icon = section.icon;
-              return (
-                <article key={section.id} id={section.id} className={`personal-section personal-section-${section.accent}`}>
-                  <div className="flex items-start justify-between gap-5">
-                    <span className="personal-section-index">0{index + 1}</span>
-                    <Icon className="size-6" strokeWidth={1.35} aria-hidden="true" />
-                  </div>
-                  <p className="mt-12 text-[11px] font-bold tracking-[0.18em] uppercase">{section.eyebrow}</p>
-                  <h3 className="mt-4 font-serif text-3xl font-semibold tracking-[-0.025em] text-foreground sm:text-4xl">
-                    {section.title}
-                  </h3>
-                  <p className="mt-5 text-base leading-8 text-muted-foreground">{section.description}</p>
-                  <div className="mt-9 border-t border-foreground/15 pt-5">
-                    <p className="text-xs text-muted-foreground">{section.status}</p>
-                    <Link href={section.href} className="story-text-link mt-4" data-amplitude-event="home_section_opened">
-                      {section.linkLabel}
-                      <ArrowRight className="size-4" />
-                    </Link>
-                  </div>
-                </article>
-              );
-            })}
+          <div>
+            <div className="grid gap-px overflow-hidden border border-foreground/15 bg-foreground/15 sm:grid-cols-3">
+              {trustProofs.map((item) => (
+                <div key={item.value} className="bg-background p-6 sm:min-h-48 sm:p-7">
+                  <strong className="font-serif text-3xl text-primary sm:text-4xl">{item.value}</strong>
+                  <p className="mt-5 text-sm leading-7 text-muted-foreground">{item.label}</p>
+                </div>
+              ))}
+            </div>
+            <p className="mt-4 text-xs leading-6 text-muted-foreground">
+              年限、职务与负责范围来自本人履历；公开项目资料只用于核对产品与时代背景，不替代个人任职证明。
+            </p>
           </div>
         </div>
       </section>
 
       <section className="personal-feature border-y border-white/15 py-20 text-[#f3efe7] sm:py-28">
-        <div className="personal-shell grid gap-14 lg:grid-cols-[minmax(0,0.92fr)_minmax(28rem,1.08fr)] lg:items-center lg:gap-20">
+        <div className="personal-shell grid gap-14 lg:grid-cols-[minmax(0,0.86fr)_minmax(28rem,1.14fr)] lg:items-center lg:gap-20">
           <div>
             <p className="personal-kicker personal-kicker-light">
               <span aria-hidden="true" />
-              Flagship project 01
+              Flagship project · 01
             </p>
             <h2 className="personal-feature-title mt-7">寻找苏开元</h2>
             <p className="mt-4 font-serif text-2xl leading-relaxed text-[#d7cfc2] sm:text-3xl">
-              一个普通人，如何穿过一个大时代。
+              一张 1936 年的校刊，带回一个被历史遗漏的名字。
             </p>
             <p className="mt-8 max-w-2xl text-base leading-8 text-[#bdb9b0]">
-              一边是家族记忆中的曾祖父，一边是 1936 年朱自清笔下的“留守司令苏开元团长”。
-              这项研究不急着把二者说成同一个人，而是公开寻找能够连接它们的证据。
+              苏开元是我的曾祖父。家族记忆里有他，朱自清的《绥行纪略》中也出现了“苏开元团长”。
+              这项计划从一份可以核对的原件开始，慢慢寻找人物、事件和时代之间真正站得住的连接。
             </p>
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
-              <Link href="/sukaiyuan" className="story-button personal-button-light">
-                进入苏开元计划
-                <ArrowRight className="size-4" />
+            <div className="mt-9 flex items-start gap-3 border-t border-white/15 pt-6 text-xs leading-6 text-[#aaa69f]">
+              <ShieldCheck className="mt-0.5 size-4 shrink-0 text-[#c38a82]" aria-hidden="true" />
+              <p>目前可以确认名字与称谓出现在这份同期文献中；是否就是家族人物，仍待更多材料闭环。</p>
+            </div>
+            <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
+              <Link
+                href="/discover/1936-pingdiquan"
+                className="story-button personal-button-light"
+                data-amplitude-event="home_flagship_story_opened"
+              >
+                先读这个故事
+                <ArrowRight className="size-4" aria-hidden="true" />
               </Link>
-              <Link href="/archives" className="personal-dark-link">
-                打开原件阅览室
-                <FileText className="size-4" />
+              <Link href="/sukaiyuan" className="personal-dark-link">
+                浏览完整项目
+                <ArrowRight className="size-4" aria-hidden="true" />
               </Link>
             </div>
           </div>
 
-          <Link href="/sukaiyuan" className="personal-feature-document group" aria-label="进入寻找苏开元专题">
+          <Link
+            href="/discover/1936-pingdiquan"
+            className="personal-feature-document group"
+            aria-label="阅读朱自清在平地泉遇见了谁"
+          >
             <Image
               src="/assets/sukaiyuan/1936-sui-xing-ji-lue-proof.png"
               alt="1936 年朱自清《绥行纪略》同期校刊影印局部，包含苏开元团长的文字记录"
@@ -305,100 +173,122 @@ export default function HomePage() {
             <span className="personal-feature-stamp">朱自清<br />绥行纪略</span>
             <span className="personal-feature-caption">
               1936 · 第三方校刊影印局部 · 本地审阅 · 不随文授权
-              <ArrowRight className="size-4" />
+              <ArrowRight className="size-4" aria-hidden="true" />
             </span>
           </Link>
         </div>
       </section>
 
       <section className="border-b border-foreground/15 py-20 sm:py-28">
-        <div className="personal-shell grid gap-14 lg:grid-cols-[minmax(28rem,1.08fr)_minmax(0,0.92fr)] lg:items-center lg:gap-20">
-          <Link href="/novel" className="fiction-home-image group">
-            <Image
-              src="/assets/editorial/fiction-north-city-collage-v1.png"
-              alt="虚构北城雪夜、旧纸、空椅与缺页账簿组成的抽象小说概念拼贴"
-              width={1586}
-              height={992}
-              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.012]"
-              sizes="(min-width: 1024px) 54vw, 100vw"
-            />
-            <span>AI 艺术想象 · 不是历史照片</span>
-          </Link>
+        <div className="personal-shell">
+          <div className="grid gap-7 border-b border-foreground/15 pb-9 lg:grid-cols-[0.72fr_1.28fr] lg:items-end lg:gap-20">
+            <div>
+              <p className="personal-kicker">
+                <span aria-hidden="true" />
+                AI that ships
+              </p>
+              <h2 className="personal-heading mt-6">我能把 AI 带到哪里。</h2>
+            </div>
+            <p className="max-w-2xl text-base leading-8 text-muted-foreground">
+              不是把“AI”贴在旧产品上，而是重新理解现场、能力边界与交付链路。
+            </p>
+          </div>
 
-          <div>
-            <p className="personal-kicker">
-              <span aria-hidden="true" />
-              Novel room
-            </p>
-            <PenTool className="mt-8 size-7 text-primary" strokeWidth={1.4} aria-hidden="true" />
-            <h2 className="personal-heading mt-6">史料到不了的地方，小说可以去。</h2>
-            <p className="mt-7 max-w-xl text-base leading-8 text-muted-foreground">
-              前提是读者始终知道：哪一段来自原件，哪一步是合理外推，哪一场从头到尾都是虚构。
-              三篇审计样章已经可以试读。
-            </p>
-            <blockquote className="mt-8 border-l-2 border-primary pl-6 font-serif text-2xl leading-relaxed text-foreground">
-              “纸不会撒谎，但纸也不告诉人是谁换了它。”
-            </blockquote>
-            <Link href="/novel" className="story-button story-button-primary mt-9">
-              进入小说试读
-              <ArrowRight className="size-4" />
+          <div className="grid gap-px overflow-hidden border-x border-b border-foreground/15 bg-foreground/15 lg:grid-cols-3">
+            {aiProofs.map((item) => {
+              const Icon = item.icon;
+              return (
+                <article key={item.number} className="flex min-h-[24rem] flex-col bg-background p-7 sm:p-9">
+                  <div className="flex items-center justify-between text-primary">
+                    <span className="font-serif text-3xl italic text-primary/35">{item.number}</span>
+                    <Icon className="size-6" strokeWidth={1.4} aria-hidden="true" />
+                  </div>
+                  <p className="mt-10 text-[11px] font-bold tracking-[0.18em] text-primary uppercase">{item.eyebrow}</p>
+                  <h3 className="mt-4 font-serif text-2xl font-semibold leading-snug tracking-[-0.025em]">{item.title}</h3>
+                  <p className="mt-5 text-sm leading-7 text-muted-foreground">{item.description}</p>
+                  <p className="mt-auto border-t border-foreground/15 pt-5 text-xs leading-6 text-muted-foreground">{item.note}</p>
+                </article>
+              );
+            })}
+          </div>
+
+          <div className="mt-8 flex justify-end">
+            <Link href="/ai" className="story-text-link">
+              查看能力与代表案例
+              <ArrowRight className="size-4" aria-hidden="true" />
             </Link>
           </div>
         </div>
       </section>
 
-      <section id="about-me" className="scroll-mt-28 py-20 sm:py-28">
-        <div className="personal-shell grid gap-12 lg:grid-cols-[minmax(20rem,0.72fr)_minmax(0,1.28fr)] lg:gap-24">
-          <div>
-            <p className="personal-kicker">
-              <span aria-hidden="true" />
-              About the builder
+      <section className="py-20 sm:py-28">
+        <div className="personal-shell">
+          <div className="grid gap-8 border-b border-foreground/15 pb-9 lg:grid-cols-[0.72fr_1.28fr] lg:items-end lg:gap-20">
+            <div>
+              <p className="personal-kicker">
+                <span aria-hidden="true" />
+                Selected work
+              </p>
+              <h2 className="personal-heading mt-6">从这里继续认识我。</h2>
+            </div>
+            <p className="max-w-2xl text-base leading-8 text-muted-foreground">
+              三条路线分别给想了解苏开元、想看 AI 工作方法和想进入小说世界的读者。
             </p>
-            <figure className="personal-about-portrait mt-8">
-              <Image
-                src={profile.portrait}
-                alt={`${profile.displayName}的黑白头像`}
-                width={839}
-                height={1024}
-                sizes="(min-width: 1024px) 34vw, 100vw"
-                className="h-full w-full object-cover"
-              />
-              <figcaption>
-                <strong className="personal-about-name">{profile.displayName}</strong>
-                <span className="personal-about-role">{profile.title}</span>
-              </figcaption>
-            </figure>
           </div>
-          <div className="max-w-3xl">
-            <Cpu className="size-7 text-primary" strokeWidth={1.45} aria-hidden="true" />
-            <h2 className="personal-heading mt-7">把二十年的产品经验，重新投入 AI。</h2>
-            <div className="mt-8 space-y-6 text-lg leading-9 text-muted-foreground">
-              <p>{profile.homeBio}</p>
-              <p>{profile.statement}</p>
-              <p>
-                “苏开元计划”是这套方法的第一个长期样本：它同时长成史料库、知识图谱、专题文章、
-                历史小说和网站，也让我重新思考一个人如何借助 AI 完成过去需要团队才能完成的连接与表达。
+
+          <div className="divide-y divide-foreground/15 border-b border-foreground/15">
+            {selectedContents.map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="group grid gap-5 py-7 transition-colors hover:text-primary sm:grid-cols-[2.5rem_1.1fr_1fr_auto] sm:items-center"
+                  data-amplitude-event="home_selected_content_opened"
+                  data-amplitude-destination={item.href}
+                >
+                  <span className="text-sm tabular-nums text-muted-foreground">0{index + 1}</span>
+                  <span>
+                    <span className="flex items-center gap-2 text-xs font-semibold tracking-[0.16em] text-primary uppercase">
+                      <Icon className="size-4" strokeWidth={1.5} aria-hidden="true" />
+                      {item.kind}
+                    </span>
+                    <strong className="mt-2 block font-serif text-2xl leading-snug text-foreground group-hover:text-primary">
+                      {item.title}
+                    </strong>
+                  </span>
+                  <span className="text-sm leading-7 text-muted-foreground">{item.description}</span>
+                  <span className="flex items-center justify-between gap-4 text-xs text-muted-foreground sm:block">
+                    {item.meta}
+                    <ArrowRight className="size-4 text-primary transition-transform group-hover:translate-x-1 sm:mt-3" aria-hidden="true" />
+                  </span>
+                </Link>
+              );
+            })}
+          </div>
+
+          <div className="mt-14 grid overflow-hidden border border-foreground/15 bg-card lg:grid-cols-[1fr_auto] lg:items-center">
+            <div className="p-7 sm:p-10">
+              <p className="personal-kicker">
+                <span aria-hidden="true" />
+                Let&apos;s talk
+              </p>
+              <h2 className="mt-6 max-w-3xl font-serif text-3xl font-semibold leading-tight tracking-[-0.035em] sm:text-4xl">
+                如果你正在做 AI 产品，或也想把一段家族历史重新整理出来。
+              </h2>
+              <p className="mt-5 max-w-2xl text-sm leading-7 text-muted-foreground">
+                欢迎交流 AI 与传统行业、软硬一体产品、内容合作与家族史研究，也欢迎提供与苏开元有关的可核线索。
               </p>
             </div>
-
-            <div className="personal-proof-grid mt-10">
-              {profileHighlights.map((item) => (
-                <div key={item.value} className="profile-stat">
-                  <strong className="profile-stat-value">{item.value}</strong>
-                  <span className="profile-stat-label">{item.label}</span>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-10 flex flex-col gap-4 border-t border-foreground/15 pt-7 sm:flex-row sm:items-center">
-              <Link href="/about" className="story-button story-button-primary">
-                查看完整经历
-                <ArrowRight className="size-4" />
-              </Link>
-              <a href={`mailto:${profile.email}`} className="story-text-link">
-                <Mail className="size-4" />
+            <div className="flex flex-col gap-3 border-t border-foreground/15 p-7 lg:min-w-72 lg:border-l lg:border-t-0 lg:p-9">
+              <Link href="/about#contact" className="story-button story-button-primary">
                 联系我
-              </a>
+                <Mail className="size-4" aria-hidden="true" />
+              </Link>
+              <Link href="/studio" className="story-text-link">
+                了解家族史工作室
+                <FileSearch className="size-4" aria-hidden="true" />
+              </Link>
             </div>
           </div>
         </div>

@@ -44,6 +44,7 @@ PAGES = [
     "/controversies",
     "/methodology",
     "/about",
+    "/ai",
     "/rights",
     "/privacy",
     "/insights",

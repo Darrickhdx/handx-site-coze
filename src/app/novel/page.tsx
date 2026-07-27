@@ -7,6 +7,7 @@ import {
   ShieldAlert,
 } from 'lucide-react';
 import { ContinueNovelButton } from '@/components/continue-novel-button';
+import { ProjectSectionNav } from '@/components/project-section-nav';
 import {
   commentableNovelSections,
   novelManifest,
@@ -21,7 +22,8 @@ const parts = [
 
 export default function NovelPage() {
   return (
-    <main className="overflow-hidden bg-[#f4f0e8]">
+    <div className="overflow-hidden bg-[#f4f0e8]">
+      <ProjectSectionNav />
       <section className="border-b border-white/15 bg-[#202827] text-[#f3efe7]">
         <div className="personal-shell grid gap-12 py-14 lg:grid-cols-[minmax(0,0.72fr)_minmax(28rem,0.58fr)] lg:items-center lg:gap-20 lg:py-20">
           <div>
@@ -208,6 +210,6 @@ export default function NovelPage() {
           </Link>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

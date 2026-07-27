@@ -1,4 +1,5 @@
 import { AlertTriangle, Link2, ShieldCheck } from 'lucide-react';
+import { ProjectSectionNav } from '@/components/project-section-nav';
 import { PageHeader } from '@/components/section-header';
 import { SourceCard } from '@/components/source-card';
 import { sourceCards, sourceRecords } from '@/lib/research-data';
@@ -11,11 +12,13 @@ export default function ArchivesPage() {
   const interpreted = sourceRecords.filter((source) => source.content_scope === 'interpreted').length;
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-16">
-      <PageHeader
-        title="史料阅览室"
-        subtitle={`${sourceRecords.length}项来源记录，${publicLinks}项有公开入口。其中body-verified ${bodyVerified}项、metadata-only ${metadataOnly}项、cover-visible ${coverVisible}项、interpreted ${interpreted}项。`}
-      />
+    <div>
+      <ProjectSectionNav />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-16">
+        <PageHeader
+          title="史料阅览室"
+          subtitle={`${sourceRecords.length}项来源记录，${publicLinks}项有公开入口。其中body-verified ${bodyVerified}项、metadata-only ${metadataOnly}项、cover-visible ${coverVisible}项、interpreted ${interpreted}项。`}
+        />
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 mb-8">
         <div className="rounded-xl border border-confirmed/30 bg-confirmed/10 p-5">
@@ -47,7 +50,7 @@ export default function ArchivesPage() {
         ))}
       </section>
 
-      <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
         <section className="bg-surface-container-lowest border border-border/40 rounded-xl p-6">
           <h2 className="font-serif text-xl font-semibold text-foreground mb-4">本批来源如何理解</h2>
           <ul className="list-disc pl-5 text-sm text-muted-foreground space-y-2">
@@ -68,6 +71,7 @@ export default function ArchivesPage() {
             <li>权利状态未批准前，不复制整页扫描或长篇原文到公开网站。</li>
           </ul>
         </section>
+        </div>
       </div>
     </div>
   );

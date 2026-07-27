@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { ArrowRight, Network, ShieldCheck, TriangleAlert } from 'lucide-react';
+import { ProjectSectionNav } from '@/components/project-section-nav';
 import { WikiIndex } from '@/components/wiki-index';
 import {
   auditGraph,
@@ -16,7 +17,8 @@ export default function WikiPage() {
   );
 
   return (
-    <main>
+    <div>
+      <ProjectSectionNav />
       <header className="border-b border-foreground/15">
         <div className="personal-shell py-14 sm:py-20">
           <p className="personal-kicker">
@@ -96,6 +98,6 @@ export default function WikiPage() {
           </Link>
         </div>
       </section>
-    </main>
+    </div>
   );
 }
