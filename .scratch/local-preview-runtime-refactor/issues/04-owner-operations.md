@@ -4,7 +4,7 @@
 
 **Blocked by:** 01 — HTTP 合同测试与运行层骨架。
 
-**Status:** implemented-pending-cutover
+**Status:** completed
 
 - [x] 未授权请求保持现有 401 和认证提示。
 - [x] 聚合洞察不泄漏留言正文、联系人或精确私密活动。
@@ -17,3 +17,4 @@
 - Red: 新增真实 HTTP 站主合同首次运行由 fallback 返回 404，证明新运行层尚未提供站主操作。
 - Green: 同一套 9/9 合同验证洞察仅聚合、留言箱 401/令牌开放且裁掉 `session_hash`、语料命中 401/令牌开放并裁掉绝对路径和私密正文。
 - Verification: 原有评论仓库的终止事件 fail-closed 实现被原样纳入运行层；最终权限、审核和分页反向检查留待票 05 的完整 smoke。
+- Cutover verification: `pnpm smoke:local` 已通过令牌、留言箱、评论审核/分页、终止事件和语料命中反向检查。
