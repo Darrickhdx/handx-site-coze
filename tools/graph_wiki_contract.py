@@ -20,17 +20,18 @@ EXPECTED_COUNTS = {
 }
 
 
-def assess_append_only_legacy_drift(
+def assess_quarantinable_legacy_drift(
     approved_legacy: dict[str, Any],
     live_graph: dict[str, Any],
     legacy_html_path: Path,
     crosswalk_path: Path,
 ) -> dict[str, int] | None:
-    """Accept only unmapped records appended after the approved Legacy prefix.
+    """Classify Legacy changes that can remain outside the approved projection.
 
-    Returning a count summary means the live source is newer but can be safely
-    quarantined. Returning ``None`` means no additions exist. Any mutation of
-    the approved prefix raises instead of silently refreshing client data.
+    Identity fields, ordering, edge endpoints, HTML/JSON coherence and the
+    approved crosswalk are stable. Display metadata changes and appended,
+    unmapped records may be reported while the client projection stays frozen.
+    Returning ``None`` means no quarantinable difference exists.
     """
 
     approved_nodes = approved_legacy.get("nodes")

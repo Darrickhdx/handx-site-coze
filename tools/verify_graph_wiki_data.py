@@ -10,7 +10,7 @@ from typing import Any, Iterable
 
 from graph_wiki_contract import (
     EXPECTED_COUNTS,
-    assess_append_only_legacy_drift,
+    assess_quarantinable_legacy_drift,
 )
 
 
@@ -87,7 +87,7 @@ def main() -> None:
             f"unsafe input digest drift: {', '.join(drifted_inputs)}",
         )
         try:
-            quarantine = assess_append_only_legacy_drift(
+            quarantine = assess_quarantinable_legacy_drift(
                 legacy,
                 json.loads(INPUTS["legacy_graph"].read_text(encoding="utf-8")),
                 INPUTS["legacy_html"],

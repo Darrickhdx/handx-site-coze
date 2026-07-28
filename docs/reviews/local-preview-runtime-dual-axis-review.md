@@ -40,6 +40,8 @@
 
 ## 闭环结论
 
+- 第一次修复后的 Standards 复审又发现 1 个控制流阻断：Legacy 隔离分支成功返回时也跳过了独立的 audited graph 更新。最终实现把审计投影构建提取为共享函数；隔离时只冻结 Legacy 两个输出，audited graph 与 manifest 仍正常刷新。
+- Legacy 主动刷新现在需要显式 `ALLOW_LEGACY_GRAPH_REFRESH=1`，且 26 个节点和 50 条边的交叉映射未补齐时仍失败关闭。误导性的 `assess_append_only_legacy_drift` 也已改名为 `assess_quarantinable_legacy_drift` 并明确可隔离字段。
 - Standards：0 个未解决硬问题；4 个已消除或接受的非阻断判断项。
 - Spec：2 个阻断项均已修复；1 个非阻断 seam 限制有明确边界。
 - 完整 `validate`、`build`、`smoke:local` 均通过；公开部署仍关闭。

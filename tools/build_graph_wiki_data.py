@@ -12,10 +12,11 @@ from __future__ import annotations
 import csv
 import hashlib
 import json
+import os
 from pathlib import Path
 from typing import Any
 
-from graph_wiki_contract import assess_append_only_legacy_drift
+from graph_wiki_contract import assess_quarantinable_legacy_drift
 
 
 SITE_ROOT = Path(__file__).resolve().parents[1]
@@ -62,6 +63,95 @@ def migration_record(row: dict[str, str]) -> dict[str, Any]:
     }
 
 
+def build_audit_bundle(
+    audit_source: dict[str, Any],
+    source_registry: dict[str, dict[str, str]],
+) -> dict[str, Any]:
+    audit_sources: list[dict[str, Any]] = []
+    for source in audit_source["sources"]:
+        registry = source_registry.get(source["source_id"], {})
+        canonical_path = registry.get("canonical_path", "").strip()
+        public_url = (
+            canonical_path
+            if canonical_path.startswith("https://")
+            and source["public_tier"] == "P0"
+            else ""
+        )
+        carrier_status = registry.get("carrier_status", "")
+        has_local_copy = (
+            bool(canonical_path)
+            and not canonical_path.startswith(("http://", "https://"))
+        ) or "本地" in " ".join(
+            [
+                registry.get("access_scope", ""),
+                registry.get("notes", ""),
+            ]
+        )
+        audit_sources.append(
+            {
+                **source,
+                "public_url": public_url,
+                "public_url_status": (
+                    "official_or_institutional"
+                    if public_url and "official" in carrier_status
+                    else "registered_public_locator"
+                    if public_url
+                    else "not_available"
+                ),
+                "local_copy_status": (
+                    "registered_local_carrier"
+                    if has_local_copy
+                    else "not_recorded_in_public_projection"
+                ),
+            }
+        )
+
+    return {
+        "schema_version": audit_source["schema_version"],
+        "layer": "audited_public_projection",
+        "scope": audit_source["scope"],
+        "source_generated_at_utc": audit_source["generated_at_utc"],
+        "warning": audit_source["warning"],
+        "model": audit_source["model"],
+        "sources": audit_sources,
+        "claims": audit_source["claims"],
+        "nodes": audit_source["nodes"],
+        "edges": audit_source["edges"],
+    }
+
+
+def refresh_audit_while_legacy_is_quarantined(
+    audit_bundle: dict[str, Any],
+    audit_source: dict[str, Any],
+) -> None:
+    manifest_path = OUTPUT_ROOT / "manifest.json"
+    if not manifest_path.is_file():
+        raise SystemExit("Cannot quarantine Legacy drift without an approved manifest")
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    audit_path = OUTPUT_ROOT / "audit-graph.json"
+    audit_path.write_bytes(json_bytes(audit_bundle))
+
+    manifest["source_generated_at_utc"] = audit_source["generated_at_utc"]
+    manifest["inputs"]["audit_graph"] = {
+        "filename": AUDIT_GRAPH.name,
+        "sha256": sha256(AUDIT_GRAPH),
+    }
+    manifest["inputs"]["source_registry"] = {
+        "filename": SOURCE_REGISTRY.name,
+        "sha256": sha256(SOURCE_REGISTRY),
+    }
+    manifest["counts"].update(
+        {
+            "audit_sources": len(audit_bundle["sources"]),
+            "audit_claims": len(audit_bundle["claims"]),
+            "audit_nodes": len(audit_bundle["nodes"]),
+            "audit_edges": len(audit_bundle["edges"]),
+        }
+    )
+    manifest["outputs"]["audit-graph.json"] = sha256(audit_path)
+    manifest_path.write_bytes(json_bytes(manifest))
+
+
 def main() -> None:
     for path in (
         LEGACY_HTML,
@@ -82,26 +172,36 @@ def main() -> None:
             row["source_id"]: row for row in csv.DictReader(stream)
         }
 
+    audit_bundle = build_audit_bundle(audit_source, source_registry)
     approved_legacy_path = OUTPUT_ROOT / "legacy-graph.json"
-    if approved_legacy_path.is_file():
+    refresh_legacy_authorized = os.environ.get("ALLOW_LEGACY_GRAPH_REFRESH") == "1"
+    if approved_legacy_path.is_file() and not refresh_legacy_authorized:
         approved_legacy = json.loads(approved_legacy_path.read_text(encoding="utf-8"))
         try:
-            quarantined = assess_append_only_legacy_drift(
+            quarantined = assess_quarantinable_legacy_drift(
                 approved_legacy,
                 legacy_source,
                 LEGACY_HTML,
                 CROSSWALK,
             )
         except ValueError as error:
-            raise SystemExit(f"Legacy graph drift is unsafe: {error}") from error
+            raise SystemExit(
+                "Legacy graph drift requires review; after completing the "
+                "crosswalk, rerun with ALLOW_LEGACY_GRAPH_REFRESH=1: "
+                f"{error}"
+            ) from error
         if quarantined is not None:
+            refresh_audit_while_legacy_is_quarantined(
+                audit_bundle,
+                audit_source,
+            )
             print(
                 "graph-wiki build preserved approved Legacy projection:",
                 f"{quarantined['approved_nodes']}/{quarantined['approved_edges']} approved,",
                 f"{quarantined['quarantined_modified_nodes']}/"
                 f"{quarantined['quarantined_modified_edges']} modified and",
                 f"{quarantined['quarantined_nodes']}/{quarantined['quarantined_edges']} "
-                "additions quarantined",
+                "additions quarantined; audited projection refreshed",
             )
             return
 
@@ -115,6 +215,19 @@ def main() -> None:
         for row in crosswalk_rows
         if row["record_type"] == "edge"
     }
+    missing_node_migrations = {
+        node["id"] for node in legacy_source["nodes"]
+    } - node_migrations.keys()
+    missing_edge_migrations = {
+        f"legacy-edge-{index:03d}"
+        for index, _edge in enumerate(legacy_source["edges"], start=1)
+    } - edge_migrations.keys()
+    if missing_node_migrations or missing_edge_migrations:
+        raise SystemExit(
+            "Legacy graph refresh requires a complete crosswalk: "
+            f"{len(missing_node_migrations)} node(s), "
+            f"{len(missing_edge_migrations)} edge(s) missing"
+        )
 
     legacy_nodes: list[dict[str, Any]] = []
     for node in legacy_source["nodes"]:
@@ -175,58 +288,6 @@ def main() -> None:
             }
             for row in crosswalk_rows
         ],
-    }
-
-    audit_sources: list[dict[str, Any]] = []
-    for source in audit_source["sources"]:
-        registry = source_registry.get(source["source_id"], {})
-        canonical_path = registry.get("canonical_path", "").strip()
-        public_url = (
-            canonical_path
-            if canonical_path.startswith("https://")
-            and source["public_tier"] == "P0"
-            else ""
-        )
-        carrier_status = registry.get("carrier_status", "")
-        has_local_copy = (
-            bool(canonical_path)
-            and not canonical_path.startswith(("http://", "https://"))
-        ) or "本地" in " ".join(
-            [
-                registry.get("access_scope", ""),
-                registry.get("notes", ""),
-            ]
-        )
-        audit_sources.append(
-            {
-                **source,
-                "public_url": public_url,
-                "public_url_status": (
-                    "official_or_institutional"
-                    if public_url and "official" in carrier_status
-                    else "registered_public_locator"
-                    if public_url
-                    else "not_available"
-                ),
-                "local_copy_status": (
-                    "registered_local_carrier"
-                    if has_local_copy
-                    else "not_recorded_in_public_projection"
-                ),
-            }
-        )
-
-    audit_bundle = {
-        "schema_version": audit_source["schema_version"],
-        "layer": "audited_public_projection",
-        "scope": audit_source["scope"],
-        "source_generated_at_utc": audit_source["generated_at_utc"],
-        "warning": audit_source["warning"],
-        "model": audit_source["model"],
-        "sources": audit_sources,
-        "claims": audit_source["claims"],
-        "nodes": audit_source["nodes"],
-        "edges": audit_source["edges"],
     }
 
     OUTPUT_ROOT.mkdir(parents=True, exist_ok=True)
