@@ -6,11 +6,11 @@
   "inputs": {
     "legacy_html": {
       "filename": "苏开元知识图谱-交互版.html",
-      "sha256": "b965e64476bd98af1ff0ef053a546586150c16fca0ff3ade446c14003504d23f"
+      "sha256": "8a74e35d98264fd0db53e20b5fe0b3cd1192eeada8bc577d9e5fa5af19b62113"
     },
     "legacy_graph": {
       "filename": "graph-data.json",
-      "sha256": "bba564e8b89522cee117461a93a41c6eb39e408cc5f8e451cc534b4a496f85f1"
+      "sha256": "43bb5acaacd98fdc7ae2f34f23a61cd84940379ad8bf2ca66300275f252498d1"
     },
     "audit_graph": {
       "filename": "05-知识图谱-公开版.json",
@@ -30,9 +30,9 @@
     "audit_claims": 211,
     "audit_nodes": 229,
     "audit_edges": 127,
-    "legacy_nodes": 133,
-    "legacy_edges": 201,
-    "crosswalk_records": 334
+    "legacy_nodes": 107,
+    "legacy_edges": 151,
+    "crosswalk_records": 258
   },
   "privacy": {
     "allowed_public_tiers": [
@@ -45,7 +45,7 @@
   },
   "outputs": {
     "audit-graph.json": "ca0325a38ea803e42985026c4552e061584f760457dfd56f84c9ac2b729c870c",
-    "legacy-graph.json": "bb4922bb48a745fde42b502925c5527ec9c3a6b28fe8a319fb676b351e119c1f",
-    "legacy-crosswalk.json": "b9eed01032e0926a0bb7e0abcd9cb29801bae546b4db0e7a4d837f4ed08ccf7b"
+    "legacy-graph.json": "6188ad4157eeede6f1e982d6116c20c3919402758a3acc17ce47cd8d3dcd49c6",
+    "legacy-crosswalk.json": "a3dea5c79d8678479f751614bb603e879c359095f717667ac52147ae917fd1da"
   }
 }

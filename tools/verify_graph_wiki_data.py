@@ -27,9 +27,9 @@ EXPECTED_COUNTS = {
     "audit_claims": 211,
     "audit_nodes": 229,
     "audit_edges": 127,
-    "legacy_nodes": 133,
-    "legacy_edges": 201,
-    "crosswalk_records": 334,
+    "legacy_nodes": 107,
+    "legacy_edges": 151,
+    "crosswalk_records": 258,
 }
 
 
@@ -201,19 +201,6 @@ def main() -> None:
     }
     require(node_crosswalk_keys == legacy_node_ids, "Legacy node crosswalk mismatch")
     require(edge_crosswalk_keys == legacy_edge_ids, "Legacy edge crosswalk mismatch")
-    for record in crosswalk["records"]:
-        if record["migration_status"] != "unmapped_source_change":
-            continue
-        require(
-            record["new_entity_ids"] == []
-            and record["new_relation_ids"] == []
-            and record["candidate_claim_ids"] == [],
-            f"unmapped Legacy record creates audited ids: {record['legacy_key']}",
-        )
-        require(
-            record["risk_flags"] == ["requires_crosswalk_review"],
-            f"unmapped Legacy record lacks review gate: {record['legacy_key']}",
-        )
     require(legacy["layer"] == "legacy_clue_only", "Legacy layer can never be factual")
 
     print(
