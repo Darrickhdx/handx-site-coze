@@ -18,4 +18,4 @@
 - Production build: `pnpm build` 通过 Next.js 558 个静态页面生成和 `dist/server.js` 打包。
 - Full smoke: `pnpm smoke:local` 通过 34 页面、4 研究投影、8 运行接口、182 原尺寸与 182 响应式小说页，以及部署/权限/代次反向门禁。
 - Full validation: `pnpm validate` 通过数据、图谱、小说、媒体、版权、发布边界、9 个运行层合同、TypeScript、ESLint 与 Stylelint。
-- Upstream drift: 构建时发现旧图由 107/151 增至 133/201；76 条新增记录被自动标记为 `unmapped_source_change`，不携带任何新实体/关系/主张 ID，保持 Legacy 线索层且强制后续人工交叉映射。
+- Upstream drift: 构建时发现 2 个既有 Legacy 节点变化以及 26 个新节点、50 条新边；越界刷新提交已撤销，最终构建冻结原批准 107/151/258 投影并把这些变化隔离到人工交叉映射门禁之外。
