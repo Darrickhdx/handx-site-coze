@@ -14,6 +14,7 @@ import type {
 import { resolve } from 'node:path';
 import { isDeepStrictEqual } from 'node:util';
 import research from '../data/research.json';
+import { createLocalInteractionRouter } from './local-interactions';
 
 type JsonObject = Record<string, unknown>;
 
@@ -54,14 +55,25 @@ export function createLocalPreviewRuntime(
 ): RequestListener {
   requireLocalPreviewStartup(options);
   const snapshot = loadRuntimePreviewSnapshot(options.projectRoot);
+  const routeLocalInteraction = createLocalInteractionRouter({
+    privateDataDirectory: options.privateDataDirectory,
+    bind: options.bind,
+  });
   return (request, response) => {
-    void handleRequest(options, snapshot, request, response);
+    void handleRequest(
+      options,
+      snapshot,
+      routeLocalInteraction,
+      request,
+      response,
+    );
   };
 }
 
 async function handleRequest(
   options: Readonly<LocalPreviewRuntimeOptions>,
   snapshot: Readonly<RuntimePreviewSnapshot>,
+  routeLocalInteraction: ReturnType<typeof createLocalInteractionRouter>,
   request: IncomingMessage,
   response: ServerResponse,
 ): Promise<void> {
@@ -77,8 +89,9 @@ async function handleRequest(
     const pathname = new URL(
       request.url ?? '/',
       `http://${hostname}:${options.bind.port}`,
-    ).pathname;
-    const endpoint = snapshot.endpoints.get(pathname);
+    );
+    if (await routeLocalInteraction(request, response, pathname)) return;
+    const endpoint = snapshot.endpoints.get(pathname.pathname);
     if (
       endpoint !== undefined &&
       (request.method === 'GET' || request.method === 'HEAD')

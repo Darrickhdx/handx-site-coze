@@ -8,7 +8,9 @@ import {
   type ServerResponse,
 } from 'node:http';
 import {
+  appendFileSync,
   cpSync,
+  existsSync,
   mkdirSync,
   mkdtempSync,
   readFileSync,
@@ -109,6 +111,358 @@ test('本地预览运行层只调用一次 fallback，并为响应设置本地�
       response.headers.get('x-robots-tag'),
       'noindex, nofollow, noarchive, nosnippet',
     );
+  } finally {
+    await closeServer(server);
+    rmSync(privateDataDirectory, { recursive: true, force: true });
+  }
+});
+
+test('访客统计与私密留言保持同源、清洗、哈希和 pending 合同', async () => {
+  const port = await reserveLoopbackPort();
+  const privateDataDirectory = mkdtempSync(
+    resolve(tmpdir(), 'handx-local-runtime-visitor-'),
+  );
+  const origin = `http://127.0.0.1:${port}`;
+  const sessionId = '00000000-0000-4000-8000-000000000001';
+  const listener = createLocalPreviewRuntime({
+    projectRoot,
+    privateDataDirectory,
+    bind: { hostname: '127.0.0.1', port },
+    deploymentEnvironment: undefined,
+    fallback: (_request, response) => {
+      response.statusCode = 404;
+      response.end('fallback');
+    },
+  });
+  const server = createServer(listener);
+
+  try {
+    server.listen(port, '127.0.0.1');
+    await once(server, 'listening');
+    const analyticsResponse = await fetch(`${origin}/api/local/analytics`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', origin },
+      body: JSON.stringify({
+        event_name: 'page_view',
+        path: '/privacy?secret=query',
+        session_id: sessionId,
+        properties: {
+          section: 'contract',
+          acquisition_channel: 'direct',
+        },
+      }),
+    });
+    assert.equal(analyticsResponse.status, 202);
+    const analyticsLog = readFileSync(
+      resolve(privateDataDirectory, 'analytics-events.ndjson'),
+      'utf8',
+    );
+    assert(!analyticsLog.includes(sessionId));
+    assert(!analyticsLog.includes('secret=query'));
+    assert.match(analyticsLog, /"session_hash":"[0-9a-f]{24}"/);
+
+    const invalidAnalyticsResponse = await fetch(
+      `${origin}/api/local/analytics`,
+      {
+        method: 'POST',
+        headers: { 'content-type': 'application/json', origin },
+        body: JSON.stringify({
+          event_name: 'page_view',
+          path: '/',
+          session_id: sessionId,
+          properties: { forbidden: 'must-fail' },
+        }),
+      },
+    );
+    assert.equal(invalidAnalyticsResponse.status, 400);
+
+    const foreignMessageResponse = await fetch(`${origin}/api/local/messages`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        origin: 'https://example.com',
+      },
+      body: JSON.stringify({
+        display_name: 'Reader',
+        body: '这是一条用于测试的本机私密留言。',
+        consent: true,
+        session_id: sessionId,
+      }),
+    });
+    assert.equal(foreignMessageResponse.status, 403);
+
+    const honeypotResponse = await fetch(`${origin}/api/local/messages`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', origin },
+      body: JSON.stringify({
+        website: 'bot-filled-this',
+        display_name: 'Reader',
+        body: '这是一条不会写入的机器人留言。',
+        consent: true,
+        session_id: sessionId,
+      }),
+    });
+    assert.equal(honeypotResponse.status, 202);
+    assert.equal(
+      existsSync(resolve(privateDataDirectory, 'guestbook-messages.ndjson')),
+      false,
+    );
+
+    const messageResponse = await fetch(`${origin}/api/local/messages`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', origin },
+      body: JSON.stringify({
+        display_name: 'Reader',
+        contact: 'private@example.invalid',
+        body: '这是一条用于测试的本机私密留言。',
+        website: '',
+        consent: true,
+        related_path: '/about?private=query',
+        session_id: sessionId,
+      }),
+    });
+    const messageResult = (await messageResponse.json()) as {
+      status?: string;
+    };
+    assert.equal(messageResponse.status, 201);
+    assert.equal(messageResult.status, 'pending');
+    const messageLog = readFileSync(
+      resolve(privateDataDirectory, 'guestbook-messages.ndjson'),
+      'utf8',
+    );
+    assert(!messageLog.includes(sessionId));
+    assert(!messageLog.includes('private=query'));
+    assert.match(messageLog, /"status":"pending"/);
+  } finally {
+    await closeServer(server);
+    rmSync(privateDataDirectory, { recursive: true, force: true });
+  }
+});
+
+test('公开评论保持章节隔离、去重、链接限制、XSS 转义和先审后显', async () => {
+  const port = await reserveLoopbackPort();
+  const privateDataDirectory = mkdtempSync(
+    resolve(tmpdir(), 'handx-local-runtime-comments-'),
+  );
+  const origin = `http://127.0.0.1:${port}`;
+  const payload = {
+    chapter_id: 'chapter-01',
+    display_name: '<img src=x onerror=alert(1)>',
+    body: '<script>alert(1)</script>请勿执行',
+    website: '',
+    consent: true,
+    session_id: '00000000-0000-4000-8000-000000000011',
+  };
+  const listener = createLocalPreviewRuntime({
+    projectRoot,
+    privateDataDirectory,
+    bind: { hostname: '127.0.0.1', port },
+    deploymentEnvironment: undefined,
+    fallback: (_request, response) => {
+      response.statusCode = 404;
+      response.end('fallback');
+    },
+  });
+  const server = createServer(listener);
+
+  try {
+    server.listen(port, '127.0.0.1');
+    await once(server, 'listening');
+    const submit = await fetch(`${origin}/api/local/novel-comments`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', origin },
+      body: JSON.stringify(payload),
+    });
+    const submission = (await submit.json()) as { id: string; status: string };
+    assert.equal(submit.status, 201);
+    assert.equal(submission.status, 'pending');
+
+    const pendingRead = await fetch(
+      `${origin}/api/local/novel-comments?chapter=chapter-01`,
+    );
+    const pendingBody = (await pendingRead.json()) as { comments: unknown[] };
+    assert.deepEqual(pendingBody.comments, []);
+
+    const duplicate = await fetch(`${origin}/api/local/novel-comments`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', origin },
+      body: JSON.stringify(payload),
+    });
+    assert.equal(duplicate.status, 409);
+
+    const linkLimit = await fetch(`${origin}/api/local/novel-comments`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', origin },
+      body: JSON.stringify({
+        ...payload,
+        body: '两个链接：https://example.com 和 https://example.org',
+        session_id: '00000000-0000-4000-8000-000000000012',
+      }),
+    });
+    assert.equal(linkLimit.status, 400);
+
+    appendFileSync(
+      resolve(privateDataDirectory, 'chapter-comment-events.ndjson'),
+      `${JSON.stringify({
+        type: 'novel_comment_event',
+        id: 'mod-1700000000000-0123456789',
+        comment_id: submission.id,
+        occurred_at: new Date().toISOString(),
+        action: 'approved',
+        moderator: 'local-admin',
+      })}\n`,
+      { mode: 0o600 },
+    );
+    const approvedRead = await fetch(
+      `${origin}/api/local/novel-comments?chapter=chapter-01`,
+    );
+    const approvedBody = (await approvedRead.json()) as {
+      comments: Array<{ display_name: string; body: string }>;
+    };
+    assert.equal(approvedBody.comments.length, 1);
+    assert(!approvedBody.comments[0].body.includes('<script>'));
+    assert(approvedBody.comments[0].body.includes('&lt;script&gt;'));
+    assert(!approvedBody.comments[0].display_name.includes('<img'));
+
+    const otherChapter = await fetch(
+      `${origin}/api/local/novel-comments?chapter=chapter-02`,
+    );
+    const otherChapterBody = (await otherChapter.json()) as {
+      comments: unknown[];
+    };
+    assert.deepEqual(otherChapterBody.comments, []);
+
+    appendFileSync(
+      resolve(privateDataDirectory, 'chapter-comment-events.ndjson'),
+      'damaged moderation line\n',
+    );
+    const damagedRead = await fetch(
+      `${origin}/api/local/novel-comments?chapter=chapter-01`,
+    );
+    assert.equal(damagedRead.status, 503);
+    assert.deepEqual(await damagedRead.json(), {
+      ok: false,
+      error: 'comment_log_unhealthy',
+      comments: [],
+    });
+  } finally {
+    await closeServer(server);
+    rmSync(privateDataDirectory, { recursive: true, force: true });
+  }
+});
+
+test('站主接口保持令牌隔离、聚合隐私和语料命中裁剪', async () => {
+  const port = await reserveLoopbackPort();
+  const privateDataDirectory = mkdtempSync(
+    resolve(tmpdir(), 'handx-local-runtime-owner-'),
+  );
+  const origin = `http://127.0.0.1:${port}`;
+  const absolutePrivatePath = ['', 'Users', 'private', 'secret.md'].join('/');
+  writeFileSync(
+    resolve(privateDataDirectory, 'local-corpus-index.json'),
+    `${JSON.stringify({
+      schema_version: 'handx-local-corpus-index-1.0',
+      must_not_deploy: true,
+      generated_at: '2026-07-29T00:00:00.000Z',
+      documents: [
+        {
+          document_id: 'DOC-001',
+          title: '允许返回的标题',
+          suffix: '.md',
+          material_class: 'research_note',
+          access_tier: 'P1-owner-only',
+          absolute_path: absolutePrivatePath,
+          private_body: '绝不返回',
+          matches: [{ entity_id: 'P-001', locators: ['L1'] }],
+        },
+        {
+          document_id: 'DOC-002',
+          title: '限制级材料',
+          access_tier: 'P2-restricted',
+          matches: [{ entity_id: 'P-001', locators: ['secret'] }],
+        },
+      ],
+    })}\n`,
+    { mode: 0o600 },
+  );
+  const listener = createLocalPreviewRuntime({
+    projectRoot,
+    privateDataDirectory,
+    bind: { hostname: '127.0.0.1', port },
+    deploymentEnvironment: undefined,
+    fallback: (_request, response) => {
+      response.statusCode = 404;
+      response.end('fallback');
+    },
+  });
+  const server = createServer(listener);
+
+  try {
+    server.listen(port, '127.0.0.1');
+    await once(server, 'listening');
+    const messageResponse = await fetch(`${origin}/api/local/messages`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', origin },
+      body: JSON.stringify({
+        display_name: 'Reader',
+        contact: 'private@example.invalid',
+        body: '这是一条只应进入站主留言箱的私密内容。',
+        website: '',
+        consent: true,
+        related_path: '/about',
+        session_id: '00000000-0000-4000-8000-000000000021',
+      }),
+    });
+    assert.equal(messageResponse.status, 201);
+
+    const insights = await fetch(`${origin}/api/local/insights`);
+    const insightsText = await insights.text();
+    assert.equal(insights.status, 200);
+    assert(!insightsText.includes('private@example.invalid'));
+    assert(!insightsText.includes('只应进入站主留言箱'));
+    assert(!insightsText.includes('recent_activity'));
+
+    const unauthorizedInbox = await fetch(`${origin}/api/local/inbox`);
+    assert.equal(unauthorizedInbox.status, 401);
+    assert.equal(
+      unauthorizedInbox.headers.get('www-authenticate'),
+      'Bearer realm="local-inbox"',
+    );
+
+    const unauthorizedCorpus = await fetch(
+      `${origin}/api/local/corpus-hits?entity=P-001`,
+    );
+    assert.equal(unauthorizedCorpus.status, 401);
+    assert(!((await unauthorizedCorpus.text()).includes(absolutePrivatePath)));
+
+    const adminToken = readFileSync(
+      resolve(privateDataDirectory, 'admin-token'),
+      'utf8',
+    ).trim();
+    const inbox = await fetch(`${origin}/api/local/inbox`, {
+      headers: { authorization: `Bearer ${adminToken}` },
+    });
+    const inboxText = await inbox.text();
+    assert.equal(inbox.status, 200);
+    assert(inboxText.includes('private@example.invalid'));
+    assert(!inboxText.includes('session_hash'));
+
+    const corpus = await fetch(
+      `${origin}/api/local/corpus-hits?entity=P-001`,
+      { headers: { authorization: `Bearer ${adminToken}` } },
+    );
+    const corpusText = await corpus.text();
+    const corpusBody = JSON.parse(corpusText) as {
+      hits: unknown[];
+      omitted_restricted: number;
+      creates_claims_or_edges: boolean;
+    };
+    assert.equal(corpus.status, 200);
+    assert.equal(corpusBody.hits.length, 1);
+    assert.equal(corpusBody.omitted_restricted, 1);
+    assert.equal(corpusBody.creates_claims_or_edges, false);
+    assert(!corpusText.includes(absolutePrivatePath));
+    assert(!corpusText.includes('绝不返回'));
   } finally {
     await closeServer(server);
     rmSync(privateDataDirectory, { recursive: true, force: true });
