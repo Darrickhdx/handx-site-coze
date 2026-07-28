@@ -69,14 +69,14 @@ EXPECTED_GRAPH_COUNTS = {
     "audit_claims": 211,
     "audit_nodes": 229,
     "audit_edges": 127,
-    "legacy_nodes": 107,
-    "legacy_edges": 151,
-    "crosswalk_records": 258,
+    "legacy_nodes": 133,
+    "legacy_edges": 201,
+    "crosswalk_records": 334,
 }
 GRAPH_OUTPUTS = {
     "audit-graph.json": ("nodes", 229, "edges", 127),
-    "legacy-graph.json": ("nodes", 107, "edges", 151),
-    "legacy-crosswalk.json": ("records", 258, None, None),
+    "legacy-graph.json": ("nodes", 133, "edges", 201),
+    "legacy-crosswalk.json": ("records", 334, None, None),
 }
 JSON_ENDPOINTS = [
     "/data/persons.json",

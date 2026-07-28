@@ -1829,6 +1829,422 @@
       "decision": "新版尚无可审计实体承接；仅作待查线索，不进入事实图。"
     },
     {
+      "record_type": "node",
+      "legacy_label": "张柏旃",
+      "legacy_group": "person",
+      "legacy_reliability": "C",
+      "legacy_period": "1907-1964",
+      "legacy_key": "zhang-baizhan",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "node",
+      "legacy_label": "易虹",
+      "legacy_group": "person",
+      "legacy_reliability": "C",
+      "legacy_period": "1937-1964",
+      "legacy_key": "yi-hong",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "node",
+      "legacy_label": "苏爱华",
+      "legacy_group": "person",
+      "legacy_reliability": "C",
+      "legacy_period": "1929-1964",
+      "legacy_key": "su-aihua",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "node",
+      "legacy_label": "苏良",
+      "legacy_group": "person",
+      "legacy_reliability": "C",
+      "legacy_period": "1949-1964",
+      "legacy_key": "su-liang",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "node",
+      "legacy_label": "苏爱菊",
+      "legacy_group": "person",
+      "legacy_reliability": "C",
+      "legacy_period": "1929-1964",
+      "legacy_key": "su-aiju",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "node",
+      "legacy_label": "苏爱萍（三女）",
+      "legacy_group": "person",
+      "legacy_reliability": "C",
+      "legacy_period": "1937-1964",
+      "legacy_key": "su-aiping",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "node",
+      "legacy_label": "苏玲",
+      "legacy_group": "person",
+      "legacy_reliability": "C",
+      "legacy_period": "1949-1964",
+      "legacy_key": "su-ling",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "node",
+      "legacy_label": "韩大昕",
+      "legacy_group": "person",
+      "legacy_reliability": "A",
+      "legacy_period": "1907-1964",
+      "legacy_key": "han-daxin",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "node",
+      "legacy_label": "潘纪文",
+      "legacy_group": "person",
+      "legacy_reliability": "B",
+      "legacy_period": "1937-1945",
+      "legacy_key": "pan-jiwen",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "node",
+      "legacy_label": "刘仁",
+      "legacy_group": "person",
+      "legacy_reliability": "B",
+      "legacy_period": "1946-1949",
+      "legacy_key": "liu-ren",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "node",
+      "legacy_label": "刘达",
+      "legacy_group": "person",
+      "legacy_reliability": "B",
+      "legacy_period": "1946-1949",
+      "legacy_key": "liu-da",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "node",
+      "legacy_label": "胡博",
+      "legacy_group": "person",
+      "legacy_reliability": "B",
+      "legacy_period": "1907-1964",
+      "legacy_key": "hu-bo",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "node",
+      "legacy_label": "家道中落",
+      "legacy_group": "event",
+      "legacy_reliability": "C",
+      "legacy_period": "1937-1945",
+      "legacy_key": "e-jiadaozhongluo",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "node",
+      "legacy_label": "保释营救易虹",
+      "legacy_group": "event",
+      "legacy_reliability": "C",
+      "legacy_period": "1937-1945",
+      "legacy_key": "e-jiuyihong",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "node",
+      "legacy_label": "建国后降级使用",
+      "legacy_group": "event",
+      "legacy_reliability": "C",
+      "legacy_period": "1949-1964",
+      "legacy_key": "e-jiangji",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "node",
+      "legacy_label": "金鱼胡同门口",
+      "legacy_group": "event",
+      "legacy_reliability": "C",
+      "legacy_period": "1949-1964",
+      "legacy_key": "e-jinyuhutong",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "node",
+      "legacy_label": "'文革'家属受难",
+      "legacy_group": "event",
+      "legacy_reliability": "C",
+      "legacy_period": "1949-1964",
+      "legacy_key": "e-wenge",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "node",
+      "legacy_label": "南汉宸之死(1967)",
+      "legacy_group": "event",
+      "legacy_reliability": "B",
+      "legacy_period": "1949-1964",
+      "legacy_key": "e-nanhanchen-death",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "node",
+      "legacy_label": "留日士官生名簿(20期)",
+      "legacy_group": "source",
+      "legacy_reliability": "A",
+      "legacy_period": "1922-1928",
+      "legacy_key": "s-tongxuelu",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "node",
+      "legacy_label": "1947兰州汇款单",
+      "legacy_group": "source",
+      "legacy_reliability": "A",
+      "legacy_period": "1946-1949",
+      "legacy_key": "s-huikuandan",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "node",
+      "legacy_label": "八宝山墓碑",
+      "legacy_group": "source",
+      "legacy_reliability": "A",
+      "legacy_period": "1949-1964",
+      "legacy_key": "s-mubei",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "node",
+      "legacy_label": "一箱黄金",
+      "legacy_group": "source",
+      "legacy_reliability": "C",
+      "legacy_period": "1937-1945",
+      "legacy_key": "s-jinzi",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "node",
+      "legacy_label": "胡博《总览》苏开元条",
+      "legacy_group": "source",
+      "legacy_reliability": "B",
+      "legacy_period": "1907-1964",
+      "legacy_key": "s-hubo-lvli",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "node",
+      "legacy_label": "李英夫回忆文",
+      "legacy_group": "source",
+      "legacy_reliability": "B",
+      "legacy_period": "1907-1964",
+      "legacy_key": "s-liyingfu-wen",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "node",
+      "legacy_label": "《大公报》五英雄报道",
+      "legacy_group": "source",
+      "legacy_reliability": "A",
+      "legacy_period": "1929-1936",
+      "legacy_key": "s-dagongbao",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "node",
+      "legacy_label": "苏爱华自传(页4-7)",
+      "legacy_group": "source",
+      "legacy_reliability": "C",
+      "legacy_period": "1937-1945",
+      "legacy_key": "s-aihua-zizhuan",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
       "record_type": "edge",
       "legacy_label": "su-kaiyuan --父子；父宅作联络据点--> su-kuiyi",
       "legacy_group": "edge",
@@ -4313,6 +4729,806 @@
       "candidate_claim_ids": [],
       "risk_flags": [],
       "decision": "端点或关系未闭合；仅作旧研究线索。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "su-kaiyuan --原配夫妻；留日相伴；'太太团'情报暗渠--> zhang-baizhan",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1929-1936",
+      "legacy_key": "legacy-edge-152",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "su-kaiyuan --第二任夫妻；救出保释、假戏成真；合葬八宝山--> yi-hong",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1937-1945",
+      "legacy_key": "legacy-edge-153",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "su-kaiyuan --父子（长子）--> su-aihua",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1929-1936",
+      "legacy_key": "legacy-edge-154",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "su-kaiyuan --父子（易虹所生）--> su-liang",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1949-1964",
+      "legacy_key": "legacy-edge-155",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "su-kaiyuan --父女--> su-aiju",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1929-1936",
+      "legacy_key": "legacy-edge-156",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "su-kaiyuan --父女（三女）--> su-aiping",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1937-1945",
+      "legacy_key": "legacy-edge-157",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "zhang-baizhan --母子--> su-aihua",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1929-1936",
+      "legacy_key": "legacy-edge-158",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "zhang-baizhan --母女（相处最长）--> su-aiping",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1937-1945",
+      "legacy_key": "legacy-edge-159",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "zhang-baizhan --受难主体（下放沈阳→新疆）--> e-wenge",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1949-1964",
+      "legacy_key": "legacy-edge-160",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "yi-hong --母子--> su-liang",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1949-1964",
+      "legacy_key": "legacy-edge-161",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "yi-hong --被营救者--> e-jiuyihong",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1937-1945",
+      "legacy_key": "legacy-edge-162",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "su-kaiyuan --以夫妻关系保释--> e-jiuyihong",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1937-1945",
+      "legacy_key": "legacy-edge-163",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "su-aihua --父女--> su-ling",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1949-1964",
+      "legacy_key": "legacy-edge-164",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "su-ling --母子--> han-daxin",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1949-1964",
+      "legacy_key": "legacy-edge-165",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "han-daxin --曾外孙；追寻、立传《英雄无名》--> su-kaiyuan",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1949-1964",
+      "legacy_key": "legacy-edge-166",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "han-daxin --曾外祖母（作者一支）--> zhang-baizhan",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1949-1964",
+      "legacy_key": "legacy-edge-167",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "han-daxin --外祖父--> su-aihua",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1949-1964",
+      "legacy_key": "legacy-edge-168",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "su-aiju --翁媳姻亲（嫁刘达之子）--> liu-da",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1946-1949",
+      "legacy_key": "legacy-edge-169",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "su-kaiyuan --家道中落（子视角）--> e-jiadaozhongluo",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1937-1945",
+      "legacy_key": "legacy-edge-170",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "su-aihua --9岁见证者--> e-jiadaozhongluo",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1937-1945",
+      "legacy_key": "legacy-edge-171",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "su-kaiyuan --领子到门口却未进--> e-jinyuhutong",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1949-1964",
+      "legacy_key": "legacy-edge-172",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "su-liang --被带到门口的孩子--> e-jinyuhutong",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1949-1964",
+      "legacy_key": "legacy-edge-173",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "su-kaiyuan --被'降级使用'者--> e-jiangji",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1949-1964",
+      "legacy_key": "legacy-edge-174",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "dong-qiwu --对照：1955授上将 vs 苏处长--> e-jiangji",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1949-1964",
+      "legacy_key": "legacy-edge-175",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "su-kaiyuan --身后家属替其受难--> e-wenge",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1949-1964",
+      "legacy_key": "legacy-edge-176",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "pan-jiwen --1938发展入党、长期指导--> yan-youwen",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1937-1945",
+      "legacy_key": "legacy-edge-177",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "pan-jiwen --统战闭环：基层执行↔战略总管--> nan-hanchen",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1937-1945",
+      "legacy_key": "legacy-edge-178",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "nan-hanchen --1967受迫害自尽--> e-nanhanchen-death",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1949-1964",
+      "legacy_key": "legacy-edge-179",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "e-nanhanchen-death --带走唯一能证明苏的证人--> su-kaiyuan",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1949-1964",
+      "legacy_key": "legacy-edge-180",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "liu-ren --主要领导人--> o-beiping-chenggongbu",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1946-1949",
+      "legacy_key": "legacy-edge-181",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "liu-ren --1973狱中迫害病逝（同代命运）--> e-wenge",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1949-1964",
+      "legacy_key": "legacy-edge-182",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "feng-jiping --'冯邢冤案'入秦城、1978平反（同代命运）--> e-wenge",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1949-1964",
+      "legacy_key": "legacy-edge-183",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "hu-bo --立传/军职履历《总览》--> su-kaiyuan",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1949-1964",
+      "legacy_key": "legacy-edge-184",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "han-daxin --通讯获取资料--> hu-bo",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1949-1964",
+      "legacy_key": "legacy-edge-185",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "hu-bo --著（苏开元条）--> s-hubo-lvli",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1949-1964",
+      "legacy_key": "legacy-edge-186",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "li-yingfu --作者（传记主干）--> s-liyingfu-wen",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1949-1964",
+      "legacy_key": "legacy-edge-187",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "s-liyingfu-wen --传主--> su-kaiyuan",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1949-1964",
+      "legacy_key": "legacy-edge-188",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "s-tongxuelu --名字铁证（蘇凱元 字碩朋）--> su-kaiyuan",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1922-1928",
+      "legacy_key": "legacy-edge-189",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "s-tongxuelu --该校名簿--> o-rikushi",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1922-1928",
+      "legacy_key": "legacy-edge-190",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "s-huikuandan --该事件原件单据--> e-fuweijin",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1946-1949",
+      "legacy_key": "legacy-edge-191",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "guo-lingye --单据转款人--> s-huikuandan",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1946-1949",
+      "legacy_key": "legacy-edge-192",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "s-mubei --卒年定谳原件--> e-bingshi",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1949-1964",
+      "legacy_key": "legacy-edge-193",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "yi-hong --与苏合葬（同碑）--> s-mubei",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1949-1964",
+      "legacy_key": "legacy-edge-194",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "s-jinzi --家属物证（信仰底片）--> su-kaiyuan",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1937-1945",
+      "legacy_key": "legacy-edge-195",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "su-aihua --拎过那口沉箱--> s-jinzi",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1937-1945",
+      "legacy_key": "legacy-edge-196",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "s-dagongbao --该报道原件--> e-wuyingxiong",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1929-1936",
+      "legacy_key": "legacy-edge-197",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "s-aihua-zizhuan --作者手稿--> su-aihua",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1937-1945",
+      "legacy_key": "legacy-edge-198",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "s-aihua-zizhuan --记家道中落--> e-jiadaozhongluo",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1937-1945",
+      "legacy_key": "legacy-edge-199",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "han-daxin --据以认出他（翻拍）--> s-tongxuelu",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1949-1964",
+      "legacy_key": "legacy-edge-200",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
+    },
+    {
+      "record_type": "edge",
+      "legacy_label": "han-daxin --据以定卒年--> s-mubei",
+      "legacy_group": "relation",
+      "legacy_reliability": "",
+      "legacy_period": "1949-1964",
+      "legacy_key": "legacy-edge-201",
+      "migration_status": "unmapped_source_change",
+      "new_entity_ids": [],
+      "new_relation_ids": [],
+      "candidate_claim_ids": [],
+      "risk_flags": [
+        "requires_crosswalk_review"
+      ],
+      "decision": "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，不得据此创建事实、合并身份或生成关系。"
     }
   ]
 }

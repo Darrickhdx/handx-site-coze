@@ -60,6 +60,22 @@ def migration_record(row: dict[str, str]) -> dict[str, Any]:
     }
 
 
+def unmapped_migration(legacy_key: str) -> dict[str, Any]:
+    """Fail closed when the live Legacy graph grows ahead of its crosswalk."""
+    return {
+        "legacy_key": legacy_key,
+        "migration_status": "unmapped_source_change",
+        "new_entity_ids": [],
+        "new_relation_ids": [],
+        "candidate_claim_ids": [],
+        "risk_flags": ["requires_crosswalk_review"],
+        "decision": (
+            "上游旧图新增记录，尚未完成人工交叉映射；仅保留为 Legacy 线索，"
+            "不得据此创建事实、合并身份或生成关系。"
+        ),
+    }
+
+
 def main() -> None:
     for path in (
         LEGACY_HTML,
@@ -80,20 +96,32 @@ def main() -> None:
             row["source_id"]: row for row in csv.DictReader(stream)
         }
 
-    node_migrations = {
-        row["legacy_key"]: migration_record(row)
+    node_crosswalk = {
+        row["legacy_key"]: row
         for row in crosswalk_rows
         if row["record_type"] == "node"
     }
-    edge_migrations = {
-        row["legacy_key"]: migration_record(row)
+    edge_crosswalk = {
+        row["legacy_key"]: row
         for row in crosswalk_rows
         if row["record_type"] == "edge"
     }
 
+    generated_crosswalk_records: list[dict[str, Any]] = []
     legacy_nodes: list[dict[str, Any]] = []
     for node in legacy_source["nodes"]:
         legacy_id = node["id"]
+        crosswalk_row = node_crosswalk.get(legacy_id)
+        if crosswalk_row and (
+            crosswalk_row["legacy_label"] != node["label"]
+            or crosswalk_row["legacy_group"] != node["group"]
+        ):
+            raise SystemExit(f"Legacy node crosswalk drift: {legacy_id}")
+        migration = (
+            migration_record(crosswalk_row)
+            if crosswalk_row
+            else unmapped_migration(legacy_id)
+        )
         legacy_nodes.append(
             {
                 "id": legacy_id,
@@ -103,13 +131,48 @@ def main() -> None:
                 "period": node.get("period", ""),
                 "title": node.get("title", ""),
                 "legacy_reliability": node.get("reliability", ""),
-                "migration": node_migrations[legacy_id],
+                "migration": migration,
+            }
+        )
+        generated_crosswalk_records.append(
+            {
+                "record_type": "node",
+                "legacy_label": (
+                    crosswalk_row["legacy_label"]
+                    if crosswalk_row
+                    else node["label"]
+                ),
+                "legacy_group": (
+                    crosswalk_row["legacy_group"]
+                    if crosswalk_row
+                    else node["group"]
+                ),
+                "legacy_reliability": (
+                    crosswalk_row["legacy_reliability"]
+                    if crosswalk_row
+                    else node.get("reliability", "")
+                ),
+                "legacy_period": (
+                    crosswalk_row["legacy_period"]
+                    if crosswalk_row
+                    else node.get("period", "")
+                ),
+                **migration,
             }
         )
 
     legacy_edges: list[dict[str, Any]] = []
     for index, edge in enumerate(legacy_source["edges"], start=1):
         legacy_id = f"legacy-edge-{index:03d}"
+        crosswalk_row = edge_crosswalk.get(legacy_id)
+        edge_label = f"{edge['from']} --{edge['label']}--> {edge['to']}"
+        if crosswalk_row and crosswalk_row["legacy_label"] != edge_label:
+            raise SystemExit(f"Legacy edge crosswalk drift: {legacy_id}")
+        migration = (
+            migration_record(crosswalk_row)
+            if crosswalk_row
+            else unmapped_migration(legacy_id)
+        )
         legacy_edges.append(
             {
                 "id": legacy_id,
@@ -117,7 +180,33 @@ def main() -> None:
                 "to": edge["to"],
                 "label": edge["label"],
                 "period": edge.get("period", ""),
-                "migration": edge_migrations[legacy_id],
+                "migration": migration,
+            }
+        )
+        generated_crosswalk_records.append(
+            {
+                "record_type": "edge",
+                "legacy_label": (
+                    crosswalk_row["legacy_label"]
+                    if crosswalk_row
+                    else edge_label
+                ),
+                "legacy_group": (
+                    crosswalk_row["legacy_group"]
+                    if crosswalk_row
+                    else "relation"
+                ),
+                "legacy_reliability": (
+                    crosswalk_row["legacy_reliability"]
+                    if crosswalk_row
+                    else ""
+                ),
+                "legacy_period": (
+                    crosswalk_row["legacy_period"]
+                    if crosswalk_row
+                    else edge.get("period", "")
+                ),
+                **migration,
             }
         )
 
@@ -139,17 +228,7 @@ def main() -> None:
         "schema_version": "1.0",
         "warning": "迁移映射只说明索引去向；不得据此合并身份、生成关系或升级证据。",
         "source_digest": sha256(CROSSWALK),
-        "records": [
-            {
-                "record_type": row["record_type"],
-                "legacy_label": row["legacy_label"],
-                "legacy_group": row["legacy_group"],
-                "legacy_reliability": row["legacy_reliability"],
-                "legacy_period": row["legacy_period"],
-                **migration_record(row),
-            }
-            for row in crosswalk_rows
-        ],
+        "records": generated_crosswalk_records,
     }
 
     audit_sources: list[dict[str, Any]] = []
