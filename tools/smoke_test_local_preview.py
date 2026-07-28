@@ -12,6 +12,8 @@ import urllib.parse
 import urllib.request
 from pathlib import Path
 
+from graph_wiki_contract import EXPECTED_COUNTS as EXPECTED_GRAPH_COUNTS
+
 
 PAGES = [
     "/",
@@ -64,19 +66,20 @@ FORBIDDEN_NOVEL_RAW_SOURCES = {
     "/novel/hero-wuming/hero-wuming.docx",
 }
 GRAPH_MANIFEST = "/data/graph/manifest.json"
-EXPECTED_GRAPH_COUNTS = {
-    "audit_sources": 131,
-    "audit_claims": 211,
-    "audit_nodes": 229,
-    "audit_edges": 127,
-    "legacy_nodes": 107,
-    "legacy_edges": 151,
-    "crosswalk_records": 258,
-}
 GRAPH_OUTPUTS = {
     "audit-graph.json": ("nodes", 229, "edges", 127),
-    "legacy-graph.json": ("nodes", 107, "edges", 151),
-    "legacy-crosswalk.json": ("records", 258, None, None),
+    "legacy-graph.json": (
+        "nodes",
+        EXPECTED_GRAPH_COUNTS["legacy_nodes"],
+        "edges",
+        EXPECTED_GRAPH_COUNTS["legacy_edges"],
+    ),
+    "legacy-crosswalk.json": (
+        "records",
+        EXPECTED_GRAPH_COUNTS["crosswalk_records"],
+        None,
+        None,
+    ),
 }
 JSON_ENDPOINTS = [
     "/data/persons.json",

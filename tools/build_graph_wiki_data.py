@@ -15,6 +15,8 @@ import json
 from pathlib import Path
 from typing import Any
 
+from graph_wiki_contract import assess_append_only_legacy_drift
+
 
 SITE_ROOT = Path(__file__).resolve().parents[1]
 WORKSPACE_ROOT = SITE_ROOT.parents[2]
@@ -79,6 +81,29 @@ def main() -> None:
         source_registry = {
             row["source_id"]: row for row in csv.DictReader(stream)
         }
+
+    approved_legacy_path = OUTPUT_ROOT / "legacy-graph.json"
+    if approved_legacy_path.is_file():
+        approved_legacy = json.loads(approved_legacy_path.read_text(encoding="utf-8"))
+        try:
+            quarantined = assess_append_only_legacy_drift(
+                approved_legacy,
+                legacy_source,
+                LEGACY_HTML,
+                CROSSWALK,
+            )
+        except ValueError as error:
+            raise SystemExit(f"Legacy graph drift is unsafe: {error}") from error
+        if quarantined is not None:
+            print(
+                "graph-wiki build preserved approved Legacy projection:",
+                f"{quarantined['approved_nodes']}/{quarantined['approved_edges']} approved,",
+                f"{quarantined['quarantined_modified_nodes']}/"
+                f"{quarantined['quarantined_modified_edges']} modified and",
+                f"{quarantined['quarantined_nodes']}/{quarantined['quarantined_edges']} "
+                "additions quarantined",
+            )
+            return
 
     node_migrations = {
         row["legacy_key"]: migration_record(row)

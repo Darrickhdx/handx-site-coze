@@ -8,6 +8,11 @@ import json
 from pathlib import Path
 from typing import Any, Iterable
 
+from graph_wiki_contract import (
+    EXPECTED_COUNTS,
+    assess_append_only_legacy_drift,
+)
+
 
 SITE_ROOT = Path(__file__).resolve().parents[1]
 WORKSPACE_ROOT = SITE_ROOT.parents[2]
@@ -21,17 +26,6 @@ INPUTS = {
     "legacy_crosswalk": CORPUS_ROOT / "苏开元重启" / "28-旧知识图谱交叉映射.csv",
     "source_registry": CORPUS_ROOT / "苏开元重启" / "01-来源登记表.csv",
 }
-
-EXPECTED_COUNTS = {
-    "audit_sources": 131,
-    "audit_claims": 211,
-    "audit_nodes": 229,
-    "audit_edges": 127,
-    "legacy_nodes": 107,
-    "legacy_edges": 151,
-    "crosswalk_records": 258,
-}
-
 
 def sha256(path: Path) -> str:
     digest = hashlib.sha256()
@@ -80,12 +74,30 @@ def main() -> None:
         "privacy contract changed",
     )
 
+    drifted_inputs: list[str] = []
     for key, path in INPUTS.items():
         require(path.is_file(), f"missing input {path.name}")
+        if manifest["inputs"][key]["sha256"] != sha256(path):
+            drifted_inputs.append(key)
+
+    quarantine: dict[str, int] | None = None
+    if drifted_inputs:
         require(
-            manifest["inputs"][key]["sha256"] == sha256(path),
-            f"input digest drift for {path.name}; rebuild graph-wiki data",
+            set(drifted_inputs) == {"legacy_html", "legacy_graph"},
+            f"unsafe input digest drift: {', '.join(drifted_inputs)}",
         )
+        try:
+            quarantine = assess_append_only_legacy_drift(
+                legacy,
+                json.loads(INPUTS["legacy_graph"].read_text(encoding="utf-8")),
+                INPUTS["legacy_html"],
+                INPUTS["legacy_crosswalk"],
+            )
+        except ValueError as error:
+            raise SystemExit(
+                f"graph-wiki verification failed: unsafe Legacy drift: {error}"
+            ) from error
+        require(quarantine is not None, "Legacy digest drift has no additions")
 
     for filename, expected_digest in manifest["outputs"].items():
         require(sha256(OUTPUT_ROOT / filename) == expected_digest, f"output drift: {filename}")
@@ -207,7 +219,17 @@ def main() -> None:
         "graph-wiki verified:",
         f"audit {len(entity_ids)}/{len(audit['edges'])}/{len(claim_ids)}/{len(source_ids)},",
         f"legacy {len(legacy_node_ids)}/{len(legacy_edge_ids)},",
-        f"crosswalk {len(crosswalk['records'])}",
+        f"crosswalk {len(crosswalk['records'])},",
+        (
+            "upstream current"
+            if quarantine is None
+            else (
+                f"quarantined changed {quarantine['quarantined_modified_nodes']} nodes/"
+                f"{quarantine['quarantined_modified_edges']} edges and added "
+                f"{quarantine['quarantined_nodes']} nodes/"
+                f"{quarantine['quarantined_edges']} edges"
+            )
+        ),
     )
 
 
