@@ -63,3 +63,13 @@
 
 - 模板默认预装核心组件库 `shadcn/ui`，位于`src/components/ui/`目录下
 - Next.js 项目**必须默认**采用 shadcn/ui 组件、风格和规范，**除非用户指定用其他的组件和规范。**
+
+## Agent skills
+
+### Issue tracker
+
+本项目使用 `.scratch/` 下的本地 Markdown 规格与任务，不进行外部 Issue 写入。详见 `docs/agents/issue-tracker.md`。
+
+### Domain docs
+
+本项目采用单一领域上下文：领域词汇保存在根目录 `CONTEXT.md`，重要架构决策保存在 `docs/adr/`。详见 `docs/agents/domain.md`。
