@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import {
   ArrowRight,
   BookOpenText,
@@ -57,6 +57,49 @@ export default function GraphPage() {
   );
   const activeStep = activeRoute?.steps[activeStepIndex];
 
+  const replaceGraphUrl = (values: {
+    mode: 'story' | 'research';
+    route?: string | null;
+    step?: number;
+    focus?: string | null;
+  }) => {
+    if (typeof window === 'undefined') return;
+    const url = new URL(window.location.href);
+    url.searchParams.set('mode', values.mode);
+    if (values.mode === 'story' && values.route) {
+      url.searchParams.set('route', values.route);
+      url.searchParams.set('step', String(values.step ?? 0));
+    } else {
+      url.searchParams.delete('route');
+      url.searchParams.delete('step');
+    }
+    if (values.focus) url.searchParams.set('focus', values.focus);
+    else url.searchParams.delete('focus');
+    window.history.replaceState(null, '', `${url.pathname}?${url.searchParams.toString()}`);
+  };
+
+  useEffect(() => {
+    const params = new URL(window.location.href).searchParams;
+    const requestedMode = params.get('mode');
+    if (requestedMode === 'research') {
+      setViewMode('research');
+      return;
+    }
+    const requestedRoute = graphStoryRoutes.find((route) => route.id === params.get('route'));
+    const requestedStep = Number.parseInt(params.get('step') ?? '0', 10);
+    const safeStep = requestedRoute
+      ? Math.min(Math.max(Number.isFinite(requestedStep) ? requestedStep : 0, 0), requestedRoute.steps.length - 1)
+      : 0;
+    const requestedFocus = params.get('focus');
+    const focusNode = graphNodes.find((node) => node.id === requestedFocus)
+      ?? graphNodes.find((node) => node.id === requestedRoute?.steps[safeStep]?.nodeId);
+    if (requestedRoute) {
+      setActiveRouteId(requestedRoute.id);
+      setActiveStepIndex(safeStep);
+    }
+    if (focusNode) setSelectedNode(focusNode);
+  }, []);
+
   const openRoute = (routeId: string) => {
     const route = graphStoryRoutes.find((item) => item.id === routeId);
     setActiveRouteId(routeId);
@@ -64,6 +107,12 @@ export default function GraphPage() {
     setSelectedNode(
       graphNodes.find((node) => node.id === route?.steps[0]?.nodeId) ?? null,
     );
+    replaceGraphUrl({
+      mode: 'story',
+      route: routeId,
+      step: 0,
+      focus: route?.steps[0]?.nodeId ?? null,
+    });
   };
 
   const openStep = (stepIndex: number) => {
@@ -71,6 +120,7 @@ export default function GraphPage() {
     if (!step) return;
     setActiveStepIndex(stepIndex);
     setSelectedNode(graphNodes.find((node) => node.id === step.nodeId) ?? null);
+    replaceGraphUrl({ mode: 'story', route: activeRoute?.id, step: stepIndex, focus: step.nodeId });
   };
 
   return (
@@ -111,7 +161,10 @@ export default function GraphPage() {
         <div className="personal-shell grid gap-px bg-foreground/15 sm:grid-cols-2">
           <button
             type="button"
-            onClick={() => setViewMode('story')}
+            onClick={() => {
+              setViewMode('story');
+              replaceGraphUrl({ mode: 'story', route: activeRouteId, step: activeStepIndex, focus: selectedNode?.id });
+            }}
             className={cn(
               'group min-h-32 bg-background p-6 text-left transition-colors hover:bg-card focus-visible:outline-2 focus-visible:outline-offset-[-3px] focus-visible:outline-primary',
               viewMode === 'story' && 'bg-card',
@@ -126,7 +179,10 @@ export default function GraphPage() {
           </button>
           <button
             type="button"
-            onClick={() => setViewMode('research')}
+            onClick={() => {
+              setViewMode('research');
+              replaceGraphUrl({ mode: 'research', focus: null });
+            }}
             className={cn(
               'group min-h-32 bg-background p-6 text-left transition-colors hover:bg-card focus-visible:outline-2 focus-visible:outline-offset-[-3px] focus-visible:outline-primary',
               viewMode === 'research' && 'bg-card',
@@ -207,6 +263,7 @@ export default function GraphPage() {
                 setSelectedNode(node);
                 setActiveRouteId(null);
                 setActiveStepIndex(0);
+                replaceGraphUrl({ mode: 'story', focus: node.id });
               }}
               selectedNodeId={selectedNode?.id}
               className="rounded-none border-foreground/15"
@@ -275,7 +332,7 @@ export default function GraphPage() {
                       {rawNode.source_ids.map((sourceId) => (
                         <Link
                           key={sourceId}
-                          href={`/archives#${sourceId}`}
+                          href={`/archives/${encodeURIComponent(sourceId)}`}
                           className="inline-flex min-h-9 items-center gap-1.5 border border-foreground/15 px-3 text-xs text-foreground transition-colors hover:border-primary hover:text-primary"
                         >
                           <FileText className="size-3.5" aria-hidden="true" />

@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
-"""Build the local-only audited graph, Legacy clue graph, and migration manifest.
+"""Build frozen public graph data plus an opaque local drift inbox.
 
-The generated client data is deliberately narrower than the source corpus:
-- the audited graph comes only from the P0/P1 public projection;
-- Legacy node ``detail`` text is never copied;
-- crosswalk decisions stay advisory and never create audited facts.
+The visitor-facing Legacy projection always comes from the approved 2026-07-20
+baseline.  Live Legacy additions can only update a count-only public summary and
+an ignored, local-only review inbox; they can never become facts or client data.
 """
 
 from __future__ import annotations
@@ -25,11 +24,15 @@ CORPUS_ROOT = WORKSPACE_ROOT / "AI小说"
 
 LEGACY_HTML = CORPUS_ROOT / "知识图谱" / "苏开元知识图谱-交互版.html"
 LEGACY_GRAPH = CORPUS_ROOT / "知识图谱" / "graph-data.json"
+LEGACY_BASELINE = CORPUS_ROOT / "知识图谱" / "graph-data.backup-20260720.json"
 AUDIT_GRAPH = CORPUS_ROOT / "苏开元重启" / "05-知识图谱-公开版.json"
 CROSSWALK = CORPUS_ROOT / "苏开元重启" / "28-旧知识图谱交叉映射.csv"
+DRIFT_INVENTORY = CORPUS_ROOT / "苏开元重启" / "40-Legacy增量隔离处置.csv"
 SOURCE_REGISTRY = CORPUS_ROOT / "苏开元重启" / "01-来源登记表.csv"
 
 OUTPUT_ROOT = SITE_ROOT / "public" / "data" / "graph"
+PRIVATE_RUNTIME_ROOT = SITE_ROOT / "private-runtime"
+PRIVATE_MIGRATION_INBOX = PRIVATE_RUNTIME_ROOT / "graph-migration-inbox.json"
 
 
 def sha256(path: Path) -> str:
@@ -63,6 +66,24 @@ def migration_record(row: dict[str, str]) -> dict[str, Any]:
     }
 
 
+def safe_quarantine_summary(quarantine: dict[str, int]) -> dict[str, int]:
+    return {
+        key: int(quarantine[key])
+        for key in (
+            "approved_nodes",
+            "approved_edges",
+            "quarantined_modified_nodes",
+            "quarantined_modified_edges",
+            "quarantined_public_node_field_changes",
+            "quarantined_public_edge_field_changes",
+            "quarantined_nodes",
+            "quarantined_edges",
+            "quarantined_inventory_records",
+            "quarantined_blocked_records",
+        )
+    }
+
+
 def build_audit_bundle(
     audit_source: dict[str, Any],
     source_registry: dict[str, dict[str, str]],
@@ -73,8 +94,7 @@ def build_audit_bundle(
         canonical_path = registry.get("canonical_path", "").strip()
         public_url = (
             canonical_path
-            if canonical_path.startswith("https://")
-            and source["public_tier"] == "P0"
+            if canonical_path.startswith("https://") and source["public_tier"] == "P0"
             else ""
         )
         carrier_status = registry.get("carrier_status", "")
@@ -82,10 +102,7 @@ def build_audit_bundle(
             bool(canonical_path)
             and not canonical_path.startswith(("http://", "https://"))
         ) or "本地" in " ".join(
-            [
-                registry.get("access_scope", ""),
-                registry.get("notes", ""),
-            ]
+            [registry.get("access_scope", ""), registry.get("notes", "")]
         )
         audit_sources.append(
             {
@@ -105,7 +122,6 @@ def build_audit_bundle(
                 ),
             }
         )
-
     return {
         "schema_version": audit_source["schema_version"],
         "layer": "audited_public_projection",
@@ -120,91 +136,10 @@ def build_audit_bundle(
     }
 
 
-def refresh_audit_while_legacy_is_quarantined(
-    audit_bundle: dict[str, Any],
-    audit_source: dict[str, Any],
-) -> None:
-    manifest_path = OUTPUT_ROOT / "manifest.json"
-    if not manifest_path.is_file():
-        raise SystemExit("Cannot quarantine Legacy drift without an approved manifest")
-    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-    audit_path = OUTPUT_ROOT / "audit-graph.json"
-    audit_path.write_bytes(json_bytes(audit_bundle))
-
-    manifest["source_generated_at_utc"] = audit_source["generated_at_utc"]
-    manifest["inputs"]["audit_graph"] = {
-        "filename": AUDIT_GRAPH.name,
-        "sha256": sha256(AUDIT_GRAPH),
-    }
-    manifest["inputs"]["source_registry"] = {
-        "filename": SOURCE_REGISTRY.name,
-        "sha256": sha256(SOURCE_REGISTRY),
-    }
-    manifest["counts"].update(
-        {
-            "audit_sources": len(audit_bundle["sources"]),
-            "audit_claims": len(audit_bundle["claims"]),
-            "audit_nodes": len(audit_bundle["nodes"]),
-            "audit_edges": len(audit_bundle["edges"]),
-        }
-    )
-    manifest["outputs"]["audit-graph.json"] = sha256(audit_path)
-    manifest_path.write_bytes(json_bytes(manifest))
-
-
-def main() -> None:
-    for path in (
-        LEGACY_HTML,
-        LEGACY_GRAPH,
-        AUDIT_GRAPH,
-        CROSSWALK,
-        SOURCE_REGISTRY,
-    ):
-        if not path.is_file():
-            raise SystemExit(f"Required graph input is missing: {path.name}")
-
-    legacy_source = json.loads(LEGACY_GRAPH.read_text(encoding="utf-8"))
-    audit_source = json.loads(AUDIT_GRAPH.read_text(encoding="utf-8"))
-    with CROSSWALK.open(newline="", encoding="utf-8-sig") as stream:
-        crosswalk_rows = list(csv.DictReader(stream))
-    with SOURCE_REGISTRY.open(newline="", encoding="utf-8-sig") as stream:
-        source_registry = {
-            row["source_id"]: row for row in csv.DictReader(stream)
-        }
-
-    audit_bundle = build_audit_bundle(audit_source, source_registry)
-    approved_legacy_path = OUTPUT_ROOT / "legacy-graph.json"
-    refresh_legacy_authorized = os.environ.get("ALLOW_LEGACY_GRAPH_REFRESH") == "1"
-    if approved_legacy_path.is_file() and not refresh_legacy_authorized:
-        approved_legacy = json.loads(approved_legacy_path.read_text(encoding="utf-8"))
-        try:
-            quarantined = assess_quarantinable_legacy_drift(
-                approved_legacy,
-                legacy_source,
-                LEGACY_HTML,
-                CROSSWALK,
-            )
-        except ValueError as error:
-            raise SystemExit(
-                "Legacy graph drift requires review; after completing the "
-                "crosswalk, rerun with ALLOW_LEGACY_GRAPH_REFRESH=1: "
-                f"{error}"
-            ) from error
-        if quarantined is not None:
-            refresh_audit_while_legacy_is_quarantined(
-                audit_bundle,
-                audit_source,
-            )
-            print(
-                "graph-wiki build preserved approved Legacy projection:",
-                f"{quarantined['approved_nodes']}/{quarantined['approved_edges']} approved,",
-                f"{quarantined['quarantined_modified_nodes']}/"
-                f"{quarantined['quarantined_modified_edges']} modified and",
-                f"{quarantined['quarantined_nodes']}/{quarantined['quarantined_edges']} "
-                "additions quarantined; audited projection refreshed",
-            )
-            return
-
+def build_approved_legacy_bundle(
+    baseline: dict[str, Any],
+    crosswalk_rows: list[dict[str, str]],
+) -> dict[str, Any]:
     node_migrations = {
         row["legacy_key"]: migration_record(row)
         for row in crosswalk_rows
@@ -215,40 +150,31 @@ def main() -> None:
         for row in crosswalk_rows
         if row["record_type"] == "edge"
     }
-    missing_node_migrations = {
-        node["id"] for node in legacy_source["nodes"]
-    } - node_migrations.keys()
-    missing_edge_migrations = {
+    expected_nodes = {node["id"] for node in baseline["nodes"]}
+    expected_edges = {
         f"legacy-edge-{index:03d}"
-        for index, _edge in enumerate(legacy_source["edges"], start=1)
-    } - edge_migrations.keys()
-    if missing_node_migrations or missing_edge_migrations:
-        raise SystemExit(
-            "Legacy graph refresh requires a complete crosswalk: "
-            f"{len(missing_node_migrations)} node(s), "
-            f"{len(missing_edge_migrations)} edge(s) missing"
-        )
+        for index, _edge in enumerate(baseline["edges"], start=1)
+    }
+    if set(node_migrations) != expected_nodes or set(edge_migrations) != expected_edges:
+        raise SystemExit("Approved Legacy crosswalk no longer matches the frozen baseline")
 
-    legacy_nodes: list[dict[str, Any]] = []
-    for node in legacy_source["nodes"]:
-        legacy_id = node["id"]
-        legacy_nodes.append(
-            {
-                "id": legacy_id,
-                "label": node["label"],
-                "group": node["group"],
-                "subgroup": node.get("subgroup", ""),
-                "period": node.get("period", ""),
-                "title": node.get("title", ""),
-                "legacy_reliability": node.get("reliability", ""),
-                "migration": node_migrations[legacy_id],
-            }
-        )
-
-    legacy_edges: list[dict[str, Any]] = []
-    for index, edge in enumerate(legacy_source["edges"], start=1):
+    nodes = [
+        {
+            "id": node["id"],
+            "label": node["label"],
+            "group": node["group"],
+            "subgroup": node.get("subgroup", ""),
+            "period": node.get("period", ""),
+            "title": node.get("title", ""),
+            "legacy_reliability": node.get("reliability", ""),
+            "migration": node_migrations[node["id"]],
+        }
+        for node in baseline["nodes"]
+    ]
+    edges = []
+    for index, edge in enumerate(baseline["edges"], start=1):
         legacy_id = f"legacy-edge-{index:03d}"
-        legacy_edges.append(
+        edges.append(
             {
                 "id": legacy_id,
                 "from": edge["from"],
@@ -258,22 +184,23 @@ def main() -> None:
                 "migration": edge_migrations[legacy_id],
             }
         )
-
-    legacy_bundle = {
+    return {
         "schema_version": "1.0",
         "layer": "legacy_clue_only",
         "warning": (
             "这是旧研究候选索引，不是事实图。旧详情、A/B/C评级和关系均未迁移为"
             "新版事实；请通过迁移裁决与新版主张重新核验。"
         ),
-        "source_digest": sha256(LEGACY_GRAPH),
-        "source_built": legacy_source.get("meta", {}).get("built", ""),
-        "periods": legacy_source.get("meta", {}).get("periods", []),
-        "nodes": legacy_nodes,
-        "edges": legacy_edges,
+        "source_digest": sha256(LEGACY_BASELINE),
+        "source_built": baseline.get("meta", {}).get("built", ""),
+        "periods": baseline.get("meta", {}).get("periods", []),
+        "nodes": nodes,
+        "edges": edges,
     }
 
-    crosswalk_bundle = {
+
+def build_crosswalk_bundle(crosswalk_rows: list[dict[str, str]]) -> dict[str, Any]:
+    return {
         "schema_version": "1.0",
         "warning": "迁移映射只说明索引去向；不得据此合并身份、生成关系或升级证据。",
         "source_digest": sha256(CROSSWALK),
@@ -290,43 +217,186 @@ def main() -> None:
         ],
     }
 
-    OUTPUT_ROOT.mkdir(parents=True, exist_ok=True)
+
+def build_drift_summary(
+    quarantine: dict[str, int] | None,
+    live_graph: dict[str, Any],
+    approved_legacy: dict[str, Any],
+) -> dict[str, Any]:
+    active = quarantine is not None
+    return {
+        "schema_version": "1.0",
+        "project": "Handx web0.1",
+        "must_not_deploy": True,
+        "status": "quarantined" if active else "approved_current",
+        "message": (
+            "上游 Legacy 候选已隔离登记，未进入访客图谱。"
+            if active
+            else "上游 Legacy 数据与批准投影一致。"
+        ),
+        "approved_projection": {
+            "nodes": len(approved_legacy["nodes"]),
+            "edges": len(approved_legacy["edges"]),
+        },
+        "upstream_observed": {
+            "nodes": len(live_graph["nodes"]),
+            "edges": len(live_graph["edges"]),
+        },
+        "review": safe_quarantine_summary(quarantine) if quarantine else {},
+        "privacy": {
+            "record_ids_included": False,
+            "labels_included": False,
+            "edge_endpoints_included": False,
+            "legacy_detail_included": False,
+            "absolute_paths_included": False,
+        },
+    }
+
+
+def build_private_migration_inbox(
+    quarantine: dict[str, int] | None,
+    drift_rows: list[dict[str, str]],
+) -> dict[str, Any]:
+    records = [
+        {
+            "opaque_key": row["opaque_key"],
+            "record_type": row["record_type"],
+            "change_type": row["change_type"],
+            "source_position": row["source_position"],
+            "record_sha256": row["record_sha256"],
+            "privacy_tier": "P2_or_P3_review",
+            "person_status": (
+                "not_assessed" if row["record_type"] == "node" else "not_applicable"
+            ),
+            "consent_status": "not_assessed",
+            "evidence_scope": "legacy_clue_only",
+            "fact_status": row["migration_status"],
+            "rights_status": "not_assessed",
+            "publication_status": "local_only",
+            "risk_flags": split_ids(row["risk_flags"]),
+            "decision": row["decision"],
+        }
+        for row in drift_rows
+    ] if quarantine else []
+    return {
+        "schema_version": "1.0",
+        "project": "Handx web0.1",
+        "must_not_deploy": True,
+        "status": "read_only_review",
+        "summary": safe_quarantine_summary(quarantine) if quarantine else {},
+        "records": records,
+    }
+
+
+def atomic_write_json(path: Path, value: Any) -> None:
+    temporary = path.with_suffix(path.suffix + ".tmp")
+    temporary.write_bytes(json_bytes(value))
+    os.replace(temporary, path)
+
+
+def write_private_migration_inbox(payload: dict[str, Any]) -> None:
+    PRIVATE_RUNTIME_ROOT.mkdir(mode=0o700, parents=True, exist_ok=True)
+    os.chmod(PRIVATE_RUNTIME_ROOT, 0o700)
+    atomic_write_json(PRIVATE_MIGRATION_INBOX, payload)
+    os.chmod(PRIVATE_MIGRATION_INBOX, 0o600)
+
+
+def main() -> None:
+    required = (
+        LEGACY_HTML,
+        LEGACY_GRAPH,
+        LEGACY_BASELINE,
+        AUDIT_GRAPH,
+        CROSSWALK,
+        DRIFT_INVENTORY,
+        SOURCE_REGISTRY,
+    )
+    for path in required:
+        if not path.is_file():
+            raise SystemExit(f"Required graph input is missing: {path.name}")
+    if os.environ.get("ALLOW_LEGACY_GRAPH_REFRESH") == "1":
+        raise SystemExit(
+            "ALLOW_LEGACY_GRAPH_REFRESH is not an approval. "
+            "Migrate records into the audited claim graph and review them individually."
+        )
+
+    live_graph = json.loads(LEGACY_GRAPH.read_text(encoding="utf-8"))
+    baseline_graph = json.loads(LEGACY_BASELINE.read_text(encoding="utf-8"))
+    audit_source = json.loads(AUDIT_GRAPH.read_text(encoding="utf-8"))
+    with CROSSWALK.open(newline="", encoding="utf-8-sig") as stream:
+        crosswalk_rows = list(csv.DictReader(stream))
+    with DRIFT_INVENTORY.open(newline="", encoding="utf-8-sig") as stream:
+        drift_rows = list(csv.DictReader(stream))
+    with SOURCE_REGISTRY.open(newline="", encoding="utf-8-sig") as stream:
+        source_registry = {row["source_id"]: row for row in csv.DictReader(stream)}
+
+    audit_bundle = build_audit_bundle(audit_source, source_registry)
+    approved_legacy = build_approved_legacy_bundle(baseline_graph, crosswalk_rows)
+    crosswalk_bundle = build_crosswalk_bundle(crosswalk_rows)
+    try:
+        quarantine = assess_quarantinable_legacy_drift(
+            approved_legacy,
+            baseline_graph,
+            live_graph,
+            LEGACY_HTML,
+            CROSSWALK,
+            DRIFT_INVENTORY,
+            baseline_sha256=sha256(LEGACY_BASELINE),
+            live_sha256=sha256(LEGACY_GRAPH),
+        )
+    except ValueError as error:
+        raise SystemExit(f"Legacy graph drift is unsafe: {error}") from error
+
+    drift_summary = build_drift_summary(quarantine, live_graph, approved_legacy)
     output_values = {
         "audit-graph.json": audit_bundle,
-        "legacy-graph.json": legacy_bundle,
+        "legacy-graph.json": approved_legacy,
         "legacy-crosswalk.json": crosswalk_bundle,
+        "legacy-drift-summary.json": drift_summary,
     }
-    output_hashes: dict[str, str] = {}
+    OUTPUT_ROOT.mkdir(parents=True, exist_ok=True)
     for filename, value in output_values.items():
-        output_path = OUTPUT_ROOT / filename
-        output_path.write_bytes(json_bytes(value))
-        output_hashes[filename] = sha256(output_path)
+        atomic_write_json(OUTPUT_ROOT / filename, value)
+    output_hashes = {
+        filename: sha256(OUTPUT_ROOT / filename) for filename in output_values
+    }
 
+    review = safe_quarantine_summary(quarantine) if quarantine else {}
     manifest = {
-        "schema_version": "1.0",
+        "schema_version": "1.1",
         "project": "Handx web0.1",
         "must_not_deploy": True,
         "source_generated_at_utc": audit_source["generated_at_utc"],
         "inputs": {
-            "legacy_html": {
-                "filename": LEGACY_HTML.name,
-                "sha256": sha256(LEGACY_HTML),
-            },
-            "legacy_graph": {
-                "filename": LEGACY_GRAPH.name,
-                "sha256": sha256(LEGACY_GRAPH),
-            },
-            "audit_graph": {
-                "filename": AUDIT_GRAPH.name,
-                "sha256": sha256(AUDIT_GRAPH),
+            "legacy_baseline": {
+                "filename": LEGACY_BASELINE.name,
+                "sha256": sha256(LEGACY_BASELINE),
             },
             "legacy_crosswalk": {
                 "filename": CROSSWALK.name,
                 "sha256": sha256(CROSSWALK),
             },
+            "audit_graph": {
+                "filename": AUDIT_GRAPH.name,
+                "sha256": sha256(AUDIT_GRAPH),
+            },
             "source_registry": {
                 "filename": SOURCE_REGISTRY.name,
                 "sha256": sha256(SOURCE_REGISTRY),
+            },
+        },
+        "quarantine": {
+            "status": "active" if quarantine else "clear",
+            "review": review,
+            "current_inputs": {
+                "legacy_html_sha256": sha256(LEGACY_HTML),
+                "legacy_graph_sha256": sha256(LEGACY_GRAPH),
+                "drift_inventory_sha256": sha256(DRIFT_INVENTORY),
+            },
+            "private_inbox": {
+                "generated": True,
+                "served_to_browser": False,
+                "record_count": len(drift_rows) if quarantine else 0,
             },
         },
         "counts": {
@@ -334,8 +404,8 @@ def main() -> None:
             "audit_claims": len(audit_bundle["claims"]),
             "audit_nodes": len(audit_bundle["nodes"]),
             "audit_edges": len(audit_bundle["edges"]),
-            "legacy_nodes": len(legacy_bundle["nodes"]),
-            "legacy_edges": len(legacy_bundle["edges"]),
+            "legacy_nodes": len(approved_legacy["nodes"]),
+            "legacy_edges": len(approved_legacy["edges"]),
             "crosswalk_records": len(crosswalk_bundle["records"]),
         },
         "privacy": {
@@ -343,17 +413,24 @@ def main() -> None:
             "legacy_detail_included": False,
             "absolute_paths_included": False,
             "crosswalk_creates_facts": False,
+            "quarantine_details_included": False,
         },
         "outputs": output_hashes,
     }
-    (OUTPUT_ROOT / "manifest.json").write_bytes(json_bytes(manifest))
-
-    print(
-        "graph-wiki data built:",
-        f"audit {len(audit_bundle['nodes'])}/{len(audit_bundle['edges'])},",
-        f"legacy {len(legacy_bundle['nodes'])}/{len(legacy_bundle['edges'])},",
-        f"crosswalk {len(crosswalk_bundle['records'])}",
+    atomic_write_json(OUTPUT_ROOT / "manifest.json", manifest)
+    write_private_migration_inbox(
+        build_private_migration_inbox(quarantine, drift_rows)
     )
+
+    if quarantine:
+        print(
+            "graph-wiki data built with Legacy quarantine:",
+            f"audit {len(audit_bundle['nodes'])}/{len(audit_bundle['edges'])},",
+            f"approved Legacy {len(approved_legacy['nodes'])}/{len(approved_legacy['edges'])},",
+            f"blocked drift {quarantine['quarantined_inventory_records']} records",
+        )
+    else:
+        print("graph-wiki data built: upstream Legacy matches approved projection")
 
 
 if __name__ == "__main__":

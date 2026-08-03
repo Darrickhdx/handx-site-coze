@@ -1,106 +1,106 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight, User } from 'lucide-react';
-import { PageHeader } from '@/components/section-header';
+import { ArrowRight, Network, ShieldCheck, UsersRound } from 'lucide-react';
+import { ProjectSectionNav } from '@/components/project-section-nav';
 import {
-  claimRecords,
-  edgeRecords,
-  personNodes,
-  personRelation,
-  personSummaries,
-} from '@/lib/research-data';
-import { cn } from '@/lib/utils';
+  peopleDossiers,
+  personDossierStatusLabels,
+} from '@/content/people-dossiers';
 
-function relatedClaimIds(nodeId: string): string[] {
-  const ids = new Set<string>();
-  for (const claim of claimRecords) {
-    if (
-      claim.subject_id === nodeId ||
-      claim.object_or_value.split(';').includes(nodeId)
-    ) ids.add(claim.claim_id);
-  }
-  for (const edge of edgeRecords) {
-    if (edge.from_entity_id === nodeId || edge.to_entity_id === nodeId) {
-      edge.claim_ids.forEach((claimId) => ids.add(claimId));
-    }
-  }
-  return [...ids];
-}
+export const metadata: Metadata = {
+  title: '人物群像｜苏开元计划中的见证者、同行者与权力背景',
+  description: '从苏开元、李英夫、李大超、朱自清、乔培新与傅作义进入一组有来源、有冲突、不过度补白的人物档案。',
+};
 
 export default function PersonsPage() {
+  const milestoneCount = peopleDossiers.reduce(
+    (total, dossier) => total + dossier.milestones.length,
+    0,
+  );
+
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-16">
-      <PageHeader
-        title="人物索引"
-        subtitle={`当前公开预览层只有${personNodes.length}个人物节点。没有人物节点的人名不会被擅自生成卡片。`}
-      />
-
-      <div className="rounded-xl border border-warning/30 bg-warning/10 p-5 mb-8 text-sm text-muted-foreground">
-        P-001是candidate identity cluster，人物卡只是研究容器，不是连续身份已证证书。
-        “苏开元—苏凯元”身份桥因混合来源依赖暂缓，本页不生成被暂缓的人物节点。
-        李大超目前只出现在1942年编成表主张的文字中，尚未进入previewable人物节点，
-        因此本页不会把他扩写成未经审批的人物档案。
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {personNodes.map((person) => {
-          const candidate = person.entity_id === 'P-001';
-          const claims = relatedClaimIds(person.entity_id);
-          const href = person.entity_id === 'P-001'
-            ? '/person'
-            : undefined;
-          const card = (
-            <div className="h-full bg-card border border-border/40 rounded-xl p-5 shadow-card hover:shadow-float transition-shadow">
-              <div className="flex items-start justify-between gap-3">
-                <div className={cn(
-                  'w-12 h-12 rounded-full flex items-center justify-center border-2',
-                  candidate
-                    ? 'bg-candidate/10 border-dashed border-candidate text-candidate'
-                    : 'bg-confirmed/10 border-confirmed text-confirmed'
-                )}>
-                  <User className="w-5 h-5" />
-                </div>
-                <span className={cn(
-                  'text-xs px-2 py-1 rounded-full font-medium',
-                  candidate ? 'bg-candidate/10 text-candidate' : 'bg-confirmed/10 text-confirmed'
-                )}>
-                  {candidate ? '候选边界保留' : '已确认作者/见证人'}
-                </span>
-              </div>
-              <p className="font-mono text-xs text-primary mt-4">{person.entity_id}</p>
-              <h2 className="font-serif text-xl font-semibold text-foreground mt-1">{person.canonical_label}</h2>
-              {person.variant_label && person.variant_label !== person.canonical_label && (
-                <p className="text-xs text-muted-foreground mt-1">原字形：{person.variant_label}</p>
-              )}
-              <p className="text-sm text-candidate mt-2">{personRelation(person.entity_id)}</p>
-              <p className="mt-2 font-mono text-[11px] leading-relaxed text-muted-foreground">
-                identity_status: {person.identity_status}
+    <div className="min-h-screen bg-[#f4f0e8]">
+      <ProjectSectionNav />
+      <header className="border-b border-white/15 bg-[#202827] text-[#f3efe7]">
+        <div className="personal-shell py-14 sm:py-24">
+          <p className="personal-kicker personal-kicker-light"><span aria-hidden="true" />People constellation</p>
+          <div className="mt-8 grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-end lg:gap-20">
+            <h1 className="font-serif text-[clamp(3.8rem,7.3vw,7.5rem)] font-semibold leading-[0.88] tracking-[-0.065em]">
+              他们不是配角，
+              <br />是证据链的不同位置。
+            </h1>
+            <div>
+              <p className="font-serif text-2xl leading-relaxed text-[#d7cfc2] sm:text-3xl">
+                有人留下证词，有人被写进表格，有人代表无法被主角取代的公共历史。
               </p>
-              <p className="text-sm text-muted-foreground mt-3 leading-relaxed">
-                {personSummaries[person.entity_id]}
+              <p className="mt-6 max-w-2xl text-base leading-8 text-[#bdb9b0]">
+                这里不是名人百科。每张人物卡只选择与苏开元研究直接相关的切面；同名、异写、回忆与冲突不会被剪成一条顺滑生平。
               </p>
-              <div className="mt-4 pt-3 border-t border-border/30 text-xs text-muted-foreground flex justify-between">
-                <span>关联主张 {claims.length}</span>
-                <span>来源载体 {person.source_ids.length}</span>
-              </div>
-              {href && (
-                <p className="mt-4 text-sm text-primary font-medium inline-flex items-center gap-1">
-                  查看边界说明 <ArrowRight className="w-3.5 h-3.5" />
-                </p>
-              )}
             </div>
-          );
-          return href ? <Link key={person.entity_id} href={href}>{card}</Link> : <div key={person.entity_id}>{card}</div>;
-        })}
-      </div>
+          </div>
+          <div className="mt-12 grid gap-px border border-white/15 bg-white/15 sm:grid-cols-3">
+            {[
+              ['策展人物', peopleDossiers.length],
+              ['叙事节点', milestoneCount],
+              ['历史肖像冒用', 0],
+            ].map(([label, value]) => (
+              <div key={label} className="bg-[#202827] p-5">
+                <p className="font-serif text-4xl">{value}</p>
+                <p className="mt-2 text-xs text-[#bdb9b0]">{label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </header>
 
-      <div className="mt-12 bg-surface-container-lowest border border-border/40 rounded-xl p-6">
-        <h2 className="font-serif text-xl font-semibold text-foreground mb-3">收录规则</h2>
-        <ul className="list-disc pl-5 text-sm text-muted-foreground space-y-2">
-          <li>人物必须先进入知识图谱并具备可回指的来源或主张。</li>
-          <li>同名、异写和疑似同人先保留为分离节点，用候选关系连接。</li>
-          <li>未进入previewable层的人物不在本地预览页扩写。</li>
-          <li>在世亲属与私人身份材料默认不公开。</li>
-        </ul>
+      <div className="personal-shell py-14 sm:py-20">
+        <div className="grid gap-px border border-foreground/15 bg-foreground/15 lg:grid-cols-2">
+          {peopleDossiers.map((person, index) => (
+            <article key={person.entityId} className="group grid min-h-[34rem] gap-8 bg-background p-6 sm:grid-cols-[8rem_minmax(0,1fr)] sm:p-8">
+              <div>
+                <div className="grid size-28 place-items-center border border-primary/30 bg-primary/5 font-serif text-5xl text-primary" aria-hidden="true">
+                  {person.initials}
+                </div>
+                <p className="mt-4 font-mono text-[10px] text-muted-foreground">{person.entityId}</p>
+                <p className="mt-2 font-mono text-[10px] text-primary">{String(index + 1).padStart(2, '0')}</p>
+              </div>
+              <div className="flex min-w-0 flex-col">
+                <p className="text-xs font-semibold tracking-[0.12em] text-primary uppercase">{person.eyebrow}</p>
+                <h2 className="mt-3 font-serif text-4xl font-semibold tracking-[-0.04em]">{person.displayName}</h2>
+                <p className="mt-3 text-xs font-semibold text-muted-foreground">{personDossierStatusLabels[person.status]}</p>
+                <p className="mt-7 font-serif text-xl leading-relaxed">{person.oneLine}</p>
+                <p className="mt-5 text-sm leading-7 text-muted-foreground">{person.roleInStory}</p>
+                <div className="mt-auto pt-8">
+                  <div className="mb-5 flex flex-wrap gap-2 text-[10px] text-muted-foreground">
+                    <span className="border border-foreground/15 px-2.5 py-1">{person.milestones.length} 个叙事节点</span>
+                    <span className="border border-foreground/15 px-2.5 py-1">无伪造历史肖像</span>
+                    <span className="border border-foreground/15 px-2.5 py-1">非完整传记</span>
+                  </div>
+                  <Link href={`/persons/${person.entityId}`} className="story-text-link">
+                    打开人物档案 <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                  </Link>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <section className="mt-12 grid gap-px border border-foreground/15 bg-foreground/15 sm:grid-cols-3">
+          {[
+            [UsersRound, '群像，不是英雄名单', '人物按研究角色组织，不按功劳排名。'],
+            [Network, '关系必须回到主张', '同框、并列和同一机构不会自动变成私交。'],
+            [ShieldCheck, '空白也保留形状', '没有照片、年份或任命时，不用 AI 猜出一张完整人生。'],
+          ].map(([Icon, title, description]) => {
+            const CardIcon = Icon as typeof UsersRound;
+            return (
+              <div key={String(title)} className="bg-card p-6">
+                <CardIcon className="size-5 text-primary" aria-hidden="true" />
+                <h2 className="mt-4 font-serif text-xl font-semibold">{String(title)}</h2>
+                <p className="mt-3 text-sm leading-7 text-muted-foreground">{String(description)}</p>
+              </div>
+            );
+          })}
+        </section>
       </div>
     </div>
   );

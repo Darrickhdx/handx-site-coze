@@ -1,4 +1,6 @@
-import { AlertTriangle, HelpCircle, Link2, ShieldAlert } from 'lucide-react';
+import Link from 'next/link';
+import { AlertTriangle, ArrowRight, HelpCircle, Link2, ShieldAlert } from 'lucide-react';
+import { ProjectSectionNav } from '@/components/project-section-nav';
 import { PageHeader } from '@/components/section-header';
 import { identityCandidateClaims, sourceById } from '@/lib/research-data';
 
@@ -18,10 +20,12 @@ export default function ControversiesPage() {
     .filter((source) => source !== undefined);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-16">
+    <div>
+      <ProjectSectionNav />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-16">
       <PageHeader
-        title="争议与未决"
-        subtitle="当前预览没有获准展示的跨姓名轨候选关系；人物主张仍保留identity_link_status与scene门槛。"
+        title="还没查清的问题"
+        subtitle="这里不替空白选择一个更顺的答案，而是说明缺哪一页原件、为什么要停下来，以及下一步去哪里找。"
       />
 
       <section className="mb-12">
@@ -30,21 +34,20 @@ export default function ControversiesPage() {
             <Link2 className="w-7 h-7 text-candidate shrink-0" />
             <div>
               <h2 className="font-serif text-2xl font-bold text-foreground mt-2">
-                跨姓名轨身份桥：暂缓展示
+                两种姓名，是不是同一个人？
               </h2>
               {claim ? (
                 <>
-                  <p className="font-mono text-xs text-candidate mt-2">{claim.claim_id} · {claim.status}</p>
+                  <p className="mt-2 text-xs font-semibold tracking-[0.12em] text-candidate uppercase">身份仍待确认</p>
                   <p className="text-foreground/90 mt-4 leading-relaxed">{claim.quote_or_assertion}</p>
-                  <p className="mt-4 font-mono text-xs font-semibold text-disputed">
-                    scene_eligible={String(claim.scene_eligible)} · identity_link_status={claim.identity_link_status}
+                  <p className="mt-4 text-xs font-semibold text-disputed">
+                    在原始学籍、军籍号或明确异名字段出现前，两条记录仍分开保存。
                   </p>
                 </>
               ) : (
                 <p className="text-foreground/90 mt-4 leading-relaxed">
-                  1929记录与“苏开元—苏凯元”身份桥含混合公开／私有来源依赖。
-                  V7R4权威代次在逐记录公开投影获批前仍将其整体撤出本地预览，因此当前候选数组为空。
-                  这项安全降级不等于证伪，也不允许复述被暂缓的来源细节。
+                  现有材料让“蘇開元”与“蘇凱元”很像同一个人，但还缺能把两种写法明确连起来的原始字段。
+                  所以本站继续分开保存两条记录：这不等于已经证伪，也不等于可以把两段经历拼成一份传记。
                 </p>
               )}
             </div>
@@ -72,14 +75,28 @@ export default function ControversiesPage() {
           <div className="flex items-start gap-3">
             <ShieldAlert className="w-5 h-5 text-disputed shrink-0 mt-0.5" />
             <div>
-              <h2 className="font-serif text-xl font-semibold text-foreground">当前裁决边界</h2>
+              <h2 className="font-serif text-xl font-semibold text-foreground">为什么现在不能合并</h2>
               <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
-                混合公开／私有依赖的记录不能靠删除私有来源编号后继续公开，因为主张正文、人物字段或关系本身也可能受私有材料影响。
-                在来源依赖闭包未通过前，正式传记、出生年、教育履历、人物节点和跨轨关系均不得合并或展示。
+                姓名相近、时间相容和同一地区只能形成一个很强的查询方向，不能替代原始学籍、人事编号或明确异名记录。
+                在这些身份锚出现前，出生年、教育履历和后续经历都不能无条件拼接。
               </p>
             </div>
           </div>
         </div>
+      </section>
+
+      <section className="mb-12 grid gap-6 border border-foreground/15 bg-[#eee9df] p-6 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:p-8">
+        <div>
+          <p className="story-kicker">把疑问变成行动</p>
+          <h2 className="mt-3 font-serif text-3xl font-semibold">每一个未解问题，都应该对应一项具体查档任务。</h2>
+          <p className="mt-4 max-w-2xl text-sm leading-7 text-muted-foreground">
+            查档现场会告诉你正在找哪份材料、当前走到哪里，以及即使取得它仍不能自动证明什么。
+          </p>
+        </div>
+        <Link href="/missions" className="story-button story-button-primary">
+          查看查档任务
+          <ArrowRight className="size-4" aria-hidden="true" />
+        </Link>
       </section>
 
       <section>
@@ -101,6 +118,7 @@ export default function ControversiesPage() {
           </p>
         </div>
       </section>
+      </div>
     </div>
   );
 }

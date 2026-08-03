@@ -94,6 +94,43 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="border-b border-foreground/15 py-10 sm:py-14">
+        <div className="personal-shell">
+          <p className="text-xs font-semibold tracking-[0.15em] text-primary uppercase">你为什么来到这里？</p>
+          <div className="mt-6 grid gap-px overflow-hidden border border-foreground/15 bg-foreground/15 md:grid-cols-3">
+            {[
+              {
+                number: '01',
+                title: '我有 AI／产品问题',
+                description: '看软硬一体、行业系统与 AI 产品方法。',
+                href: '/ai',
+              },
+              {
+                number: '02',
+                title: '我想整理家族史',
+                description: '先做不上传、不保存答案的 3 分钟起步诊断。',
+                href: '/studio/diagnosis',
+              },
+              {
+                number: '03',
+                title: '我想了解苏开元',
+                description: '从故事、人物与原件入口进入完整项目。',
+                href: '/sukaiyuan',
+              },
+            ].map((route) => (
+              <Link key={route.href} href={route.href} className="group bg-background p-6 transition-colors hover:bg-[#eee8dc] sm:p-7">
+                <span className="font-serif text-2xl text-primary/40">{route.number}</span>
+                <strong className="mt-5 flex items-center justify-between gap-4 font-serif text-2xl">
+                  {route.title}
+                  <ArrowRight className="size-4 text-primary transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                </strong>
+                <span className="mt-3 block text-sm leading-7 text-muted-foreground">{route.description}</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="border-b border-foreground/15 py-16 sm:py-20">
         <div className="personal-shell grid gap-10 lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)] lg:items-start lg:gap-20">
           <div>
@@ -281,13 +318,13 @@ export default function HomePage() {
               </p>
             </div>
             <div className="flex flex-col gap-3 border-t border-foreground/15 p-7 lg:min-w-72 lg:border-l lg:border-t-0 lg:p-9">
-              <Link href="/about#contact" className="story-button story-button-primary">
+              <Link href="/studio/diagnosis" className="story-button story-button-primary">
+                家族史起步诊断
+                <FileSearch className="size-4" aria-hidden="true" />
+              </Link>
+              <Link href="/about#contact" className="story-text-link">
                 联系我
                 <Mail className="size-4" aria-hidden="true" />
-              </Link>
-              <Link href="/studio" className="story-text-link">
-                了解家族史工作室
-                <FileSearch className="size-4" aria-hidden="true" />
               </Link>
             </div>
           </div>

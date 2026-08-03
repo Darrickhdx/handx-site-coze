@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { ZoomIn, ZoomOut, Maximize, User, HelpCircle } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -396,9 +397,9 @@ export function GraphPersonPanel({ node }: { node: GraphNode | null }) {
             <p className="text-xs text-muted-foreground">史料来源</p>
           </div>
         </div>
-        <a href="/persons" className="block text-center text-primary text-sm font-medium hover:underline py-2">
+        <Link href="/persons" className="block text-center text-primary text-sm font-medium hover:underline py-2">
           查看完整资料 →
-        </a>
+        </Link>
       </div>
     </div>
   );

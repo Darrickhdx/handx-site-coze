@@ -2,6 +2,7 @@ import Link from 'next/link';
 import {
   ArrowRight,
   BookOpenText,
+  FileClock,
   FileCheck2,
   MessageSquareText,
   ShieldAlert,
@@ -12,6 +13,7 @@ import {
   commentableNovelSections,
   novelManifest,
 } from '@/lib/novel';
+import { candidateNovelEdition } from '@/lib/novel-editions';
 
 const parts = [
   { number: 1, title: '有名', chapters: '第一章—第八章' },
@@ -40,10 +42,14 @@ export default function NovelPage() {
               我的曾外祖父苏开元
             </p>
             <p className="mt-6 max-w-2xl text-base leading-8 text-[#bdb9b0]">
-              韩大昕著。V0.3 出版式内部审阅版，182 页、32 章。现在可以从头连续阅读，
-              也可以按章节进入；楔子、32 个编号章节与尾声开放先审后显的读者讨论。
+              一个曾孙从搜索框里的三个字出发，追问一个人为何把名字交给时代，又为何没有被时代完整喊回来。
+              当前网页仍是 V0.3 本地审阅版：182 页、32 章；它负责稳定阅读，尚未冒充正在编辑的新版。
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
+              <Link href="/novel/chapter/prologue" className="story-button story-button-primary">
+                先读 7 页楔子
+                <ArrowRight className="size-4" aria-hidden="true" />
+              </Link>
               <ContinueNovelButton />
               <Link href="/novel/read" className="story-button personal-button-light">
                 从头连续阅读
@@ -56,6 +62,16 @@ export default function NovelPage() {
               <span>{novelManifest.totals.commentable_sections} 个讨论区</span>
               <span>原始 PDF／DOCX 不在网页中</span>
             </div>
+            <Link
+              href="/novel/editions"
+              className="mt-7 flex max-w-2xl items-start gap-3 border border-white/15 bg-white/5 p-4 text-xs leading-6 text-[#bdb9b0] transition hover:border-[#c38a82]/50 hover:text-white"
+            >
+              <FileClock className="mt-0.5 size-4 shrink-0 text-[#c38a82]" aria-hidden="true" />
+              <span>
+                V1.3 候选版已发现：{candidateNovelEdition.pages} 页、{candidateNovelEdition.numbered_chapters} 章＋序章。
+                它仍缺冻结、完整审权与迁移验收，点此查看为什么尚未替换。
+              </span>
+            </Link>
           </div>
 
           <figure className="mx-auto w-full max-w-md">
@@ -176,12 +192,19 @@ export default function NovelPage() {
       </section>
 
       <section className="personal-shell py-14 sm:py-20">
-        <div className="grid gap-4 lg:grid-cols-3">
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           <div className="border border-foreground/15 bg-card p-6">
             <BookOpenText className="size-5 text-primary" aria-hidden="true" />
             <h2 className="mt-4 font-serif text-2xl font-semibold">全文与分章</h2>
             <p className="mt-3 text-sm leading-7 text-muted-foreground">
               182 页唯一归属到封面、前言、目录、四个分部、32 章、尾声、后记和附录。
+            </p>
+          </div>
+          <div className="border border-foreground/15 bg-card p-6">
+            <FileClock className="size-5 text-primary" aria-hidden="true" />
+            <h2 className="mt-4 font-serif text-2xl font-semibold">版本不混写</h2>
+            <p className="mt-3 text-sm leading-7 text-muted-foreground">
+              V0.3、V1.2 与 V1.3 分别保存；旧评论和阅读进度不自动挂到重写后的章节。
             </p>
           </div>
           <div className="border border-foreground/15 bg-card p-6">
@@ -207,6 +230,14 @@ export default function NovelPage() {
           <Link href="/novel/chapter/prologue" className="story-button story-button-secondary">
             <FileCheck2 className="size-4" aria-hidden="true" />
             从楔子开始
+          </Link>
+          <Link href="/novel/companion" className="story-button story-button-secondary">
+            <FileCheck2 className="size-4" aria-hidden="true" />
+            打开史实来源伴读
+          </Link>
+          <Link href="/novel/editions" className="story-text-link">
+            查看版本大厅
+            <ArrowRight className="size-4" aria-hidden="true" />
           </Link>
         </div>
       </section>

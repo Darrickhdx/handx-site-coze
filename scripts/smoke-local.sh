@@ -37,6 +37,12 @@ if [[ ! -f dist/server.js ]]; then
 fi
 
 RUNTIME_DATA_DIR="$(mktemp -d "${TMPDIR:-/tmp}/sukaiyuan-private-runtime.XXXXXX")"
+if [[ ! -f private-runtime/archive-missions-owner.json ]]; then
+    echo "Missing verified private-runtime/archive-missions-owner.json; run pnpm missions:build first." >&2
+    exit 1
+fi
+cp private-runtime/archive-missions-owner.json "${RUNTIME_DATA_DIR}/archive-missions-owner.json"
+chmod 600 "${RUNTIME_DATA_DIR}/archive-missions-owner.json"
 LOCAL_DATA_DIR="${RUNTIME_DATA_DIR}" DEPLOY_RUN_PORT="${SMOKE_PORT}" bash ./scripts/start.sh >"${SMOKE_LOG}" 2>&1 &
 SERVER_PID=$!
 

@@ -1,0 +1,17 @@
+{
+  "schema_version": "handx-rights-passports-manifest-v1",
+  "generated_at": "2026-08-04T00:00:00+08:00",
+  "must_not_deploy": true,
+  "deployment_authorized": false,
+  "registry_path": "src/data/rights-passports.json",
+  "registry_sha256": "8bd421970a6786a3e83157cc8776cccec786e4a39ca9b7bc5c6124af23a40a30",
+  "registry_bytes": 232846,
+  "records": 208,
+  "input_sha256": {
+    "public/assets/asset-manifest.json": "8cfb5b2456571e1b3b1fb057acd7526d88bc440f2764d1fa0753beeb3d214b6d",
+    "public/novel/hero-wuming/novel-manifest.json": "5d2b45f77c85a774359963d2870d470c725b3542f2ed528fe4655a8879b9148e",
+    "public/data/sources.json": "6a423d7630f506005f861c5a2d00737fd3de0a5a9d60fe9918e8a68d9bb0ca94",
+    "src/content/publication-rights.ts": "4fe910b5385c9110ac7c9cef89bcdd99e22bf48347b5f20b7349ea0fa55bb5c5",
+    "src/content/topics.ts": "e9d40bac813102c43a9ed2e4897b5892193d39c7837730cc69d55ff400c54e00"
+  }
+}

@@ -21,20 +21,44 @@ PAGES = [
     "/discover/1936-pingdiquan",
     "/discover/same-name",
     "/discover/ai-family-history",
+    "/evidence",
+    "/evidence/pingdiquan-1936",
+    "/evidence/chart-1942",
+    "/evidence/beiping-boundary",
     "/novel",
     "/novel/read",
+    "/novel/editions",
+    "/novel/companion",
     "/novel/chapter/prologue",
     "/novel/chapter/chapter-01",
+    "/novel/chapter/chapter-16",
     "/studio",
+    "/studio/diagnosis",
     "/studio/comments",
+    "/studio/migrations",
+    "/studio/novel-migration",
     "/studio/media",
+    "/studio/research-log",
+    "/studio/rights-ledger",
+    "/studio/data-versions",
     "/sukaiyuan",
+    "/sukaiyuan/dossier",
     "/person",
     "/timeline",
     "/persons",
+    "/persons/P-001",
+    "/persons/P-005",
+    "/persons/P-006",
+    "/persons/P-007",
+    "/persons/P-010",
+    "/persons/P-017",
     "/events",
     "/archives",
     "/archives/SRC-013",
+    "/archives/SRC-103",
+    "/missions",
+    "/missions/A001",
+    "/missions/A015",
     "/graph",
     "/wiki",
     "/wiki/P-001",
@@ -66,6 +90,8 @@ FORBIDDEN_NOVEL_RAW_SOURCES = {
     "/novel/hero-wuming/hero-wuming.docx",
 }
 GRAPH_MANIFEST = "/data/graph/manifest.json"
+ARCHIVE_MISSIONS_DATA = "/data/archive-missions.json"
+SITE_STATUS_DATA = "/data/site-status.json"
 GRAPH_OUTPUTS = {
     "audit-graph.json": ("nodes", 229, "edges", 127),
     "legacy-graph.json": (
@@ -119,9 +145,28 @@ FULL_AUDIT_ROUTES = {
     "/wiki/P-017",
     "/legacy/su-kaiyuan",
     "/archives/SRC-013",
+    "/archives/SRC-103",
     "/topics",
     "/topics/dong-yan-su-evidence-visibility",
     "/studio/media",
+    "/studio/diagnosis",
+    "/sukaiyuan/dossier",
+    "/persons/P-001",
+    "/persons/P-005",
+    "/persons/P-006",
+    "/persons/P-007",
+    "/persons/P-010",
+    "/persons/P-017",
+    "/novel/companion",
+    "/evidence/pingdiquan-1936",
+    "/evidence/chart-1942",
+    "/evidence/beiping-boundary",
+    "/missions",
+    "/missions/A001",
+    "/missions/A015",
+    "/studio/research-log",
+    "/studio/rights-ledger",
+    "/studio/data-versions",
 }
 SITE_RESEARCH = Path(__file__).resolve().parents[1] / "src" / "data" / "research.json"
 STATIC_ASSET_MANIFEST = "/assets/asset-manifest.json"
@@ -231,6 +276,32 @@ def check_headers(path: str, headers: dict[str, str], errors: list[str]) -> None
         errors.append(f"{path}: Cache-Control is not private/no-store ({cache!r})")
     if "noindex" not in robots or "nofollow" not in robots:
         errors.append(f"{path}: X-Robots-Tag is not noindex/nofollow ({robots!r})")
+    if headers.get("x-content-type-options", "").lower() != "nosniff":
+        errors.append(f"{path}: X-Content-Type-Options is not nosniff")
+    if headers.get("x-frame-options", "").upper() != "DENY":
+        errors.append(f"{path}: X-Frame-Options is not DENY")
+    if headers.get("referrer-policy", "").lower() != "no-referrer":
+        errors.append(f"{path}: Referrer-Policy is not no-referrer")
+    if headers.get("cross-origin-opener-policy", "").lower() != "same-origin":
+        errors.append(f"{path}: Cross-Origin-Opener-Policy is not same-origin")
+    if headers.get("cross-origin-resource-policy", "").lower() != "same-origin":
+        errors.append(f"{path}: Cross-Origin-Resource-Policy is not same-origin")
+    permissions = headers.get("permissions-policy", "").lower()
+    if any(marker not in permissions for marker in ("camera=()", "microphone=()", "payment=()")):
+        errors.append(f"{path}: Permissions-Policy is incomplete ({permissions!r})")
+    csp = headers.get("content-security-policy", "").lower()
+    if any(
+        marker not in csp
+        for marker in (
+            "default-src 'self'",
+            "frame-ancestors 'none'",
+            "object-src 'none'",
+            "connect-src 'self'",
+        )
+    ):
+        errors.append(f"{path}: Content-Security-Policy is incomplete ({csp!r})")
+    if "x-powered-by" in headers:
+        errors.append(f"{path}: X-Powered-By must be removed")
 
 
 def main() -> int:
@@ -281,6 +352,10 @@ def main() -> int:
             or "未授权外部部署或公开发布" not in html
         ):
             errors.append("/: missing the visible local-review and publication-boundary notice")
+        if path == "/" and any(
+            route not in html for route in ['/ai', '/studio/diagnosis', '/sukaiyuan']
+        ):
+            errors.append("/: three-way reader intent routing is incomplete")
         if "产品首创" in html:
             errors.append(f"{path}: stale unverified '产品首创' wording remains")
         if path == "/rights" and (
@@ -316,6 +391,136 @@ def main() -> int:
             or "不随本文授权" not in html
         ):
             errors.append("/discover/1936-pingdiquan: third-party source rights label is incomplete")
+        if path == "/sukaiyuan/dossier" and (
+            "蘇開元与蘇凱元" not in html
+            or "开始比对 6 份材料" not in html
+            or "高置信候选，尚未闭环" not in html
+            or "选择不会改变史料状态" not in html
+            or "不是已经确认的完整生平" not in html
+            or "SRC-103" not in html
+            or "SRC-013" not in html
+        ):
+            errors.append("/sukaiyuan/dossier: identity interaction or evidence boundary is incomplete")
+        if path == "/persons" and (
+            "他们不是配角" not in html
+            or "李英夫" not in html
+            or "李大超" not in html
+            or "朱自清" not in html
+            or "乔培新" not in html
+            or "傅作义" not in html
+            or "无伪造历史肖像" not in html
+        ):
+            errors.append("/persons: curated ensemble, people, or portrait boundary is incomplete")
+        if path.startswith("/persons/P-") and (
+            'data-publication-status="local_review_only"' not in html
+            or "本地审阅 · 非完整传记" not in html
+            or "材料如何把他们放在一起" not in html
+            or "独立来源按" not in html
+        ):
+            errors.append(f"{path}: curated dossier publication or relation boundary is incomplete")
+        if path.startswith("/persons/P-"):
+            expected_person_edges = {
+                "/persons/P-001": set(),
+                "/persons/P-005": {"REL-033", "REL-034"},
+                "/persons/P-006": {"REL-010"},
+                "/persons/P-007": set(),
+                "/persons/P-010": {"REL-076", "REL-077", "REL-080", "REL-108", "REL-111"},
+                "/persons/P-017": {"REL-124"},
+            }
+            expected_person_edge_contracts = {
+                "/persons/P-001": set(),
+                "/persons/P-005": {
+                    "REL-033|needs_archive|CL-040",
+                    "REL-034|needs_archive|CL-041",
+                },
+                "/persons/P-006": {"REL-010|working_verified|CL-013"},
+                "/persons/P-007": set(),
+                "/persons/P-010": {
+                    "REL-076|needs_archive|CL-079",
+                    "REL-077|needs_archive|CL-080",
+                    "REL-080|needs_archive|CL-083",
+                    "REL-108|needs_archive|CL-132",
+                    "REL-111|needs_archive|CL-137",
+                },
+                "/persons/P-017": {"REL-124|provisional|CL-170"},
+            }
+            rendered_person_edges = set(re.findall(r'data-edge-id="([^"]+)"', html))
+            rendered_person_edge_contracts = set(
+                re.findall(r'data-edge-contract="([^"]+)"', html)
+            )
+            if rendered_person_edges != expected_person_edges[path]:
+                errors.append(
+                    f"{path}: rendered relation set {sorted(rendered_person_edges)} "
+                    f"does not match reviewed set {sorted(expected_person_edges[path])}"
+                )
+            if rendered_person_edge_contracts != expected_person_edge_contracts[path]:
+                errors.append(
+                    f"{path}: rendered relation contracts {sorted(rendered_person_edge_contracts)} "
+                    f"do not match reviewed contracts {sorted(expected_person_edge_contracts[path])}"
+                )
+            if re.search(r'<img(?:\s|>)', html, re.I):
+                errors.append(f"{path}: an unreviewed historical portrait or image entered the person dossier")
+            if re.search(r'data-source-tier="[DE]"', html):
+                errors.append(f"{path}: D/E-tier material entered a curated person dossier")
+            for forbidden_person_copy in (
+                "allegedly warned",
+                "encountered by",
+                "had a contemporaneous shared organizational anchor with",
+                "was reported to have deliberately allowed",
+                "南街青石巷",
+            ):
+                if forbidden_person_copy in html:
+                    errors.append(f"{path}: unsafe or untranslated person copy remains: {forbidden_person_copy}")
+        if path == "/persons/P-005" and (
+            'data-person-dossier="P-005"' not in html
+            or "最重要的参与者证词" not in html
+            or "公报可核的军职与军阶" not in html
+            or "李广荣" not in html
+            or "回忆中的三组苏开元交集" not in html
+            or "回忆／待档案关系线索，不计作已证真人交集" not in html
+            or "《国民政府公报》第1075号" not in html
+        ):
+            errors.append("/persons/P-005: witness dossier or attributed-relation boundary is incomplete")
+        if path == "/persons/P-017" and (
+            'data-person-dossier="P-017"' not in html
+            or "同名迷雾中的绥远军人" not in html
+            or "同名人物必须分流" not in html
+            or "CL-051" not in html
+            or "CL-072" not in html
+            or "P-020" not in html
+            or "同一份编成表中的并列记录，不计作私人关系" not in html
+        ):
+            errors.append("/persons/P-017: homonym firewall or provisional-relation boundary is incomplete")
+        if path == "/persons/P-010" and (
+            'data-person-dossier="P-010"' not in html
+            or "被捕与脱险的多版本叙述" not in html
+            or "1911／1912" not in html
+            or "上下文主张（不转移为本人生平）" not in html
+            or "回忆／待档案关系线索，不计作已证真人交集" not in html
+        ):
+            errors.append("/persons/P-010: conflicting event versions or context boundary is incomplete")
+        if path == "/persons/P-006" and (
+            'data-person-dossier="P-006"' not in html
+            or "1936 年的记录者" not in html
+            or "《绥行纪略》" not in html
+            or "同期文献中的一次共同出现，不等于长期私交" not in html
+        ):
+            errors.append("/persons/P-006: recorder role or verified-relation boundary is incomplete")
+        if path == "/persons/P-001" and (
+            "CL-181" not in html
+            or "苏凯原（P-003）" not in html
+            or "康原（P-004）" not in html
+            or "1977 年校补名簿" not in html
+        ):
+            errors.append("/persons/P-001: identity-carrier distinction or alias firewall is incomplete")
+        if path == "/sukaiyuan" and (
+            "一个人身后，是一群人" not in html
+            or '/persons/P-005' not in html
+            or '/persons/P-017' not in html
+        ):
+            errors.append("/sukaiyuan: ensemble gateway is incomplete")
+        if path == "/wiki/P-005" and "先读人物故事版" not in html:
+            errors.append("/wiki/P-005: curated story dossier gateway is missing")
         if path == "/novel" and (
             "182" not in html
             or "32" not in html
@@ -327,8 +532,85 @@ def main() -> int:
             "第一章" not in html
             or "读者意见" not in html
             or "审核" not in html
+            or "hero-wuming-v0-3--chapter-01" not in html
+            or "真实与虚构伴读" not in html
+            or "pingdiquan-1936" not in html
         ):
             errors.append("/novel/chapter/chapter-01: chapter reader or moderated discussion notice is missing")
+        if path == "/novel/chapter/chapter-16" and (
+            "第十六章" not in html
+            or "真实与虚构伴读" not in html
+            or "chart-1942" not in html
+            or "研究旁注，不认证本场" not in html
+        ):
+            errors.append("/novel/chapter/chapter-16: evidence companion entry is missing")
+        if path == "/novel/editions" and (
+            "换一本书" not in html
+            or "V1.2" not in html
+            or "V1.3" not in html
+            or "冻结对照，不提供阅读" not in html
+            or "正在编辑，尚未接入" not in html
+            or "26" not in html
+            or "47" not in html
+            or "并行导入" not in html
+        ):
+            errors.append("/novel/editions: edition states or atomic-switch boundary is incomplete")
+        if path == "/novel/companion" and (
+            "故事从哪里来" not in html
+            or "V0.3" not in html
+            or "SRC-013" not in html
+            or "SRC-103" not in html
+            or "不能替小说证明" not in html
+            or "展开故事证据链" not in html
+        ):
+            errors.append("/novel/companion: source companion or literary boundary is incomplete")
+        if path == "/evidence" and (
+            "读完故事" not in html
+            or "来源伴读" not in html
+            or "研究旁注" not in html
+            or "主动停止链" not in html
+            or "展开四步证据链" not in html
+        ):
+            errors.append("/evidence: story evidence trail index is incomplete")
+        if path == "/evidence/pingdiquan-1936" and (
+            'data-evidence-mode="scene_companion"' not in html
+            or "CL-013" not in html
+            or "CL-014" not in html
+            or "SRC-013" not in html
+            or "scene_eligible=false" not in html
+            or "可以说" not in html
+            or "不能说" not in html
+        ):
+            errors.append("/evidence/pingdiquan-1936: bounded source companion is incomplete")
+        if path == "/evidence/chart-1942" and (
+            'data-evidence-mode="research_note"' not in html
+            or "CL-167" not in html
+            or "CL-168" not in html
+            or "SRC-095" not in html
+            or "不认证本场" not in html
+            or "不能证明延安行程" not in html
+        ):
+            errors.append("/evidence/chart-1942: document claim and person-attribution boundary are incomplete")
+        if path == "/evidence/beiping-boundary" and (
+            'data-evidence-mode="blocked"' not in html
+            or "没有可用主张" not in html
+            or "不得入史" not in html
+            or "不生成主张" not in html
+        ):
+            errors.append("/evidence/beiping-boundary: stop boundary is incomplete")
+        if path == "/archives/SRC-013" and (
+            'data-source-viewer="SRC-013"' not in html
+            or "原件查看台" not in html
+            or "本地审阅局部" not in html
+            or "从故事来到这里" not in html
+        ):
+            errors.append("/archives/SRC-013: source viewer or story return path is incomplete")
+        if path == "/archives/SRC-103" and (
+            'data-source-viewer="SRC-103"' not in html
+            or "站内未复制原件" not in html
+            or "原馆" not in html
+        ):
+            errors.append("/archives/SRC-103: no-copy viewer boundary is incomplete")
         if path == "/topics/dong-yan-su-evidence-visibility" and (
             "拒绝给出功劳排名" not in html
             or 'data-publication-status="not_for_media"' not in html
@@ -341,11 +623,153 @@ def main() -> int:
             )
         if path == "/studio/media" and (
             "review_only" not in html
-            or "not_for_media" not in html
             or "不是未经确认的自动发布" not in html
             or "不保存令牌" not in html
+            or "已通过：可以生成本地审稿包" not in html
+            or "主张、来源定位和权利护照均可追溯" not in html
+            or "个独立作品家族计权" not in html
+            or "不同载体不重复增加证据数" not in html
+            or "问题、解释与文学内容必须显式标注" not in html
+            or "source_backed" not in html
+            or "must_not_deploy=true" not in html
+            or "external_egress=deny" not in html
         ):
             errors.append("/studio/media: review-only distribution gate is incomplete")
+        if path == "/studio/rights-ledger" and (
+            "护照总数" not in html
+            or "208" not in html
+            or "权利待核" not in html
+            or "13" not in html
+            or "禁止媒体复用" not in html
+            or "22" not in html
+            or "可以公开" not in html
+            or "public_ready=false" not in html
+            or "must_not_deploy=true" not in html
+            or "permission_pending" not in html
+        ):
+            errors.append("/studio/rights-ledger: rights passport counts or fail-closed gates are incomplete")
+        if path == "/studio/data-versions" and (
+            'data-status-contract="handx-site-status-1.0"' not in html
+            or "历史完成率：不计算" not in html
+            or "文件上传" not in html
+            or "模型处理" not in html
+            or "向外传输" not in html
+            or "平台自动发布" not in html
+            or "公网部署未授权" not in html
+            or "逐项权利护照" not in html
+        ):
+            errors.append("/studio/data-versions: version, service, or evidence-boundary contract is incomplete")
+        if path == "/studio/migrations" and (
+            "图谱迁移" not in html
+            or "隔离门禁正常" not in html
+            or "逐项阻断，公开泄漏为 0" not in html
+            or "不发送给浏览器" not in html
+        ):
+            errors.append("/studio/migrations: migration quarantine summary is incomplete")
+        if path == "/studio/novel-migration" and (
+            "小说版本迁移" not in html
+            or "26/47" not in html
+            or "BLOCKED" not in html
+            or "candidate_static_pages_generated" not in html
+            or "must_not_deploy=true" not in html
+        ):
+            errors.append("/studio/novel-migration: candidate gate summary is incomplete")
+        if path == "/studio/diagnosis":
+            required_diagnostic_markers = [
+                "先别上传原件",
+                "开始 3 分钟自评",
+                "不保存答案",
+                "资料准备度诊断，不是历史事实鉴定",
+                "当前仅开放小范围需求访谈",
+                "data-family-history-diagnostic",
+            ]
+            if any(marker not in html for marker in required_diagnostic_markers):
+                errors.append("/studio/diagnosis: browser-only diagnostic contract is incomplete")
+            diagnostic_marker = html.find("data-family-history-diagnostic")
+            diagnostic_start = html.rfind("<section", 0, diagnostic_marker)
+            diagnostic_end = html.find("</section>", diagnostic_marker)
+            diagnostic_html = (
+                html[diagnostic_start:diagnostic_end]
+                if diagnostic_marker >= 0 and diagnostic_start >= 0 and diagnostic_end >= 0
+                else html
+            )
+            forbidden_diagnostic_markers = [
+                "<input",
+                "<textarea",
+                'type=\"file\"',
+                "/api/local/",
+                "data-amplitude",
+            ]
+            if any(marker in diagnostic_html for marker in forbidden_diagnostic_markers):
+                errors.append("/studio/diagnosis: contains a forbidden collection or analytics surface")
+        if path == "/studio" and (
+            "/studio/diagnosis" not in html
+            or "正式收费服务尚未开放" not in html
+        ):
+            errors.append("/studio: diagnostic entry or unpaid-service boundary is missing")
+        if path == "/ai" and (
+            "/studio/diagnosis" not in html
+            or "AI 家族史实验室" not in html
+        ):
+            errors.append("/ai: family-history method bridge is missing")
+        if path == "/discover/ai-family-history" and (
+            "/studio/diagnosis#start" not in html
+            or "不上传原件，先判断从哪一步开始" not in html
+        ):
+            errors.append("/discover/ai-family-history: diagnostic CTA is missing")
+        if path == "/privacy" and (
+            "浏览器内自评" not in html
+            or "刷新或退出即清空答案" not in html
+            or "不调用外部模型" not in html
+        ):
+            errors.append("/privacy: browser-only diagnostic data boundary is missing")
+        if path == "/missions":
+            required_mission_markers = [
+                "一份原件",
+                "调查方向拆成可以行动",
+                "已经定位到馆藏号、题名或物理帧",
+                "已经取得并核读",
+                "研究议程 · 非调查结论 · 已取得并核读 =",
+                "当前全部任务仍在行动前准备或条件等待阶段",
+                "线索接收尚未开放",
+                "不会提交、保存、抓取网址或创建事实",
+            ]
+            if any(marker not in html for marker in required_mission_markers):
+                errors.append("/missions: public pre-execution mission contract is incomplete")
+            for forbidden_field in (
+                'exact_request',
+                'precondition',
+                'next_action',
+                'target_window',
+                'ownerRaw',
+            ):
+                if forbidden_field in html:
+                    errors.append(f"/missions: owner-only field leaked into public HTML ({forbidden_field})")
+        if path == "/missions/A001" and (
+            "尚未取得并核读目标原件" not in html
+            or "研究议程 · 非调查结论 · 已取得并核读 = 0" not in html
+            or "拿到什么才算完成" not in html
+            or "即使取得，也不能自动证明什么" not in html
+            or "locator_intake_not_open" not in html
+            or "creates_claim=false" not in html
+            or "不提交、不保存、不抓取网址" not in html
+        ):
+            errors.append("/missions/A001: task boundary or browser-only locator draft is incomplete")
+        if path == "/missions/A015" and (
+            "同一作品的不同载体，不重复计算证据" not in html
+            or html.count("same-work") > 0
+            or "多项申请不等于多条独立证据" not in html
+            or "不会因为载体更多就增加独立来源数" not in html
+        ):
+            errors.append("/missions/A015: same-work carrier independence boundary is incomplete")
+        if path == "/studio/research-log" and (
+            "史料行动执行台" not in html
+            or "本机私密基线" not in html
+            or "不是历史研究完成率" not in html
+            or "不写入 localStorage、sessionStorage、URL 或页面日志" not in html
+            or "管理员令牌只停留在当前页面内存" not in html
+        ):
+            errors.append("/studio/research-log: owner-only read-only mission console contract is incomplete")
         if path == "/graph" and (
             "故事模式" not in html
             or "研究模式" not in html
@@ -389,6 +813,124 @@ def main() -> int:
         for excluded_id in sorted(EXCLUDED_MIXED_DEPENDENCY_IDS):
             if excluded_id in body_text:
                 errors.append(f"{path}: contains excluded mixed-dependency record {excluded_id}")
+
+    status, headers, body = fetch(args.base_url, ARCHIVE_MISSIONS_DATA)
+    if status != 200:
+        errors.append(f"{ARCHIVE_MISSIONS_DATA}: expected 200, got {status}")
+    else:
+        check_headers(ARCHIVE_MISSIONS_DATA, headers, errors)
+        try:
+            mission_payload = json.loads(body)
+        except json.JSONDecodeError as exc:
+            errors.append(f"{ARCHIVE_MISSIONS_DATA}: invalid JSON ({exc})")
+            mission_payload = {}
+        mission_meta = mission_payload.get("_meta", {})
+        mission_counts = mission_meta.get("counts", {}) if isinstance(mission_meta, dict) else {}
+        missions = mission_payload.get("missions", [])
+        if (
+            not isinstance(mission_meta, dict)
+            or mission_meta.get("schema_version") != "archive-missions-public-v1"
+            or mission_meta.get("must_not_deploy") is not True
+            or mission_meta.get("deployment_authorized") is not False
+            or mission_meta.get("evidence_boundary") != "execution_progress_not_historical_completion"
+            or mission_meta.get("lead_intake_status") != "browser_draft_only_no_submission_endpoint"
+            or not isinstance(mission_counts, dict)
+            or mission_counts.get("missions") != 33
+            or mission_counts.get("highlighted") != 7
+            or mission_counts.get("completed") != 0
+            or not isinstance(missions, list)
+            or len(missions) != 33
+        ):
+            errors.append(f"{ARCHIVE_MISSIONS_DATA}: metadata, counts, or deployment gate drifted")
+        if isinstance(missions, list) and any(
+            not isinstance(mission, dict)
+            or not isinstance(mission.get("status"), dict)
+            or mission["status"].get("completed") is not False
+            or mission["status"].get("verifiedAt") is not None
+            for mission in missions
+        ):
+            errors.append(f"{ARCHIVE_MISSIONS_DATA}: a pre-execution mission was presented as completed or verified")
+        mission_text = body.decode("utf-8", errors="replace")
+        for forbidden_marker in (
+            '"ownerRaw"',
+            '"exact_request"',
+            '"precondition"',
+            '"next_action"',
+            '"target_window"',
+            '"endpoint"',
+            ABSOLUTE_MACOS_HOME_MARKER.decode(),
+            "file://",
+            "private-runtime",
+        ):
+            if forbidden_marker in mission_text:
+                errors.append(f"{ARCHIVE_MISSIONS_DATA}: leaked forbidden marker {forbidden_marker}")
+        expected_mission_bytes = (
+            Path(__file__).resolve().parents[1]
+            / "public"
+            / "data"
+            / "archive-missions.json"
+        ).read_bytes()
+        if body != expected_mission_bytes:
+            errors.append(f"{ARCHIVE_MISSIONS_DATA}: served bytes differ from the verified public artifact")
+
+    status, headers, body = fetch(args.base_url, SITE_STATUS_DATA)
+    if status != 200:
+        errors.append(f"{SITE_STATUS_DATA}: expected 200, got {status}")
+    else:
+        check_headers(SITE_STATUS_DATA, headers, errors)
+        try:
+            site_status = json.loads(body)
+        except json.JSONDecodeError as exc:
+            errors.append(f"{SITE_STATUS_DATA}: invalid JSON ({exc})")
+            site_status = {}
+        machine = site_status.get("machine_contract", {})
+        boundary = site_status.get("evidence_boundary", {})
+        rights = site_status.get("rights_and_publication", {})
+        rights_registry = rights.get("registry", {}) if isinstance(rights, dict) else {}
+        product_artifacts = site_status.get("product_artifacts", [])
+        media_artifact = next(
+            (
+                item
+                for item in product_artifacts
+                if isinstance(item, dict) and item.get("id") == "media-studio"
+            ),
+            {},
+        ) if isinstance(product_artifacts, list) else {}
+        expected_machine = {
+            "service_mode": "research_interview_only",
+            "uploads": False,
+            "model_processing": "off",
+            "external_egress": "deny",
+            "auto_fact_generation": False,
+            "payment": False,
+            "auto_publish": False,
+            "must_not_deploy": True,
+            "deployment_authorized": False,
+        }
+        if (
+            site_status.get("schema_version") != "handx-site-status-1.0"
+            or machine != expected_machine
+            or not isinstance(boundary, dict)
+            or boundary.get("historical_completion_percentage") is not None
+            or boundary.get("historical_counts_are_inventory_not_completion") is not True
+            or not isinstance(rights_registry, dict)
+            or rights_registry.get("records") != 208
+            or rights_registry.get("permission_pending") != 13
+            or rights_registry.get("not_for_media") != 22
+            or rights_registry.get("public_ready") != 0
+            or not isinstance(media_artifact, dict)
+            or media_artifact.get("inventory", {}).get("eligible_for_review_package") != 1
+            or media_artifact.get("inventory", {}).get("blocked_from_media") != 5
+        ):
+            errors.append(f"{SITE_STATUS_DATA}: machine, evidence, rights, or media contract drifted")
+        expected_status_bytes = (
+            Path(__file__).resolve().parents[1]
+            / "public"
+            / "data"
+            / "site-status.json"
+        ).read_bytes()
+        if body != expected_status_bytes:
+            errors.append(f"{SITE_STATUS_DATA}: served bytes differ from the verified public artifact")
 
     status, headers, body = fetch(args.base_url, STATIC_ASSET_MANIFEST)
     if status != 200:
@@ -683,10 +1225,49 @@ def main() -> int:
                 ):
                     errors.append(f"{graph_path}: crosswalk contains an automatic fact merge")
 
+        drift_path = "/data/graph/legacy-drift-summary.json"
+        drift_status, drift_headers, drift_body = fetch(args.base_url, drift_path)
+        if drift_status != 200:
+            errors.append(f"{drift_path}: expected 200, got {drift_status}")
+        else:
+            check_headers(drift_path, drift_headers, errors)
+            if (
+                not isinstance(output_hashes, dict)
+                or hashlib.sha256(drift_body).hexdigest()
+                != output_hashes.get("legacy-drift-summary.json")
+            ):
+                errors.append(f"{drift_path}: SHA-256 differs from graph manifest")
+            try:
+                drift_payload = json.loads(drift_body)
+            except json.JSONDecodeError as exc:
+                errors.append(f"{drift_path}: invalid JSON ({exc})")
+            else:
+                review = drift_payload.get("review", {})
+                privacy = drift_payload.get("privacy", {})
+                if (
+                    drift_payload.get("status") != "quarantined"
+                    or review.get("quarantined_inventory_records") != 86
+                    or review.get("quarantined_blocked_records") != 86
+                    or privacy.get("record_ids_included") is not False
+                    or privacy.get("labels_included") is not False
+                    or privacy.get("edge_endpoints_included") is not False
+                ):
+                    errors.append(f"{drift_path}: quarantine counts or privacy gate changed")
+
     status, headers, _body = fetch(args.base_url, "/private-runtime/admin-token")
     if status != 404:
         errors.append(f"/private-runtime/admin-token: private runtime file is HTTP-accessible ({status})")
     check_headers("/private-runtime/admin-token", headers, errors)
+
+    status, headers, _body = fetch(
+        args.base_url, "/private-runtime/graph-migration-inbox.json"
+    )
+    if status != 404:
+        errors.append(
+            "/private-runtime/graph-migration-inbox.json: private inbox is HTTP-accessible "
+            f"({status})"
+        )
+    check_headers("/private-runtime/graph-migration-inbox.json", headers, errors)
 
     status, headers, body = fetch(args.base_url, "/robots.txt")
     if status != 200 or b"Disallow: /" not in body:
@@ -922,6 +1503,15 @@ def main() -> int:
         errors.append("/api/local/corpus-hits without token leaked a local path")
     check_headers("/api/local/corpus-hits without token", headers, errors)
 
+    status, headers, body = fetch(args.base_url, "/api/local/research-missions")
+    if status != 401:
+        errors.append(f"/api/local/research-missions without token: expected 401, got {status}")
+    if headers.get("www-authenticate") != 'Bearer realm="local-research-missions"':
+        errors.append("/api/local/research-missions without token: missing bearer challenge")
+    if ABSOLUTE_MACOS_HOME_MARKER in body or b"private-runtime" in body:
+        errors.append("/api/local/research-missions without token leaked a local path")
+    check_headers("/api/local/research-missions without token", headers, errors)
+
     status, headers, _body = fetch(
         args.base_url,
         "/private-runtime/local-corpus-index.json",
@@ -932,7 +1522,17 @@ def main() -> int:
         )
     check_headers("/private-runtime/local-corpus-index.json", headers, errors)
 
-    comment_chapter = "chapter-01"
+    status, headers, _body = fetch(
+        args.base_url,
+        "/private-runtime/archive-missions-owner.json",
+    )
+    if status != 404:
+        errors.append(
+            f"/private-runtime/archive-missions-owner.json: private owner baseline is HTTP-accessible ({status})"
+        )
+    check_headers("/private-runtime/archive-missions-owner.json", headers, errors)
+
+    comment_chapter = "hero-wuming-v0-3--chapter-01"
     comment_session = "00000000-0000-4000-8000-000000000011"
     xss_comment_session = "00000000-0000-4000-8000-000000000012"
     safe_comment_body = "这是一条用于验证先审后显流程的章节读者意见。"
@@ -1128,6 +1728,42 @@ def main() -> int:
 
         status, headers, body = fetch_with_headers(
             args.base_url,
+            "/api/local/research-missions",
+            {"Authorization": f"Bearer {admin_token}"},
+        )
+        if status != 200:
+            errors.append(f"/api/local/research-missions with token: expected 200, got {status}")
+        else:
+            try:
+                owner_mission_projection = json.loads(body)
+            except json.JSONDecodeError as exc:
+                errors.append(f"/api/local/research-missions: invalid JSON ({exc})")
+                owner_mission_projection = {}
+            owner_baseline = owner_mission_projection.get("baseline", {})
+            owner_missions = (
+                owner_baseline.get("missions", [])
+                if isinstance(owner_baseline, dict)
+                else []
+            )
+            if (
+                owner_mission_projection.get("storage_scope") != "local_private_runtime"
+                or owner_mission_projection.get("event_writes_enabled") is not False
+                or owner_mission_projection.get("historical_claims_created") is not False
+                or not isinstance(owner_missions, list)
+                or len(owner_missions) != 33
+                or any(
+                    not isinstance(mission, dict)
+                    or not isinstance(mission.get("ownerRaw"), dict)
+                    for mission in owner_missions
+                )
+            ):
+                errors.append("/api/local/research-missions: authenticated owner projection is malformed")
+            if ABSOLUTE_MACOS_HOME_MARKER in body or b"absolute_path" in body or b"private-runtime" in body:
+                errors.append("/api/local/research-missions: authenticated projection leaked a local path")
+        check_headers("/api/local/research-missions with token", headers, errors)
+
+        status, headers, body = fetch_with_headers(
+            args.base_url,
             "/api/local/novel-comments/inbox",
             {"Authorization": f"Bearer {admin_token}"},
         )
@@ -1271,7 +1907,7 @@ def main() -> int:
         )
 
         other_chapter_payload = {
-            "chapter_id": "chapter-02",
+            "chapter_id": "hero-wuming-v0-3--chapter-02",
             "display_name": "Chapter isolation",
             "body": "这条评论只应出现在第二章。",
             "website": "",
@@ -1308,7 +1944,7 @@ def main() -> int:
                 )
         status, headers, body = fetch(
             args.base_url,
-            "/api/local/novel-comments?chapter=chapter-02",
+            "/api/local/novel-comments?chapter=hero-wuming-v0-3--chapter-02",
         )
         try:
             chapter_two_comments = (
@@ -1320,7 +1956,8 @@ def main() -> int:
             status != 200
             or len(chapter_two_comments) != 1
             or chapter_two_comments[0].get("id") != other_comment_id
-            or chapter_two_comments[0].get("chapter_id") != "chapter-02"
+            or chapter_two_comments[0].get("chapter_id")
+            != "hero-wuming-v0-3--chapter-02"
         ):
             errors.append(
                 "/api/local/novel-comments: comments were not isolated by chapter"
@@ -1344,7 +1981,7 @@ def main() -> int:
                                 "type": "novel_comment_submission",
                                 "id": fixture_id,
                                 "occurred_at": occurred,
-                                "chapter_id": "chapter-01",
+                                "chapter_id": comment_chapter,
                                 "display_name": "Pagination fixture",
                                 "body": f"待审核分页夹具 {index + 1}",
                                 "session_hash": "0" * 24,
@@ -1452,7 +2089,7 @@ def main() -> int:
                 "status": "PASS",
                 "pages": len(PAGES),
                 "json_endpoints": len(JSON_ENDPOINTS),
-                "local_runtime_endpoints": 8,
+                "local_runtime_endpoints": 9,
                 "novel_pages_hashed": 182,
                 "novel_responsive_pages_hashed": 182,
                 "novel_numbered_chapters": 32,

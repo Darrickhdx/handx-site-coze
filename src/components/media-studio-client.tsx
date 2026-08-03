@@ -23,7 +23,8 @@ import {
 } from 'react';
 import {
   allMediaMotherContent,
-  isMediaEligible,
+  evaluateMediaGate,
+  mediaGateReasonLabels,
   mediaMotherContent,
   mediaPlatforms,
   mediaThemes,
@@ -88,7 +89,7 @@ export function MediaStudioClient() {
 
   const content = useMemo<MediaMotherContent>(
     () =>
-      mediaMotherContent.find((item) => item.id === contentId) ??
+      allMediaMotherContent.find((item) => item.id === contentId) ??
       mediaMotherContent[0],
     [contentId],
   );
@@ -103,9 +104,11 @@ export function MediaStudioClient() {
     [themeId],
   );
 
+  const gateDecision = useMemo(() => evaluateMediaGate(content), [content]);
   const caption = useMemo(
-    () => buildPlatformCaption(content, platform),
-    [content, platform],
+    () =>
+      gateDecision.allowed ? buildPlatformCaption(content, platform) : '',
+    [content, gateDecision.allowed, platform],
   );
   const previewSentences = useMemo(
     () =>
@@ -131,6 +134,11 @@ export function MediaStudioClient() {
     setError('');
     setNotice('');
     try {
+      if (!gateDecision.allowed) {
+        throw new Error(
+          `传播门禁已阻断：${gateDecision.reasons.map((reason) => mediaGateReasonLabels[reason]).join('；')}`,
+        );
+      }
       await copyToClipboard(caption);
       setNotice('平台文案已复制。仍需人工复核后发布。');
     } catch (reason: unknown) {
@@ -145,8 +153,10 @@ export function MediaStudioClient() {
     setError('');
     setNotice('');
     try {
-      if (!isMediaEligible(content)) {
-        throw new Error('传播门禁已阻止这条内容进入导出包。');
+      if (!gateDecision.allowed) {
+        throw new Error(
+          `传播门禁已阻断：${gateDecision.reasons.map((reason) => mediaGateReasonLabels[reason]).join('；')}`,
+        );
       }
       const previewNode = previewRef.current;
       if (!previewNode || previewNode.offsetWidth === 0) {
@@ -237,7 +247,7 @@ export function MediaStudioClient() {
               {mediaMotherContent.length}
             </strong>
             <span className="mt-1 block text-xs text-muted-foreground">
-              条可选母内容
+              条通过事实、来源与权利门禁
             </span>
           </div>
           <div className="bg-[#f4f0e8] p-6 sm:p-8">
@@ -246,7 +256,7 @@ export function MediaStudioClient() {
               {blockedCount}
             </strong>
             <span className="mt-1 block text-xs text-muted-foreground">
-              条被 not_for_media／Legacy 门禁拦截
+              条因模式、身份、来源或权利被阻断
             </span>
           </div>
           <div className="bg-[#f4f0e8] p-6 sm:p-8">
@@ -281,11 +291,14 @@ export function MediaStudioClient() {
                 }}
                 className="mt-3 min-h-12 w-full border border-foreground/20 bg-white/50 px-4 text-sm outline-none transition focus:border-primary"
               >
-                {mediaMotherContent.map((item) => (
-                  <option key={item.id} value={item.id}>
-                    {item.shortTitle}
-                  </option>
-                ))}
+                {allMediaMotherContent.map((item) => {
+                  const gate = evaluateMediaGate(item);
+                  return (
+                    <option key={item.id} value={item.id}>
+                      {gate.allowed ? '可生成' : '已阻断'}｜{item.shortTitle}
+                    </option>
+                  );
+                })}
               </select>
               <p className="mt-3 text-xs leading-6 text-muted-foreground">
                 {content.angle}
@@ -294,9 +307,40 @@ export function MediaStudioClient() {
                 <span className="border border-primary/25 px-2 py-1 text-[10px] text-primary">
                   {editorialLabels[content.editorial_label]}
                 </span>
+                <span className="border border-primary/25 px-2 py-1 text-[10px] text-primary">
+                  {content.disclosure_label}
+                </span>
                 <span className="border border-foreground/15 px-2 py-1 font-mono text-[10px] text-muted-foreground">
                   {content.revision_hash.slice(0, 23)}…
                 </span>
+              </div>
+              <div
+                className={`mt-4 border p-4 text-xs leading-6 ${
+                  gateDecision.allowed
+                    ? 'border-[#48725f]/30 bg-[#48725f]/5 text-[#315b49]'
+                    : 'border-destructive/30 bg-destructive/5 text-destructive'
+                }`}
+                data-media-gate={gateDecision.decision}
+              >
+                <strong className="block text-sm">
+                  {gateDecision.allowed
+                    ? '已通过：可以生成本地审稿包'
+                    : '已阻断：只能在工作台预览'}
+                </strong>
+                {gateDecision.allowed ? (
+                  <div className="mt-1 space-y-1">
+                    <p>主张、来源定位和权利护照均可追溯；输出仍固定为 review_only。</p>
+                    <p>
+                      当前按 {content.traceability.source_families.length} 个独立作品家族计权；同一作品的索引、翻刻或不同载体不重复增加证据数。
+                    </p>
+                  </div>
+                ) : (
+                  <ul className="mt-2 space-y-1">
+                    {gateDecision.reasons.map((reason) => (
+                      <li key={reason}>· {mediaGateReasonLabels[reason]}</li>
+                    ))}
+                  </ul>
+                )}
               </div>
             </div>
 
@@ -400,6 +444,7 @@ export function MediaStudioClient() {
                 data-export-width={platform.dimensions.width}
                 data-export-height={platform.dimensions.height}
                 data-package-status="review_only"
+                data-media-gate={gateDecision.decision}
               >
                 <div
                   className="pointer-events-none absolute inset-0 opacity-[0.08]"
@@ -426,7 +471,7 @@ export function MediaStudioClient() {
                       Handx web0.1
                     </span>
                     <span style={{ color: theme.colors.accent }}>
-                      {editorialLabels[content.editorial_label]}
+                      {content.disclosure_label}
                     </span>
                   </div>
                   <h3
@@ -488,7 +533,8 @@ export function MediaStudioClient() {
               <button
                 type="button"
                 onClick={() => void handleCopy()}
-                className="inline-flex min-h-12 items-center justify-center gap-2 border border-foreground/20 bg-white/45 px-5 text-sm font-semibold transition hover:border-primary hover:text-primary"
+                disabled={!gateDecision.allowed}
+                className="inline-flex min-h-12 items-center justify-center gap-2 border border-foreground/20 bg-white/45 px-5 text-sm font-semibold transition hover:border-primary hover:text-primary disabled:cursor-not-allowed disabled:opacity-45"
               >
                 <Copy className="size-4" aria-hidden="true" />
                 复制平台文案
@@ -496,7 +542,7 @@ export function MediaStudioClient() {
               <button
                 type="button"
                 onClick={() => void handleExport()}
-                disabled={busy}
+                disabled={busy || !gateDecision.allowed}
                 className="inline-flex min-h-12 items-center justify-center gap-2 bg-primary px-5 text-sm font-semibold text-primary-foreground transition hover:bg-primary/90 disabled:cursor-wait disabled:opacity-60"
               >
                 {busy ? (
@@ -541,7 +587,7 @@ export function MediaStudioClient() {
                   ))}
                   <li className="flex items-start gap-2">
                     <span className="mt-2 size-1 shrink-0 bg-primary" aria-hidden="true" />
-                    来源快照、权利护照与人工审核清单
+                    主张／来源定位、权利护照与人工审核清单
                   </li>
                 </ul>
               </div>
@@ -584,10 +630,10 @@ export function MediaStudioClient() {
             <h2 className="font-serif text-3xl font-semibold">V0.1 发布门禁</h2>
             <div className="mt-5 grid gap-4 text-sm leading-7 text-muted-foreground sm:grid-cols-2">
               <p>
-                所有导出包固定为 review_only；包内不写入本机地址、平台令牌、家属私密材料或被拦截的 Legacy 内容。
+                只有 source_backed、主张与来源可定位、权利允许审稿复用，且不含未核身份、真人关键因果和家属私密材料的内容可以导出。问题、解释与文学内容必须显式标注，并停留在预览区。
               </p>
               <p>
-                “打开平台后台”只是新开官方页面，不会代替你登录、上传或点击发布。自动直发和账号授权留到二期单独审查。
+                所有导出包固定为 review_only、must_not_deploy=true、auto_publish=false、external_egress=deny。“打开平台后台”只做人工导航，不会上传、授权或发布。
               </p>
             </div>
           </div>

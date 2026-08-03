@@ -1,0 +1,235 @@
+{
+  "schema_version": "handx-site-status-1.0",
+  "project": {
+    "name": "Handx web0.1",
+    "version": "0.1.0",
+    "build_state": "local_review"
+  },
+  "assembled_at": "2026-08-03T17:10:42.221Z",
+  "evidence_boundary": {
+    "status_axis": "inventory_and_gate_state_only",
+    "historical_completion_percentage": null,
+    "historical_counts_are_inventory_not_completion": true,
+    "mission_counts_are_execution_baseline_not_historical_facts": true,
+    "notice": "本页只汇总数据代次、工程产物、权利门槛和服务开关；不计算、暗示或展示历史研究完成率。"
+  },
+  "machine_contract": {
+    "service_mode": "research_interview_only",
+    "uploads": false,
+    "model_processing": "off",
+    "external_egress": "deny",
+    "auto_fact_generation": false,
+    "payment": false,
+    "auto_publish": false,
+    "must_not_deploy": true,
+    "deployment_authorized": false
+  },
+  "service_state": {
+    "availability": "not_open",
+    "lead_intake": "browser_draft_only_no_submission_endpoint",
+    "diagnostic_answer_storage": "off",
+    "claim_creation_from_reader_input": false,
+    "owner_review_required": true
+  },
+  "historical_data_generations": [
+    {
+      "id": "research-public-preview",
+      "label": "研究公开预览子集",
+      "schema_version": "sukaiyuan-site-preview-1.1",
+      "snapshot": "源数据工作版-2026-07-20-v7",
+      "generated_at": "2026-07-20T00:00:00Z",
+      "state": "local_preview_subset",
+      "inventory": {
+        "sources": 5,
+        "claims": 5,
+        "nodes": 7,
+        "edges": 5
+      },
+      "source_scope": {
+        "body-verified": 4,
+        "metadata-only": 1
+      },
+      "boundary": "仅为 V7R4 安全子集；同名记录不能自动拼成连续生平。"
+    },
+    {
+      "id": "audited-knowledge-graph",
+      "label": "审计图谱与 Legacy 隔离层",
+      "schema_version": "1.1",
+      "generated_at": "2026-07-20T09:45:43.517517+00:00",
+      "state": "audited_with_active_quarantine",
+      "inventory": {
+        "audited_sources": 131,
+        "audited_claims": 211,
+        "audited_nodes": 229,
+        "audited_edges": 127,
+        "legacy_nodes": 107,
+        "legacy_edges": 151,
+        "crosswalk_records": 258
+      },
+      "boundary": "Legacy 与迁移映射只提供线索；隔离层不会自动生成事实关系。"
+    },
+    {
+      "id": "archive-mission-baseline",
+      "label": "查档行动基线",
+      "schema_version": "archive-missions-public-v1",
+      "generated_at": "2026-08-04T00:00:00+08:00",
+      "source_updated_at": "2026-07-28",
+      "state": "pre_execution_baseline",
+      "inventory": {
+        "missions": 33,
+        "institutions": 19,
+        "highlighted": 7,
+        "completed": 0
+      },
+      "boundary": "这是待办与下一动作，不是新增史实，也不是历史研究完成率。"
+    }
+  ],
+  "product_artifacts": [
+    {
+      "id": "novel-reader-v0-3",
+      "label": "《英雄无名》本地阅读器",
+      "version": "0.3",
+      "state": "local_reader",
+      "publication_status": "local_review",
+      "inventory": {
+        "pages": 182,
+        "numbered_chapters": 32,
+        "commentable_sections": 34
+      },
+      "public_ready": false
+    },
+    {
+      "id": "hero-wuming-v1-3-candidate",
+      "label": "《英雄无名》下一版候选",
+      "version": "1.3",
+      "state": "active_candidate_not_served",
+      "gate_state": {
+        "total": 9,
+        "passed": 5,
+        "blocked": 4,
+        "blocked_gate_ids": [
+          "frozen_manifest_present",
+          "all_figure_rights_passports_present",
+          "author_and_legal_rightsholder_confirmed",
+          "page_mapping_and_visual_qa_complete"
+        ]
+      },
+      "served": false,
+      "public_ready": false
+    },
+    {
+      "id": "topic-editorial",
+      "label": "历史专题编辑层",
+      "state": "local_review",
+      "inventory": {
+        "articles": 1,
+        "paragraphs": 13,
+        "review_only": 8,
+        "not_for_media": 5,
+        "public_ready": 0
+      }
+    },
+    {
+      "id": "media-studio",
+      "label": "媒体矩阵素材工作台",
+      "state": "review_only",
+      "inventory": {
+        "mother_content_total": 6,
+        "eligible_for_review_package": 1,
+        "blocked_from_media": 5,
+        "platform_templates": 5
+      },
+      "direct_publish": false,
+      "public_ready": false
+    }
+  ],
+  "rights_and_publication": {
+    "state": "all_external_release_blocked",
+    "registry": {
+      "schema_version": "handx-rights-passports-v1",
+      "records": 208,
+      "owned": 193,
+      "licensed_for_local_review": 2,
+      "permission_pending": 13,
+      "review_only": 186,
+      "not_for_media": 22,
+      "local_only": 29,
+      "public_ready": 0
+    },
+    "article_passports": {
+      "total": 3,
+      "draft_all_rights_reserved": 3,
+      "licensed_for_republication": 0
+    },
+    "static_assets": {
+      "total": 5,
+      "local_internal_preview_only": 5,
+      "publishable": 0
+    },
+    "novel": {
+      "license": "no-license-granted",
+      "local_only_pages": 7,
+      "public_ready": false
+    },
+    "topics": {
+      "public_ready_paragraphs": 0,
+      "not_for_media_paragraphs": 5
+    },
+    "media": {
+      "package_status": "review_only",
+      "public_release_authorized": false,
+      "auto_publish": false
+    }
+  },
+  "input_fingerprints": [
+    {
+      "path": "src/data/research.json",
+      "sha256": "2b56200c7b5c13befa7c29dfb03d881dbc181112ebae1ba755dabd589ca07823"
+    },
+    {
+      "path": "public/data/graph/manifest.json",
+      "sha256": "409da590745f7de894edcefa8161459dcaa340b761e0bb8dda67ca709a654e78"
+    },
+    {
+      "path": "src/data/archive-missions-manifest.json",
+      "sha256": "fb1aa05cf2486b4dc9dec9fb259bd167a270d3d95d39ce805c8f6286b33b4023"
+    },
+    {
+      "path": "src/data/archive-missions.json",
+      "sha256": "0b81168e5b9ecaebbbb2e0fb27b6b7630ef2a8cb09f12a634af04aee56707441"
+    },
+    {
+      "path": "public/novel/hero-wuming/novel-manifest.json",
+      "sha256": "5d2b45f77c85a774359963d2870d470c725b3542f2ed528fe4655a8879b9148e"
+    },
+    {
+      "path": "src/data/novel-editions.json",
+      "sha256": "f24704bd33040806127bac3506fbf074579b1585dff5aa07ba63b1c2341441e4"
+    },
+    {
+      "path": "public/assets/asset-manifest.json",
+      "sha256": "8cfb5b2456571e1b3b1fb057acd7526d88bc440f2764d1fa0753beeb3d214b6d"
+    },
+    {
+      "path": "src/data/rights-passports.json",
+      "sha256": "8bd421970a6786a3e83157cc8776cccec786e4a39ca9b7bc5c6124af23a40a30"
+    },
+    {
+      "path": "src/data/rights-passports-manifest.json",
+      "sha256": "03c58f72d1b89c0d22b31d48e6a7759bd75be528dcf2abf28989819f182661a0"
+    },
+    {
+      "path": "src/content/topics.ts",
+      "sha256": "e9d40bac813102c43a9ed2e4897b5892193d39c7837730cc69d55ff400c54e00"
+    },
+    {
+      "path": "src/content/publication-rights.ts",
+      "sha256": "4fe910b5385c9110ac7c9cef89bcdd99e22bf48347b5f20b7349ea0fa55bb5c5"
+    },
+    {
+      "path": "src/content/media-studio.ts",
+      "sha256": "46fb9fa2629ca6f4dff39351c55acbfb3d009dea42f2389cea33c4969b3411a5"
+    }
+  ],
+  "generation_id": "status-e7a13cb82c7cd88545249701ed38147f8013f3a25fd112d0ebd96689b8503ac2"
+}

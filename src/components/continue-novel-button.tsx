@@ -3,27 +3,27 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { ArrowRight, BookOpenText } from 'lucide-react';
-
-const progressKey = 'handx-novel-progress-v0.1';
+import { novelManifest, novelProgressKey } from '@/lib/novel';
 
 export function ContinueNovelButton() {
   const [page, setPage] = useState<number | null>(null);
 
   useEffect(() => {
-    const stored = window.localStorage.getItem(progressKey);
+    const stored = window.localStorage.getItem(novelProgressKey);
     if (!stored) return;
     try {
-      const parsed = JSON.parse(stored) as { page?: number };
+      const parsed = JSON.parse(stored) as { edition_id?: string; page?: number };
       if (
+        parsed.edition_id === novelManifest.book.id &&
         typeof parsed.page === 'number' &&
         Number.isInteger(parsed.page) &&
         parsed.page >= 1 &&
-        parsed.page <= 182
+        parsed.page <= novelManifest.totals.pages
       ) {
         setPage(parsed.page);
       }
     } catch {
-      window.localStorage.removeItem(progressKey);
+      window.localStorage.removeItem(novelProgressKey);
     }
   }, []);
 

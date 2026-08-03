@@ -62,6 +62,16 @@ export default function StudioPage() {
               苏开元计划是第一个完整案例。这项服务不承诺替你找到传奇，
               只承诺把材料分清、问题说清、隐私守住，并让下一步查档真正可执行。
             </p>
+            <div className="mt-7 flex flex-col gap-4 sm:flex-row sm:items-center">
+              <Link href="/studio/diagnosis" className="story-button story-button-primary">
+                开始 3 分钟资料诊断
+                <ArrowRight className="size-4" aria-hidden="true" />
+              </Link>
+              <Link href="/sukaiyuan" className="story-text-link">
+                先看完整案例
+                <ArrowRight className="size-4" aria-hidden="true" />
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -150,7 +160,7 @@ export default function StudioPage() {
             {[
               '不把同名记录直接合并成一个人。',
               '不把口述和家属记忆伪装成官方档案。',
-              '不把客户原件默认上传到公开模型或公共仓库。',
+              '未经逐项、用途限定授权，绝不把家属原件交给外部模型、第三方或公共仓库。',
               '不承诺一定找到名人关系、秘密身份或完整结局。',
             ].map((item) => (
               <p key={item} className="border-t border-white/20 pt-5 text-base leading-8 text-[#d7cfc2]">
@@ -170,16 +180,29 @@ export default function StudioPage() {
             </h2>
             <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
               正式收费服务尚未开放。你可以先查看案例、研究方法和隐私边界；
-              如果你正面对一批无从下手的家族材料，可以先来信说明现状，进入小范围需求访谈。
+              如果你正面对一批无从下手的家族材料，请先完成不留存答案的起步诊断；
+              结果合适时，再由你主动申请小范围需求访谈。
             </p>
           </div>
           <div className="flex flex-col gap-4">
-            <Link href="/sukaiyuan" className="story-button story-button-primary">
-              查看案例
+            <Link href="/studio/diagnosis" className="story-button story-button-primary">
+              开始 3 分钟资料诊断
               <ArrowRight className="size-4" />
             </Link>
-            <Link href="/about#contact" className="story-button story-button-secondary">
-              联系与提供线索
+            <Link href="/sukaiyuan" className="story-button story-button-secondary">
+              查看苏开元案例
+              <ArrowRight className="size-4" />
+            </Link>
+            <Link href="/discover/ai-family-history" className="story-text-link">
+              阅读 AI 家族史方法
+              <ArrowRight className="size-4" />
+            </Link>
+            <Link href="/missions" className="story-text-link">
+              看一个真实项目怎样查档
+              <ArrowRight className="size-4" />
+            </Link>
+            <Link href="/studio/data-versions" className="story-text-link">
+              查看数据版本与服务状态
               <ArrowRight className="size-4" />
             </Link>
           </div>

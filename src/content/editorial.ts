@@ -357,8 +357,8 @@ export const articleBodies = {
         ],
       },
     ],
-    ctaLabel: '在图谱里查看这三段记录',
-    ctaHref: '/graph',
+    ctaLabel: '亲自比对六份材料',
+    ctaHref: '/sukaiyuan/dossier',
   },
   'ai-family-history': {
     kicker: 'AI 实验室 01',
@@ -399,7 +399,7 @@ export const articleBodies = {
         ],
       },
     ],
-    ctaLabel: '查看完整研究方法',
-    ctaHref: '/methodology',
+    ctaLabel: '不上传原件，先判断从哪一步开始',
+    ctaHref: '/studio/diagnosis#start',
   },
 } as const;

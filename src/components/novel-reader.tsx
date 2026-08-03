@@ -10,9 +10,7 @@ import {
   RotateCcw,
   ShieldAlert,
 } from 'lucide-react';
-import type { NovelPage, NovelSection } from '@/lib/novel';
-
-const progressKey = 'handx-novel-progress-v0.1';
+import { novelManifest, novelProgressKey, type NovelPage, type NovelSection } from '@/lib/novel';
 
 function tocHref(section: NovelSection, mode: 'continuous' | 'chapter') {
   if (mode === 'continuous') return `#page-${section.start_page}`;
@@ -123,8 +121,9 @@ export function NovelReader({
             setActivePage(number);
             const page = pages[pageIndex.get(number) ?? 0];
             window.localStorage.setItem(
-              progressKey,
+              novelProgressKey,
               JSON.stringify({
+                edition_id: novelManifest.book.id,
                 page: number,
                 section_id: page?.section_id ?? initialSectionId,
                 saved_at: new Date().toISOString(),
@@ -275,7 +274,7 @@ export function NovelReader({
                   )}
                 </div>
                 <figcaption className="mt-2 flex items-center justify-between gap-4 text-[10px] text-muted-foreground">
-                  <span>PDF 第 {page.number}／182 页</span>
+                  <span>PDF 第 {page.number}／{novelManifest.totals.pages} 页</span>
                   <span>{page.local_only ? '含受限图版 · 仅本机' : '作者水印派生页'}</span>
                 </figcaption>
               </figure>

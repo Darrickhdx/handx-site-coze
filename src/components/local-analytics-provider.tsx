@@ -3,6 +3,7 @@
 import { usePathname } from 'next/navigation';
 import { useEffect } from 'react';
 import { getLocalSessionId, sendLocalAnalytics } from '@/lib/local-engagement';
+import { localAnalyticsIsSuppressed } from '@/lib/analytics-policy';
 
 const propertyAttributes = {
   amplitudeDestination: 'destination',
@@ -126,10 +127,13 @@ export function LocalAnalyticsProvider() {
   const pathname = usePathname();
 
   useEffect(() => {
+    if (localAnalyticsIsSuppressed(pathname)) return;
     sendPageViewOnce(pathname);
   }, [pathname]);
 
   useEffect(() => {
+    if (localAnalyticsIsSuppressed(pathname)) return;
+
     const handleClick = (event: MouseEvent) => {
       if (!(event.target instanceof Element)) return;
       const trackedElement = event.target.closest<HTMLElement>('[data-amplitude-event]');
@@ -156,9 +160,11 @@ export function LocalAnalyticsProvider() {
 
     document.addEventListener('click', handleClick, { capture: true });
     return () => document.removeEventListener('click', handleClick, { capture: true });
-  }, []);
+  }, [pathname]);
 
   useEffect(() => {
+    if (localAnalyticsIsSuppressed(pathname)) return;
+
     const root = document.querySelector<HTMLElement>('[data-reading-root]');
     const endMarker = document.querySelector<HTMLElement>('[data-reading-end]');
     if (!root || !endMarker) return;

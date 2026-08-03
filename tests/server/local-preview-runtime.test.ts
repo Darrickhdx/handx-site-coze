@@ -15,6 +15,7 @@ import {
   mkdtempSync,
   readFileSync,
   rmSync,
+  symlinkSync,
   writeFileSync,
 } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -73,6 +74,47 @@ function mutateJson(
   writeFileSync(path, `${JSON.stringify(value, null, 2)}\n`);
 }
 
+function buildArchiveMissionOwnerFixture(): Record<string, unknown> {
+  const publicDataset = JSON.parse(
+    readFileSync(resolve(projectRoot, 'src/data/archive-missions.json'), 'utf8'),
+  ) as {
+    _meta: Record<string, unknown> & { generation_id: string };
+    missions: Array<Record<string, unknown> & { missionId: string }>;
+    journal: unknown[];
+  };
+  const ownerRaw = (missionId: string) => ({
+    task_id: missionId,
+    priority: 'P0',
+    city_or_mode: '线上',
+    institution: '测试机构',
+    institution_type: '档案馆',
+    target_person_event: '测试对象',
+    archive_id_or_title: 'TEST-001',
+    exact_request: '仅用于本机接口合同测试的精确请求',
+    expected_output: '可读原页与上下文',
+    precondition: '人工复核规则',
+    status: '待发送',
+    next_action: '准备人工提交',
+    target_window: '条件满足后',
+    evidence_scope: '正文原页',
+    notes: '测试夹具，不构成历史事实',
+  });
+  return {
+    _meta: {
+      ...publicDataset._meta,
+      schema_version: 'archive-missions-owner-v1',
+      access_scope: 'owner_only_local_runtime',
+      source_sha256: '0'.repeat(64),
+      public_generation_id: publicDataset._meta.generation_id,
+    },
+    missions: publicDataset.missions.map((mission) => ({
+      ...mission,
+      ownerRaw: ownerRaw(mission.missionId),
+    })),
+    journal: publicDataset.journal,
+  };
+}
+
 test('本地预览运行层只调用一次 fallback，并为响应设置本地安全头', async () => {
   const port = await reserveLoopbackPort();
   const privateDataDirectory = mkdtempSync(
@@ -111,6 +153,15 @@ test('本地预览运行层只调用一次 fallback，并为响应设置本地�
       response.headers.get('x-robots-tag'),
       'noindex, nofollow, noarchive, nosnippet',
     );
+    assert.equal(response.headers.get('x-content-type-options'), 'nosniff');
+    assert.equal(response.headers.get('x-frame-options'), 'DENY');
+    assert.equal(response.headers.get('referrer-policy'), 'no-referrer');
+    assert.equal(response.headers.get('cross-origin-opener-policy'), 'same-origin');
+    assert.equal(response.headers.get('cross-origin-resource-policy'), 'same-origin');
+    assert.match(response.headers.get('permissions-policy') ?? '', /payment=\(\)/);
+    assert.match(response.headers.get('content-security-policy') ?? '', /frame-ancestors 'none'/);
+    assert.match(response.headers.get('content-security-policy') ?? '', /connect-src 'self'/);
+    assert.equal(response.headers.get('x-powered-by'), null);
   } finally {
     await closeServer(server);
     rmSync(privateDataDirectory, { recursive: true, force: true });
@@ -246,7 +297,7 @@ test('公开评论保持章节隔离、去重、链接限制、XSS 转义和先�
   );
   const origin = `http://127.0.0.1:${port}`;
   const payload = {
-    chapter_id: 'chapter-01',
+    chapter_id: 'hero-wuming-v0-3--chapter-01',
     display_name: '<img src=x onerror=alert(1)>',
     body: '<script>alert(1)</script>请勿执行',
     website: '',
@@ -278,7 +329,7 @@ test('公开评论保持章节隔离、去重、链接限制、XSS 转义和先�
     assert.equal(submission.status, 'pending');
 
     const pendingRead = await fetch(
-      `${origin}/api/local/novel-comments?chapter=chapter-01`,
+      `${origin}/api/local/novel-comments?chapter=hero-wuming-v0-3--chapter-01`,
     );
     const pendingBody = (await pendingRead.json()) as { comments: unknown[] };
     assert.deepEqual(pendingBody.comments, []);
@@ -314,7 +365,7 @@ test('公开评论保持章节隔离、去重、链接限制、XSS 转义和先�
       { mode: 0o600 },
     );
     const approvedRead = await fetch(
-      `${origin}/api/local/novel-comments?chapter=chapter-01`,
+      `${origin}/api/local/novel-comments?chapter=hero-wuming-v0-3--chapter-01`,
     );
     const approvedBody = (await approvedRead.json()) as {
       comments: Array<{ display_name: string; body: string }>;
@@ -325,7 +376,7 @@ test('公开评论保持章节隔离、去重、链接限制、XSS 转义和先�
     assert(!approvedBody.comments[0].display_name.includes('<img'));
 
     const otherChapter = await fetch(
-      `${origin}/api/local/novel-comments?chapter=chapter-02`,
+      `${origin}/api/local/novel-comments?chapter=hero-wuming-v0-3--chapter-02`,
     );
     const otherChapterBody = (await otherChapter.json()) as {
       comments: unknown[];
@@ -337,7 +388,7 @@ test('公开评论保持章节隔离、去重、链接限制、XSS 转义和先�
       'damaged moderation line\n',
     );
     const damagedRead = await fetch(
-      `${origin}/api/local/novel-comments?chapter=chapter-01`,
+      `${origin}/api/local/novel-comments?chapter=hero-wuming-v0-3--chapter-01`,
     );
     assert.equal(damagedRead.status, 503);
     assert.deepEqual(await damagedRead.json(), {
@@ -383,6 +434,11 @@ test('站主接口保持令牌隔离、聚合隐私和语料命中裁剪', async
         },
       ],
     })}\n`,
+    { mode: 0o600 },
+  );
+  writeFileSync(
+    resolve(privateDataDirectory, 'archive-missions-owner.json'),
+    `${JSON.stringify(buildArchiveMissionOwnerFixture())}\n`,
     { mode: 0o600 },
   );
   const listener = createLocalPreviewRuntime({
@@ -435,6 +491,15 @@ test('站主接口保持令牌隔离、聚合隐私和语料命中裁剪', async
     assert.equal(unauthorizedCorpus.status, 401);
     assert(!((await unauthorizedCorpus.text()).includes(absolutePrivatePath)));
 
+    const unauthorizedMissions = await fetch(
+      `${origin}/api/local/research-missions`,
+    );
+    assert.equal(unauthorizedMissions.status, 401);
+    assert.equal(
+      unauthorizedMissions.headers.get('www-authenticate'),
+      'Bearer realm="local-research-missions"',
+    );
+
     const adminToken = readFileSync(
       resolve(privateDataDirectory, 'admin-token'),
       'utf8',
@@ -463,6 +528,116 @@ test('站主接口保持令牌隔离、聚合隐私和语料命中裁剪', async
     assert.equal(corpusBody.creates_claims_or_edges, false);
     assert(!corpusText.includes(absolutePrivatePath));
     assert(!corpusText.includes('绝不返回'));
+
+    const missionBaseline = await fetch(
+      `${origin}/api/local/research-missions`,
+      { headers: { authorization: `Bearer ${adminToken}` } },
+    );
+    const missionBaselineBody = await missionBaseline.json() as {
+      baseline: { missions: unknown[] };
+      event_writes_enabled: boolean;
+      historical_claims_created: boolean;
+    };
+    assert.equal(missionBaseline.status, 200);
+    assert.equal(missionBaselineBody.baseline.missions.length, 33);
+    assert.equal(missionBaselineBody.event_writes_enabled, false);
+    assert.equal(missionBaselineBody.historical_claims_created, false);
+
+    const missionHead = await fetch(`${origin}/api/local/research-missions`, {
+      method: 'HEAD',
+      headers: { authorization: `Bearer ${adminToken}` },
+    });
+    assert.equal(missionHead.status, 200);
+    assert.equal(await missionHead.text(), '');
+    assert.equal(
+      missionHead.headers.get('content-length'),
+      missionBaseline.headers.get('content-length'),
+    );
+
+    const missionWriteAttempt = await fetch(`${origin}/api/local/research-missions`, {
+      method: 'POST',
+      headers: {
+        authorization: `Bearer ${adminToken}`,
+        'content-type': 'application/json',
+        origin,
+      },
+      body: JSON.stringify({ missionId: 'T001', status: 'completed' }),
+    });
+    assert.equal(missionWriteAttempt.status, 405);
+    assert.equal(missionWriteAttempt.headers.get('allow'), 'GET, HEAD');
+  } finally {
+    await closeServer(server);
+    rmSync(privateDataDirectory, { recursive: true, force: true });
+  }
+});
+
+test('史料行动基线对截断、未知字段、内嵌数据、超限与非普通文件失败关闭', async () => {
+  const port = await reserveLoopbackPort();
+  const privateDataDirectory = mkdtempSync(
+    resolve(tmpdir(), 'handx-local-runtime-mission-adversarial-'),
+  );
+  const origin = `http://127.0.0.1:${port}`;
+  const ownerPath = resolve(privateDataDirectory, 'archive-missions-owner.json');
+  const validFixture = buildArchiveMissionOwnerFixture();
+  writeFileSync(ownerPath, `${JSON.stringify(validFixture)}\n`, { mode: 0o600 });
+  const listener = createLocalPreviewRuntime({
+    projectRoot,
+    privateDataDirectory,
+    bind: { hostname: '127.0.0.1', port },
+    deploymentEnvironment: undefined,
+    fallback: (_request, response) => {
+      response.statusCode = 404;
+      response.end('fallback');
+    },
+  });
+  const server = createServer(listener);
+
+  try {
+    server.listen(port, '127.0.0.1');
+    await once(server, 'listening');
+    const adminToken = readFileSync(
+      resolve(privateDataDirectory, 'admin-token'),
+      'utf8',
+    ).trim();
+    const requestBaseline = () => fetch(`${origin}/api/local/research-missions`, {
+      headers: { authorization: `Bearer ${adminToken}` },
+    });
+
+    assert.equal((await requestBaseline()).status, 200);
+
+    writeFileSync(ownerPath, '{"_meta":', { mode: 0o600 });
+    assert.equal((await requestBaseline()).status, 503);
+
+    writeFileSync(
+      ownerPath,
+      `${JSON.stringify({ ...validFixture, unexpected: true })}\n`,
+      { mode: 0o600 },
+    );
+    assert.equal((await requestBaseline()).status, 503);
+
+    const dataUrlFixture = structuredClone(validFixture) as {
+      missions: Array<{ ownerRaw: { notes: string } }>;
+    };
+    dataUrlFixture.missions[0].ownerRaw.notes = 'data:image/png;base64,AAAA';
+    writeFileSync(ownerPath, `${JSON.stringify(dataUrlFixture)}\n`, { mode: 0o600 });
+    assert.equal((await requestBaseline()).status, 503);
+
+    writeFileSync(ownerPath, 'x'.repeat(2 * 1024 * 1024 + 1), { mode: 0o600 });
+    assert.equal((await requestBaseline()).status, 503);
+
+    rmSync(ownerPath);
+    mkdirSync(ownerPath);
+    assert.equal((await requestBaseline()).status, 503);
+
+    rmSync(ownerPath, { recursive: true });
+    const symlinkTarget = resolve(privateDataDirectory, 'owner-target.json');
+    writeFileSync(symlinkTarget, `${JSON.stringify(validFixture)}\n`, { mode: 0o600 });
+    symlinkSync(symlinkTarget, ownerPath);
+    assert.equal((await requestBaseline()).status, 503);
+
+    rmSync(ownerPath);
+    writeFileSync(ownerPath, `${JSON.stringify(validFixture)}\n`, { mode: 0o600 });
+    assert.equal((await requestBaseline()).status, 200);
   } finally {
     await closeServer(server);
     rmSync(privateDataDirectory, { recursive: true, force: true });

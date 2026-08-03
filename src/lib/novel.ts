@@ -90,6 +90,12 @@ export interface NovelManifest {
 }
 
 export const novelManifest = manifestJson as unknown as NovelManifest;
+export const novelProgressKey = `handx-novel-progress:${novelManifest.book.id}`;
+export const novelCommentNamespace = novelManifest.book.id;
+
+export function novelCommentChapterId(sectionId: string): string {
+  return `${novelCommentNamespace}--${sectionId}`;
+}
 export const novelSectionById = new Map(
   novelManifest.sections.map((section) => [section.id, section]),
 );

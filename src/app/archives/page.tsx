@@ -1,4 +1,5 @@
 import { AlertTriangle, Link2, ShieldCheck } from 'lucide-react';
+import Link from 'next/link';
 import { ProjectSectionNav } from '@/components/project-section-nav';
 import { PageHeader } from '@/components/section-header';
 import { SourceCard } from '@/components/source-card';
@@ -48,6 +49,19 @@ export default function ArchivesPage() {
         {sourceCards.map((source) => (
           <SourceCard key={source.sourceId} {...source} />
         ))}
+      </section>
+
+      <section className="mt-10 grid gap-6 border border-foreground/15 bg-[#eee9df] p-6 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:p-8">
+        <div>
+          <p className="story-kicker">还没取得的原件</p>
+          <h2 className="mt-3 font-serif text-3xl font-semibold">来源目录之外，还有 33 项正在等待推进的查档任务。</h2>
+          <p className="mt-4 max-w-3xl text-sm leading-7 text-muted-foreground">
+            它们记录“下一步去哪里、找哪一页、拿到什么才算完成”；全部仍在执行前阶段，不是新增史实成果。
+          </p>
+        </div>
+        <Link href="/missions" className="story-button story-button-primary">
+          进入查档现场
+        </Link>
       </section>
 
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">

@@ -18,11 +18,15 @@ Origin／CSRF、回环监听和本机 Bearer 密钥用于防止误操作与普�
 `Handx web0.1` 是当前工程基线，继续保留原有苏开元可审计研究能力，并增加：
 
 - 《英雄无名》带水印页图的全文与分章阅读；
+- 小说版本大厅、史实来源伴读与站主换版门禁；
 - 先审后显的章节评论及本机审核队列；
 - 故事模式、审计研究模式和明确隔离的 Legacy 线索；
 - 人物、事件、机构、地点、职务和文献 Wiki；
 - 仅持本机管理员密钥可见的主人语料命中索引；
 - 问题驱动的历史专题与仅供内部审稿的媒体素材包。
+- 六人策展群像与逐条回源的人物故事档案。
+- 不上传、不留存答案的 AI 家族史起步诊断与方法演示。
+- 33 项查档任务、公开研究日志、浏览器内线索草稿与站主只读行动台。
 
 项目允许推送到站主账号下的**私有 GitHub 仓库**进行工程版本管理，但这不构成公开发布授权。
 原始小说、家属材料、第三方原件、运行数据、平台凭证和未获许可的派生资产不得进入仓库。
@@ -38,12 +42,85 @@ Origin／CSRF、回环监听和本机 Bearer 密钥用于防止误操作与普�
 - 水印文案为“© 韩大昕｜鉴真小秃驴 · 仅供本站阅读”。它只能提高直接复制成本，
   不能阻止截图、抓包或 OCR，也不等于已经发放转载、训练或改编许可；
 - 32 个编号章节、楔子与尾声开放评论。投稿默认 `pending`，公开章节只显示管理员批准的内容；
+  评论与阅读进度使用 `edition_id` 命名空间隔离，旧版内容不会自动迁移到重写后的新版本；
   投稿与审核事件分别追加保存在 `private-runtime/`，不采集 IP 和 User-Agent；
 - 评论只代表读者意见，即使批准显示，也不得自动成为知识图谱主张、史料来源、专题证据或媒体事实卡；
 - 主人语料索引只返回 P1 文档标题、定位和材料类别；P2／P3 正文、本机绝对路径与家属私密内容不发送到浏览器。
   自动命中只是一条检索线索，不生成事实关系；
 - 媒体矩阵导出包全部固定为 `review_only`，不登录平台、不保存平台令牌、不调用直发接口。
   下载包必须经人工事实、权利和平台适配复核，才能在未来被单独提升为 `public_ready`。
+
+### 2026-08-04 小说版本治理
+
+- 网站当前仍提供经验证的《英雄无名》V0.3 本地阅读器（182页、32个编号章节）；
+- V1.2 是已冻结的差异对照与回滚基线，不提供网页阅读；
+- V1.3 是正在编辑的候选版。构建只读取其哈希和结构，不复制原始 PDF、DOCX、Markdown，
+  也不生成候选页图；
+- `/novel/editions` 向读者解释当前版、冻结版与候选版，`/novel/companion` 把关键小说节点
+  接回来源卡并说明文学边界，`/studio/novel-migration` 仅展示安全的换版门禁摘要；
+- V1.3 当前观察到 47 幅正文图版，而结构化权利台账只有 26 条。冻结说明、完整权利护照、
+  终检报告、作者／法定权利人确认及页码视觉核验全部完成前，禁止切换；
+- 版本登记由 `pnpm novel:editions:build` 重建，`pnpm novel:editions:verify` 会拒绝本机绝对路径、
+  原始正文泄漏、错误冻结状态或绕过并行迁移门禁。
+
+### 2026-08-04 故事证据链与原件查看台
+
+- `/evidence` 把小说阅读、原子主张、来源定位和边界裁决连成五条读者路径；其中只有三条进入
+  受控桥接白名单，另外两条专门演示“没有来源时必须停下”；
+- 三条桥接只使用当前 V7R4 安全预览的 5 条主张与 5 项来源：1936 平地泉是“来源伴读”，
+  1933 任命与 1942 编成表是“研究旁注”。三者均固定 `personFactAllowed=false`，当前真人事实场景数为 0；
+- 桥接合同绑定《英雄无名》V0.3 的 PDF／DOCX 哈希、章节页图摘要和研究代次哈希。任一版本、页码、
+  来源或主张漂移都会使 `pnpm evidence:verify` 失败；V1.3 不复用 V0.3 合同；
+- SRC-002 与 SRC-013 是同一作品的转录／影印载体，只计一个来源家族；SRC-042 是索引，不让
+  SRC-039 的任命记录看起来像双源；
+- `/archives/[sourceId]` 增加原件查看台。只有 SRC-013 的已登记局部图可在本机查看，仍是
+  `local_internal_preview_only`、`publishable=false`、`notForMedia=true`；其他来源默认显示精确定位并
+  跳转机构网站，不 iframe、不代理整份 PDF，也不把本地载体状态当展示许可；
+- 章节页增加“真实与虚构伴读”，来源页使用白名单 `context` 返回证据链；评论、小说和页面交互
+  仍不能写回或提升史料主张。
+
+### 2026-08-04 人物群像与故事档案
+
+- `/persons` 首批策展苏开元、李英夫、李大超（绥远军人）、朱自清、乔培新与傅作义六人，
+  `/persons/[entityId]` 先回答“是谁、为什么值得读”，再展开原子主张与来源；
+- 人物档案只从审计图中人工白名单选择的 19 个节点生成，所有节点都要求
+  `claim → source → locator` 可回溯；旧 AI、小说草稿和文学材料被机器门禁禁止生成生平；
+- “文献同现”“参与者回忆”“候选制度锚”“不支持”使用不同读者标签。待档与候选边明确不计作
+  已证真人交集，关系卡不会把并列名单、共同机构或后出回忆升级为私交；九条策展关系同时冻结
+  `edge_id + edge_status + claim_ids`，新增或换线关系默认阻断；
+- 每条人物主张显示“载体／索引数”和独立来源数；《绥行纪略》转录与影印、地方志公开页与扫描、
+  公报影印与数据库索引按同一作品家族标注，不因链接数量增加证据权重；
+- 李英夫与李广荣保持分离，绥远军人李大超与 P-020／P-029／P-031 同名轨保持分流；
+- 当前没有登记足以安全使用的李英夫、李大超历史肖像，六页统一使用文字印记，不生成假头像；
+- 所有人物页均为 `local_review_only` 与“非完整传记”。生存状态不明者不作推断，公开历史人物也
+  只使用项目已登记的公共材料；完整隐私、同意和权利门禁通过前不得公开发布。
+
+### 2026-08-04 AI 家族史起步诊断
+
+- `/studio/diagnosis` 用五个选择题把访客引向资料盘点、身份分流、调档路线、证据型叙事或隐私优先；
+- 自评只在当前 React 页面内存中计算，不接收自由文本或文件，不写入网址、统计、留言、Cookie、
+  `localStorage` 或 `sessionStorage`，不调用外部模型；刷新、退出或关闭页面即清空；
+- 涉及在世人物、私人通信、未成年人或授权不明时，隐私优先具有硬覆盖，结果页不显示访谈入口；
+- 其余结果只允许由访客主动复制不含姓名和原文的摘要，或打开预填邮件；网站不会自动发送；
+- 页面公开演示两个研究合同：`SRC-002/SRC-013` 是同一作品的两个载体、只计一个独立来源；
+  `SRC-103/SRC-104` 只构成候选身份桥，不能自动合并姓名轨；
+- 当前服务状态固定为 `small_scope_interview_only_not_paid_order`：正式收费、上传、支付、外部模型处理、
+  自动事实生成与自动发布均未开放。`pnpm family-history:verify` 会阻断上述边界漂移。
+
+### 2026-08-04 查档现场与行动基线
+
+- `/missions` 将 2026-07-28 的 33 项档案馆、图书馆与博物馆调查方向转成读者可理解的行动清单；
+  其中 7 项是首批精确任务、39 个结构化申请目标，当前取得并核读为 0；
+- P0／P1／P2 只表示执行顺序，不是隐私级别或证据等级。`planned`／`blocked` 是行动状态，
+  不得换算为历史研究完成率；申请准备、发送、受理、取得材料与完成核读必须分开记录；
+- `/missions/[taskId]` 说明研究问题、馆藏定位、完成标准和“即使取得也不能自动证明什么”；
+  A004 的编号异写按一个目标处理，A013 与 A020 分别拆成 3／4 项申请，A015 的两个馆藏入口仍只算同一作品家族；
+- 公开线索工具只在当前页面内存中生成 JSON 草稿，拒绝非 HTTPS、内网、含账号密码的网址；它不提交、
+  不保存、不抓取、不接收文件，也不创建人物事实。正式线索接收入口仍为关闭状态；
+- `/studio/research-log` 通过本机管理员令牌只读 `private-runtime/archive-missions-owner.json`，
+  原始精确请求、前置条件、内部下一动作和备注不会进入公开 JSON；本轮不提供任务状态写入接口；
+- `pnpm missions:build` 从唯一 CSV 基线确定性重建公开／主人数据，`pnpm missions:verify` 校验输入 SHA、
+  33／39／7／0 数量、字段白名单、特殊粒度、文件权限、公开泄漏和零提交端点合同。
 
 ## 2026-07-24 个人 IP 身份层
 
@@ -103,6 +180,26 @@ Origin／CSRF、回环监听和本机 Bearer 密钥用于防止误操作与普�
   当前仍不自动删除旧数据；
 - 职业经历仍标“本人提供”，外部链接只核验项目和时代背景，不冒充个人任职证明。
   详细核验见 [`CAREER-EVIDENCE.md`](./CAREER-EVIDENCE.md)。
+
+## 2026-08-04 权利护照、版本状态与媒体事实门禁
+
+- `/studio/rights-ledger` 将 5 项网站资产、182 张小说页图、3 篇原创文章、13 个专题段落和
+  5 项来源登记拆成 208 份逐项权利护照。当前 193 项为本站控制的原创表达、2 项只有本地审阅授权、
+  13 项权利待核；22 项不得进入媒体包，`public_ready=0`；
+- 缺少权利依据的对象固定进入 `permission_pending`，所有护照都保持 `no-license-granted`、
+  `release_gate=blocked`、`must_not_deploy=true`。头像和微信二维码的有限本地授权不被扩大为公开或商业授权；
+- `/studio/media` 现在先执行事实、身份、来源定位、隐私和权利五重门禁。6 条母内容中只有
+  “1933 年董其武公报任命记录”可生成本地审稿包；其余 5 条分别因身份未闭环、问题／解释模式、
+  Legacy、真人关键因果或媒体改写权利链不足而阻断；
+- 合格素材包使用 1.1 合同，附 `TRACEABILITY.json`、权利护照与人工清单，并固定为
+  `review_only`、`auto_publish=false`、`external_egress=deny`；同一作品的原件、索引、翻刻或不同载体
+  归入一个作品家族，不重复增加独立证据数；复制与 ZIP 也会再次执行同一门禁；
+- `/studio/data-versions` 与 `/data/site-status.json` 分开显示历史数据代次、产品构建、权利状态和服务开关。
+  数量只表示库存或门禁状态，不计算、暗示或展示历史研究完成率；
+- 服务机器合同固定关闭文件上传、模型处理、向外传输、自动生成史实、支付、自动发布和公网部署。
+  未知 schema、状态、输入漂移或源／浏览器 JSON 不一致时验证失败关闭；
+- 全站响应增加 CSP、`X-Frame-Options: DENY`、`nosniff`、`no-referrer`、权限策略和同源隔离头，
+  同时移除框架标识；程序化外传、文件上传控件、iframe 与远程图片白名单均保持为零。
 
 ## 2026-07-24 内容型 V2（历史演进记录）
 
@@ -186,8 +283,20 @@ pnpm graph:build
 pnpm graph:verify
 pnpm novel:build
 pnpm novel:verify
+pnpm novel:editions:build
+pnpm novel:editions:verify
+pnpm evidence:verify
+pnpm people:verify
+pnpm family-history:verify
+pnpm missions:build
+pnpm missions:verify
 pnpm corpus:index
+pnpm rights:passports:build
+pnpm rights:passports:verify
 pnpm media:verify
+pnpm status:build
+pnpm status:verify
+pnpm security:verify
 pnpm gate:local
 pnpm rights:verify
 pnpm release:verify
@@ -203,6 +312,8 @@ DEPLOY_RUN_PORT=3217 pnpm start
 只在需要重放页图管线时执行；日常验证使用 `pnpm novel:verify`。
 `pnpm build` 会复核权威导出、图谱、小说清单、专题／媒体、权利与本地门禁，
 再构建 Next.js 与本地服务器；它不是部署命令。
+`pnpm start` 也会在监听端口前重新核对权利护照、媒体门禁、状态合同与安全边界；
+任何构建后的本地篡改或输入漂移都会拒绝启动。
 `pnpm hooks:install` 会让本仓库在提交和推送前自动执行发布边界检查；新克隆的工作副本需执行一次。
 
 运行`pnpm data:build`或`pnpm build`前应先停止正在运行的本地预览服务器。五文件提交协议会让
@@ -212,19 +323,25 @@ DEPLOY_RUN_PORT=3217 pnpm start
 
 主要页面组：
 
-- 个人站：`/`、`/about`、`/discover`、`/studio`、`/rights`、`/privacy`；
-- 小说：`/novel`、`/novel/read`、`/novel/chapter/[slug]`；
-- 苏开元研究：`/sukaiyuan`、`/person`、`/timeline`、`/archives`、`/graph`、`/wiki`、
-  `/legacy`、`/controversies`、`/methodology`；
+- 个人站：`/`、`/about`、`/discover`、`/studio`、`/studio/diagnosis`、`/rights`、`/privacy`；
+- 小说：`/novel`、`/novel/read`、`/novel/chapter/[slug]`、`/novel/editions`、`/novel/companion`；
+- 苏开元研究：`/sukaiyuan`、`/evidence`、`/persons`、`/person`、`/timeline`、`/archives`、`/missions`、
+  `/graph`、`/wiki`、`/legacy`、`/controversies`、`/methodology`；
 - 传播工作台：`/topics`、`/studio/media`；
-- 主人本机入口：`/insights`、`/studio/comments`，以及 Wiki 实体页内的语料命中索引。
+- 主人本机入口：`/insights`、`/studio/comments`、`/studio/migrations`、`/studio/novel-migration`，
+  `/studio/research-log`、`/studio/rights-ledger`、`/studio/data-versions`，以及 Wiki 实体页内的语料命中索引。
 
-本地 JSON 接口共4个：
+研究预览 JSON 接口共4个：
 
 - `/data/persons.json`
 - `/data/events.json`
 - `/data/timeline.json`
 - `/data/sources.json`
+
+另外两份确定性本地合同为：
+
+- `/data/archive-missions.json`：33 项查档行动基线，不表示新增史实或研究完成率；
+- `/data/site-status.json`：数据代次、产品、权利和服务状态机器合同。
 
 另有仅接受本地来源的运行接口：
 
@@ -237,21 +354,38 @@ DEPLOY_RUN_PORT=3217 pnpm start
 - `GET /api/local/novel-comments/inbox`（需要本机 Bearer 密钥）
 - `POST /api/local/novel-comments/moderate`（需要本机 Bearer 密钥）
 - `GET /api/local/corpus-hits?entity=...`（需要本机 Bearer 密钥，只返回 P1 定位元数据）
+- `GET /api/local/research-missions`（需要本机 Bearer 密钥，只读返回查档行动私密基线）
 
 所有路由均返回`Cache-Control: private, no-store, max-age=0, must-revalidate`和
 `X-Robots-Tag: noindex, nofollow, noarchive, nosnippet`；`robots.txt`对所有抓取器返回
-`Disallow: /`。这只是防误公开措施，不能代替网络隔离和人工授权。
+`Disallow: /`。同时返回 CSP、`X-Frame-Options: DENY`、`X-Content-Type-Options: nosniff`、
+`Referrer-Policy: no-referrer`、Permissions Policy、COOP 与 CORP，并移除 `X-Powered-By`。
+这些只是防误公开和缩小攻击面，不能代替网络隔离和人工授权。
 
 ## Handx web0.1 验收要求
 
 - `pnpm data:verify`必须逐项核对V7R4的5/5/7/5计数、三组事件派生、v7快照ID、
   五个输入哈希、已记录代次完整性和`CURRENT`新鲜度，且所有被暂缓ID均未进入派生JSON；
 - `pnpm data:test`必须拒绝损坏的`CURRENT`、符号链接权威根、构建中指针切换和部分提交，并证明旧扁平目录哨兵不会被读取；
-- `pnpm graph:verify`必须核对审计图 229/127/211/131、Legacy 107/151 与 258 条迁移映射，
-  并保证默认研究查询不混入 Legacy；
+- `pnpm graph:verify`必须核对审计图 229/127/211/131、冻结 Legacy 107/151 与 258 条迁移映射，
+  并验证实时图谱的 10 项既有记录变化、26 个新增节点、50 条新增关系均由 86 条无语义指纹记录逐项阻断；
+  `ALLOW_LEGACY_GRAPH_REFRESH=1`本身不得构成发布授权；
 - `pnpm novel:verify`必须核对 182 页唯一归属、32 个编号章节、34 个可评论段落、
   原尺寸与响应式两套页面哈希，以及 7 页 `local_only`；
-- `pnpm media:verify`必须阻断 `not_for_media`／Legacy 内容进入导出，并保证所有包仍为 `review_only`；
+- `pnpm people:verify`必须固定六人策展白名单、19 个叙事节点、九条关系证据合同、同名隔离、
+  独立来源家族、无历史肖像、非完整传记与 `local_review_only`，并拒绝 D/E 主张、D/E 来源、
+  小说或旧 AI 材料生成生平；
+- `pnpm family-history:verify`必须固定五题、二十个选项、五类结果与两项公开方法演示，并拒绝
+  网络请求、浏览器持久化、自由文本、文件上传、答案统计和外部模型调用；
+- `pnpm rights:passports:verify`必须逐项核对 208 份权利护照、内容哈希、13 项待核权利、
+  22 项媒体阻断和 `public_ready=0`，未知权利必须失败关闭；
+- `pnpm media:verify`必须只允许 `source_backed + fact` 且主张／来源定位、身份与权利闭环的内容生成包，
+  阻断 `not_for_media`、Legacy、家属私密、未核身份和真人关键因果；同一作品多载体必须归入一个
+  `work_family_id` 且只计一个独立证据，并保证所有包仍为 `review_only`；
+- `pnpm status:verify`必须证明源端与浏览器端状态合同逐字节一致，机器服务开关全部关闭，
+  历史数量只作库存且不出现历史研究完成率；
+- `pnpm security:verify`必须确认无远程图片白名单、程序化外传、文件上传控件与 iframe，
+  且私密 JSON、监听地址和安全响应头继续失败关闭；
 - `pnpm release:verify`必须拒绝原始 DOCX/PDF、密钥、私有运行数据、绝对私密路径和超限文件进入发布集合；
 - `pnpm validate`必须通过TypeScript、ESLint与Stylelint；
 - `pnpm build`必须通过Next.js生产构建与本地服务器打包；

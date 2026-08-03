@@ -12,6 +12,7 @@ import {
   TriangleAlert,
 } from 'lucide-react';
 import { OwnerCorpusHits } from '@/components/owner-corpus-hits';
+import { peopleDossierById } from '@/content/people-dossiers';
 import {
   type AuditClaim,
   auditGraph,
@@ -138,6 +139,7 @@ export default async function WikiEntityPage({
   const { entityId } = await params;
   const node = auditNodeById.get(entityId);
   if (!node) notFound();
+  const curatedDossier = peopleDossierById.get(entityId);
 
   const claims = entityClaims(entityId);
   const edges = entityEdges(entityId);
@@ -154,7 +156,7 @@ export default async function WikiEntityPage({
       : edges.filter((edge) => relatedEntityId(edge, entityId) === 'P-001');
 
   return (
-    <main>
+    <div>
       <header className="border-b border-foreground/15">
         <div className="article-shell py-12 sm:py-20">
           <Link href="/wiki" className="story-text-link">
@@ -183,6 +185,11 @@ export default async function WikiEntityPage({
             这是一张审计实体页，不是自动生成的完整传记。页面只组合公开投影中的原子主张、
             关系和来源定位，不用空白年份补成连续履历。
           </p>
+          {curatedDossier && (
+            <Link href={`/persons/${entityId}`} className="story-button story-button-primary mt-7">
+              先读人物故事版 <ArrowRight className="size-4" aria-hidden="true" />
+            </Link>
+          )}
         </div>
       </header>
 
@@ -418,6 +425,6 @@ export default async function WikiEntityPage({
           </Link>
         </section>
       </div>
-    </main>
+    </div>
   );
 }

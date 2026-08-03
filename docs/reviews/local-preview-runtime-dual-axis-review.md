@@ -34,14 +34,14 @@
 处置：
 
 - `61bcafb` 完整撤销第 1 项的公开数据刷新；`git diff 0d4362e...HEAD -- public/data` 为空。
-- `b9c70a2` 改为冻结已批准 107/151/258 投影，只读识别并隔离上游 2 个既有节点变更、26 个新增节点和 50 条新增边；任何删除、重排、身份字段或边端点改变均拒绝构建。
+- `b9c70a2` 首先冻结已批准 107/151/258 投影；2026-08-04 又将隔离审计扩展为 10 项既有记录变化、26 个新增节点和 50 条新增边，共 86 条无语义指纹记录。任何删除、重排、身份字段或边端点改变均拒绝构建。
 - 第 2 项由本实验复盘、采用指南、记分卡和第 6 票闭环。
 - 第 3 项接受为非阻断测试夹具例外：HTTP 状态、响应体和可见性均从真实 HTTP 观察；只有无法通过公开 API 构造的损坏日志、站主令牌和本机语料索引由真实临时文件系统注入。没有为测试增加生产 seam。
 
 ## 闭环结论
 
 - 第一次修复后的 Standards 复审又发现 1 个控制流阻断：Legacy 隔离分支成功返回时也跳过了独立的 audited graph 更新。最终实现把审计投影构建提取为共享函数；隔离时只冻结 Legacy 两个输出，audited graph 与 manifest 仍正常刷新。
-- Legacy 主动刷新现在需要显式 `ALLOW_LEGACY_GRAPH_REFRESH=1`，且 26 个节点和 50 条边的交叉映射未补齐时仍失败关闭。误导性的 `assess_append_only_legacy_drift` 也已改名为 `assess_quarantinable_legacy_drift` 并明确可隔离字段。
+- 2026-08-04 后，`ALLOW_LEGACY_GRAPH_REFRESH=1`被明确降为无授权能力的旧开关，单独设置会直接失败；Legacy 候选必须先进入审计主张并逐项完成人工发布审查。误导性的 `assess_append_only_legacy_drift` 已改名为 `assess_quarantinable_legacy_drift` 并明确可隔离字段。
 - Standards：0 个未解决硬问题；4 个已消除或接受的非阻断判断项。
 - Spec：2 个阻断项均已修复；1 个非阻断 seam 限制有明确边界。
 - 完整 `validate`、`build`、`smoke:local` 均通过；公开部署仍关闭。

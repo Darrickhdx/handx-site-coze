@@ -190,6 +190,9 @@ export const auditClaimById = new Map(
 export const auditSourceById = new Map(
   auditGraph.sources.map((source) => [source.source_id, source]),
 );
+export const auditEdgeById = new Map(
+  auditGraph.edges.map((edge) => [edge.edge_id, edge]),
+);
 export const legacyNodeById = new Map(
   legacyGraph.nodes.map((node) => [node.id, node]),
 );

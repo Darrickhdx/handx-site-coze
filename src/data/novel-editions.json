@@ -1,0 +1,111 @@
+{
+  "schema_version": "handx-novel-editions-1.0",
+  "observed_at": "2026-08-03T17:10:42.221241+00:00",
+  "must_not_deploy": true,
+  "deployment_authorized": false,
+  "current_reader": {
+    "edition_id": "hero-wuming-v0-3",
+    "version": "0.3",
+    "status": "legacy_local_reader",
+    "pages": 182,
+    "numbered_chapters": 32,
+    "commentable_sections": 34,
+    "pdf_sha256": "3913ae458296646e3151ab9ad2b6646a7104cfe538a80e095b6563fef652d152",
+    "docx_sha256": "4d72bb26a15a45a95ca7f21795a4365db057fac06025b4fc7b4b330fa9ba1b09",
+    "raw_sources_served": false
+  },
+  "editions": [
+    {
+      "edition_id": "hero-wuming-v1-2",
+      "version": "1.2",
+      "status": "frozen_baseline_not_served",
+      "role": "V1.3 的只读差异基线与回滚基线，不是当前网站阅读版。",
+      "pages": 539,
+      "numbered_chapters": 35,
+      "unnumbered_openings": 0,
+      "figure_plates": 47,
+      "source_artifacts": {
+        "markdown": {
+          "artifact": "md",
+          "sha256": "b853bad3901207643356253c5c026bf3b0ccb74d95919cebe68e5bdd7a59a51e",
+          "byte_size": 597331,
+          "modified_at": "2026-08-03T13:17:13.044714+00:00"
+        },
+        "pdf": {
+          "artifact": "pdf",
+          "sha256": "9a252ca53a38d950056f2965fbaebda18b037e3ed976679032d375ad5fcadc43",
+          "byte_size": 40838529,
+          "modified_at": "2026-08-03T13:17:39.425668+00:00"
+        },
+        "docx": {
+          "artifact": "docx",
+          "sha256": "1ff7b58669aa05257673b7c521664fdbb8e7c9ce5c2502d3061c8d68cc5a6f7e",
+          "byte_size": 37506549,
+          "modified_at": "2026-08-03T13:17:42.842229+00:00"
+        }
+      },
+      "frozen": true,
+      "served": false,
+      "public_ready": false
+    },
+    {
+      "edition_id": "hero-wuming-v1-3-candidate",
+      "version": "1.3",
+      "status": "active_candidate_not_served",
+      "role": "下一版阅读器目标；冻结、审权和版本隔离门槛通过后才允许整体切换。",
+      "pages": 519,
+      "numbered_chapters": 35,
+      "unnumbered_openings": 1,
+      "figure_plates": 47,
+      "rights_ledger_records": 26,
+      "source_artifacts": {
+        "markdown": {
+          "artifact": "md",
+          "sha256": "ec656e3299a0e2316dafba87af70849b1c6701c11fb672f8a703047f83e778fb",
+          "byte_size": 573614,
+          "modified_at": "2026-08-03T16:51:05.451101+00:00"
+        },
+        "pdf": {
+          "artifact": "pdf",
+          "sha256": "331663e4a42da7902c4cdfed9376f06d03ef653ba32b73dcbd98f82c09a90f3b",
+          "byte_size": 40793785,
+          "modified_at": "2026-08-03T17:10:38.797734+00:00"
+        },
+        "docx": {
+          "artifact": "docx",
+          "sha256": "f44e4bd519990b31561cfe84694394e67a0fea624e616867667400030ffbac0c",
+          "byte_size": 37538342,
+          "modified_at": "2026-08-03T17:10:42.221241+00:00"
+        }
+      },
+      "gate_checks": {
+        "three_source_artifacts_present": true,
+        "expected_structure_observed": true,
+        "frozen_manifest_present": false,
+        "sha_manifest_present": true,
+        "final_review_report_present": true,
+        "all_figure_rights_passports_present": false,
+        "author_and_legal_rightsholder_confirmed": false,
+        "page_mapping_and_visual_qa_complete": false,
+        "edition_scoped_comments_and_progress_ready": true
+      },
+      "blocked_gates": [
+        "frozen_manifest_present",
+        "all_figure_rights_passports_present",
+        "author_and_legal_rightsholder_confirmed",
+        "page_mapping_and_visual_qa_complete"
+      ],
+      "frozen": false,
+      "served": false,
+      "public_ready": false
+    }
+  ],
+  "migration_policy": {
+    "strategy": "parallel_import_then_atomic_switch",
+    "raw_sources_in_browser": false,
+    "old_comments_auto_migrated": false,
+    "old_progress_auto_migrated": false,
+    "rights_policy": "page_inherits_highest_risk_asset",
+    "candidate_static_pages_generated": false
+  }
+}

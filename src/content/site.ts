@@ -32,9 +32,11 @@ export const primaryNavigation: readonly PrimaryNavigationItem[] = [
     label: '苏开元',
     activePaths: [
       '/sukaiyuan',
+      '/evidence',
       '/graph',
       '/wiki',
       '/archives',
+      '/missions',
       '/topics',
       '/novel',
       '/person',
@@ -146,5 +148,12 @@ export const suKaiyuanArchiveGroups = [
     href: '/archives',
     label: '进入原件阅览室',
     icon: FileText,
+  },
+  {
+    title: '继续寻找缺失的一页',
+    description: '看清下一步去哪里、找什么，以及拿到什么才算完成。',
+    href: '/missions',
+    label: '进入查档现场',
+    icon: BookOpenText,
   },
 ] as const;

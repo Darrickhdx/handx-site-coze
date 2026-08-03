@@ -48,6 +48,28 @@ const localOnlyHeaders = {
   Pragma: 'no-cache',
   Expires: '0',
   'X-Robots-Tag': 'noindex, nofollow, noarchive, nosnippet',
+  'X-Content-Type-Options': 'nosniff',
+  'X-Frame-Options': 'DENY',
+  'Referrer-Policy': 'no-referrer',
+  'Permissions-Policy': 'camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()',
+  'Cross-Origin-Opener-Policy': 'same-origin',
+  'Cross-Origin-Resource-Policy': 'same-origin',
+  'Content-Security-Policy': [
+    "default-src 'self'",
+    "base-uri 'self'",
+    "form-action 'self'",
+    "frame-ancestors 'none'",
+    "object-src 'none'",
+    "frame-src 'none'",
+    "img-src 'self' data: blob:",
+    "media-src 'self'",
+    "font-src 'self' data:",
+    "style-src 'self' 'unsafe-inline'",
+    "script-src 'self' 'unsafe-inline'",
+    "connect-src 'self'",
+    "worker-src 'self' blob:",
+    "manifest-src 'self'",
+  ].join('; '),
 };
 
 export function createLocalPreviewRuntime(

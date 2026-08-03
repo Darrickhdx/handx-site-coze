@@ -13,6 +13,11 @@ fi
 
 PYTHONDONTWRITEBYTECODE=1 python3 tools/verify_preview_data.py
 PYTHONDONTWRITEBYTECODE=1 python3 tools/verify_static_assets.py
+pnpm exec tsx tools/build-rights-passports.ts --check
+pnpm exec tsx tools/verify-rights-passports.ts
+pnpm exec tsx tools/verify-topics-media.ts
+pnpm exec tsx tools/verify-site-status.ts
+pnpm exec tsx tools/verify-security-boundaries.ts
 node tools/assert-local-preview-gate.mjs
 
 start_service() {

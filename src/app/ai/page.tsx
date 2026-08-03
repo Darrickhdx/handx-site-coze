@@ -221,6 +221,29 @@ export default function AiProductPage() {
         </div>
       </section>
 
+      <section className="border-y border-foreground/15 bg-[#eee8dc] py-16 sm:py-20">
+        <div className="personal-shell grid gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(18rem,0.8fr)] lg:items-end lg:gap-20">
+          <div>
+            <p className="personal-kicker"><span aria-hidden="true" />Method in public</p>
+            <h2 className="personal-heading mt-6">想看 AI 怎样参与一项真实、长期又不能乱猜的工程？</h2>
+            <p className="mt-6 max-w-3xl text-base leading-8 text-muted-foreground">
+              AI 家族史实验室把资料去重、身份分流、调档路线与叙事边界做成可操作工具。
+              第一个入口只用五个选择题判断研究起点，不上传材料、不保存答案、不调用外部模型。
+            </p>
+          </div>
+          <div className="flex flex-col gap-3">
+            <Link href="/studio/diagnosis" className="story-button personal-button-primary">
+              做一次 3 分钟起步诊断
+              <ArrowRight className="size-4" aria-hidden="true" />
+            </Link>
+            <Link href="/discover/ai-family-history" className="story-text-link">
+              阅读背后的研究方法
+              <ArrowRight className="size-4" aria-hidden="true" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <section className="py-16 sm:py-24">
         <div className="personal-shell">
           <div className="grid gap-10 lg:grid-cols-[0.68fr_1.32fr] lg:gap-20">

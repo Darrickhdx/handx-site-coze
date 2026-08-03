@@ -1,28 +1,49 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "project": "Handx web0.1",
   "must_not_deploy": true,
   "source_generated_at_utc": "2026-07-20T09:45:43.517517+00:00",
   "inputs": {
-    "legacy_html": {
-      "filename": "苏开元知识图谱-交互版.html",
-      "sha256": "8a74e35d98264fd0db53e20b5fe0b3cd1192eeada8bc577d9e5fa5af19b62113"
-    },
-    "legacy_graph": {
-      "filename": "graph-data.json",
+    "legacy_baseline": {
+      "filename": "graph-data.backup-20260720.json",
       "sha256": "43bb5acaacd98fdc7ae2f34f23a61cd84940379ad8bf2ca66300275f252498d1"
-    },
-    "audit_graph": {
-      "filename": "05-知识图谱-公开版.json",
-      "sha256": "bc050f39e676a2bc347456fad4b4d0f87c2702993f012e39f8b16eef4bc0fd99"
     },
     "legacy_crosswalk": {
       "filename": "28-旧知识图谱交叉映射.csv",
       "sha256": "771893e8c699f90408dc3fea951c83c007cc74cd1deb925791d6ad2d64e484ec"
     },
+    "audit_graph": {
+      "filename": "05-知识图谱-公开版.json",
+      "sha256": "bc050f39e676a2bc347456fad4b4d0f87c2702993f012e39f8b16eef4bc0fd99"
+    },
     "source_registry": {
       "filename": "01-来源登记表.csv",
       "sha256": "f3dba7877465018387abaca74c8b8adb4fe5df8fb4d0903f4a3efab84ecc5442"
+    }
+  },
+  "quarantine": {
+    "status": "active",
+    "review": {
+      "approved_nodes": 107,
+      "approved_edges": 151,
+      "quarantined_modified_nodes": 10,
+      "quarantined_modified_edges": 0,
+      "quarantined_public_node_field_changes": 2,
+      "quarantined_public_edge_field_changes": 0,
+      "quarantined_nodes": 26,
+      "quarantined_edges": 50,
+      "quarantined_inventory_records": 86,
+      "quarantined_blocked_records": 86
+    },
+    "current_inputs": {
+      "legacy_html_sha256": "b965e64476bd98af1ff0ef053a546586150c16fca0ff3ade446c14003504d23f",
+      "legacy_graph_sha256": "bba564e8b89522cee117461a93a41c6eb39e408cc5f8e451cc534b4a496f85f1",
+      "drift_inventory_sha256": "c9821e48477e3a07123d16e9ef0d7bc40a4dbcc77dec9442a24e63c280ec79ea"
+    },
+    "private_inbox": {
+      "generated": true,
+      "served_to_browser": false,
+      "record_count": 86
     }
   },
   "counts": {
@@ -41,11 +62,13 @@
     ],
     "legacy_detail_included": false,
     "absolute_paths_included": false,
-    "crosswalk_creates_facts": false
+    "crosswalk_creates_facts": false,
+    "quarantine_details_included": false
   },
   "outputs": {
     "audit-graph.json": "ca0325a38ea803e42985026c4552e061584f760457dfd56f84c9ac2b729c870c",
     "legacy-graph.json": "6188ad4157eeede6f1e982d6116c20c3919402758a3acc17ce47cd8d3dcd49c6",
-    "legacy-crosswalk.json": "a3dea5c79d8678479f751614bb603e879c359095f717667ac52147ae917fd1da"
+    "legacy-crosswalk.json": "a3dea5c79d8678479f751614bb603e879c359095f717667ac52147ae917fd1da",
+    "legacy-drift-summary.json": "cb8fb40b1089981934fae40210c3888ede1469db50e2268c06934a7ff3ced272"
   }
 }

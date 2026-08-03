@@ -12,6 +12,11 @@ import { profile } from '@/content/profile';
 
 const privacyCards = [
   {
+    icon: ShieldCheck,
+    title: '自评答案只在当前页面',
+    body: '家族史起步诊断是零统计区：不收自由文本或文件，不发送页面访问或答案，不写入网址、统计、Cookie 或浏览器存储；刷新、退出或关闭页面即清空。',
+  },
+  {
     icon: EyeOff,
     title: '不记录身份指纹',
     body: '访问统计和小说评论都不保存 IP、User-Agent、完整 referrer、搜索词或跨站 Cookie；不做设备指纹与会话回放。',
@@ -83,9 +88,21 @@ export default function PrivacyPage() {
               Data inventory
             </p>
             <Database className="mt-8 size-8 text-primary" strokeWidth={1.4} aria-hidden="true" />
-            <h2 className="personal-heading mt-6">四类数据，彼此隔离。</h2>
+            <h2 className="personal-heading mt-6">五类数据，彼此隔离。</h2>
           </div>
           <div className="space-y-8">
+            <article className="border-t border-foreground/15 pt-6">
+              <p className="text-xs font-semibold tracking-[0.14em] text-primary uppercase">00 · 浏览器内自评</p>
+              <h3 className="mt-3 font-serif text-3xl font-semibold">五个选择题，只在当前页面内存计算</h3>
+              <p className="mt-4 text-sm leading-7 text-muted-foreground">
+                家族史起步诊断不收姓名、自由文本或文件，不调用外部模型，也不把选择写入统计、留言、网址、
+                Cookie、localStorage 或 sessionStorage。结果是资料准备度建议，不是历史事实鉴定；刷新或退出即清空答案。
+              </p>
+              <p className="mt-3 text-sm leading-7 text-muted-foreground">
+                只有你主动点击“复制低敏摘要”时，摘要才会进入系统剪贴板；主动点击邮件入口时，摘要才会交给你的邮件客户端。
+                本站不会替你发送，两项操作在隐私优先结果中都不会形成访谈提交。
+              </p>
+            </article>
             <article className="border-t border-foreground/15 pt-6">
               <p className="text-xs font-semibold tracking-[0.14em] text-primary uppercase">01 · 访问与操作统计</p>
               <h3 className="mt-3 font-serif text-3xl font-semibold">页面路径、事件名称、时间与匿名会话哈希</h3>

@@ -1,12 +1,14 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, ArrowRight, List } from 'lucide-react';
+import { ArrowLeft, ArrowRight, BookOpenText, List, ShieldAlert } from 'lucide-react';
 import { ChapterComments } from '@/components/chapter-comments';
 import { NovelReader } from '@/components/novel-reader';
+import { evidencePathModeLabels, evidencePaths } from '@/content/evidence-paths';
 import {
   adjacentCommentableSections,
   commentableNovelSections,
+  novelCommentChapterId,
   novelSectionBySlug,
   pagesForNovelSection,
 } from '@/lib/novel';
@@ -38,6 +40,9 @@ export default async function NovelChapterPage({ params }: ChapterPageProps) {
 
   const pages = pagesForNovelSection(section);
   const adjacent = adjacentCommentableSections(section);
+  const evidenceForChapter = evidencePaths.filter(
+    (path) => path.chapterSlug === section.slug,
+  );
 
   return (
     <div className="min-h-screen bg-[#e9e3d8]">
@@ -87,6 +92,31 @@ export default async function NovelChapterPage({ params }: ChapterPageProps) {
           initialSectionId={section.id}
           mode="chapter"
         />
+
+        {evidenceForChapter.length > 0 && (
+          <aside className="mt-8 border border-foreground/15 bg-card p-5 sm:p-7" aria-labelledby="chapter-evidence-heading">
+            <div className="flex items-start gap-4">
+              <BookOpenText className="mt-1 size-6 shrink-0 text-primary" strokeWidth={1.4} aria-hidden="true" />
+              <div className="min-w-0 flex-1">
+                <p className="text-xs font-semibold tracking-[0.13em] text-primary uppercase">真实与虚构伴读</p>
+                <h2 id="chapter-evidence-heading" className="mt-3 font-serif text-2xl font-semibold">
+                  这一章如何回到原件，又在哪里停下
+                </h2>
+                <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                  {evidenceForChapter.map((path) => (
+                    <Link key={path.id} href={`/evidence/${path.id}`} className="group border border-foreground/15 bg-background p-4 hover:border-primary">
+                      <span className="flex items-center gap-2 text-[10px] font-semibold text-muted-foreground">
+                        {path.mode === 'blocked' && <ShieldAlert className="size-3.5 text-rose-800" aria-hidden="true" />}
+                        {evidencePathModeLabels[path.mode]}
+                      </span>
+                      <strong className="mt-2 block font-serif text-lg leading-7 group-hover:text-primary">{path.title}</strong>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </aside>
+        )}
 
         <nav
           aria-label="章节切换"
@@ -141,7 +171,10 @@ export default async function NovelChapterPage({ params }: ChapterPageProps) {
         </nav>
       </section>
 
-      <ChapterComments chapterId={section.id} chapterTitle={section.title} />
+      <ChapterComments
+        chapterId={novelCommentChapterId(section.id)}
+        chapterTitle={section.title}
+      />
     </div>
   );
 }

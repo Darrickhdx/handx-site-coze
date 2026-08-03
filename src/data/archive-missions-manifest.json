@@ -1,0 +1,38 @@
+{
+  "schema_version": "archive-missions-manifest-v1",
+  "generator_version": "1.0.0",
+  "generated_at": "2026-08-04T00:00:00+08:00",
+  "generation_id": "gen-0f1c4c5566ee7b25fb726f3a2220b336894af72a5d9ff03bc48dc13e0da49f2d",
+  "must_not_deploy": true,
+  "deployment_authorized": false,
+  "inputs": {
+    "source_csv": {
+      "filename": "39-博物馆档案馆实地调研行动清单-2026-07-28.csv",
+      "sha256": "17003ece343e5768c9f09e5f7d0d94bfd5c8e06860af1410f2ef638608502b6c"
+    },
+    "audit_graph": {
+      "filename": "public/data/graph/audit-graph.json",
+      "sha256": "ca0325a38ea803e42985026c4552e061584f760457dfd56f84c9ac2b729c870c"
+    }
+  },
+  "outputs": {
+    "src_public": {
+      "filename": "src/data/archive-missions.json",
+      "sha256": "0b81168e5b9ecaebbbb2e0fb27b6b7630ef2a8cb09f12a634af04aee56707441"
+    },
+    "browser_public": {
+      "filename": "public/data/archive-missions.json",
+      "sha256": "0b81168e5b9ecaebbbb2e0fb27b6b7630ef2a8cb09f12a634af04aee56707441"
+    },
+    "owner": {
+      "filename": "private-runtime/archive-missions-owner.json",
+      "sha256": "6f809cef78393cc4ca667718dccb245b22fe4bed38b6b927d3990acb845a1eaa"
+    }
+  },
+  "contracts": {
+    "public_schema": "archive-missions-public-v1",
+    "owner_schema": "archive-missions-owner-v1",
+    "evidence_boundary": "execution_progress_not_historical_completion",
+    "lead_intake_status": "browser_draft_only_no_submission_endpoint"
+  }
+}

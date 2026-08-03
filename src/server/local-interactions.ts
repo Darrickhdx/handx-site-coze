@@ -2,15 +2,20 @@ import { createHash, createHmac, randomBytes, timingSafeEqual } from "node:crypt
 import {
   appendFileSync,
   chmodSync,
+  closeSync,
+  constants,
   existsSync,
+  fstatSync,
+  lstatSync,
   mkdirSync,
+  openSync,
   readFileSync,
   statSync,
   writeFileSync,
 } from "node:fs";
 import type { IncomingMessage, ServerResponse } from "node:http";
 import { resolve } from "node:path";
-import { novelManifest } from "../lib/novel";
+import { novelCommentChapterId, novelManifest } from "../lib/novel";
 import {
   JsonLineCommentRepository,
   type ModerationAction,
@@ -156,7 +161,7 @@ export function createLocalInteractionRouter(
   const commentableChapterIds = new Set(
     novelManifest.sections
       .filter((section) => section.commentable)
-      .map((section) => section.id),
+      .map((section) => novelCommentChapterId(section.id)),
   );
   const moderationActions = new Set<ModerationAction>([
     'approved',
@@ -166,6 +171,85 @@ export function createLocalInteractionRouter(
   ]);
   
   const strictSha256 = /^[0-9a-f]{64}$/;
+  const strictGenerationId = /^gen-[0-9a-f]{64}$/;
+  const archiveOwnerTopLevelFields = new Set(['_meta', 'missions', 'journal']);
+  const archiveOwnerMetaFields = new Set([
+    'schema_version',
+    'generator_version',
+    'source_updated_at',
+    'generated_at',
+    'generation_id',
+    'must_not_deploy',
+    'deployment_authorized',
+    'evidence_boundary',
+    'lead_intake_status',
+    'counts',
+    'access_scope',
+    'source_sha256',
+    'public_generation_id',
+  ]);
+  const archiveMissionFields = new Set([
+    'missionId',
+    'canonicalId',
+    'taskKind',
+    'executionPriority',
+    'status',
+    'modeLabel',
+    'institution',
+    'institutionType',
+    'topic',
+    'people',
+    'researchQuestion',
+    'catalogReference',
+    'completionStandard',
+    'publicNextStep',
+    'evidenceScope',
+    'boundary',
+    'highlighted',
+    'targets',
+    'ownerRaw',
+  ]);
+  const archiveStatusFields = new Set([
+    'workflowState',
+    'nextActionType',
+    'baselineLabel',
+    'publicLabel',
+    'verifiedAt',
+    'completed',
+  ]);
+  const archiveTargetFields = new Set([
+    'targetId',
+    'relation',
+    'institution',
+    'catalogReference',
+    'locatorAliases',
+    'workFamilyKey',
+  ]);
+  const archiveOwnerRawFields = new Set([
+    'task_id',
+    'priority',
+    'city_or_mode',
+    'institution',
+    'institution_type',
+    'target_person_event',
+    'archive_id_or_title',
+    'exact_request',
+    'expected_output',
+    'precondition',
+    'status',
+    'next_action',
+    'target_window',
+    'evidence_scope',
+    'notes',
+  ]);
+  const archiveJournalFields = new Set([
+    'action',
+    'decision',
+    'outcome',
+    'nextStep',
+    'cannotProve',
+    'missionIds',
+  ]);
   
   function cleanText(value: unknown): string {
     if (typeof value !== 'string') return '';
@@ -237,6 +321,167 @@ export function createLocalInteractionRouter(
       invalidLines,
       truncated: allLines.length > selectedLines.length,
     };
+  }
+
+  function readPrivateJsonObject(path: string, maximumBytes: number): JsonObject {
+    if (!existsSync(path)) throw new Error('private_json_not_available');
+    const pathMetadata = lstatSync(path);
+    if (pathMetadata.isSymbolicLink() || !pathMetadata.isFile()) {
+      throw new Error('unsafe_private_json');
+    }
+    if (pathMetadata.size > maximumBytes) throw new Error('private_json_too_large');
+
+    const descriptor = openSync(
+      path,
+      constants.O_RDONLY | (constants.O_NOFOLLOW ?? 0),
+    );
+    try {
+      const before = fstatSync(descriptor);
+      if (!before.isFile() || before.size > maximumBytes) {
+        throw new Error('unsafe_private_json');
+      }
+      const payload = readFileSync(descriptor, 'utf8');
+      const after = fstatSync(descriptor);
+      if (
+        before.dev !== after.dev
+        || before.ino !== after.ino
+        || before.size !== after.size
+        || Buffer.byteLength(payload, 'utf8') !== after.size
+      ) {
+        throw new Error('private_json_changed_while_reading');
+      }
+      return requireObject('private JSON payload', JSON.parse(payload) as unknown);
+    } finally {
+      closeSync(descriptor);
+    }
+  }
+
+  function hasExactKeys(value: JsonObject, expected: ReadonlySet<string>): boolean {
+    const keys = Object.keys(value);
+    return keys.length === expected.size && keys.every((key) => expected.has(key));
+  }
+
+  function isBoundedSafeString(value: unknown, maximumLength = 1000): value is string {
+    return (
+      typeof value === 'string'
+      && Array.from(value).length <= maximumLength
+      && !/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f-\u009f\u202a-\u202e\u2066-\u2069]/u.test(value)
+      && !/data:[a-z0-9.+-]+\/[a-z0-9.+-]+;base64,/iu.test(value)
+      && !/[a-z0-9+/]{512,}={0,2}/iu.test(value)
+    );
+  }
+
+  function validateArchiveMissionOwnerBaseline(baseline: JsonObject): boolean {
+    if (!hasExactKeys(baseline, archiveOwnerTopLevelFields)) return false;
+    const meta = requireObject('archive mission owner metadata', baseline._meta);
+    const counts = requireObject('archive mission owner counts', meta.counts);
+    const missions = Array.isArray(baseline.missions) ? baseline.missions : [];
+    const journal = Array.isArray(baseline.journal) ? baseline.journal : [];
+    if (
+      !hasExactKeys(meta, archiveOwnerMetaFields)
+      || meta.schema_version !== 'archive-missions-owner-v1'
+      || meta.generator_version !== '1.0.0'
+      || meta.must_not_deploy !== true
+      || meta.deployment_authorized !== false
+      || meta.evidence_boundary !== 'execution_progress_not_historical_completion'
+      || meta.lead_intake_status !== 'browser_draft_only_no_submission_endpoint'
+      || meta.access_scope !== 'owner_only_local_runtime'
+      || !strictSha256.test(String(meta.source_sha256 ?? ''))
+      || !strictGenerationId.test(String(meta.generation_id ?? ''))
+      || meta.public_generation_id !== meta.generation_id
+      || counts.missions !== 33
+      || counts.highlighted !== 7
+      || counts.completed !== 0
+      || missions.length !== 33
+      || journal.length < 2
+      || journal.length > 3
+    ) return false;
+
+    const missionIds = new Set<string>();
+    for (const rawMission of missions) {
+      if (rawMission === null || typeof rawMission !== 'object' || Array.isArray(rawMission)) return false;
+      const mission = rawMission as JsonObject;
+      if (!hasExactKeys(mission, archiveMissionFields)) return false;
+      const missionId = mission.missionId;
+      if (
+        typeof missionId !== 'string'
+        || !/^[AM]\d{3}$/.test(missionId)
+        || missionIds.has(missionId)
+        || !isBoundedSafeString(mission.canonicalId, 80)
+        || !['archive_request', 'context_research'].includes(String(mission.taskKind))
+        || !['P0', 'P1', 'P2'].includes(String(mission.executionPriority))
+        || typeof mission.highlighted !== 'boolean'
+      ) return false;
+      missionIds.add(missionId);
+
+      for (const field of [
+        'modeLabel',
+        'institution',
+        'institutionType',
+        'topic',
+        'researchQuestion',
+        'catalogReference',
+        'completionStandard',
+        'publicNextStep',
+        'evidenceScope',
+        'boundary',
+      ]) {
+        if (!isBoundedSafeString(mission[field])) return false;
+      }
+      if (
+        !Array.isArray(mission.people)
+        || mission.people.some((person) => !isBoundedSafeString(person, 80))
+      ) return false;
+
+      const status = requireObject(`${missionId} status`, mission.status);
+      if (
+        !hasExactKeys(status, archiveStatusFields)
+        || !['planned', 'blocked'].includes(String(status.workflowState))
+        || !['send', 'book', 'inquire', 'delegate', 'wait_precondition'].includes(String(status.nextActionType))
+        || !isBoundedSafeString(status.baselineLabel, 80)
+        || !isBoundedSafeString(status.publicLabel, 80)
+        || status.verifiedAt !== null
+        || status.completed !== false
+      ) return false;
+
+      if (!Array.isArray(mission.targets) || mission.targets.length < 1 || mission.targets.length > 4) return false;
+      for (const rawTarget of mission.targets) {
+        if (rawTarget === null || typeof rawTarget !== 'object' || Array.isArray(rawTarget)) return false;
+        const target = rawTarget as JsonObject;
+        if (
+          !hasExactKeys(target, archiveTargetFields)
+          || !isBoundedSafeString(target.targetId, 80)
+          || !['single_request', 'locator_alias', 'separate_request', 'same_work_carrier'].includes(String(target.relation))
+          || !isBoundedSafeString(target.institution)
+          || !isBoundedSafeString(target.catalogReference)
+          || !Array.isArray(target.locatorAliases)
+          || target.locatorAliases.some((alias) => !isBoundedSafeString(alias, 200))
+          || (target.workFamilyKey !== null && !isBoundedSafeString(target.workFamilyKey, 120))
+        ) return false;
+      }
+
+      const ownerRaw = requireObject(`${missionId} owner raw`, mission.ownerRaw);
+      if (
+        !hasExactKeys(ownerRaw, archiveOwnerRawFields)
+        || [...archiveOwnerRawFields].some((field) => !isBoundedSafeString(ownerRaw[field]))
+        || ownerRaw.task_id !== missionId
+      ) return false;
+    }
+
+    for (const rawEntry of journal) {
+      if (rawEntry === null || typeof rawEntry !== 'object' || Array.isArray(rawEntry)) return false;
+      const entry = rawEntry as JsonObject;
+      if (!hasExactKeys(entry, archiveJournalFields)) return false;
+      for (const field of ['action', 'decision', 'outcome', 'nextStep', 'cannotProve']) {
+        if (!isBoundedSafeString(entry[field])) return false;
+      }
+      if (
+        !Array.isArray(entry.missionIds)
+        || entry.missionIds.length === 0
+        || entry.missionIds.some((missionId) => typeof missionId !== 'string' || !missionIds.has(missionId))
+      ) return false;
+    }
+    return true;
   }
   
   function appendPrivateRecord(path: string, record: AnalyticsRecord | MessageRecord): boolean {
@@ -381,6 +626,10 @@ export function createLocalInteractionRouter(
     'chapter-comment-events.ndjson',
   );
   const corpusIndexPath = resolve(runtimeDataDirectory, 'local-corpus-index.json');
+  const researchMissionsOwnerPath = resolve(
+    runtimeDataDirectory,
+    'archive-missions-owner.json',
+  );
   mkdirSync(runtimeDataDirectory, { recursive: true, mode: 0o700 });
   chmodSync(runtimeDataDirectory, 0o700);
   
@@ -1338,6 +1587,53 @@ export function createLocalInteractionRouter(
     }
     sendJson(res, 200, payload);
   }
+
+  function handleResearchMissions(
+    req: IncomingMessage,
+    res: ServerResponse,
+  ): void {
+    if (req.method !== 'GET' && req.method !== 'HEAD') {
+      res.setHeader('Allow', 'GET, HEAD');
+      sendJson(res, 405, { ok: false, error: 'method_not_allowed' });
+      return;
+    }
+    if (!requestComesFromLocalSite(req, false)) {
+      sendJson(res, 403, { ok: false, error: 'local_origin_required' });
+      return;
+    }
+    if (!hasValidAdminToken(req)) {
+      res.setHeader('WWW-Authenticate', 'Bearer realm="local-research-missions"');
+      sendJson(res, 401, { ok: false, error: 'admin_token_required' });
+      return;
+    }
+
+    let baseline: JsonObject;
+    try {
+      baseline = readPrivateJsonObject(researchMissionsOwnerPath, 2 * 1024 * 1024);
+      const serialized = JSON.stringify(baseline);
+      if (
+        !validateArchiveMissionOwnerBaseline(baseline)
+        || /(?:\/Users\/|\/home\/|file:\/\/|private-runtime|absolute_path)/i.test(serialized)
+      ) {
+        throw new Error('archive_mission_owner_gate_invalid');
+      }
+    } catch {
+      sendJson(res, 503, { ok: false, error: 'research_mission_baseline_unhealthy' });
+      return;
+    }
+
+    const payload = Buffer.from(JSON.stringify({
+      ok: true,
+      storage_scope: 'local_private_runtime',
+      event_writes_enabled: false,
+      historical_claims_created: false,
+      baseline,
+    }), 'utf8');
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'application/json; charset=utf-8');
+    res.setHeader('Content-Length', String(payload.length));
+    res.end(req.method === 'HEAD' ? undefined : payload);
+  }
   
   function requireObject(name: string, value: unknown): JsonObject {
     if (value === null || typeof value !== 'object' || Array.isArray(value)) {
@@ -1379,6 +1675,10 @@ export function createLocalInteractionRouter(
     }
     if (pathname === "/api/local/corpus-hits") {
       handleLocalCorpusHits(request, response, requestUrl);
+      return true;
+    }
+    if (pathname === "/api/local/research-missions") {
+      handleResearchMissions(request, response);
       return true;
     }
     return false;

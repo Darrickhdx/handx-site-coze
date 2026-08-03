@@ -6,12 +6,16 @@ import {
   FileSearch,
   Mail,
   Quote,
+  UsersRound,
 } from 'lucide-react';
 import { ProjectSectionNav } from '@/components/project-section-nav';
+import { peopleDossiers } from '@/content/people-dossiers';
 import { suKaiyuanArchiveGroups } from '@/content/site';
 import { graphManifest } from '@/lib/graph-wiki-data';
 
 export default function SuKaiyuanPage() {
+  const supportingPeople = peopleDossiers.filter((person) => person.entityId !== 'P-001');
+
   return (
     <div className="story-home overflow-hidden">
       <ProjectSectionNav />
@@ -41,10 +45,10 @@ export default function SuKaiyuanPage() {
                 先读第一个故事
                 <ArrowRight className="size-4" aria-hidden="true" />
               </Link>
-              <a href="#archive" className="personal-dark-link">
-                浏览研究资料库
+              <Link href="/sukaiyuan/dossier" className="personal-dark-link">
+                比对两条姓名记录
                 <ArrowRight className="size-4" aria-hidden="true" />
-              </a>
+              </Link>
             </div>
 
             <div className="mt-7 grid gap-px overflow-hidden border border-white/15 bg-white/15 text-xs leading-6 sm:grid-cols-3">
@@ -58,7 +62,7 @@ export default function SuKaiyuanPage() {
               </div>
               <div className="bg-[#1d2524] p-4">
                 <strong className="block text-[#f3efe7]">建议下一步</strong>
-                <p className="mt-2 text-[#aaa69f]">先读 1936 年专题，再按需进入资料库。</p>
+                <p className="mt-2 text-[#aaa69f]">先认识人物，再亲自比对六份身份材料。</p>
               </div>
             </div>
           </div>
@@ -126,6 +130,69 @@ export default function SuKaiyuanPage() {
         </div>
       </section>
 
+      <section className="border-b border-foreground/15 bg-[#eee9df] py-16 sm:py-24">
+        <div className="story-shell grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-center lg:gap-20">
+          <div>
+            <p className="personal-kicker">
+              <span aria-hidden="true" />
+              一个名字的历史踪迹
+            </p>
+            <p className="mt-8 font-serif text-5xl italic text-primary/25">開／凱</p>
+          </div>
+          <div>
+            <p className="story-kicker">第二站 · 身份连接</p>
+            <h2 className="story-heading mt-4">蘇開元与蘇凱元，是同一个人吗？</h2>
+            <p className="mt-7 max-w-3xl text-lg leading-9 text-muted-foreground">
+              同县、同校、同科，1935 年两种姓名的中校记录又只差一天。六份材料形成了一条很强的候选身份桥，
+              却仍缺少原始学籍、军籍号或明确异名字段。你可以逐份查看原件能够证明什么，再对照项目的固定判断。
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Link href="/sukaiyuan/dossier" className="story-button story-button-primary">
+                开始三分钟比对
+                <ArrowRight className="size-4" aria-hidden="true" />
+              </Link>
+              <Link href="/discover/same-name" className="story-button story-button-secondary">
+                先读同名专题
+              </Link>
+            </div>
+            <p className="mt-4 text-xs leading-6 text-muted-foreground">
+              互动选择只记录你的阅读过程，不改变史料状态，也不参与历史事实判定。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-foreground/15 py-20 sm:py-28">
+        <div className="story-shell">
+          <div className="grid gap-8 border-b border-foreground/15 pb-9 lg:grid-cols-[0.72fr_1.28fr] lg:items-end lg:gap-20">
+            <div>
+              <p className="personal-kicker"><span aria-hidden="true" />People constellation</p>
+              <UsersRound className="mt-7 size-7 text-primary" strokeWidth={1.4} aria-hidden="true" />
+              <h2 className="personal-heading mt-6">一个人身后，是一群人。</h2>
+            </div>
+            <div>
+              <p className="max-w-2xl text-base leading-8 text-muted-foreground">
+                李英夫留下证词，李大超带来同名谜团，朱自清记录现场，乔培新让“谍战感”必须接受证据约束，傅作义代表不能被主角取代的公共历史。
+              </p>
+              <Link href="/persons" className="story-text-link mt-5">
+                进入完整人物群像 <ArrowRight className="size-4" aria-hidden="true" />
+              </Link>
+            </div>
+          </div>
+          <div className="grid gap-px border-x border-b border-foreground/15 bg-foreground/15 sm:grid-cols-2 xl:grid-cols-5">
+            {supportingPeople.map((person) => (
+              <Link key={person.entityId} href={`/persons/${person.entityId}`} className="group flex min-h-72 flex-col bg-background p-6 hover:bg-card">
+                <span className="grid size-14 place-items-center border border-primary/30 bg-primary/5 font-serif text-2xl text-primary" aria-hidden="true">{person.initials}</span>
+                <p className="mt-7 text-[10px] font-semibold tracking-[0.12em] text-primary uppercase">{person.eyebrow}</p>
+                <h3 className="mt-3 font-serif text-2xl font-semibold">{person.displayName}</h3>
+                <p className="mt-4 text-xs leading-6 text-muted-foreground">{person.roleInStory}</p>
+                <span className="story-text-link mt-auto pt-6">打开档案 <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" /></span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section id="archive" className="scroll-mt-32 py-20 sm:py-28">
         <div className="story-shell">
           <div className="grid gap-8 border-b border-foreground/15 pb-9 lg:grid-cols-[0.72fr_1.28fr] lg:items-end lg:gap-20">
@@ -147,7 +214,7 @@ export default function SuKaiyuanPage() {
             </div>
           </div>
 
-          <div className="grid gap-px overflow-hidden border-x border-b border-foreground/15 bg-foreground/15 lg:grid-cols-3">
+          <div className="grid gap-px overflow-hidden border-x border-b border-foreground/15 bg-foreground/15 sm:grid-cols-2 xl:grid-cols-4">
             {suKaiyuanArchiveGroups.map((item, index) => {
               const Icon = item.icon;
               return (

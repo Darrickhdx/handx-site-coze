@@ -1,0 +1,1371 @@
+{
+  "_meta": {
+    "schema_version": "archive-missions-public-v1",
+    "generator_version": "1.0.0",
+    "source_updated_at": "2026-07-28",
+    "generated_at": "2026-08-04T00:00:00+08:00",
+    "generation_id": "gen-0f1c4c5566ee7b25fb726f3a2220b336894af72a5d9ff03bc48dc13e0da49f2d",
+    "must_not_deploy": true,
+    "deployment_authorized": false,
+    "evidence_boundary": "execution_progress_not_historical_completion",
+    "lead_intake_status": "browser_draft_only_no_submission_endpoint",
+    "counts": {
+      "missions": 33,
+      "priorities": {
+        "P0": 15,
+        "P1": 9,
+        "P2": 9
+      },
+      "baselineStatuses": {
+        "待函询": 3,
+        "待发送": 16,
+        "待委托": 1,
+        "待预约": 5,
+        "条件启动": 8
+      },
+      "institutions": 19,
+      "highlighted": 7,
+      "completed": 0
+    }
+  },
+  "missions": [
+    {
+      "missionId": "A001",
+      "canonicalId": "SKY-RT-A001",
+      "taskKind": "archive_request",
+      "executionPriority": "P0",
+      "status": {
+        "workflowState": "planned",
+        "nextActionType": "send",
+        "baselineLabel": "待发送",
+        "publicLabel": "准备人工提交",
+        "verifiedAt": null,
+        "completed": false
+      },
+      "modeLabel": "线上",
+      "institution": "日本国立国会图书馆NDL",
+      "institutionType": "图书馆",
+      "topic": "苏开元日本陆士身份",
+      "people": [
+        "苏开元"
+      ],
+      "researchQuestion": "《日華學報》原页如何列示姓名、学校、期别与备注，能否为身份比较增加第二字段？",
+      "catalogReference": "PID 1596904《日華學報》第1号",
+      "completionStandard": "可读原图及完整表格字段",
+      "publicNextStep": "准备最小范围申请，人工复核机构规则后再提交。",
+      "evidenceScope": "正文原页",
+      "boundary": "申请、目录、索引或检索命中只证明研究路线；取得并核读原文前，不生成历史事实、身份合并或人物行动。",
+      "highlighted": true,
+      "targets": [
+        {
+          "targetId": "SKY-TGT-A001-01",
+          "relation": "single_request",
+          "institution": "日本国立国会图书馆NDL",
+          "catalogReference": "PID 1596904《日華學報》第1号",
+          "locatorAliases": [],
+          "workFamilyKey": null
+        }
+      ]
+    },
+    {
+      "missionId": "A002",
+      "canonicalId": "SKY-RT-A002",
+      "taskKind": "archive_request",
+      "executionPriority": "P0",
+      "status": {
+        "workflowState": "planned",
+        "nextActionType": "send",
+        "baselineLabel": "待发送",
+        "publicLabel": "准备人工提交",
+        "verifiedAt": null,
+        "completed": false
+      },
+      "modeLabel": "线上",
+      "institution": "日本国立国会图书馆NDL",
+      "institutionType": "图书馆",
+      "topic": "1936平地泉同期记载",
+      "people": [],
+      "researchQuestion": "《綏東問題の展開（二）》原文如何表述平地泉、职务与姓名，完整上下文是否支持现有定位？",
+      "catalogReference": "PID 1477040《国際評論》6(1)",
+      "completionStandard": "可读完整句署名页码上下文",
+      "publicNextStep": "准备最小范围申请，人工复核机构规则后再提交。",
+      "evidenceScope": "正文原页",
+      "boundary": "申请、目录、索引或检索命中只证明研究路线；取得并核读原文前，不生成历史事实、身份合并或人物行动。",
+      "highlighted": true,
+      "targets": [
+        {
+          "targetId": "SKY-TGT-A002-01",
+          "relation": "single_request",
+          "institution": "日本国立国会图书馆NDL",
+          "catalogReference": "PID 1477040《国際評論》6(1)",
+          "locatorAliases": [],
+          "workFamilyKey": null
+        }
+      ]
+    },
+    {
+      "missionId": "A003",
+      "canonicalId": "SKY-RT-A003",
+      "taskKind": "archive_request",
+      "executionPriority": "P0",
+      "status": {
+        "workflowState": "planned",
+        "nextActionType": "send",
+        "baselineLabel": "待发送",
+        "publicLabel": "准备人工提交",
+        "verifiedAt": null,
+        "completed": false
+      },
+      "modeLabel": "线上/台北",
+      "institution": "台湾国史馆",
+      "institutionType": "档案馆",
+      "topic": "李大超1934职务",
+      "people": [
+        "李大超"
+      ],
+      "researchQuestion": "该档案正文中的李大超记录属于何种职务与单位，是否出现足以排除同名的第二身份字段？",
+      "catalogReference": "002-090102-00001-212",
+      "completionStandard": "李大超完整句和第二身份字段",
+      "publicNextStep": "准备最小范围申请，人工复核机构规则后再提交。",
+      "evidenceScope": "档案正文",
+      "boundary": "申请、目录、索引或检索命中只证明研究路线；取得并核读原文前，不生成历史事实、身份合并或人物行动。",
+      "highlighted": true,
+      "targets": [
+        {
+          "targetId": "SKY-TGT-A003-01",
+          "relation": "single_request",
+          "institution": "台湾国史馆",
+          "catalogReference": "002-090102-00001-212",
+          "locatorAliases": [],
+          "workFamilyKey": null
+        }
+      ]
+    },
+    {
+      "missionId": "A004",
+      "canonicalId": "SKY-RT-A004",
+      "taskKind": "archive_request",
+      "executionPriority": "P0",
+      "status": {
+        "workflowState": "planned",
+        "nextActionType": "send",
+        "baselineLabel": "待发送",
+        "publicLabel": "准备人工提交",
+        "verifiedAt": null,
+        "completed": false
+      },
+      "modeLabel": "线上/呼和浩特",
+      "institution": "内蒙古自治区档案馆",
+      "institutionType": "档案馆",
+      "topic": "李大超训练职务",
+      "people": [
+        "李大超"
+      ],
+      "researchQuestion": "同一项目的两个档号前缀指向怎样的完整文书，原职、新职与形成机关能否同时核读？",
+      "catalogReference": "C401-01-0245-030/401-01-0245-030",
+      "completionStandard": "原职新职和至少两个身份字段",
+      "publicNextStep": "准备最小范围申请，人工复核机构规则后再提交。",
+      "evidenceScope": "档案正文",
+      "boundary": "申请、目录、索引或检索命中只证明研究路线；取得并核读原文前，不生成历史事实、身份合并或人物行动。",
+      "highlighted": true,
+      "targets": [
+        {
+          "targetId": "SKY-TGT-A004-01",
+          "relation": "locator_alias",
+          "institution": "内蒙古自治区档案馆",
+          "catalogReference": "C401-01-0245-030",
+          "locatorAliases": [
+            "401-01-0245-030"
+          ],
+          "workFamilyKey": null
+        }
+      ]
+    },
+    {
+      "missionId": "A005",
+      "canonicalId": "SKY-RT-A005",
+      "taskKind": "archive_request",
+      "executionPriority": "P0",
+      "status": {
+        "workflowState": "planned",
+        "nextActionType": "send",
+        "baselineLabel": "待发送",
+        "publicLabel": "准备人工提交",
+        "verifiedAt": null,
+        "completed": false
+      },
+      "modeLabel": "线上/台北新北",
+      "institution": "台湾国史馆",
+      "institutionType": "档案馆",
+      "topic": "李英夫身份",
+      "people": [
+        "李英夫"
+      ],
+      "researchQuestion": "李英夫卷可公开字段能否区分军人记录与后来的政协身份，同时保留隐私遮蔽边界？",
+      "catalogReference": "129-090000-3275",
+      "completionStandard": "区分军人及政协身份的字段",
+      "publicNextStep": "准备最小范围申请，人工复核机构规则后再提交。",
+      "evidenceScope": "档案正文/身份字段",
+      "boundary": "申请、目录、索引或检索命中只证明研究路线；取得并核读原文前，不生成历史事实、身份合并或人物行动。",
+      "highlighted": true,
+      "targets": [
+        {
+          "targetId": "SKY-TGT-A005-01",
+          "relation": "single_request",
+          "institution": "台湾国史馆",
+          "catalogReference": "129-090000-3275",
+          "locatorAliases": [],
+          "workFamilyKey": null
+        }
+      ]
+    },
+    {
+      "missionId": "A006",
+      "canonicalId": "SKY-RT-A006",
+      "taskKind": "archive_request",
+      "executionPriority": "P0",
+      "status": {
+        "workflowState": "planned",
+        "nextActionType": "send",
+        "baselineLabel": "待发送",
+        "publicLabel": "准备人工提交",
+        "verifiedAt": null,
+        "completed": false
+      },
+      "modeLabel": "线上/台北",
+      "institution": "台湾国史馆",
+      "institutionType": "档案馆",
+      "topic": "苏开元1945命中",
+      "people": [
+        "苏开元"
+      ],
+      "researchQuestion": "1945 年索引命中在正文中究竟对应何种关系句，还是应撤销由目录产生的联想？",
+      "catalogReference": "002-090400-00008-447",
+      "completionStandard": "蘇開元完整关系句和上下文",
+      "publicNextStep": "准备最小范围申请，人工复核机构规则后再提交。",
+      "evidenceScope": "档案正文",
+      "boundary": "申请、目录、索引或检索命中只证明研究路线；取得并核读原文前，不生成历史事实、身份合并或人物行动。",
+      "highlighted": true,
+      "targets": [
+        {
+          "targetId": "SKY-TGT-A006-01",
+          "relation": "single_request",
+          "institution": "台湾国史馆",
+          "catalogReference": "002-090400-00008-447",
+          "locatorAliases": [],
+          "workFamilyKey": null
+        }
+      ]
+    },
+    {
+      "missionId": "A007",
+      "canonicalId": "SKY-RT-A007",
+      "taskKind": "archive_request",
+      "executionPriority": "P0",
+      "status": {
+        "workflowState": "planned",
+        "nextActionType": "send",
+        "baselineLabel": "待发送",
+        "publicLabel": "准备人工提交",
+        "verifiedAt": null,
+        "completed": false
+      },
+      "modeLabel": "北京/远程",
+      "institution": "中国国家图书馆",
+      "institutionType": "图书馆",
+      "topic": "李英夫回忆原刊",
+      "people": [
+        "李英夫"
+      ],
+      "researchQuestion": "原刊载体能否闭合文章题名、作者、页码、版本与上下文，而不再依赖本地转录？",
+      "catalogReference": "《内蒙古文史资料》第40辑OPAC 005205112",
+      "completionStandard": "原刊载体页码作者闭环",
+      "publicNextStep": "准备最小范围申请，人工复核机构规则后再提交。",
+      "evidenceScope": "出版物正文",
+      "boundary": "申请、目录、索引或检索命中只证明研究路线；取得并核读原文前，不生成历史事实、身份合并或人物行动。",
+      "highlighted": true,
+      "targets": [
+        {
+          "targetId": "SKY-TGT-A007-01",
+          "relation": "single_request",
+          "institution": "中国国家图书馆",
+          "catalogReference": "《内蒙古文史资料》第40辑OPAC 005205112",
+          "locatorAliases": [],
+          "workFamilyKey": null
+        }
+      ]
+    },
+    {
+      "missionId": "A008",
+      "canonicalId": "SKY-RT-A008",
+      "taskKind": "archive_request",
+      "executionPriority": "P0",
+      "status": {
+        "workflowState": "planned",
+        "nextActionType": "book",
+        "baselineLabel": "待预约",
+        "publicLabel": "准备确认预约",
+        "verifiedAt": null,
+        "completed": false
+      },
+      "modeLabel": "北京",
+      "institution": "中国国家图书馆",
+      "institutionType": "图书馆",
+      "topic": "乔培新事件行政记录",
+      "people": [
+        "乔培新"
+      ],
+      "researchQuestion": "乔培新事件行政记录相关材料能否取得可定位、可核读的原页或形成链，并明确仍不能推出什么？",
+      "catalogReference": "《绥远省政府公报》OPAC 003490193",
+      "completionStandard": "命中完整公报页和报头日期机关",
+      "publicNextStep": "先人工确认开放、载体和预约条件，再决定是否安排现场。",
+      "evidenceScope": "同期公报",
+      "boundary": "申请、目录、索引或检索命中只证明研究路线；取得并核读原文前，不生成历史事实、身份合并或人物行动。",
+      "highlighted": false,
+      "targets": [
+        {
+          "targetId": "SKY-TGT-A008-01",
+          "relation": "single_request",
+          "institution": "中国国家图书馆",
+          "catalogReference": "《绥远省政府公报》OPAC 003490193",
+          "locatorAliases": [],
+          "workFamilyKey": null
+        }
+      ]
+    },
+    {
+      "missionId": "A009",
+      "canonicalId": "SKY-RT-A009",
+      "taskKind": "archive_request",
+      "executionPriority": "P0",
+      "status": {
+        "workflowState": "planned",
+        "nextActionType": "book",
+        "baselineLabel": "待预约",
+        "publicLabel": "准备确认预约",
+        "verifiedAt": null,
+        "completed": false
+      },
+      "modeLabel": "北京",
+      "institution": "中国国家图书馆",
+      "institutionType": "图书馆",
+      "topic": "苏开元任官身份",
+      "people": [
+        "苏开元"
+      ],
+      "researchQuestion": "苏开元任官身份相关材料能否取得可定位、可核读的原页或形成链，并明确仍不能推出什么？",
+      "catalogReference": "《陆海空军军官佐任官名簿》docId 1961241826466553092",
+      "completionStandard": "姓名行表头页码军阶单位或编号",
+      "publicNextStep": "先人工确认开放、载体和预约条件，再决定是否安排现场。",
+      "evidenceScope": "同期名簿",
+      "boundary": "申请、目录、索引或检索命中只证明研究路线；取得并核读原文前，不生成历史事实、身份合并或人物行动。",
+      "highlighted": false,
+      "targets": [
+        {
+          "targetId": "SKY-TGT-A009-01",
+          "relation": "single_request",
+          "institution": "中国国家图书馆",
+          "catalogReference": "《陆海空军军官佐任官名簿》docId 1961241826466553092",
+          "locatorAliases": [],
+          "workFamilyKey": null
+        }
+      ]
+    },
+    {
+      "missionId": "A010",
+      "canonicalId": "SKY-RT-A010",
+      "taskKind": "archive_request",
+      "executionPriority": "P0",
+      "status": {
+        "workflowState": "planned",
+        "nextActionType": "book",
+        "baselineLabel": "待预约",
+        "publicLabel": "准备确认预约",
+        "verifiedAt": null,
+        "completed": false
+      },
+      "modeLabel": "北京",
+      "institution": "中国国家图书馆",
+      "institutionType": "图书馆",
+      "topic": "1936绥东抗战",
+      "people": [],
+      "researchQuestion": "1936绥东抗战相关材料能否取得可定位、可核读的原页或形成链，并明确仍不能推出什么？",
+      "catalogReference": "1936天津《大公报》11-15至12-05",
+      "completionStandard": "整版报头日期版次和完整报道",
+      "publicNextStep": "先人工确认开放、载体和预约条件，再决定是否安排现场。",
+      "evidenceScope": "同期报刊",
+      "boundary": "申请、目录、索引或检索命中只证明研究路线；取得并核读原文前，不生成历史事实、身份合并或人物行动。",
+      "highlighted": false,
+      "targets": [
+        {
+          "targetId": "SKY-TGT-A010-01",
+          "relation": "single_request",
+          "institution": "中国国家图书馆",
+          "catalogReference": "1936天津《大公报》11-15至12-05",
+          "locatorAliases": [],
+          "workFamilyKey": null
+        }
+      ]
+    },
+    {
+      "missionId": "A011",
+      "canonicalId": "SKY-RT-A011",
+      "taskKind": "archive_request",
+      "executionPriority": "P0",
+      "status": {
+        "workflowState": "planned",
+        "nextActionType": "inquire",
+        "baselineLabel": "待函询",
+        "publicLabel": "准备定点函询",
+        "verifiedAt": null,
+        "completed": false
+      },
+      "modeLabel": "南京",
+      "institution": "中国第二历史档案馆",
+      "institutionType": "档案馆",
+      "topic": "1929至1937身份任官编制",
+      "people": [],
+      "researchQuestion": "1929至1937身份任官编制相关材料能否取得可定位、可核读的原页或形成链，并明确仍不能推出什么？",
+      "catalogReference": "57军72/73师218旅435/436团及第1075号",
+      "completionStandard": "全宗卷号文件题名日期页码第二身份字段",
+      "publicNextStep": "把问题拆成可回答字段，先做定点函询并保存馆方原文。",
+      "evidenceScope": "机关档案",
+      "boundary": "申请、目录、索引或检索命中只证明研究路线；取得并核读原文前，不生成历史事实、身份合并或人物行动。",
+      "highlighted": false,
+      "targets": [
+        {
+          "targetId": "SKY-TGT-A011-01",
+          "relation": "single_request",
+          "institution": "中国第二历史档案馆",
+          "catalogReference": "57军72/73师218旅435/436团及第1075号",
+          "locatorAliases": [],
+          "workFamilyKey": null
+        }
+      ]
+    },
+    {
+      "missionId": "A012",
+      "canonicalId": "SKY-RT-A012",
+      "taskKind": "archive_request",
+      "executionPriority": "P0",
+      "status": {
+        "workflowState": "planned",
+        "nextActionType": "inquire",
+        "baselineLabel": "待函询",
+        "publicLabel": "准备定点函询",
+        "verifiedAt": null,
+        "completed": false
+      },
+      "modeLabel": "南京",
+      "institution": "中国第二历史档案馆",
+      "institutionType": "档案馆",
+      "topic": "1938至1949机关行动",
+      "people": [
+        "苏开元",
+        "李英夫",
+        "李大超",
+        "何成璞",
+        "乔培新"
+      ],
+      "researchQuestion": "1938至1949机关行动相关材料能否取得可定位、可核读的原页或形成链，并明确仍不能推出什么？",
+      "catalogReference": "干部学校第八战区军调机构华北剿总",
+      "completionStandard": "全宗卷号文件题名命中页关系句",
+      "publicNextStep": "把问题拆成可回答字段，先做定点函询并保存馆方原文。",
+      "evidenceScope": "机关档案",
+      "boundary": "申请、目录、索引或检索命中只证明研究路线；取得并核读原文前，不生成历史事实、身份合并或人物行动。",
+      "highlighted": false,
+      "targets": [
+        {
+          "targetId": "SKY-TGT-A012-01",
+          "relation": "single_request",
+          "institution": "中国第二历史档案馆",
+          "catalogReference": "干部学校第八战区军调机构华北剿总",
+          "locatorAliases": [],
+          "workFamilyKey": null
+        }
+      ]
+    },
+    {
+      "missionId": "A013",
+      "canonicalId": "SKY-RT-A013",
+      "taskKind": "archive_request",
+      "executionPriority": "P0",
+      "status": {
+        "workflowState": "planned",
+        "nextActionType": "delegate",
+        "baselineLabel": "待委托",
+        "publicLabel": "准备确认执行人",
+        "verifiedAt": null,
+        "completed": false
+      },
+      "modeLabel": "东京",
+      "institution": "日本防卫研究所战史研究中心史料室",
+      "institutionType": "军事档案馆",
+      "topic": "苏开元陆士学籍链",
+      "people": [
+        "苏开元"
+      ],
+      "researchQuestion": "苏开元陆士学籍链相关材料能否取得可定位、可核读的原页或形成链，并明确仍不能推出什么？",
+      "catalogReference": "中央-軍隊教育士官校-60/-12/-95",
+      "completionStandard": "原页及学籍号原籍年龄期别等第二字段",
+      "publicNextStep": "先确认材料可阅状态与执行人，再安排现场核对。",
+      "evidenceScope": "同期校档",
+      "boundary": "申请、目录、索引或检索命中只证明研究路线；取得并核读原文前，不生成历史事实、身份合并或人物行动。",
+      "highlighted": false,
+      "targets": [
+        {
+          "targetId": "SKY-TGT-A013-01",
+          "relation": "separate_request",
+          "institution": "日本防卫研究所战史研究中心史料室",
+          "catalogReference": "中央-軍隊教育士官校-60",
+          "locatorAliases": [],
+          "workFamilyKey": null
+        },
+        {
+          "targetId": "SKY-TGT-A013-02",
+          "relation": "separate_request",
+          "institution": "日本防卫研究所战史研究中心史料室",
+          "catalogReference": "中央-軍隊教育士官校-12",
+          "locatorAliases": [],
+          "workFamilyKey": null
+        },
+        {
+          "targetId": "SKY-TGT-A013-03",
+          "relation": "separate_request",
+          "institution": "日本防卫研究所战史研究中心史料室",
+          "catalogReference": "中央-軍隊教育士官校-95",
+          "locatorAliases": [],
+          "workFamilyKey": null
+        }
+      ]
+    },
+    {
+      "missionId": "A014",
+      "canonicalId": "SKY-RT-A014",
+      "taskKind": "archive_request",
+      "executionPriority": "P0",
+      "status": {
+        "workflowState": "planned",
+        "nextActionType": "send",
+        "baselineLabel": "待发送",
+        "publicLabel": "准备人工提交",
+        "verifiedAt": null,
+        "completed": false
+      },
+      "modeLabel": "东京/远程",
+      "institution": "东洋文库",
+      "institutionType": "专题图书馆",
+      "topic": "苏开元陆士入学",
+      "people": [
+        "苏开元"
+      ],
+      "researchQuestion": "苏开元陆士入学相关材料能否取得可定位、可核读的原页或形成链，并明确仍不能推出什么？",
+      "catalogReference": "《陸軍士官学校入学中華民国前清人名簿》NCID BB02486243索书号1780/001780",
+      "completionStandard": "入学名簿原页和第二身份字段",
+      "publicNextStep": "准备最小范围申请，人工复核机构规则后再提交。",
+      "evidenceScope": "同期名簿",
+      "boundary": "申请、目录、索引或检索命中只证明研究路线；取得并核读原文前，不生成历史事实、身份合并或人物行动。",
+      "highlighted": false,
+      "targets": [
+        {
+          "targetId": "SKY-TGT-A014-01",
+          "relation": "single_request",
+          "institution": "东洋文库",
+          "catalogReference": "《陸軍士官学校入学中華民国前清人名簿》NCID BB02486243索书号1780/001780",
+          "locatorAliases": [],
+          "workFamilyKey": null
+        }
+      ]
+    },
+    {
+      "missionId": "A015",
+      "canonicalId": "SKY-RT-A015",
+      "taskKind": "archive_request",
+      "executionPriority": "P0",
+      "status": {
+        "workflowState": "planned",
+        "nextActionType": "send",
+        "baselineLabel": "待发送",
+        "publicLabel": "准备人工提交",
+        "verifiedAt": null,
+        "completed": false
+      },
+      "modeLabel": "东京/北京",
+      "institution": "东洋文库或中国国家图书馆",
+      "institutionType": "专题图书馆",
+      "topic": "苏开元军官任官",
+      "people": [
+        "苏开元"
+      ],
+      "researchQuestion": "苏开元军官任官相关材料能否取得可定位、可核读的原页或形成链，并明确仍不能推出什么？",
+      "catalogReference": "《陸海空軍軍官佐任官名簿》NCID BB06218097/国图docId",
+      "completionStandard": "命中页表头页码及军官编号",
+      "publicNextStep": "准备最小范围申请，人工复核机构规则后再提交。",
+      "evidenceScope": "同期名簿",
+      "boundary": "申请、目录、索引或检索命中只证明研究路线；取得并核读原文前，不生成历史事实、身份合并或人物行动。",
+      "highlighted": false,
+      "targets": [
+        {
+          "targetId": "SKY-TGT-A015-01",
+          "relation": "same_work_carrier",
+          "institution": "东洋文库",
+          "catalogReference": "NCID BB06218097",
+          "locatorAliases": [],
+          "workFamilyKey": "WORK-ARMY-OFFICER-APPOINTMENT-ROSTER"
+        },
+        {
+          "targetId": "SKY-TGT-A015-02",
+          "relation": "same_work_carrier",
+          "institution": "中国国家图书馆",
+          "catalogReference": "docId 1961241826466553092",
+          "locatorAliases": [],
+          "workFamilyKey": "WORK-ARMY-OFFICER-APPOINTMENT-ROSTER"
+        }
+      ]
+    },
+    {
+      "missionId": "A016",
+      "canonicalId": "SKY-RT-A016",
+      "taskKind": "archive_request",
+      "executionPriority": "P1",
+      "status": {
+        "workflowState": "planned",
+        "nextActionType": "send",
+        "baselineLabel": "待发送",
+        "publicLabel": "准备人工提交",
+        "verifiedAt": null,
+        "completed": false
+      },
+      "modeLabel": "线上/台北",
+      "institution": "台湾国史馆",
+      "institutionType": "档案馆",
+      "topic": "李英夫交集",
+      "people": [
+        "李英夫"
+      ],
+      "researchQuestion": "李英夫交集相关材料能否取得可定位、可核读的原页或形成链，并明确仍不能推出什么？",
+      "catalogReference": "129-010000-2153",
+      "completionStandard": "判断来文名单附件抄送或职务关系",
+      "publicNextStep": "准备最小范围申请，人工复核机构规则后再提交。",
+      "evidenceScope": "档案正文",
+      "boundary": "申请、目录、索引或检索命中只证明研究路线；取得并核读原文前，不生成历史事实、身份合并或人物行动。",
+      "highlighted": false,
+      "targets": [
+        {
+          "targetId": "SKY-TGT-A016-01",
+          "relation": "single_request",
+          "institution": "台湾国史馆",
+          "catalogReference": "129-010000-2153",
+          "locatorAliases": [],
+          "workFamilyKey": null
+        }
+      ]
+    },
+    {
+      "missionId": "A017",
+      "canonicalId": "SKY-RT-A017",
+      "taskKind": "archive_request",
+      "executionPriority": "P1",
+      "status": {
+        "workflowState": "planned",
+        "nextActionType": "send",
+        "baselineLabel": "待发送",
+        "publicLabel": "准备人工提交",
+        "verifiedAt": null,
+        "completed": false
+      },
+      "modeLabel": "线上/台北",
+      "institution": "台湾国史馆",
+      "institutionType": "档案馆",
+      "topic": "李大超宁夏经历",
+      "people": [
+        "李大超"
+      ],
+      "researchQuestion": "李大超宁夏经历相关材料能否取得可定位、可核读的原页或形成链，并明确仍不能推出什么？",
+      "catalogReference": "001-035100-00032-000",
+      "completionStandard": "支持或排除绥远军人身份",
+      "publicNextStep": "准备最小范围申请，人工复核机构规则后再提交。",
+      "evidenceScope": "名册正文",
+      "boundary": "申请、目录、索引或检索命中只证明研究路线；取得并核读原文前，不生成历史事实、身份合并或人物行动。",
+      "highlighted": false,
+      "targets": [
+        {
+          "targetId": "SKY-TGT-A017-01",
+          "relation": "single_request",
+          "institution": "台湾国史馆",
+          "catalogReference": "001-035100-00032-000",
+          "locatorAliases": [],
+          "workFamilyKey": null
+        }
+      ]
+    },
+    {
+      "missionId": "A018",
+      "canonicalId": "SKY-RT-A018",
+      "taskKind": "archive_request",
+      "executionPriority": "P1",
+      "status": {
+        "workflowState": "planned",
+        "nextActionType": "send",
+        "baselineLabel": "待发送",
+        "publicLabel": "准备人工提交",
+        "verifiedAt": null,
+        "completed": false
+      },
+      "modeLabel": "线上/台北",
+      "institution": "台湾国史馆",
+      "institutionType": "档案馆",
+      "topic": "李大超同名排错",
+      "people": [
+        "李大超"
+      ],
+      "researchQuestion": "李大超同名排错相关材料能否取得可定位、可核读的原页或形成链，并明确仍不能推出什么？",
+      "catalogReference": "129-220000-3047",
+      "completionStandard": "识别独立同名者或取得可比较字段",
+      "publicNextStep": "准备最小范围申请，人工复核机构规则后再提交。",
+      "evidenceScope": "身份字段",
+      "boundary": "申请、目录、索引或检索命中只证明研究路线；取得并核读原文前，不生成历史事实、身份合并或人物行动。",
+      "highlighted": false,
+      "targets": [
+        {
+          "targetId": "SKY-TGT-A018-01",
+          "relation": "single_request",
+          "institution": "台湾国史馆",
+          "catalogReference": "129-220000-3047",
+          "locatorAliases": [],
+          "workFamilyKey": null
+        }
+      ]
+    },
+    {
+      "missionId": "A019",
+      "canonicalId": "SKY-RT-A019",
+      "taskKind": "archive_request",
+      "executionPriority": "P1",
+      "status": {
+        "workflowState": "planned",
+        "nextActionType": "send",
+        "baselineLabel": "待发送",
+        "publicLabel": "准备人工提交",
+        "verifiedAt": null,
+        "completed": false
+      },
+      "modeLabel": "线上/台北",
+      "institution": "台湾国史馆",
+      "institutionType": "档案馆",
+      "topic": "1932李大超调查",
+      "people": [
+        "李大超"
+      ],
+      "researchQuestion": "1932李大超调查相关材料能否取得可定位、可核读的原页或形成链，并明确仍不能推出什么？",
+      "catalogReference": "002-080200-00065-071",
+      "completionStandard": "调查范围结论和第二身份字段",
+      "publicNextStep": "准备最小范围申请，人工复核机构规则后再提交。",
+      "evidenceScope": "档案正文",
+      "boundary": "申请、目录、索引或检索命中只证明研究路线；取得并核读原文前，不生成历史事实、身份合并或人物行动。",
+      "highlighted": false,
+      "targets": [
+        {
+          "targetId": "SKY-TGT-A019-01",
+          "relation": "single_request",
+          "institution": "台湾国史馆",
+          "catalogReference": "002-080200-00065-071",
+          "locatorAliases": [],
+          "workFamilyKey": null
+        }
+      ]
+    },
+    {
+      "missionId": "A020",
+      "canonicalId": "SKY-RT-A020",
+      "taskKind": "archive_request",
+      "executionPriority": "P1",
+      "status": {
+        "workflowState": "planned",
+        "nextActionType": "send",
+        "baselineLabel": "待发送",
+        "publicLabel": "准备人工提交",
+        "verifiedAt": null,
+        "completed": false
+      },
+      "modeLabel": "线上/台北",
+      "institution": "台湾国史馆",
+      "institutionType": "档案馆",
+      "topic": "苏开元索引命中",
+      "people": [
+        "苏开元"
+      ],
+      "researchQuestion": "苏开元索引命中相关材料能否取得可定位、可核读的原页或形成链，并明确仍不能推出什么？",
+      "catalogReference": "129-060000-2682;129-050000-4266;129-030000-0722;129-030000-0439",
+      "completionStandard": "判断谁在何时何单位对谁做何事",
+      "publicNextStep": "准备最小范围申请，人工复核机构规则后再提交。",
+      "evidenceScope": "档案正文",
+      "boundary": "申请、目录、索引或检索命中只证明研究路线；取得并核读原文前，不生成历史事实、身份合并或人物行动。",
+      "highlighted": false,
+      "targets": [
+        {
+          "targetId": "SKY-TGT-A020-01",
+          "relation": "separate_request",
+          "institution": "台湾国史馆",
+          "catalogReference": "129-060000-2682",
+          "locatorAliases": [],
+          "workFamilyKey": null
+        },
+        {
+          "targetId": "SKY-TGT-A020-02",
+          "relation": "separate_request",
+          "institution": "台湾国史馆",
+          "catalogReference": "129-050000-4266",
+          "locatorAliases": [],
+          "workFamilyKey": null
+        },
+        {
+          "targetId": "SKY-TGT-A020-03",
+          "relation": "separate_request",
+          "institution": "台湾国史馆",
+          "catalogReference": "129-030000-0722",
+          "locatorAliases": [],
+          "workFamilyKey": null
+        },
+        {
+          "targetId": "SKY-TGT-A020-04",
+          "relation": "separate_request",
+          "institution": "台湾国史馆",
+          "catalogReference": "129-030000-0439",
+          "locatorAliases": [],
+          "workFamilyKey": null
+        }
+      ]
+    },
+    {
+      "missionId": "A021",
+      "canonicalId": "SKY-RT-A021",
+      "taskKind": "archive_request",
+      "executionPriority": "P1",
+      "status": {
+        "workflowState": "planned",
+        "nextActionType": "send",
+        "baselineLabel": "待发送",
+        "publicLabel": "准备人工提交",
+        "verifiedAt": null,
+        "completed": false
+      },
+      "modeLabel": "线上/呼和浩特",
+      "institution": "内蒙古自治区档案馆",
+      "institutionType": "档案馆",
+      "topic": "李英夫绥西任职",
+      "people": [
+        "李英夫"
+      ],
+      "researchQuestion": "李英夫绥西任职相关材料能否取得可定位、可核读的原页或形成链，并明确仍不能推出什么？",
+      "catalogReference": "405-02-0372-036",
+      "completionStandard": "判断是否与军人李英夫连续",
+      "publicNextStep": "准备最小范围申请，人工复核机构规则后再提交。",
+      "evidenceScope": "档案正文",
+      "boundary": "申请、目录、索引或检索命中只证明研究路线；取得并核读原文前，不生成历史事实、身份合并或人物行动。",
+      "highlighted": false,
+      "targets": [
+        {
+          "targetId": "SKY-TGT-A021-01",
+          "relation": "single_request",
+          "institution": "内蒙古自治区档案馆",
+          "catalogReference": "405-02-0372-036",
+          "locatorAliases": [],
+          "workFamilyKey": null
+        }
+      ]
+    },
+    {
+      "missionId": "A022",
+      "canonicalId": "SKY-RT-A022",
+      "taskKind": "archive_request",
+      "executionPriority": "P1",
+      "status": {
+        "workflowState": "planned",
+        "nextActionType": "send",
+        "baselineLabel": "待发送",
+        "publicLabel": "准备人工提交",
+        "verifiedAt": null,
+        "completed": false
+      },
+      "modeLabel": "线上/呼和浩特",
+      "institution": "内蒙古自治区档案馆",
+      "institutionType": "档案馆",
+      "topic": "同名苏开元排错",
+      "people": [
+        "苏开元"
+      ],
+      "researchQuestion": "同名苏开元排错相关材料能否取得可定位、可核读的原页或形成链，并明确仍不能推出什么？",
+      "catalogReference": "D504-01-2175-016-03",
+      "completionStandard": "完成同名排除或维持独立文献节点",
+      "publicNextStep": "准备最小范围申请，人工复核机构规则后再提交。",
+      "evidenceScope": "档案正文",
+      "boundary": "申请、目录、索引或检索命中只证明研究路线；取得并核读原文前，不生成历史事实、身份合并或人物行动。",
+      "highlighted": false,
+      "targets": [
+        {
+          "targetId": "SKY-TGT-A022-01",
+          "relation": "single_request",
+          "institution": "内蒙古自治区档案馆",
+          "catalogReference": "D504-01-2175-016-03",
+          "locatorAliases": [],
+          "workFamilyKey": null
+        }
+      ]
+    },
+    {
+      "missionId": "A023",
+      "canonicalId": "SKY-RT-A023",
+      "taskKind": "archive_request",
+      "executionPriority": "P1",
+      "status": {
+        "workflowState": "planned",
+        "nextActionType": "book",
+        "baselineLabel": "待预约",
+        "publicLabel": "准备确认预约",
+        "verifiedAt": null,
+        "completed": false
+      },
+      "modeLabel": "北京",
+      "institution": "北京市档案馆",
+      "institutionType": "档案馆",
+      "topic": "1949至1965公安任职",
+      "people": [],
+      "researchQuestion": "1949至1965公安任职相关材料能否取得可定位、可核读的原页或形成链，并明确仍不能推出什么？",
+      "catalogReference": "北京市公安组织沿革任免名册机构名录",
+      "completionStandard": "公开机关锚点或明确未命中范围",
+      "publicNextStep": "先人工确认开放、载体和预约条件，再决定是否安排现场。",
+      "evidenceScope": "机关公开档案",
+      "boundary": "申请、目录、索引或检索命中只证明研究路线；取得并核读原文前，不生成历史事实、身份合并或人物行动。",
+      "highlighted": false,
+      "targets": [
+        {
+          "targetId": "SKY-TGT-A023-01",
+          "relation": "single_request",
+          "institution": "北京市档案馆",
+          "catalogReference": "北京市公安组织沿革任免名册机构名录",
+          "locatorAliases": [],
+          "workFamilyKey": null
+        }
+      ]
+    },
+    {
+      "missionId": "A024",
+      "canonicalId": "SKY-RT-A024",
+      "taskKind": "archive_request",
+      "executionPriority": "P1",
+      "status": {
+        "workflowState": "planned",
+        "nextActionType": "inquire",
+        "baselineLabel": "待函询",
+        "publicLabel": "准备定点函询",
+        "verifiedAt": null,
+        "completed": false
+      },
+      "modeLabel": "北京",
+      "institution": "北京市政协/中国政协文史馆",
+      "institutionType": "文史机构",
+      "topic": "李英夫公开履历与稿件链",
+      "people": [
+        "李英夫"
+      ],
+      "researchQuestion": "李英夫公开履历与稿件链相关材料能否取得可定位、可核读的原页或形成链，并明确仍不能推出什么？",
+      "catalogReference": "委员登记卡及《苏开元在傅作义部的革命活动》来稿记录",
+      "completionStandard": "公开履历目录照片或稿件形成记录",
+      "publicNextStep": "把问题拆成可回答字段，先做定点函询并保存馆方原文。",
+      "evidenceScope": "公开履历/文史档",
+      "boundary": "申请、目录、索引或检索命中只证明研究路线；取得并核读原文前，不生成历史事实、身份合并或人物行动。",
+      "highlighted": false,
+      "targets": [
+        {
+          "targetId": "SKY-TGT-A024-01",
+          "relation": "single_request",
+          "institution": "北京市政协/中国政协文史馆",
+          "catalogReference": "委员登记卡及《苏开元在傅作义部的革命活动》来稿记录",
+          "locatorAliases": [],
+          "workFamilyKey": null
+        }
+      ]
+    },
+    {
+      "missionId": "M001",
+      "canonicalId": "SKY-RT-M001",
+      "taskKind": "context_research",
+      "executionPriority": "P2",
+      "status": {
+        "workflowState": "planned",
+        "nextActionType": "book",
+        "baselineLabel": "待预约",
+        "publicLabel": "准备确认预约",
+        "verifiedAt": null,
+        "completed": false
+      },
+      "modeLabel": "北京",
+      "institution": "北京警察博物馆",
+      "institutionType": "博物馆",
+      "topic": "1949至1955首都公安场景",
+      "people": [],
+      "researchQuestion": "1949至1955首都公安场景相关材料能否取得可定位、可核读的原页或形成链，并明确仍不能推出什么？",
+      "catalogReference": "公开展览和馆藏图录",
+      "completionStandard": "小说影视美术参考及出处",
+      "publicNextStep": "先人工确认开放、载体和预约条件，再决定是否安排现场。",
+      "evidenceScope": "场景背景",
+      "boundary": "博物馆展陈、地方材料与场景采集只提供背景和检索线索；不得据此证明人物在场、任职、行动或功劳。",
+      "highlighted": false,
+      "targets": [
+        {
+          "targetId": "SKY-TGT-M001-01",
+          "relation": "single_request",
+          "institution": "北京警察博物馆",
+          "catalogReference": "公开展览和馆藏图录",
+          "locatorAliases": [],
+          "workFamilyKey": null
+        }
+      ]
+    },
+    {
+      "missionId": "M002",
+      "canonicalId": "SKY-RT-M002",
+      "taskKind": "context_research",
+      "executionPriority": "P2",
+      "status": {
+        "workflowState": "blocked",
+        "nextActionType": "wait_precondition",
+        "baselineLabel": "条件启动",
+        "publicLabel": "等待前置条件",
+        "verifiedAt": null,
+        "completed": false
+      },
+      "modeLabel": "呼和浩特",
+      "institution": "内蒙古博物院/绥远城将军衙署",
+      "institutionType": "博物馆",
+      "topic": "绥远省政府与1936抗战场景",
+      "people": [],
+      "researchQuestion": "绥远省政府与1936抗战场景相关材料能否取得可定位、可核读的原页或形成链，并明确仍不能推出什么？",
+      "catalogReference": "展览图录地图照片建筑空间文书器物",
+      "completionStandard": "可审计的场景与视觉素材包",
+      "publicNextStep": "保持停止门，只有前置证据条件满足后才启动。",
+      "evidenceScope": "场景背景",
+      "boundary": "博物馆展陈、地方材料与场景采集只提供背景和检索线索；不得据此证明人物在场、任职、行动或功劳。",
+      "highlighted": false,
+      "targets": [
+        {
+          "targetId": "SKY-TGT-M002-01",
+          "relation": "single_request",
+          "institution": "内蒙古博物院/绥远城将军衙署",
+          "catalogReference": "展览图录地图照片建筑空间文书器物",
+          "locatorAliases": [],
+          "workFamilyKey": null
+        }
+      ]
+    },
+    {
+      "missionId": "M003",
+      "canonicalId": "SKY-RT-M003",
+      "taskKind": "context_research",
+      "executionPriority": "P2",
+      "status": {
+        "workflowState": "blocked",
+        "nextActionType": "wait_precondition",
+        "baselineLabel": "条件启动",
+        "publicLabel": "等待前置条件",
+        "verifiedAt": null,
+        "completed": false
+      },
+      "modeLabel": "天津",
+      "institution": "平津战役纪念馆",
+      "institutionType": "纪念馆",
+      "topic": "1948至1949北平历史环境",
+      "people": [],
+      "researchQuestion": "1948至1949北平历史环境相关材料能否取得可定位、可核读的原页或形成链，并明确仍不能推出什么？",
+      "catalogReference": "和谈城防出城接管地图文书照片及征集部门线索",
+      "completionStandard": "可审计的北平结局公共历史背景包",
+      "publicNextStep": "保持停止门，只有前置证据条件满足后才启动。",
+      "evidenceScope": "公共历史背景",
+      "boundary": "博物馆展陈、地方材料与场景采集只提供背景和检索线索；不得据此证明人物在场、任职、行动或功劳。",
+      "highlighted": false,
+      "targets": [
+        {
+          "targetId": "SKY-TGT-M003-01",
+          "relation": "single_request",
+          "institution": "平津战役纪念馆",
+          "catalogReference": "和谈城防出城接管地图文书照片及征集部门线索",
+          "locatorAliases": [],
+          "workFamilyKey": null
+        }
+      ]
+    },
+    {
+      "missionId": "M004",
+      "canonicalId": "SKY-RT-M004",
+      "taskKind": "context_research",
+      "executionPriority": "P2",
+      "status": {
+        "workflowState": "blocked",
+        "nextActionType": "wait_precondition",
+        "baselineLabel": "条件启动",
+        "publicLabel": "等待前置条件",
+        "verifiedAt": null,
+        "completed": false
+      },
+      "modeLabel": "乌兰察布/集宁",
+      "institution": "地方档案馆博物馆及红格尔图纪念设施",
+      "institutionType": "地方机构",
+      "topic": "1936平地泉红格尔图百灵庙",
+      "people": [],
+      "researchQuestion": "1936平地泉红格尔图百灵庙相关材料能否取得可定位、可核读的原页或形成链，并明确仍不能推出什么？",
+      "catalogReference": "铁路站房电报地理地方报刊照片口述来源",
+      "completionStandard": "平地泉战场空间与地方来源包",
+      "publicNextStep": "保持停止门，只有前置证据条件满足后才启动。",
+      "evidenceScope": "场景背景/地方史",
+      "boundary": "博物馆展陈、地方材料与场景采集只提供背景和检索线索；不得据此证明人物在场、任职、行动或功劳。",
+      "highlighted": false,
+      "targets": [
+        {
+          "targetId": "SKY-TGT-M004-01",
+          "relation": "single_request",
+          "institution": "地方档案馆博物馆及红格尔图纪念设施",
+          "catalogReference": "铁路站房电报地理地方报刊照片口述来源",
+          "locatorAliases": [],
+          "workFamilyKey": null
+        }
+      ]
+    },
+    {
+      "missionId": "M005",
+      "canonicalId": "SKY-RT-M005",
+      "taskKind": "context_research",
+      "executionPriority": "P2",
+      "status": {
+        "workflowState": "blocked",
+        "nextActionType": "wait_precondition",
+        "baselineLabel": "条件启动",
+        "publicLabel": "等待前置条件",
+        "verifiedAt": null,
+        "completed": false
+      },
+      "modeLabel": "巴彦淖尔/五原/陕坝",
+      "institution": "地方档案馆博物馆及抗战纪念设施",
+      "institutionType": "地方机构",
+      "topic": "1938至1942河套训练系统",
+      "people": [],
+      "researchQuestion": "1938至1942河套训练系统相关材料能否取得可定位、可核读的原页或形成链，并明确仍不能推出什么？",
+      "catalogReference": "干部学校训练团驻地地图照片回忆录底本",
+      "completionStandard": "河套训练系统场景与来源包",
+      "publicNextStep": "保持停止门，只有前置证据条件满足后才启动。",
+      "evidenceScope": "场景背景/地方史",
+      "boundary": "博物馆展陈、地方材料与场景采集只提供背景和检索线索；不得据此证明人物在场、任职、行动或功劳。",
+      "highlighted": false,
+      "targets": [
+        {
+          "targetId": "SKY-TGT-M005-01",
+          "relation": "single_request",
+          "institution": "地方档案馆博物馆及抗战纪念设施",
+          "catalogReference": "干部学校训练团驻地地图照片回忆录底本",
+          "locatorAliases": [],
+          "workFamilyKey": null
+        }
+      ]
+    },
+    {
+      "missionId": "M006",
+      "canonicalId": "SKY-RT-M006",
+      "taskKind": "context_research",
+      "executionPriority": "P2",
+      "status": {
+        "workflowState": "blocked",
+        "nextActionType": "wait_precondition",
+        "baselineLabel": "条件启动",
+        "publicLabel": "等待前置条件",
+        "verifiedAt": null,
+        "completed": false
+      },
+      "modeLabel": "鄂尔多斯/达拉特旗",
+      "institution": "档案馆政协文史党史地方志部门",
+      "institutionType": "地方档案/文史",
+      "topic": "乔培新事件",
+      "people": [
+        "乔培新"
+      ],
+      "researchQuestion": "乔培新事件相关材料能否取得可定位、可核读的原页或形成链，并明确仍不能推出什么？",
+      "catalogReference": "原始访谈稿地方志编辑底稿乌井儿汗地名路线",
+      "completionStandard": "乔培新回忆形成链与路线对照包",
+      "publicNextStep": "保持停止门，只有前置证据条件满足后才启动。",
+      "evidenceScope": "回忆/地方史",
+      "boundary": "博物馆展陈、地方材料与场景采集只提供背景和检索线索；不得据此证明人物在场、任职、行动或功劳。",
+      "highlighted": false,
+      "targets": [
+        {
+          "targetId": "SKY-TGT-M006-01",
+          "relation": "single_request",
+          "institution": "档案馆政协文史党史地方志部门",
+          "catalogReference": "原始访谈稿地方志编辑底稿乌井儿汗地名路线",
+          "locatorAliases": [],
+          "workFamilyKey": null
+        }
+      ]
+    },
+    {
+      "missionId": "M007",
+      "canonicalId": "SKY-RT-M007",
+      "taskKind": "context_research",
+      "executionPriority": "P2",
+      "status": {
+        "workflowState": "blocked",
+        "nextActionType": "wait_precondition",
+        "baselineLabel": "条件启动",
+        "publicLabel": "等待前置条件",
+        "verifiedAt": null,
+        "completed": false
+      },
+      "modeLabel": "太原",
+      "institution": "山西省档案馆及太原相关博物馆",
+      "institutionType": "档案馆/博物馆",
+      "topic": "1937太原战役",
+      "people": [],
+      "researchQuestion": "1937太原战役相关材料能否取得可定位、可核读的原页或形成链，并明确仍不能推出什么？",
+      "catalogReference": "35军傅系参谋名册撤退调动命令城市空间",
+      "completionStandard": "1937职务证据或明确场景资料包",
+      "publicNextStep": "保持停止门，只有前置证据条件满足后才启动。",
+      "evidenceScope": "档案正文/场景",
+      "boundary": "博物馆展陈、地方材料与场景采集只提供背景和检索线索；不得据此证明人物在场、任职、行动或功劳。",
+      "highlighted": false,
+      "targets": [
+        {
+          "targetId": "SKY-TGT-M007-01",
+          "relation": "single_request",
+          "institution": "山西省档案馆及太原相关博物馆",
+          "catalogReference": "35军傅系参谋名册撤退调动命令城市空间",
+          "locatorAliases": [],
+          "workFamilyKey": null
+        }
+      ]
+    },
+    {
+      "missionId": "M008",
+      "canonicalId": "SKY-RT-M008",
+      "taskKind": "context_research",
+      "executionPriority": "P2",
+      "status": {
+        "workflowState": "blocked",
+        "nextActionType": "wait_precondition",
+        "baselineLabel": "条件启动",
+        "publicLabel": "等待前置条件",
+        "verifiedAt": null,
+        "completed": false
+      },
+      "modeLabel": "银川",
+      "institution": "宁夏档案馆/宁夏博物馆",
+      "institutionType": "档案馆/博物馆",
+      "topic": "宁夏讨孙与李大超",
+      "people": [
+        "李大超"
+      ],
+      "researchQuestion": "宁夏讨孙与李大超相关材料能否取得可定位、可核读的原页或形成链，并明确仍不能推出什么？",
+      "catalogReference": "名册形成机关部队地理及同名排错",
+      "completionStandard": "宁夏事件背景与同名排错包",
+      "publicNextStep": "保持停止门，只有前置证据条件满足后才启动。",
+      "evidenceScope": "档案/场景",
+      "boundary": "博物馆展陈、地方材料与场景采集只提供背景和检索线索；不得据此证明人物在场、任职、行动或功劳。",
+      "highlighted": false,
+      "targets": [
+        {
+          "targetId": "SKY-TGT-M008-01",
+          "relation": "single_request",
+          "institution": "宁夏档案馆/宁夏博物馆",
+          "catalogReference": "名册形成机关部队地理及同名排错",
+          "locatorAliases": [],
+          "workFamilyKey": null
+        }
+      ]
+    },
+    {
+      "missionId": "M009",
+      "canonicalId": "SKY-RT-M009",
+      "taskKind": "context_research",
+      "executionPriority": "P2",
+      "status": {
+        "workflowState": "blocked",
+        "nextActionType": "wait_precondition",
+        "baselineLabel": "条件启动",
+        "publicLabel": "等待前置条件",
+        "verifiedAt": null,
+        "completed": false
+      },
+      "modeLabel": "青冈/黑龙江",
+      "institution": "青冈县档案馆地方志办县博物馆",
+      "institutionType": "地方机构",
+      "topic": "苏开元籍贯出生",
+      "people": [
+        "苏开元"
+      ],
+      "researchQuestion": "苏开元籍贯出生相关材料能否取得可定位、可核读的原页或形成链，并明确仍不能推出什么？",
+      "catalogReference": "户籍学籍地方志家谱线索兴华镇旧地名学校",
+      "completionStandard": "青冈籍贯身份闭环或负面检索记录",
+      "publicNextStep": "保持停止门，只有前置证据条件满足后才启动。",
+      "evidenceScope": "身份字段/地方史",
+      "boundary": "博物馆展陈、地方材料与场景采集只提供背景和检索线索；不得据此证明人物在场、任职、行动或功劳。",
+      "highlighted": false,
+      "targets": [
+        {
+          "targetId": "SKY-TGT-M009-01",
+          "relation": "single_request",
+          "institution": "青冈县档案馆地方志办县博物馆",
+          "catalogReference": "户籍学籍地方志家谱线索兴华镇旧地名学校",
+          "locatorAliases": [],
+          "workFamilyKey": null
+        }
+      ]
+    }
+  ],
+  "journal": [
+    {
+      "action": "remote_first_batch_defined",
+      "decision": "先处理七项已精确到档号、题名或物理帧的远程任务。",
+      "outcome": "形成可人工提交的首批最小申请范围；当前仍无发送、受理或交付记录。",
+      "nextStep": "逐件复核机构现行规则，提交后记录时间、受理号和馆方原文。",
+      "cannotProve": "任务准备完成不能证明材料已取得，更不能证明人物身份、职务或行动。",
+      "missionIds": [
+        "A001",
+        "A002",
+        "A003",
+        "A004",
+        "A005",
+        "A006",
+        "A007"
+      ]
+    },
+    {
+      "action": "travel_stop_gate_defined",
+      "decision": "没有开放确认、可调卷号或明确目标材料清单时，不安排跨城或跨国行程。",
+      "outcome": "南京、台北、东京与部分地方路线保持在回复或前置证据触发之后。",
+      "nextStep": "先完成定点函询、复制可行性确认和现场执行人确认。",
+      "cannotProve": "路线被列入计划不表示机构已接受申请，也不表示目标材料确实存在或开放。",
+      "missionIds": [
+        "A011",
+        "A012",
+        "A013",
+        "A014",
+        "A015"
+      ]
+    },
+    {
+      "action": "museum_context_boundary_fixed",
+      "decision": "博物馆和地方现场用于空间、器物、制度与视觉来源，不替代人物原档。",
+      "outcome": "九项背景任务均保留条件启动和非人物事实边界。",
+      "nextStep": "核心档案出现有效线索后，再核对展品藏品号、底本、图录页码与权利渠道。",
+      "cannotProve": "展签、讲解、场景照片或地方背景不能证明苏开元等人物在场、任职、行动或功劳。",
+      "missionIds": [
+        "M001",
+        "M002",
+        "M003",
+        "M004",
+        "M005",
+        "M006",
+        "M007",
+        "M008",
+        "M009"
+      ]
+    }
+  ]
+}

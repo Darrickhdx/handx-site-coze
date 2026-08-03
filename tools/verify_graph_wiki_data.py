@@ -19,12 +19,16 @@ WORKSPACE_ROOT = SITE_ROOT.parents[2]
 CORPUS_ROOT = WORKSPACE_ROOT / "AI小说"
 OUTPUT_ROOT = SITE_ROOT / "public" / "data" / "graph"
 
-INPUTS = {
+APPROVED_INPUTS = {
+    "legacy_baseline": CORPUS_ROOT / "知识图谱" / "graph-data.backup-20260720.json",
+    "legacy_crosswalk": CORPUS_ROOT / "苏开元重启" / "28-旧知识图谱交叉映射.csv",
+    "audit_graph": CORPUS_ROOT / "苏开元重启" / "05-知识图谱-公开版.json",
+    "source_registry": CORPUS_ROOT / "苏开元重启" / "01-来源登记表.csv",
+}
+LIVE_INPUTS = {
     "legacy_html": CORPUS_ROOT / "知识图谱" / "苏开元知识图谱-交互版.html",
     "legacy_graph": CORPUS_ROOT / "知识图谱" / "graph-data.json",
-    "audit_graph": CORPUS_ROOT / "苏开元重启" / "05-知识图谱-公开版.json",
-    "legacy_crosswalk": CORPUS_ROOT / "苏开元重启" / "28-旧知识图谱交叉映射.csv",
-    "source_registry": CORPUS_ROOT / "苏开元重启" / "01-来源登记表.csv",
+    "drift_inventory": CORPUS_ROOT / "苏开元重启" / "40-Legacy增量隔离处置.csv",
 }
 
 def sha256(path: Path) -> str:
@@ -60,8 +64,10 @@ def main() -> None:
     audit = load("audit-graph.json")
     legacy = load("legacy-graph.json")
     crosswalk = load("legacy-crosswalk.json")
+    drift_summary = load("legacy-drift-summary.json")
 
     require(manifest["must_not_deploy"] is True, "deployment gate changed")
+    require(manifest["schema_version"] == "1.1", "manifest schema changed")
     require(manifest["counts"] == EXPECTED_COUNTS, "manifest counts changed")
     require(
         manifest["privacy"]
@@ -70,34 +76,90 @@ def main() -> None:
             "legacy_detail_included": False,
             "absolute_paths_included": False,
             "crosswalk_creates_facts": False,
+            "quarantine_details_included": False,
         },
         "privacy contract changed",
     )
 
-    drifted_inputs: list[str] = []
-    for key, path in INPUTS.items():
+    for key, path in APPROVED_INPUTS.items():
         require(path.is_file(), f"missing input {path.name}")
-        if manifest["inputs"][key]["sha256"] != sha256(path):
-            drifted_inputs.append(key)
-
-    quarantine: dict[str, int] | None = None
-    if drifted_inputs:
         require(
-            set(drifted_inputs) == {"legacy_html", "legacy_graph"},
-            f"unsafe input digest drift: {', '.join(drifted_inputs)}",
+            manifest["inputs"][key]["sha256"] == sha256(path),
+            f"approved input digest drift: {key}",
         )
-        try:
-            quarantine = assess_quarantinable_legacy_drift(
-                legacy,
-                json.loads(INPUTS["legacy_graph"].read_text(encoding="utf-8")),
-                INPUTS["legacy_html"],
-                INPUTS["legacy_crosswalk"],
-            )
-        except ValueError as error:
-            raise SystemExit(
-                f"graph-wiki verification failed: unsafe Legacy drift: {error}"
-            ) from error
-        require(quarantine is not None, "Legacy digest drift has no additions")
+    for path in LIVE_INPUTS.values():
+        require(path.is_file(), f"missing input {path.name}")
+
+    baseline_graph = json.loads(
+        APPROVED_INPUTS["legacy_baseline"].read_text(encoding="utf-8")
+    )
+    live_graph = json.loads(LIVE_INPUTS["legacy_graph"].read_text(encoding="utf-8"))
+    try:
+        quarantine = assess_quarantinable_legacy_drift(
+            legacy,
+            baseline_graph,
+            live_graph,
+            LIVE_INPUTS["legacy_html"],
+            APPROVED_INPUTS["legacy_crosswalk"],
+            LIVE_INPUTS["drift_inventory"],
+            baseline_sha256=sha256(APPROVED_INPUTS["legacy_baseline"]),
+            live_sha256=sha256(LIVE_INPUTS["legacy_graph"]),
+        )
+    except ValueError as error:
+        raise SystemExit(
+            f"graph-wiki verification failed: unsafe Legacy drift: {error}"
+        ) from error
+    require(quarantine is not None, "expected live Legacy drift is not represented")
+
+    safe_review = {
+        key: quarantine[key]
+        for key in (
+            "approved_nodes",
+            "approved_edges",
+            "quarantined_modified_nodes",
+            "quarantined_modified_edges",
+            "quarantined_public_node_field_changes",
+            "quarantined_public_edge_field_changes",
+            "quarantined_nodes",
+            "quarantined_edges",
+            "quarantined_inventory_records",
+            "quarantined_blocked_records",
+        )
+    }
+    quarantine_manifest = manifest.get("quarantine", {})
+    require(quarantine_manifest.get("status") == "active", "quarantine status changed")
+    require(quarantine_manifest.get("review") == safe_review, "quarantine summary drift")
+    require(
+        quarantine_manifest.get("current_inputs")
+        == {
+            "legacy_html_sha256": sha256(LIVE_INPUTS["legacy_html"]),
+            "legacy_graph_sha256": sha256(LIVE_INPUTS["legacy_graph"]),
+            "drift_inventory_sha256": sha256(LIVE_INPUTS["drift_inventory"]),
+        },
+        "quarantine input digest drift",
+    )
+    require(
+        quarantine_manifest.get("private_inbox")
+        == {
+            "generated": True,
+            "served_to_browser": False,
+            "record_count": quarantine["quarantined_inventory_records"],
+        },
+        "private migration inbox contract changed",
+    )
+    require(drift_summary.get("status") == "quarantined", "drift summary status")
+    require(drift_summary.get("review") == safe_review, "drift summary counts")
+    require(
+        drift_summary.get("privacy")
+        == {
+            "record_ids_included": False,
+            "labels_included": False,
+            "edge_endpoints_included": False,
+            "legacy_detail_included": False,
+            "absolute_paths_included": False,
+        },
+        "drift summary privacy contract changed",
+    )
 
     for filename, expected_digest in manifest["outputs"].items():
         require(sha256(OUTPUT_ROOT / filename) == expected_digest, f"output drift: {filename}")
@@ -145,7 +207,7 @@ def main() -> None:
             f"source has invalid local copy status: {source['source_id']}",
         )
 
-    all_client_data = [audit, legacy, crosswalk, manifest]
+    all_client_data = [audit, legacy, crosswalk, drift_summary, manifest]
     macos_home_prefix = "/" + "Users" + "/"
     for text in walk_strings(all_client_data):
         require(macos_home_prefix not in text, "absolute macOS path leaked into client data")
@@ -227,7 +289,8 @@ def main() -> None:
                 f"quarantined changed {quarantine['quarantined_modified_nodes']} nodes/"
                 f"{quarantine['quarantined_modified_edges']} edges and added "
                 f"{quarantine['quarantined_nodes']} nodes/"
-                f"{quarantine['quarantined_edges']} edges"
+                f"{quarantine['quarantined_edges']} edges; "
+                f"blocked {quarantine['quarantined_inventory_records']} records"
             )
         ),
     )

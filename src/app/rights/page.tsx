@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { profile } from '@/content/profile';
 import { articleRightsPassports } from '@/content/publication-rights';
+import { rightsPassportRegistry } from '@/lib/rights-passports';
 
 const contentLayers = [
   {
@@ -99,6 +100,13 @@ export default function RightsPage() {
             本页目前只是一份拟议政策，不构成 CC 或其他使用许可。只有未来某个内容页面明确显示
             “许可已生效”时，转载者才可按该页面所示范围使用。
           </p>
+          <Link
+            href="/studio/rights-ledger"
+            className="story-button personal-button-primary mt-8"
+          >
+            查看 {rightsPassportRegistry._meta.counts.records} 项权利护照台账
+            <ArrowRight className="size-4" aria-hidden="true" />
+          </Link>
         </div>
       </section>
 
@@ -150,6 +158,13 @@ export default function RightsPage() {
             <p className="border-l-2 border-primary bg-white/45 px-5 py-4 text-foreground">
               水印、降低分辨率、禁止选择或禁止右键只能提高直接复制成本，不能阻止截图、抓包或 OCR，
               更不能代替权利核验、访问控制与依法维权。
+            </p>
+            <p>
+              新发现的 V1.3 候选版含 47 幅正文图版，但当前结构化权利台账只有 26 条；因此新版 519 页尚未生成网站页图。
+              <Link href="/novel/editions" className="ml-1 text-foreground underline decoration-foreground/25 underline-offset-4">
+                查看版本与审权门禁
+              </Link>
+              。
             </p>
           </div>
         </div>

@@ -10,10 +10,24 @@ PYTHONDONTWRITEBYTECODE=1 python3 tools/build_preview_data.py
 PYTHONDONTWRITEBYTECODE=1 python3 tools/verify_preview_data.py
 PYTHONDONTWRITEBYTECODE=1 python3 tools/build_graph_wiki_data.py
 PYTHONDONTWRITEBYTECODE=1 python3 tools/verify_graph_wiki_data.py
+PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tools -p 'test_graph_wiki_contract.py'
 PYTHONDONTWRITEBYTECODE=1 python3 tools/verify_novel_assets.py
+PYTHONDONTWRITEBYTECODE=1 python3 tools/novel_edition_contract.py
+PYTHONDONTWRITEBYTECODE=1 python3 tools/novel_edition_contract.py --check
 PYTHONDONTWRITEBYTECODE=1 python3 tools/verify_static_assets.py
+pnpm exec tsx tools/verify-evidence-paths.ts
+pnpm exec tsx tools/verify-people-dossiers.ts
+pnpm exec tsx tools/verify-family-history-diagnostic.ts
+pnpm exec tsx tools/build-archive-missions.ts
+pnpm exec tsx tools/verify-archive-missions.ts
+pnpm exec tsx tools/build-rights-passports.ts
+pnpm exec tsx tools/build-rights-passports.ts --check
+pnpm exec tsx tools/verify-rights-passports.ts
 pnpm exec tsx tools/verify-topics-media.ts
+pnpm exec tsx tools/build-site-status.ts
+pnpm exec tsx tools/verify-site-status.ts
 pnpm exec tsx tools/verify-article-rights.ts
+pnpm exec tsx tools/verify-security-boundaries.ts
 node tools/assert-local-preview-gate.mjs
 node tools/verify-handx-release.mjs
 

@@ -112,6 +112,14 @@ export function PrivateMessageForm() {
         </label>
       </div>
 
+      <div className="mt-5 border-l-2 border-[#d5a09a] bg-white/[0.035] p-4 text-xs leading-6 text-[#c8c4bc]">
+        想整理家族史？请先完成
+        <Link href="/studio/diagnosis" className="mx-1 text-white underline decoration-white/30 underline-offset-4">
+          3 分钟起步诊断
+        </Link>
+        。这里不接收原件、身份证件、精确住址、私人通信正文、在世亲属敏感信息或未成年人材料。
+      </div>
+
       <label className="mt-5 grid gap-2 text-xs text-[#c8c4bc]">
         留言内容
         <textarea
@@ -120,7 +128,7 @@ export function PrivateMessageForm() {
           minLength={10}
           maxLength={2000}
           rows={6}
-          placeholder="可以聊 AI、产品、合作，也可以提供与苏开元有关的线索。"
+          placeholder="可以聊 AI、产品或一般合作；历史线索请只写公开出处，不要粘贴原件和私人信息。"
           className="resize-y border border-white/20 bg-[#17201f] px-3 py-3 text-sm leading-7 text-white outline-none transition placeholder:text-white/30 focus:border-[#d5a09a]"
         />
       </label>
