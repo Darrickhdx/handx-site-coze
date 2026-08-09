@@ -1,92 +1,126 @@
-import { AlertTriangle, Link2, ShieldCheck } from 'lucide-react';
+import { ArrowRight, BookOpenText, Compass, FileSearch } from 'lucide-react';
 import Link from 'next/link';
+import { ArchiveStoryCard } from '@/components/archive-story-card';
 import { ProjectSectionNav } from '@/components/project-section-nav';
-import { PageHeader } from '@/components/section-header';
+import { archiveReadingMoments } from '@/content/archive-reading';
+import { sourceCards } from '@/lib/research-data';
 import { SourceCard } from '@/components/source-card';
-import { sourceCards, sourceRecords } from '@/lib/research-data';
 
 export default function ArchivesPage() {
-  const publicLinks = sourceRecords.filter((source) => Boolean(source.public_url)).length;
-  const bodyVerified = sourceRecords.filter((source) => source.content_scope === 'body-verified').length;
-  const metadataOnly = sourceRecords.filter((source) => source.content_scope === 'metadata-only').length;
-  const coverVisible = sourceRecords.filter((source) => source.content_scope === 'cover-visible').length;
-  const interpreted = sourceRecords.filter((source) => source.content_scope === 'interpreted').length;
-
   return (
     <div>
       <ProjectSectionNav />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-16">
-        <PageHeader
-          title="史料阅览室"
-          subtitle={`${sourceRecords.length}项来源记录，${publicLinks}项有公开入口。其中body-verified ${bodyVerified}项、metadata-only ${metadataOnly}项、cover-visible ${coverVisible}项、interpreted ${interpreted}项。`}
-        />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 mb-8">
-        <div className="rounded-xl border border-confirmed/30 bg-confirmed/10 p-5">
-          <ShieldCheck className="w-5 h-5 text-confirmed mb-2" />
-          <p className="font-semibold text-foreground">来源ID完整保留</p>
-          <p className="text-sm text-muted-foreground mt-1">每张卡都可回到SRC编号和公开导出记录。</p>
-        </div>
-        <div className="rounded-xl border border-candidate/30 bg-candidate/10 p-5">
-          <Link2 className="w-5 h-5 text-candidate mb-2" />
-          <p className="font-semibold text-foreground">同源载体不重复加权</p>
-          <p className="text-sm text-muted-foreground mt-1">转录、影印、索引和同一作品的不同入口须辨明关系。</p>
-        </div>
-        <div className="rounded-xl border border-warning/30 bg-warning/10 p-5">
-          <AlertTriangle className="w-5 h-5 text-warning mb-2" />
-          <p className="font-semibold text-foreground">metadata/cover不是正文</p>
-          <p className="text-sm text-muted-foreground mt-1">metadata-only只证明目录记录存在；cover-visible只能引用可见封面字段。</p>
-        </div>
-        <div className="rounded-xl border border-warning/30 bg-warning/10 p-5">
-          <AlertTriangle className="w-5 h-5 text-warning mb-2" />
-          <p className="font-semibold text-foreground">已核正文也有范围</p>
-          <p className="text-sm text-muted-foreground mt-1">body-verified只对verified_extent有效；unread_extent不会因一页已读而自动清零。</p>
-        </div>
-      </div>
+      <header className="border-b border-foreground/15 bg-[#eee9df]">
+        <div className="story-shell grid gap-10 py-16 sm:py-24 lg:grid-cols-[minmax(0,1.1fr)_minmax(18rem,0.65fr)] lg:items-end">
+          <div>
+            <p className="personal-kicker"><span aria-hidden="true" />Archive, read like a story</p>
+            <h1 className="mt-7 max-w-4xl font-serif text-[clamp(3.3rem,7vw,6.4rem)] font-semibold leading-[0.94] tracking-[-0.06em]">
+              先别查编号。<br />先回到那一页纸、那座城、那一天。
+            </h1>
+            <p className="mt-8 max-w-2xl text-base leading-8 text-muted-foreground sm:text-lg">
+              这里不是证据墙，而是一条回到历史现场的阅读路线。每份材料先告诉你一个人、一件事或一个悬念；想继续深挖时，再把你带回原文与出处。
+            </p>
+            <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
+              <Link
+                href="/archives/SRC-013"
+                data-amplitude-event="archive_reading_started"
+                data-amplitude-source-id="SRC-013"
+                data-amplitude-section="archive_hero"
+                className="story-button story-button-primary"
+              >
+                从1936年的一行字开始 <ArrowRight className="size-4" aria-hidden="true" />
+              </Link>
+              <Link href="/discover/1936-pingdiquan" className="story-button story-button-secondary">
+                先读完整故事
+              </Link>
+            </div>
+          </div>
 
-      <section aria-labelledby="source-list-heading" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <h2 id="source-list-heading" className="sr-only">来源目录</h2>
-        {sourceCards.map((source) => (
-          <SourceCard key={source.sourceId} {...source} />
-        ))}
-      </section>
-
-      <section className="mt-10 grid gap-6 border border-foreground/15 bg-[#eee9df] p-6 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:p-8">
-        <div>
-          <p className="story-kicker">还没取得的原件</p>
-          <h2 className="mt-3 font-serif text-3xl font-semibold">来源目录之外，还有 33 项正在等待推进的查档任务。</h2>
-          <p className="mt-4 max-w-3xl text-sm leading-7 text-muted-foreground">
-            它们记录“下一步去哪里、找哪一页、拿到什么才算完成”；全部仍在执行前阶段，不是新增史实成果。
-          </p>
+          <aside className="border-l-2 border-primary pl-6 pb-1 sm:pl-8">
+            <p className="font-serif text-3xl leading-relaxed text-foreground sm:text-4xl">
+              “档案的价值，不是替读者下结论；而是把人带到一个能自己感受历史的瞬间。”
+            </p>
+            <p className="mt-6 text-xs leading-6 text-muted-foreground">
+              本项目把已看见的、仍在寻找的分开说，但不让术语抢走故事的第一句话。
+            </p>
+          </aside>
         </div>
-        <Link href="/missions" className="story-button story-button-primary">
-          进入查档现场
-        </Link>
-      </section>
+      </header>
 
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
-        <section className="bg-surface-container-lowest border border-border/40 rounded-xl p-6">
-          <h2 className="font-serif text-xl font-semibold text-foreground mb-4">本批来源如何理解</h2>
-          <ul className="list-disc pl-5 text-sm text-muted-foreground space-y-2">
-            <li>SRC-002是《绥行纪略》的本地转录，对应官方影印SRC-013，不算第二个独立来源。</li>
-            <li>SRC-039是1933年公报，SRC-042是官职资料库索引；二者在CL-092中独立来源数仍为1。</li>
-            <li>SRC-042的content_scope=metadata-only；它只支持“索引如此记录”，不支持未见公报正文内容。</li>
-            <li>SRC-095是日方同期档案，应表述为“该档案如何记载”，不能替代中方任命令。</li>
-            <li>1929记录与身份桥所依赖的载体因混合公开／私有来源依赖暂缓，不进入本页来源目录。</li>
-          </ul>
+      <main className="story-shell py-16 sm:py-24">
+        <section aria-labelledby="reader-route-heading">
+          <div className="grid gap-7 border-b border-foreground/15 pb-9 lg:grid-cols-[0.75fr_1.25fr] lg:items-end lg:gap-20">
+            <div>
+              <p className="story-kicker">三份材料，三次走近</p>
+              <h2 id="reader-route-heading" className="story-heading mt-4">如果你只花十分钟，就从这里走进苏开元。</h2>
+            </div>
+            <p className="max-w-2xl text-base leading-8 text-muted-foreground">
+              不需要懂档案学。你只需要带着一个问题读下去：这一页纸，让我们真正看见了什么？而它又把什么留给了下一次寻找？
+            </p>
+          </div>
+
+          <div className="mt-8 grid gap-px border border-foreground/15 bg-foreground/15 lg:grid-cols-3">
+            {archiveReadingMoments.map((moment, index) => (
+              <ArchiveStoryCard key={moment.sourceId} moment={moment} index={index} />
+            ))}
+          </div>
         </section>
-        <section className="bg-surface-container-lowest border border-border/40 rounded-xl p-6">
-          <h2 className="font-serif text-xl font-semibold text-foreground mb-4">引用规则</h2>
-          <ul className="list-disc pl-5 text-sm text-muted-foreground space-y-2">
-            <li>优先引用原来源标题、编号、日期、页码或档号。</li>
-            <li>先核对原文，再引用本站短主张；本站不是二次权威。</li>
-            <li>不把目录、验证码页、OCR命中或有限预览称为正文原件。</li>
-            <li>引用时同时标注content_scope、verified_extent、total_extent_known和unread_extent。</li>
-            <li>权利状态未批准前，不复制整页扫描或长篇原文到公开网站。</li>
-          </ul>
+
+        <section className="mt-16 grid gap-px border border-foreground/15 bg-foreground/15 md:grid-cols-3 sm:mt-24">
+          <div className="bg-background p-7 sm:p-9">
+            <BookOpenText className="size-6 text-primary" strokeWidth={1.4} aria-hidden="true" />
+            <p className="mt-8 text-[10px] font-semibold tracking-[0.13em] text-primary uppercase">01 · 先读人</p>
+            <h2 className="mt-4 font-serif text-2xl font-semibold">从一个场景进入，不从表格进入。</h2>
+            <p className="mt-4 text-sm leading-7 text-muted-foreground">先知道这里发生了什么，再决定自己想不想继续往下找。</p>
+          </div>
+          <div className="bg-background p-7 sm:p-9">
+            <FileSearch className="size-6 text-primary" strokeWidth={1.4} aria-hidden="true" />
+            <p className="mt-8 text-[10px] font-semibold tracking-[0.13em] text-primary uppercase">02 · 再看原文</p>
+            <h2 className="mt-4 font-serif text-2xl font-semibold">放大一页，而不是丢给你一堵材料墙。</h2>
+            <p className="mt-4 text-sm leading-7 text-muted-foreground">每一页会告诉你从哪里读起，也会把你送回原来的保存机构。</p>
+          </div>
+          <div className="bg-background p-7 sm:p-9">
+            <Compass className="size-6 text-primary" strokeWidth={1.4} aria-hidden="true" />
+            <p className="mt-8 text-[10px] font-semibold tracking-[0.13em] text-primary uppercase">03 · 留下问题</p>
+            <h2 className="mt-4 font-serif text-2xl font-semibold">真正有力量的故事，允许一部分还没有答案。</h2>
+            <p className="mt-4 text-sm leading-7 text-muted-foreground">下一页要去哪找、还缺哪一块，才是读者能一起参与的旅程。</p>
+          </div>
         </section>
-        </div>
-      </div>
+
+        <section className="mt-16 border border-foreground/15 bg-[#1d2524] p-7 text-[#f3efe7] sm:mt-24 sm:p-10">
+          <p className="story-kicker text-[#c38a82]">继续寻找</p>
+          <div className="mt-5 grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
+            <div>
+              <h2 className="font-serif text-3xl font-semibold sm:text-4xl">故事走到档案的边缘，才知道下一步该去哪里。</h2>
+              <p className="mt-5 max-w-3xl text-sm leading-7 text-[#bdb9b0]">
+                还有一批材料尚未取得。它们不是“已知事实”的补充，而是这场寻找接下来真正要抵达的地方。
+              </p>
+            </div>
+            <Link href="/missions" className="story-button border border-[#c38a82] text-[#f3efe7] hover:bg-[#c38a82] hover:text-[#1d2524]">
+              走进查档现场 <ArrowRight className="size-4" aria-hidden="true" />
+            </Link>
+          </div>
+        </section>
+
+        <details className="mt-16 border-t border-foreground/15 pt-7 sm:mt-24">
+          <summary className="cursor-pointer list-none text-left">
+            <span className="inline-flex items-center gap-3 text-sm font-semibold">
+              <span className="grid size-8 place-items-center border border-primary/30 text-primary">+</span>
+              我想从完整来源目录开始
+            </span>
+            <span className="mt-3 block max-w-2xl text-sm leading-7 text-muted-foreground">
+              给需要逐项追溯的研究者：编号、载体关系与核对范围都在这里；它们不再占据每位读者的第一屏。
+            </span>
+          </summary>
+
+          <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {sourceCards.map((source) => (
+              <SourceCard key={source.sourceId} {...source} />
+            ))}
+          </div>
+        </details>
+      </main>
     </div>
   );
 }

@@ -29,7 +29,7 @@ export const primaryNavigation: readonly PrimaryNavigationItem[] = [
   },
   {
     href: '/sukaiyuan',
-    label: '苏开元',
+    label: '寻找苏开元',
     activePaths: [
       '/sukaiyuan',
       '/evidence',

@@ -57,6 +57,8 @@ export default async function ArchiveSourcePage({
   const relatedPaths = evidencePaths.filter((path) =>
     path.sourceIds.includes(sourceId),
   );
+  const readerClaimIds = new Set(relatedPaths.flatMap((path) => path.claimIds));
+  const readerClaims = claims.filter((claim) => readerClaimIds.has(claim.claim_id));
 
   return (
     <div>
@@ -73,7 +75,7 @@ export default async function ArchiveSourcePage({
             <SourceContextNavigation sourceId={sourceId} />
           </Suspense>
           <p className="mt-12 font-mono text-xs font-semibold tracking-[0.12em] text-primary">
-            {source.source_id}
+            一份历史材料 · {source.source_id}
           </p>
           <h1 className="mt-5 font-serif text-[clamp(2.8rem,6vw,5.4rem)] font-semibold leading-[1.02] tracking-[-0.05em]">
             {source.title}
@@ -111,8 +113,7 @@ export default async function ArchiveSourcePage({
             locator={source.locator}
             publicUrl={source.public_url}
             publicUrlStatus={source.public_url_status}
-            localCopyStatus={source.local_copy_status}
-            claims={claims.map((claim) => ({
+            claims={readerClaims.map((claim) => ({
               id: claim.claim_id,
               status: claimStatusLabels[claim.status],
               assertion: claim.quote_or_assertion,
@@ -152,7 +153,7 @@ export default async function ArchiveSourcePage({
 
         <details className="mt-8 border border-foreground/15 bg-background p-5 sm:p-6">
           <summary className="cursor-pointer text-sm font-semibold">
-            查看全部 {claims.length} 条研究记录与关联实体
+            继续查看全部 {claims.length} 条研究记录与关联实体
           </summary>
           <section className="mt-7 grid gap-8 lg:grid-cols-[1fr_0.65fr]">
             <div>

@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { FileArchive, BookOpen, ScrollText, Newspaper, MessageCircle, BookMarked, ExternalLink, Copy, Check } from 'lucide-react';
 import { EvidenceBadge, EvidenceLevel } from './evidence-legend';
 import { cn } from '@/lib/utils';
@@ -27,24 +28,24 @@ const accessConfig: Record<AccessStatus, { label: string; color: string; bg: str
 
 const contentScopeConfig: Record<ContentScope, { label: string; className: string; boundary: string }> = {
   'metadata-only': {
-    label: 'metadata-only · 仅元数据',
+    label: '我们先看见了目录线索',
     className: 'border-disputed/30 bg-disputed/10 text-disputed',
-    boundary: '只能证明目录或索引如此记录，不得当作未见正文的内容。',
+    boundary: '它告诉我们这份资料在目录中存在；正文还需要回到原馆继续寻找。',
   },
   'cover-visible': {
-    label: 'cover-visible · 仅封面/预览可见',
+    label: '我们能读到封面或预览里的字',
     className: 'border-disputed/30 bg-disputed/10 text-disputed',
-    boundary: '只能陈述封面或预览中可见的文字，不得推出人物履历或正文内容。',
+    boundary: '它可以带我们走到资料门口，但还不能替正文把人物经历讲完。',
   },
   'body-verified': {
-    label: 'body-verified · 定位范围内正文已核',
+    label: '这一段原文已经核对过',
     className: 'border-confirmed/30 bg-confirmed/10 text-confirmed',
-    boundary: '只对下列verified_extent负责；未读页面、附件和卷内其他范围不随之升级。',
+    boundary: '我们只把已经读到的这一段讲清楚；其余页面仍等着被完整地读下去。',
   },
   interpreted: {
-    label: 'interpreted · 解释性载体',
+    label: '这是一份转述或整理材料',
     className: 'border-candidate/30 bg-candidate/10 text-candidate',
-    boundary: '这是解释、转录或派生层，不得冒充原件正文或增加独立证据数。',
+    boundary: '它能提供理解线索；重要的细节仍要回到它所指向的原始材料。',
   },
 };
 
@@ -144,9 +145,6 @@ export function SourceCard({
 
       {/* Title & meta */}
       <div className="px-4 pb-3">
-        {sourceId && (
-          <p className="font-mono text-[11px] text-primary mb-1">{sourceId}</p>
-        )}
         <h3 className={cn(
           'font-serif font-semibold text-base text-foreground mb-1.5 leading-snug',
           isLost && 'line-through decoration-muted-foreground/50'
@@ -159,12 +157,6 @@ export function SourceCard({
           {year && <span>{year}年</span>}
           {dateLabel && <span>{dateLabel}</span>}
         </div>
-        {(carrierStatus || representationOf) && (
-          <div className="mt-2 space-y-1 text-[11px] text-muted-foreground">
-            {carrierStatus && <p>载体状态：{carrierStatus}</p>}
-            {representationOf && <p>同源对应：{representationOf}</p>}
-          </div>
-        )}
       </div>
 
       <div className="px-4 pb-3">
@@ -172,20 +164,43 @@ export function SourceCard({
           <p className="font-semibold">{scopeCfg.label}</p>
           <p className="mt-1 leading-relaxed text-muted-foreground">{scopeCfg.boundary}</p>
         </div>
-        <dl className="mt-2 space-y-1 rounded-md border border-border/30 bg-muted/20 px-3 py-2 text-[11px] leading-relaxed text-muted-foreground">
-          <div>
-            <dt className="inline font-semibold text-foreground/80">verified_extent：</dt>
-            <dd className="inline">{verifiedExtent}</dd>
-          </div>
-          <div>
-            <dt className="inline font-semibold text-foreground/80">total_extent_known：</dt>
-            <dd className="inline">{totalExtentKnown}</dd>
-          </div>
-          <div>
-            <dt className="inline font-semibold text-foreground/80">unread_extent：</dt>
-            <dd className="inline">{unreadExtent}</dd>
-          </div>
-        </dl>
+        <details className="mt-3 rounded-md border border-border/30 bg-muted/20 px-3 py-2 text-[11px] leading-relaxed text-muted-foreground">
+          <summary className="cursor-pointer font-semibold text-foreground/80">这份材料的研究定位</summary>
+          {/* Locator values carry bare URLs and long hyphenated status tokens that
+              have no break opportunity; without this they overflow on narrow screens. */}
+          <dl className="mt-3 space-y-1 [overflow-wrap:anywhere]">
+            {sourceId && (
+              <div>
+                <dt className="inline font-semibold text-foreground/80">研究编号：</dt>
+                <dd className="inline font-mono">{sourceId}</dd>
+              </div>
+            )}
+            {carrierStatus && (
+              <div>
+                <dt className="inline font-semibold text-foreground/80">载体状态：</dt>
+                <dd className="inline">{carrierStatus}</dd>
+              </div>
+            )}
+            {representationOf && (
+              <div>
+                <dt className="inline font-semibold text-foreground/80">同源对应：</dt>
+                <dd className="inline">{representationOf}</dd>
+              </div>
+            )}
+            <div>
+              <dt className="inline font-semibold text-foreground/80">已读到：</dt>
+              <dd className="inline">{verifiedExtent}</dd>
+            </div>
+            <div>
+              <dt className="inline font-semibold text-foreground/80">可确认的整体范围：</dt>
+              <dd className="inline">{totalExtentKnown}</dd>
+            </div>
+            <div>
+              <dt className="inline font-semibold text-foreground/80">仍待阅读：</dt>
+              <dd className="inline">{unreadExtent}</dd>
+            </div>
+          </dl>
+        </details>
       </div>
 
       {/* Excerpt */}
@@ -205,9 +220,20 @@ export function SourceCard({
             <span className="text-muted-foreground">被引用 {citationCount} 次</span>
           )}
         </div>
+        {sourceId && (
+          <Link
+            href={`/archives/${encodeURIComponent(sourceId)}`}
+            data-amplitude-event="source_card_opened"
+            data-amplitude-source-id={sourceId}
+            className="inline-flex min-h-11 items-center gap-1 px-2 text-primary hover:text-primary/80 font-medium"
+          >
+            读这份材料
+            <ExternalLink className="w-3.5 h-3.5" />
+          </Link>
+        )}
         <button
           onClick={handleCopy}
-          className="inline-flex min-h-11 items-center gap-1 px-2 text-primary hover:text-primary/80 font-medium transition-colors"
+          className="inline-flex min-h-11 items-center gap-1 px-2 text-muted-foreground hover:text-primary font-medium transition-colors"
           aria-label={`复制《${title}》的引用格式`}
         >
           {copyStatus === 'copied' ? (
@@ -223,7 +249,7 @@ export function SourceCard({
           ) : (
             <>
               <Copy className="w-3.5 h-3.5" />
-              引用
+              复制书目信息
             </>
           )}
         </button>

@@ -29,11 +29,14 @@ export default function SuKaiyuanPage() {
             </div>
             <h1 className="sukaiyuan-title mt-7">寻找苏开元</h1>
             <p className="mt-4 font-serif text-2xl leading-relaxed text-[#d7cfc2] sm:text-3xl">
-              我的曾祖父，和一个仍未被历史完整解释的名字。
+              一行旧字，把我带回曾祖父的名字。
             </p>
             <p className="mt-6 max-w-2xl text-base leading-8 text-[#bdb9b0] sm:text-lg">
-              我想知道，他究竟经历过什么，又如何被卷入二十世纪中国的巨大变动。
-              这不是一份已经完成的传记，而是一场公开保留证据、冲突与空白的长期寻找。
+              1936 年，一位作家在边地的一次会场里写下“留守司令蘇開元團長”。九十年后，
+              这行字把我带回一个家族问题：被写下的人，究竟是不是我的曾祖父？
+            </p>
+            <p className="mt-4 max-w-2xl text-sm leading-7 text-[#aaa69f]">
+              我还不能替历史下结论；但我想带你去看，为什么这行字值得继续寻找。
             </p>
 
             <div className="mt-7 flex flex-col gap-4 sm:flex-row sm:items-center">
@@ -42,27 +45,32 @@ export default function SuKaiyuanPage() {
                 data-amplitude-event="sukaiyuan_story_started"
                 className="story-button personal-button-light"
               >
-                先读第一个故事
+                从1936年的一行字开始
                 <ArrowRight className="size-4" aria-hidden="true" />
               </Link>
-              <Link href="/sukaiyuan/dossier" className="personal-dark-link">
-                比对两条姓名记录
+              <Link
+                href="/archives/SRC-013"
+                data-amplitude-event="sukaiyuan_original_opened"
+                data-amplitude-source-id="SRC-013"
+                className="personal-dark-link"
+              >
+                先看这一页原件
                 <ArrowRight className="size-4" aria-hidden="true" />
               </Link>
             </div>
 
             <div className="mt-7 grid gap-px overflow-hidden border border-white/15 bg-white/15 text-xs leading-6 sm:grid-cols-3">
               <div className="bg-[#1d2524] p-4">
-                <strong className="block text-[#f3efe7]">目前知道</strong>
-                <p className="mt-2 text-[#aaa69f]">1936 年同期文献确有“苏开元团长”。</p>
+                <strong className="block text-[#f3efe7]">一行名字</strong>
+                <p className="mt-2 text-[#aaa69f]">1936 年 11 月 21 日，出现在校刊里。</p>
               </div>
               <div className="bg-[#1d2524] p-4">
-                <strong className="block text-[#f3efe7]">仍待确认</strong>
-                <p className="mt-2 text-[#aaa69f]">这位记录对象是否就是家族人物。</p>
+                <strong className="block text-[#f3efe7]">一个地点</strong>
+                <p className="mt-2 text-[#aaa69f]">平地泉，一次公开会面的现场。</p>
               </div>
               <div className="bg-[#1d2524] p-4">
-                <strong className="block text-[#f3efe7]">建议下一步</strong>
-                <p className="mt-2 text-[#aaa69f]">先认识人物，再亲自比对六份身份材料。</p>
+                <strong className="block text-[#f3efe7]">一个问题</strong>
+                <p className="mt-2 text-[#aaa69f]">这位“蘇開元”，是不是我的曾祖父？</p>
               </div>
             </div>
           </div>
@@ -201,12 +209,12 @@ export default function SuKaiyuanPage() {
                 <span aria-hidden="true" />
                 Research archive
               </p>
-              <h2 className="personal-heading mt-6">故事之后，再进入资料库。</h2>
+              <h2 className="personal-heading mt-6">故事之后，想深挖的人再走进资料库。</h2>
             </div>
             <div>
               <p className="max-w-2xl text-base leading-8 text-muted-foreground">
-                图谱负责看关系，Wiki 负责查具体条目，原件库负责把每个判断带回来源。
-                它们是同一套资料的三种入口，不再互相争抢读者。
+                图谱负责看关系，Wiki 负责认识人物，原件库负责把你带回那一页纸。
+                它们不是阅读门槛，而是故事之后可以继续探索的三扇门。
               </p>
               <p className="mt-3 text-xs leading-6 text-muted-foreground">
                 当前研究快照：{graphManifest.counts.audit_nodes} 个实体 · {graphManifest.counts.audit_claims} 条主张 · {graphManifest.counts.audit_sources} 份来源

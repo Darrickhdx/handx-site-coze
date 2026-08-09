@@ -35,15 +35,14 @@ interface ArchiveEvidenceViewerProps {
   locator: string;
   publicUrl: string;
   publicUrlStatus: string;
-  localCopyStatus: string;
   claims: readonly ViewerClaim[];
   preview?: ViewerPreview;
 }
 
 const tabs: readonly { id: ViewerTab; label: string }[] = [
-  { id: 'locator', label: '定位' },
-  { id: 'claims', label: '主张' },
-  { id: 'original', label: '原馆' },
+  { id: 'locator', label: '读这一页' },
+  { id: 'claims', label: '这一页直接说了什么' },
+  { id: 'original', label: '回到原馆' },
 ];
 
 export function ArchiveEvidenceViewer({
@@ -52,7 +51,6 @@ export function ArchiveEvidenceViewer({
   locator,
   publicUrl,
   publicUrlStatus,
-  localCopyStatus,
   claims,
   preview,
 }: ArchiveEvidenceViewerProps) {
@@ -68,9 +66,9 @@ export function ArchiveEvidenceViewer({
       <div className="flex flex-col gap-5 border-b border-white/15 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-7">
         <div>
           <p className="font-mono text-[10px] font-semibold tracking-[0.16em] text-[#c38a82] uppercase">
-            Evidence viewer · {sourceId}
+            原文伴读 · {sourceId}
           </p>
-          <h2 className="mt-3 font-serif text-3xl font-semibold">原件查看台</h2>
+          <h2 className="mt-3 font-serif text-3xl font-semibold">在这份原件里，读这一刻</h2>
         </div>
         <div className="flex gap-1" role="tablist" aria-label={`${title}查看方式`}>
           {tabs.map((tab) => (
@@ -100,7 +98,7 @@ export function ArchiveEvidenceViewer({
               {preview ? (
                 <div className="min-w-[36rem]">
                   <div className="mb-3 flex items-center justify-between gap-4 text-[11px] text-[#bdb9b0]">
-                    <span>本地审阅局部 · 不是完整扫描下载</span>
+                    <span>放大这一页，慢一点读</span>
                     <span className="flex items-center gap-1">
                       <button
                         type="button"
@@ -135,19 +133,19 @@ export function ArchiveEvidenceViewer({
               ) : (
                 <div className="flex min-h-[22rem] flex-col items-center justify-center border border-dashed border-white/20 p-8 text-center">
                   <FileSearch className="size-10 text-[#c38a82]" strokeWidth={1.2} aria-hidden="true" />
-                  <p className="mt-6 font-serif text-2xl">站内未复制原件</p>
+                  <p className="mt-6 font-serif text-2xl">这份材料请回到原馆阅读</p>
                   <p className="mt-4 max-w-lg text-sm leading-7 text-[#bdb9b0]">
-                    这里有可核对的档号、页码和主张，但没有获得站内展示许可的扫描图。请使用定位信息回到原馆查看。
+                    这里保留了能带你找回它的起点，但没有展示许可覆盖的扫描图。请用下面的线索回到保存它的地方。
                   </p>
                 </div>
               )}
             </div>
             <aside className="p-6 sm:p-8">
               <LocateFixed className="size-6 text-[#c38a82]" aria-hidden="true" />
-              <p className="mt-5 text-[10px] font-semibold tracking-[0.15em] text-[#c38a82] uppercase">Exact locator</p>
+              <p className="mt-5 text-[10px] font-semibold tracking-[0.15em] text-[#c38a82] uppercase">从这里找到原文</p>
               <p className="mt-4 text-sm leading-7 text-[#d7cfc2]">{locator}</p>
               <div className="mt-7 border-t border-white/15 pt-5 text-xs leading-6 text-[#bdb9b0]">
-                {preview ? preview.note : '本视图只呈现浏览器安全的定位信息，不以空白占位冒充原件。'}
+                {preview ? preview.note : '本站保留的是阅读线索，不用空白占位冒充一份看不见的原件。'}
               </div>
             </aside>
           </div>
@@ -170,7 +168,7 @@ export function ArchiveEvidenceViewer({
               ))
             ) : (
               <p className="bg-[#202827] p-8 text-sm text-[#bdb9b0]">
-                当前没有主张绑定到这份来源。
+                这份材料还没有被写成本站的阅读说明。你仍可以从“回到原馆”继续查看。
               </p>
             )}
           </div>
@@ -181,11 +179,10 @@ export function ArchiveEvidenceViewer({
             <div className="max-w-2xl">
               <ShieldAlert className="mx-auto size-9 text-[#c38a82]" strokeWidth={1.4} aria-hidden="true" />
               <h3 className="mt-6 font-serif text-3xl font-semibold">
-                {publicUrl ? '回到保存机构核对' : '暂无可安全公开的原馆入口'}
+                {publicUrl ? '回到保存它的地方，继续读下去' : '这份材料还没有可安全公开的原馆入口'}
               </h3>
               <p className="mt-5 text-sm leading-7 text-[#bdb9b0]">
-                本地载体状态：{localCopyStatus === 'registered_local_carrier' ? '已登记，仅供站主核对' : '公开投影未登记'}。
-                站内定位和短主张不能代替原文上下文，也不改变原馆的使用规则。
+                本站展示的只是理解这段故事所需的局部与线索；完整上下文、阅读权限和使用规则，都以保存机构为准。
               </p>
               {publicUrl && (
                 <a
@@ -195,7 +192,7 @@ export function ArchiveEvidenceViewer({
                   className="mt-7 inline-flex items-center gap-2 border border-[#c38a82] bg-[#c38a82] px-5 py-3 text-sm font-semibold text-[#202827]"
                 >
                   <ExternalLink className="size-4" aria-hidden="true" />
-                  {publicUrlStatus === 'official_or_institutional' ? '打开机构原件／资料页' : '打开登记的公开资料页'}
+                  {publicUrlStatus === 'official_or_institutional' ? '去机构原件／资料页继续读' : '去登记的公开资料页继续读'}
                 </a>
               )}
             </div>
