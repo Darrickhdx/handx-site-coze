@@ -1,4 +1,4 @@
-import { readFileSync, readdirSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { extname, resolve } from 'node:path';
 
 const root = resolve(process.cwd());
@@ -97,6 +97,17 @@ for (const path of sources) {
   if (/type\s*=\s*["']file["']/iu.test(text)) fileInputs.push(path);
   if (/<iframe\b/iu.test(text)) iframes.push(path);
 }
+// ADR 0001 routes every local interaction through one Node request handler that
+// composes the Next.js fallback internally, so a caller cannot skip the security
+// headers or the route ordering. A Next.js route handler under src/app/api would
+// bypass that handler entirely. The property was previously only a convention;
+// this makes it fail the build. Public-edition API routes live in src/app-public
+// and are staged into a separate tree, so they never appear here.
+invariant(
+  !existsSync(resolve(root, 'src/app/api')),
+  'workbench edition must contain zero Next.js API routes; local interactions belong in src/server/local-interactions.ts (docs/adr/0001)',
+);
+
 invariant(externalFetches.length === 0, `source contains external network calls: ${externalFetches.join(', ')}`);
 invariant(remoteImageSources.length === 0, `source contains remote image URLs: ${remoteImageSources.join(', ')}`);
 invariant(fileInputs.length === 0, `source contains file upload controls: ${fileInputs.join(', ')}`);
@@ -112,4 +123,5 @@ console.log(JSON.stringify({
   loopback_entrypoints: 2,
   destructive_port_cleanup: false,
   private_json_fail_closed: true,
+  workbench_next_api_routes: 0,
 }, null, 2));

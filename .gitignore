@@ -19,6 +19,11 @@ __pycache__/
 
 # JS/TS bundlers & build outputs
 .next
+# Staged public-edition tree (tools/stage-public-edition.mjs). It is generated,
+# and it duplicates novel page images, so it must be ignored before the first
+# staging run — verify-handx-release.mjs enumerates untracked-but-not-ignored
+# files and would otherwise scan the whole copy.
+.edition
 .nuxt
 .turbo
 .vercel
