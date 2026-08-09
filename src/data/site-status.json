@@ -5,7 +5,7 @@
     "version": "0.1.0",
     "build_state": "local_review"
   },
-  "assembled_at": "2026-08-04T08:43:29.888Z",
+  "assembled_at": "2026-08-09T17:01:36.658Z",
   "evidence_boundary": {
     "status_axis": "inventory_and_gate_state_only",
     "historical_completion_percentage": null,
@@ -88,13 +88,13 @@
     {
       "id": "novel-reader-v0-3",
       "label": "《英雄无名》本地阅读器",
-      "version": "0.3",
+      "version": "1.5",
       "state": "local_reader",
       "publication_status": "local_review",
       "inventory": {
-        "pages": 182,
-        "numbered_chapters": 32,
-        "commentable_sections": 34
+        "pages": 538,
+        "numbered_chapters": 36,
+        "commentable_sections": 40
       },
       "public_ready": false
     },
@@ -146,13 +146,13 @@
     "state": "all_external_release_blocked",
     "registry": {
       "schema_version": "handx-rights-passports-v1",
-      "records": 208,
-      "owned": 193,
+      "records": 564,
+      "owned": 556,
       "licensed_for_local_review": 2,
-      "permission_pending": 13,
-      "review_only": 186,
-      "not_for_media": 22,
-      "local_only": 29,
+      "permission_pending": 6,
+      "review_only": 549,
+      "not_for_media": 15,
+      "local_only": 22,
       "public_ready": 0
     },
     "article_passports": {
@@ -167,7 +167,7 @@
     },
     "novel": {
       "license": "no-license-granted",
-      "local_only_pages": 7,
+      "local_only_pages": 0,
       "public_ready": false
     },
     "topics": {
@@ -199,11 +199,11 @@
     },
     {
       "path": "public/novel/hero-wuming/novel-manifest.json",
-      "sha256": "5d2b45f77c85a774359963d2870d470c725b3542f2ed528fe4655a8879b9148e"
+      "sha256": "7b3ff7255e9a24dc8b549a22c8060455eb99ed59e7408e43f876e53f24465e1a"
     },
     {
       "path": "src/data/novel-editions.json",
-      "sha256": "9fabc445e8c8bf17d7a1b5d2c975f9ecb383428ae9a026f589aa11c5911b257d"
+      "sha256": "1403233f0a5dc8adb1baace2b24cc7dc027665228e37a0954dfe5bf34c44bd5d"
     },
     {
       "path": "public/assets/asset-manifest.json",
@@ -211,11 +211,11 @@
     },
     {
       "path": "src/data/rights-passports.json",
-      "sha256": "8bd421970a6786a3e83157cc8776cccec786e4a39ca9b7bc5c6124af23a40a30"
+      "sha256": "655a9eb84bd9d96bb896ec8856b84b49e1d523e20d9ffe793a4f181e4ca7cf20"
     },
     {
       "path": "src/data/rights-passports-manifest.json",
-      "sha256": "03c58f72d1b89c0d22b31d48e6a7759bd75be528dcf2abf28989819f182661a0"
+      "sha256": "c6fec46beb16ec43a23a62dda12d305c5a0b443206e270c771acdaf74aedb136"
     },
     {
       "path": "src/content/topics.ts",
@@ -230,5 +230,5 @@
       "sha256": "46fb9fa2629ca6f4dff39351c55acbfb3d009dea42f2389cea33c4969b3411a5"
     }
   ],
-  "generation_id": "status-a051ca956d4b92235ca3cbd6ecf4423a157b0a547a5652a7f90ac5e39b2b9116"
+  "generation_id": "status-fe0a3d091912bae2c18fbd3c61ab60a6790ca9cda104fcee2177546ad0bbb7bc"
 }

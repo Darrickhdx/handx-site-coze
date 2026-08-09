@@ -121,7 +121,7 @@ export const selectedContents: readonly SelectedContent[] = [
     href: '/novel',
     kind: '给小说读者',
     title: '《英雄无名》全文阅读',
-    description: '182 页、32 章。史实、合理外推与文学虚构分层标记，小说不反向充当史料。',
+    description: '全书 538 页、36 章，免费阅读。史实、合理外推与文学虚构分层标记，小说不反向充当史料。',
     meta: '完整本地审阅版',
     icon: BookOpenText,
   },

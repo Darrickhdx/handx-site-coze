@@ -12,10 +12,23 @@ from typing import Any
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 MANIFEST_PATH = PROJECT_ROOT / "public/novel/hero-wuming/novel-manifest.json"
-EXPECTED_PDF_SHA = "3913ae458296646e3151ab9ad2b6646a7104cfe538a80e095b6563fef652d152"
-EXPECTED_DOCX_SHA = "4d72bb26a15a45a95ca7f21795a4365db057fac06025b4fc7b4b330fa9ba1b09"
-EXPECTED_LOCAL_ONLY = {6, 14, 22, 28, 47, 116, 177}
+PINS_PATH = PROJECT_ROOT / "src/data/novel-edition-pins.json"
 EXPECTED_WATERMARK = "© 韩大昕｜鉴真小秃驴 · 仅供本站阅读"
+
+
+def load_served_pin() -> dict[str, Any]:
+    """Expected source hashes and structure for whichever edition is rendered.
+
+    Held in src/data/novel-edition-pins.json rather than written here, so that
+    rendering a different edition is a reviewable data change instead of an edit
+    to this verifier. Previously these were literals for V0.3 and would report a
+    defect the moment the served edition changed.
+    """
+    pins = json.loads(PINS_PATH.read_text(encoding="utf-8"))
+    served = pins.get("served_edition")
+    if not isinstance(served, dict):
+        raise SystemExit("novel-edition-pins.json has no served_edition block")
+    return served
 
 
 def sha256_file(path: Path) -> str:
@@ -43,6 +56,18 @@ def main() -> int:
         print(f"FAIL novel manifest unreadable: {error}")
         return 1
 
+    served = load_served_pin()
+    expected_pdf_sha = served["sha256"]["pdf"]
+    expected_docx_sha = served["sha256"]["docx"]
+    expected_pages = served["structure"]["pages"]
+    expected_chapters = served["structure"]["numbered_chapters"]
+    expected_local_only = set(served.get("local_only_image_pages", []))
+    expected_commentable = served["structure"]["commentable_sections"]
+    expected_width = served["structure"]["page_width"]
+    expected_height = served["structure"]["page_height"]
+    expected_responsive_width = served["structure"]["responsive_width"]
+    expected_responsive_height = served["structure"]["responsive_height"]
+
     require(manifest.get("schema_version") == "handx-novel-manifest-1.0", "wrong schema", errors)
     require(manifest.get("project") == "Handx web0.1", "wrong project", errors)
     require(manifest.get("must_not_deploy") is True, "must_not_deploy is not true", errors)
@@ -54,9 +79,13 @@ def main() -> int:
     require(manifest.get("publication_status") == "local_review", "not local_review", errors)
 
     source = as_dict(manifest.get("source"))
-    require(source.get("pdf_sha256") == EXPECTED_PDF_SHA, "PDF SHA changed", errors)
-    require(source.get("docx_sha256") == EXPECTED_DOCX_SHA, "DOCX SHA changed", errors)
-    require(source.get("pdf_page_count") == 182, "PDF page count is not 182", errors)
+    require(source.get("pdf_sha256") == expected_pdf_sha, "PDF SHA changed", errors)
+    require(source.get("docx_sha256") == expected_docx_sha, "DOCX SHA changed", errors)
+    require(
+        source.get("pdf_page_count") == expected_pages,
+        f"PDF page count is not {expected_pages}",
+        errors,
+    )
     require(source.get("raw_sources_served") is False, "raw source marked served", errors)
     require(
         source.get("chapter_titles_verified_against_docx") is True,
@@ -68,7 +97,7 @@ def main() -> int:
     require(rights.get("license") == "no-license-granted", "novel license is open", errors)
     require(rights.get("watermark") == EXPECTED_WATERMARK, "watermark text changed", errors)
     require(
-        set(rights.get("local_only_image_pages", [])) == EXPECTED_LOCAL_ONLY,
+        set(rights.get("local_only_image_pages", [])) == expected_local_only,
         "local-only image pages changed",
         errors,
     )
@@ -100,7 +129,7 @@ def main() -> int:
         end = row.get("end_page")
         require(isinstance(start, int) and isinstance(end, int), f"{section_id}: invalid range", errors)
         if isinstance(start, int) and isinstance(end, int):
-            require(1 <= start <= end <= 182, f"{section_id}: range outside book", errors)
+            require(1 <= start <= end <= expected_pages, f"{section_id}: range outside book", errors)
             assigned.extend(range(start, end + 1))
             require(row.get("page_count") == end - start + 1, f"{section_id}: wrong page_count", errors)
         if isinstance(row.get("chapter_number"), int):
@@ -112,9 +141,21 @@ def main() -> int:
                 f"{section_id}: non-chapter comment area",
                 errors,
             )
-    require(sorted(assigned) == list(range(1, 183)), "pages are missing, repeated, or out of order", errors)
-    require(numbered == 32, f"numbered chapter count is {numbered}", errors)
-    require(commentable == 34, f"commentable section count is {commentable}", errors)
+    require(
+        sorted(assigned) == list(range(1, expected_pages + 1)),
+        "pages are missing, repeated, or out of order",
+        errors,
+    )
+    require(
+        numbered == expected_chapters,
+        f"numbered chapter count is {numbered}, pin says {expected_chapters}",
+        errors,
+    )
+    require(
+        commentable == expected_commentable,
+        f"commentable section count is {commentable}, pin says {expected_commentable}",
+        errors,
+    )
 
     seen_pages: set[int] = set()
     local_only: set[int] = set()
@@ -135,7 +176,11 @@ def main() -> int:
         require(path == expected_path, f"page {number}: unstable path", errors)
         require(row.get("section_id") in section_ids, f"page {number}: missing section", errors)
         require(row.get("watermark") == EXPECTED_WATERMARK, f"page {number}: wrong watermark", errors)
-        require(row.get("width") == 1269 and row.get("height") == 1800, f"page {number}: wrong dimensions", errors)
+        require(
+            row.get("width") == expected_width and row.get("height") == expected_height,
+            f"page {number}: wrong dimensions",
+            errors,
+        )
         require(re.fullmatch(r"[0-9a-f]{64}", str(row.get("sha256", ""))) is not None, f"page {number}: bad SHA", errors)
         page_path = PROJECT_ROOT / "public" / path.lstrip("/")
         require(page_path.is_file(), f"page {number}: asset missing", errors)
@@ -157,8 +202,8 @@ def main() -> int:
             errors,
         )
         require(
-            row.get("responsive_width") == 760
-            and row.get("responsive_height") == 1078,
+            row.get("responsive_width") == expected_responsive_width
+            and row.get("responsive_height") == expected_responsive_height,
             f"page {number}: wrong responsive dimensions",
             errors,
         )
@@ -210,8 +255,12 @@ def main() -> int:
                 f"page {number}: wrong derivative rights",
                 errors,
             )
-    require(seen_pages == set(range(1, 183)), "manifest does not contain 182 unique pages", errors)
-    require(local_only == EXPECTED_LOCAL_ONLY, "page-level local-only set changed", errors)
+    require(
+        seen_pages == set(range(1, expected_pages + 1)),
+        f"manifest does not contain {expected_pages} unique pages",
+        errors,
+    )
+    require(local_only == expected_local_only, "page-level local-only set changed", errors)
 
     public_root = PROJECT_ROOT / "public"
     raw_sources = [
@@ -226,9 +275,9 @@ def main() -> int:
         return 1
     print(
         "novel assets verified:",
-        "pages=182",
-        "chapters=32",
-        "commentable=34",
+        f"pages={expected_pages}",
+        f"chapters={expected_chapters}",
+        f"commentable={commentable}",
         f"bytes={total_bytes}",
         f"responsive_bytes={total_responsive_bytes}",
         "raw_sources=0",

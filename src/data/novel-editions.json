@@ -4,14 +4,14 @@
   "must_not_deploy": true,
   "deployment_authorized": false,
   "current_reader": {
-    "edition_id": "hero-wuming-v0-3",
-    "version": "0.3",
+    "edition_id": "hero-wuming-v1-5",
+    "version": "1.5",
     "status": "legacy_local_reader",
-    "pages": 182,
-    "numbered_chapters": 32,
-    "commentable_sections": 34,
-    "pdf_sha256": "3913ae458296646e3151ab9ad2b6646a7104cfe538a80e095b6563fef652d152",
-    "docx_sha256": "4d72bb26a15a45a95ca7f21795a4365db057fac06025b4fc7b4b330fa9ba1b09",
+    "pages": 538,
+    "numbered_chapters": 36,
+    "commentable_sections": 40,
+    "pdf_sha256": "dd484437dbd0d80e8fa19f1bd430ef00f3ac67fac909f5cbe3a1c416f415b9f5",
+    "docx_sha256": "e81628d270dd59c7d1742f46b08922e39b7df194963f5b7682af43557128afe8",
     "raw_sources_served": false
   },
   "editions": [

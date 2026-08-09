@@ -19,7 +19,7 @@ import {
 
 export const metadata: Metadata = {
   title: '《英雄无名》版本大厅｜当前阅读版、冻结基线与下一版门禁',
-  description: '区分网站当前V0.3阅读器、V1.2冻结对照基线和仍未上线的V1.3候选版，并公开换版停止门槛。',
+  description: '区分网站当前提供阅读的版本、V1.2冻结对照基线和仍未上线的V1.3候选版，并公开换版停止门槛。',
 };
 
 function shortHash(value: string) {
@@ -56,9 +56,8 @@ export default function NovelEditionsPage() {
                   and this sentence previously still claimed the older plate count
                   and that freezing was outstanding. */}
               <p className="mt-6 max-w-2xl text-base leading-8 text-[#bdb9b0]">
-                因此网站仍保留可验证的 V0.3 本地阅读器；V{frozenNovelBaseline.version} 只作冻结基线，V
-                {candidateNovelEdition.version} 已冻结，但在 {candidateNovelEdition.figure_plates} 幅图版审权完成前（当前{' '}
-                {candidateNovelEdition.rights_ledger_records ?? 0}/{candidateNovelEdition.figure_plates}）不生成网页页图，也不覆盖旧评论。
+                网站当前提供阅读的是 V{novelEditionRegistry.current_reader.version}；V{frozenNovelBaseline.version} 与 V
+                {candidateNovelEdition.version} 只作冻结对照基线，不提供阅读，也不覆盖当前版本的评论与阅读进度。
               </p>
             </div>
           </div>
@@ -71,9 +70,9 @@ export default function NovelEditionsPage() {
             <article className="bg-background p-6 sm:p-8">
               <p className="font-mono text-[10px] tracking-[0.15em] text-primary uppercase">Now reading</p>
               <h2 className="mt-5 font-serif text-4xl font-semibold">V{novelEditionRegistry.current_reader.version}</h2>
-              <p className="mt-3 text-sm font-semibold">旧版本地阅读器</p>
+              <p className="mt-3 text-sm font-semibold">当前网页阅读版</p>
               <p className="mt-5 text-sm leading-7 text-muted-foreground">
-                {novelEditionRegistry.current_reader.pages} 页、{novelEditionRegistry.current_reader.numbered_chapters} 章；保持现状，用于验证阅读、评论与水印管线。
+                {novelEditionRegistry.current_reader.pages} 页、{novelEditionRegistry.current_reader.numbered_chapters} 章，全书免费阅读；页图带像素水印，评论按版本隔离。
               </p>
               <Link href="/novel/read" className="story-text-link mt-7">
                 打开当前阅读器 <ArrowRight className="size-4" aria-hidden="true" />
@@ -113,7 +112,7 @@ export default function NovelEditionsPage() {
             <div>
               <p className="personal-kicker"><span aria-hidden="true" />Switch gates</p>
               <ShieldAlert className="mt-8 size-7 text-primary" strokeWidth={1.4} aria-hidden="true" />
-              <h2 className="mt-6 font-serif text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">V1.3 何时才能切换？</h2>
+              <h2 className="mt-6 font-serif text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">V{candidateNovelEdition.version} 何时才能切换？</h2>
               <p className="mt-6 text-sm leading-7 text-muted-foreground">
                 门禁由本地源文件实时生成。读者点击、评论或人工选择都不能绕过它。
               </p>
@@ -145,7 +144,7 @@ export default function NovelEditionsPage() {
               <p className="story-kicker">迁移原则</p>
               <h2 className="mt-4 max-w-3xl font-serif text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">并行导入，完整核对，最后一次性切换。</h2>
               <p className="mt-6 max-w-3xl text-base leading-8 text-muted-foreground">
-                V1.3 不覆盖 V0.3 文件；旧评论和阅读进度不自动迁移。每一页继承该页最高风险素材的权利状态，禁止页不会进入浏览器、Git 或媒体导出包。
+                V1.3 不覆盖当前阅读版；旧评论和阅读进度不自动迁移。每一页继承该页最高风险素材的权利状态，禁止页不会进入浏览器、Git 或媒体导出包。
               </p>
             </div>
             <div className="flex flex-col gap-3">

@@ -31,7 +31,7 @@ PAGES = [
     "/novel/companion",
     "/novel/chapter/prologue",
     "/novel/chapter/chapter-01",
-    "/novel/chapter/chapter-16",
+    "/novel/chapter/chapter-19",
     "/studio",
     "/studio/diagnosis",
     "/studio/comments",
@@ -76,14 +76,38 @@ PAGES = [
     "/insights",
 ]
 NOVEL_MANIFEST = "/novel/hero-wuming/novel-manifest.json"
+NOVEL_PINS = Path(__file__).resolve().parents[1] / "src" / "data" / "novel-edition-pins.json"
+
+
+def _served_novel_pin() -> dict:
+    """The edition currently rendered into public/novel, from the pin file.
+
+    Written here as literals until V1.5 replaced V0.3, at which point every one
+    of them reported a defect that did not exist.
+    """
+    return json.loads(NOVEL_PINS.read_text(encoding="utf-8"))["served_edition"]
+
+
+_SERVED_NOVEL = _served_novel_pin()
+EXPECTED_NOVEL_EDITION_ID = _SERVED_NOVEL["edition_id"]
+EXPECTED_NOVEL_PAGES = _SERVED_NOVEL["structure"]["pages"]
+EXPECTED_NOVEL_CHAPTERS = _SERVED_NOVEL["structure"]["numbered_chapters"]
+EXPECTED_NOVEL_COMMENTABLE = _SERVED_NOVEL["structure"]["commentable_sections"]
 EXPECTED_NOVEL_SOURCE_HASHES = {
-    "pdf_sha256": "3913ae458296646e3151ab9ad2b6646a7104cfe538a80e095b6563fef652d152",
-    "docx_sha256": "4d72bb26a15a45a95ca7f21795a4365db057fac06025b4fc7b4b330fa9ba1b09",
+    "pdf_sha256": _SERVED_NOVEL["sha256"]["pdf"],
+    "docx_sha256": _SERVED_NOVEL["sha256"]["docx"],
 }
-EXPECTED_NOVEL_LOCAL_ONLY_PAGES = {6, 14, 22, 28, 47, 116, 177}
+EXPECTED_NOVEL_LOCAL_ONLY_PAGES = set(_SERVED_NOVEL.get("local_only_image_pages", []))
+EXPECTED_NOVEL_RESPONSIVE_WIDTH = _SERVED_NOVEL["structure"]["responsive_width"]
+EXPECTED_NOVEL_RESPONSIVE_HEIGHT = _SERVED_NOVEL["structure"]["responsive_height"]
+EXPECTED_NOVEL_SECTIONS = _SERVED_NOVEL["structure"]["sections"]
+EXPECTED_NOVEL_VERSION = f"V{_SERVED_NOVEL['version']}"
 FORBIDDEN_NOVEL_RAW_SOURCES = {
     "/novel/hero-wuming/英雄无名V0.3-出版版.pdf",
     "/novel/hero-wuming/英雄无名V0.3-出版版.docx",
+    "/novel/hero-wuming/英雄无名V1.5-印刷版.pdf",
+    "/novel/hero-wuming/英雄无名V1.5-可编辑.docx",
+    "/novel/hero-wuming/英雄无名V1.5-可审阅.md",
     "/novel/hero-wuming/source.pdf",
     "/novel/hero-wuming/source.docx",
     "/novel/hero-wuming/hero-wuming.pdf",
@@ -539,8 +563,8 @@ def main() -> int:
         if path == "/wiki/P-005" and "先读人物故事版" not in html:
             errors.append("/wiki/P-005: curated story dossier gateway is missing")
         if path == "/novel" and (
-            "182" not in html
-            or "32" not in html
+            str(EXPECTED_NOVEL_PAGES) not in html
+            or str(EXPECTED_NOVEL_CHAPTERS) not in html
             or "水印" not in html
             or "不能阻止截图" not in html
         ):
@@ -549,18 +573,18 @@ def main() -> int:
             "第一章" not in html
             or "读者意见" not in html
             or "审核" not in html
-            or "hero-wuming-v0-3--chapter-01" not in html
+            or f"{EXPECTED_NOVEL_EDITION_ID}--chapter-01" not in html
             or "真实与虚构伴读" not in html
             or "pingdiquan-1936" not in html
         ):
             errors.append("/novel/chapter/chapter-01: chapter reader or moderated discussion notice is missing")
-        if path == "/novel/chapter/chapter-16" and (
-            "第十六章" not in html
+        if path == "/novel/chapter/chapter-19" and (
+            "第十九章" not in html
             or "真实与虚构伴读" not in html
             or "chart-1942" not in html
             or "研究旁注，不认证本场" not in html
         ):
-            errors.append("/novel/chapter/chapter-16: evidence companion entry is missing")
+            errors.append("/novel/chapter/chapter-19: evidence companion entry is missing")
         if path == "/novel/editions" and (
             "换一本书" not in html
             or "V1.2" not in html
@@ -574,7 +598,7 @@ def main() -> int:
             errors.append("/novel/editions: edition states or atomic-switch boundary is incomplete")
         if path == "/novel/companion" and (
             "故事从哪里来" not in html
-            or "V0.3" not in html
+            or EXPECTED_NOVEL_VERSION not in html
             or "SRC-013" not in html
             or "SRC-103" not in html
             or "不能替小说证明" not in html
@@ -938,9 +962,11 @@ def main() -> int:
             or boundary.get("historical_completion_percentage") is not None
             or boundary.get("historical_counts_are_inventory_not_completion") is not True
             or not isinstance(rights_registry, dict)
-            or rights_registry.get("records") != 208
-            or rights_registry.get("permission_pending") != 13
-            or rights_registry.get("not_for_media") != 22
+            or rights_registry.get("records") != EXPECTED_NOVEL_PAGES + 26
+            or rights_registry.get("permission_pending")
+            != 6 + len(EXPECTED_NOVEL_LOCAL_ONLY_PAGES)
+            or rights_registry.get("not_for_media")
+            != 15 + len(EXPECTED_NOVEL_LOCAL_ONLY_PAGES)
             or rights_registry.get("public_ready") != 0
             or not isinstance(media_artifact, dict)
             or media_artifact.get("inventory", {}).get("eligible_for_review_package") != 1
@@ -1049,10 +1075,10 @@ def main() -> int:
         ):
             errors.append(f"{NOVEL_MANIFEST}: local-review publication gate is malformed")
         if not isinstance(totals, dict) or (
-            totals.get("pages") != 182
-            or totals.get("numbered_chapters") != 32
-            or totals.get("commentable_sections") != 34
-            or totals.get("local_only_pages") != 7
+            totals.get("pages") != EXPECTED_NOVEL_PAGES
+            or totals.get("numbered_chapters") != EXPECTED_NOVEL_CHAPTERS
+            or totals.get("commentable_sections") != EXPECTED_NOVEL_COMMENTABLE
+            or totals.get("local_only_pages") != len(EXPECTED_NOVEL_LOCAL_ONLY_PAGES)
         ):
             errors.append(f"{NOVEL_MANIFEST}: unexpected totals {totals!r}")
         if not isinstance(source, dict) or any(
@@ -1062,7 +1088,7 @@ def main() -> int:
             errors.append(f"{NOVEL_MANIFEST}: source SHA contract changed ({source!r})")
         if (
             not isinstance(source, dict)
-            or source.get("pdf_page_count") != 182
+            or source.get("pdf_page_count") != EXPECTED_NOVEL_PAGES
             or source.get("raw_sources_served") is not False
             or source.get("chapter_titles_verified_against_docx") is not True
         ):
@@ -1084,18 +1110,18 @@ def main() -> int:
         ):
             errors.append(f"{NOVEL_MANIFEST}: page output contract is malformed")
 
-        if not isinstance(pages, list) or len(pages) != 182:
-            errors.append(f"{NOVEL_MANIFEST}: expected 182 page rows, got {len(pages) if isinstance(pages, list) else 'invalid'}")
+        if not isinstance(pages, list) or len(pages) != EXPECTED_NOVEL_PAGES:
+            errors.append(f"{NOVEL_MANIFEST}: expected {EXPECTED_NOVEL_PAGES} page rows, got {len(pages) if isinstance(pages, list) else 'invalid'}")
             pages = []
         page_numbers = [
             row.get("number")
             for row in pages
             if isinstance(row, dict)
         ]
-        if page_numbers != list(range(1, 183)):
-            errors.append(f"{NOVEL_MANIFEST}: page numbers are not the exact ordered range 1..182")
-        if not isinstance(sections, list) or len(sections) != 44:
-            errors.append(f"{NOVEL_MANIFEST}: expected 44 section rows")
+        if page_numbers != list(range(1, EXPECTED_NOVEL_PAGES + 1)):
+            errors.append(f"{NOVEL_MANIFEST}: page numbers are not the exact ordered range 1..{EXPECTED_NOVEL_PAGES}")
+        if not isinstance(sections, list) or len(sections) != EXPECTED_NOVEL_SECTIONS:
+            errors.append(f"{NOVEL_MANIFEST}: expected {EXPECTED_NOVEL_SECTIONS} section rows")
             sections = []
         covered_pages: list[int] = []
         section_ids: set[str] = set()
@@ -1115,8 +1141,8 @@ def main() -> int:
             if section.get("page_count") != end_page - start_page + 1:
                 errors.append(f"{NOVEL_MANIFEST}: page_count mismatch for {section_id!r}")
             covered_pages.extend(range(start_page, end_page + 1))
-        if covered_pages != list(range(1, 183)):
-            errors.append(f"{NOVEL_MANIFEST}: sections do not uniquely and contiguously cover pages 1..182")
+        if covered_pages != list(range(1, EXPECTED_NOVEL_PAGES + 1)):
+            errors.append(f"{NOVEL_MANIFEST}: sections do not uniquely and contiguously cover pages 1..{EXPECTED_NOVEL_PAGES}")
 
         for row in pages:
             if not isinstance(row, dict):
@@ -1133,8 +1159,8 @@ def main() -> int:
                 or responsive_path
                 != f"/novel/hero-wuming/pages-responsive/page-{number:03d}.webp"
                 or re.fullmatch(r"[0-9a-f]{64}", responsive_sha) is None
-                or row.get("responsive_width") != 760
-                or row.get("responsive_height") != 1078
+                or row.get("responsive_width") != EXPECTED_NOVEL_RESPONSIVE_WIDTH
+                or row.get("responsive_height") != EXPECTED_NOVEL_RESPONSIVE_HEIGHT
                 or row.get("section_id") not in section_ids
                 or row.get("watermark") != "© 韩大昕｜鉴真小秃驴 · 仅供本站阅读"
                 or row.get("local_only") is not (number in EXPECTED_NOVEL_LOCAL_ONLY_PAGES)
@@ -1556,7 +1582,7 @@ def main() -> int:
         )
     check_headers("/private-runtime/archive-missions-owner.json", headers, errors)
 
-    comment_chapter = "hero-wuming-v0-3--chapter-01"
+    comment_chapter = f"{EXPECTED_NOVEL_EDITION_ID}--chapter-01"
     comment_session = "00000000-0000-4000-8000-000000000011"
     xss_comment_session = "00000000-0000-4000-8000-000000000012"
     safe_comment_body = "这是一条用于验证先审后显流程的章节读者意见。"
@@ -1931,7 +1957,7 @@ def main() -> int:
         )
 
         other_chapter_payload = {
-            "chapter_id": "hero-wuming-v0-3--chapter-02",
+            "chapter_id": f"{EXPECTED_NOVEL_EDITION_ID}--chapter-02",
             "display_name": "Chapter isolation",
             "body": "这条评论只应出现在第二章。",
             "website": "",
@@ -1968,7 +1994,7 @@ def main() -> int:
                 )
         status, headers, body = fetch(
             args.base_url,
-            "/api/local/novel-comments?chapter=hero-wuming-v0-3--chapter-02",
+            f"/api/local/novel-comments?chapter={EXPECTED_NOVEL_EDITION_ID}--chapter-02",
         )
         try:
             chapter_two_comments = (
@@ -1981,7 +2007,7 @@ def main() -> int:
             or len(chapter_two_comments) != 1
             or chapter_two_comments[0].get("id") != other_comment_id
             or chapter_two_comments[0].get("chapter_id")
-            != "hero-wuming-v0-3--chapter-02"
+            != f"{EXPECTED_NOVEL_EDITION_ID}--chapter-02"
         ):
             errors.append(
                 "/api/local/novel-comments: comments were not isolated by chapter"
@@ -2114,9 +2140,9 @@ def main() -> int:
                 "pages": len(PAGES),
                 "json_endpoints": len(JSON_ENDPOINTS),
                 "local_runtime_endpoints": 9,
-                "novel_pages_hashed": 182,
-                "novel_responsive_pages_hashed": 182,
-                "novel_numbered_chapters": 32,
+                "novel_pages_hashed": EXPECTED_NOVEL_PAGES,
+                "novel_responsive_pages_hashed": EXPECTED_NOVEL_PAGES,
+                "novel_numbered_chapters": EXPECTED_NOVEL_CHAPTERS,
                 "graph_counts": EXPECTED_GRAPH_COUNTS,
                 "static_assets": len(EXPECTED_STATIC_ASSETS),
                 "unique_titles": len(set(titles.values())),

@@ -59,8 +59,8 @@ export const novelCompanionEntries: readonly NovelCompanionEntry[] = [
   },
   {
     id: 'chart-1942',
-    chapterLabel: '第十六章 · 延安',
-    chapterHref: '/novel/chapter/chapter-16',
+    chapterLabel: '第十九章 · 延安',
+    chapterHref: '/novel/chapter/chapter-19',
     mode: 'conflict',
     modeLabel: '敌方情报列名',
     title: '1942 年表格里有名字，却没有旅程',
@@ -73,8 +73,8 @@ export const novelCompanionEntries: readonly NovelCompanionEntry[] = [
   },
   {
     id: 'beiping-boundary',
-    chapterLabel: '第二十四至第二十八章 · 北平终局',
-    chapterHref: '/novel/chapter/chapter-24',
+    chapterLabel: '第二十六至第三十章 · 北平终局',
+    chapterHref: '/novel/chapter/chapter-26',
     mode: 'literary_boundary',
     modeLabel: '高风险文学重构',
     title: '一座城的结局，不能被缩成一个人的功劳',
@@ -87,8 +87,8 @@ export const novelCompanionEntries: readonly NovelCompanionEntry[] = [
   },
   {
     id: 'case-boundary',
-    chapterLabel: '第二十八章 · 破案不能认领',
-    chapterHref: '/novel/chapter/chapter-28',
+    chapterLabel: '第三十章 · 破案不能认领',
+    chapterHref: '/novel/chapter/chapter-30',
     mode: 'literary_boundary',
     modeLabel: '不得反向入史',
     title: '博物馆里有案件，不等于案件里已经有苏开元',

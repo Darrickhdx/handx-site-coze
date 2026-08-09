@@ -136,22 +136,11 @@ public/media-exports/
 .media-exports/
 local-source-map.json
 
-# Novel pages containing family images or uncleared third-party facsimiles.
-# They exist in the local reader but must never enter the private repository.
-/public/novel/hero-wuming/pages/page-006.webp
-/public/novel/hero-wuming/pages/page-014.webp
-/public/novel/hero-wuming/pages/page-022.webp
-/public/novel/hero-wuming/pages/page-028.webp
-/public/novel/hero-wuming/pages/page-047.webp
-/public/novel/hero-wuming/pages/page-116.webp
-/public/novel/hero-wuming/pages/page-177.webp
-/public/novel/hero-wuming/pages-responsive/page-006.webp
-/public/novel/hero-wuming/pages-responsive/page-014.webp
-/public/novel/hero-wuming/pages-responsive/page-022.webp
-/public/novel/hero-wuming/pages-responsive/page-028.webp
-/public/novel/hero-wuming/pages-responsive/page-047.webp
-/public/novel/hero-wuming/pages-responsive/page-116.webp
-/public/novel/hero-wuming/pages-responsive/page-177.webp
+# Local-only novel pages, when an edition has any. These were V0.3's page
+# numbers; under V1.5 the same numbers are ordinary pages, so leaving them here
+# silently removed real pages from the repository and from any deploy. The
+# served manifest's rights.local_only_image_pages is the authority — re-add
+# explicit paths here only for the edition that actually declares them.
 
 *.pem
 *.key

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { ArrowLeft, ArrowRight, BookMarked, FileSearch, ShieldAlert } from 'lucide-react';
 import { ProjectSectionNav } from '@/components/project-section-nav';
 import { novelCompanionEntries } from '@/content/novel-companion';
+import { novelManifest } from '@/lib/novel';
 
 export const metadata: Metadata = {
   title: '《英雄无名》真实与虚构伴读｜故事从哪里来，又停在哪里',
@@ -51,7 +52,7 @@ export default function NovelCompanionPage() {
         <div className="mb-9 flex items-start gap-3 border border-amber-800/20 bg-amber-50 p-5 text-sm leading-7 text-amber-950">
           <ShieldAlert className="mt-1 size-5 shrink-0" aria-hidden="true" />
           <p>
-            当前伴读对应网站仍在提供的 V0.3 本地阅读版。V1.3 候选版尚未冻结，也没有完成 47 幅图版权利登记，因此不会在这里伪装成已经上线的新版本。
+            {`当前伴读对应网站正在提供阅读的 V${novelManifest.book.version}。`}其他版本只作冻结对照，不在这里伪装成已经上线的新版本。
           </p>
         </div>
 

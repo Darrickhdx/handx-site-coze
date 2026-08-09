@@ -15,12 +15,25 @@ import {
 } from '@/lib/novel';
 import { candidateNovelEdition } from '@/lib/novel-editions';
 
-const parts = [
-  { number: 1, title: '有名', chapters: '第一章—第八章' },
-  { number: 2, title: '潜行', chapters: '第九章—第十七章' },
-  { number: 3, title: '虎穴', chapters: '第十八章—第二十六章' },
-  { number: 4, title: '无名', chapters: '第二十七章—第三十二章' },
-];
+// Derived from the manifest rather than listed: the previous literal array still
+// described V0.3's eight-chapter first part after the book had been rewritten.
+const parts = novelManifest.sections
+  .filter((section) => section.kind === 'part')
+  .map((part) => {
+    const chapters = novelManifest.sections.filter(
+      (section) => section.part === part.part && section.chapter_number !== null,
+    );
+    const first = chapters.at(0);
+    const last = chapters.at(-1);
+    return {
+      number: part.part ?? 0,
+      title: part.title.split('·').at(-1)?.trim() ?? part.title,
+      chapters:
+        first && last
+          ? `${first.title.split('·').at(0)?.trim()}—${last.title.split('·').at(0)?.trim()}`
+          : '',
+    };
+  });
 
 export default function NovelPage() {
   return (
@@ -43,7 +56,8 @@ export default function NovelPage() {
             </p>
             <p className="mt-6 max-w-2xl text-base leading-8 text-[#bdb9b0]">
               一个曾孙从搜索框里的三个字出发，追问一个人为何把名字交给时代，又为何没有被时代完整喊回来。
-              当前网页仍是 V0.3 本地审阅版：182 页、32 章；它负责稳定阅读，尚未冒充正在编辑的新版。
+              当前网页版本为 {novelManifest.book.edition}：{novelManifest.totals.pages} 页、
+              {novelManifest.totals.numbered_chapters} 章，全书可读。
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <Link href="/novel/chapter/prologue" className="story-button story-button-primary">
@@ -78,7 +92,7 @@ export default function NovelPage() {
             <div className="rotate-[1.2deg] overflow-hidden border border-white/15 bg-[#171c1b] shadow-[0_35px_90px_rgba(0,0,0,0.35)]">
               <img
                 src={novelManifest.pages[0].path}
-                alt="《英雄无名》V0.3 水印封面"
+                alt={`《英雄无名》${novelManifest.book.version} 水印封面`}
                 width={novelManifest.pages[0].width}
                 height={novelManifest.pages[0].height}
                 draggable={false}
@@ -197,14 +211,15 @@ export default function NovelPage() {
             <BookOpenText className="size-5 text-primary" aria-hidden="true" />
             <h2 className="mt-4 font-serif text-2xl font-semibold">全文与分章</h2>
             <p className="mt-3 text-sm leading-7 text-muted-foreground">
-              182 页唯一归属到封面、前言、目录、四个分部、32 章、尾声、后记和附录。
+              {novelManifest.totals.pages} 页唯一归属到 {novelManifest.totals.sections} 个小节：卷首、前言、楔子、序章、
+              四个分部、{novelManifest.totals.numbered_chapters} 章、尾声、后记与附录。
             </p>
           </div>
           <div className="border border-foreground/15 bg-card p-6">
             <FileClock className="size-5 text-primary" aria-hidden="true" />
             <h2 className="mt-4 font-serif text-2xl font-semibold">版本不混写</h2>
             <p className="mt-3 text-sm leading-7 text-muted-foreground">
-              V0.3、V1.2 与 V1.3 分别保存；旧评论和阅读进度不自动挂到重写后的章节。
+              {`V${novelManifest.book.version}、V1.2 与 V1.3 分别保存；`}旧评论和阅读进度不自动挂到重写后的章节。
             </p>
           </div>
           <div className="border border-foreground/15 bg-card p-6">

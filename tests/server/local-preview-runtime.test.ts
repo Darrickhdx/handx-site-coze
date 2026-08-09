@@ -22,6 +22,12 @@ import { tmpdir } from 'node:os';
 import { resolve } from 'node:path';
 import test from 'node:test';
 import { createLocalPreviewRuntime } from '../../src/server/local-preview-runtime';
+import { novelCommentNamespace } from '../../src/lib/novel';
+
+// Comment ids are namespaced by the served edition, so these cannot be literals:
+// under V1.5 a V0.3 chapter id is correctly rejected as not commentable.
+const chapterOne = `${novelCommentNamespace}--chapter-01`;
+const chapterTwo = `${novelCommentNamespace}--chapter-02`;
 
 const projectRoot = process.cwd();
 const projectionPaths = [
@@ -297,7 +303,7 @@ test('公开评论保持章节隔离、去重、链接限制、XSS 转义和先�
   );
   const origin = `http://127.0.0.1:${port}`;
   const payload = {
-    chapter_id: 'hero-wuming-v0-3--chapter-01',
+    chapter_id: chapterOne,
     display_name: '<img src=x onerror=alert(1)>',
     body: '<script>alert(1)</script>请勿执行',
     website: '',
@@ -329,7 +335,7 @@ test('公开评论保持章节隔离、去重、链接限制、XSS 转义和先�
     assert.equal(submission.status, 'pending');
 
     const pendingRead = await fetch(
-      `${origin}/api/local/novel-comments?chapter=hero-wuming-v0-3--chapter-01`,
+      `${origin}/api/local/novel-comments?chapter=${chapterOne}`,
     );
     const pendingBody = (await pendingRead.json()) as { comments: unknown[] };
     assert.deepEqual(pendingBody.comments, []);
@@ -365,7 +371,7 @@ test('公开评论保持章节隔离、去重、链接限制、XSS 转义和先�
       { mode: 0o600 },
     );
     const approvedRead = await fetch(
-      `${origin}/api/local/novel-comments?chapter=hero-wuming-v0-3--chapter-01`,
+      `${origin}/api/local/novel-comments?chapter=${chapterOne}`,
     );
     const approvedBody = (await approvedRead.json()) as {
       comments: Array<{ display_name: string; body: string }>;
@@ -376,7 +382,7 @@ test('公开评论保持章节隔离、去重、链接限制、XSS 转义和先�
     assert(!approvedBody.comments[0].display_name.includes('<img'));
 
     const otherChapter = await fetch(
-      `${origin}/api/local/novel-comments?chapter=hero-wuming-v0-3--chapter-02`,
+      `${origin}/api/local/novel-comments?chapter=${chapterTwo}`,
     );
     const otherChapterBody = (await otherChapter.json()) as {
       comments: unknown[];
@@ -388,7 +394,7 @@ test('公开评论保持章节隔离、去重、链接限制、XSS 转义和先�
       'damaged moderation line\n',
     );
     const damagedRead = await fetch(
-      `${origin}/api/local/novel-comments?chapter=hero-wuming-v0-3--chapter-01`,
+      `${origin}/api/local/novel-comments?chapter=${chapterOne}`,
     );
     assert.equal(damagedRead.status, 503);
     assert.deepEqual(await damagedRead.json(), {

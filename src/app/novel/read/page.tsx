@@ -6,7 +6,7 @@ import { novelManifest } from '@/lib/novel';
 
 export const metadata: Metadata = {
   title: '《英雄无名》连续阅读',
-  description: '按页连续阅读《英雄无名》V0.3 本地水印审阅版；下一版候选尚未通过换版门禁。',
+  description: '按页连续阅读《英雄无名》V1.5 水印全书版。',
 };
 
 export default function FullNovelReaderPage() {
@@ -31,10 +31,10 @@ export default function FullNovelReaderPage() {
               </h1>
             </div>
             <div className="max-w-xl text-sm leading-7 text-[#bdb9b0]">
-              <p>182 页按视野分批加载；键盘方向键、Page Up／Down、Home／End 均可翻页。</p>
+              <p>{novelManifest.totals.pages} 页按视野分批加载；键盘方向键、Page Up／Down、Home／End 均可翻页。</p>
               <p className="mt-1">稳定锚点格式：#page-N。</p>
               <Link href="/novel/editions" className="mt-2 inline-block text-[#d7cfc2] underline decoration-white/20 underline-offset-4">
-                当前为何仍是 V0.3？
+                这一版和其他版本有什么不同？
               </Link>
             </div>
           </div>

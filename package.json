@@ -23,7 +23,7 @@
     "media:verify": "tsx tools/verify-topics-media.ts",
     "missions:build": "tsx tools/build-archive-missions.ts",
     "missions:verify": "tsx tools/verify-archive-missions.ts",
-    "novel:build": "python3 tools/build_novel_assets.py",
+    "novel:build": "python3 tools/build_novel_edition_assets.py",
     "novel:editions:build": "python3 tools/novel_edition_contract.py",
     "novel:editions:verify": "python3 tools/novel_edition_contract.py --check",
     "novel:verify": "python3 tools/verify_novel_assets.py",

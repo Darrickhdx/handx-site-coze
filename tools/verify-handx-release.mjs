@@ -27,15 +27,6 @@ const forbiddenExtensions = new Set([
   '.pem',
   '.key',
 ]);
-const forbiddenExactPaths = new Set(
-  [6, 14, 22, 28, 47, 116, 177].flatMap((page) => {
-    const suffix = String(page).padStart(3, '0');
-    return [
-      `public/novel/hero-wuming/pages/page-${suffix}.webp`,
-      `public/novel/hero-wuming/pages-responsive/page-${suffix}.webp`,
-    ];
-  }),
-);
 const textExtensions = new Set([
   '.css',
   '.html',
@@ -109,9 +100,12 @@ const novelManifest = JSON.parse(readFileSync(novelManifestPath, 'utf8'));
 const restrictedNovelRows = novelManifest.pages.filter(
   (page) => page.local_only === true,
 );
+// How many local-only pages an edition has is the edition's business: V0.3 had
+// seven, V1.5 has none. What must always hold is that any page marked local-only
+// is also barred from Git and from media export, and that its bytes are excluded
+// from the release below.
 if (
-  restrictedNovelRows.length !== 7
-  || restrictedNovelRows.some(
+  restrictedNovelRows.some(
     (page) =>
       page.git_eligible !== false
       || page.not_for_media !== true
@@ -120,11 +114,23 @@ if (
 ) {
   fail('local-only novel release flags are malformed');
 }
+// Paths that must never be committed, derived from whichever pages the served
+// manifest marks local-only. Previously a fixed list of V0.3's page numbers,
+// which under a longer edition would have banned seven ordinary pages.
+const forbiddenExactPaths = new Set(
+  restrictedNovelRows.flatMap((page) => {
+    const suffix = String(page.number).padStart(3, '0');
+    return [
+      `public/novel/hero-wuming/pages/page-${suffix}.webp`,
+      `public/novel/hero-wuming/pages-responsive/page-${suffix}.webp`,
+    ];
+  }),
+);
 const restrictedNovelHashes = new Set(
   restrictedNovelRows.flatMap((page) => [page.sha256, page.responsive_sha256]),
 );
 if (
-  restrictedNovelHashes.size !== 14
+  restrictedNovelHashes.size !== restrictedNovelRows.length * 2
   || [...restrictedNovelHashes].some(
     (value) => !/^[0-9a-f]{64}$/u.test(value),
   )

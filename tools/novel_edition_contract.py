@@ -214,9 +214,20 @@ def validate_browser_safe(payload: dict[str, Any]) -> list[str]:
         errors.append("absolute local path leaked into edition registry")
     if payload.get("must_not_deploy") is not True or payload.get("deployment_authorized") is not False:
         errors.append("deployment gate is open")
+    # The served edition is whichever one is rendered into public/novel; its
+    # identity comes from the pin file, so switching editions is a data change
+    # rather than an edit here.
+    served = json.loads(PINS_PATH.read_text(encoding="utf-8"))["served_edition"]
     current = payload.get("current_reader", {})
-    if current.get("edition_id") != "hero-wuming-v0-3" or current.get("pages") != 182:
-        errors.append("current V0.3 reader contract changed unexpectedly")
+    if (
+        current.get("edition_id") != served["edition_id"]
+        or current.get("pages") != served["structure"]["pages"]
+    ):
+        errors.append(
+            f"served reader contract drifted: pin says {served['edition_id']} "
+            f"with {served['structure']['pages']} pages, manifest says "
+            f"{current.get('edition_id')} with {current.get('pages')}"
+        )
     editions = payload.get("editions", [])
     if not isinstance(editions, list) or len(editions) != 2:
         errors.append("edition rows are malformed")

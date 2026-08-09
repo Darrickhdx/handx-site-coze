@@ -3,6 +3,29 @@
   "must_not_deploy": true,
   "deployment_authorized": false,
   "purpose": "冻结版正文的结构与哈希钉子。钉子由本仓库持有，正文位于书稿目录，两者分处不同的树——重新渲染书稿无法改动钉子，改钉子必须是一次可复核的提交。钉值来源为各版目录内的 FROZEN.md 与 SHA256SUMS.txt。新增版本时只改本文件，不改校验器代码。",
+  "served_edition": {
+    "version": "1.5",
+    "edition_id": "hero-wuming-v1-5",
+    "edition_label": "V1.5 · 出版式审阅版",
+    "note": "网站当前渲染并提供阅读的版本。V1.5 未冻结（无 FROZEN.md／SHA256SUMS.txt），因此哈希钉子是本仓库对'我渲染的是哪一份文件'的唯一记录；书稿改动后重渲染必须同时更新这里。",
+    "sha256": {
+      "pdf": "dd484437dbd0d80e8fa19f1bd430ef00f3ac67fac909f5cbe3a1c416f415b9f5",
+      "docx": "e81628d270dd59c7d1742f46b08922e39b7df194963f5b7682af43557128afe8",
+      "markdown": "be2a1431ab6d2644c3d611381a42b90d206967193dbfcdef8fd2c8a7551a2bec"
+    },
+    "structure": {
+      "pages": 538,
+      "numbered_chapters": 36,
+      "commentable_sections": 40,
+      "figure_plates": 62,
+      "page_width": 1267,
+      "page_height": 1800,
+      "responsive_width": 760,
+      "responsive_height": 1080,
+      "sections": 47
+    },
+    "local_only_image_pages": []
+  },
   "editions": {
     "1.2": {
       "frozen_at": "2026-08-04",

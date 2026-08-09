@@ -3,6 +3,7 @@ import { readFileSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { articleRightsPassports } from '../src/content/publication-rights';
 import { topicArticles } from '../src/content/topics';
+import { novelManifest } from '../src/lib/novel';
 
 const ROOT = process.cwd();
 const REGISTRY_PATH = 'src/data/rights-passports.json';
@@ -12,7 +13,8 @@ const NOVEL_MANIFEST_PATH = 'public/novel/hero-wuming/novel-manifest.json';
 const SOURCES_PATH = 'public/data/sources.json';
 const ARTICLE_RIGHTS_PATH = 'src/content/publication-rights.ts';
 const TOPICS_PATH = 'src/content/topics.ts';
-const EXPECTED_LOCAL_NOVEL_PAGES = new Set([6, 14, 22, 28, 47, 116, 177]);
+// Local-only pages come from the served manifest: V0.3 had seven, V1.5 has none.
+const EXPECTED_LOCAL_NOVEL_PAGES = new Set<number>(novelManifest.rights.local_only_image_pages);
 const EXPECTED_LICENSED_IDS = new Set(['RP-ASSET-003', 'RP-ASSET-004']);
 
 type JsonObject = Record<string, unknown>;
@@ -94,7 +96,16 @@ function verifyTopLevel(registry: JsonObject, manifest: JsonObject): RecordView[
 
   assert(Array.isArray(registry.records), 'Registry records are missing.');
   const records = registry.records as RecordView[];
-  assert(records.length === 208, `Expected 208 rights passports, found ${records.length}.`);
+  // site_asset 5 + article 3 + topic_paragraph 13 + source_reference 5
+  const NON_NOVEL_PASSPORTS = 26;
+  // One passport per novel page plus the non-novel assets. Derived from the
+  // manifest rather than fixed at 208, which was V0.3's 182 pages + 26 others
+  // and became wrong the moment the served edition changed.
+  const expectedRecords = novelManifest.totals.pages + NON_NOVEL_PASSPORTS;
+  assert(
+    records.length === expectedRecords,
+    `Expected ${expectedRecords} rights passports, found ${records.length}.`,
+  );
   assert(new Set(records.map((record) => record.passport_id)).size === records.length, 'Duplicate rights passport IDs.');
 
   assert(manifest.schema_version === 'handx-rights-passports-manifest-v1', 'Output manifest schema changed.');
@@ -190,7 +201,10 @@ function verifyNovel(records: Map<string, RecordView>) {
       rights_status: string;
     }>;
   }>(NOVEL_MANIFEST_PATH);
-  assert(manifest.pages.length === 182, 'Novel page count changed.');
+  assert(
+    manifest.pages.length === novelManifest.totals.pages,
+    'Novel page count does not match the manifest totals.',
+  );
   for (const page of manifest.pages) {
     const id = `RP-NOVEL-${String(page.number).padStart(3, '0')}`;
     const record = records.get(id);
@@ -257,7 +271,7 @@ function verifyCounts(records: RecordView[], registry: JsonObject) {
   assert(isObject(counts), 'Registry counts are missing.');
   const expectedCategories = {
     site_asset: 5,
-    novel_page: 182,
+    novel_page: novelManifest.totals.pages,
     article: 3,
     topic_paragraph: 13,
     source_reference: 5,
@@ -269,11 +283,46 @@ function verifyCounts(records: RecordView[], registry: JsonObject) {
     ]),
   );
   assert(JSON.stringify(actualCategories) === JSON.stringify(expectedCategories), 'Category counts changed.');
-  assert(records.filter((record) => record.control_state === 'owned').length === 193, 'Owned count changed.');
+  // The curated, human-decided part of the ledger is pinned; the novel-page part
+  // is derived, so re-rendering a longer edition is not reported as a rights change.
+  // Novel pages are owned unless the manifest marks them local-only.
+  const nonNovel = records.filter((record) => record.category !== 'novel_page');
+  const byState = (rows: RecordView[], state: string) =>
+    rows.filter((record) => record.control_state === state).length;
+  assert(byState(nonNovel, 'owned') === 18, 'Non-novel owned count changed.');
+  assert(byState(nonNovel, 'licensed') === 2, 'Non-novel licensed count changed.');
+  assert(byState(nonNovel, 'permission_pending') === 6, 'Non-novel permission-pending count changed.');
+
+  const novelPages = records.filter((record) => record.category === 'novel_page');
+  const localOnly = novelManifest.rights.local_only_image_pages.length;
+  assert(
+    byState(novelPages, 'owned') === novelManifest.totals.pages - localOnly,
+    'Novel-page owned count does not match the manifest.',
+  );
+  assert(
+    byState(novelPages, 'permission_pending') === localOnly,
+    'Novel-page permission-pending count does not match the manifest local-only set.',
+  );
   assert(records.filter((record) => record.control_state === 'licensed').length === 2, 'Licensed count changed.');
-  assert(records.filter((record) => record.control_state === 'permission_pending').length === 13, 'Permission-pending count changed.');
-  assert(records.filter((record) => record.media_gate === 'not_for_media').length === 22, 'Not-for-media count changed.');
-  assert(records.filter((record) => record.local_only).length === 29, 'Local-only count changed.');
+  // Total pending = the six curated non-novel items plus whatever the manifest
+  // still marks local-only; both halves are asserted individually above.
+  assert(
+    byState(records, 'permission_pending') === 6 + novelManifest.rights.local_only_image_pages.length,
+    'Permission-pending count changed.',
+  );
+  // 15 curated items (5 site assets, 5 source references, 5 topic paragraphs)
+  // plus any novel page the manifest still marks local-only.
+  assert(
+    records.filter((record) => record.media_gate === 'not_for_media').length
+      === 15 + novelManifest.rights.local_only_image_pages.length,
+    'Not-for-media count changed.',
+  );
+  // 22 curated local-only items plus any local-only novel page.
+  assert(
+    records.filter((record) => record.local_only).length
+      === 22 + novelManifest.rights.local_only_image_pages.length,
+    'Local-only count changed.',
+  );
 }
 
 function verifyOwnerPage() {
@@ -301,7 +350,13 @@ function main() {
   verifyTopics(indexed);
   verifySources(indexed);
   verifyOwnerPage();
-  console.log('PASS rights passport contract: 208 records; owned=193; licensed=2; permission_pending=13; public_ready=0.');
+  console.log(
+    `PASS rights passport contract: ${records.length} records; `
+    + `owned=${records.filter((record) => record.control_state === 'owned').length}; `
+    + `licensed=${records.filter((record) => record.control_state === 'licensed').length}; `
+    + `permission_pending=${records.filter((record) => record.control_state === 'permission_pending').length}; `
+    + 'public_ready=0.',
+  );
 }
 
 main();
