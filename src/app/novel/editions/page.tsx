@@ -52,8 +52,13 @@ export default function NovelEditionsPage() {
               <p className="font-serif text-2xl leading-relaxed text-[#d7cfc2] sm:text-3xl">
                 章节、页码、评论、阅读进度与图版权利，都必须跟着版本一起迁移。
               </p>
+              {/* Counts come from the registry: V1.3 was re-rendered and frozen,
+                  and this sentence previously still claimed the older plate count
+                  and that freezing was outstanding. */}
               <p className="mt-6 max-w-2xl text-base leading-8 text-[#bdb9b0]">
-                因此网站仍保留可验证的 V0.3 本地阅读器；V1.2 只作冻结基线，V1.3 在完成冻结和 47 幅图版审权前不生成网页页图，也不覆盖旧评论。
+                因此网站仍保留可验证的 V0.3 本地阅读器；V{frozenNovelBaseline.version} 只作冻结基线，V
+                {candidateNovelEdition.version} 已冻结，但在 {candidateNovelEdition.figure_plates} 幅图版审权完成前（当前{' '}
+                {candidateNovelEdition.rights_ledger_records ?? 0}/{candidateNovelEdition.figure_plates}）不生成网页页图，也不覆盖旧评论。
               </p>
             </div>
           </div>
