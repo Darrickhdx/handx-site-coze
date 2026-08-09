@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import re
 from datetime import datetime, timezone
 from pathlib import Path
@@ -15,14 +16,12 @@ from pypdf import PdfReader
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-BOOK_ROOT = (PROJECT_ROOT / "../../../AI小说/成书/出版版").resolve()
+DEFAULT_BOOK_ROOT = PROJECT_ROOT / "../../../AI小说/成书/出版版"
+BOOK_ROOT = Path(os.environ.get("NOVEL_BOOK_ROOT", DEFAULT_BOOK_ROOT)).resolve()
 OUTPUT_PATH = PROJECT_ROOT / "src/data/novel-editions.json"
+PINS_PATH = PROJECT_ROOT / "src/data/novel-edition-pins.json"
 CURRENT_MANIFEST_PATH = PROJECT_ROOT / "public/novel/hero-wuming/novel-manifest.json"
-V12_EXPECTED_HASHES = {
-    "markdown": "b853bad3901207643356253c5c026bf3b0ccb74d95919cebe68e5bdd7a59a51e",
-    "pdf": "9a252ca53a38d950056f2965fbaebda18b037e3ed976679032d375ad5fcadc43",
-    "docx": "1ff7b58669aa05257673b7c521664fdbb8e7c9ce5c2502d3061c8d68cc5a6f7e",
-}
+STRUCTURE_FIELDS = ("pages", "numbered_chapters", "unnumbered_openings", "figure_plates")
 
 
 def sha256_file(path: Path) -> str:
@@ -55,55 +54,96 @@ def count_markdown_structure(path: Path) -> tuple[int, int, int]:
     return numbered, openings, figures
 
 
-def build_contract() -> dict[str, Any]:
+def load_pins() -> dict[str, Any]:
+    pins = json.loads(PINS_PATH.read_text(encoding="utf-8"))
+    if pins.get("schema_version") != "handx-novel-edition-pins-1.0":
+        raise RuntimeError("novel edition pin file has an unexpected schema_version")
+    if pins.get("must_not_deploy") is not True or pins.get("deployment_authorized") is not False:
+        raise RuntimeError("novel edition pin file must keep the deployment gate closed")
+    editions = pins.get("editions")
+    if not isinstance(editions, dict) or not editions:
+        raise RuntimeError("novel edition pin file declares no editions")
+    return editions
+
+
+def observe_edition(version: str) -> tuple[Path, dict[str, Any], dict[str, int]]:
+    """Read one edition's artifacts off disk. Never compares against a pin."""
+    root = BOOK_ROOT / f"V{version}"
+    paths = {
+        "markdown": root / f"英雄无名V{version}-可审阅.md",
+        "pdf": root / f"英雄无名V{version}-印刷版.pdf",
+        "docx": root / f"英雄无名V{version}-可编辑.docx",
+    }
+    missing = [path.name for path in paths.values() if not path.is_file()]
+    if missing:
+        raise RuntimeError(f"V{version} is missing source artifacts: {', '.join(missing)}")
+    rows = {key: source_row(path) for key, path in paths.items()}
+    chapters, openings, figures = count_markdown_structure(paths["markdown"])
+    structure = {
+        "pages": len(PdfReader(str(paths["pdf"])).pages),
+        "numbered_chapters": chapters,
+        "unnumbered_openings": openings,
+        "figure_plates": figures,
+    }
+    return root, rows, structure
+
+
+def compare_against_pin(
+    version: str, pin: dict[str, Any], rows: dict[str, Any], structure: dict[str, int]
+) -> list[str]:
+    """Report drift between a frozen edition on disk and the pin this repo holds.
+
+    Drift is reported, never repaired. Re-pinning is a deliberate edit to
+    src/data/novel-edition-pins.json, reviewable as a diff.
+    """
+    drift: list[str] = []
+    expected_hashes = pin.get("sha256", {})
+    for artifact, expected in expected_hashes.items():
+        actual = rows.get(artifact, {}).get("sha256")
+        if actual != expected:
+            drift.append(
+                f"V{version} frozen {artifact} hash drifted: pinned {expected}, observed {actual}"
+            )
+    expected_structure = pin.get("structure", {})
+    for field in STRUCTURE_FIELDS:
+        expected = expected_structure.get(field)
+        actual = structure.get(field)
+        if expected != actual:
+            drift.append(
+                f"V{version} frozen structure drifted: pinned {field}={expected}, observed {actual}"
+            )
+    return drift
+
+
+def build_contract() -> tuple[dict[str, Any], list[str]]:
+    pins = load_pins()
+    drift: list[str] = []
     current = json.loads(CURRENT_MANIFEST_PATH.read_text(encoding="utf-8"))
     current_book = current["book"]
     current_source = current["source"]
     current_totals = current["totals"]
 
-    v12_root = BOOK_ROOT / "V1.2"
-    v12_paths = {
-        "markdown": v12_root / "英雄无名V1.2-可审阅.md",
-        "pdf": v12_root / "英雄无名V1.2-印刷版.pdf",
-        "docx": v12_root / "英雄无名V1.2-可编辑.docx",
-    }
-    v12_rows = {key: source_row(path) for key, path in v12_paths.items()}
-    for key, expected in V12_EXPECTED_HASHES.items():
-        actual = v12_rows[key]["sha256"]
-        if actual != expected:
-            raise RuntimeError(f"V1.2 frozen {key} hash changed: {actual}")
+    v12_root, v12_rows, v12_structure = observe_edition("1.2")
     if not (v12_root / "FROZEN.md").is_file() or not (v12_root / "SHA256SUMS.txt").is_file():
         raise RuntimeError("V1.2 frozen contract files are missing")
-    v12_pages = len(PdfReader(str(v12_paths["pdf"])).pages)
-    v12_chapters, v12_openings, v12_figures = count_markdown_structure(v12_paths["markdown"])
+    drift.extend(compare_against_pin("1.2", pins["1.2"], v12_rows, v12_structure))
 
-    v13_root = BOOK_ROOT / "V1.3"
-    v13_paths = {
-        "markdown": v13_root / "英雄无名V1.3-可审阅.md",
-        "pdf": v13_root / "英雄无名V1.3-印刷版.pdf",
-        "docx": v13_root / "英雄无名V1.3-可编辑.docx",
-    }
-    if not all(path.is_file() for path in v13_paths.values()):
-        raise RuntimeError("V1.3 candidate is missing one or more source artifacts")
-    v13_rows = {key: source_row(path) for key, path in v13_paths.items()}
-    v13_pages = len(PdfReader(str(v13_paths["pdf"])).pages)
-    v13_chapters, v13_openings, v13_figures = count_markdown_structure(v13_paths["markdown"])
+    v13_root, v13_rows, v13_structure = observe_edition("1.3")
+    drift.extend(compare_against_pin("1.3", pins["1.3"], v13_rows, v13_structure))
     rights_ledger_path = v13_root / "插图/_图版清单.json"
     rights_rows = json.loads(rights_ledger_path.read_text(encoding="utf-8"))
     rights_count = len(rights_rows) if isinstance(rights_rows, list) else 0
 
+    # Gate checks are release blockers only. Whether the artifacts still match the
+    # pin is a tamper check, reported through `drift` — mixing the two is what let a
+    # stale constant masquerade as "the gate is accidentally open".
     v13_gate_checks = {
         "three_source_artifacts_present": True,
-        "expected_structure_observed": (
-            v13_pages == 519
-            and v13_chapters == 35
-            and v13_openings == 1
-            and v13_figures == 47
-        ),
+        "expected_structure_observed": not drift,
         "frozen_manifest_present": (v13_root / "FROZEN.md").is_file(),
         "sha_manifest_present": (v13_root / "SHA256SUMS.txt").is_file(),
         "final_review_report_present": any(v13_root.glob("*终检*复评*.md")),
-        "all_figure_rights_passports_present": rights_count >= v13_figures,
+        "all_figure_rights_passports_present": rights_count >= v13_structure["figure_plates"],
         "author_and_legal_rightsholder_confirmed": False,
         "page_mapping_and_visual_qa_complete": False,
         "edition_scoped_comments_and_progress_ready": True,
@@ -111,7 +151,7 @@ def build_contract() -> dict[str, Any]:
     blockers = [key for key, passed in v13_gate_checks.items() if not passed]
     observed_at = max(row["modified_at"] for row in v13_rows.values())
 
-    return {
+    payload = {
         "schema_version": "handx-novel-editions-1.0",
         "observed_at": observed_at,
         "must_not_deploy": True,
@@ -133,10 +173,7 @@ def build_contract() -> dict[str, Any]:
                 "version": "1.2",
                 "status": "frozen_baseline_not_served",
                 "role": "V1.3 的只读差异基线与回滚基线，不是当前网站阅读版。",
-                "pages": v12_pages,
-                "numbered_chapters": v12_chapters,
-                "unnumbered_openings": v12_openings,
-                "figure_plates": v12_figures,
+                **v12_structure,
                 "source_artifacts": v12_rows,
                 "frozen": True,
                 "served": False,
@@ -147,15 +184,12 @@ def build_contract() -> dict[str, Any]:
                 "version": "1.3",
                 "status": "active_candidate_not_served",
                 "role": "下一版阅读器目标；冻结、审权和版本隔离门槛通过后才允许整体切换。",
-                "pages": v13_pages,
-                "numbered_chapters": v13_chapters,
-                "unnumbered_openings": v13_openings,
-                "figure_plates": v13_figures,
+                **v13_structure,
                 "rights_ledger_records": rights_count,
                 "source_artifacts": v13_rows,
                 "gate_checks": v13_gate_checks,
                 "blocked_gates": blockers,
-                "frozen": False,
+                "frozen": (v13_root / "FROZEN.md").is_file(),
                 "served": False,
                 "public_ready": False,
             },
@@ -169,6 +203,7 @@ def build_contract() -> dict[str, Any]:
             "candidate_static_pages_generated": False,
         },
     }
+    return payload, drift
 
 
 def validate_browser_safe(payload: dict[str, Any]) -> list[str]:
@@ -187,23 +222,18 @@ def validate_browser_safe(payload: dict[str, Any]) -> list[str]:
         errors.append("edition rows are malformed")
         return errors
     v12, v13 = editions
-    if (
-        v12.get("status") != "frozen_baseline_not_served"
-        or v12.get("pages") != 539
-        or v12.get("numbered_chapters") != 35
-        or v12.get("served") is not False
-    ):
-        errors.append("V1.2 frozen baseline contract is malformed")
+    # Structure is checked against src/data/novel-edition-pins.json in
+    # compare_against_pin(); this validator only guards the release posture, so a
+    # re-rendered book can never again be reported as an open gate.
+    if v12.get("status") != "frozen_baseline_not_served" or v12.get("served") is not False:
+        errors.append("V1.2 frozen baseline must stay frozen and unserved")
     if (
         v13.get("status") != "active_candidate_not_served"
-        or v13.get("pages") != 519
-        or v13.get("numbered_chapters") != 35
-        or v13.get("unnumbered_openings") != 1
-        or v13.get("figure_plates") != 47
         or v13.get("served") is not False
+        or v13.get("public_ready") is not False
         or not v13.get("blocked_gates")
     ):
-        errors.append("V1.3 candidate gate is malformed or accidentally open")
+        errors.append("V1.3 candidate must stay unserved with at least one blocked gate")
     if payload.get("migration_policy", {}).get("candidate_static_pages_generated") is not False:
         errors.append("candidate pages were marked generated before rights clearance")
     return errors
@@ -214,8 +244,8 @@ def main() -> int:
     parser.add_argument("--check", action="store_true")
     args = parser.parse_args()
     try:
-        expected = build_contract()
-        errors = validate_browser_safe(expected)
+        expected, drift = build_contract()
+        errors = drift + validate_browser_safe(expected)
         if args.check:
             actual = json.loads(OUTPUT_PATH.read_text(encoding="utf-8"))
             if actual != expected:

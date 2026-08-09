@@ -1,6 +1,6 @@
 {
   "schema_version": "handx-novel-editions-1.0",
-  "observed_at": "2026-08-03T17:10:42.221241+00:00",
+  "observed_at": "2026-08-04T08:43:29.888559+00:00",
   "must_not_deploy": true,
   "deployment_authorized": false,
   "current_reader": {
@@ -53,35 +53,35 @@
       "version": "1.3",
       "status": "active_candidate_not_served",
       "role": "下一版阅读器目标；冻结、审权和版本隔离门槛通过后才允许整体切换。",
-      "pages": 519,
+      "pages": 543,
       "numbered_chapters": 35,
       "unnumbered_openings": 1,
-      "figure_plates": 47,
-      "rights_ledger_records": 26,
+      "figure_plates": 62,
+      "rights_ledger_records": 38,
       "source_artifacts": {
         "markdown": {
           "artifact": "md",
-          "sha256": "ec656e3299a0e2316dafba87af70849b1c6701c11fb672f8a703047f83e778fb",
-          "byte_size": 573614,
-          "modified_at": "2026-08-03T16:51:05.451101+00:00"
+          "sha256": "335f39330cb982197bf1377906c75783fe29aa81a2cbd289198bd9d5c3487e2e",
+          "byte_size": 580651,
+          "modified_at": "2026-08-04T08:43:11.610184+00:00"
         },
         "pdf": {
           "artifact": "pdf",
-          "sha256": "331663e4a42da7902c4cdfed9376f06d03ef653ba32b73dcbd98f82c09a90f3b",
-          "byte_size": 40793785,
-          "modified_at": "2026-08-03T17:10:38.797734+00:00"
+          "sha256": "e682eb604ef0b9fd15d9bcf9e440f15df40989407031e8fa55f626f3562bf0fd",
+          "byte_size": 55535137,
+          "modified_at": "2026-08-04T08:43:25.865077+00:00"
         },
         "docx": {
           "artifact": "docx",
-          "sha256": "f44e4bd519990b31561cfe84694394e67a0fea624e616867667400030ffbac0c",
-          "byte_size": 37538342,
-          "modified_at": "2026-08-03T17:10:42.221241+00:00"
+          "sha256": "3ac78d895393e81d40dcc7e3bc3d9bb2986d3362a653af7dd7985a2ae15a1e5a",
+          "byte_size": 51798827,
+          "modified_at": "2026-08-04T08:43:29.888559+00:00"
         }
       },
       "gate_checks": {
         "three_source_artifacts_present": true,
         "expected_structure_observed": true,
-        "frozen_manifest_present": false,
+        "frozen_manifest_present": true,
         "sha_manifest_present": true,
         "final_review_report_present": true,
         "all_figure_rights_passports_present": false,
@@ -90,12 +90,11 @@
         "edition_scoped_comments_and_progress_ready": true
       },
       "blocked_gates": [
-        "frozen_manifest_present",
         "all_figure_rights_passports_present",
         "author_and_legal_rightsholder_confirmed",
         "page_mapping_and_visual_qa_complete"
       ],
-      "frozen": false,
+      "frozen": true,
       "served": false,
       "public_ready": false
     }

@@ -65,14 +65,20 @@ export const candidateNovelEdition = novelEditionRegistry.editions.find(
   (edition) => edition.version === '1.3',
 )!;
 
+const candidate = candidateNovelEdition;
+
+/**
+ * Labels are derived from the registry rather than typed by hand: the previous
+ * hard-coded "519 页 … 47 幅图版" kept claiming a structure the book no longer had.
+ */
 export const novelEditionGateLabels: Record<string, string> = {
   three_source_artifacts_present: 'PDF、DOCX、Markdown 三份源文件齐全',
-  expected_structure_observed: '519 页、35 章、1 个序章、47 幅图版结构吻合',
-  frozen_manifest_present: 'V1.3 冻结说明已建立',
+  expected_structure_observed: `${candidate.pages} 页、${candidate.numbered_chapters} 章、${candidate.unnumbered_openings} 个序章、${candidate.figure_plates} 幅图版与冻结钉子吻合`,
+  frozen_manifest_present: `V${candidate.version} 冻结说明已建立`,
   sha_manifest_present: '正式 SHA-256 清单已建立',
   final_review_report_present: '终检与复评报告已归档',
-  all_figure_rights_passports_present: '47 幅图版逐项权利／隐私护照齐全',
+  all_figure_rights_passports_present: `${candidate.figure_plates} 幅图版逐项权利／隐私护照齐全（当前 ${candidate.rights_ledger_records ?? 0}/${candidate.figure_plates}）`,
   author_and_legal_rightsholder_confirmed: '展示笔名与法定权利人已经作者确认',
-  page_mapping_and_visual_qa_complete: '519 页唯一归属与视觉抽检完成',
+  page_mapping_and_visual_qa_complete: `${candidate.pages} 页唯一归属与视觉抽检完成`,
   edition_scoped_comments_and_progress_ready: '评论与阅读进度已按版本隔离',
 };

@@ -1,0 +1,38 @@
+{
+  "schema_version": "handx-novel-edition-pins-1.0",
+  "must_not_deploy": true,
+  "deployment_authorized": false,
+  "purpose": "冻结版正文的结构与哈希钉子。钉子由本仓库持有，正文位于书稿目录，两者分处不同的树——重新渲染书稿无法改动钉子，改钉子必须是一次可复核的提交。钉值来源为各版目录内的 FROZEN.md 与 SHA256SUMS.txt。新增版本时只改本文件，不改校验器代码。",
+  "editions": {
+    "1.2": {
+      "frozen_at": "2026-08-04",
+      "frozen_record": "V1.2/FROZEN.md",
+      "sha256": {
+        "markdown": "b853bad3901207643356253c5c026bf3b0ccb74d95919cebe68e5bdd7a59a51e",
+        "pdf": "9a252ca53a38d950056f2965fbaebda18b037e3ed976679032d375ad5fcadc43",
+        "docx": "1ff7b58669aa05257673b7c521664fdbb8e7c9ce5c2502d3061c8d68cc5a6f7e"
+      },
+      "structure": {
+        "pages": 539,
+        "numbered_chapters": 35,
+        "unnumbered_openings": 0,
+        "figure_plates": 47
+      }
+    },
+    "1.3": {
+      "frozen_at": "2026-08-04",
+      "frozen_record": "V1.3/FROZEN.md",
+      "sha256": {
+        "markdown": "335f39330cb982197bf1377906c75783fe29aa81a2cbd289198bd9d5c3487e2e",
+        "pdf": "e682eb604ef0b9fd15d9bcf9e440f15df40989407031e8fa55f626f3562bf0fd",
+        "docx": "3ac78d895393e81d40dcc7e3bc3d9bb2986d3362a653af7dd7985a2ae15a1e5a"
+      },
+      "structure": {
+        "pages": 543,
+        "numbered_chapters": 35,
+        "unnumbered_openings": 1,
+        "figure_plates": 62
+      }
+    }
+  }
+}
