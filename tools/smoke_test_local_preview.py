@@ -169,6 +169,23 @@ FULL_AUDIT_ROUTES = {
     "/studio/data-versions",
 }
 SITE_RESEARCH = Path(__file__).resolve().parents[1] / "src" / "data" / "research.json"
+SITE_NOVEL_EDITIONS = Path(__file__).resolve().parents[1] / "src" / "data" / "novel-editions.json"
+
+
+def candidate_rights_coverage() -> str:
+    """Figure-rights coverage the migration page must display, e.g. "38/62".
+
+    Read from the registry rather than written literally: a hardcoded "26/47"
+    here would go stale the next time the book is re-rendered, and would then
+    report a page defect that does not exist.
+    """
+    registry = json.loads(SITE_NOVEL_EDITIONS.read_text(encoding="utf-8"))
+    candidate = next(
+        edition
+        for edition in registry["editions"]
+        if edition.get("status") == "active_candidate_not_served"
+    )
+    return f"{candidate['rights_ledger_records']}/{candidate['figure_plates']}"
 STATIC_ASSET_MANIFEST = "/assets/asset-manifest.json"
 EXPECTED_STATIC_ASSETS = {
     "assets/editorial/fiction-north-city-collage-v1.png",
@@ -598,16 +615,23 @@ def main() -> int:
             or "不生成主张" not in html
         ):
             errors.append("/evidence/beiping-boundary: stop boundary is incomplete")
+        # The reading-moment redesign translated the viewer's technical headings
+        # into reader language; the boundaries themselves are unchanged. These
+        # assert the current wording of the same three properties: a viewer is
+        # mounted, the excerpt is labelled local-review-only, and there is a path
+        # back to the story.
         if path == "/archives/SRC-013" and (
             'data-source-viewer="SRC-013"' not in html
-            or "原件查看台" not in html
+            or "读这一页" not in html
             or "本地审阅局部" not in html
             or "从故事来到这里" not in html
         ):
             errors.append("/archives/SRC-013: source viewer or story return path is incomplete")
+        # SRC-103 has no site-hosted scan, so the page must say so and still hand
+        # the reader a route back to the holding institution.
         if path == "/archives/SRC-103" and (
             'data-source-viewer="SRC-103"' not in html
-            or "站内未复制原件" not in html
+            or "这份材料请回到原馆阅读" not in html
             or "原馆" not in html
         ):
             errors.append("/archives/SRC-103: no-copy viewer boundary is incomplete")
@@ -668,7 +692,7 @@ def main() -> int:
             errors.append("/studio/migrations: migration quarantine summary is incomplete")
         if path == "/studio/novel-migration" and (
             "小说版本迁移" not in html
-            or "26/47" not in html
+            or candidate_rights_coverage() not in html
             or "BLOCKED" not in html
             or "candidate_static_pages_generated" not in html
             or "must_not_deploy=true" not in html
