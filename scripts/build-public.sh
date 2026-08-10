@@ -14,17 +14,19 @@ cd "${COZE_WORKSPACE_PATH}"
 export SITE_EDITION=public
 export NEXT_PUBLIC_SITE_EDITION=public
 
+# Only verifiers whose inputs live inside the repository can run here. The
+# build host has the repository and nothing else: verify_graph_wiki_data reads
+# the research corpus and novel_edition_contract reads the book source tree,
+# both of which exist only on the author's machine. They stay in the workbench
+# chain (scripts/build.sh, pnpm validate), which is where those inputs are.
 echo "Verifying generated data contracts..."
 PYTHONDONTWRITEBYTECODE=1 python3 tools/verify_preview_data.py
-PYTHONDONTWRITEBYTECODE=1 python3 tools/verify_graph_wiki_data.py
 PYTHONDONTWRITEBYTECODE=1 python3 tools/verify_novel_assets.py
-PYTHONDONTWRITEBYTECODE=1 python3 tools/novel_edition_contract.py --check
 PYTHONDONTWRITEBYTECODE=1 python3 tools/verify_static_assets.py
 pnpm exec tsx tools/verify-evidence-paths.ts
 pnpm exec tsx tools/verify-people-dossiers.ts
 pnpm exec tsx tools/verify-rights-passports.ts
 pnpm exec tsx tools/verify-site-status.ts
-pnpm exec tsx tools/verify-story-graph.ts 2>/dev/null || true
 
 echo "Installing dependencies..."
 pnpm install --frozen-lockfile --prefer-offline --reporter=append-only
