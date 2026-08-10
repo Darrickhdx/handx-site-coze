@@ -52,7 +52,7 @@ export default async function EvidencePathPage({ params }: EvidencePathPageProps
     <div className="min-h-screen bg-[#f4f0e8]" data-evidence-path={path.id} data-evidence-mode={path.mode}>
       <ProjectSectionNav />
       <header className="border-b border-foreground/15">
-        <div className="article-shell py-9 sm:py-14">
+        <div className="article-shell py-9 sm:py-10">
           <Link href="/evidence" className="story-text-link">
             <ArrowLeft className="size-4" aria-hidden="true" /> 返回故事证据链
           </Link>
@@ -62,16 +62,16 @@ export default async function EvidencePathPage({ params }: EvidencePathPageProps
             </span>
             <span className="font-mono text-xs text-muted-foreground">{path.period}</span>
           </div>
-          <h1 className="mt-6 font-serif text-[clamp(1.86rem,3.94vw,3.77rem)] font-semibold leading-[0.94] tracking-[-0.06em]">
+          <h1 className="mt-6 font-serif text-[clamp(1.45rem,3.07vw,2.94rem)] font-semibold leading-[0.94] tracking-[-0.06em]">
             {path.title}
           </h1>
-          <p className="mt-8 max-w-3xl font-serif text-xl leading-relaxed text-muted-foreground sm:text-2xl">
+          <p className="mt-8 max-w-3xl font-serif text-lg leading-relaxed text-muted-foreground sm:text-xl">
             {path.deck}
           </p>
         </div>
       </header>
 
-      <div className="article-shell py-9 sm:py-14">
+      <div className="article-shell py-9 sm:py-10">
         <nav aria-label="证据链步骤" className="grid gap-px border border-foreground/15 bg-foreground/15 sm:grid-cols-4">
           {['01 故事入口', '02 原子主张', '03 来源与定位', '04 边界裁决'].map((label, index) => (
             <a key={label} href={`#step-${index + 1}`} className="bg-card p-4 text-xs font-semibold hover:text-primary">
@@ -89,7 +89,7 @@ export default async function EvidencePathPage({ params }: EvidencePathPageProps
             <div>
               <p className="text-xs font-semibold tracking-[0.13em] text-primary uppercase">故事入口</p>
               <h2 className="mt-4 font-serif text-3xl font-semibold">{path.storyLabel}</h2>
-              <p className="mt-5 text-base leading-[1.8] text-muted-foreground">{path.storyQuestion}</p>
+              <p className="mt-5 text-[15px] leading-[1.7] text-muted-foreground">{path.storyQuestion}</p>
               <Link href={path.storyHref} className="story-button story-button-secondary mt-7">
                 打开故事现场 <ArrowRight className="size-4" aria-hidden="true" />
               </Link>
@@ -118,7 +118,7 @@ export default async function EvidencePathPage({ params }: EvidencePathPageProps
                             {claim.status === 'working_verified' ? '原文记录已核' : '候选连接'}
                           </span>
                         </div>
-                        <p className="mt-4 text-sm leading-[1.8]">{claim.quote_or_assertion}</p>
+                        <p className="mt-4 text-sm leading-[1.7]">{claim.quote_or_assertion}</p>
                         <p className="mt-4 text-xs leading-6 text-muted-foreground">
                           主体：{subject?.canonical_label ?? claim.subject_id} · 证据层 {claim.evidence_tier} · 独立来源家族 {claim.independence_count}
                         </p>
@@ -133,7 +133,7 @@ export default async function EvidencePathPage({ params }: EvidencePathPageProps
                 <div className="mt-5 border border-rose-800/25 bg-rose-50 p-6 text-rose-950">
                   <CircleStop className="size-6" aria-hidden="true" />
                   <p className="mt-4 font-serif text-2xl font-semibold">没有可用主张</p>
-                  <p className="mt-3 text-sm leading-[1.8]">这不是“暂时省略脚注”，而是明确禁止把小说场景写回人物史。</p>
+                  <p className="mt-3 text-sm leading-[1.7]">这不是“暂时省略脚注”，而是明确禁止把小说场景写回人物史。</p>
                 </div>
               )}
             </div>
@@ -169,7 +169,7 @@ export default async function EvidencePathPage({ params }: EvidencePathPageProps
                   })}
                 </div>
               ) : (
-                <p className="mt-5 border border-dashed border-foreground/25 p-6 text-sm leading-[1.8] text-muted-foreground">
+                <p className="mt-5 border border-dashed border-foreground/25 p-6 text-sm leading-[1.7] text-muted-foreground">
                   当前没有能够把人物接入这段情节的来源。背景研究可以继续，但这里不显示假原件、不生成空白来源卡。
                 </p>
               )}
@@ -189,15 +189,15 @@ export default async function EvidencePathPage({ params }: EvidencePathPageProps
               <div className="mt-7 grid gap-px bg-white/15 sm:grid-cols-2">
                 <div className="bg-[#202827] p-5">
                   <p className="text-xs font-semibold text-emerald-300">可以说</p>
-                  <p className="mt-3 text-sm leading-[1.8] text-[#d7cfc2]">{path.canSay}</p>
+                  <p className="mt-3 text-sm leading-[1.7] text-[#d7cfc2]">{path.canSay}</p>
                 </div>
                 <div className="bg-[#202827] p-5">
                   <p className="text-xs font-semibold text-rose-300">不能说</p>
-                  <p className="mt-3 text-sm leading-[1.8] text-[#d7cfc2]">{path.cannotSay}</p>
+                  <p className="mt-3 text-sm leading-[1.7] text-[#d7cfc2]">{path.cannotSay}</p>
                 </div>
               </div>
-              <p className="mt-7 border-l-2 border-[#c38a82] pl-4 text-sm leading-[1.8] text-[#bdb9b0]">身份门禁：{path.identityBoundary}</p>
-              <p className="mt-5 text-sm leading-[1.8] text-[#bdb9b0]">下一问：{path.nextQuestion}</p>
+              <p className="mt-7 border-l-2 border-[#c38a82] pl-4 text-sm leading-[1.7] text-[#bdb9b0]">身份门禁：{path.identityBoundary}</p>
+              <p className="mt-5 text-sm leading-[1.7] text-[#bdb9b0]">下一问：{path.nextQuestion}</p>
             </div>
           </div>
         </section>

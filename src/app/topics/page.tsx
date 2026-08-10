@@ -36,24 +36,24 @@ export default function TopicsPage() {
     <div className="min-h-screen bg-[#f4f0e8]">
       <ProjectSectionNav />
       <section className="border-b border-foreground/15 bg-[#202827] text-[#f3efe7]">
-        <div className="personal-shell grid gap-10 py-16 sm:py-14 lg:grid-cols-[minmax(0,0.72fr)_minmax(28rem,1.28fr)] lg:items-end lg:gap-14">
+        <div className="personal-shell grid gap-10 py-16 sm:py-7 lg:grid-cols-[minmax(0,0.72fr)_minmax(28rem,1.28fr)] lg:items-end lg:gap-14">
           <div>
             <p className="inline-flex items-center gap-2 border border-[#c38a82]/40 px-3 py-1.5 text-[10px] font-semibold tracking-[0.16em] text-[#dbb6b0] uppercase">
               <FlaskConical className="size-3.5" aria-hidden="true" />
               Topic laboratory
             </p>
-            <h1 className="mt-8 font-serif text-[clamp(1.87rem,3.64vw,3.64rem)] font-semibold leading-[0.92] tracking-[-0.06em]">
+            <h1 className="mt-8 font-serif text-[clamp(1.46rem,2.84vw,2.84rem)] font-semibold leading-[0.92] tracking-[-0.06em]">
               历史话题
               <span className="block text-[#c38a82]">实验室</span>
             </h1>
           </div>
           <div>
-            <p className="font-serif text-2xl leading-relaxed text-[#e1dbd1] sm:text-3xl">
+            <p className="font-serif text-2xl leading-relaxed text-[#e1dbd1] sm:text-xl">
               好话题不是把结论喊得更响，
               <br />
               而是让读者看见结论从哪里来。
             </p>
-            <p className="mt-6 max-w-2xl text-sm leading-[1.8] text-[#bdb9b0]">
+            <p className="mt-6 max-w-2xl text-sm leading-[1.7] text-[#bdb9b0]">
               这里把容易引发讨论的人物比较、历史空白和传播命题，
               改写成带有证据边界的公开议题。当前全部内容仍是本地审阅稿。
             </p>
@@ -69,7 +69,7 @@ export default function TopicsPage() {
               <article key={rule.title} className="bg-[#f4f0e8] p-7 sm:p-9">
                 <Icon className="size-6 text-primary" strokeWidth={1.5} aria-hidden="true" />
                 <h2 className="mt-8 font-serif text-2xl font-semibold">{rule.title}</h2>
-                <p className="mt-4 text-sm leading-[1.8] text-muted-foreground">
+                <p className="mt-4 text-sm leading-[1.7] text-muted-foreground">
                   {rule.description}
                 </p>
               </article>
@@ -78,7 +78,7 @@ export default function TopicsPage() {
         </div>
       </section>
 
-      <section className="py-16 sm:py-14">
+      <section className="py-16 sm:py-10">
         <div className="personal-shell">
           <div className="flex flex-col gap-4 border-b border-foreground/15 pb-7 sm:flex-row sm:items-end sm:justify-between">
             <div>
@@ -99,7 +99,7 @@ export default function TopicsPage() {
               return (
                 <article
                   key={topic.slug}
-                  className="grid gap-8 py-10 lg:grid-cols-[5rem_minmax(0,1fr)_14rem] lg:items-start lg:gap-10 lg:py-14"
+                  className="grid gap-8 py-7 lg:grid-cols-[5rem_minmax(0,1fr)_14rem] lg:items-start lg:gap-10 lg:py-10"
                 >
                   <span className="font-serif text-5xl italic text-primary/25">
                     {String(index + 1).padStart(2, '0')}
@@ -111,7 +111,7 @@ export default function TopicsPage() {
                     <h3 className="mt-4 max-w-4xl font-serif text-3xl font-semibold leading-tight tracking-[-0.03em] sm:text-4xl">
                       {topic.title}
                     </h3>
-                    <p className="mt-5 max-w-3xl text-sm leading-[1.8] text-muted-foreground">
+                    <p className="mt-5 max-w-3xl text-sm leading-[1.7] text-muted-foreground">
                       {topic.dek}
                     </p>
                     <Link
@@ -147,14 +147,14 @@ export default function TopicsPage() {
         </div>
       </section>
 
-      <section className="border-t border-foreground/15 bg-white/25 py-10 sm:py-14">
+      <section className="border-t border-foreground/15 bg-white/25 py-7 sm:py-10">
         <div className="personal-shell grid gap-8 lg:grid-cols-[minmax(0,1fr)_20rem] lg:items-center">
           <div>
             <p className="story-kicker">传播出口</p>
             <h2 className="mt-4 font-serif text-3xl font-semibold tracking-[-0.035em] sm:text-4xl">
               先过边界检查，再生成平台素材。
             </h2>
-            <p className="mt-4 max-w-2xl text-sm leading-[1.8] text-muted-foreground">
+            <p className="mt-4 max-w-2xl text-sm leading-[1.7] text-muted-foreground">
               媒体工作台只读取允许进入传播审稿的段落，并把事实、解释和文学内容分开标注。
             </p>
           </div>

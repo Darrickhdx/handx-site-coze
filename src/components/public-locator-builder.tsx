@@ -230,7 +230,7 @@ export function PublicLocatorBuilder({ missionId }: { missionId: string }) {
           <h2 id="locator-builder-title" className="mt-3 font-serif text-3xl font-semibold tracking-[-0.035em]">
             把一个公开定位整理成可核对的 JSON
           </h2>
-          <p className="mt-4 max-w-3xl text-sm leading-[1.8] text-muted-foreground">
+          <p className="mt-4 max-w-3xl text-sm leading-[1.7] text-muted-foreground">
             这里只生成本页草稿，不提交、不保存、不抓取网址，也不会创建历史主张。刷新页面即清空。
           </p>
         </div>
@@ -240,7 +240,7 @@ export function PublicLocatorBuilder({ missionId }: { missionId: string }) {
         </div>
       </div>
 
-      <div className="mt-6 flex items-start gap-3 border-l-2 border-primary bg-[#eee8dc] p-4 text-sm leading-[1.8]">
+      <div className="mt-6 flex items-start gap-3 border-l-2 border-primary bg-[#eee8dc] p-4 text-sm leading-[1.7]">
         <ShieldAlert className="mt-1 size-4 shrink-0 text-primary" aria-hidden="true" />
         <p>
           不要填写家属原件、私人通信、身份证件、联系方式或任何需要登录才能看到的地址。
@@ -361,7 +361,7 @@ export function PublicLocatorBuilder({ missionId }: { missionId: string }) {
         </fieldset>
 
         <div className="grid gap-3">
-          <label className="flex min-h-11 items-start gap-3 text-sm leading-[1.8]">
+          <label className="flex min-h-11 items-start gap-3 text-sm leading-[1.7]">
             <input
               type="checkbox"
               checked={draft.publicOnly}
@@ -371,7 +371,7 @@ export function PublicLocatorBuilder({ missionId }: { missionId: string }) {
             />
             <span>我确认这条定位只来自无需登录即可访问的公开页面（<code>public_only=true</code>）。</span>
           </label>
-          <label className="flex min-h-11 items-start gap-3 text-sm leading-[1.8]">
+          <label className="flex min-h-11 items-start gap-3 text-sm leading-[1.7]">
             <input
               type="checkbox"
               checked={draft.authorityToShare}

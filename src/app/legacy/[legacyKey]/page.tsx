@@ -49,7 +49,7 @@ export default async function LegacyPage({ params }: LegacyPageProps) {
   return (
     <main className="min-h-screen bg-[#f4f0e8]">
       <header className="border-b border-white/15 bg-[#202827] text-[#f3efe7]">
-        <div className="article-shell py-9 sm:py-14">
+        <div className="article-shell py-9 sm:py-10">
           <Link
             href="/graph"
             className="inline-flex items-center gap-2 text-sm text-[#bdb9b0] transition hover:text-white"
@@ -63,20 +63,20 @@ export default async function LegacyPage({ params }: LegacyPageProps) {
             </span>
             <span className="font-mono text-[10px] text-[#aeb7b2]">{node.id}</span>
           </div>
-          <h1 className="mt-5 font-serif text-[clamp(1.56rem,3.64vw,3.22rem)] font-semibold leading-[0.96] tracking-[-0.055em]">
+          <h1 className="mt-5 font-serif text-[clamp(1.22rem,2.84vw,2.51rem)] font-semibold leading-[0.96] tracking-[-0.055em]">
             {node.label}
           </h1>
-          <p className="mt-6 max-w-3xl font-serif text-xl leading-relaxed text-[#d7cfc2] sm:text-2xl">
+          <p className="mt-6 max-w-3xl font-serif text-lg leading-relaxed text-[#d7cfc2] sm:text-xl">
             {node.title || '旧图只登记了这一线索名称。'}
           </p>
-          <div className="mt-8 max-w-3xl border-l-2 border-[#d8a45e] pl-5 text-sm leading-[1.8] text-[#c9c5bd]">
+          <div className="mt-8 max-w-3xl border-l-2 border-[#d8a45e] pl-5 text-sm leading-[1.7] text-[#c9c5bd]">
             以上是旧图的标题层文字，不代表新版项目接受其人物身份、履历或因果。
             旧详情已在客户端导出中整体移除。
           </div>
         </div>
       </header>
 
-      <div className="article-shell py-9 sm:py-14">
+      <div className="article-shell py-9 sm:py-10">
         <section className="grid gap-4 sm:grid-cols-3">
           <div className="border border-candidate/30 bg-candidate/5 p-5">
             <TriangleAlert className="size-5 text-candidate" aria-hidden="true" />
@@ -104,7 +104,7 @@ export default async function LegacyPage({ params }: LegacyPageProps) {
             <ShieldAlert className="size-5 text-candidate" aria-hidden="true" />
             <h2 className="font-serif text-2xl font-semibold">迁移裁决</h2>
           </div>
-          <p className="mt-4 text-sm leading-[1.8] text-muted-foreground">
+          <p className="mt-4 text-sm leading-[1.7] text-muted-foreground">
             {node.migration.decision}
           </p>
           {node.migration.risk_flags.length > 0 && (
@@ -124,7 +124,7 @@ export default async function LegacyPage({ params }: LegacyPageProps) {
         <section className="mt-10 grid gap-8 lg:grid-cols-[1fr_0.8fr]">
           <div>
             <h2 className="font-serif text-3xl font-semibold">旧关系原话</h2>
-            <p className="mt-3 text-sm leading-[1.8] text-muted-foreground">
+            <p className="mt-3 text-sm leading-[1.7] text-muted-foreground">
               下列文字来自旧图关系标签，只用于寻找待核问题。它们不进入新版事实图。
             </p>
             <div className="mt-6 space-y-3">
@@ -135,7 +135,7 @@ export default async function LegacyPage({ params }: LegacyPageProps) {
                   return (
                     <article key={edge.id} className="border border-foreground/15 bg-card p-4">
                       <p className="font-mono text-[10px] text-candidate">{edge.id}</p>
-                      <p className="mt-2 text-sm leading-[1.8]">
+                      <p className="mt-2 text-sm leading-[1.7]">
                         {edge.from === node.id ? node.label : otherNode?.label ?? edge.from}
                         <span className="mx-2 text-candidate">— {edge.label} →</span>
                         {edge.to === node.id ? node.label : otherNode?.label ?? edge.to}

@@ -49,7 +49,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
       data-content-id={slug}
     >
       <header className="border-b border-foreground/15">
-        <div className="article-shell py-9 sm:py-14">
+        <div className="article-shell py-9 sm:py-10">
           <Link href="/discover" className="story-text-link">
             <ArrowLeft className="size-4" />
             返回发现
@@ -85,7 +85,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
       </header>
 
       {isPrimarySourceStory && (
-        <div className="article-shell py-10 sm:py-14">
+        <div className="article-shell py-7 sm:py-10">
           <Link href="/archives#SRC-013" className="article-source-image group">
             <Image
               src="/assets/sukaiyuan/1936-sui-xing-ji-lue-proof.png"
@@ -108,7 +108,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
         </div>
       )}
 
-      <div className="article-shell grid gap-12 py-14 lg:grid-cols-[minmax(0,1fr)_14rem] lg:gap-14 lg:py-14">
+      <div className="article-shell grid gap-12 py-14 lg:grid-cols-[minmax(0,1fr)_14rem] lg:gap-14 lg:py-10">
         <div>
           <p className="article-intro">{article.intro}</p>
 
@@ -142,7 +142,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
             <FileText className="size-6 text-primary" aria-hidden="true" />
             <div>
               <p className="text-xs font-semibold tracking-[0.16em] text-primary uppercase">继续核对</p>
-              <p className="mt-2 text-sm leading-[1.8] text-muted-foreground">
+              <p className="mt-2 text-sm leading-[1.7] text-muted-foreground">
                 阅读完整的来源登记、范围说明和目前不能外推的部分。
               </p>
             </div>

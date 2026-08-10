@@ -149,7 +149,7 @@
 
 .story-heading {
   color: var(--color-foreground);
-  font-size: clamp(1.65rem, 3.43vw, 3.36rem);
+  font-size: clamp(1.29rem, 2.68vw, 2.62rem);
   font-weight: 600;
   letter-spacing: -0.035em;
   line-height: 1.12;
@@ -173,7 +173,7 @@
 .story-document-number {
   color: rgb(139 49 43 / 18%);
   font-family: Georgia, Cambria, 'Times New Roman', serif;
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-style: italic;
   line-height: 0.9;
 }
@@ -255,7 +255,7 @@
 
 .story-date {
   font-family: Georgia, Cambria, 'Times New Roman', serif;
-  font-size: clamp(2.39rem, 4.68vw, 3.95rem);
+  font-size: clamp(1.82rem, 3.56vw, 3.00rem);
   font-style: italic;
   letter-spacing: -0.07em;
   line-height: 0.8;
@@ -282,7 +282,7 @@
 .story-fragment-year {
   color: rgb(243 239 231 / 30%);
   font-family: Georgia, Cambria, 'Times New Roman', serif;
-  font-size: clamp(1.87rem, 3.64vw, 3.33rem);
+  font-size: clamp(1.46rem, 2.84vw, 2.60rem);
   font-style: italic;
   letter-spacing: -0.06em;
   line-height: 0.9;
@@ -370,7 +370,7 @@
 .personal-heading {
   max-width: 50rem;
   color: var(--color-foreground);
-  font-size: clamp(1.75rem, 2.8vw, 2.6rem);
+  font-size: clamp(1.45rem, 2.22vw, 2.05rem);
   font-weight: 600;
   letter-spacing: -0.04em;
   line-height: 1.12;
@@ -729,7 +729,7 @@
 
 .personal-feature-title {
   color: #c9584f;
-  font-size: clamp(1.87rem, 3.64vw, 3.64rem);
+  font-size: clamp(1.46rem, 2.84vw, 2.84rem);
   font-weight: 600;
   letter-spacing: -0.055em;
   line-height: 0.95;
@@ -908,7 +908,7 @@
 .profile-stat-value {
   color: var(--color-primary);
   font-family: Georgia, Cambria, 'Times New Roman', serif;
-  font-size: clamp(1.36rem, 2.11vw, 2.07rem);
+  font-size: clamp(1.12rem, 1.73vw, 1.70rem);
   font-style: italic;
   letter-spacing: -0.04em;
 }
@@ -975,7 +975,7 @@
 
 .profile-focus-grid h3 {
   font-family: var(--font-serif);
-  font-size: clamp(1.32rem, 2.11vw, 2.07rem);
+  font-size: clamp(1.08rem, 1.73vw, 1.70rem);
   font-weight: 600;
   letter-spacing: -0.025em;
 }
@@ -1080,7 +1080,7 @@
 .career-project-card-body h4 {
   max-width: 44rem;
   font-family: var(--font-serif);
-  font-size: clamp(1.19rem, 2.46vw, 1.76rem);
+  font-size: clamp(0.98rem, 2.02vw, 1.44rem);
   font-weight: 600;
   letter-spacing: -0.025em;
   line-height: 1.25;
@@ -1322,7 +1322,7 @@
 
 .sukaiyuan-title {
   color: #c9584f;
-  font-size: clamp(2.08rem, 3.74vw, 3.54rem);
+  font-size: clamp(1.62rem, 2.92vw, 2.76rem);
   font-weight: 600;
   letter-spacing: -0.065em;
   line-height: 0.9;
@@ -1679,7 +1679,7 @@
   display: block;
   max-width: 46rem;
   font-family: var(--font-serif);
-  font-size: clamp(1.43rem, 2.46vw, 2.17rem);
+  font-size: clamp(1.17rem, 2.02vw, 1.78rem);
   font-weight: 600;
   letter-spacing: -0.035em;
   line-height: 1.24;
@@ -1753,7 +1753,7 @@
   max-width: 58rem;
   color: var(--color-foreground);
   font-family: var(--font-serif);
-  font-size: clamp(1.56rem, 3.64vw, 3.38rem);
+  font-size: clamp(1.22rem, 2.84vw, 2.64rem);
   font-weight: 600;
   letter-spacing: -0.06em;
   line-height: 1;
@@ -1764,7 +1764,7 @@
   max-width: 48rem;
   color: var(--color-muted-foreground);
   font-family: var(--font-serif);
-  font-size: clamp(1.19rem, 2.46vw, 1.76rem);
+  font-size: clamp(0.98rem, 2.02vw, 1.44rem);
   line-height: 1.75;
 }
 
@@ -1797,7 +1797,7 @@
 .article-intro {
   color: var(--color-foreground);
   font-family: var(--font-serif);
-  font-size: clamp(1.19rem, 2.46vw, 1.72rem);
+  font-size: clamp(0.98rem, 2.02vw, 1.41rem);
   line-height: 1.75;
 }
 
@@ -1806,7 +1806,7 @@
   margin-right: 0.6rem;
   color: var(--color-primary);
   font-family: Georgia, Cambria, 'Times New Roman', serif;
-  font-size: 3rem;
+  font-size: 1.85rem;
   line-height: 0.86;
 }
 
@@ -1826,7 +1826,7 @@
   margin-top: 0.85rem;
   color: var(--color-foreground);
   font-family: var(--font-serif);
-  font-size: clamp(1.40rem, 2.80vw, 2.10rem);
+  font-size: clamp(1.15rem, 2.30vw, 1.72rem);
   font-weight: 600;
   letter-spacing: -0.035em;
   line-height: 1.25;
@@ -1883,7 +1883,7 @@
   margin-top: 0.75rem;
   max-width: 38rem;
   font-family: var(--font-serif);
-  font-size: clamp(1.22rem, 2.80vw, 1.75rem);
+  font-size: clamp(1.00rem, 2.30vw, 1.43rem);
   font-weight: 600;
   letter-spacing: -0.035em;
   line-height: 1.16;
@@ -2151,7 +2151,7 @@
 .fiction-sample-index {
   color: rgb(139 49 43 / 22%);
   font-family: Georgia, Cambria, 'Times New Roman', serif;
-  font-size: 2.3rem;
+  font-size: 1.85rem;
   font-style: italic;
 }
 
@@ -2172,7 +2172,7 @@
   padding-left: 1.5rem;
   color: var(--color-foreground);
   font-family: var(--font-serif);
-  font-size: clamp(1.19rem, 2.20vw, 1.67rem);
+  font-size: clamp(0.98rem, 1.80vw, 1.37rem);
   line-height: 1.8;
 }
 

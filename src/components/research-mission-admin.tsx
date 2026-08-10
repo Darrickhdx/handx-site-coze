@@ -301,7 +301,7 @@ export function ResearchMissionAdmin() {
   const schemaVersion = meta ? firstText(meta, 'schema_version') : '';
 
   return (
-    <div className="personal-shell min-w-0 py-12 sm:py-16">
+    <div className="personal-shell min-w-0 py-8 sm:py-8">
       <section className="grid min-w-0 gap-8 border-b border-foreground/15 pb-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-end">
         <div className="min-w-0">
           <p className="story-kicker">Owner only · local runtime</p>
@@ -310,7 +310,7 @@ export function ResearchMissionAdmin() {
           </h1>
         </div>
         <div className="min-w-0">
-          <p className="text-sm leading-[1.8] text-muted-foreground">
+          <p className="text-sm leading-[1.7] text-muted-foreground">
             这里读取的是 2026-07-28 形成的 33 项查档与实地调研基线，用来回答“下一步做什么”。
             它不是历史研究完成率，也不是发送、受理或取得材料的实时记录。
           </p>
@@ -592,7 +592,7 @@ export function ResearchMissionAdmin() {
                 事件写入尚未开放
               </span>
             </div>
-            <p className="mt-4 max-w-3xl text-sm leading-[1.8] text-muted-foreground">
+            <p className="mt-4 max-w-3xl text-sm leading-[1.7] text-muted-foreground">
               下列阶段只是未来追加式日志的设计，不是实时状态。正式开放后，每次发送、受理、取得和核读都应新增事件，
               不覆盖 2026-07-28 原始基线。
             </p>

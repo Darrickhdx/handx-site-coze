@@ -19,7 +19,7 @@ export default function AboutPage() {
   return (
     <div className="profile-page overflow-hidden">
       <section className="profile-hero border-b border-foreground/15">
-        <div className="personal-shell grid gap-12 py-12 sm:py-14 lg:min-h-[30rem] lg:grid-cols-[minmax(0,0.92fr)_minmax(25rem,0.78fr)] lg:items-start lg:gap-16">
+        <div className="personal-shell grid gap-12 py-8 sm:py-7 lg:min-h-[24rem] lg:grid-cols-[minmax(0,0.92fr)_minmax(25rem,0.78fr)] lg:items-start lg:gap-16">
           <div>
             <p className="personal-kicker">
               <span aria-hidden="true" />
@@ -28,15 +28,15 @@ export default function AboutPage() {
             <p className="mt-6 text-sm font-semibold tracking-[0.16em] text-primary uppercase">
               {profile.title}
             </p>
-            <h1 className="personal-display mt-4 text-[clamp(2.09rem,3.48vw,3.65rem)] font-semibold leading-[0.92] tracking-[-0.065em]">
+            <h1 className="personal-display mt-4 text-[clamp(1.63rem,2.71vw,2.85rem)] font-semibold leading-[0.92] tracking-[-0.065em]">
               {profile.displayName}
             </h1>
-            <p className="mt-6 max-w-2xl font-serif text-2xl leading-relaxed text-foreground sm:text-3xl">
+            <p className="mt-6 max-w-2xl font-serif text-2xl leading-relaxed text-foreground sm:text-xl">
               工程师的底子，产品人的方法，
               <br />
               现在重新投入 AI。
             </p>
-            <p className="mt-5 max-w-2xl text-base leading-[1.8] text-muted-foreground">
+            <p className="mt-5 max-w-2xl text-[15px] leading-[1.7] text-muted-foreground">
               {profile.homeBio}
             </p>
             <div className="mt-7 flex flex-col gap-4 sm:flex-row sm:items-center">
@@ -69,7 +69,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="border-b border-foreground/15 py-16 sm:py-14">
+      <section className="border-b border-foreground/15 py-16 sm:py-10">
         <div className="personal-shell grid gap-12 lg:grid-cols-[0.7fr_1.3fr] lg:gap-24">
           <div>
             <p className="personal-kicker">
@@ -112,7 +112,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-16 sm:py-14">
+      <section className="py-16 sm:py-10">
         <div className="personal-shell">
           <div className="grid gap-8 border-b border-foreground/15 pb-9 lg:grid-cols-[0.72fr_1.28fr] lg:items-end lg:gap-14">
             <div>
@@ -122,7 +122,7 @@ export default function AboutPage() {
               </p>
               <h2 className="personal-heading mt-6">一条从工程到产品的路径。</h2>
             </div>
-            <p className="max-w-2xl text-base leading-[1.8] text-muted-foreground">
+            <p className="max-w-2xl text-[15px] leading-[1.7] text-muted-foreground">
               从大型技术组织，到移动支付、智能商业和日本自动贩卖机市场，
               我的工作始终围绕软硬件、系统与真实业务的连接。
             </p>
@@ -141,7 +141,7 @@ export default function AboutPage() {
                     {item.role}
                   </span>
                 </span>
-                <span className="text-sm leading-[1.8] text-muted-foreground">{item.description}</span>
+                <span className="text-sm leading-[1.7] text-muted-foreground">{item.description}</span>
               </li>
             ))}
           </ol>
@@ -159,7 +159,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section id="contact" className="scroll-mt-24 border-y border-white/15 bg-[#202827] py-16 text-[#f3efe7] sm:py-14">
+      <section id="contact" className="scroll-mt-24 border-y border-white/15 bg-[#202827] py-16 text-[#f3efe7] sm:py-10">
         <div className="personal-shell grid gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(20rem,0.58fr)] lg:items-center lg:gap-24">
           <div>
             <p className="personal-kicker personal-kicker-light">
@@ -170,7 +170,7 @@ export default function AboutPage() {
             <h2 className="mt-7 max-w-3xl font-serif text-4xl font-semibold leading-tight tracking-[-0.04em] sm:text-6xl">
               如果你也在思考 AI、产品或一段家族历史，欢迎联系我。
             </h2>
-            <p className="mt-7 max-w-2xl text-base leading-[1.8] text-[#bdb9b0]">
+            <p className="mt-7 max-w-2xl text-[15px] leading-[1.7] text-[#bdb9b0]">
               可交流 AI 与传统行业、软硬一体产品、智能终端、家族史研究和内容合作，
               也欢迎提供与苏开元有关、能够追溯来源的线索。
             </p>

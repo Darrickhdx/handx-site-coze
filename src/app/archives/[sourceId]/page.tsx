@@ -63,7 +63,7 @@ export default async function ArchiveSourcePage({
   return (
     <div>
       <header className="border-b border-foreground/15">
-        <div className="article-shell py-9 sm:py-14">
+        <div className="article-shell py-9 sm:py-10">
           <Suspense
             fallback={(
               <Link href="/archives" className="story-text-link">
@@ -77,23 +77,23 @@ export default async function ArchiveSourcePage({
           <p className="mt-12 font-mono text-xs font-semibold tracking-[0.12em] text-primary">
             一份历史材料 · {source.source_id}
           </p>
-          <h1 className="mt-5 font-serif text-[clamp(1.62rem,3.48vw,3.13rem)] font-semibold leading-[1.02] tracking-[-0.05em]">
+          <h1 className="mt-5 font-serif text-[clamp(1.26rem,2.71vw,2.44rem)] font-semibold leading-[1.02] tracking-[-0.05em]">
             {source.title}
           </h1>
-          <p className="mt-6 max-w-3xl font-serif text-xl leading-relaxed text-muted-foreground">
+          <p className="mt-6 max-w-3xl font-serif text-lg leading-relaxed text-muted-foreground">
             {source.creator_or_publisher} · {source.date_or_range}
           </p>
         </div>
       </header>
 
-      <div className="article-shell py-9 sm:py-14">
+      <div className="article-shell py-9 sm:py-10">
         {relatedPaths.length > 0 && (
           <section className="border border-foreground/15 bg-card p-5 sm:p-7">
             <div className="flex items-start gap-3">
               <BookOpenText className="mt-0.5 size-5 shrink-0 text-primary" aria-hidden="true" />
               <div className="min-w-0">
                 <p className="text-xs font-semibold tracking-[0.13em] text-primary uppercase">从故事来到这里</p>
-                <p className="mt-3 font-serif text-xl leading-relaxed sm:text-2xl">{relatedPaths[0].readerVerdict}</p>
+                <p className="mt-3 font-serif text-lg leading-relaxed sm:text-xl">{relatedPaths[0].readerVerdict}</p>
                 <div className="mt-4 flex flex-wrap gap-3">
                   {relatedPaths.map((path) => (
                     <Link key={path.id} href={`/evidence/${path.id}`} className="story-text-link">
@@ -170,7 +170,7 @@ export default async function ArchiveSourcePage({
                         {claimStatusLabels[claim.status]}
                       </span>
                     </div>
-                    <p className="mt-3 text-sm leading-[1.8]">{claim.quote_or_assertion}</p>
+                    <p className="mt-3 text-sm leading-[1.7]">{claim.quote_or_assertion}</p>
                     <p className="mt-3 border-l-2 border-primary/40 pl-3 text-xs leading-6 text-muted-foreground">
                       {claim.writing_use}
                     </p>

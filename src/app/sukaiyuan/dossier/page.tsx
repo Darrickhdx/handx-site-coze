@@ -15,7 +15,7 @@ export default function SuKaiyuanDossierPage() {
     <div className="overflow-hidden bg-background">
       <ProjectSectionNav />
       <header className="border-b border-foreground/15">
-        <div className="personal-shell py-9 sm:py-14">
+        <div className="personal-shell py-9 sm:py-10">
           <Link href="/sukaiyuan" className="story-text-link">
             <ArrowLeft className="size-4" aria-hidden="true" />
             返回苏开元计划
@@ -26,19 +26,19 @@ export default function SuKaiyuanDossierPage() {
                 <span aria-hidden="true" />
                 一个名字的历史踪迹
               </p>
-              <h1 className="personal-display mt-7 text-[clamp(1.97rem,3.94vw,3.94rem)] font-semibold leading-[0.92] tracking-[-0.065em]">
+              <h1 className="personal-display mt-7 text-[clamp(1.54rem,3.07vw,3.07rem)] font-semibold leading-[0.92] tracking-[-0.065em]">
                 蘇開元与蘇凱元，
                 <br />
                 是同一个人吗？
               </h1>
             </div>
             <div>
-              <p className="font-serif text-2xl leading-relaxed text-foreground sm:text-3xl">
+              <p className="font-serif text-2xl leading-relaxed text-foreground sm:text-xl">
                 蘇開元、蘇凱元、Su Kai-yuan。
                 <br />
                 名字越来越像，证据却必须一格一格对齐。
               </p>
-              <p className="mt-6 max-w-xl text-base leading-[1.8] text-muted-foreground">
+              <p className="mt-6 max-w-xl text-[15px] leading-[1.7] text-muted-foreground">
                 用约三分钟比对六份材料。先认识两条姓名轨，再查看每张纸写了什么、不能证明什么，以及为什么当前仍保留一道身份问题。
               </p>
               <div className="mt-7 flex flex-col gap-3 sm:flex-row">

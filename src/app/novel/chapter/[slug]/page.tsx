@@ -47,7 +47,7 @@ export default async function NovelChapterPage({ params }: ChapterPageProps) {
   return (
     <div className="min-h-screen bg-[#e9e3d8]">
       <header className="border-b border-foreground/15 bg-[#202827] text-[#f3efe7]">
-        <div className="personal-shell py-9 sm:py-12">
+        <div className="personal-shell py-9 sm:py-8">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <Link
               href="/novel"
@@ -85,7 +85,7 @@ export default async function NovelChapterPage({ params }: ChapterPageProps) {
         </div>
       </header>
 
-      <section className="personal-shell py-8 sm:py-12">
+      <section className="personal-shell py-8 sm:py-8">
         <NovelReader
           pages={pages}
           sections={[section]}

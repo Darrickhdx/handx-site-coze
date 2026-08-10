@@ -120,7 +120,7 @@ export function FamilyHistoryDiagnostic() {
             <h2 className="mt-5 max-w-3xl font-serif text-4xl font-semibold leading-tight tracking-[-0.04em] sm:text-5xl">
               先判断，你家的第一步应该是什么。
             </h2>
-            <p className="mt-6 max-w-2xl text-base leading-[1.8] text-muted-foreground">
+            <p className="mt-6 max-w-2xl text-[15px] leading-[1.7] text-muted-foreground">
               只选择材料形态、当前问题与风险边界；不填写姓名，也不提交任何原文。
               结果只用于安排研究起点，不判断人物真假或历史功劳。
             </p>
@@ -136,7 +136,7 @@ export function FamilyHistoryDiagnostic() {
           <div className="border-t border-foreground/15 pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
             <ShieldCheck className="size-7 text-primary" strokeWidth={1.4} aria-hidden="true" />
             <p className="mt-5 font-serif text-xl font-semibold">不上传材料 · 不保存答案 · 不调用外部模型</p>
-            <p className="mt-3 text-sm leading-[1.8] text-muted-foreground">
+            <p className="mt-3 text-sm leading-[1.7] text-muted-foreground">
               答案只存在当前页面内存，刷新或退出即清空；不会写入网址、统计、留言箱或浏览器存储。
             </p>
           </div>
@@ -168,7 +168,7 @@ export function FamilyHistoryDiagnostic() {
             >
               {currentQuestion.prompt}
             </h2>
-            <p className="mt-4 text-sm leading-[1.8] text-muted-foreground">{currentQuestion.helper}</p>
+            <p className="mt-4 text-sm leading-[1.7] text-muted-foreground">{currentQuestion.helper}</p>
           </div>
 
           <div className="mt-8 grid gap-3 sm:grid-cols-2" role="radiogroup" aria-label={currentQuestion.prompt}>
@@ -235,20 +235,20 @@ export function FamilyHistoryDiagnostic() {
           >
             {result.title}
           </h2>
-          <p className="mt-6 max-w-3xl text-base leading-[1.8] text-muted-foreground">{result.explanation}</p>
+          <p className="mt-6 max-w-3xl text-[15px] leading-[1.7] text-muted-foreground">{result.explanation}</p>
 
           <div className="mt-9 grid gap-px overflow-hidden border border-foreground/15 bg-foreground/15 md:grid-cols-3">
             {result.actions.map((action, index) => (
               <article key={action} className="bg-background p-6">
                 <span className="font-serif text-3xl text-primary/40">0{index + 1}</span>
-                <p className="mt-5 text-sm leading-[1.8]">{action}</p>
+                <p className="mt-5 text-sm leading-[1.7]">{action}</p>
               </article>
             ))}
           </div>
 
           <div className="mt-7 border-l-4 border-accent bg-[#eee8dc] p-5 sm:p-6">
             <p className="text-xs font-semibold tracking-[0.14em] text-primary uppercase">停止门</p>
-            <p className="mt-3 text-sm leading-[1.8]">{result.stopGate}</p>
+            <p className="mt-3 text-sm leading-[1.7]">{result.stopGate}</p>
           </div>
 
           <p className="mt-6 text-xs leading-6 text-muted-foreground">

@@ -13,7 +13,7 @@ export default function FullNovelReaderPage() {
   return (
     <main className="min-h-screen bg-[#e9e3d8]">
       <header className="border-b border-foreground/15 bg-[#202827] text-[#f3efe7]">
-        <div className="personal-shell py-9 sm:py-12">
+        <div className="personal-shell py-9 sm:py-8">
           <Link
             href="/novel"
             className="inline-flex items-center gap-2 text-sm text-[#bdb9b0] hover:text-white"
@@ -30,7 +30,7 @@ export default function FullNovelReaderPage() {
                 《英雄无名》全文
               </h1>
             </div>
-            <div className="max-w-xl text-sm leading-[1.8] text-[#bdb9b0]">
+            <div className="max-w-xl text-sm leading-[1.7] text-[#bdb9b0]">
               <p>{novelManifest.totals.pages} 页按视野分批加载；键盘方向键、Page Up／Down、Home／End 均可翻页。</p>
               <p className="mt-1">稳定锚点格式：#page-N。</p>
               <Link href="/novel/editions" className="mt-2 inline-block text-[#d7cfc2] underline decoration-white/20 underline-offset-4">
@@ -41,7 +41,7 @@ export default function FullNovelReaderPage() {
         </div>
       </header>
 
-      <section className="personal-shell py-8 sm:py-12">
+      <section className="personal-shell py-8 sm:py-8">
         <div className="mb-6 flex items-start gap-3 border border-foreground/15 bg-[#f4f0e8] p-4 text-xs leading-6 text-muted-foreground">
           <List className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
           <p>

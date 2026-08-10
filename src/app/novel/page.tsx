@@ -40,21 +40,21 @@ export default function NovelPage() {
     <div className="overflow-hidden bg-[#f4f0e8]">
       <ProjectSectionNav />
       <section className="border-b border-white/15 bg-[#202827] text-[#f3efe7]">
-        <div className="personal-shell grid gap-12 py-14 lg:grid-cols-[minmax(0,0.72fr)_minmax(28rem,0.58fr)] lg:items-center lg:gap-14 lg:py-14">
+        <div className="personal-shell grid gap-12 py-14 lg:grid-cols-[minmax(0,0.72fr)_minmax(28rem,0.58fr)] lg:items-center lg:gap-14 lg:py-10">
           <div>
             <p className="personal-kicker personal-kicker-light">
               <span aria-hidden="true" />
               Full novel · local review
             </p>
-            <h1 className="mt-8 font-serif text-[clamp(2.39rem,5.20vw,4.68rem)] font-semibold leading-[0.82] tracking-[-0.075em]">
+            <h1 className="mt-8 font-serif text-[clamp(1.82rem,3.95vw,3.56rem)] font-semibold leading-[0.82] tracking-[-0.075em]">
               英雄
               <br />
               无名
             </h1>
-            <p className="mt-8 font-serif text-2xl leading-relaxed text-[#d7cfc2] sm:text-3xl">
+            <p className="mt-8 font-serif text-2xl leading-relaxed text-[#d7cfc2] sm:text-xl">
               我的曾外祖父苏开元
             </p>
-            <p className="mt-6 max-w-2xl text-base leading-[1.8] text-[#bdb9b0]">
+            <p className="mt-6 max-w-2xl text-[15px] leading-[1.7] text-[#bdb9b0]">
               一个曾孙从搜索框里的三个字出发，追问一个人为何把名字交给时代，又为何没有被时代完整喊回来。
               当前网页版本为 {novelManifest.book.edition}：{novelManifest.totals.pages} 页、
               {novelManifest.totals.numbered_chapters} 章，全书可读。
@@ -120,7 +120,7 @@ export default function NovelPage() {
         </div>
       </section>
 
-      <section className="personal-shell py-10 sm:py-14">
+      <section className="personal-shell py-7 sm:py-10">
         <div className="grid gap-10 lg:grid-cols-[0.66fr_1.34fr] lg:gap-14">
           <div>
             <p className="story-kicker">阅读说明</p>
@@ -129,7 +129,7 @@ export default function NovelPage() {
               <br />
               不是史实数据库。
             </h2>
-            <div className="mt-7 space-y-4 text-sm leading-[1.8] text-muted-foreground">
+            <div className="mt-7 space-y-4 text-sm leading-[1.7] text-muted-foreground">
               <p>
                 全文同时包含公开史料、家族口述、合理外推与文学构造。故事中的感染力不能反向把
                 未核经历升级为历史事实。
@@ -157,7 +157,7 @@ export default function NovelPage() {
       </section>
 
       <section className="border-y border-foreground/15 bg-card">
-        <div className="personal-shell py-10 sm:py-14">
+        <div className="personal-shell py-7 sm:py-10">
           <div className="flex flex-col justify-between gap-5 border-b border-foreground/15 pb-6 md:flex-row md:items-end">
             <div>
               <p className="story-kicker">章节目录</p>
@@ -165,7 +165,7 @@ export default function NovelPage() {
                 从楔子，到尾声
               </h2>
             </div>
-            <p className="max-w-xl text-sm leading-[1.8] text-muted-foreground">
+            <p className="max-w-xl text-sm leading-[1.7] text-muted-foreground">
               单章阅读只请求本章当前页及相邻页，不会在初次进入时下载其他章节。
             </p>
           </div>
@@ -205,12 +205,12 @@ export default function NovelPage() {
         </div>
       </section>
 
-      <section className="personal-shell py-10 sm:py-14">
+      <section className="personal-shell py-7 sm:py-10">
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           <div className="border border-foreground/15 bg-card p-6">
             <BookOpenText className="size-5 text-primary" aria-hidden="true" />
             <h2 className="mt-4 font-serif text-2xl font-semibold">全文与分章</h2>
-            <p className="mt-3 text-sm leading-[1.8] text-muted-foreground">
+            <p className="mt-3 text-sm leading-[1.7] text-muted-foreground">
               {novelManifest.totals.pages} 页唯一归属到 {novelManifest.totals.sections} 个小节：卷首、前言、楔子、序章、
               四个分部、{novelManifest.totals.numbered_chapters} 章、尾声、后记与附录。
             </p>
@@ -218,21 +218,21 @@ export default function NovelPage() {
           <div className="border border-foreground/15 bg-card p-6">
             <FileClock className="size-5 text-primary" aria-hidden="true" />
             <h2 className="mt-4 font-serif text-2xl font-semibold">版本不混写</h2>
-            <p className="mt-3 text-sm leading-[1.8] text-muted-foreground">
+            <p className="mt-3 text-sm leading-[1.7] text-muted-foreground">
               {`V${novelManifest.book.version}、V1.2 与 V1.3 分别保存；`}旧评论和阅读进度不自动挂到重写后的章节。
             </p>
           </div>
           <div className="border border-foreground/15 bg-card p-6">
             <MessageSquareText className="size-5 text-primary" aria-hidden="true" />
             <h2 className="mt-4 font-serif text-2xl font-semibold">先审后显</h2>
-            <p className="mt-3 text-sm leading-[1.8] text-muted-foreground">
+            <p className="mt-3 text-sm leading-[1.7] text-muted-foreground">
               评论永远先进入 pending。本地管理员批准后才出现在相应章节，且不会成为史料或图谱主张。
             </p>
           </div>
           <div className="border border-foreground/15 bg-card p-6">
             <ShieldAlert className="size-5 text-primary" aria-hidden="true" />
             <h2 className="mt-4 font-serif text-2xl font-semibold">打赏在二期</h2>
-            <p className="mt-3 text-sm leading-[1.8] text-muted-foreground">
+            <p className="mt-3 text-sm leading-[1.7] text-muted-foreground">
               V0.1 不接支付、不保存支付信息。待公开授权、账号体系和法务边界完成后再评估。
             </p>
           </div>

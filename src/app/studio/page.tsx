@@ -42,23 +42,23 @@ export default function StudioPage() {
   return (
     <div className="studio-page">
       <section className="border-b border-foreground/15">
-        <div className="personal-shell grid gap-12 py-16 sm:py-14 lg:grid-cols-[minmax(0,0.9fr)_minmax(28rem,1.1fr)] lg:items-end lg:gap-14">
+        <div className="personal-shell grid gap-12 py-16 sm:py-7 lg:grid-cols-[minmax(0,0.9fr)_minmax(28rem,1.1fr)] lg:items-end lg:gap-14">
           <div>
             <p className="personal-kicker">
               <span aria-hidden="true" />
               Family history studio
             </p>
-            <h1 className="personal-display mt-7 text-[clamp(1.97rem,3.94vw,3.83rem)] font-semibold leading-[0.94] tracking-[-0.06em]">
+            <h1 className="personal-display mt-7 text-[clamp(1.54rem,3.07vw,2.99rem)] font-semibold leading-[0.94] tracking-[-0.06em]">
               家族史工作室
             </h1>
           </div>
           <div>
-            <p className="font-serif text-2xl leading-relaxed text-foreground sm:text-3xl">
+            <p className="font-serif text-2xl leading-relaxed text-foreground sm:text-xl">
               帮一个家庭把“听说过”，
               <br />
               变成“知道从哪里继续找”。
             </p>
-            <p className="mt-6 max-w-xl text-base leading-[1.8] text-muted-foreground">
+            <p className="mt-6 max-w-xl text-[15px] leading-[1.7] text-muted-foreground">
               苏开元计划是第一个完整案例。这项服务不承诺替你找到传奇，
               只承诺把材料分清、问题说清、隐私守住，并让下一步查档真正可执行。
             </p>
@@ -76,7 +76,7 @@ export default function StudioPage() {
         </div>
       </section>
 
-      <section className="py-16 sm:py-14">
+      <section className="py-16 sm:py-10">
         <div className="personal-shell">
           <div className="border-b border-foreground/15 pb-8">
             <p className="story-kicker">一次项目会怎样进行</p>
@@ -92,7 +92,7 @@ export default function StudioPage() {
                     <Icon className="size-6 text-primary" strokeWidth={1.4} />
                   </div>
                   <h3 className="mt-12 font-serif text-2xl font-semibold">{item.title}</h3>
-                  <p className="mt-4 text-sm leading-[1.8] text-muted-foreground">{item.description}</p>
+                  <p className="mt-4 text-sm leading-[1.7] text-muted-foreground">{item.description}</p>
                 </article>
               );
             })}
@@ -100,7 +100,7 @@ export default function StudioPage() {
         </div>
       </section>
 
-      <section className="border-t border-foreground/15 py-16 sm:py-14">
+      <section className="border-t border-foreground/15 py-16 sm:py-10">
         <div className="personal-shell grid gap-12 lg:grid-cols-[minmax(19rem,0.66fr)_minmax(0,1.34fr)] lg:items-center lg:gap-24">
           <figure className="personal-about-portrait">
             <Image
@@ -123,7 +123,7 @@ export default function StudioPage() {
               Who is doing it
             </p>
             <h2 className="personal-heading mt-6">不只交付一份报告，也把一套方法真正做出来。</h2>
-            <p className="mt-7 max-w-3xl text-base leading-[1.8] text-muted-foreground">
+            <p className="mt-7 max-w-3xl text-[15px] leading-[1.7] text-muted-foreground">
               {profile.displayName}拥有二十多年软硬一体产品、智能终端和系统平台经验。
               现在把从 0 到 1 做产品的方法带进 AI 与家族史：从资料体检、知识图谱到可阅读叙事，
               每一步都留下来源、边界和可继续执行的下一步。
@@ -150,7 +150,7 @@ export default function StudioPage() {
         </div>
       </section>
 
-      <section className="border-y border-white/15 bg-[#202827] py-16 text-[#f3efe7] sm:py-14">
+      <section className="border-y border-white/15 bg-[#202827] py-16 text-[#f3efe7] sm:py-10">
         <div className="personal-shell grid gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-14">
           <div>
             <ShieldCheck className="size-8 text-[#c38a82]" />
@@ -163,7 +163,7 @@ export default function StudioPage() {
               '未经逐项、用途限定授权，绝不把家属原件交给外部模型、第三方或公共仓库。',
               '不承诺一定找到名人关系、秘密身份或完整结局。',
             ].map((item) => (
-              <p key={item} className="border-t border-white/20 pt-5 text-base leading-[1.8] text-[#d7cfc2]">
+              <p key={item} className="border-t border-white/20 pt-5 text-[15px] leading-[1.7] text-[#d7cfc2]">
                 {item}
               </p>
             ))}
@@ -171,14 +171,14 @@ export default function StudioPage() {
         </div>
       </section>
 
-      <section className="py-16 sm:py-14">
+      <section className="py-16 sm:py-10">
         <div className="personal-shell grid gap-10 lg:grid-cols-[minmax(0,1fr)_24rem] lg:items-end">
           <div>
             <p className="story-kicker">当前阶段</p>
             <h2 className="mt-4 max-w-3xl font-serif text-4xl font-semibold leading-tight tracking-[-0.04em] sm:text-6xl">
               先把苏开元项目做成一份经得起追问的完整案例。
             </h2>
-            <p className="mt-6 max-w-2xl text-base leading-[1.8] text-muted-foreground">
+            <p className="mt-6 max-w-2xl text-[15px] leading-[1.7] text-muted-foreground">
               正式收费服务尚未开放。你可以先查看案例、研究方法和隐私边界；
               如果你正面对一批无从下手的家族材料，请先完成不留存答案的起步诊断；
               结果合适时，再由你主动申请小范围需求访谈。

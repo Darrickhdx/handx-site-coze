@@ -22,18 +22,18 @@ export default function PersonsPage() {
     <div className="min-h-screen bg-[#f4f0e8]">
       <ProjectSectionNav />
       <header className="border-b border-white/15 bg-[#202827] text-[#f3efe7]">
-        <div className="personal-shell py-14 sm:py-14">
+        <div className="personal-shell py-14 sm:py-10">
           <p className="personal-kicker personal-kicker-light"><span aria-hidden="true" />People constellation</p>
           <div className="mt-8 grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-end lg:gap-14">
-            <h1 className="font-serif text-[clamp(1.98rem,3.80vw,3.90rem)] font-semibold leading-[0.88] tracking-[-0.065em]">
+            <h1 className="font-serif text-[clamp(1.54rem,2.96vw,3.04rem)] font-semibold leading-[0.88] tracking-[-0.065em]">
               他们不是配角，
               <br />是证据链的不同位置。
             </h1>
             <div>
-              <p className="font-serif text-2xl leading-relaxed text-[#d7cfc2] sm:text-3xl">
+              <p className="font-serif text-2xl leading-relaxed text-[#d7cfc2] sm:text-xl">
                 有人留下证词，有人被写进表格，有人代表无法被主角取代的公共历史。
               </p>
-              <p className="mt-6 max-w-2xl text-base leading-[1.8] text-[#bdb9b0]">
+              <p className="mt-6 max-w-2xl text-[15px] leading-[1.7] text-[#bdb9b0]">
                 这里不是名人百科。每张人物卡只选择与苏开元研究直接相关的切面；同名、异写、回忆与冲突不会被剪成一条顺滑生平。
               </p>
             </div>
@@ -53,7 +53,7 @@ export default function PersonsPage() {
         </div>
       </header>
 
-      <div className="personal-shell py-10 sm:py-14">
+      <div className="personal-shell py-7 sm:py-10">
         <div className="grid gap-px border border-foreground/15 bg-foreground/15 lg:grid-cols-2">
           {peopleDossiers.map((person, index) => (
             <article key={person.entityId} className="group grid min-h-[34rem] gap-8 bg-background p-6 sm:grid-cols-[8rem_minmax(0,1fr)] sm:p-8">
@@ -68,8 +68,8 @@ export default function PersonsPage() {
                 <p className="text-xs font-semibold tracking-[0.12em] text-primary uppercase">{person.eyebrow}</p>
                 <h2 className="mt-3 font-serif text-4xl font-semibold tracking-[-0.04em]">{person.displayName}</h2>
                 <p className="mt-3 text-xs font-semibold text-muted-foreground">{personDossierStatusLabels[person.status]}</p>
-                <p className="mt-7 font-serif text-xl leading-relaxed">{person.oneLine}</p>
-                <p className="mt-5 text-sm leading-[1.8] text-muted-foreground">{person.roleInStory}</p>
+                <p className="mt-7 font-serif text-lg leading-relaxed">{person.oneLine}</p>
+                <p className="mt-5 text-sm leading-[1.7] text-muted-foreground">{person.roleInStory}</p>
                 <div className="mt-auto pt-8">
                   <div className="mb-5 flex flex-wrap gap-2 text-[10px] text-muted-foreground">
                     <span className="border border-foreground/15 px-2.5 py-1">{person.milestones.length} 个叙事节点</span>
@@ -96,7 +96,7 @@ export default function PersonsPage() {
               <div key={String(title)} className="bg-card p-6">
                 <CardIcon className="size-5 text-primary" aria-hidden="true" />
                 <h2 className="mt-4 font-serif text-xl font-semibold">{String(title)}</h2>
-                <p className="mt-3 text-sm leading-[1.8] text-muted-foreground">{String(description)}</p>
+                <p className="mt-3 text-sm leading-[1.7] text-muted-foreground">{String(description)}</p>
               </div>
             );
           })}

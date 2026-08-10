@@ -20,24 +20,24 @@ export default function WikiPage() {
     <div>
       <ProjectSectionNav />
       <header className="border-b border-foreground/15">
-        <div className="personal-shell py-10 sm:py-14">
+        <div className="personal-shell py-7 sm:py-10">
           <p className="personal-kicker">
             <span aria-hidden="true" />
             Evidence wiki
           </p>
           <div className="mt-7 grid gap-8 lg:grid-cols-[1fr_0.8fr] lg:items-end">
-            <h1 className="personal-display text-[clamp(1.77rem,3.64vw,3.43rem)] font-semibold leading-[0.94] tracking-[-0.06em]">
+            <h1 className="personal-display text-[clamp(1.38rem,2.84vw,2.68rem)] font-semibold leading-[0.94] tracking-[-0.06em]">
               人物与历史
               <br />
               Wiki
             </h1>
             <div>
-              <p className="font-serif text-2xl leading-relaxed sm:text-3xl">
+              <p className="font-serif text-2xl leading-relaxed sm:text-xl">
                 不是一篇“完整传记”，
                 <br />
                 而是一套可逐条返回来源的研究导航。
               </p>
-              <p className="mt-5 text-sm leading-[1.8] text-muted-foreground">
+              <p className="mt-5 text-sm leading-[1.7] text-muted-foreground">
                 每个实体页分开显示当前可确认、仍待核与不得写成事实的主张。旧图只作为
                 Legacy 线索，不能反向生成事实。
               </p>
@@ -66,7 +66,7 @@ export default function WikiPage() {
         </div>
       </section>
 
-      <section className="personal-shell py-9 sm:py-14">
+      <section className="personal-shell py-9 sm:py-10">
         <div className="mb-8 flex flex-col justify-between gap-5 border-b border-foreground/15 pb-6 md:flex-row md:items-end">
           <div>
             <p className="text-xs font-bold tracking-[0.16em] text-primary uppercase">
@@ -88,7 +88,7 @@ export default function WikiPage() {
         <WikiIndex nodes={auditGraph.nodes} />
 
         <div className="mt-12 flex flex-col justify-between gap-5 border-t border-foreground/15 pt-8 md:flex-row md:items-center">
-          <p className="max-w-2xl text-sm leading-[1.8] text-muted-foreground">
+          <p className="max-w-2xl text-sm leading-[1.7] text-muted-foreground">
             想从关系结构进入？研究图谱支持时期、实体类型、证据状态和冲突筛选；
             Legacy 线索必须再次确认后才会加载。
           </p>

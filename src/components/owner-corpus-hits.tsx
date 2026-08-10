@@ -71,7 +71,7 @@ export function OwnerCorpusHits({ entityId }: { entityId: string }) {
             <FileSearch className="size-5 text-primary" aria-hidden="true" />
             <h2 className="font-serif text-2xl font-semibold">主人资料命中索引</h2>
           </div>
-          <p className="mt-3 max-w-3xl text-sm leading-[1.8] text-muted-foreground">
+          <p className="mt-3 max-w-3xl text-sm leading-[1.7] text-muted-foreground">
             这是只读检索结果，只显示 P1 文档标题、定位和材料类别。自动命中不会创建主张或关系；
             P2／P3 材料、正文和本机路径始终不会发送到浏览器。
           </p>

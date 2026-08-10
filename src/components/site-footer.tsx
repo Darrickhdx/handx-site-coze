@@ -22,19 +22,19 @@ const projectLinks = [
 export function SiteFooter() {
   return (
     <footer className="mt-auto bg-[#1d2524] text-[#f3efe7]">
-      <div className="mx-auto max-w-[84rem] px-4 py-12 sm:px-6 sm:py-16">
+      <div className="mx-auto max-w-[84rem] px-4 py-8 sm:px-6 sm:py-8">
         <div className="grid gap-12 border-b border-white/15 pb-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-24">
           <div>
             <div className="flex items-center gap-3 text-[#d5a09a]">
               <BookOpen className="size-5" strokeWidth={1.6} />
               <span className="text-xs font-semibold tracking-[0.2em] uppercase">{profile.displayName}</span>
             </div>
-            <p className="mt-7 max-w-2xl font-serif text-2xl leading-relaxed sm:text-3xl">
+            <p className="mt-7 max-w-2xl font-serif text-2xl leading-relaxed sm:text-xl">
               一个人，
               <br />
               把复杂的东西做完整。
             </p>
-            <p className="mt-6 max-w-xl text-sm leading-[1.8] text-[#aaa69f]">
+            <p className="mt-6 max-w-xl text-sm leading-[1.7] text-[#aaa69f]">
               这里是一条 AI 内容流水线的现场：一本书、一座网站、一套考据方法。
               每个说法都尽量回到来源，每项合作都从真实问题开始。
             </p>

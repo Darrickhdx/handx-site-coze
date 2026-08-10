@@ -91,9 +91,9 @@ export function ArchiveEvidenceViewer({
         </div>
       </div>
 
-      <div className="min-h-[20rem]">
+      <div className="min-h-[16rem]">
         {activeTab === 'locator' && (
-          <div className="grid min-h-[20rem] lg:grid-cols-[minmax(0,1.35fr)_minmax(19rem,0.65fr)]">
+          <div className="grid min-h-[16rem] lg:grid-cols-[minmax(0,1.35fr)_minmax(19rem,0.65fr)]">
             <div className="overflow-auto border-b border-white/15 bg-[#161c1b] p-4 lg:border-b-0 lg:border-r">
               {preview ? (
                 <div className="min-w-[36rem]">
@@ -131,10 +131,10 @@ export function ArchiveEvidenceViewer({
                   </div>
                 </div>
               ) : (
-                <div className="flex min-h-[18rem] flex-col items-center justify-center border border-dashed border-white/20 p-8 text-center">
+                <div className="flex min-h-[15rem] flex-col items-center justify-center border border-dashed border-white/20 p-8 text-center">
                   <FileSearch className="size-10 text-[#c38a82]" strokeWidth={1.2} aria-hidden="true" />
                   <p className="mt-6 font-serif text-2xl">这份材料请回到原馆阅读</p>
-                  <p className="mt-4 max-w-lg text-sm leading-[1.8] text-[#bdb9b0]">
+                  <p className="mt-4 max-w-lg text-sm leading-[1.7] text-[#bdb9b0]">
                     这里保留了能带你找回它的起点，但没有展示许可覆盖的扫描图。请用下面的线索回到保存它的地方。
                   </p>
                 </div>
@@ -143,7 +143,7 @@ export function ArchiveEvidenceViewer({
             <aside className="p-6 sm:p-8">
               <LocateFixed className="size-6 text-[#c38a82]" aria-hidden="true" />
               <p className="mt-5 text-[10px] font-semibold tracking-[0.15em] text-[#c38a82] uppercase">从这里找到原文</p>
-              <p className="mt-4 text-sm leading-[1.8] text-[#d7cfc2]">{locator}</p>
+              <p className="mt-4 text-sm leading-[1.7] text-[#d7cfc2]">{locator}</p>
               <div className="mt-7 border-t border-white/15 pt-5 text-xs leading-6 text-[#bdb9b0]">
                 {preview ? preview.note : '本站保留的是阅读线索，不用空白占位冒充一份看不见的原件。'}
               </div>
@@ -160,7 +160,7 @@ export function ArchiveEvidenceViewer({
                     <span className="font-mono text-xs text-[#c38a82]">{claim.id}</span>
                     <span className="text-[10px] text-[#bdb9b0]">{claim.status}</span>
                   </div>
-                  <p className="mt-5 text-sm leading-[1.8] text-[#f3efe7]">{claim.assertion}</p>
+                  <p className="mt-5 text-sm leading-[1.7] text-[#f3efe7]">{claim.assertion}</p>
                   <p className="mt-5 border-l-2 border-[#c38a82]/60 pl-4 text-xs leading-6 text-[#bdb9b0]">
                     {claim.locator}
                   </p>
@@ -175,13 +175,13 @@ export function ArchiveEvidenceViewer({
         )}
 
         {activeTab === 'original' && (
-          <div className="grid min-h-[20rem] place-items-center p-8 text-center">
+          <div className="grid min-h-[16rem] place-items-center p-8 text-center">
             <div className="max-w-2xl">
               <ShieldAlert className="mx-auto size-9 text-[#c38a82]" strokeWidth={1.4} aria-hidden="true" />
               <h3 className="mt-6 font-serif text-3xl font-semibold">
                 {publicUrl ? '回到保存它的地方，继续读下去' : '这份材料还没有可安全公开的原馆入口'}
               </h3>
-              <p className="mt-5 text-sm leading-[1.8] text-[#bdb9b0]">
+              <p className="mt-5 text-sm leading-[1.7] text-[#bdb9b0]">
                 本站展示的只是理解这段故事所需的局部与线索；完整上下文、阅读权限和使用规则，都以保存机构为准。
               </p>
               {publicUrl && (

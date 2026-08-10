@@ -21,7 +21,7 @@ export default function NovelCompanionPage() {
     <div className="min-h-screen bg-[#f4f0e8]">
       <ProjectSectionNav />
       <header className="border-b border-foreground/15">
-        <div className="personal-shell py-9 sm:py-14">
+        <div className="personal-shell py-9 sm:py-10">
           <Link href="/novel" className="story-text-link">
             <ArrowLeft className="size-4" aria-hidden="true" />
             返回小说首页
@@ -29,7 +29,7 @@ export default function NovelCompanionPage() {
           <div className="mt-9 grid gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:items-end lg:gap-14">
             <div>
               <p className="personal-kicker"><span aria-hidden="true" />Reading companion</p>
-              <h1 className="mt-7 font-serif text-[clamp(1.92rem,3.64vw,3.64rem)] font-semibold leading-[0.9] tracking-[-0.065em]">
+              <h1 className="mt-7 font-serif text-[clamp(1.50rem,2.84vw,2.84rem)] font-semibold leading-[0.9] tracking-[-0.065em]">
                 故事从哪里来，
                 <br />
                 又必须停在哪里。
@@ -37,10 +37,10 @@ export default function NovelCompanionPage() {
             </div>
             <div>
               <BookMarked className="size-7 text-primary" strokeWidth={1.4} aria-hidden="true" />
-              <p className="mt-6 font-serif text-2xl leading-relaxed sm:text-3xl">
+              <p className="mt-6 font-serif text-2xl leading-relaxed sm:text-xl">
                 先让小说把人带进历史，再让来源卡把判断带回纸面。
               </p>
-              <p className="mt-6 max-w-2xl text-base leading-[1.8] text-muted-foreground">
+              <p className="mt-6 max-w-2xl text-[15px] leading-[1.7] text-muted-foreground">
                 这不是给每一场戏盖章。它只挑出最容易被误读为“真实还原”的节点，说明史料能承载什么、文学又增加了什么。
               </p>
             </div>
@@ -48,8 +48,8 @@ export default function NovelCompanionPage() {
         </div>
       </header>
 
-      <div className="personal-shell py-10 sm:py-14">
-        <div className="mb-9 flex items-start gap-3 border border-amber-800/20 bg-amber-50 p-5 text-sm leading-[1.8] text-amber-950">
+      <div className="personal-shell py-7 sm:py-10">
+        <div className="mb-9 flex items-start gap-3 border border-amber-800/20 bg-amber-50 p-5 text-sm leading-[1.7] text-amber-950">
           <ShieldAlert className="mt-1 size-5 shrink-0" aria-hidden="true" />
           <p>
             {`当前伴读对应网站正在提供阅读的 V${novelManifest.book.version}。`}其他版本只作冻结对照，不在这里伪装成已经上线的新版本。
@@ -70,15 +70,15 @@ export default function NovelCompanionPage() {
               </div>
               <div>
                 <h2 className="font-serif text-3xl font-semibold tracking-[-0.03em]">{entry.title}</h2>
-                <p className="mt-5 text-base leading-[1.8] text-muted-foreground">{entry.lead}</p>
+                <p className="mt-5 text-[15px] leading-[1.7] text-muted-foreground">{entry.lead}</p>
                 <div className="mt-6 grid gap-4 sm:grid-cols-2">
                   <div className="border-t border-emerald-800/30 pt-4">
                     <p className="text-xs font-semibold text-emerald-900">可以承载</p>
-                    <p className="mt-2 text-sm leading-[1.8] text-muted-foreground">{entry.canCarry}</p>
+                    <p className="mt-2 text-sm leading-[1.7] text-muted-foreground">{entry.canCarry}</p>
                   </div>
                   <div className="border-t border-rose-800/25 pt-4">
                     <p className="text-xs font-semibold text-rose-900">不能替小说证明</p>
-                    <p className="mt-2 text-sm leading-[1.8] text-muted-foreground">{entry.cannotCarry}</p>
+                    <p className="mt-2 text-sm leading-[1.7] text-muted-foreground">{entry.cannotCarry}</p>
                   </div>
                 </div>
                 {entry.evidencePathId && (
@@ -112,7 +112,7 @@ export default function NovelCompanionPage() {
         <section className="mt-12 border border-foreground/15 bg-card p-7 sm:p-9">
           <p className="story-kicker">下一步</p>
           <h2 className="mt-4 font-serif text-3xl font-semibold">下一版将把伴读做进每章侧栏。</h2>
-          <p className="mt-5 max-w-3xl text-sm leading-[1.8] text-muted-foreground">
+          <p className="mt-5 max-w-3xl text-sm leading-[1.7] text-muted-foreground">
             先覆盖“举旗”“四十六个弹孔”“放乔”“延安”“一角城门”“破案不能认领”“无名”“没有人查过她”等高风险章节；每一条都必须先通过版本与来源门禁。
           </p>
           <Link href="/novel/editions" className="story-button story-button-primary mt-7">

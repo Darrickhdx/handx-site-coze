@@ -89,7 +89,7 @@ function ClaimRow({ claim }: { claim: AuditClaim }) {
           独立来源 {claim.independence_count}
         </span>
       </div>
-      <p className="mt-3 text-sm leading-[1.8] text-foreground">
+      <p className="mt-3 text-sm leading-[1.7] text-foreground">
         {claim.quote_or_assertion}
       </p>
       {(claim.time_start || claim.time_end) && (
@@ -158,7 +158,7 @@ export default async function WikiEntityPage({
   return (
     <div>
       <header className="border-b border-foreground/15">
-        <div className="article-shell py-9 sm:py-14">
+        <div className="article-shell py-9 sm:py-10">
           <Link href="/wiki" className="story-text-link">
             <ArrowLeft className="size-4" aria-hidden="true" />
             返回 Wiki
@@ -170,7 +170,7 @@ export default async function WikiEntityPage({
             <span className="font-mono text-muted-foreground">{node.entity_id}</span>
             <span className="text-muted-foreground">公开层 {node.public_tier}</span>
           </div>
-          <h1 className="mt-5 font-serif text-[clamp(1.66rem,3.64vw,3.33rem)] font-semibold leading-[0.96] tracking-[-0.055em]">
+          <h1 className="mt-5 font-serif text-[clamp(1.29rem,2.84vw,2.60rem)] font-semibold leading-[0.96] tracking-[-0.055em]">
             {node.canonical_label}
           </h1>
           {node.variant_label && node.variant_label !== node.canonical_label && (
@@ -178,10 +178,10 @@ export default async function WikiEntityPage({
               文献异写：{node.variant_label}
             </p>
           )}
-          <p className="mt-8 max-w-3xl border-l-2 border-primary pl-5 font-serif text-xl leading-relaxed text-foreground sm:text-2xl">
+          <p className="mt-8 max-w-3xl border-l-2 border-primary pl-5 font-serif text-lg leading-relaxed text-foreground sm:text-xl">
             {node.identity_status}
           </p>
-          <p className="mt-5 max-w-3xl text-sm leading-[1.8] text-muted-foreground">
+          <p className="mt-5 max-w-3xl text-sm leading-[1.7] text-muted-foreground">
             这是一张审计实体页，不是自动生成的完整传记。页面只组合公开投影中的原子主张、
             关系和来源定位，不用空白年份补成连续履历。
           </p>
@@ -209,7 +209,7 @@ export default async function WikiEntityPage({
         </div>
       </section>
 
-      <div className="article-shell py-9 sm:py-14">
+      <div className="article-shell py-9 sm:py-10">
         <section aria-labelledby="claim-boundaries-title">
           <div className="flex flex-col justify-between gap-4 border-b border-foreground/15 pb-6 md:flex-row md:items-end">
             <div>
@@ -220,7 +220,7 @@ export default async function WikiEntityPage({
                 先分清三类主张
               </h2>
             </div>
-            <p className="max-w-xl text-sm leading-[1.8] text-muted-foreground">
+            <p className="max-w-xl text-sm leading-[1.7] text-muted-foreground">
               “工作核验”表示当前来源链可支持的最小范围，不等于对人物身份、生平或因果的最终裁决。
             </p>
           </div>
@@ -282,7 +282,7 @@ export default async function WikiEntityPage({
                           {edgeStatusLabels[edge.edge_status]}
                         </span>
                       </div>
-                      <p className="mt-2 text-sm leading-[1.8]">
+                      <p className="mt-2 text-sm leading-[1.7]">
                         {edge.from_entity_id === entityId
                           ? node.canonical_label
                           : relatedNode?.canonical_label ?? edge.from_entity_id}
@@ -316,7 +316,7 @@ export default async function WikiEntityPage({
                 })}
               </div>
             ) : (
-              <div className="mt-6 border border-foreground/15 bg-card p-5 text-sm leading-[1.8] text-muted-foreground">
+              <div className="mt-6 border border-foreground/15 bg-card p-5 text-sm leading-[1.7] text-muted-foreground">
                 新版公开审计图谱目前没有这项实体与 P-001 的直接关系边。没有边不等于历史上从未交集，
                 只表示当前公开证据链尚未闭合。
               </div>
@@ -407,7 +407,7 @@ export default async function WikiEntityPage({
               ))}
             </div>
           ) : (
-            <p className="mt-5 text-sm leading-[1.8] text-muted-foreground">
+            <p className="mt-5 text-sm leading-[1.7] text-muted-foreground">
               旧图没有映射到这一新版实体。这不是缺失证明，也不会自动创建新的对应关系。
             </p>
           )}

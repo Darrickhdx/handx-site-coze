@@ -214,24 +214,24 @@ export function MediaStudioClient() {
   return (
     <div data-owner-only="local-loopback">
       <section className="border-b border-foreground/15 bg-[#202827] text-[#f3efe7]">
-        <div className="personal-shell grid gap-10 py-10 sm:py-14 lg:grid-cols-[minmax(0,0.8fr)_minmax(28rem,1.2fr)] lg:items-end lg:gap-14">
+        <div className="personal-shell grid gap-10 py-7 sm:py-7 lg:grid-cols-[minmax(0,0.8fr)_minmax(28rem,1.2fr)] lg:items-end lg:gap-14">
           <div>
             <p className="inline-flex items-center gap-2 border border-[#8ea299]/40 px-3 py-1.5 text-[10px] font-semibold tracking-[0.16em] text-[#b7c7bf] uppercase">
               <LockKeyhole className="size-3.5" aria-hidden="true" />
               主人工作台 · 仅本机
             </p>
-            <h1 className="mt-7 font-serif text-[clamp(1.97rem,3.94vw,3.77rem)] font-semibold leading-[0.92] tracking-[-0.06em]">
+            <h1 className="mt-7 font-serif text-[clamp(1.54rem,3.07vw,2.94rem)] font-semibold leading-[0.92] tracking-[-0.06em]">
               媒体矩阵
               <span className="block text-[#c38a82]">审稿台</span>
             </h1>
           </div>
           <div>
-            <p className="font-serif text-2xl leading-relaxed text-[#e1dbd1] sm:text-3xl">
+            <p className="font-serif text-2xl leading-relaxed text-[#e1dbd1] sm:text-xl">
               一键生成的是审稿包，
               <br />
               不是未经确认的自动发布。
             </p>
-            <p className="mt-6 max-w-2xl text-sm leading-[1.8] text-[#bdb9b0]">
+            <p className="mt-6 max-w-2xl text-sm leading-[1.7] text-[#bdb9b0]">
               选择母内容、平台和视觉主题，在浏览器中生成封面与平台文案。
               所有包均为 review_only，不连接账号、不保存令牌，也不调用直发接口。
             </p>
@@ -271,7 +271,7 @@ export function MediaStudioClient() {
         </div>
       </section>
 
-      <section className="bg-[#f4f0e8] py-12 sm:py-18">
+      <section className="bg-[#f4f0e8] py-8 sm:py-18">
         <div className="personal-shell grid gap-10 xl:grid-cols-[minmax(20rem,0.72fr)_minmax(0,1.28fr)] xl:items-start xl:gap-14">
           <div className="space-y-9 xl:sticky xl:top-24">
             <div>
@@ -466,7 +466,7 @@ export function MediaStudioClient() {
                     platform.id === 'long_video' ? 'w-[58%]' : ''
                   }`}
                 >
-                  <div className="flex flex-wrap items-center gap-2 text-[clamp(0.48rem,1.4vw,0.72rem)] font-semibold tracking-[0.15em] uppercase">
+                  <div className="flex flex-wrap items-center gap-2 text-[clamp(0.42rem,1.23vw,0.63rem)] font-semibold tracking-[0.15em] uppercase">
                     <span className="border border-current/30 px-2 py-1">
                       Handx web0.1
                     </span>
@@ -477,8 +477,8 @@ export function MediaStudioClient() {
                   <h3
                     className={`mt-[8%] font-serif font-semibold leading-[1.04] tracking-[-0.045em] ${
                       platform.id === 'long_video'
-                        ? 'text-[clamp(1.12rem,3.15vw,2.31rem)]'
-                        : 'text-[clamp(1.04rem,3.64vw,2.34rem)]'
+                        ? 'text-[clamp(0.87rem,2.46vw,1.80rem)]'
+                        : 'text-[clamp(0.81rem,2.84vw,1.83rem)]'
                     }`}
                   >
                     {content.hook}
@@ -498,7 +498,7 @@ export function MediaStudioClient() {
                   }`}
                 >
                   <p
-                    className="text-[clamp(0.72rem,2vw,1.12rem)] font-medium leading-relaxed"
+                    className="text-[clamp(0.59rem,1.64vw,0.92rem)] font-medium leading-relaxed"
                     style={{ color: theme.colors.accent }}
                   >
                     {content.angle}
@@ -507,14 +507,14 @@ export function MediaStudioClient() {
                     {previewSentences.map((sentence) => (
                       <p
                         key={sentence}
-                        className="text-[clamp(0.58rem,1.55vw,0.86rem)] leading-relaxed"
+                        className="text-[clamp(0.51rem,1.36vw,0.76rem)] leading-relaxed"
                         style={{ color: theme.colors.muted }}
                       >
                         {sentence}
                       </p>
                     ))}
                   </div>
-                  <div className="mt-[8%] flex items-end justify-between gap-4 border-t border-current/20 pt-[4%] text-[clamp(0.45rem,1.2vw,0.68rem)]">
+                  <div className="mt-[8%] flex items-end justify-between gap-4 border-t border-current/20 pt-[4%] text-[clamp(0.40rem,1.06vw,0.60rem)]">
                     <span>
                       {content.evidence_snapshot.claim_ids.join(' · ') ||
                         '方法论内容'}
@@ -623,12 +623,12 @@ export function MediaStudioClient() {
         </div>
       </section>
 
-      <section className="border-t border-foreground/15 bg-white/25 py-12 sm:py-16">
+      <section className="border-t border-foreground/15 bg-white/25 py-8 sm:py-8">
         <div className="personal-shell grid gap-8 lg:grid-cols-[auto_minmax(0,1fr)] lg:gap-8">
           <PackageCheck className="size-8 text-primary" aria-hidden="true" />
           <div>
             <h2 className="font-serif text-3xl font-semibold">V0.1 发布门禁</h2>
-            <div className="mt-5 grid gap-4 text-sm leading-[1.8] text-muted-foreground sm:grid-cols-2">
+            <div className="mt-5 grid gap-4 text-sm leading-[1.7] text-muted-foreground sm:grid-cols-2">
               <p>
                 只有 source_backed、主张与来源可定位、权利允许审稿复用，且不含未核身份、真人关键因果和家属私密材料的内容可以导出。问题、解释与文学内容必须显式标注，并停留在预览区。
               </p>

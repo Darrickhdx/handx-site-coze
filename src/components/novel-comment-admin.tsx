@@ -167,7 +167,7 @@ export function NovelCommentAdmin() {
   }
 
   return (
-    <div className="personal-shell py-12 sm:py-16">
+    <div className="personal-shell py-8 sm:py-8">
       <section className="grid gap-8 border-b border-foreground/15 pb-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
         <div>
           <p className="story-kicker">Owner only · local runtime</p>
@@ -176,7 +176,7 @@ export function NovelCommentAdmin() {
           </h1>
         </div>
         <div>
-          <p className="text-sm leading-[1.8] text-muted-foreground">
+          <p className="text-sm leading-[1.7] text-muted-foreground">
             投稿正文和审核事件分别追加保存。批准、拒绝、垃圾与撤回不会覆盖原投稿；
             对外章节接口始终只返回当前状态为“已批准”的内容。
           </p>
@@ -318,7 +318,7 @@ export function NovelCommentAdmin() {
                   {new Date(comment.occurred_at).toLocaleString('zh-CN')}
                 </time>
               </div>
-              <p className="mt-5 whitespace-pre-wrap break-words text-sm leading-[1.8]">
+              <p className="mt-5 whitespace-pre-wrap break-words text-sm leading-[1.7]">
                 {decodeEscapedCommentText(comment.body)}
               </p>
               <div className="mt-6 flex flex-wrap gap-2 border-t border-foreground/10 pt-4">

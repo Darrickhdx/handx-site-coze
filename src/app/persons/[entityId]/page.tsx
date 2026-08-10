@@ -69,7 +69,7 @@ export default async function PersonDossierPage({ params }: PersonDossierPagePro
     <div className="min-h-screen bg-[#f4f0e8]" data-person-dossier={entityId}>
       <ProjectSectionNav />
       <header className="border-b border-white/15 bg-[#202827] text-[#f3efe7]">
-        <div className="personal-shell py-9 sm:py-14">
+        <div className="personal-shell py-9 sm:py-10">
           <Link href="/persons" className="inline-flex items-center gap-2 text-sm text-[#bdb9b0] hover:text-white">
             <ArrowLeft className="size-4" aria-hidden="true" /> 返回人物群像
           </Link>
@@ -82,7 +82,7 @@ export default async function PersonDossierPage({ params }: PersonDossierPagePro
             </div>
             <div>
               <p className="text-xs font-semibold tracking-[0.14em] text-[#c38a82] uppercase">{dossier.eyebrow}</p>
-              <h1 className="mt-4 font-serif text-[clamp(2.08rem,4.16vw,4.16rem)] font-semibold leading-[0.86] tracking-[-0.07em]">{dossier.displayName}</h1>
+              <h1 className="mt-4 font-serif text-[clamp(1.58rem,3.16vw,3.16rem)] font-semibold leading-[0.86] tracking-[-0.07em]">{dossier.displayName}</h1>
               <div className="mt-6 flex flex-wrap gap-2 text-xs font-semibold">
                 <span className="border border-white/20 px-3 py-1.5 text-[#d7cfc2]">{personDossierStatusLabels[dossier.status]}</span>
                 <span
@@ -92,28 +92,28 @@ export default async function PersonDossierPage({ params }: PersonDossierPagePro
                   本地审阅 · 非完整传记
                 </span>
               </div>
-              <p className="mt-7 max-w-4xl font-serif text-2xl leading-relaxed text-[#d7cfc2] sm:text-3xl">{dossier.oneLine}</p>
+              <p className="mt-7 max-w-4xl font-serif text-2xl leading-relaxed text-[#d7cfc2] sm:text-xl">{dossier.oneLine}</p>
             </div>
           </div>
         </div>
       </header>
 
-      <div className="personal-shell py-9 sm:py-14">
+      <div className="personal-shell py-9 sm:py-10">
         <section className="grid gap-10 border-b border-foreground/15 pb-12 lg:grid-cols-[0.75fr_1.25fr] lg:gap-14">
           <div>
             <p className="story-kicker">为什么他在这里</p>
             <h2 className="mt-4 font-serif text-3xl font-semibold">{dossier.roleInStory}</h2>
           </div>
           <div>
-            <p className="text-base leading-[1.8] text-muted-foreground">{dossier.whyHere}</p>
-            <div className="mt-7 flex items-start gap-3 border border-amber-800/20 bg-amber-50 p-5 text-sm leading-[1.8] text-amber-950">
+            <p className="text-[15px] leading-[1.7] text-muted-foreground">{dossier.whyHere}</p>
+            <div className="mt-7 flex items-start gap-3 border border-amber-800/20 bg-amber-50 p-5 text-sm leading-[1.7] text-amber-950">
               <ShieldAlert className="mt-1 size-5 shrink-0" aria-hidden="true" />
               <p>{dossier.identityBoundary}</p>
             </div>
           </div>
         </section>
 
-        <section className="py-12 sm:py-16">
+        <section className="py-8 sm:py-8">
           <div className="border-b border-foreground/15 pb-7">
             <p className="story-kicker">可追溯人生切面</p>
             <h2 className="mt-4 font-serif text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">不是年谱，是几组能回到纸面的节点。</h2>
@@ -133,7 +133,7 @@ export default async function PersonDossierPage({ params }: PersonDossierPagePro
                     </div>
                     <div className="min-w-0">
                       <h3 className="font-serif text-3xl font-semibold tracking-[-0.03em]">{milestone.title}</h3>
-                      <p className="mt-4 text-sm leading-[1.8] text-muted-foreground">{milestone.summary}</p>
+                      <p className="mt-4 text-sm leading-[1.7] text-muted-foreground">{milestone.summary}</p>
                       <div className="mt-6 grid min-w-0 gap-3">
                         {claims.map((claim) => claim && (
                           <div key={claim.claim_id} className="min-w-0 overflow-hidden border border-foreground/15 bg-card p-4">
@@ -141,7 +141,7 @@ export default async function PersonDossierPage({ params }: PersonDossierPagePro
                               <span className="font-mono text-[10px] text-primary">{claim.claim_id}</span>
                               <span className="text-[10px] text-muted-foreground">{claimStatusLabels[claim.status]}</span>
                             </div>
-                            <p className="mt-3 text-sm leading-[1.8]">{claim.quote_or_assertion}</p>
+                            <p className="mt-3 text-sm leading-[1.7]">{claim.quote_or_assertion}</p>
                             <p className="mt-3 text-[10px] font-semibold text-muted-foreground">
                               当前登记 {claim.source_ids.length} 个载体／索引 · 独立来源按 {claim.independence_count} 计
                             </p>
@@ -198,14 +198,14 @@ export default async function PersonDossierPage({ params }: PersonDossierPagePro
           </div>
         </section>
 
-        <section className="grid gap-8 border-y border-foreground/15 py-12 lg:grid-cols-[1fr_0.8fr]">
+        <section className="grid gap-8 border-y border-foreground/15 py-8 lg:grid-cols-[1fr_0.8fr]">
           <div>
             <div className="flex items-center gap-3">
               <Link2 className="size-5 text-primary" aria-hidden="true" />
               <h2 className="font-serif text-3xl font-semibold">材料如何把他们放在一起</h2>
             </div>
             {entityId === 'P-001' ? (
-              <p className="mt-5 text-sm leading-[1.8] text-muted-foreground">这是研究中心人物；请从其他人物档案查看关系如何回到主张。</p>
+              <p className="mt-5 text-sm leading-[1.7] text-muted-foreground">这是研究中心人物；请从其他人物档案查看关系如何回到主张。</p>
             ) : approvedRelations.length > 0 ? (
               <div className="mt-6 space-y-3">
                 <p className="border-l-2 border-primary pl-4 text-xs leading-6 text-muted-foreground">
@@ -226,13 +226,13 @@ export default async function PersonDossierPage({ params }: PersonDossierPagePro
                     <p className="mt-3 border border-amber-800/20 bg-amber-50 px-3 py-2 text-xs font-semibold leading-6 text-amber-950">
                       {relationReaderLabels[edge.edge_status]}
                     </p>
-                    <p className="mt-3 text-sm leading-[1.8]">{card.readerSentence}</p>
+                    <p className="mt-3 text-sm leading-[1.7]">{card.readerSentence}</p>
                     <p className="mt-3 font-mono text-[10px] text-muted-foreground">支持主张：{edge.claim_ids.join(' · ')}</p>
                   </article>
                 ))}
               </div>
             ) : (
-              <p className="mt-5 border border-foreground/15 bg-card p-5 text-sm leading-[1.8] text-muted-foreground">
+              <p className="mt-5 border border-foreground/15 bg-card p-5 text-sm leading-[1.7] text-muted-foreground">
                 当前公开图没有与 P-001 的直接关系边。此人物提供时代或组织背景，不因此被写成苏开元的私交。
               </p>
             )}

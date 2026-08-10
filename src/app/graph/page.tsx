@@ -129,25 +129,25 @@ export default function GraphPage() {
     <div className="graph-story-page overflow-hidden">
       <ProjectSectionNav />
       <section className="border-b border-foreground/15">
-        <div className="personal-shell grid gap-10 py-10 sm:py-14 lg:grid-cols-[minmax(0,0.85fr)_minmax(28rem,1.15fr)] lg:items-end lg:gap-14">
+        <div className="personal-shell grid gap-10 py-7 sm:py-7 lg:grid-cols-[minmax(0,0.85fr)_minmax(28rem,1.15fr)] lg:items-end lg:gap-14">
           <div>
             <p className="personal-kicker">
               <span aria-hidden="true" />
               Story graph
             </p>
-            <h1 className="personal-display mt-7 text-[clamp(1.97rem,3.77vw,3.71rem)] font-semibold leading-[0.94] tracking-[-0.06em]">
+            <h1 className="personal-display mt-7 text-[clamp(1.54rem,2.94vw,2.89rem)] font-semibold leading-[0.94] tracking-[-0.06em]">
               人物与历史，
               <br />
               如何连成证据
             </h1>
           </div>
           <div>
-            <p className="font-serif text-2xl leading-relaxed text-foreground sm:text-3xl">
+            <p className="font-serif text-2xl leading-relaxed text-foreground sm:text-xl">
               先沿故事找到问题，
               <br />
               再回研究图谱查证。
             </p>
-            <p className="mt-6 max-w-xl text-base leading-[1.8] text-muted-foreground">
+            <p className="mt-6 max-w-xl text-[15px] leading-[1.7] text-muted-foreground">
               故事模式用三条路线帮助普通读者进入；研究模式按需加载完整公开审计投影，并把每条关系接回主张与来源定位。
             </p>
             <div className="mt-7 flex flex-wrap gap-x-7 gap-y-3 text-xs text-muted-foreground">
@@ -219,14 +219,14 @@ export default function GraphPage() {
       </section>
 
       {viewMode === 'atlas' ? (
-        <section className="border-b border-foreground/15 py-10 sm:py-14">
+        <section className="border-b border-foreground/15 py-7 sm:py-10">
           <div className="personal-shell">
             <div className="mb-6 max-w-3xl">
               <p className="story-kicker">全图</p>
               <h2 className="mt-3 font-serif text-4xl font-semibold tracking-[-0.04em]">
                 这些人，同时在一张图上。
               </h2>
-              <p className="mt-4 text-sm leading-[1.8] text-muted-foreground">
+              <p className="mt-4 text-sm leading-[1.7] text-muted-foreground">
                 圆点是人，菱形是事件，方框是机构与部队；圆点越大，连接越多。
                 这是旧研究阶段的线索索引，用来看清关系的形状——每一条要当成事实，仍要回到来源与主张。
               </p>
@@ -240,7 +240,7 @@ export default function GraphPage() {
         </section>
       ) : viewMode === 'story' ? (
         <>
-          <section className="border-b border-foreground/15 py-10 sm:py-14">
+          <section className="border-b border-foreground/15 py-7 sm:py-10">
         <div className="personal-shell">
           <div className="grid gap-px overflow-hidden border border-foreground/15 bg-foreground/15 lg:grid-cols-3">
             {graphStoryRoutes.map((routeItem) => (
@@ -259,7 +259,7 @@ export default function GraphPage() {
                   <Route className="size-5 text-primary" strokeWidth={1.5} aria-hidden="true" />
                 </div>
                 <strong className="mt-7 block font-serif text-2xl font-semibold">{routeItem.title}</strong>
-                <span className="mt-3 block text-sm leading-[1.8] text-foreground">{routeItem.path}</span>
+                <span className="mt-3 block text-sm leading-[1.7] text-foreground">{routeItem.path}</span>
                 <span className="mt-4 block text-xs leading-6 text-muted-foreground">{routeItem.note}</span>
               </button>
             ))}
@@ -267,7 +267,7 @@ export default function GraphPage() {
         </div>
       </section>
 
-          <section className="py-9 sm:py-14">
+          <section className="py-9 sm:py-10">
         <div className="personal-shell">
           {activeRoute && (
             <ol className="mb-6 grid gap-px border border-foreground/15 bg-foreground/15 sm:grid-cols-5">
@@ -319,7 +319,7 @@ export default function GraphPage() {
                 <div className="border-b border-foreground/15 pb-6">
                   <p className="text-[10px] font-bold tracking-[0.18em] text-primary uppercase">正在沿路线阅读</p>
                   <h2 className="mt-3 font-serif text-2xl font-semibold">{activeRoute.title}</h2>
-                  <p className="mt-3 text-sm leading-[1.8] text-muted-foreground">{activeRoute.note}</p>
+                  <p className="mt-3 text-sm leading-[1.7] text-muted-foreground">{activeRoute.note}</p>
                 </div>
               )}
 
@@ -329,8 +329,8 @@ export default function GraphPage() {
                     STEP {String(activeStepIndex + 1).padStart(2, '0')} / {activeRoute?.steps.length}
                   </p>
                   <h3 className="mt-2 font-serif text-2xl font-semibold">{activeStep.title}</h3>
-                  <p className="mt-3 text-sm leading-[1.8]">{activeStep.moment}</p>
-                  <p className="mt-4 border-l-2 border-primary pl-3 font-serif text-base leading-[1.8] text-muted-foreground">
+                  <p className="mt-3 text-sm leading-[1.7]">{activeStep.moment}</p>
+                  <p className="mt-4 border-l-2 border-primary pl-3 font-serif text-[15px] leading-[1.7] text-muted-foreground">
                     {activeStep.quote}
                   </p>
                   <dl className="mt-5 space-y-3 text-xs leading-6">
@@ -362,7 +362,7 @@ export default function GraphPage() {
                   {rawNode.variant_label && rawNode.variant_label !== rawNode.canonical_label && (
                     <p className="mt-2 text-sm text-muted-foreground">文献异写：{rawNode.variant_label}</p>
                   )}
-                  <p className="mt-6 border-l-2 border-primary pl-4 text-sm leading-[1.8] text-foreground">
+                  <p className="mt-6 border-l-2 border-primary pl-4 text-sm leading-[1.7] text-foreground">
                     {readerBoundaries[rawNode.entity_id] ?? '这个节点只在当前来源允许的范围内显示。'}
                   </p>
 
@@ -386,7 +386,7 @@ export default function GraphPage() {
                 <div className="flex min-h-72 flex-col justify-center">
                   <CircleHelp className="size-8 text-primary" strokeWidth={1.5} aria-hidden="true" />
                   <h2 className="mt-5 font-serif text-2xl font-semibold">先选一条路线，或点一个节点。</h2>
-                  <p className="mt-3 text-sm leading-[1.8] text-muted-foreground">
+                  <p className="mt-3 text-sm leading-[1.7] text-muted-foreground">
                     右侧会告诉你这个节点是什么、边界在哪里，以及可以回到哪些来源。
                   </p>
                 </div>
@@ -396,35 +396,35 @@ export default function GraphPage() {
         </div>
           </section>
 
-          <section className="border-y border-white/15 bg-[#202827] py-16 text-[#f3efe7] sm:py-14">
+          <section className="border-y border-white/15 bg-[#202827] py-16 text-[#f3efe7] sm:py-10">
         <div className="personal-shell grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:gap-14">
           <div>
             <Network className="size-7 text-[#c38a82]" strokeWidth={1.4} aria-hidden="true" />
             <h2 className="mt-6 font-serif text-4xl font-semibold tracking-[-0.04em]">这张图没有画什么，同样重要。</h2>
           </div>
           <div className="grid gap-6 sm:grid-cols-2">
-            <p className="border-t border-white/20 pt-5 text-sm leading-[1.8] text-[#c9c5bd]">
+            <p className="border-t border-white/20 pt-5 text-sm leading-[1.7] text-[#c9c5bd]">
               没有把蘇開元与蘇凱元直接合并，也没有把 1929 年记录接入当前预览。
             </p>
-            <p className="border-t border-white/20 pt-5 text-sm leading-[1.8] text-[#c9c5bd]">
+            <p className="border-t border-white/20 pt-5 text-sm leading-[1.7] text-[#c9c5bd]">
               没有把“同一图表并列”升级成朋友、同学、上下级或共同任务。
             </p>
-            <p className="border-t border-white/20 pt-5 text-sm leading-[1.8] text-[#c9c5bd]">
+            <p className="border-t border-white/20 pt-5 text-sm leading-[1.7] text-[#c9c5bd]">
               文献、地点和职务节点可以暂时没有边；这不是遗漏，而是证据稀疏度。
             </p>
-            <p className="border-t border-white/20 pt-5 text-sm leading-[1.8] text-[#c9c5bd]">
+            <p className="border-t border-white/20 pt-5 text-sm leading-[1.7] text-[#c9c5bd]">
               图上距离、方位和大小只服务阅读，不表达权力、亲密或因果强弱。
             </p>
           </div>
         </div>
           </section>
 
-          <section className="py-10 sm:py-14">
+          <section className="py-7 sm:py-10">
         <div className="personal-shell flex flex-col justify-between gap-8 border-b border-foreground/15 pb-12 md:flex-row md:items-end">
           <div>
             <BookOpenText className="size-6 text-primary" aria-hidden="true" />
             <h2 className="mt-5 font-serif text-3xl font-semibold">看完图，回到故事与原件。</h2>
-            <p className="mt-3 max-w-xl text-sm leading-[1.8] text-muted-foreground">
+            <p className="mt-3 max-w-xl text-sm leading-[1.7] text-muted-foreground">
               图谱是导航，不是结论本身。真正的判断仍发生在原文、上下文和冲突记录里。
             </p>
           </div>
@@ -442,7 +442,7 @@ export default function GraphPage() {
           </section>
         </>
       ) : (
-        <section className="py-10 sm:py-16">
+        <section className="py-7 sm:py-8">
           <div className="personal-shell">
             <ResearchGraphExplorer />
           </div>
