@@ -5,7 +5,7 @@ import { projectRelease } from '@/content/project';
 
 const personalLinks = [
   { href: '/about', label: '关于我' },
-  { href: '/ai', label: 'AI 与产品' },
+  { href: '/ai', label: '独立开发' },
   { href: '/discover', label: '文章与手记' },
   { href: '/studio', label: '家族史工作室' },
 ] as const;
@@ -30,13 +30,13 @@ export function SiteFooter() {
               <span className="text-xs font-semibold tracking-[0.2em] uppercase">{profile.displayName}</span>
             </div>
             <p className="mt-7 max-w-2xl font-serif text-2xl leading-relaxed sm:text-3xl">
-              把 AI 变成真实产品，
+              一个人，
               <br />
-              也用它重新连接一段家族记忆。
+              把复杂的东西做完整。
             </p>
             <p className="mt-6 max-w-xl text-sm leading-7 text-[#aaa69f]">
-              这里记录 AI、硬件与行业产品实践，也持续更新苏开元家族史研究。
-              每个故事都尽量回到来源，每项合作都从真实问题开始。
+              这里是一条 AI 内容流水线的现场：一本书、一座网站、一套考据方法。
+              每个说法都尽量回到来源，每项合作都从真实问题开始。
             </p>
             <a
               href={`mailto:${profile.email}`}

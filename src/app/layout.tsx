@@ -7,24 +7,25 @@ import { LocalAnalyticsProvider } from '@/components/local-analytics-provider';
 
 export const metadata: Metadata = {
   title: {
-    default: '鉴真小秃驴｜AI 产品与家族史实践',
+    default: '鉴真小秃驴｜独立开发者',
     template: '%s · 鉴真小秃驴',
   },
   description:
-    '鉴真小秃驴的个人网站：用二十多年软硬一体产品经验，探索 AI 如何进入传统行业硬件、系统平台与真实问题；“寻找苏开元”是首个家族史实践。',
+    '独立开发者鉴真小秃驴的个人网站：用 AI 把复杂的东西做完整——538 页的《英雄无名》全书免费读、一条可重跑的考据流水线，以及这座网站本身。',
   keywords: [
     '鉴真小秃驴',
-    'AI 产品',
-    'AI 硬件',
-    '软硬一体',
-    '智能终端',
+    '独立开发者',
+    'AI 工作流',
+    '内容流水线',
+    '知识图谱',
+    '英雄无名',
     '家族史研究',
     '苏开元',
   ],
   authors: [{ name: '鉴真小秃驴' }],
   openGraph: {
-    title: '鉴真小秃驴｜AI 产品与家族史实践',
-    description: '让 AI 真正进入传统行业的设备、系统平台与业务现场。',
+    title: '鉴真小秃驴｜独立开发者',
+    description: '一个人，用 AI 把复杂的东西做完整。',
     type: 'website',
     locale: 'zh_CN',
   },

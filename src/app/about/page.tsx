@@ -45,7 +45,7 @@ export default function AboutPage() {
                 <ArrowRight className="size-4" aria-hidden="true" />
               </a>
               <Link href="/ai" className="story-text-link">
-                看 AI 与产品实践
+                看独立开发实践
                 <ArrowRight className="size-4" aria-hidden="true" />
               </Link>
             </div>
