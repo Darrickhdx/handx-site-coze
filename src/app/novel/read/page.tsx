@@ -30,7 +30,7 @@ export default function FullNovelReaderPage() {
                 《英雄无名》全文
               </h1>
             </div>
-            <div className="max-w-xl text-sm leading-7 text-[#bdb9b0]">
+            <div className="max-w-xl text-sm leading-[1.8] text-[#bdb9b0]">
               <p>{novelManifest.totals.pages} 页按视野分批加载；键盘方向键、Page Up／Down、Home／End 均可翻页。</p>
               <p className="mt-1">稳定锚点格式：#page-N。</p>
               <Link href="/novel/editions" className="mt-2 inline-block text-[#d7cfc2] underline decoration-white/20 underline-offset-4">

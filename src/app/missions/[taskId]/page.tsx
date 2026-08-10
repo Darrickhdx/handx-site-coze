@@ -67,16 +67,16 @@ export default async function MissionDetailPage({ params }: MissionPageProps) {
       <ProjectSectionNav />
 
       <header className="border-b border-foreground/15">
-        <div className="personal-shell min-w-0 py-12 sm:py-20">
+        <div className="personal-shell min-w-0 py-9 sm:py-14">
           <Link href="/missions" className="story-text-link min-h-11">
             <ArrowLeft className="size-4" aria-hidden="true" />
             返回查档现场
           </Link>
 
-          <div className="mt-10 grid min-w-0 gap-12 lg:grid-cols-[minmax(0,1.16fr)_minmax(18rem,0.54fr)] lg:items-end lg:gap-20">
+          <div className="mt-10 grid min-w-0 gap-12 lg:grid-cols-[minmax(0,1.16fr)_minmax(18rem,0.54fr)] lg:items-end lg:gap-14">
             <div className="min-w-0">
               <p className="personal-kicker"><span aria-hidden="true" />查档任务 · {mission.missionId}</p>
-              <h1 className="personal-display mt-6 max-w-5xl break-words text-[clamp(2.8rem,5.1vw,5.3rem)] font-semibold leading-[1.01] tracking-[-0.055em]">
+              <h1 className="personal-display mt-6 max-w-5xl break-words text-[clamp(1.96rem,3.57vw,3.71rem)] font-semibold leading-[1.01] tracking-[-0.055em]">
                 {mission.researchQuestion}
               </h1>
               <p className="mt-7 max-w-3xl font-serif text-xl leading-relaxed text-foreground sm:text-2xl">
@@ -87,7 +87,7 @@ export default async function MissionDetailPage({ params }: MissionPageProps) {
             <aside className="min-w-0 border border-foreground/15 bg-card p-6 sm:p-7">
               <p className="text-xs font-semibold tracking-[0.14em] text-primary uppercase">当前真实状态</p>
               <p className="mt-3 font-serif text-3xl font-semibold">{mission.status.publicLabel}</p>
-              <p className="mt-4 text-sm leading-7 text-muted-foreground">{mission.publicNextStep}</p>
+              <p className="mt-4 text-sm leading-[1.8] text-muted-foreground">{mission.publicNextStep}</p>
               <p className="mt-5 border border-primary/25 bg-primary/5 px-3 py-2 text-xs font-semibold leading-6 text-primary">
                 研究议程 · 非调查结论 · 已取得并核读 = 0
               </p>
@@ -100,7 +100,7 @@ export default async function MissionDetailPage({ params }: MissionPageProps) {
       </header>
 
       <main>
-        <section className="border-b border-foreground/15 py-14 sm:py-20">
+        <section className="border-b border-foreground/15 py-10 sm:py-14">
           <div className="personal-shell grid min-w-0 gap-px overflow-hidden border border-foreground/15 bg-foreground/15 md:grid-cols-2 lg:grid-cols-4">
             <article className="min-w-0 bg-background p-6 sm:p-7">
               <MapPin className="size-6 text-primary" strokeWidth={1.4} aria-hidden="true" />
@@ -121,13 +121,13 @@ export default async function MissionDetailPage({ params }: MissionPageProps) {
           </div>
         </section>
 
-        <section className="py-16 sm:py-24">
-          <div className="personal-shell grid min-w-0 gap-14 lg:grid-cols-[minmax(0,1.08fr)_minmax(18rem,0.62fr)] lg:gap-20">
+        <section className="py-16 sm:py-14">
+          <div className="personal-shell grid min-w-0 gap-14 lg:grid-cols-[minmax(0,1.08fr)_minmax(18rem,0.62fr)] lg:gap-14">
             <div className="min-w-0">
               <div className="border-b border-foreground/15 pb-8">
                 <FileQuestion className="size-8 text-primary" strokeWidth={1.4} aria-hidden="true" />
                 <h2 className="personal-heading mt-7">为什么这项任务重要</h2>
-                <p className="mt-6 max-w-3xl text-base leading-8 text-muted-foreground">
+                <p className="mt-6 max-w-3xl text-base leading-[1.8] text-muted-foreground">
                   当前问题不是“怎样把故事补完整”，而是这份材料能否提供可以比较的原文、上下文或第二身份字段。
                   它可能支持一个更小、更准确的判断，也可能让现有猜测停止。
                 </p>
@@ -136,14 +136,14 @@ export default async function MissionDetailPage({ params }: MissionPageProps) {
               <div className="mt-10">
                 <FileCheck2 className="size-8 text-primary" strokeWidth={1.4} aria-hidden="true" />
                 <h2 className="mt-6 font-serif text-4xl font-semibold tracking-[-0.04em]">拿到什么才算完成</h2>
-                <p className="mt-6 max-w-3xl text-base leading-8">{mission.completionStandard}</p>
-                <p className="mt-4 text-sm leading-7 text-muted-foreground">目标材料类型：{mission.evidenceScope}</p>
+                <p className="mt-6 max-w-3xl text-base leading-[1.8]">{mission.completionStandard}</p>
+                <p className="mt-4 text-sm leading-[1.8] text-muted-foreground">目标材料类型：{mission.evidenceScope}</p>
               </div>
 
               <div className="mt-12 border-l-4 border-accent bg-[#eee8dc] p-6 sm:p-8">
                 <ShieldAlert className="size-6 text-accent" strokeWidth={1.4} aria-hidden="true" />
                 <h2 className="mt-5 font-serif text-2xl font-semibold">即使取得，也不能自动证明什么</h2>
-                <p className="mt-4 text-sm leading-7 text-muted-foreground">{mission.boundary}</p>
+                <p className="mt-4 text-sm leading-[1.8] text-muted-foreground">{mission.boundary}</p>
               </div>
             </div>
 
@@ -182,18 +182,18 @@ export default async function MissionDetailPage({ params }: MissionPageProps) {
           </div>
         </section>
 
-        <section className="border-y border-white/15 bg-[#202827] py-16 text-[#f3efe7] sm:py-24">
+        <section className="border-y border-white/15 bg-[#202827] py-16 text-[#f3efe7] sm:py-14">
           <div className="personal-shell min-w-0">
-            <div className="grid gap-10 lg:grid-cols-[0.62fr_1.38fr] lg:gap-20">
+            <div className="grid gap-10 lg:grid-cols-[0.62fr_1.38fr] lg:gap-14">
               <div>
                 <BookOpenCheck className="size-8 text-[#c38a82]" strokeWidth={1.4} aria-hidden="true" />
                 <p className="personal-kicker personal-kicker-light mt-7"><span aria-hidden="true" />Target detail</p>
                 <h2 className="mt-6 font-serif text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">这次到底申请哪一项</h2>
-                <p className="mt-5 text-sm leading-7 text-[#bdb9b0]">同一目录号的别名、分别申请的材料和同一作品的不同载体，在这里明确分开。</p>
+                <p className="mt-5 text-sm leading-[1.8] text-[#bdb9b0]">同一目录号的别名、分别申请的材料和同一作品的不同载体，在这里明确分开。</p>
               </div>
               <div className="space-y-4">
                 {mission.targets.length > 1 && (
-                  <p className="border border-[#c38a82]/35 bg-[#c38a82]/10 p-4 text-sm leading-7 text-[#d7cfc2]">
+                  <p className="border border-[#c38a82]/35 bg-[#c38a82]/10 p-4 text-sm leading-[1.8] text-[#d7cfc2]">
                     多项申请不等于多条独立证据。取得材料后，仍要按作品家族、形成过程与内容独立性重新判断。
                   </p>
                 )}
@@ -204,7 +204,7 @@ export default async function MissionDetailPage({ params }: MissionPageProps) {
                       <span className="text-xs text-[#aaa69f]">{targetRelationLabels[target.relation]}</span>
                     </div>
                     <h3 className="mt-4 break-words font-serif text-2xl font-semibold">{target.institution}</h3>
-                    <p className="mt-4 break-all text-sm leading-7 text-[#d7cfc2]">{target.catalogReference}</p>
+                    <p className="mt-4 break-all text-sm leading-[1.8] text-[#d7cfc2]">{target.catalogReference}</p>
                     {target.locatorAliases.length > 0 && (
                       <div className="mt-5 border-t border-white/10 pt-4">
                         <p className="text-xs text-[#aaa69f]">同一目标还可能以这些编号出现：</p>
@@ -227,13 +227,13 @@ export default async function MissionDetailPage({ params }: MissionPageProps) {
           </div>
         </section>
 
-        <section className="border-b border-foreground/15 py-16 sm:py-24">
+        <section className="border-b border-foreground/15 py-16 sm:py-14">
           <div className="personal-shell min-w-0">
-            <div className="grid gap-10 lg:grid-cols-[0.62fr_1.38fr] lg:gap-20">
+            <div className="grid gap-10 lg:grid-cols-[0.62fr_1.38fr] lg:gap-14">
               <div>
                 <p className="personal-kicker"><span aria-hidden="true" />Public journal</p>
                 <h2 className="personal-heading mt-6">这项任务的公开研究日志</h2>
-                <p className="mt-5 text-sm leading-7 text-muted-foreground">
+                <p className="mt-5 text-sm leading-[1.8] text-muted-foreground">
                   只记录已经做出的行动判断，不展示申请人信息、受理号、馆员联系方式或未公开回复正文。
                 </p>
               </div>
@@ -242,7 +242,7 @@ export default async function MissionDetailPage({ params }: MissionPageProps) {
                   <article key={`${entry.action}-${index}`} className="border border-foreground/15 bg-card p-6 sm:p-7">
                     <p className="text-xs font-semibold tracking-[0.12em] text-primary uppercase">决策记录 0{index + 1}</p>
                     <h3 className="mt-4 font-serif text-2xl font-semibold leading-snug">{entry.decision}</h3>
-                    <dl className="mt-6 grid gap-5 text-sm leading-7 sm:grid-cols-2">
+                    <dl className="mt-6 grid gap-5 text-sm leading-[1.8] sm:grid-cols-2">
                       <div>
                         <dt className="font-semibold">实际结果</dt>
                         <dd className="mt-2 text-muted-foreground">{entry.outcome}</dd>
@@ -252,14 +252,14 @@ export default async function MissionDetailPage({ params }: MissionPageProps) {
                         <dd className="mt-2 text-muted-foreground">{entry.nextStep}</dd>
                       </div>
                     </dl>
-                    <p className="mt-6 border-l-2 border-primary pl-4 text-sm leading-7 text-muted-foreground">
+                    <p className="mt-6 border-l-2 border-primary pl-4 text-sm leading-[1.8] text-muted-foreground">
                       不能证明：{entry.cannotProve}
                     </p>
                   </article>
                 )) : (
                   <div className="border border-foreground/15 bg-card p-7">
                     <p className="font-serif text-2xl font-semibold">还没有公开行动记录</p>
-                    <p className="mt-3 text-sm leading-7 text-muted-foreground">下一次真实推进后再添加，不用空白模板制造“正在忙”的印象。</p>
+                    <p className="mt-3 text-sm leading-[1.8] text-muted-foreground">下一次真实推进后再添加，不用空白模板制造“正在忙”的印象。</p>
                   </div>
                 )}
               </div>
@@ -267,7 +267,7 @@ export default async function MissionDetailPage({ params }: MissionPageProps) {
           </div>
         </section>
 
-        <section id="public-locator-builder" className="scroll-mt-28 py-16 sm:py-24">
+        <section id="public-locator-builder" className="scroll-mt-28 py-16 sm:py-14">
           <div className="personal-shell min-w-0">
             <PublicLocatorBuilder missionId={mission.missionId} />
           </div>

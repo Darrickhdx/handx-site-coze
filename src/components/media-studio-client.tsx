@@ -214,13 +214,13 @@ export function MediaStudioClient() {
   return (
     <div data-owner-only="local-loopback">
       <section className="border-b border-foreground/15 bg-[#202827] text-[#f3efe7]">
-        <div className="personal-shell grid gap-10 py-14 sm:py-20 lg:grid-cols-[minmax(0,0.8fr)_minmax(28rem,1.2fr)] lg:items-end lg:gap-20">
+        <div className="personal-shell grid gap-10 py-10 sm:py-14 lg:grid-cols-[minmax(0,0.8fr)_minmax(28rem,1.2fr)] lg:items-end lg:gap-14">
           <div>
             <p className="inline-flex items-center gap-2 border border-[#8ea299]/40 px-3 py-1.5 text-[10px] font-semibold tracking-[0.16em] text-[#b7c7bf] uppercase">
               <LockKeyhole className="size-3.5" aria-hidden="true" />
               主人工作台 · 仅本机
             </p>
-            <h1 className="mt-7 font-serif text-[clamp(3.4rem,6.8vw,6.5rem)] font-semibold leading-[0.92] tracking-[-0.06em]">
+            <h1 className="mt-7 font-serif text-[clamp(1.97rem,3.94vw,3.77rem)] font-semibold leading-[0.92] tracking-[-0.06em]">
               媒体矩阵
               <span className="block text-[#c38a82]">审稿台</span>
             </h1>
@@ -231,7 +231,7 @@ export function MediaStudioClient() {
               <br />
               不是未经确认的自动发布。
             </p>
-            <p className="mt-6 max-w-2xl text-sm leading-7 text-[#bdb9b0]">
+            <p className="mt-6 max-w-2xl text-sm leading-[1.8] text-[#bdb9b0]">
               选择母内容、平台和视觉主题，在浏览器中生成封面与平台文案。
               所有包均为 review_only，不连接账号、不保存令牌，也不调用直发接口。
             </p>
@@ -477,8 +477,8 @@ export function MediaStudioClient() {
                   <h3
                     className={`mt-[8%] font-serif font-semibold leading-[1.04] tracking-[-0.045em] ${
                       platform.id === 'long_video'
-                        ? 'text-[clamp(1.6rem,4.5vw,3.3rem)]'
-                        : 'text-[clamp(2rem,7vw,4.5rem)]'
+                        ? 'text-[clamp(1.12rem,3.15vw,2.31rem)]'
+                        : 'text-[clamp(1.04rem,3.64vw,2.34rem)]'
                     }`}
                   >
                     {content.hook}
@@ -628,7 +628,7 @@ export function MediaStudioClient() {
           <PackageCheck className="size-8 text-primary" aria-hidden="true" />
           <div>
             <h2 className="font-serif text-3xl font-semibold">V0.1 发布门禁</h2>
-            <div className="mt-5 grid gap-4 text-sm leading-7 text-muted-foreground sm:grid-cols-2">
+            <div className="mt-5 grid gap-4 text-sm leading-[1.8] text-muted-foreground sm:grid-cols-2">
               <p>
                 只有 source_backed、主张与来源可定位、权利允许审稿复用，且不含未核身份、真人关键因果和家属私密材料的内容可以导出。问题、解释与文学内容必须显式标注，并停留在预览区。
               </p>

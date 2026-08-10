@@ -89,7 +89,7 @@ export default function ControversiesPage() {
         <div>
           <p className="story-kicker">把疑问变成行动</p>
           <h2 className="mt-3 font-serif text-3xl font-semibold">每一个未解问题，都应该对应一项具体查档任务。</h2>
-          <p className="mt-4 max-w-2xl text-sm leading-7 text-muted-foreground">
+          <p className="mt-4 max-w-2xl text-sm leading-[1.8] text-muted-foreground">
             查档现场会告诉你正在找哪份材料、当前走到哪里，以及即使取得它仍不能自动证明什么。
           </p>
         </div>

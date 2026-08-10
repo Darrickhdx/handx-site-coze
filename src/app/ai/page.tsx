@@ -51,20 +51,20 @@ export default function AiProductPage() {
   return (
     <div className="profile-page overflow-hidden">
       <section className="profile-hero border-b border-foreground/15">
-        <div className="personal-shell grid gap-10 py-12 sm:py-16 lg:min-h-[calc(100svh-7.5rem)] lg:grid-cols-[minmax(0,1.18fr)_minmax(21rem,0.64fr)] lg:items-center lg:gap-14">
+        <div className="personal-shell grid gap-10 py-12 sm:py-16 lg:min-h-[30rem] lg:grid-cols-[minmax(0,1.18fr)_minmax(21rem,0.64fr)] lg:items-center lg:gap-14">
           <div>
             <p className="personal-kicker">
               <span aria-hidden="true" />
               AI &amp; Product
             </p>
-            <h1 className="personal-display mt-6 max-w-4xl text-[clamp(3.2rem,5.35vw,5.7rem)] font-semibold leading-[0.97] tracking-[-0.06em]">
+            <h1 className="personal-display mt-6 max-w-4xl text-[clamp(2.24rem,3.74vw,3.99rem)] font-semibold leading-[0.97] tracking-[-0.06em]">
               不从模型出发，
               <span className="mt-2 block text-accent">从真实结果倒推 AI 产品。</span>
             </h1>
             <p className="mt-6 max-w-3xl font-serif text-xl leading-relaxed text-foreground sm:text-2xl">
               {profile.statement}
             </p>
-            <p className="mt-4 max-w-3xl text-base leading-8 text-muted-foreground">
+            <p className="mt-4 max-w-3xl text-base leading-[1.8] text-muted-foreground">
               我把二十多年软硬一体、智能终端与行业系统经验，转化为一套面向 AI
               时代的产品方法：先找到业务中的真实问题，再连接设备、数据、系统与人的工作流程，
               最后用可以验证的结果决定是否继续投入。
@@ -94,7 +94,7 @@ export default function AiProductPage() {
             <h2 className="mt-3 font-serif text-2xl font-semibold leading-tight tracking-[-0.035em] sm:text-3xl">
               判断一个 AI 项目是否值得做，我先问四个问题。
             </h2>
-            <ol className="mt-6 space-y-4 text-sm leading-7 text-muted-foreground">
+            <ol className="mt-6 space-y-4 text-sm leading-[1.8] text-muted-foreground">
               {[
                 '它解决的是谁在现场反复遇到的问题？',
                 '它需要哪些设备、数据和系统共同工作？',
@@ -111,7 +111,7 @@ export default function AiProductPage() {
         </div>
       </section>
 
-      <section id="capabilities" className="scroll-mt-28 py-16 sm:py-24">
+      <section id="capabilities" className="scroll-mt-28 py-16 sm:py-14">
         <div className="personal-shell">
           <div className="max-w-4xl">
             <p className="personal-kicker">
@@ -119,12 +119,12 @@ export default function AiProductPage() {
               Deliverables
             </p>
             <h2 className="personal-heading mt-7">三类能力，都指向可继续执行的下一步。</h2>
-            <p className="mt-6 max-w-3xl text-base leading-8 text-muted-foreground">
+            <p className="mt-6 max-w-3xl text-base leading-[1.8] text-muted-foreground">
               不把“会使用某个工具”当作最终成果。每次合作都应留下清楚的产品判断、系统边界和验证路径。
             </p>
           </div>
 
-          <div className="mt-12 grid gap-px overflow-hidden border border-foreground/15 bg-foreground/15 lg:grid-cols-3">
+          <div className="mt-9 grid gap-px overflow-hidden border border-foreground/15 bg-foreground/15 lg:grid-cols-3">
             {aiPracticeAreas.map((area, index) => {
               const Icon = capabilityIcons[index];
 
@@ -137,12 +137,12 @@ export default function AiProductPage() {
                   <h3 className="mt-8 font-serif text-3xl font-semibold tracking-[-0.035em]">
                     {area.title}
                   </h3>
-                  <p className="mt-5 text-sm leading-7 text-muted-foreground">{area.description}</p>
+                  <p className="mt-5 text-sm leading-[1.8] text-muted-foreground">{area.description}</p>
                   <div className="mt-7 border-t border-foreground/15 pt-6">
                     <p className="text-xs font-semibold tracking-[0.14em] text-primary uppercase">
                       可以带走的结果
                     </p>
-                    <p className="mt-3 text-sm leading-7">{capabilityOutcomes[index]}</p>
+                    <p className="mt-3 text-sm leading-[1.8]">{capabilityOutcomes[index]}</p>
                   </div>
                 </article>
               );
@@ -151,9 +151,9 @@ export default function AiProductPage() {
         </div>
       </section>
 
-      <section className="border-y border-white/15 bg-[#202827] py-16 text-[#f3efe7] sm:py-24">
+      <section className="border-y border-white/15 bg-[#202827] py-16 text-[#f3efe7] sm:py-14">
         <div className="personal-shell">
-          <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20">
+          <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:gap-14">
             <div>
               <p className="personal-kicker personal-kicker-light">
                 <span aria-hidden="true" />
@@ -164,7 +164,7 @@ export default function AiProductPage() {
                 三个产品样本，
                 <span className="block text-[#c38a82]">证明的是方法，不是英雄叙事。</span>
               </h2>
-              <p className="mt-6 max-w-xl text-sm leading-7 text-[#bdb9b0]">
+              <p className="mt-6 max-w-xl text-sm leading-[1.8] text-[#bdb9b0]">
                 这些公开资料可以核验产品和时代背景；站主的任职、负责范围与具体贡献目前以本人履历为主，
                 因此两类信息始终分开呈现。
               </p>
@@ -195,7 +195,7 @@ export default function AiProductPage() {
                       <strong className="text-xs tracking-[0.12em] text-[#d9d4ca] uppercase">
                         公开可核验
                       </strong>
-                      <p className="text-sm leading-7 text-[#c6c1b8]">{item.projectFact}</p>
+                      <p className="text-sm leading-[1.8] text-[#c6c1b8]">{item.projectFact}</p>
                     </div>
                   )}
 
@@ -203,7 +203,7 @@ export default function AiProductPage() {
                     <strong className="text-xs tracking-[0.12em] text-[#d9d4ca] uppercase">
                       本人履历
                     </strong>
-                    <p className="text-sm leading-7 text-[#aaa69f]">{item.description}</p>
+                    <p className="text-sm leading-[1.8] text-[#aaa69f]">{item.description}</p>
                   </div>
 
                   {item.evidenceBoundary && (
@@ -221,12 +221,12 @@ export default function AiProductPage() {
         </div>
       </section>
 
-      <section className="border-y border-foreground/15 bg-[#eee8dc] py-16 sm:py-20">
-        <div className="personal-shell grid gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(18rem,0.8fr)] lg:items-end lg:gap-20">
+      <section className="border-y border-foreground/15 bg-[#eee8dc] py-11 sm:py-14">
+        <div className="personal-shell grid gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(18rem,0.8fr)] lg:items-end lg:gap-14">
           <div>
             <p className="personal-kicker"><span aria-hidden="true" />Method in public</p>
             <h2 className="personal-heading mt-6">想看 AI 怎样参与一项真实、长期又不能乱猜的工程？</h2>
-            <p className="mt-6 max-w-3xl text-base leading-8 text-muted-foreground">
+            <p className="mt-6 max-w-3xl text-base leading-[1.8] text-muted-foreground">
               AI 家族史实验室把资料去重、身份分流、调档路线与叙事边界做成可操作工具。
               第一个入口只用五个选择题判断研究起点，不上传材料、不保存答案、不调用外部模型。
             </p>
@@ -244,9 +244,9 @@ export default function AiProductPage() {
         </div>
       </section>
 
-      <section className="py-16 sm:py-24">
+      <section className="py-16 sm:py-14">
         <div className="personal-shell">
-          <div className="grid gap-10 lg:grid-cols-[0.68fr_1.32fr] lg:gap-20">
+          <div className="grid gap-10 lg:grid-cols-[0.68fr_1.32fr] lg:gap-14">
             <div>
               <p className="personal-kicker">
                 <span aria-hidden="true" />
@@ -254,7 +254,7 @@ export default function AiProductPage() {
               </p>
               <ShieldCheck className="mt-8 size-8 text-primary" strokeWidth={1.4} aria-hidden="true" />
               <h2 className="personal-heading mt-6">先把问题说清楚，再决定做多大。</h2>
-              <p className="mt-6 max-w-xl text-sm leading-7 text-muted-foreground">
+              <p className="mt-6 max-w-xl text-sm leading-[1.8] text-muted-foreground">
                 合作可以从一次短诊断开始。没有必要为了使用 AI 而扩大项目；
                 如果当前问题不适合 AI，也应该尽早得到这个结论。
               </p>
@@ -268,7 +268,7 @@ export default function AiProductPage() {
                     <h3 className="font-serif text-2xl font-semibold tracking-[-0.025em]">
                       {mode.title}
                     </h3>
-                    <p className="mt-3 max-w-3xl text-sm leading-7 text-muted-foreground">
+                    <p className="mt-3 max-w-3xl text-sm leading-[1.8] text-muted-foreground">
                       {mode.description}
                     </p>
                     <p className="mt-4 flex items-start gap-2 text-sm font-semibold text-foreground">
@@ -286,7 +286,7 @@ export default function AiProductPage() {
         </div>
       </section>
 
-      <section className="border-t border-foreground/15 bg-[#eee8dc] py-16 sm:py-24">
+      <section className="border-t border-foreground/15 bg-[#eee8dc] py-16 sm:py-14">
         <div className="personal-shell grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
           <div>
             <p className="personal-kicker">
@@ -296,7 +296,7 @@ export default function AiProductPage() {
             <h2 className="personal-heading mt-7 max-w-4xl">
               如果你手里正有一个“技术看起来可行，但产品还没想清楚”的问题，我们可以从它开始。
             </h2>
-            <p className="mt-6 max-w-2xl text-sm leading-7 text-muted-foreground">
+            <p className="mt-6 max-w-2xl text-sm leading-[1.8] text-muted-foreground">
               来信时只需说明场景、目前最困扰你的问题，以及你希望先验证什么。无需准备完整方案。
             </p>
           </div>

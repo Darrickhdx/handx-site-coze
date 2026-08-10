@@ -31,7 +31,7 @@ export default function HomePage() {
   return (
     <div className="personal-home overflow-hidden">
       <section className="personal-hero border-b border-foreground/15">
-        <div className="personal-shell grid min-h-[calc(100svh-7.5rem)] items-center gap-10 py-10 lg:grid-cols-[minmax(0,1.02fr)_minmax(24rem,0.72fr)] lg:gap-16 lg:py-12">
+        <div className="personal-shell grid min-h-[30rem] items-center gap-10 py-10 lg:grid-cols-[minmax(0,1.02fr)_minmax(24rem,0.72fr)] lg:gap-12 lg:py-12">
           <div className="relative z-10 max-w-[45rem]">
             <p className="personal-kicker">
               <span aria-hidden="true" />
@@ -40,14 +40,14 @@ export default function HomePage() {
             <p className="mt-6 text-sm font-semibold tracking-[0.15em] text-primary uppercase">
               {profile.displayName}
             </p>
-            <h1 className="personal-display mt-4 text-[clamp(3.15rem,4.9vw,5.2rem)] font-semibold leading-[1.01] tracking-[-0.058em]">
+            <h1 className="personal-display mt-4 text-[clamp(2.5rem,3.9vw,3.6rem)] font-semibold leading-[1.01] tracking-[-0.058em]">
               一个人，
               <span className="block text-accent">把复杂的东西做完整。</span>
             </h1>
             <p className="mt-6 max-w-2xl font-serif text-xl leading-relaxed text-foreground sm:text-2xl">
               {personaBridge}
             </p>
-            <p className="mt-4 max-w-2xl text-base leading-8 text-muted-foreground">
+            <p className="mt-4 max-w-2xl text-base leading-[1.8] text-muted-foreground">
               我用 AI 做完整的东西：一本 538 页的书、一座自己写的网站、一条能重复跑的考据流水线——
               起点是一个被历史漏掉的人。
             </p>
@@ -73,7 +73,7 @@ export default function HomePage() {
 
           <Link
             href="/about"
-            className="group relative mx-auto w-full max-w-[27rem] border border-foreground/15 bg-card p-3 shadow-float"
+            className="group relative mx-auto w-full max-w-[21rem] border border-foreground/15 bg-card p-3 shadow-float"
             aria-label={`认识${profile.displayName}`}
           >
             <div className="relative aspect-[4/5] overflow-hidden bg-muted">
@@ -127,22 +127,22 @@ export default function HomePage() {
                   {route.title}
                   <ArrowRight className="size-4 text-primary transition-transform group-hover:translate-x-1" aria-hidden="true" />
                 </strong>
-                <span className="mt-3 block text-sm leading-7 text-muted-foreground">{route.description}</span>
+                <span className="mt-3 block text-sm leading-[1.8] text-muted-foreground">{route.description}</span>
               </Link>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="border-b border-foreground/15 py-16 sm:py-20">
-        <div className="personal-shell grid gap-10 lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)] lg:items-start lg:gap-20">
+      <section className="border-b border-foreground/15 py-11 sm:py-14">
+        <div className="personal-shell grid gap-10 lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)] lg:items-start lg:gap-14">
           <div>
             <p className="personal-kicker">
               <span aria-hidden="true" />
               What I bring
             </p>
             <h2 className="personal-heading mt-6">先做完，再说做得多新。</h2>
-            <p className="mt-6 max-w-lg text-base leading-8 text-muted-foreground">
+            <p className="mt-6 max-w-lg text-base leading-[1.8] text-muted-foreground">
               一个能力有没有用，看它能不能一路走到成品：能重跑、能核对、能交给别人读。
               下面这些数字是交付物，不是简历。
             </p>
@@ -150,9 +150,9 @@ export default function HomePage() {
           <div>
             <div className="grid gap-px overflow-hidden border border-foreground/15 bg-foreground/15 sm:grid-cols-3">
               {trustProofs.map((item) => (
-                <div key={item.value} className="bg-background p-6 sm:min-h-48 sm:p-7">
+                <div key={item.value} className="bg-background p-6 sm:min-h-40 sm:p-7">
                   <strong className="font-serif text-3xl text-primary sm:text-4xl">{item.value}</strong>
-                  <p className="mt-5 text-sm leading-7 text-muted-foreground">{item.label}</p>
+                  <p className="mt-5 text-sm leading-[1.8] text-muted-foreground">{item.label}</p>
                 </div>
               ))}
             </div>
@@ -163,8 +163,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="personal-feature border-y border-white/15 py-20 text-[#f3efe7] sm:py-28">
-        <div className="personal-shell grid gap-14 lg:grid-cols-[minmax(0,0.86fr)_minmax(28rem,1.14fr)] lg:items-center lg:gap-20">
+      <section className="personal-feature border-y border-white/15 py-12 text-[#f3efe7] sm:py-16">
+        <div className="personal-shell grid gap-14 lg:grid-cols-[minmax(0,0.86fr)_minmax(28rem,1.14fr)] lg:items-center lg:gap-14">
           <div>
             <p className="personal-kicker personal-kicker-light">
               <span aria-hidden="true" />
@@ -174,7 +174,7 @@ export default function HomePage() {
             <p className="mt-4 font-serif text-2xl leading-relaxed text-[#d7cfc2] sm:text-3xl">
               一张 1936 年的校刊，带回一个被历史遗漏的名字。
             </p>
-            <p className="mt-8 max-w-2xl text-base leading-8 text-[#bdb9b0]">
+            <p className="mt-8 max-w-2xl text-base leading-[1.8] text-[#bdb9b0]">
               苏开元是我的曾祖父。家族记忆里有他，朱自清的《绥行纪略》中也出现了“苏开元团长”。
               这项计划从一份可以核对的原件开始，慢慢寻找人物、事件和时代之间真正站得住的连接。
             </p>
@@ -220,9 +220,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="border-b border-foreground/15 py-20 sm:py-28">
+      <section className="border-b border-foreground/15 py-12 sm:py-16">
         <div className="personal-shell">
-          <div className="grid gap-7 border-b border-foreground/15 pb-9 lg:grid-cols-[0.72fr_1.28fr] lg:items-end lg:gap-20">
+          <div className="grid gap-7 border-b border-foreground/15 pb-9 lg:grid-cols-[0.72fr_1.28fr] lg:items-end lg:gap-14">
             <div>
               <p className="personal-kicker">
                 <span aria-hidden="true" />
@@ -230,7 +230,7 @@ export default function HomePage() {
               </p>
               <h2 className="personal-heading mt-6">我能把 AI 带到哪里。</h2>
             </div>
-            <p className="max-w-2xl text-base leading-8 text-muted-foreground">
+            <p className="max-w-2xl text-base leading-[1.8] text-muted-foreground">
               不是把“AI”贴在旧产品上，而是重新理解现场、能力边界与交付链路。
             </p>
           </div>
@@ -239,14 +239,14 @@ export default function HomePage() {
             {aiProofs.map((item) => {
               const Icon = item.icon;
               return (
-                <article key={item.number} className="flex min-h-[24rem] flex-col bg-background p-7 sm:p-9">
+                <article key={item.number} className="flex min-h-[19rem] flex-col bg-background p-7 sm:p-9">
                   <div className="flex items-center justify-between text-primary">
                     <span className="font-serif text-3xl italic text-primary/35">{item.number}</span>
                     <Icon className="size-6" strokeWidth={1.4} aria-hidden="true" />
                   </div>
                   <p className="mt-10 text-[11px] font-bold tracking-[0.18em] text-primary uppercase">{item.eyebrow}</p>
                   <h3 className="mt-4 font-serif text-2xl font-semibold leading-snug tracking-[-0.025em]">{item.title}</h3>
-                  <p className="mt-5 text-sm leading-7 text-muted-foreground">{item.description}</p>
+                  <p className="mt-5 text-sm leading-[1.8] text-muted-foreground">{item.description}</p>
                   <p className="mt-auto border-t border-foreground/15 pt-5 text-xs leading-6 text-muted-foreground">{item.note}</p>
                 </article>
               );
@@ -262,9 +262,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="py-20 sm:py-28">
+      <section className="py-12 sm:py-16">
         <div className="personal-shell">
-          <div className="grid gap-8 border-b border-foreground/15 pb-9 lg:grid-cols-[0.72fr_1.28fr] lg:items-end lg:gap-20">
+          <div className="grid gap-8 border-b border-foreground/15 pb-9 lg:grid-cols-[0.72fr_1.28fr] lg:items-end lg:gap-14">
             <div>
               <p className="personal-kicker">
                 <span aria-hidden="true" />
@@ -272,7 +272,7 @@ export default function HomePage() {
               </p>
               <h2 className="personal-heading mt-6">从这里继续认识我。</h2>
             </div>
-            <p className="max-w-2xl text-base leading-8 text-muted-foreground">
+            <p className="max-w-2xl text-base leading-[1.8] text-muted-foreground">
               三条路线分别给想了解苏开元、想看 AI 工作方法和想进入小说世界的读者。
             </p>
           </div>
@@ -298,7 +298,7 @@ export default function HomePage() {
                       {item.title}
                     </strong>
                   </span>
-                  <span className="text-sm leading-7 text-muted-foreground">{item.description}</span>
+                  <span className="text-sm leading-[1.8] text-muted-foreground">{item.description}</span>
                   <span className="flex items-center justify-between gap-4 text-xs text-muted-foreground sm:block">
                     {item.meta}
                     <ArrowRight className="size-4 text-primary transition-transform group-hover:translate-x-1 sm:mt-3" aria-hidden="true" />
@@ -308,7 +308,7 @@ export default function HomePage() {
             })}
           </div>
 
-          <div className="mt-14 grid overflow-hidden border border-foreground/15 bg-card lg:grid-cols-[1fr_auto] lg:items-center">
+          <div className="mt-10 grid overflow-hidden border border-foreground/15 bg-card lg:grid-cols-[1fr_auto] lg:items-center">
             <div className="p-7 sm:p-10">
               <p className="personal-kicker">
                 <span aria-hidden="true" />
@@ -317,7 +317,7 @@ export default function HomePage() {
               <h2 className="mt-6 max-w-3xl font-serif text-3xl font-semibold leading-tight tracking-[-0.035em] sm:text-4xl">
                 如果你正在做 AI 产品，或也想把一段家族历史重新整理出来。
               </h2>
-              <p className="mt-5 max-w-2xl text-sm leading-7 text-muted-foreground">
+              <p className="mt-5 max-w-2xl text-sm leading-[1.8] text-muted-foreground">
                 欢迎交流 AI 与传统行业、软硬一体产品、内容合作与家族史研究，也欢迎提供与苏开元有关的可核线索。
               </p>
             </div>

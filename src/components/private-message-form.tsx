@@ -129,7 +129,7 @@ export function PrivateMessageForm() {
           maxLength={2000}
           rows={6}
           placeholder="可以聊 AI、产品或一般合作；历史线索请只写公开出处，不要粘贴原件和私人信息。"
-          className="resize-y border border-white/20 bg-[#17201f] px-3 py-3 text-sm leading-7 text-white outline-none transition placeholder:text-white/30 focus:border-[#d5a09a]"
+          className="resize-y border border-white/20 bg-[#17201f] px-3 py-3 text-sm leading-[1.8] text-white outline-none transition placeholder:text-white/30 focus:border-[#d5a09a]"
         />
       </label>
 

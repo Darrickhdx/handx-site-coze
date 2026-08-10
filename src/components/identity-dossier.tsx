@@ -111,7 +111,7 @@ export function IdentityDossier() {
         id="identity-dossier-panel"
         role="tabpanel"
         aria-labelledby={`dossier-tab-${active.id}`}
-        className="py-12 sm:py-20"
+        className="py-9 sm:py-14"
       >
         <div className="personal-shell grid gap-8 xl:grid-cols-[minmax(0,1.05fr)_minmax(25rem,0.95fr)] xl:gap-14">
           <div className="relative min-h-[32rem] overflow-hidden border border-foreground/15 bg-[#e9e3d8] p-5 shadow-[0_24px_70px_rgba(31,35,33,0.12)] sm:p-8">
@@ -190,7 +190,7 @@ export function IdentityDossier() {
                   <Check className="size-4" aria-hidden="true" />
                   这张纸能确认
                 </div>
-                <ul className="mt-4 space-y-3 text-sm leading-7 text-muted-foreground">
+                <ul className="mt-4 space-y-3 text-sm leading-[1.8] text-muted-foreground">
                   {active.canConfirm.map((item) => <li key={item}>{item}</li>)}
                 </ul>
               </div>
@@ -199,7 +199,7 @@ export function IdentityDossier() {
                   <X className="size-4" aria-hidden="true" />
                   它仍不能证明
                 </div>
-                <ul className="mt-4 space-y-3 text-sm leading-7 text-muted-foreground">
+                <ul className="mt-4 space-y-3 text-sm leading-[1.8] text-muted-foreground">
                   {active.cannotConfirm.map((item) => <li key={item}>{item}</li>)}
                 </ul>
               </div>
@@ -217,7 +217,7 @@ export function IdentityDossier() {
                   </span>
                 ))}
               </div>
-              <p className="mt-5 flex gap-3 border-t border-foreground/15 pt-5 text-sm leading-7 text-muted-foreground">
+              <p className="mt-5 flex gap-3 border-t border-foreground/15 pt-5 text-sm leading-[1.8] text-muted-foreground">
                 <CircleHelp className="mt-1 size-4 shrink-0 text-primary" aria-hidden="true" />
                 {active.question}
               </p>
@@ -227,7 +227,7 @@ export function IdentityDossier() {
               <p className="text-xs font-semibold tracking-[0.14em] text-primary uppercase">
                 记录你的阅读倾向
               </p>
-              <p className="mt-3 text-sm leading-7 text-muted-foreground">
+              <p className="mt-3 text-sm leading-[1.8] text-muted-foreground">
                 这不是投票，也不会改变任何史料或研究结论。它只是帮助你在阅读六份材料时保留自己的判断过程。
               </p>
               <div className="mt-5 grid gap-2">
@@ -277,9 +277,9 @@ export function IdentityDossier() {
         </div>
       </section>
 
-      <section className="border-y border-foreground/15 bg-[#eee9df] py-14 sm:py-20">
+      <section className="border-y border-foreground/15 bg-[#eee9df] py-10 sm:py-14">
         <div className="personal-shell">
-          <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end lg:gap-20">
+          <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end lg:gap-14">
             <div>
               <p className="personal-kicker">
                 <span aria-hidden="true" />
@@ -290,7 +290,7 @@ export function IdentityDossier() {
                 如果把两个名字合并，会发生什么？
               </h2>
             </div>
-            <p className="max-w-2xl text-base leading-8 text-muted-foreground">
+            <p className="max-w-2xl text-base leading-[1.8] text-muted-foreground">
               先看研究库如何把两条姓名轨分开保存，再切换到“假设桥成立”。后者是一种检查矛盾的研究演示，不是传记结论。
             </p>
           </div>
@@ -330,7 +330,7 @@ export function IdentityDossier() {
                   <h3 className="font-serif text-3xl font-semibold">{track.label}</h3>
                   <ol className="mt-6 space-y-0">
                     {track.records.map((record) => (
-                      <li key={record} className="relative border-l border-primary/35 pb-6 pl-6 text-sm leading-7 text-muted-foreground last:pb-0">
+                      <li key={record} className="relative border-l border-primary/35 pb-6 pl-6 text-sm leading-[1.8] text-muted-foreground last:pb-0">
                         <span className="absolute -left-1.5 top-2 size-3 rounded-full border-2 border-background bg-primary" aria-hidden="true" />
                         {record}
                       </li>
@@ -348,14 +348,14 @@ export function IdentityDossier() {
                 <p className="text-xs font-semibold tracking-[0.14em] text-primary uppercase">Hypothesis view</p>
                 <ol className="mt-7 space-y-0">
                   {identityTrackComparison.assumedBridge.map((record) => (
-                    <li key={record} className="relative border-l border-primary/35 pb-7 pl-7 text-sm leading-7 text-foreground last:pb-0">
+                    <li key={record} className="relative border-l border-primary/35 pb-7 pl-7 text-sm leading-[1.8] text-foreground last:pb-0">
                       <span className="absolute -left-1.5 top-2 size-3 rounded-full border-2 border-background bg-primary" aria-hidden="true" />
                       {record}
                     </li>
                   ))}
                 </ol>
               </div>
-              <p className="mt-8 border-l-2 border-amber-700 bg-amber-50 px-5 py-4 text-sm leading-7 text-amber-950">
+              <p className="mt-8 border-l-2 border-amber-700 bg-amber-50 px-5 py-4 text-sm leading-[1.8] text-amber-950">
                 {identityTrackComparison.warning}
               </p>
             </div>
@@ -363,8 +363,8 @@ export function IdentityDossier() {
         </div>
       </section>
 
-      <section id="dossier-verdict" className="scroll-mt-28 border-y border-white/15 bg-[#202827] py-14 text-[#f3efe7] sm:py-20">
-        <div className="personal-shell grid gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20">
+      <section id="dossier-verdict" className="scroll-mt-28 border-y border-white/15 bg-[#202827] py-14 text-[#f3efe7] sm:py-14">
+        <div className="personal-shell grid gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-14">
           <div>
             <p className="personal-kicker personal-kicker-light">
               <span aria-hidden="true" />
@@ -374,10 +374,10 @@ export function IdentityDossier() {
             <h2 className="mt-6 font-serif text-4xl font-semibold leading-tight tracking-[-0.04em] sm:text-5xl">
               {identityDossierVerdict.label}
             </h2>
-            <p className="mt-6 text-sm leading-7 text-[#bdb9b0]">{identityDossierVerdict.summary}</p>
+            <p className="mt-6 text-sm leading-[1.8] text-[#bdb9b0]">{identityDossierVerdict.summary}</p>
             <div className="mt-7 border border-white/15 p-5">
               <p className="text-xs font-semibold tracking-[0.14em] text-[#c38a82] uppercase">你的暂时判断</p>
-              <p className="mt-3 text-sm leading-7 text-[#d7cfc2]">{summarizeJudgments(judgments)}</p>
+              <p className="mt-3 text-sm leading-[1.8] text-[#d7cfc2]">{summarizeJudgments(judgments)}</p>
               <p className="mt-3 text-xs leading-6 text-[#aaa69f]">
                 项目判断固定在上方，不会因你的选择或其他读者意见而改变。
               </p>
@@ -388,7 +388,7 @@ export function IdentityDossier() {
               <p className="text-xs font-semibold tracking-[0.15em] text-[#c38a82] uppercase">已经建立</p>
               <ul className="mt-5 space-y-4">
                 {identityDossierVerdict.established.map((item) => (
-                  <li key={item} className="flex gap-3 border-t border-white/15 pt-4 text-sm leading-7 text-[#d7cfc2]">
+                  <li key={item} className="flex gap-3 border-t border-white/15 pt-4 text-sm leading-[1.8] text-[#d7cfc2]">
                     <Check className="mt-1 size-4 shrink-0 text-[#c38a82]" aria-hidden="true" />
                     {item}
                   </li>
@@ -399,7 +399,7 @@ export function IdentityDossier() {
               <p className="text-xs font-semibold tracking-[0.15em] text-[#c38a82] uppercase">仍然缺少</p>
               <ul className="mt-5 space-y-4">
                 {identityDossierVerdict.missing.map((item) => (
-                  <li key={item} className="flex gap-3 border-t border-white/15 pt-4 text-sm leading-7 text-[#d7cfc2]">
+                  <li key={item} className="flex gap-3 border-t border-white/15 pt-4 text-sm leading-[1.8] text-[#d7cfc2]">
                     <FileSearch className="mt-1 size-4 shrink-0 text-[#c38a82]" aria-hidden="true" />
                     {item}
                   </li>
@@ -410,7 +410,7 @@ export function IdentityDossier() {
         </div>
       </section>
 
-      <section className="py-14 sm:py-20">
+      <section className="py-10 sm:py-14">
         <div className="personal-shell grid gap-8 lg:grid-cols-[minmax(0,1fr)_24rem] lg:items-end">
           <div>
             <p className="story-kicker">继续探索</p>

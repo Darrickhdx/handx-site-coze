@@ -87,13 +87,13 @@ export function SiteStatusDashboard() {
   return (
     <main data-status-contract={siteStatus.schema_version}>
       <section className="border-b border-foreground/15">
-        <div className="personal-shell grid gap-10 py-16 sm:py-24 lg:grid-cols-[minmax(0,0.85fr)_minmax(26rem,1.15fr)] lg:items-end lg:gap-20">
+        <div className="personal-shell grid gap-10 py-16 sm:py-14 lg:grid-cols-[minmax(0,0.85fr)_minmax(26rem,1.15fr)] lg:items-end lg:gap-14">
           <div>
             <p className="personal-kicker">
               <span aria-hidden="true" />
               Data &amp; service status
             </p>
-            <h1 className="personal-display mt-7 text-[clamp(3.1rem,6.3vw,6.2rem)] font-semibold leading-[0.94] tracking-[-0.06em]">
+            <h1 className="personal-display mt-7 text-[clamp(1.80rem,3.65vw,3.60rem)] font-semibold leading-[0.94] tracking-[-0.06em]">
               版本，
               <br />
               不是分数。
@@ -103,7 +103,7 @@ export function SiteStatusDashboard() {
             <p className="font-serif text-2xl leading-relaxed text-foreground sm:text-3xl">
               把数据代次、产品状态、权利门槛和服务开关分开看。
             </p>
-            <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
+            <p className="mt-6 max-w-2xl text-base leading-[1.8] text-muted-foreground">
               这里展示的是“当前系统正在使用哪一份数据、哪些东西只在本机、哪些入口仍然关闭”。
               数量只是清单规模，绝不是苏开元历史研究的完成比例。
             </p>
@@ -116,16 +116,16 @@ export function SiteStatusDashboard() {
         </div>
       </section>
 
-      <section className="py-16 sm:py-24" aria-labelledby="service-status-heading">
+      <section className="py-16 sm:py-14" aria-labelledby="service-status-heading">
         <div className="personal-shell">
-          <div className="grid gap-10 lg:grid-cols-[minmax(18rem,0.7fr)_minmax(0,1.3fr)] lg:gap-20">
+          <div className="grid gap-10 lg:grid-cols-[minmax(18rem,0.7fr)_minmax(0,1.3fr)] lg:gap-14">
             <div>
               <CircleSlash2 className="size-8 text-primary" strokeWidth={1.5} aria-hidden="true" />
               <p className="story-kicker mt-6">服务开放状态</p>
               <h2 id="service-status-heading" className="mt-4 font-serif text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">
                 现在没有“悄悄开启”的能力。
               </h2>
-              <p className="mt-6 text-base leading-8 text-muted-foreground">
+              <p className="mt-6 text-base leading-[1.8] text-muted-foreground">
                 当前服务模式只保留为“研究需求访谈”的产品方向，入口尚未开放；页面不会接收上传、调用模型或代替你发布内容。
               </p>
             </div>
@@ -154,7 +154,7 @@ export function SiteStatusDashboard() {
         </div>
       </section>
 
-      <section className="border-y border-white/15 bg-[#202827] py-16 text-[#f3efe7] sm:py-24" aria-labelledby="data-generations-heading">
+      <section className="border-y border-white/15 bg-[#202827] py-16 text-[#f3efe7] sm:py-14" aria-labelledby="data-generations-heading">
         <div className="personal-shell">
           <div className="max-w-3xl">
             <Database className="size-8 text-[#c38a82]" strokeWidth={1.5} aria-hidden="true" />
@@ -162,7 +162,7 @@ export function SiteStatusDashboard() {
             <h2 id="data-generations-heading" className="mt-4 font-serif text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">
               三份清单，回答三个不同问题。
             </h2>
-            <p className="mt-6 text-base leading-8 text-[#d7cfc2]">
+            <p className="mt-6 text-base leading-[1.8] text-[#d7cfc2]">
               公开预览子集、审计图谱和查档行动基线不能相互替代，也不能把它们的数量相加成研究进度。
             </p>
           </div>
@@ -186,7 +186,7 @@ export function SiteStatusDashboard() {
                     </div>
                   ))}
                 </dl>
-                <p className="mt-6 border-t border-white/15 pt-5 text-sm leading-7 text-[#d7cfc2]">{generation.boundary}</p>
+                <p className="mt-6 border-t border-white/15 pt-5 text-sm leading-[1.8] text-[#d7cfc2]">{generation.boundary}</p>
                 <p className="mt-4 text-xs text-[#aca79f]">数据日期：{displayDate(generation.generated_at)}</p>
               </article>
             ))}
@@ -194,16 +194,16 @@ export function SiteStatusDashboard() {
         </div>
       </section>
 
-      <section className="py-16 sm:py-24" aria-labelledby="product-artifacts-heading">
+      <section className="py-16 sm:py-14" aria-labelledby="product-artifacts-heading">
         <div className="personal-shell">
-          <div className="grid gap-10 lg:grid-cols-[minmax(18rem,0.7fr)_minmax(0,1.3fr)] lg:gap-20">
+          <div className="grid gap-10 lg:grid-cols-[minmax(18rem,0.7fr)_minmax(0,1.3fr)] lg:gap-14">
             <div>
               <BookOpen className="size-8 text-primary" strokeWidth={1.5} aria-hidden="true" />
               <p className="story-kicker mt-6">产品构建状态</p>
               <h2 id="product-artifacts-heading" className="mt-4 font-serif text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">
                 能看见，不等于能公开。
               </h2>
-              <p className="mt-6 text-base leading-8 text-muted-foreground">
+              <p className="mt-6 text-base leading-[1.8] text-muted-foreground">
                 阅读器、下一版候选、专题和媒体工作台各自拥有独立门槛。这里的“通过／阻断”只描述工程和编辑门禁。
               </p>
             </div>
@@ -226,7 +226,7 @@ export function SiteStatusDashboard() {
                   {artifact.gate_state ? (
                     <div className="mt-6 border border-primary/25 bg-primary/[0.04] p-5">
                       <p className="text-sm font-semibold">版本切换门槛</p>
-                      <p className="mt-2 text-sm leading-7 text-muted-foreground">
+                      <p className="mt-2 text-sm leading-[1.8] text-muted-foreground">
                         共 {artifact.gate_state.total} 项：{artifact.gate_state.passed} 项已具备，{artifact.gate_state.blocked} 项仍阻断整体切换。
                         这不是历史研究完成率。
                       </p>
@@ -239,7 +239,7 @@ export function SiteStatusDashboard() {
         </div>
       </section>
 
-      <section className="border-t border-foreground/15 py-16 sm:py-24" aria-labelledby="rights-status-heading">
+      <section className="border-t border-foreground/15 py-16 sm:py-14" aria-labelledby="rights-status-heading">
         <div className="personal-shell">
           <div className="max-w-3xl">
             <FileKey2 className="size-8 text-primary" strokeWidth={1.5} aria-hidden="true" />
@@ -276,19 +276,19 @@ export function SiteStatusDashboard() {
                 <LockKeyhole className="size-5 text-primary" strokeWidth={1.5} aria-hidden="true" />
                 <p className="mt-8 text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">{item.title}</p>
                 <h3 className="mt-3 font-serif text-2xl font-semibold">{item.value}</h3>
-                <p className="mt-5 text-sm leading-7 text-muted-foreground">{item.detail}</p>
+                <p className="mt-5 text-sm leading-[1.8] text-muted-foreground">{item.detail}</p>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="border-t border-foreground/15 py-16 sm:py-20">
+      <section className="border-t border-foreground/15 py-11 sm:py-14">
         <div className="personal-shell grid gap-10 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-end">
           <div>
             <Fingerprint className="size-7 text-primary" strokeWidth={1.5} aria-hidden="true" />
             <h2 className="mt-6 font-serif text-3xl font-semibold tracking-[-0.035em] sm:text-4xl">这份状态也有自己的指纹。</h2>
-            <p className="mt-5 max-w-3xl text-sm leading-7 text-muted-foreground">
+            <p className="mt-5 max-w-3xl text-sm leading-[1.8] text-muted-foreground">
               它由 {siteStatus.input_fingerprints.length} 份本地清单和内容合同确定性聚合；任一输入发生变化而未重新生成时，验证会失败关闭。
               最后汇总的数据时间为 {displayDate(siteStatus.assembled_at)}。
             </p>

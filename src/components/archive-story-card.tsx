@@ -21,12 +21,12 @@ export function ArchiveStoryCard({ moment, index }: ArchiveStoryCardProps) {
         {moment.title}
       </h2>
 
-      <blockquote className="mt-8 border-l-2 border-primary/60 pl-4 font-serif text-lg leading-8 text-foreground/90">
+      <blockquote className="mt-8 border-l-2 border-primary/60 pl-4 font-serif text-lg leading-[1.8] text-foreground/90">
         <Quote className="mb-3 size-4 text-primary" aria-hidden="true" />
         {moment.opening}
       </blockquote>
 
-      <div className="mt-8 space-y-5 text-sm leading-7 text-muted-foreground">
+      <div className="mt-8 space-y-5 text-sm leading-[1.8] text-muted-foreground">
         <p>
           <strong className="font-semibold text-foreground">我们从这里看见：</strong>
           {moment.whatWeCanSee}

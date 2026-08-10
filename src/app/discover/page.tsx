@@ -14,13 +14,13 @@ export default function DiscoverPage() {
   return (
     <div className="editorial-page overflow-hidden">
       <section className="border-b border-foreground/15">
-        <div className="personal-shell grid gap-12 py-16 sm:py-24 lg:grid-cols-[minmax(0,0.82fr)_minmax(30rem,1.18fr)] lg:items-end lg:gap-20 lg:py-28">
+        <div className="personal-shell grid gap-12 py-16 sm:py-14 lg:grid-cols-[minmax(0,0.82fr)_minmax(30rem,1.18fr)] lg:items-end lg:gap-14 lg:py-16">
           <div>
             <p className="personal-kicker">
               <span aria-hidden="true" />
               Stories &amp; notes
             </p>
-            <h1 className="personal-display mt-7 text-[clamp(3.6rem,7vw,7rem)] font-semibold leading-[0.94] tracking-[-0.06em]">
+            <h1 className="personal-display mt-7 text-[clamp(1.87rem,3.64vw,3.64rem)] font-semibold leading-[0.94] tracking-[-0.06em]">
               文章与手记
             </h1>
           </div>
@@ -30,7 +30,7 @@ export default function DiscoverPage() {
               <br />
               再变成读者愿意带走的故事。
             </p>
-            <p className="mt-6 max-w-xl text-base leading-8 text-muted-foreground">
+            <p className="mt-6 max-w-xl text-base leading-[1.8] text-muted-foreground">
               历史故事、AI 方法与长期项目手记。每篇文章都从一个具体问题出发，
               让研究过程变成普通读者也愿意读完的内容。
             </p>
@@ -38,7 +38,7 @@ export default function DiscoverPage() {
         </div>
       </section>
 
-      <section className="py-16 sm:py-24">
+      <section className="py-16 sm:py-14">
         <div className="personal-shell">
           <div className="flex flex-col justify-between gap-5 border-b border-foreground/15 pb-8 md:flex-row md:items-end">
             <div>
@@ -67,7 +67,7 @@ export default function DiscoverPage() {
                 </span>
                 <span>
                   <strong className="editorial-story-title">{story.title}</strong>
-                  <span className="mt-3 block max-w-2xl text-sm leading-7 text-muted-foreground sm:text-base">
+                  <span className="mt-3 block max-w-2xl text-sm leading-[1.8] text-muted-foreground sm:text-base">
                     {story.dek}
                   </span>
                   <span className="mt-5 block text-xs text-muted-foreground">{story.sourceLabel}</span>
@@ -79,8 +79,8 @@ export default function DiscoverPage() {
         </div>
       </section>
 
-      <section className="border-y border-white/15 bg-[#202827] py-16 text-[#f3efe7] sm:py-24">
-        <div className="personal-shell grid gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(24rem,0.95fr)] lg:items-center lg:gap-20">
+      <section className="border-y border-white/15 bg-[#202827] py-16 text-[#f3efe7] sm:py-14">
+        <div className="personal-shell grid gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(24rem,0.95fr)] lg:items-center lg:gap-14">
           <Link href="/discover/1936-pingdiquan" className="editorial-document-feature group">
             <Image
               src="/assets/sukaiyuan/1936-sui-xing-ji-lue-proof.png"
@@ -102,7 +102,7 @@ export default function DiscoverPage() {
               一张纸可以把一个名字带回现场，
               <span className="mt-2 block text-[#c38a82]">却不能替他写完一生。</span>
             </h2>
-            <p className="mt-7 text-base leading-8 text-[#bdb9b0]">
+            <p className="mt-7 text-base leading-[1.8] text-[#bdb9b0]">
               这是整个项目最重要的编辑原则，也是第一篇长文的叙事核心。
             </p>
             <Link href="/discover/1936-pingdiquan" className="personal-dark-link mt-8">
@@ -113,12 +113,12 @@ export default function DiscoverPage() {
         </div>
       </section>
 
-      <section className="py-16 sm:py-24">
-        <div className="personal-shell grid gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20">
+      <section className="py-16 sm:py-14">
+        <div className="personal-shell grid gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-14">
           <div>
             <p className="story-kicker">编辑部选题板</p>
             <h2 className="mt-4 font-serif text-4xl font-semibold tracking-[-0.035em] sm:text-5xl">接下来，沿这些问题继续。</h2>
-            <p className="mt-6 max-w-md text-base leading-8 text-muted-foreground">
+            <p className="mt-6 max-w-md text-base leading-[1.8] text-muted-foreground">
               “筹备中”不是空页面，而是公开问题、研究边界与下一份要找的材料。
             </p>
           </div>
@@ -131,7 +131,7 @@ export default function DiscoverPage() {
                   <span className="text-muted-foreground">0{index + 4}</span>
                 </div>
                 <h3 className="mt-8 font-serif text-2xl font-semibold leading-snug tracking-[-0.025em]">{topic.title}</h3>
-                <p className="mt-4 text-sm leading-7 text-muted-foreground">{topic.note}</p>
+                <p className="mt-4 text-sm leading-[1.8] text-muted-foreground">{topic.note}</p>
                 <span className="mt-7 inline-flex items-center gap-2 text-xs text-muted-foreground">
                   <FileSearch className="size-4" aria-hidden="true" />
                   研究筹备中
@@ -142,7 +142,7 @@ export default function DiscoverPage() {
         </div>
       </section>
 
-      <section className="border-t border-foreground/15 py-16 sm:py-24">
+      <section className="border-t border-foreground/15 py-16 sm:py-14">
         <div className="personal-shell grid gap-6 md:grid-cols-3">
           <Link href="/novel" className="editorial-next-card group">
             <BookOpenText className="size-6 text-primary" aria-hidden="true" />

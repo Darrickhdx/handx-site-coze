@@ -252,7 +252,7 @@ export function LocalInsightsDashboard() {
 
   return (
     <div className="bg-[#f4f0e8]">
-      <section className="border-b border-foreground/15 bg-[#202827] py-14 text-[#f3efe7] sm:py-20">
+      <section className="border-b border-foreground/15 bg-[#202827] py-14 text-[#f3efe7] sm:py-14">
         <div className="personal-shell">
           <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
             <div>
@@ -263,7 +263,7 @@ export function LocalInsightsDashboard() {
               <h1 className="mt-7 font-serif text-5xl font-semibold tracking-[-0.05em] sm:text-7xl">
                 访问与留言看板
               </h1>
-              <p className="mt-5 max-w-2xl text-sm leading-7 text-[#bdb9b0]">
+              <p className="mt-5 max-w-2xl text-sm leading-[1.8] text-[#bdb9b0]">
                 不保存 IP、原始浏览器标识或跨站 Cookie。普通访问行为与私密留言分开记录；
                 留言不会自动公开。
               </p>
@@ -325,7 +325,7 @@ export function LocalInsightsDashboard() {
         </div>
       </section>
 
-      <section className="border-b border-foreground/15 py-14 sm:py-20">
+      <section className="border-b border-foreground/15 py-10 sm:py-14">
         <div className="personal-shell">
           <div className="flex flex-col gap-3 border-b border-foreground/15 pb-5 sm:flex-row sm:items-end sm:justify-between">
             <div className="flex items-center gap-3">
@@ -372,8 +372,8 @@ export function LocalInsightsDashboard() {
         </div>
       </section>
 
-      <section className="border-b border-foreground/15 bg-white/25 py-14 sm:py-20">
-        <div className="personal-shell grid gap-14 lg:grid-cols-2 lg:gap-20">
+      <section className="border-b border-foreground/15 bg-white/25 py-10 sm:py-14">
+        <div className="personal-shell grid gap-14 lg:grid-cols-2 lg:gap-14">
           <article>
             <div className="border-b border-foreground/15 pb-5">
               <h2 className="font-serif text-2xl font-semibold">来源质量</h2>
@@ -446,7 +446,7 @@ export function LocalInsightsDashboard() {
         </div>
       </section>
 
-      <section className="py-14 sm:py-20">
+      <section className="py-10 sm:py-14">
         <div className="personal-shell grid gap-12 lg:grid-cols-2 lg:gap-16">
           <article>
             <div className="flex items-center gap-3 border-b border-foreground/15 pb-5">
@@ -504,7 +504,7 @@ export function LocalInsightsDashboard() {
         </div>
       </section>
 
-      <section className="border-t border-foreground/15 bg-[#202827] py-14 text-[#f3efe7] sm:py-20">
+      <section className="border-t border-foreground/15 bg-[#202827] py-14 text-[#f3efe7] sm:py-14">
         <div className="personal-shell">
           <div className="flex items-center gap-3 border-b border-white/15 pb-5">
             <BookOpenCheck className="size-5 text-[#d5a09a]" aria-hidden="true" />
@@ -544,7 +544,7 @@ export function LocalInsightsDashboard() {
         </div>
       </section>
 
-      <section className="border-y border-foreground/15 bg-[#ece4d8] py-14 sm:py-20">
+      <section className="border-y border-foreground/15 bg-[#ece4d8] py-10 sm:py-14">
         <div className="personal-shell">
           <div className="flex flex-col gap-4 border-b border-foreground/15 pb-6 sm:flex-row sm:items-end sm:justify-between">
             <div>
@@ -569,7 +569,7 @@ export function LocalInsightsDashboard() {
                   <KeyRound className="mt-1 size-5 shrink-0 text-primary" aria-hidden="true" />
                   <div className="max-w-3xl">
                     <h3 className="font-serif text-2xl font-semibold">私密内容需要本机看板密钥</h3>
-                    <p className="mt-3 text-sm leading-7 text-muted-foreground">
+                    <p className="mt-3 text-sm leading-[1.8] text-muted-foreground">
                       访问统计可以直接查看；留言正文与回复方式另行保护。密钥保存在网站目录下的
                       <code className="mx-1 border border-foreground/15 bg-white/45 px-1.5 py-0.5 text-xs">
                         private-runtime/admin-token
@@ -622,7 +622,7 @@ export function LocalInsightsDashboard() {
                     pending
                   </span>
                 </div>
-                <p className="mt-5 whitespace-pre-wrap text-sm leading-7">{message.body}</p>
+                <p className="mt-5 whitespace-pre-wrap text-sm leading-[1.8]">{message.body}</p>
                 <div className="mt-5 border-t border-foreground/15 pt-4 text-xs leading-6 text-muted-foreground">
                   <p>关联页面：{message.related_path}</p>
                   <p>回复方式：{message.contact || '未留下'}</p>

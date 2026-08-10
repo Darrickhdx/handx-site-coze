@@ -78,7 +78,7 @@ const legalReferences = [
 export default function RightsPage() {
   return (
     <div className="bg-[#f4f0e8]">
-      <section className="border-b border-foreground/15 bg-[#202827] py-16 text-[#f3efe7] sm:py-24">
+      <section className="border-b border-foreground/15 bg-[#202827] py-16 text-[#f3efe7] sm:py-14">
         <div className="personal-shell">
           <div className="inline-flex items-center gap-2 border border-[#d5a09a]/40 px-3 py-1.5 text-[10px] font-semibold tracking-[0.16em] text-[#d5a09a] uppercase">
             <CircleAlert className="size-3.5" aria-hidden="true" />
@@ -92,11 +92,11 @@ export default function RightsPage() {
             让内容传播得更远，
             <span className="block text-[#d5a09a]">也让作者、原文与史料出处一起被看见。</span>
           </h1>
-          <p className="mt-8 max-w-3xl text-base leading-8 text-[#bdb9b0]">
+          <p className="mt-8 max-w-3xl text-base leading-[1.8] text-[#bdb9b0]">
             本站不采用“一律禁止转载”，也不把所有材料粗暴地套进同一许可证。
             核心原则是分层：能开放的主动开放，应保留的明确保留，权属不明的绝不代替权利人授权。
           </p>
-          <p className="mt-5 max-w-3xl border-l-2 border-[#d5a09a] pl-4 text-sm font-semibold leading-7 text-[#f3efe7]">
+          <p className="mt-5 max-w-3xl border-l-2 border-[#d5a09a] pl-4 text-sm font-semibold leading-[1.8] text-[#f3efe7]">
             本页目前只是一份拟议政策，不构成 CC 或其他使用许可。只有未来某个内容页面明确显示
             “许可已生效”时，转载者才可按该页面所示范围使用。
           </p>
@@ -110,7 +110,7 @@ export default function RightsPage() {
         </div>
       </section>
 
-      <section className="border-b border-foreground/15 py-16 sm:py-24">
+      <section className="border-b border-foreground/15 py-16 sm:py-14">
         <div className="personal-shell">
           <div className="grid gap-px overflow-hidden border border-foreground/15 bg-foreground/15 lg:grid-cols-3">
             {contentLayers.map((layer) => {
@@ -122,8 +122,8 @@ export default function RightsPage() {
                   <p className="mt-3 text-xs font-semibold tracking-[0.1em] text-primary uppercase">
                     {layer.policy}
                   </p>
-                  <p className="mt-6 text-sm font-medium leading-7 text-foreground">{layer.scope}</p>
-                  <p className="mt-4 text-sm leading-7 text-muted-foreground">{layer.detail}</p>
+                  <p className="mt-6 text-sm font-medium leading-[1.8] text-foreground">{layer.scope}</p>
+                  <p className="mt-4 text-sm leading-[1.8] text-muted-foreground">{layer.detail}</p>
                 </article>
               );
             })}
@@ -131,7 +131,7 @@ export default function RightsPage() {
         </div>
       </section>
 
-      <section className="border-b border-foreground/15 bg-[#ece4d8] py-16 sm:py-24">
+      <section className="border-b border-foreground/15 bg-[#ece4d8] py-16 sm:py-14">
         <div className="personal-shell grid gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-24">
           <div>
             <p className="personal-kicker">
@@ -141,7 +141,7 @@ export default function RightsPage() {
             <ImageIcon className="mt-8 size-8 text-primary" strokeWidth={1.4} aria-hidden="true" />
             <h2 className="personal-heading mt-6">182 页可读，不等于 182 页都可发布。</h2>
           </div>
-          <div className="space-y-6 text-sm leading-7 text-muted-foreground">
+          <div className="space-y-6 text-sm leading-[1.8] text-muted-foreground">
             <p>
               《英雄无名》当前以带像素水印的 WebP 页图提供本机全文与分章阅读；原始 DOCX、PDF
               不进入静态路由、构建产物或版本仓库。所有页图仍是
@@ -170,8 +170,8 @@ export default function RightsPage() {
         </div>
       </section>
 
-      <section className="border-b border-foreground/15 bg-white/30 py-14 sm:py-20">
-        <div className="personal-shell grid gap-10 lg:grid-cols-[0.65fr_1.35fr] lg:gap-20">
+      <section className="border-b border-foreground/15 bg-white/30 py-10 sm:py-14">
+        <div className="personal-shell grid gap-10 lg:grid-cols-[0.65fr_1.35fr] lg:gap-14">
           <div>
             <p className="personal-kicker">
               <span aria-hidden="true" />
@@ -180,7 +180,7 @@ export default function RightsPage() {
             <h2 className="personal-heading mt-6">规则不只写在页脚，而是落到每一篇文章。</h2>
           </div>
           <div>
-            <p className="text-sm leading-7 text-muted-foreground">
+            <p className="text-sm leading-[1.8] text-muted-foreground">
               当前三篇文章均已生成独立权利身份证，记录作者、版本、来源、第三方材料与复用边界；
               全部仍是本地审阅稿，许可状态统一为
               <code className="mx-1 border border-foreground/15 bg-white/45 px-1.5 py-0.5 text-xs">
@@ -208,7 +208,7 @@ export default function RightsPage() {
         </div>
       </section>
 
-      <section className="py-16 sm:py-24">
+      <section className="py-16 sm:py-14">
         <div className="personal-shell grid gap-14 lg:grid-cols-[0.68fr_1.32fr] lg:gap-24">
           <div>
             <p className="personal-kicker">
@@ -224,7 +224,7 @@ export default function RightsPage() {
               {requiredAttribution.map((item) => (
                 <div key={item} className="flex min-h-24 items-start gap-3 border border-foreground/15 bg-white/35 p-5">
                   <Check className="mt-1 size-4 shrink-0 text-primary" aria-hidden="true" />
-                  <p className="text-sm leading-7">{item}</p>
+                  <p className="text-sm leading-[1.8]">{item}</p>
                 </div>
               ))}
             </div>
@@ -240,7 +240,7 @@ export default function RightsPage() {
               </blockquote>
             </div>
 
-            <p className="mt-6 text-sm leading-7 text-muted-foreground">
+            <p className="mt-6 text-sm leading-[1.8] text-muted-foreground">
               转载者不得删除史料来源、把候选身份改写为确定事实，也不得暗示作者为转载内容、产品或机构背书。
               “来源网络”“侵删”不能替代授权与署名。
             </p>
@@ -248,7 +248,7 @@ export default function RightsPage() {
         </div>
       </section>
 
-      <section className="border-y border-foreground/15 bg-[#202827] py-16 text-[#f3efe7] sm:py-24">
+      <section className="border-y border-foreground/15 bg-[#202827] py-16 text-[#f3efe7] sm:py-14">
         <div className="personal-shell grid gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-24">
           <div>
             <p className="personal-kicker personal-kicker-light">
@@ -261,14 +261,14 @@ export default function RightsPage() {
             </h2>
           </div>
           <div>
-            <p className="text-base leading-8 text-[#d7cfc2]">
+            <p className="text-base leading-[1.8] text-[#d7cfc2]">
               媒体矩阵工作台生成的所有包固定为
               <code className="mx-1 border border-white/15 bg-white/5 px-1.5 py-0.5 text-xs">
                 review_only
               </code>
               ，附带母内容哈希、权利身份证、主张与来源快照、事实／解释／文学虚构标签和人工审核清单。
             </p>
-            <p className="mt-5 text-sm leading-7 text-[#bdb9b0]">
+            <p className="mt-5 text-sm leading-[1.8] text-[#bdb9b0]">
               当前工作台不连接小红书、抖音、微信公众号、视频号、快手、B站或 YouTube
               账号，不保存平台令牌，也不调用直发接口。下载、复制文案或打开平台后台，都不把
               <code className="mx-1 text-xs">review_only</code> 自动提升为
@@ -282,8 +282,8 @@ export default function RightsPage() {
         </div>
       </section>
 
-      <section className="border-y border-foreground/15 bg-[#ece4d8] py-16 sm:py-24">
-        <div className="personal-shell grid gap-12 lg:grid-cols-2 lg:gap-20">
+      <section className="border-y border-foreground/15 bg-[#ece4d8] py-16 sm:py-14">
+        <div className="personal-shell grid gap-12 lg:grid-cols-2 lg:gap-14">
           <div>
             <p className="personal-kicker">
               <span aria-hidden="true" />
@@ -292,7 +292,7 @@ export default function RightsPage() {
             <h2 className="personal-heading mt-6">这些情况，请先取得书面授权。</h2>
             <div className="mt-8 space-y-3">
               {commercialUses.map((item) => (
-                <p key={item} className="flex items-start gap-3 text-sm leading-7">
+                <p key={item} className="flex items-start gap-3 text-sm leading-[1.8]">
                   <ArrowRight className="mt-1.5 size-3.5 shrink-0 text-primary" aria-hidden="true" />
                   {item}
                 </p>
@@ -303,7 +303,7 @@ export default function RightsPage() {
           <div className="border border-foreground/15 bg-[#f4f0e8] p-7 sm:p-9">
             <p className="text-xs font-semibold tracking-[0.14em] text-primary uppercase">拟议媒体绿色通道</p>
             <h3 className="mt-4 font-serif text-3xl font-semibold">传播可以免费，授权不能含糊。</h3>
-            <p className="mt-5 text-sm leading-7 text-muted-foreground">
+            <p className="mt-5 text-sm leading-[1.8] text-muted-foreground">
               可信新闻媒体、纪录片团队和公益文化项目，可邮件申请一次性零费用传播授权。
               影视开发、出版整合、付费产品和商业 AI 使用仍需单独议价并明确作品版本、平台、期限、署名与改编范围。
             </p>
@@ -318,7 +318,7 @@ export default function RightsPage() {
         </div>
       </section>
 
-      <section className="py-16 sm:py-24">
+      <section className="py-16 sm:py-14">
         <div className="personal-shell grid gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-24">
           <div>
             <p className="personal-kicker">
@@ -327,7 +327,7 @@ export default function RightsPage() {
             </p>
             <h2 className="personal-heading mt-6">拥有一张旧纸，不等于拥有它的全部版权。</h2>
           </div>
-          <div className="space-y-6 text-base leading-8 text-muted-foreground">
+          <div className="space-y-6 text-base leading-[1.8] text-muted-foreground">
             <p>
               家属保存的书信、照片和扫描件，必须分别核对作者、摄影者、继承关系与公开同意。
               权利链未闭环前，高清原件留在私有档案库；网页只显示经过审核的必要局部或外部馆藏链接。
@@ -344,11 +344,11 @@ export default function RightsPage() {
         </div>
       </section>
 
-      <section className="border-t border-foreground/15 bg-white/35 py-16 sm:py-20">
-        <div className="personal-shell grid gap-10 lg:grid-cols-2 lg:gap-20">
+      <section className="border-t border-foreground/15 bg-white/35 py-11 sm:py-14">
+        <div className="personal-shell grid gap-10 lg:grid-cols-2 lg:gap-14">
           <div>
             <h2 className="font-serif text-3xl font-semibold">投诉、纠错与下架</h2>
-            <p className="mt-5 text-sm leading-7 text-muted-foreground">
+            <p className="mt-5 text-sm leading-[1.8] text-muted-foreground">
               请发送争议页面、具体位置、权利证明或反证、希望采取的措施与联系方式。
               收到后将先确认、保存版本证据；必要时临时隐藏，再根据核查结果补署名、更正、恢复或删除。
             </p>

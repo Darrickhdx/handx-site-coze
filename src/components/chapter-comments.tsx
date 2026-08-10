@@ -151,7 +151,7 @@ export function ChapterComments({
             >
               谈谈“{chapterTitle}”
             </h2>
-            <p className="mt-5 text-sm leading-7 text-muted-foreground">
+            <p className="mt-5 text-sm leading-[1.8] text-muted-foreground">
               所有评论先保存在本机审核队列，只有管理员批准后才会显示。评论属于读者意见，
               不会自动变成知识图谱主张、历史来源或专题证据。
             </p>
@@ -198,7 +198,7 @@ export function ChapterComments({
                 maxLength={1000}
                 rows={6}
                 placeholder="你被哪个细节打动？哪里仍让你困惑？"
-                className="resize-y border border-foreground/20 bg-background px-3 py-3 text-sm leading-7 text-foreground outline-none transition placeholder:text-muted-foreground/60 focus:border-primary"
+                className="resize-y border border-foreground/20 bg-background px-3 py-3 text-sm leading-[1.8] text-foreground outline-none transition placeholder:text-muted-foreground/60 focus:border-primary"
               />
             </label>
             <label className="sr-only" aria-hidden="true">
@@ -309,7 +309,7 @@ export function ChapterComments({
                       {readableDate(comment.occurred_at)}
                     </time>
                   </div>
-                  <p className="mt-4 whitespace-pre-wrap break-words text-sm leading-7 text-foreground/85">
+                  <p className="mt-4 whitespace-pre-wrap break-words text-sm leading-[1.8] text-foreground/85">
                     {decodeEscapedCommentText(comment.body)}
                   </p>
                 </li>

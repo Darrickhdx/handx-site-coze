@@ -72,7 +72,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
   return (
     <article className="min-h-screen bg-[#f4f0e8]">
       <header className="border-b border-foreground/15 bg-[#202827] text-[#f3efe7]">
-        <div className="article-shell py-12 sm:py-20">
+        <div className="article-shell py-9 sm:py-14">
           <Link href="/topics" className="inline-flex items-center gap-2 text-sm text-[#bdb9b0] transition hover:text-white">
             <ArrowLeft className="size-4" />
             返回历史话题
@@ -80,7 +80,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
           <p className="mt-14 text-[10px] font-semibold tracking-[0.18em] text-[#c38a82] uppercase">
             {topic.eyebrow}
           </p>
-          <h1 className="mt-6 max-w-5xl font-serif text-[clamp(2.8rem,6.3vw,5.8rem)] font-semibold leading-[1.02] tracking-[-0.055em]">
+          <h1 className="mt-6 max-w-5xl font-serif text-[clamp(1.62rem,3.65vw,3.36rem)] font-semibold leading-[1.02] tracking-[-0.055em]">
             {topic.title}
           </h1>
           <p className="mt-8 max-w-3xl font-serif text-xl leading-relaxed text-[#d7cfc2] sm:text-2xl">
@@ -118,7 +118,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
         </div>
       </section>
 
-      <div className="article-shell grid gap-12 py-14 lg:grid-cols-[minmax(0,1fr)_15rem] lg:gap-16 lg:py-20">
+      <div className="article-shell grid gap-12 py-14 lg:grid-cols-[minmax(0,1fr)_15rem] lg:gap-12 lg:py-14">
         <div>
           <div className="border-l-2 border-primary pl-6">
             <p className="text-[10px] font-semibold tracking-[0.16em] text-primary uppercase">
@@ -159,7 +159,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
                             {publicationDisplay[paragraph.publication_status]}
                           </span>
                         </div>
-                        <p className="mt-5 text-base leading-8 text-foreground/90">
+                        <p className="mt-5 text-base leading-[1.8] text-foreground/90">
                           {paragraph.text}
                         </p>
 
@@ -201,7 +201,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
             <ShieldAlert className="size-6 text-primary" aria-hidden="true" />
             <div>
               <h2 className="font-serif text-2xl font-semibold">这篇文章拒绝给出功劳排名</h2>
-              <p className="mt-3 text-sm leading-7 text-muted-foreground">
+              <p className="mt-3 text-sm leading-[1.8] text-muted-foreground">
                 现阶段能负责任地公开的，是材料差异、确证范围和下一步查档问题。
                 未核真人因果不会因为适合传播而被写成结论。
               </p>

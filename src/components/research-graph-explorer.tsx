@@ -515,7 +515,7 @@ export function ResearchGraphExplorer() {
           <h2 className="mt-2 font-serif text-2xl font-semibold">
             {layer === 'audit' ? '审计研究图谱' : 'Legacy 线索图'}
           </h2>
-          <p className="mt-2 max-w-3xl text-sm leading-7 text-muted-foreground">
+          <p className="mt-2 max-w-3xl text-sm leading-[1.8] text-muted-foreground">
             {layer === 'audit'
               ? '这里展示公开审计投影。关系必须通过主张回到来源定位；工作核验仍不等于最终历史定论。'
               : legacyData?.warning}
@@ -559,7 +559,7 @@ export function ResearchGraphExplorer() {
           <h3 id="legacy-confirm-title" className="font-serif text-xl font-semibold">
             打开的是旧研究线索，不是事实图
           </h3>
-          <p className="mt-2 max-w-3xl text-sm leading-7 text-muted-foreground">
+          <p className="mt-2 max-w-3xl text-sm leading-[1.8] text-muted-foreground">
             旧图包含未经原子化核验的人物描述与关系。本站只保留节点标题、关系标签和迁移裁决，
             不复制旧详情，也不会把旧 A／B／C 评级、身份映射或因果关系升级为事实。
           </p>
@@ -711,7 +711,7 @@ export function ResearchGraphExplorer() {
                     文献异写：{selected.node.variant_label}
                   </p>
                 )}
-              <p className="mt-5 border-l-2 border-primary pl-4 text-sm leading-7 text-muted-foreground">
+              <p className="mt-5 border-l-2 border-primary pl-4 text-sm leading-[1.8] text-muted-foreground">
                 {selected.node.identity_status}
               </p>
               <dl className="mt-6 grid grid-cols-3 gap-2 text-center">
@@ -759,7 +759,7 @@ export function ResearchGraphExplorer() {
               <h3 className="mt-2 font-serif text-3xl font-semibold">
                 {selected.node.label}
               </h3>
-              <p className="mt-3 text-sm leading-7 text-muted-foreground">
+              <p className="mt-3 text-sm leading-[1.8] text-muted-foreground">
                 {selected.node.title || '旧图未提供简短标题。'}
               </p>
               <dl className="mt-6 space-y-3 border-y border-foreground/15 py-5 text-sm">
@@ -774,7 +774,7 @@ export function ResearchGraphExplorer() {
                   </dd>
                 </div>
               </dl>
-              <p className="mt-5 border-l-2 border-candidate pl-4 text-sm leading-7 text-muted-foreground">
+              <p className="mt-5 border-l-2 border-candidate pl-4 text-sm leading-[1.8] text-muted-foreground">
                 {selected.node.migration.decision}
               </p>
               <Link

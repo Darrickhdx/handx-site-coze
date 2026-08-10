@@ -338,7 +338,7 @@ export function KnowledgeGraphAtlas({
                 {selected.period ? ` · ${selected.period}` : ''}
               </p>
             )}
-            {selected.title && <p className="mt-3 text-sm leading-7 text-muted-foreground">{selected.title}</p>}
+            {selected.title && <p className="mt-3 text-sm leading-[1.8] text-muted-foreground">{selected.title}</p>}
             {selected.legacy_reliability === 'C' && (
               <p className="mt-3 border border-amber-800/25 bg-amber-50 p-2 text-[11px] leading-5 text-amber-950">
                 这一条的可靠度记为 C：线索存在，但还不足以当作结论。

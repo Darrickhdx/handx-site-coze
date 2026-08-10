@@ -204,7 +204,7 @@ export function MissionExplorer() {
       ) : (
         <div className="mt-5 border border-foreground/15 bg-card p-8 text-center">
           <p className="font-serif text-2xl font-semibold">没有符合当前条件的任务</p>
-          <p className="mt-3 text-sm leading-7 text-muted-foreground">试试清除筛选，或只输入一个人物姓名。</p>
+          <p className="mt-3 text-sm leading-[1.8] text-muted-foreground">试试清除筛选，或只输入一个人物姓名。</p>
         </div>
       )}
 

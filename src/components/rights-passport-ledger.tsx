@@ -88,7 +88,7 @@ export function RightsPassportLedger({ registry }: { registry: RightsPassportReg
 
   return (
     <div className="bg-[#f4f0e8]">
-      <section className="border-b border-foreground/15 bg-[#202827] py-16 text-[#f3efe7] sm:py-24">
+      <section className="border-b border-foreground/15 bg-[#202827] py-16 text-[#f3efe7] sm:py-14">
         <div className="personal-shell">
           <div className="inline-flex items-center gap-2 border border-[#d5a09a]/40 px-3 py-1.5 text-[10px] font-semibold tracking-[0.16em] text-[#d5a09a] uppercase">
             <LockKeyhole className="size-3.5" aria-hidden="true" />
@@ -102,7 +102,7 @@ export function RightsPassportLedger({ registry }: { registry: RightsPassportReg
             先回答“有没有权利”，
             <span className="block text-[#d5a09a]">再回答“能不能传播”。</span>
           </h1>
-          <p className="mt-8 max-w-3xl text-base leading-8 text-[#c9c3b8]">
+          <p className="mt-8 max-w-3xl text-base leading-[1.8] text-[#c9c3b8]">
             这份台账把网站资产、小说页图、原创文章、专题段落与来源登记逐项拆开。
             “我拥有表达权”“只获本地使用授权”“来源可以外链”是三件不同的事；任何未知状态都按权利待核并阻断。
           </p>
@@ -122,7 +122,7 @@ export function RightsPassportLedger({ registry }: { registry: RightsPassportReg
         </div>
       </section>
 
-      <section className="border-b border-foreground/15 py-14 sm:py-20">
+      <section className="border-b border-foreground/15 py-10 sm:py-14">
         <div className="personal-shell">
           <div className="grid gap-px overflow-hidden border border-foreground/15 bg-foreground/15 lg:grid-cols-3">
             {[
@@ -147,7 +147,7 @@ export function RightsPassportLedger({ registry }: { registry: RightsPassportReg
                 <article key={item.title} className="bg-[#f4f0e8] p-7 sm:p-9">
                   <Icon className="size-7 text-primary" strokeWidth={1.4} aria-hidden="true" />
                   <h2 className="mt-6 font-serif text-3xl font-semibold">{item.title}</h2>
-                  <p className="mt-4 text-sm leading-7 text-muted-foreground">{item.body}</p>
+                  <p className="mt-4 text-sm leading-[1.8] text-muted-foreground">{item.body}</p>
                 </article>
               );
             })}
@@ -155,7 +155,7 @@ export function RightsPassportLedger({ registry }: { registry: RightsPassportReg
         </div>
       </section>
 
-      <section className="py-14 sm:py-20">
+      <section className="py-10 sm:py-14">
         <div className="personal-shell">
           <div className="flex flex-col gap-6 border-b border-foreground/15 pb-8 lg:flex-row lg:items-end lg:justify-between">
             <div>
@@ -165,7 +165,7 @@ export function RightsPassportLedger({ registry }: { registry: RightsPassportReg
               </p>
               <h2 className="personal-heading mt-5">逐项看清：谁控制、能做什么、为什么仍被阻断。</h2>
             </div>
-            <p className="max-w-md text-sm leading-7 text-muted-foreground">
+            <p className="max-w-md text-sm leading-[1.8] text-muted-foreground">
               当前显示 {Math.min(shownRecords.length, records.length)} / {records.length} 项；
               内容哈希用于确认登记对象是否变化，不是版权证明或授权凭证。
             </p>
@@ -266,7 +266,7 @@ export function RightsPassportLedger({ registry }: { registry: RightsPassportReg
       <section className="border-t border-foreground/15 bg-[#ece4d8] py-12">
         <div className="personal-shell flex items-start gap-4">
           <ShieldAlert className="mt-1 size-5 shrink-0 text-primary" aria-hidden="true" />
-          <p className="max-w-4xl text-sm leading-7 text-muted-foreground">
+          <p className="max-w-4xl text-sm leading-[1.8] text-muted-foreground">
             默认规则：缺少权利依据的内容不会被归入 owned 或 licensed，而是进入 permission_pending；
             即使权利依据明确，也必须另行通过事实、隐私、肖像与发布环境审核。台账不会自动把任何条目改成 public_ready。
           </p>
@@ -293,7 +293,7 @@ function PassportCard({ record }: { record: RightsPassportRecord }) {
 
       <p className="mt-5 font-mono text-[10px] tracking-[0.08em] text-primary">{record.passport_id}</p>
       <h3 className="mt-2 font-serif text-2xl font-semibold leading-snug">{record.title}</h3>
-      <p className="mt-4 text-sm leading-7 text-muted-foreground">{record.block_reason}</p>
+      <p className="mt-4 text-sm leading-[1.8] text-muted-foreground">{record.block_reason}</p>
 
       <dl className="mt-6 grid gap-4 border-t border-foreground/15 pt-5 text-xs sm:grid-cols-2">
         <div>

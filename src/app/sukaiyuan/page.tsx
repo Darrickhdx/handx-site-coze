@@ -21,7 +21,7 @@ export default function SuKaiyuanPage() {
       <ProjectSectionNav />
 
       <section className="sukaiyuan-hero border-b border-white/10 text-[#f3efe7]">
-        <div className="story-shell grid min-h-[calc(100svh-9.75rem)] gap-12 py-12 lg:grid-cols-[minmax(0,0.88fr)_minmax(31rem,1.12fr)] lg:items-start lg:gap-14 lg:py-14">
+        <div className="story-shell grid min-h-[21rem] gap-12 py-12 lg:grid-cols-[minmax(0,0.88fr)_minmax(31rem,1.12fr)] lg:items-start lg:gap-14 lg:py-14">
           <div className="relative z-10 max-w-[45rem]">
             <div className="sukaiyuan-project-label">
               <span>家族史旗舰项目</span>
@@ -31,11 +31,11 @@ export default function SuKaiyuanPage() {
             <p className="mt-4 font-serif text-2xl leading-relaxed text-[#d7cfc2] sm:text-3xl">
               一行旧字，把我带回曾祖父的名字。
             </p>
-            <p className="mt-6 max-w-2xl text-base leading-8 text-[#bdb9b0] sm:text-lg">
+            <p className="mt-6 max-w-2xl text-base leading-[1.8] text-[#bdb9b0] sm:text-lg">
               1936 年，一位作家在边地的一次会场里写下“留守司令蘇開元團長”。九十年后，
               这行字把我带回一个家族问题：被写下的人，究竟是不是我的曾祖父？
             </p>
-            <p className="mt-4 max-w-2xl text-sm leading-7 text-[#aaa69f]">
+            <p className="mt-4 max-w-2xl text-sm leading-[1.8] text-[#aaa69f]">
               我还不能替历史下结论；但我想带你去看，为什么这行字值得继续寻找。
             </p>
 
@@ -108,7 +108,7 @@ export default function SuKaiyuanPage() {
         </div>
       </section>
 
-      <section id="pingdiquan" className="scroll-mt-32 border-b border-foreground/15 py-20 sm:py-28">
+      <section id="pingdiquan" className="scroll-mt-32 border-b border-foreground/15 py-12 sm:py-16">
         <div className="story-shell grid gap-12 lg:grid-cols-[0.68fr_1.32fr] lg:gap-24">
           <div>
             <p className="personal-kicker">
@@ -138,8 +138,8 @@ export default function SuKaiyuanPage() {
         </div>
       </section>
 
-      <section className="border-b border-foreground/15 bg-[#eee9df] py-16 sm:py-24">
-        <div className="story-shell grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-center lg:gap-20">
+      <section className="border-b border-foreground/15 bg-[#eee9df] py-16 sm:py-14">
+        <div className="story-shell grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-center lg:gap-14">
           <div>
             <p className="personal-kicker">
               <span aria-hidden="true" />
@@ -170,16 +170,16 @@ export default function SuKaiyuanPage() {
         </div>
       </section>
 
-      <section className="border-b border-foreground/15 py-20 sm:py-28">
+      <section className="border-b border-foreground/15 py-12 sm:py-16">
         <div className="story-shell">
-          <div className="grid gap-8 border-b border-foreground/15 pb-9 lg:grid-cols-[0.72fr_1.28fr] lg:items-end lg:gap-20">
+          <div className="grid gap-8 border-b border-foreground/15 pb-9 lg:grid-cols-[0.72fr_1.28fr] lg:items-end lg:gap-14">
             <div>
               <p className="personal-kicker"><span aria-hidden="true" />People constellation</p>
               <UsersRound className="mt-7 size-7 text-primary" strokeWidth={1.4} aria-hidden="true" />
               <h2 className="personal-heading mt-6">一个人身后，是一群人。</h2>
             </div>
             <div>
-              <p className="max-w-2xl text-base leading-8 text-muted-foreground">
+              <p className="max-w-2xl text-base leading-[1.8] text-muted-foreground">
                 李英夫留下证词，李大超带来同名谜团，朱自清记录现场，乔培新让“谍战感”必须接受证据约束，傅作义代表不能被主角取代的公共历史。
               </p>
               <Link href="/persons" className="story-text-link mt-5">
@@ -201,9 +201,9 @@ export default function SuKaiyuanPage() {
         </div>
       </section>
 
-      <section id="archive" className="scroll-mt-32 py-20 sm:py-28">
+      <section id="archive" className="scroll-mt-32 py-12 sm:py-16">
         <div className="story-shell">
-          <div className="grid gap-8 border-b border-foreground/15 pb-9 lg:grid-cols-[0.72fr_1.28fr] lg:items-end lg:gap-20">
+          <div className="grid gap-8 border-b border-foreground/15 pb-9 lg:grid-cols-[0.72fr_1.28fr] lg:items-end lg:gap-14">
             <div>
               <p className="personal-kicker">
                 <span aria-hidden="true" />
@@ -212,7 +212,7 @@ export default function SuKaiyuanPage() {
               <h2 className="personal-heading mt-6">故事之后，想深挖的人再走进资料库。</h2>
             </div>
             <div>
-              <p className="max-w-2xl text-base leading-8 text-muted-foreground">
+              <p className="max-w-2xl text-base leading-[1.8] text-muted-foreground">
                 图谱负责看关系，Wiki 负责认识人物，原件库负责把你带回那一页纸。
                 它们不是阅读门槛，而是故事之后可以继续探索的三扇门。
               </p>
@@ -229,14 +229,14 @@ export default function SuKaiyuanPage() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="group flex min-h-[22rem] flex-col bg-background p-7 transition-colors hover:bg-card sm:p-9"
+                  className="group flex min-h-[18rem] flex-col bg-background p-7 transition-colors hover:bg-card sm:p-9"
                 >
                   <div className="flex items-center justify-between">
                     <span className="font-serif text-3xl italic text-primary/30">0{index + 1}</span>
                     <Icon className="size-6 text-primary" strokeWidth={1.4} aria-hidden="true" />
                   </div>
                   <h3 className="mt-12 font-serif text-2xl font-semibold">{item.title}</h3>
-                  <p className="mt-4 text-sm leading-7 text-muted-foreground">{item.description}</p>
+                  <p className="mt-4 text-sm leading-[1.8] text-muted-foreground">{item.description}</p>
                   <span className="story-text-link mt-auto">
                     {item.label}
                     <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
@@ -260,8 +260,8 @@ export default function SuKaiyuanPage() {
         </div>
       </section>
 
-      <section className="border-y border-foreground/15 bg-[#eee9df] py-20 sm:py-28">
-        <div className="story-shell grid gap-14 lg:grid-cols-[minmax(27rem,1.05fr)_minmax(0,0.95fr)] lg:items-center lg:gap-20">
+      <section className="border-y border-foreground/15 bg-[#eee9df] py-12 sm:py-16">
+        <div className="story-shell grid gap-14 lg:grid-cols-[minmax(27rem,1.05fr)_minmax(0,0.95fr)] lg:items-center lg:gap-14">
           <Link href="/novel" className="fiction-home-image group">
             <Image
               src="/assets/editorial/fiction-north-city-collage-v1.png"
@@ -281,11 +281,11 @@ export default function SuKaiyuanPage() {
             </p>
             <BookOpenText className="mt-8 size-7 text-primary" strokeWidth={1.4} aria-hidden="true" />
             <h2 className="personal-heading mt-6">《英雄无名》：让空白变成文学，但不冒充历史。</h2>
-            <p className="mt-7 max-w-xl text-base leading-8 text-muted-foreground">
+            <p className="mt-7 max-w-xl text-base leading-[1.8] text-muted-foreground">
               小说以真实时代和已核材料为骨架，对话、行动细节与部分人物关系属于合理外推或纯虚构。
               读者可以阅读 182 页、32 章全文；小说内容不会反向进入研究图谱。
             </p>
-            <div className="mt-7 border-l-2 border-primary pl-5 text-sm leading-7 text-muted-foreground">
+            <div className="mt-7 border-l-2 border-primary pl-5 text-sm leading-[1.8] text-muted-foreground">
               历史研究回答“目前知道什么”；小说追问“一个人在不知道结局时，会怎样选择”。
             </div>
             <Link href="/novel" className="story-button story-button-primary mt-9">
@@ -296,14 +296,14 @@ export default function SuKaiyuanPage() {
         </div>
       </section>
 
-      <section className="py-20 sm:py-24">
+      <section className="py-12 sm:py-14">
         <div className="story-shell grid overflow-hidden border border-foreground/15 bg-card lg:grid-cols-[1fr_auto] lg:items-center">
           <div className="p-7 sm:p-10 lg:p-12">
             <div className="flex size-11 items-center justify-center rounded-full border border-primary/25 text-primary">
               <FileSearch className="size-5" aria-hidden="true" />
             </div>
             <h2 className="story-heading mt-7 max-w-3xl">你手里也许就有下一块拼图。</h2>
-            <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
+            <p className="mt-6 max-w-2xl text-base leading-[1.8] text-muted-foreground">
               如果你知道苏开元、李英夫、李大超，或掌握相关部队、地点和档案线索，欢迎提供来源标题、年代、馆藏、档号与页码。
               家属原件和私人材料默认不公开。
             </p>
