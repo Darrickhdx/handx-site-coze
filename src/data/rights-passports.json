@@ -11,28 +11,28 @@
       "public/assets/asset-manifest.json": "8cfb5b2456571e1b3b1fb057acd7526d88bc440f2764d1fa0753beeb3d214b6d",
       "public/novel/hero-wuming/novel-manifest.json": "7b3ff7255e9a24dc8b549a22c8060455eb99ed59e7408e43f876e53f24465e1a",
       "public/data/sources.json": "6a423d7630f506005f861c5a2d00737fd3de0a5a9d60fe9918e8a68d9bb0ca94",
-      "src/content/publication-rights.ts": "4fe910b5385c9110ac7c9cef89bcdd99e22bf48347b5f20b7349ea0fa55bb5c5",
+      "src/content/publication-rights.ts": "9e3826d17f4e5717fcf2d1f7065222c8a15a6a6382d0cbe200b6b5d8e88f5fe0",
       "src/content/topics.ts": "e9d40bac813102c43a9ed2e4897b5892193d39c7837730cc69d55ff400c54e00"
     },
     "counts": {
-      "records": 564,
+      "records": 567,
       "by_category": {
         "site_asset": 5,
-        "article": 3,
+        "article": 6,
         "novel_page": 538,
         "source_reference": 5,
         "topic_paragraph": 13
       },
       "by_control_state": {
         "permission_pending": 6,
-        "owned": 556,
+        "owned": 559,
         "licensed": 2
       },
       "by_media_gate": {
         "not_for_media": 15,
-        "review_only": 549
+        "review_only": 552
       },
-      "local_only": 22,
+      "local_only": 25,
       "public_ready": 0
     }
   },
@@ -237,6 +237,84 @@
         "source_ids": [
           "METHOD-LOCAL-01",
           "RIGHTS-LOCAL-01"
+        ],
+        "note": "本地审阅稿 · 尚未发放转载许可；第三方材料不随原创文字授权。"
+      }
+    },
+    {
+      "passport_id": "RP-DISC-004",
+      "category": "article",
+      "title": "部署失败三次，三次都是我自己的 bug",
+      "canonical_reference": "/discover/three-failed-deploys",
+      "content_sha256": "cd9f900c0fa51f6054fed0642706a387fb30f8af98ea2fbdb3467aeb0faa693b",
+      "hash_basis": "canonical_article_rights_record",
+      "control_state": "owned",
+      "control_evidence": "本文的原创文字、结构与可视化编排 © 2026 鉴真小秃驴，当前保留全部权利。",
+      "license_state": "no-license-granted",
+      "reuse_scope": "link_sharing_only",
+      "local_only": true,
+      "media_gate": "review_only",
+      "public_ready": false,
+      "must_not_deploy": true,
+      "release_gate": "blocked",
+      "block_reason": "文章权利身份证明确标记为本地审阅稿，未发放 CC 或其他开放许可。",
+      "provenance": {
+        "dataset": "src/content/publication-rights.ts",
+        "source_key": "three-failed-deploys",
+        "source_ids": [
+          "BUILD-LOCAL-01"
+        ],
+        "note": "本地审阅稿 · 尚未发放转载许可；第三方材料不随原创文字授权。"
+      }
+    },
+    {
+      "passport_id": "RP-DISC-005",
+      "category": "article",
+      "title": "别把「期望值」写死在校验器里",
+      "canonical_reference": "/discover/stale-constants",
+      "content_sha256": "ed2063227e0af9a2085266acc05b3945372b2d973423608ee0e6f1144fed82e5",
+      "hash_basis": "canonical_article_rights_record",
+      "control_state": "owned",
+      "control_evidence": "本文的原创文字、结构与可视化编排 © 2026 鉴真小秃驴，当前保留全部权利。",
+      "license_state": "no-license-granted",
+      "reuse_scope": "link_sharing_only",
+      "local_only": true,
+      "media_gate": "review_only",
+      "public_ready": false,
+      "must_not_deploy": true,
+      "release_gate": "blocked",
+      "block_reason": "文章权利身份证明确标记为本地审阅稿，未发放 CC 或其他开放许可。",
+      "provenance": {
+        "dataset": "src/content/publication-rights.ts",
+        "source_key": "stale-constants",
+        "source_ids": [
+          "BUILD-LOCAL-01"
+        ],
+        "note": "本地审阅稿 · 尚未发放转载许可；第三方材料不随原创文字授权。"
+      }
+    },
+    {
+      "passport_id": "RP-DISC-006",
+      "category": "article",
+      "title": "我给自己的网站写了 15 个校验脚本",
+      "canonical_reference": "/discover/fifteen-verifiers",
+      "content_sha256": "fd620b66a9f9a43aff3ae2bab397ff41fdd7404971f6699967c7cdaf519a683d",
+      "hash_basis": "canonical_article_rights_record",
+      "control_state": "owned",
+      "control_evidence": "本文的原创文字、结构与可视化编排 © 2026 鉴真小秃驴，当前保留全部权利。",
+      "license_state": "no-license-granted",
+      "reuse_scope": "link_sharing_only",
+      "local_only": true,
+      "media_gate": "review_only",
+      "public_ready": false,
+      "must_not_deploy": true,
+      "release_gate": "blocked",
+      "block_reason": "文章权利身份证明确标记为本地审阅稿，未发放 CC 或其他开放许可。",
+      "provenance": {
+        "dataset": "src/content/publication-rights.ts",
+        "source_key": "fifteen-verifiers",
+        "source_ids": [
+          "BUILD-LOCAL-01"
         ],
         "note": "本地审阅稿 · 尚未发放转载许可；第三方材料不随原创文字授权。"
       }

@@ -1,149 +1,269 @@
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { ArrowRight, Bot, Layers, ShieldAlert } from 'lucide-react';
+import { ProjectSectionNav } from '@/components/project-section-nav';
 import {
-  AlertTriangle,
-  Bot,
-  CheckCircle2,
-  Database,
-  FileSearch,
-  GitBranch,
-  ShieldCheck,
-} from 'lucide-react';
-import { EvidenceLegend } from '@/components/evidence-legend';
-import { PageHeader } from '@/components/section-header';
-import {
-  dataMeta,
-  eventRecords,
-  identityBlockedClaimCount,
-  sceneEligibleClaimCount,
-} from '@/lib/research-data';
+  aiBoundary,
+  claimStates,
+  evidenceTiers,
+  fixLayers,
+  forbiddenList,
+  fourLayers,
+  identityPrinciples,
+  identityRules,
+  independenceRule,
+  methodologyIntro,
+  reuseChecklist,
+} from '@/content/methodology';
 
-const workflow = [
-  {
-    icon: FileSearch,
-    title: '1. 登记来源载体',
-    text: '记录唯一SRC编号、文献身份、载体类型、取得日期、公开等级、权利状态和可定位入口。',
-  },
-  {
-    icon: Database,
-    title: '2. 拆成原子主张',
-    text: '每条CL只表达一个可检查陈述，保留时间、地点、原文定位、证据层级和冲突项。',
-  },
-  {
-    icon: GitBranch,
-    title: '3. 建立图谱关系',
-    text: '人物、地点、机构、职务、事件和文献分节点；同名或异写先分离，再用候选关系连接。',
-  },
-  {
-    icon: ShieldCheck,
-    title: '4. 经过公开分层',
-    text: '先登记来源，再拆成可定位的主张，逐层筛选后才允许进入公开页面。',
-  },
-];
+export const metadata: Metadata = {
+  title: '研究方法',
+  description:
+    '一套给个人研究者的工作方法：材料怎么登记、事实怎么分级、身份怎么分流、AI 用在哪一步，以及哪些话在证据到位前不许写。',
+};
 
 export default function MethodologyPage() {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-16">
-      <PageHeader
-        title="研究方法"
-        subtitle="目标不是把故事写顺，而是让每一句话都能回到来源、定位和公开边界。"
-      />
+    <div className="min-h-screen bg-[#f4f0e8]">
+      <ProjectSectionNav />
 
-      <section className="mb-14">
-        <h2 className="font-serif text-xl font-bold text-foreground mb-6">从原件到网页的四步链</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {workflow.map((item) => (
-            <div key={item.title} className="bg-card border border-border/40 rounded-xl p-6 shadow-card">
-              <item.icon className="w-6 h-6 text-primary mb-3" />
-              <h3 className="font-serif text-lg font-semibold text-foreground">{item.title}</h3>
-              <p className="text-sm text-muted-foreground mt-2 leading-relaxed">{item.text}</p>
-            </div>
-          ))}
+      <header className="border-b border-white/15 bg-[#202827] text-[#f3efe7]">
+        <div className="personal-shell py-10 sm:py-14">
+          <p className="personal-kicker personal-kicker-light">
+            <span aria-hidden="true" />
+            {methodologyIntro.kicker}
+          </p>
+          <h1 className="mt-6 max-w-4xl font-serif text-[clamp(1.95rem,3.05vw,2.9rem)] font-semibold leading-[1.06] tracking-[-0.05em]">
+            {methodologyIntro.title}
+          </h1>
+          <p className="mt-6 max-w-3xl font-serif text-lg leading-relaxed text-[#d7cfc2] sm:text-xl">
+            {methodologyIntro.dek}
+          </p>
+          <p className="mt-5 max-w-2xl text-[15px] leading-[1.7] text-[#aaa69f]">
+            {methodologyIntro.lede}
+          </p>
         </div>
-      </section>
+      </header>
 
-      <section className="mb-14">
-        <h2 className="font-serif text-xl font-bold text-foreground mb-3">五层证据体系</h2>
-        <p className="text-sm text-muted-foreground mb-6">
-          等级描述来源性质和可核性，不是机械打分。即使A级材料也只能证明其原文实际记载的范围。
-        </p>
-        <EvidenceLegend variant="full" />
-      </section>
-
-      <section className="mb-14">
-        <h2 className="font-serif text-xl font-bold text-foreground mb-5">原子主张必须保留什么</h2>
-        <div className="bg-surface-container-lowest border border-border/40 rounded-xl p-6">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-sm">
-            {[
-              ['唯一编号', 'CL编号不会随文案重写而改变。'],
-              ['主语—谓语—宾语', '把复合叙事拆为可单独证伪的陈述。'],
-              ['时间与地点', '保留精度；不知道具体日就不能伪装成精确日期。'],
-              ['来源与定位', '记录SRC编号、页码、段落或档案定位。'],
-              ['独立来源数', '镜像、转录、索引和同源转载不重复计数。'],
-              ['状态与冲突', 'working_verified、provisional及冲突项显式保存。'],
-              ['公开等级', 'P0/P1/P2/P3决定能否进入不同数据层。'],
-              ['权利状态', '能看见不等于能重新发布扫描、照片或全文。'],
-              ['身份链', 'identity_link_status保留candidate、unresolved、verified或rejected；姓名相同不自动并人。'],
-              ['场景门槛', 'scene_eligible=false时，不得改写为真人场景、对白、连续履历或亲属事实。'],
-            ].map(([title, text]) => (
-              <div key={title} className="bg-card rounded-lg border border-border/30 p-4">
-                <p className="font-semibold text-foreground">{title}</p>
-                <p className="text-muted-foreground mt-1 leading-relaxed">{text}</p>
-              </div>
+      <main>
+        <section className="personal-shell py-10 sm:py-14">
+          <p className="story-kicker">01 · 四层模型</p>
+          <h2 className="personal-heading mt-3">材料、来源、主张、图谱，是四件不同的东西。</h2>
+          <p className="mt-4 max-w-3xl text-[15px] leading-[1.7] text-muted-foreground">
+            个人研究出错，多半不是因为读得不细，而是因为把这四层混在一起：把一个文件当成一份材料，
+            把一份材料当成一条事实，把一条事实当成一个人的一段人生。
+          </p>
+          <div className="mt-7 grid gap-px border border-foreground/15 bg-foreground/15 md:grid-cols-2 xl:grid-cols-4">
+            {fourLayers.map((row, index) => (
+              <article key={row.key} className="bg-background p-5 sm:p-6">
+                <p className="font-serif text-xl italic text-primary/35">
+                  {String(index + 1).padStart(2, '0')}
+                </p>
+                <h3 className="mt-3 font-serif text-lg font-semibold">{row.layer}</h3>
+                <p className="mt-1 font-mono text-[10px] tracking-wide text-primary">{row.key}</p>
+                <p className="mt-3 text-[13px] leading-[1.7] text-muted-foreground">{row.what}</p>
+                <p className="mt-3 border-t border-foreground/10 pt-3 text-[13px] leading-[1.7] text-foreground/80">
+                  {row.rule}
+                </p>
+              </article>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="mb-14">
-        <h2 className="font-serif text-xl font-bold text-foreground mb-5">当前发布闸门</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="rounded-xl border border-confirmed/30 bg-confirmed/10 p-6">
-            <div className="flex items-center gap-2 font-semibold text-confirmed">
-              <CheckCircle2 className="w-5 h-5" />
-              本地预览已批准
+        <section className="border-y border-foreground/15 bg-card py-10 sm:py-14">
+          <div className="personal-shell grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
+            <div>
+              <p className="story-kicker">02 · 独立性</p>
+              <h2 className="personal-heading mt-3">{independenceRule.title}</h2>
+              <p className="mt-4 text-[15px] leading-[1.7] text-muted-foreground">
+                {independenceRule.body}
+              </p>
             </div>
-            <p className="text-sm text-muted-foreground mt-3 leading-relaxed">
-              当前范围是{eventRecords.length}组分离文献记录的元数据、{dataMeta.source_counts.claims}条短主张、
-              {dataMeta.source_counts.nodes}个节点和{dataMeta.source_counts.edges}条关系。
-              其中{identityBlockedClaimCount}条主张身份链未闭环，只有{sceneEligibleClaimCount}条非人物文献内容主张scene_eligible=true。
-              1929记录与身份桥因混合来源依赖暂缓；本地预览不包含扫描件、全文转录、家属私密材料或P2/P3。
+            <div className="space-y-4">
+              <p className="border-l-2 border-primary bg-background px-5 py-4 text-[15px] leading-[1.7]">
+                {independenceRule.mechanism}
+              </p>
+              <p className="text-[15px] leading-[1.7] text-muted-foreground">
+                {independenceRule.consequence}
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="personal-shell py-10 sm:py-14">
+          <p className="story-kicker">03 · 身份</p>
+          <h2 className="personal-heading mt-3">同名的人，先分开，再等证据合并。</h2>
+          <div className="mt-7 grid gap-px border border-foreground/15 bg-foreground/15 md:grid-cols-2">
+            {identityRules.map((rule) => (
+              <article key={rule.code} className="bg-background p-6">
+                <div className="flex items-baseline gap-3">
+                  <span className="font-mono text-2xl font-semibold text-primary">{rule.code}</span>
+                  <h3 className="font-serif text-lg font-semibold">{rule.name}</h3>
+                </div>
+                <p className="mt-4 text-[15px] leading-[1.7] text-muted-foreground">{rule.meaning}</p>
+                <p className="mt-3 border-t border-foreground/10 pt-3 text-[13px] leading-[1.7] text-foreground/80">
+                  {rule.guard}
+                </p>
+              </article>
+            ))}
+          </div>
+          <ul className="mt-6 grid gap-2.5">
+            {identityPrinciples.map((line) => (
+              <li key={line} className="flex gap-3 text-[15px] leading-[1.7] text-muted-foreground">
+                <span className="mt-2.5 size-1 shrink-0 rounded-full bg-primary" aria-hidden="true" />
+                {line}
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section className="border-y border-foreground/15 bg-card py-10 sm:py-14">
+          <div className="personal-shell">
+            <p className="story-kicker">04 · 分级与状态</p>
+            <h2 className="personal-heading mt-3">证据有等级，主张有状态。</h2>
+            <div className="mt-7 grid gap-8 lg:grid-cols-2 lg:gap-14">
+              <div>
+                <h3 className="flex items-center gap-2 font-serif text-lg font-semibold">
+                  <Layers className="size-4 text-primary" aria-hidden="true" />
+                  证据等级
+                </h3>
+                <dl className="mt-4 grid gap-px border border-foreground/15 bg-foreground/15">
+                  {evidenceTiers.map((row) => (
+                    <div key={row.tier} className="flex gap-4 bg-background p-4">
+                      <dt className="w-6 shrink-0 font-mono text-lg font-semibold text-primary">
+                        {row.tier}
+                      </dt>
+                      <dd>
+                        <span className="font-semibold">{row.name}</span>
+                        <span className="mt-1 block text-[13px] leading-[1.7] text-muted-foreground">
+                          {row.note}
+                        </span>
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+              <div>
+                <h3 className="font-serif text-lg font-semibold">主张状态</h3>
+                <dl className="mt-4 grid gap-px border border-foreground/15 bg-foreground/15">
+                  {claimStates.map((row) => (
+                    <div key={row.state} className="bg-background p-4">
+                      <dt className="font-mono text-[11px] tracking-wide text-primary">{row.state}</dt>
+                      <dd className="mt-1.5 text-[13px] leading-[1.7] text-muted-foreground">
+                        {row.note}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="personal-shell py-10 sm:py-14">
+          <p className="story-kicker">05 · 史实与虚构</p>
+          <h2 className="personal-heading mt-3">同一段文字里，标清楚哪一句是哪一层。</h2>
+          <div className="mt-7 grid gap-px border border-foreground/15 bg-foreground/15 md:grid-cols-3">
+            {fixLayers.map((row) => (
+              <article key={row.code} className="bg-background p-6">
+                <span className="font-serif text-3xl text-primary/35">{row.code}</span>
+                <h3 className="mt-4 font-serif text-lg font-semibold">{row.name}</h3>
+                <p className="mt-3 text-[13px] leading-[1.7] text-muted-foreground">{row.body}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="border-y border-foreground/15 bg-[#eee9df] py-10 sm:py-14">
+          <div className="personal-shell grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14">
+            <div>
+              <ShieldAlert className="size-6 text-primary" strokeWidth={1.5} aria-hidden="true" />
+              <p className="story-kicker mt-4">06 · 禁令清单</p>
+              <h2 className="personal-heading mt-3">{forbiddenList.title}</h2>
+              <p className="mt-4 text-[15px] leading-[1.7] text-muted-foreground">
+                {forbiddenList.body}
+              </p>
+            </div>
+            <div>
+              <ul className="grid gap-2.5">
+                {forbiddenList.examples.map((line) => (
+                  <li key={line} className="flex gap-3 text-[15px] leading-[1.7]">
+                    <span className="mt-2.5 size-1 shrink-0 rounded-full bg-primary" aria-hidden="true" />
+                    {line}
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-6 border-l-2 border-primary bg-background px-5 py-4 font-serif text-lg leading-relaxed">
+                {forbiddenList.why}
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="personal-shell py-10 sm:py-14">
+          <p className="story-kicker">07 · AI 的位置</p>
+          <h2 className="personal-heading mt-3">{aiBoundary.title}</h2>
+          <div className="mt-7 grid gap-px border border-foreground/15 bg-foreground/15 md:grid-cols-2">
+            <div className="bg-background p-6">
+              <h3 className="flex items-center gap-2 font-serif text-lg font-semibold">
+                <Bot className="size-4 text-primary" aria-hidden="true" />
+                可以交给它
+              </h3>
+              <ul className="mt-4 grid gap-2">
+                {aiBoundary.canDo.map((line) => (
+                  <li key={line} className="text-[14px] leading-[1.7] text-muted-foreground">
+                    {line}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="bg-background p-6">
+              <h3 className="font-serif text-lg font-semibold">不可以交给它</h3>
+              <ul className="mt-4 grid gap-2">
+                {aiBoundary.cannotDo.map((line) => (
+                  <li key={line} className="text-[14px] leading-[1.7] text-muted-foreground">
+                    {line}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <p className="mt-6 max-w-3xl border-l-2 border-primary bg-card px-5 py-4 font-serif text-lg leading-relaxed sm:text-xl">
+            {aiBoundary.sharpest}
+          </p>
+        </section>
+
+        <section className="border-t border-foreground/15 bg-card py-10 sm:py-14">
+          <div className="personal-shell">
+            <p className="story-kicker">08 · 拿去用</p>
+            <h2 className="personal-heading mt-3">如果你也想找一个人。</h2>
+            <p className="mt-4 max-w-3xl text-[15px] leading-[1.7] text-muted-foreground">
+              这套方法不需要任何软件。一张来源表、一张主张表、一份禁令清单，用什么工具都行。
+              下面六条是我认为最省事、也最容易被跳过的部分。
             </p>
+            <ol className="mt-7 grid gap-px border border-foreground/15 bg-foreground/15 md:grid-cols-2 xl:grid-cols-3">
+              {reuseChecklist.map((line, index) => (
+                <li key={line} className="bg-background p-5">
+                  <span className="font-serif text-xl italic text-primary/35">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <p className="mt-3 text-[14px] leading-[1.7]">{line}</p>
+                </li>
+              ))}
+            </ol>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link href="/graph" className="story-button story-button-primary">
+                看这套方法产出的图谱
+                <ArrowRight className="size-4" aria-hidden="true" />
+              </Link>
+              <Link href="/archives" className="story-button story-button-secondary">
+                看三份已清权的原件
+                <ArrowRight className="size-4" aria-hidden="true" />
+              </Link>
+            </div>
           </div>
-        </div>
-      </section>
-
-      <section className="mb-14">
-        <h2 className="font-serif text-xl font-bold text-foreground mb-5 flex items-center gap-3">
-          <Bot className="w-6 h-6 text-primary" />AI使用边界
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="bg-card border border-confirmed/30 rounded-xl p-6">
-            <h3 className="font-semibold text-confirmed">可以辅助</h3>
-            <ul className="list-disc pl-5 text-sm text-muted-foreground mt-3 space-y-2">
-              <li>OCR初识、检索、去重和结构化整理</li>
-              <li>生成待核假设与档案申请清单</li>
-              <li>网站代码、数据校验和视觉模板</li>
-              <li>对小说场景标注史实、外推和虚构</li>
-            </ul>
-          </div>
-          <div className="bg-card border border-disputed/30 rounded-xl p-6">
-            <h3 className="font-semibold text-disputed">不能替代</h3>
-            <ul className="list-disc pl-5 text-sm text-muted-foreground mt-3 space-y-2">
-              <li>原始档案、同期报刊和人工原文核对</li>
-              <li>身份认定、党籍判断或秘密行动定论</li>
-              <li>缺失经历、对白、私生活和因果链的“合理脑补”</li>
-              <li>版权、隐私和公开授权的最终审查</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h2 className="font-serif text-xl font-bold text-foreground mb-4">纠错机制当前状态</h2>
-        <div className="bg-surface-container-lowest border border-border/40 rounded-xl p-6 text-sm text-muted-foreground leading-relaxed">
-          正式邮箱、GitHub Issues和公开投稿流程尚未启用，因此本站不承诺回复时限，也不声称已有持续运营机制。
-          上线前需先建立来源提交模板、隐私同意、版权声明、审核责任人和公开更正日志。
-        </div>
-      </section>
+        </section>
+      </main>
     </div>
   );
 }

@@ -146,18 +146,18 @@
     "state": "all_external_release_blocked",
     "registry": {
       "schema_version": "handx-rights-passports-v1",
-      "records": 564,
-      "owned": 556,
+      "records": 567,
+      "owned": 559,
       "licensed_for_local_review": 2,
       "permission_pending": 6,
-      "review_only": 549,
+      "review_only": 552,
       "not_for_media": 15,
-      "local_only": 22,
+      "local_only": 25,
       "public_ready": 0
     },
     "article_passports": {
-      "total": 3,
-      "draft_all_rights_reserved": 3,
+      "total": 6,
+      "draft_all_rights_reserved": 6,
       "licensed_for_republication": 0
     },
     "static_assets": {
@@ -211,11 +211,11 @@
     },
     {
       "path": "src/data/rights-passports.json",
-      "sha256": "655a9eb84bd9d96bb896ec8856b84b49e1d523e20d9ffe793a4f181e4ca7cf20"
+      "sha256": "cf2806e6d46f141a86df6908abc36b716cdab1014b67e80a079b6d8ba38d4c79"
     },
     {
       "path": "src/data/rights-passports-manifest.json",
-      "sha256": "c6fec46beb16ec43a23a62dda12d305c5a0b443206e270c771acdaf74aedb136"
+      "sha256": "ff2575f86d3a131766b0b378d7b3fd924a33cb82935fe03d945c649afadcd140"
     },
     {
       "path": "src/content/topics.ts",
@@ -223,12 +223,12 @@
     },
     {
       "path": "src/content/publication-rights.ts",
-      "sha256": "4fe910b5385c9110ac7c9cef89bcdd99e22bf48347b5f20b7349ea0fa55bb5c5"
+      "sha256": "9e3826d17f4e5717fcf2d1f7065222c8a15a6a6382d0cbe200b6b5d8e88f5fe0"
     },
     {
       "path": "src/content/media-studio.ts",
       "sha256": "46fb9fa2629ca6f4dff39351c55acbfb3d009dea42f2389cea33c4969b3411a5"
     }
   ],
-  "generation_id": "status-079fdd58bc4c10036f82c701ef08a9790d8ab91eb683ff4e46d402bcda89e8bd"
+  "generation_id": "status-b9a691769961a9ee5a111cf18901bc31554ed640918fe74ebc338b6586c98803"
 }

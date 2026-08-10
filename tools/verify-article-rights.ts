@@ -53,7 +53,8 @@ for (const slug of articleSlugs) {
 
   for (const source of passport.sourceCredits) {
     const isInternalMethodReference = source.sourceId.startsWith('METHOD-')
-      || source.sourceId.startsWith('RIGHTS-');
+      || source.sourceId.startsWith('RIGHTS-')
+      || source.sourceId.startsWith('BUILD-');
     assertCondition(
       researchSourceIds.has(source.sourceId) || isInternalMethodReference,
       `${slug} references unknown source id ${source.sourceId}`,

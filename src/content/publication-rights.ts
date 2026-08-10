@@ -12,7 +12,13 @@ export interface ArticleSourceCredit {
 
 export interface ArticleRightsPassport {
   rightsId: `RP-DISC-${string}`;
-  slug: '1936-pingdiquan' | 'same-name' | 'ai-family-history';
+  slug:
+    | '1936-pingdiquan'
+    | 'same-name'
+    | 'ai-family-history'
+    | 'fifteen-verifiers'
+    | 'stale-constants'
+    | 'three-failed-deploys';
   status: ArticleRightsStatus;
   statusLabel: string;
   author: string;
@@ -193,6 +199,72 @@ export const articleRightsPassports: Record<ArticleRightsPassport['slug'], Artic
         date: '2026-07-24',
         href: '/rights',
         relationship: '说明原创表达、第三方材料与家属原件之间的权利边界。',
+      },
+    ],
+    thirdPartyMaterials: [],
+  },
+  'three-failed-deploys': {
+    ...common,
+    rightsId: 'RP-DISC-004',
+    slug: 'three-failed-deploys',
+    canonicalPath: '/discover/three-failed-deploys',
+    citation:
+      '鉴真小秃驴：《部署失败三次，三次都是我自己的 bug》，handx 构建日志，2026-08-10。',
+    teaser:
+      '构建机上只有仓库，而我一直在一台什么都齐的机器上验证。',
+    sourceCredits: [
+      {
+        sourceId: 'BUILD-LOCAL-01',
+        creator: '鉴真小秃驴',
+        title: 'handx 网站工程本身',
+        publisher: '本站构建链与提交历史',
+        date: '2026-08-10',
+        href: '/ai',
+        relationship: '本文完全取材于本站自身的代码、构建脚本与提交记录，不涉及第三方材料。',
+      },
+    ],
+    thirdPartyMaterials: [],
+  },
+  'stale-constants': {
+    ...common,
+    rightsId: 'RP-DISC-005',
+    slug: 'stale-constants',
+    canonicalPath: '/discover/stale-constants',
+    citation:
+      '鉴真小秃驴：《别把「期望值」写死在校验器里》，handx 构建日志，2026-08-09。',
+    teaser:
+      '校验器报门禁被误开。门禁好好的，过期的是我三天前写下的数字。',
+    sourceCredits: [
+      {
+        sourceId: 'BUILD-LOCAL-01',
+        creator: '鉴真小秃驴',
+        title: 'handx 网站工程本身',
+        publisher: '本站构建链与提交历史',
+        date: '2026-08-09',
+        href: '/ai',
+        relationship: '本文完全取材于本站自身的代码、构建脚本与提交记录，不涉及第三方材料。',
+      },
+    ],
+    thirdPartyMaterials: [],
+  },
+  'fifteen-verifiers': {
+    ...common,
+    rightsId: 'RP-DISC-006',
+    slug: 'fifteen-verifiers',
+    canonicalPath: '/discover/fifteen-verifiers',
+    citation:
+      '鉴真小秃驴：《我给自己的网站写了 15 个校验脚本》，handx 构建日志，2026-08-09。',
+    teaser:
+      '不是测试覆盖率，是数据合同：页面不许比数据更完整。',
+    sourceCredits: [
+      {
+        sourceId: 'BUILD-LOCAL-01',
+        creator: '鉴真小秃驴',
+        title: 'handx 网站工程本身',
+        publisher: '本站构建链与提交历史',
+        date: '2026-08-09',
+        href: '/ai',
+        relationship: '本文完全取材于本站自身的代码、构建脚本与提交记录，不涉及第三方材料。',
       },
     ],
     thirdPartyMaterials: [],

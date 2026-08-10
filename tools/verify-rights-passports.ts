@@ -96,8 +96,8 @@ function verifyTopLevel(registry: JsonObject, manifest: JsonObject): RecordView[
 
   assert(Array.isArray(registry.records), 'Registry records are missing.');
   const records = registry.records as RecordView[];
-  // site_asset 5 + article 3 + topic_paragraph 13 + source_reference 5
-  const NON_NOVEL_PASSPORTS = 26;
+  // site_asset 5 + article 6 + topic_paragraph 13 + source_reference 5
+  const NON_NOVEL_PASSPORTS = 29;
   // One passport per novel page plus the non-novel assets. Derived from the
   // manifest rather than fixed at 208, which was V0.3's 182 pages + 26 others
   // and became wrong the moment the served edition changed.
@@ -272,7 +272,7 @@ function verifyCounts(records: RecordView[], registry: JsonObject) {
   const expectedCategories = {
     site_asset: 5,
     novel_page: novelManifest.totals.pages,
-    article: 3,
+    article: 6,
     topic_paragraph: 13,
     source_reference: 5,
   };
@@ -289,7 +289,7 @@ function verifyCounts(records: RecordView[], registry: JsonObject) {
   const nonNovel = records.filter((record) => record.category !== 'novel_page');
   const byState = (rows: RecordView[], state: string) =>
     rows.filter((record) => record.control_state === state).length;
-  assert(byState(nonNovel, 'owned') === 18, 'Non-novel owned count changed.');
+  assert(byState(nonNovel, 'owned') === 21, 'Non-novel owned count changed.');
   assert(byState(nonNovel, 'licensed') === 2, 'Non-novel licensed count changed.');
   assert(byState(nonNovel, 'permission_pending') === 6, 'Non-novel permission-pending count changed.');
 
@@ -317,10 +317,10 @@ function verifyCounts(records: RecordView[], registry: JsonObject) {
       === 15 + novelManifest.rights.local_only_image_pages.length,
     'Not-for-media count changed.',
   );
-  // 22 curated local-only items plus any local-only novel page.
+  // 25 curated local-only items plus any local-only novel page.
   assert(
     records.filter((record) => record.local_only).length
-      === 22 + novelManifest.rights.local_only_image_pages.length,
+      === 25 + novelManifest.rights.local_only_image_pages.length,
     'Local-only count changed.',
   );
 }

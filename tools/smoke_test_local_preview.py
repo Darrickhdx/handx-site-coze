@@ -941,7 +941,7 @@ def main() -> int:
             or boundary.get("historical_completion_percentage") is not None
             or boundary.get("historical_counts_are_inventory_not_completion") is not True
             or not isinstance(rights_registry, dict)
-            or rights_registry.get("records") != EXPECTED_NOVEL_PAGES + 26
+            or rights_registry.get("records") != EXPECTED_NOVEL_PAGES + 29
             or rights_registry.get("permission_pending")
             != 6 + len(EXPECTED_NOVEL_LOCAL_ONLY_PAGES)
             or rights_registry.get("not_for_media")
