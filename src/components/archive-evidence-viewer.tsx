@@ -68,7 +68,7 @@ export function ArchiveEvidenceViewer({
           <p className="font-mono text-[10px] font-semibold tracking-[0.16em] text-[#c38a82] uppercase">
             原文伴读 · {sourceId}
           </p>
-          <h2 className="mt-3 font-serif text-3xl font-semibold">在这份原件里，读这一刻</h2>
+          <h2 className="mt-3 font-serif text-2xl font-semibold">在这份原件里，读这一刻</h2>
         </div>
         <div className="flex gap-1" role="tablist" aria-label={`${title}查看方式`}>
           {tabs.map((tab) => (
@@ -133,7 +133,7 @@ export function ArchiveEvidenceViewer({
               ) : (
                 <div className="flex min-h-[15rem] flex-col items-center justify-center border border-dashed border-white/20 p-8 text-center">
                   <FileSearch className="size-10 text-[#c38a82]" strokeWidth={1.2} aria-hidden="true" />
-                  <p className="mt-6 font-serif text-2xl">这份材料请回到原馆阅读</p>
+                  <p className="mt-6 font-serif text-lg">这份材料请回到原馆阅读</p>
                   <p className="mt-4 max-w-lg text-sm leading-[1.7] text-[#bdb9b0]">
                     这里保留了能带你找回它的起点，但没有展示许可覆盖的扫描图。请用下面的线索回到保存它的地方。
                   </p>
@@ -178,7 +178,7 @@ export function ArchiveEvidenceViewer({
           <div className="grid min-h-[16rem] place-items-center p-8 text-center">
             <div className="max-w-2xl">
               <ShieldAlert className="mx-auto size-9 text-[#c38a82]" strokeWidth={1.4} aria-hidden="true" />
-              <h3 className="mt-6 font-serif text-3xl font-semibold">
+              <h3 className="mt-6 font-serif text-xl font-semibold">
                 {publicUrl ? '回到保存它的地方，继续读下去' : '这份材料还没有可安全公开的原馆入口'}
               </h3>
               <p className="mt-5 text-sm leading-[1.7] text-[#bdb9b0]">

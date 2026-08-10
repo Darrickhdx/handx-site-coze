@@ -48,7 +48,7 @@ export default function TopicsPage() {
             </h1>
           </div>
           <div>
-            <p className="font-serif text-2xl leading-relaxed text-[#e1dbd1] sm:text-xl">
+            <p className="font-serif text-lg leading-relaxed text-[#e1dbd1] sm:text-base">
               好话题不是把结论喊得更响，
               <br />
               而是让读者看见结论从哪里来。
@@ -68,7 +68,7 @@ export default function TopicsPage() {
             return (
               <article key={rule.title} className="bg-[#f4f0e8] p-7 sm:p-9">
                 <Icon className="size-6 text-primary" strokeWidth={1.5} aria-hidden="true" />
-                <h2 className="mt-8 font-serif text-2xl font-semibold">{rule.title}</h2>
+                <h2 className="mt-8 font-serif text-xl font-semibold">{rule.title}</h2>
                 <p className="mt-4 text-sm leading-[1.7] text-muted-foreground">
                   {rule.description}
                 </p>
@@ -83,7 +83,7 @@ export default function TopicsPage() {
           <div className="flex flex-col gap-4 border-b border-foreground/15 pb-7 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <p className="story-kicker">当前专题</p>
-              <h2 className="mt-4 font-serif text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">
+              <h2 className="mt-4 font-serif text-2xl font-semibold tracking-[-0.04em] sm:text-2xl">
                 从一篇有争议的比较开始
               </h2>
             </div>
@@ -101,14 +101,14 @@ export default function TopicsPage() {
                   key={topic.slug}
                   className="grid gap-8 py-7 lg:grid-cols-[5rem_minmax(0,1fr)_14rem] lg:items-start lg:gap-10 lg:py-10"
                 >
-                  <span className="font-serif text-5xl italic text-primary/25">
+                  <span className="font-serif text-2xl italic text-primary/25">
                     {String(index + 1).padStart(2, '0')}
                   </span>
                   <div>
                     <p className="text-[10px] font-semibold tracking-[0.16em] text-primary uppercase">
                       {topic.eyebrow}
                     </p>
-                    <h3 className="mt-4 max-w-4xl font-serif text-3xl font-semibold leading-tight tracking-[-0.03em] sm:text-4xl">
+                    <h3 className="mt-4 max-w-4xl font-serif text-xl font-semibold leading-tight tracking-[-0.03em] sm:text-xl">
                       {topic.title}
                     </h3>
                     <p className="mt-5 max-w-3xl text-sm leading-[1.7] text-muted-foreground">
@@ -151,7 +151,7 @@ export default function TopicsPage() {
         <div className="personal-shell grid gap-8 lg:grid-cols-[minmax(0,1fr)_20rem] lg:items-center">
           <div>
             <p className="story-kicker">传播出口</p>
-            <h2 className="mt-4 font-serif text-3xl font-semibold tracking-[-0.035em] sm:text-4xl">
+            <h2 className="mt-4 font-serif text-2xl font-semibold tracking-[-0.035em] sm:text-xl">
               先过边界检查，再生成平台素材。
             </h2>
             <p className="mt-4 max-w-2xl text-sm leading-[1.7] text-muted-foreground">

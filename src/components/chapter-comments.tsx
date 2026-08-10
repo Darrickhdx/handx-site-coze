@@ -147,7 +147,7 @@ export function ChapterComments({
             <p className="story-kicker">Reader discussion</p>
             <h2
               id="chapter-comments-title"
-              className="mt-4 font-serif text-4xl font-semibold tracking-[-0.04em]"
+              className="mt-4 font-serif text-2xl font-semibold tracking-[-0.04em]"
             >
               谈谈“{chapterTitle}”
             </h2>
@@ -261,7 +261,7 @@ export function ChapterComments({
                 className="size-5 text-primary"
                 aria-hidden="true"
               />
-              <h3 className="font-serif text-2xl font-semibold">
+              <h3 className="font-serif text-lg font-semibold">
                 已通过审核的评论
               </h3>
             </div>

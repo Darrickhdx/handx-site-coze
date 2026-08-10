@@ -512,7 +512,7 @@ export function ResearchGraphExplorer() {
           <p className="text-xs font-bold tracking-[0.16em] text-primary uppercase">
             Research graph
           </p>
-          <h2 className="mt-2 font-serif text-2xl font-semibold">
+          <h2 className="mt-2 font-serif text-xl font-semibold">
             {layer === 'audit' ? '审计研究图谱' : 'Legacy 线索图'}
           </h2>
           <p className="mt-2 max-w-3xl text-sm leading-[1.7] text-muted-foreground">
@@ -556,7 +556,7 @@ export function ResearchGraphExplorer() {
           className="mt-4 border-2 border-candidate bg-candidate/10 p-5"
           aria-labelledby="legacy-confirm-title"
         >
-          <h3 id="legacy-confirm-title" className="font-serif text-xl font-semibold">
+          <h3 id="legacy-confirm-title" className="font-serif text-lg font-semibold">
             打开的是旧研究线索，不是事实图
           </h3>
           <p className="mt-2 max-w-3xl text-sm leading-[1.7] text-muted-foreground">
@@ -677,7 +677,7 @@ export function ResearchGraphExplorer() {
             <div className="flex min-h-[34rem] items-center justify-center border border-foreground/15 bg-card p-8 text-center">
               <div>
                 <Network className="mx-auto size-8 text-primary" aria-hidden="true" />
-                <h3 className="mt-4 font-serif text-xl font-semibold">没有匹配结果</h3>
+                <h3 className="mt-4 font-serif text-lg font-semibold">没有匹配结果</h3>
                 <p className="mt-2 text-sm text-muted-foreground">
                   请减少筛选条件，或换一个关键词。
                 </p>
@@ -702,7 +702,7 @@ export function ResearchGraphExplorer() {
               <p className="text-xs font-bold tracking-[0.16em] text-primary uppercase">
                 {entityTypeLabels[selected.node.entity_type]}
               </p>
-              <h3 className="mt-2 font-serif text-3xl font-semibold">
+              <h3 className="mt-2 font-serif text-xl font-semibold">
                 {selected.node.canonical_label}
               </h3>
               {selected.node.variant_label &&
@@ -717,15 +717,15 @@ export function ResearchGraphExplorer() {
               <dl className="mt-6 grid grid-cols-3 gap-2 text-center">
                 <div className="border border-foreground/15 p-2">
                   <dt className="text-[10px] text-muted-foreground">主张</dt>
-                  <dd className="mt-1 font-serif text-xl">{selectedAuditClaims.length}</dd>
+                  <dd className="mt-1 font-serif text-base">{selectedAuditClaims.length}</dd>
                 </div>
                 <div className="border border-foreground/15 p-2">
                   <dt className="text-[10px] text-muted-foreground">关系</dt>
-                  <dd className="mt-1 font-serif text-xl">{selectedAuditEdges.length}</dd>
+                  <dd className="mt-1 font-serif text-base">{selectedAuditEdges.length}</dd>
                 </div>
                 <div className="border border-foreground/15 p-2">
                   <dt className="text-[10px] text-muted-foreground">来源</dt>
-                  <dd className="mt-1 font-serif text-xl">{selected.node.source_ids.length}</dd>
+                  <dd className="mt-1 font-serif text-base">{selected.node.source_ids.length}</dd>
                 </div>
               </dl>
               <div className="mt-6 space-y-2">
@@ -756,7 +756,7 @@ export function ResearchGraphExplorer() {
               <p className="text-xs font-bold tracking-[0.16em] text-candidate uppercase">
                 Legacy clue
               </p>
-              <h3 className="mt-2 font-serif text-3xl font-semibold">
+              <h3 className="mt-2 font-serif text-xl font-semibold">
                 {selected.node.label}
               </h3>
               <p className="mt-3 text-sm leading-[1.7] text-muted-foreground">

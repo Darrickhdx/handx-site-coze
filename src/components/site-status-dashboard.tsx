@@ -73,7 +73,7 @@ function Inventory({ values }: { values: Record<string, number> }) {
           <dt className="text-xs leading-5 text-muted-foreground">
             {inventoryLabels[key] ?? key}
           </dt>
-          <dd className="mt-1 font-serif text-2xl font-semibold tabular-nums">{value}</dd>
+          <dd className="mt-1 font-serif text-lg font-semibold tabular-nums">{value}</dd>
         </div>
       ))}
     </dl>
@@ -100,7 +100,7 @@ export function SiteStatusDashboard() {
             </h1>
           </div>
           <div>
-            <p className="font-serif text-2xl leading-relaxed text-foreground sm:text-xl">
+            <p className="font-serif text-lg leading-relaxed text-foreground sm:text-base">
               把数据代次、产品状态、权利门槛和服务开关分开看。
             </p>
             <p className="mt-6 max-w-2xl text-[15px] leading-[1.7] text-muted-foreground">
@@ -122,7 +122,7 @@ export function SiteStatusDashboard() {
             <div>
               <CircleSlash2 className="size-8 text-primary" strokeWidth={1.5} aria-hidden="true" />
               <p className="story-kicker mt-6">服务开放状态</p>
-              <h2 id="service-status-heading" className="mt-4 font-serif text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">
+              <h2 id="service-status-heading" className="mt-4 font-serif text-2xl font-semibold tracking-[-0.04em] sm:text-2xl">
                 现在没有“悄悄开启”的能力。
               </h2>
               <p className="mt-6 text-[15px] leading-[1.7] text-muted-foreground">
@@ -146,7 +146,7 @@ export function SiteStatusDashboard() {
                     <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">{label}</p>
                     {safe ? <ShieldCheck className="size-4 text-primary" aria-hidden="true" /> : null}
                   </div>
-                  <p className="mt-5 font-serif text-2xl font-semibold">{value}</p>
+                  <p className="mt-5 font-serif text-lg font-semibold">{value}</p>
                 </div>
               ))}
             </div>
@@ -159,7 +159,7 @@ export function SiteStatusDashboard() {
           <div className="max-w-3xl">
             <Database className="size-8 text-[#c38a82]" strokeWidth={1.5} aria-hidden="true" />
             <p className="mt-6 text-xs font-semibold uppercase tracking-[0.18em] text-[#c38a82]">历史数据代次</p>
-            <h2 id="data-generations-heading" className="mt-4 font-serif text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">
+            <h2 id="data-generations-heading" className="mt-4 font-serif text-2xl font-semibold tracking-[-0.04em] sm:text-2xl">
               三份清单，回答三个不同问题。
             </h2>
             <p className="mt-6 text-[15px] leading-[1.7] text-[#d7cfc2]">
@@ -174,7 +174,7 @@ export function SiteStatusDashboard() {
                   <Archive className="size-6 text-[#c38a82]" strokeWidth={1.4} aria-hidden="true" />
                   <span className="text-right font-mono text-[0.66rem] text-[#aca79f]">{generation.schema_version}</span>
                 </div>
-                <h3 className="mt-8 font-serif text-2xl font-semibold">{generation.label}</h3>
+                <h3 className="mt-8 font-serif text-lg font-semibold">{generation.label}</h3>
                 <p className="mt-3 text-sm font-medium text-[#d7cfc2]">
                   {generationStateLabels[generation.state] ?? generation.state}
                 </p>
@@ -182,7 +182,7 @@ export function SiteStatusDashboard() {
                   {Object.entries(generation.inventory).map(([key, value]) => (
                     <div key={key}>
                       <dt className="text-xs text-[#aca79f]">{inventoryLabels[key] ?? key}</dt>
-                      <dd className="mt-1 font-serif text-xl font-semibold tabular-nums">{value}</dd>
+                      <dd className="mt-1 font-serif text-base font-semibold tabular-nums">{value}</dd>
                     </div>
                   ))}
                 </dl>
@@ -200,7 +200,7 @@ export function SiteStatusDashboard() {
             <div>
               <BookOpen className="size-8 text-primary" strokeWidth={1.5} aria-hidden="true" />
               <p className="story-kicker mt-6">产品构建状态</p>
-              <h2 id="product-artifacts-heading" className="mt-4 font-serif text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">
+              <h2 id="product-artifacts-heading" className="mt-4 font-serif text-2xl font-semibold tracking-[-0.04em] sm:text-2xl">
                 能看见，不等于能公开。
               </h2>
               <p className="mt-6 text-[15px] leading-[1.7] text-muted-foreground">
@@ -214,7 +214,7 @@ export function SiteStatusDashboard() {
                   <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                     <div>
                       <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">{productStateLabels[artifact.state] ?? artifact.state}</p>
-                      <h3 className="mt-3 font-serif text-2xl font-semibold">{artifact.label}</h3>
+                      <h3 className="mt-3 font-serif text-lg font-semibold">{artifact.label}</h3>
                     </div>
                     {'version' in artifact ? (
                       <span className="w-fit border border-foreground/20 px-3 py-1 font-mono text-xs">v{artifact.version}</span>
@@ -244,7 +244,7 @@ export function SiteStatusDashboard() {
           <div className="max-w-3xl">
             <FileKey2 className="size-8 text-primary" strokeWidth={1.5} aria-hidden="true" />
             <p className="story-kicker mt-6">权利与发布状态</p>
-            <h2 id="rights-status-heading" className="mt-4 font-serif text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">
+            <h2 id="rights-status-heading" className="mt-4 font-serif text-2xl font-semibold tracking-[-0.04em] sm:text-2xl">
               目前，所有对外发布门都关着。
             </h2>
           </div>
@@ -275,7 +275,7 @@ export function SiteStatusDashboard() {
               <article key={item.title} className="bg-background p-6 sm:min-h-64">
                 <LockKeyhole className="size-5 text-primary" strokeWidth={1.5} aria-hidden="true" />
                 <p className="mt-8 text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">{item.title}</p>
-                <h3 className="mt-3 font-serif text-2xl font-semibold">{item.value}</h3>
+                <h3 className="mt-3 font-serif text-lg font-semibold">{item.value}</h3>
                 <p className="mt-5 text-sm leading-[1.7] text-muted-foreground">{item.detail}</p>
               </article>
             ))}
@@ -287,7 +287,7 @@ export function SiteStatusDashboard() {
         <div className="personal-shell grid gap-10 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-end">
           <div>
             <Fingerprint className="size-7 text-primary" strokeWidth={1.5} aria-hidden="true" />
-            <h2 className="mt-6 font-serif text-3xl font-semibold tracking-[-0.035em] sm:text-4xl">这份状态也有自己的指纹。</h2>
+            <h2 className="mt-6 font-serif text-2xl font-semibold tracking-[-0.035em] sm:text-xl">这份状态也有自己的指纹。</h2>
             <p className="mt-5 max-w-3xl text-sm leading-[1.7] text-muted-foreground">
               它由 {siteStatus.input_fingerprints.length} 份本地清单和内容合同确定性聚合；任一输入发生变化而未重新生成时，验证会失败关闭。
               最后汇总的数据时间为 {displayDate(siteStatus.assembled_at)}。

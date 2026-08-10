@@ -83,7 +83,7 @@ export function PrivateMessageForm() {
           <p className="text-xs font-semibold tracking-[0.16em] text-[#d5a09a] uppercase">
             Private message
           </p>
-          <h3 className="mt-2 font-serif text-2xl font-semibold">给我留一句话</h3>
+          <h3 className="mt-2 font-serif text-lg font-semibold">给我留一句话</h3>
         </div>
         <span className="border border-[#8ea299]/35 px-2 py-1 text-[10px] tracking-[0.12em] text-[#b7c7bf] uppercase">
           仅本机可见

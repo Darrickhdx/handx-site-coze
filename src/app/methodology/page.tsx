@@ -48,7 +48,7 @@ export default function MethodologyPage() {
       />
 
       <section className="mb-14">
-        <h2 className="font-serif text-2xl font-bold text-foreground mb-6">从原件到网页的四步链</h2>
+        <h2 className="font-serif text-xl font-bold text-foreground mb-6">从原件到网页的四步链</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {workflow.map((item) => (
             <div key={item.title} className="bg-card border border-border/40 rounded-xl p-6 shadow-card">
@@ -61,7 +61,7 @@ export default function MethodologyPage() {
       </section>
 
       <section className="mb-14">
-        <h2 className="font-serif text-2xl font-bold text-foreground mb-3">五层证据体系</h2>
+        <h2 className="font-serif text-xl font-bold text-foreground mb-3">五层证据体系</h2>
         <p className="text-sm text-muted-foreground mb-6">
           等级描述来源性质和可核性，不是机械打分。即使A级材料也只能证明其原文实际记载的范围。
         </p>
@@ -69,7 +69,7 @@ export default function MethodologyPage() {
       </section>
 
       <section className="mb-14">
-        <h2 className="font-serif text-2xl font-bold text-foreground mb-5">原子主张必须保留什么</h2>
+        <h2 className="font-serif text-xl font-bold text-foreground mb-5">原子主张必须保留什么</h2>
         <div className="bg-surface-container-lowest border border-border/40 rounded-xl p-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-sm">
             {[
@@ -94,7 +94,7 @@ export default function MethodologyPage() {
       </section>
 
       <section className="mb-14">
-        <h2 className="font-serif text-2xl font-bold text-foreground mb-5">当前发布闸门</h2>
+        <h2 className="font-serif text-xl font-bold text-foreground mb-5">当前发布闸门</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="rounded-xl border border-confirmed/30 bg-confirmed/10 p-6">
             <div className="flex items-center gap-2 font-semibold text-confirmed">
@@ -122,7 +122,7 @@ export default function MethodologyPage() {
       </section>
 
       <section className="mb-14">
-        <h2 className="font-serif text-2xl font-bold text-foreground mb-5 flex items-center gap-3">
+        <h2 className="font-serif text-xl font-bold text-foreground mb-5 flex items-center gap-3">
           <Bot className="w-6 h-6 text-primary" />AI使用边界
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -148,7 +148,7 @@ export default function MethodologyPage() {
       </section>
 
       <section>
-        <h2 className="font-serif text-2xl font-bold text-foreground mb-4">纠错机制当前状态</h2>
+        <h2 className="font-serif text-xl font-bold text-foreground mb-4">纠错机制当前状态</h2>
         <div className="bg-surface-container-lowest border border-border/40 rounded-xl p-6 text-sm text-muted-foreground leading-relaxed">
           正式邮箱、GitHub Issues和公开投稿流程尚未启用，因此本站不承诺回复时限，也不声称已有持续运营机制。
           上线前需先建立来源提交模板、隐私同意、版权声明、审核责任人和公开更正日志。

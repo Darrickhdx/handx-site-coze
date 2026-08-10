@@ -73,7 +73,7 @@ export default async function NovelChapterPage({ params }: ChapterPageProps) {
                     ? 'Prologue'
                     : 'Epilogue'}
               </p>
-              <h1 className="mt-3 font-serif text-4xl font-semibold sm:text-6xl">
+              <h1 className="mt-3 font-serif text-xl font-semibold sm:text-2xl">
                 {section.title}
               </h1>
             </div>
@@ -99,7 +99,7 @@ export default async function NovelChapterPage({ params }: ChapterPageProps) {
               <BookOpenText className="mt-1 size-6 shrink-0 text-primary" strokeWidth={1.4} aria-hidden="true" />
               <div className="min-w-0 flex-1">
                 <p className="text-xs font-semibold tracking-[0.13em] text-primary uppercase">真实与虚构伴读</p>
-                <h2 id="chapter-evidence-heading" className="mt-3 font-serif text-2xl font-semibold">
+                <h2 id="chapter-evidence-heading" className="mt-3 font-serif text-xl font-semibold">
                   这一章如何回到原件，又在哪里停下
                 </h2>
                 <div className="mt-5 grid gap-3 sm:grid-cols-2">
@@ -135,7 +135,7 @@ export default async function NovelChapterPage({ params }: ChapterPageProps) {
                 <span className="block text-[10px] tracking-[0.14em] text-muted-foreground uppercase">
                   上一章
                 </span>
-                <strong className="mt-2 block font-serif text-xl">
+                <strong className="mt-2 block font-serif text-base">
                   {adjacent.previous.title}
                 </strong>
               </span>
@@ -154,7 +154,7 @@ export default async function NovelChapterPage({ params }: ChapterPageProps) {
                 <span className="block text-[10px] tracking-[0.14em] text-muted-foreground uppercase">
                   下一章
                 </span>
-                <strong className="mt-2 block font-serif text-xl">
+                <strong className="mt-2 block font-serif text-base">
                   {adjacent.next.title}
                 </strong>
               </span>

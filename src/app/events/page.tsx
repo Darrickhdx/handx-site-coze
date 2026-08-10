@@ -29,7 +29,7 @@ export default function EventsPage() {
           <article key={event.event_id} className="bg-card border border-border/40 rounded-xl p-5 sm:p-6 shadow-card">
             <div className="flex flex-col sm:flex-row sm:items-start gap-4">
               <div className="sm:w-32 shrink-0">
-                <p className="font-serif font-bold text-xl text-foreground">{formatDate(event)}</p>
+                <p className="font-serif font-bold text-base text-foreground">{formatDate(event)}</p>
                 <p className="font-mono text-[11px] text-primary mt-1">{event.event_id}</p>
               </div>
               <div className="flex-1 min-w-0">
@@ -44,7 +44,7 @@ export default function EventsPage() {
                     </span>
                   )}
                 </div>
-                <h2 className="font-serif text-xl font-semibold text-foreground">{event.title}</h2>
+                <h2 className="font-serif text-lg font-semibold text-foreground">{event.title}</h2>
                 <p className="text-sm text-muted-foreground mt-2 leading-relaxed">{event.description}</p>
                 {event.note && (
                   <p className="mt-3 text-sm border-l-2 border-warning pl-3 text-muted-foreground">

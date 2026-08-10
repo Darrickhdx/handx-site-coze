@@ -117,7 +117,7 @@ export function FamilyHistoryDiagnostic() {
         <div className="grid gap-10 p-7 sm:p-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(18rem,0.85fr)] lg:items-end">
           <div>
             <p className="story-kicker">3 分钟 · 5 个选择题</p>
-            <h2 className="mt-5 max-w-3xl font-serif text-4xl font-semibold leading-tight tracking-[-0.04em] sm:text-5xl">
+            <h2 className="mt-5 max-w-3xl font-serif text-2xl font-semibold leading-tight tracking-[-0.04em] sm:text-2xl">
               先判断，你家的第一步应该是什么。
             </h2>
             <p className="mt-6 max-w-2xl text-[15px] leading-[1.7] text-muted-foreground">
@@ -135,7 +135,7 @@ export function FamilyHistoryDiagnostic() {
           </div>
           <div className="border-t border-foreground/15 pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
             <ShieldCheck className="size-7 text-primary" strokeWidth={1.4} aria-hidden="true" />
-            <p className="mt-5 font-serif text-xl font-semibold">不上传材料 · 不保存答案 · 不调用外部模型</p>
+            <p className="mt-5 font-serif text-base font-semibold">不上传材料 · 不保存答案 · 不调用外部模型</p>
             <p className="mt-3 text-sm leading-[1.7] text-muted-foreground">
               答案只存在当前页面内存，刷新或退出即清空；不会写入网址、统计、留言箱或浏览器存储。
             </p>
@@ -164,7 +164,7 @@ export function FamilyHistoryDiagnostic() {
             <h2
               ref={questionHeadingRef}
               tabIndex={-1}
-              className="font-serif text-3xl font-semibold leading-tight tracking-[-0.035em] outline-none sm:text-4xl"
+              className="font-serif text-2xl font-semibold leading-tight tracking-[-0.035em] outline-none sm:text-xl"
             >
               {currentQuestion.prompt}
             </h2>
@@ -231,7 +231,7 @@ export function FamilyHistoryDiagnostic() {
           <h2
             ref={resultHeadingRef}
             tabIndex={-1}
-            className="mt-5 max-w-4xl font-serif text-4xl font-semibold leading-tight tracking-[-0.04em] outline-none sm:text-5xl"
+            className="mt-5 max-w-4xl font-serif text-2xl font-semibold leading-tight tracking-[-0.04em] outline-none sm:text-2xl"
           >
             {result.title}
           </h2>
@@ -240,7 +240,7 @@ export function FamilyHistoryDiagnostic() {
           <div className="mt-9 grid gap-px overflow-hidden border border-foreground/15 bg-foreground/15 md:grid-cols-3">
             {result.actions.map((action, index) => (
               <article key={action} className="bg-background p-6">
-                <span className="font-serif text-3xl text-primary/40">0{index + 1}</span>
+                <span className="font-serif text-xl text-primary/40">0{index + 1}</span>
                 <p className="mt-5 text-sm leading-[1.7]">{action}</p>
               </article>
             ))}

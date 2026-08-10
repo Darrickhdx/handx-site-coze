@@ -63,7 +63,7 @@ export default function GraphMigrationInboxPage() {
               <ShieldCheck className="size-4" aria-hidden="true" />
               {summary.status === 'quarantined' ? '隔离门禁正常' : '上游与批准版一致'}
             </div>
-            <p className="mt-6 font-serif text-2xl leading-relaxed text-foreground sm:text-xl">
+            <p className="mt-6 font-serif text-lg leading-relaxed text-foreground sm:text-base">
               新资料先进入候选层，
               <br />
               不直接改写人物历史。
@@ -80,21 +80,21 @@ export default function GraphMigrationInboxPage() {
           <div className="grid gap-px border border-foreground/15 bg-foreground/15 sm:grid-cols-2 xl:grid-cols-4">
             <article className="bg-background p-6 sm:min-h-52">
               <DatabaseZap className="size-5 text-primary" aria-hidden="true" />
-              <strong className="mt-8 block font-serif text-4xl">
+              <strong className="mt-8 block font-serif text-xl">
                 {summary.approved_projection.nodes}/{summary.approved_projection.edges}
               </strong>
               <span className="mt-2 block text-sm leading-6 text-muted-foreground">访客端批准节点／关系</span>
             </article>
             <article className="bg-background p-6 sm:min-h-52">
               <GitCompareArrows className="size-5 text-primary" aria-hidden="true" />
-              <strong className="mt-8 block font-serif text-4xl">
+              <strong className="mt-8 block font-serif text-xl">
                 +{review.quarantined_nodes ?? 0}/+{review.quarantined_edges ?? 0}
               </strong>
               <span className="mt-2 block text-sm leading-6 text-muted-foreground">新增候选节点／关系</span>
             </article>
             <article className="bg-background p-6 sm:min-h-52">
               <EyeOff className="size-5 text-primary" aria-hidden="true" />
-              <strong className="mt-8 block font-serif text-4xl">
+              <strong className="mt-8 block font-serif text-xl">
                 {review.quarantined_modified_nodes ?? 0}
               </strong>
               <span className="mt-2 block text-sm leading-6 text-muted-foreground">
@@ -103,7 +103,7 @@ export default function GraphMigrationInboxPage() {
             </article>
             <article className="bg-background p-6 sm:min-h-52">
               <FileLock2 className="size-5 text-primary" aria-hidden="true" />
-              <strong className="mt-8 block font-serif text-4xl">{blocked}</strong>
+              <strong className="mt-8 block font-serif text-xl">{blocked}</strong>
               <span className="mt-2 block text-sm leading-6 text-muted-foreground">逐项阻断，公开泄漏为 0</span>
             </article>
           </div>
@@ -114,7 +114,7 @@ export default function GraphMigrationInboxPage() {
         <div className="personal-shell grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:gap-14">
           <div>
             <p className="story-kicker">受控迁移规则</p>
-            <h2 className="mt-4 font-serif text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">
+            <h2 className="mt-4 font-serif text-2xl font-semibold tracking-[-0.04em] sm:text-2xl">
               先登记存在，
               <br />
               再决定能否使用。
@@ -138,7 +138,7 @@ export default function GraphMigrationInboxPage() {
         <div className="personal-shell grid gap-8 lg:grid-cols-[minmax(0,1fr)_24rem] lg:items-end">
           <div>
             <p className="story-kicker">下一道门</p>
-            <h2 className="mt-4 max-w-3xl font-serif text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">
+            <h2 className="mt-4 max-w-3xl font-serif text-2xl font-semibold tracking-[-0.04em] sm:text-2xl">
               把候选转成来源卡与原子主张，而不是直接点“合并”。
             </h2>
             <p className="mt-5 max-w-2xl text-[15px] leading-[1.7] text-muted-foreground">

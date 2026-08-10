@@ -171,7 +171,7 @@ export function NovelCommentAdmin() {
       <section className="grid gap-8 border-b border-foreground/15 pb-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
         <div>
           <p className="story-kicker">Owner only · local runtime</p>
-          <h1 className="mt-4 font-serif text-5xl font-semibold tracking-[-0.05em] sm:text-6xl">
+          <h1 className="mt-4 font-serif text-2xl font-semibold tracking-[-0.05em] sm:text-2xl">
             小说评论审核
           </h1>
         </div>

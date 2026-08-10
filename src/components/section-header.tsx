@@ -32,7 +32,7 @@ export function SectionHeader({
           {eyebrow}
         </p>
       )}
-      <h2 className="font-serif text-2xl sm:text-xl font-bold text-foreground mb-2 leading-tight">
+      <h2 className="font-serif text-xl sm:text-base font-bold text-foreground mb-2 leading-tight">
         {title}
       </h2>
       {subtitle && (
@@ -54,7 +54,7 @@ interface PageHeaderProps {
 export function PageHeader({ title, subtitle, className }: PageHeaderProps) {
   return (
     <div className={cn('mb-8 sm:mb-10 pt-4 sm:pt-6', className)}>
-      <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-3 leading-tight">
+      <h1 className="font-serif text-xl sm:text-xl md:text-2xl font-bold text-foreground mb-3 leading-tight">
         {title}
       </h1>
       {subtitle && (

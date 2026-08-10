@@ -33,7 +33,7 @@ export default function ControversiesPage() {
           <div className="flex items-start gap-4">
             <Link2 className="w-7 h-7 text-candidate shrink-0" />
             <div>
-              <h2 className="font-serif text-2xl font-bold text-foreground mt-2">
+              <h2 className="font-serif text-xl font-bold text-foreground mt-2">
                 两种姓名，是不是同一个人？
               </h2>
               {claim ? (
@@ -75,7 +75,7 @@ export default function ControversiesPage() {
           <div className="flex items-start gap-3">
             <ShieldAlert className="w-5 h-5 text-disputed shrink-0 mt-0.5" />
             <div>
-              <h2 className="font-serif text-xl font-semibold text-foreground">为什么现在不能合并</h2>
+              <h2 className="font-serif text-lg font-semibold text-foreground">为什么现在不能合并</h2>
               <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
                 姓名相近、时间相容和同一地区只能形成一个很强的查询方向，不能替代原始学籍、人事编号或明确异名记录。
                 在这些身份锚出现前，出生年、教育履历和后续经历都不能无条件拼接。
@@ -88,7 +88,7 @@ export default function ControversiesPage() {
       <section className="mb-12 grid gap-6 border border-foreground/15 bg-[#eee9df] p-6 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:p-8">
         <div>
           <p className="story-kicker">把疑问变成行动</p>
-          <h2 className="mt-3 font-serif text-3xl font-semibold">每一个未解问题，都应该对应一项具体查档任务。</h2>
+          <h2 className="mt-3 font-serif text-2xl font-semibold">每一个未解问题，都应该对应一项具体查档任务。</h2>
           <p className="mt-4 max-w-2xl text-sm leading-[1.7] text-muted-foreground">
             查档现场会告诉你正在找哪份材料、当前走到哪里，以及即使取得它仍不能自动证明什么。
           </p>
@@ -100,7 +100,7 @@ export default function ControversiesPage() {
       </section>
 
       <section>
-        <h2 className="font-serif text-2xl font-bold text-foreground mb-5">尚不能写成事实</h2>
+        <h2 className="font-serif text-xl font-bold text-foreground mb-5">尚不能写成事实</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {unresolved.map((item) => (
             <div key={item} className="bg-surface-container-lowest border border-border/40 rounded-xl p-5">

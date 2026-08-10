@@ -331,7 +331,7 @@ export function KnowledgeGraphAtlas({
             <p className="font-mono text-[10px] tracking-[0.15em] text-primary uppercase">
               {selected.group === 'person' ? 'Person' : selected.group === 'event' ? 'Event' : 'Organisation'}
             </p>
-            <h3 className="mt-2 font-serif text-2xl font-semibold">{selected.label}</h3>
+            <h3 className="mt-2 font-serif text-lg font-semibold">{selected.label}</h3>
             {selected.subgroup && (
               <p className="mt-1 text-xs text-muted-foreground">
                 {selected.subgroup}

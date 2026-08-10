@@ -53,7 +53,7 @@ export default function PrivacyPage() {
               <h1 className="personal-heading mt-7">只记录理解网站所必需的数据。</h1>
             </div>
             <div>
-              <p className="max-w-3xl font-serif text-2xl leading-relaxed">
+              <p className="max-w-3xl font-serif text-lg leading-relaxed">
                 当前版本仍是只运行在本机的审阅站。访问统计、留言、小说评论和主人工作台同样坚持：
                 最少收集、用途清楚、默认私密、绝不自动公开。
               </p>
@@ -72,7 +72,7 @@ export default function PrivacyPage() {
             return (
               <article key={card.title} className="bg-[#f4f0e8] p-7 sm:p-9">
                 <Icon className="size-6 text-primary" strokeWidth={1.4} aria-hidden="true" />
-                <h2 className="mt-6 font-serif text-2xl font-semibold">{card.title}</h2>
+                <h2 className="mt-6 font-serif text-xl font-semibold">{card.title}</h2>
                 <p className="mt-4 text-sm leading-[1.7] text-muted-foreground">{card.body}</p>
               </article>
             );
@@ -93,7 +93,7 @@ export default function PrivacyPage() {
           <div className="space-y-8">
             <article className="border-t border-foreground/15 pt-6">
               <p className="text-xs font-semibold tracking-[0.14em] text-primary uppercase">00 · 浏览器内自评</p>
-              <h3 className="mt-3 font-serif text-3xl font-semibold">五个选择题，只在当前页面内存计算</h3>
+              <h3 className="mt-3 font-serif text-xl font-semibold">五个选择题，只在当前页面内存计算</h3>
               <p className="mt-4 text-sm leading-[1.7] text-muted-foreground">
                 家族史起步诊断不收姓名、自由文本或文件，不调用外部模型，也不把选择写入统计、留言、网址、
                 Cookie、localStorage 或 sessionStorage。结果是资料准备度建议，不是历史事实鉴定；刷新或退出即清空答案。
@@ -105,7 +105,7 @@ export default function PrivacyPage() {
             </article>
             <article className="border-t border-foreground/15 pt-6">
               <p className="text-xs font-semibold tracking-[0.14em] text-primary uppercase">01 · 访问与操作统计</p>
-              <h3 className="mt-3 font-serif text-3xl font-semibold">页面路径、事件名称、时间与匿名会话哈希</h3>
+              <h3 className="mt-3 font-serif text-xl font-semibold">页面路径、事件名称、时间与匿名会话哈希</h3>
               <p className="mt-4 text-sm leading-[1.7] text-muted-foreground">
                 用来回答“哪些页面有人看、哪个传播渠道带来有效阅读、读者从哪里继续、哪些入口没有作用”。
                 页面路径会删除查询参数；来源只保存预设类别（如微信、小红书、搜索、二维码）和站主预先登记的非个人化活动编号，
@@ -118,7 +118,7 @@ export default function PrivacyPage() {
             </article>
             <article className="border-t border-foreground/15 pt-6">
               <p className="text-xs font-semibold tracking-[0.14em] text-primary uppercase">02 · 私密留言</p>
-              <h3 className="mt-3 font-serif text-3xl font-semibold">留言正文，以及你自愿留下的称呼和回复方式</h3>
+              <h3 className="mt-3 font-serif text-xl font-semibold">留言正文，以及你自愿留下的称呼和回复方式</h3>
               <p className="mt-4 text-sm leading-[1.7] text-muted-foreground">
                 只用于阅读、回复和判断是否继续交流。普通留言与历史研究材料分开保存，不进入搜索、图谱、文章或公开留言墙。
                 联系方式永远不会出现在公开页面。
@@ -126,7 +126,7 @@ export default function PrivacyPage() {
             </article>
             <article className="border-t border-foreground/15 pt-6">
               <p className="text-xs font-semibold tracking-[0.14em] text-primary uppercase">03 · 小说章节评论</p>
-              <h3 className="mt-3 font-serif text-3xl font-semibold">投稿正文与审核事件，分别追加保存</h3>
+              <h3 className="mt-3 font-serif text-xl font-semibold">投稿正文与审核事件，分别追加保存</h3>
               <p className="mt-4 text-sm leading-[1.7] text-muted-foreground">
                 评论仅收集章节编号、可选称呼、正文、提交时间、匿名会话哈希与同意版本；不采集 IP 或
                 User-Agent。投稿始终先进入 <code className="mx-1 text-xs">pending</code>，
@@ -138,7 +138,7 @@ export default function PrivacyPage() {
             </article>
             <article className="border-t border-foreground/15 pt-6">
               <p className="text-xs font-semibold tracking-[0.14em] text-primary uppercase">04 · 主人索引与媒体导出</p>
-              <h3 className="mt-3 font-serif text-3xl font-semibold">只读命中，不自动造事实；只生成审稿包，不自动直发</h3>
+              <h3 className="mt-3 font-serif text-xl font-semibold">只读命中，不自动造事实；只生成审稿包，不自动直发</h3>
               <p className="mt-4 text-sm leading-[1.7] text-muted-foreground">
                 主人语料索引只向持有本机管理员密钥的页面返回 P1 文档标题、定位和材料类别；
                 P2／P3 正文、本机绝对路径和家属私密内容不会发送到浏览器。自动命中只是检索线索，不创建主张或关系。
@@ -159,7 +159,7 @@ export default function PrivacyPage() {
               <span aria-hidden="true" />
               Storage &amp; control
             </p>
-            <h2 className="mt-7 font-serif text-4xl font-semibold sm:text-5xl">数据现在存在哪里？</h2>
+            <h2 className="mt-7 font-serif text-2xl font-semibold sm:text-2xl">数据现在存在哪里？</h2>
             <p className="mt-6 text-sm leading-[1.7] text-[#bdb9b0]">
               访问事件、留言、评论投稿、评论审核事件和主人语料索引写入私有运行数据区，
               文件权限仅允许本机账户读写；它们不在 public 目录、不会进入研究 JSON、不会进入构建产物，

@@ -66,7 +66,7 @@ export default function MissionsPage() {
               一份原件，
               <span className="block text-accent">可能回答一个悬了九十年的问题。</span>
             </h1>
-            <p className="mt-7 max-w-3xl font-serif text-lg leading-relaxed sm:text-xl">
+            <p className="mt-7 max-w-3xl font-serif text-lg leading-relaxed sm:text-base">
               我们把 {counts.missions} 个调查方向拆成可以行动、可以核对、也允许失败的查档任务。
             </p>
             <p className="mt-5 max-w-3xl text-[15px] leading-[1.7] text-muted-foreground">
@@ -96,15 +96,15 @@ export default function MissionsPage() {
             <dl className="mt-5 grid gap-5">
               <div className="border-t border-foreground/15 pt-4">
                 <dt className="text-sm text-muted-foreground">公开任务</dt>
-                <dd className="mt-1 font-serif text-4xl font-semibold">{counts.missions} 项</dd>
+                <dd className="mt-1 font-serif text-xl font-semibold">{counts.missions} 项</dd>
               </div>
               <div className="border-t border-foreground/15 pt-4">
                 <dt className="text-sm text-muted-foreground">首批精确任务</dt>
-                <dd className="mt-1 font-serif text-4xl font-semibold">{counts.highlighted} 项</dd>
+                <dd className="mt-1 font-serif text-xl font-semibold">{counts.highlighted} 项</dd>
               </div>
               <div className="border-t border-foreground/15 pt-4">
                 <dt className="text-sm text-muted-foreground">已经取得并核读</dt>
-                <dd className="mt-1 font-serif text-4xl font-semibold text-primary">{completed} 项</dd>
+                <dd className="mt-1 font-serif text-xl font-semibold text-primary">{completed} 项</dd>
               </div>
             </dl>
             <p className="mt-6 border-l-2 border-primary pl-4 text-xs leading-6 text-muted-foreground">
@@ -130,12 +130,12 @@ export default function MissionsPage() {
             {highlighted.map((mission, index) => (
               <article key={mission.missionId} className="flex min-w-0 flex-col bg-background p-6 sm:p-8">
                 <div className="flex flex-wrap items-center justify-between gap-3">
-                  <span className="font-serif text-3xl italic text-primary/35">0{index + 1}</span>
+                  <span className="font-serif text-xl italic text-primary/35">0{index + 1}</span>
                   <span className="border border-primary/20 px-2.5 py-1 text-xs font-semibold text-primary">
                     {priorityLabel(mission.executionPriority)} · {mission.status.publicLabel}
                   </span>
                 </div>
-                <h3 className="mt-7 break-words font-serif text-2xl font-semibold leading-snug tracking-[-0.025em] sm:text-xl">
+                <h3 className="mt-7 break-words font-serif text-lg font-semibold leading-snug tracking-[-0.025em] sm:text-lg">
                   {mission.researchQuestion}
                 </h3>
                 <p className="mt-5 flex min-w-0 items-start gap-2 text-sm leading-[1.7] text-muted-foreground">
@@ -177,7 +177,7 @@ export default function MissionsPage() {
             <div>
               <BookOpenCheck className="size-8 text-[#c38a82]" strokeWidth={1.4} aria-hidden="true" />
               <p className="personal-kicker personal-kicker-light mt-7"><span aria-hidden="true" />Research journal</p>
-              <h2 className="mt-6 font-serif text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">站主研究日志</h2>
+              <h2 className="mt-6 font-serif text-2xl font-semibold tracking-[-0.04em] sm:text-2xl">站主研究日志</h2>
               <p className="mt-6 text-sm leading-[1.7] text-[#bdb9b0]">
                 日志记录的是行动、取舍和停止条件。它不会把“计划完成”写成“历史已经查清”。
               </p>
@@ -187,7 +187,7 @@ export default function MissionsPage() {
               {archiveMissionDataset.journal.map((entry, index) => (
                 <article key={`${entry.action}-${index}`} className="border border-white/15 bg-white/[0.035] p-6 sm:p-8">
                   <p className="text-xs font-semibold tracking-[0.14em] text-[#c38a82] uppercase">公开决策日志 0{index + 1}</p>
-                  <h3 className="mt-4 font-serif text-2xl font-semibold leading-snug">{entry.decision}</h3>
+                  <h3 className="mt-4 font-serif text-lg font-semibold leading-snug">{entry.decision}</h3>
                   <dl className="mt-6 grid gap-5 text-sm leading-[1.7] sm:grid-cols-2">
                     <div>
                       <dt className="font-semibold text-[#d9d4ca]">实际结果</dt>
@@ -231,8 +231,8 @@ export default function MissionsPage() {
           <div className="mt-10 grid min-w-0 gap-px overflow-hidden border border-foreground/15 bg-foreground/15 sm:grid-cols-2 lg:grid-cols-5">
             {evidenceBoundaries.map((item, index) => (
               <article key={item.title} className="min-w-0 bg-background p-6">
-                <span className="font-serif text-3xl text-primary/35">0{index + 1}</span>
-                <h3 className="mt-6 font-serif text-xl font-semibold">{item.title}</h3>
+                <span className="font-serif text-xl text-primary/35">0{index + 1}</span>
+                <h3 className="mt-6 font-serif text-lg font-semibold">{item.title}</h3>
                 <p className="mt-4 text-sm leading-[1.7] text-muted-foreground">{item.body}</p>
               </article>
             ))}

@@ -83,7 +83,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
           <h1 className="mt-6 max-w-5xl font-serif text-[clamp(1.26rem,2.85vw,2.62rem)] font-semibold leading-[1.02] tracking-[-0.055em]">
             {topic.title}
           </h1>
-          <p className="mt-8 max-w-3xl font-serif text-lg leading-relaxed text-[#d7cfc2] sm:text-xl">
+          <p className="mt-8 max-w-3xl font-serif text-lg leading-relaxed text-[#d7cfc2] sm:text-base">
             {topic.dek}
           </p>
           <div className="mt-10 flex flex-wrap gap-3 border-t border-white/15 pt-6 text-[11px] text-[#aeb7b2]">
@@ -124,7 +124,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
             <p className="text-[10px] font-semibold tracking-[0.16em] text-primary uppercase">
               本文核心判断
             </p>
-            <p className="mt-3 font-serif text-2xl leading-relaxed text-foreground">
+            <p className="mt-3 font-serif text-lg leading-relaxed text-foreground">
               {topic.thesis}
             </p>
           </div>
@@ -132,10 +132,10 @@ export default async function TopicPage({ params }: TopicPageProps) {
           <div className="mt-16 space-y-20">
             {topic.sections.map((section, sectionIndex) => (
               <section key={section.id} id={section.id} className="scroll-mt-28">
-                <p className="font-serif text-4xl italic text-primary/25">
+                <p className="font-serif text-xl italic text-primary/25">
                   {String(sectionIndex + 1).padStart(2, '0')}
                 </p>
-                <h2 className="mt-4 font-serif text-3xl font-semibold tracking-[-0.035em] sm:text-4xl">
+                <h2 className="mt-4 font-serif text-2xl font-semibold tracking-[-0.035em] sm:text-xl">
                   {section.title}
                 </h2>
                 <div className="mt-8 space-y-8">
@@ -200,7 +200,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
           <div className="mt-20 grid gap-4 border border-foreground/15 bg-white/35 p-6 sm:grid-cols-[auto_minmax(0,1fr)] sm:items-start">
             <ShieldAlert className="size-6 text-primary" aria-hidden="true" />
             <div>
-              <h2 className="font-serif text-2xl font-semibold">这篇文章拒绝给出功劳排名</h2>
+              <h2 className="font-serif text-xl font-semibold">这篇文章拒绝给出功劳排名</h2>
               <p className="mt-3 text-sm leading-[1.7] text-muted-foreground">
                 现阶段能负责任地公开的，是材料差异、确证范围和下一步查档问题。
                 未核真人因果不会因为适合传播而被写成结论。

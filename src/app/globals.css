@@ -255,7 +255,7 @@
 
 .story-date {
   font-family: Georgia, Cambria, 'Times New Roman', serif;
-  font-size: clamp(1.82rem, 3.56vw, 3.00rem);
+  font-size: clamp(1.56rem, 3.05vw, 2.57rem);
   font-style: italic;
   letter-spacing: -0.07em;
   line-height: 0.8;
@@ -729,7 +729,7 @@
 
 .personal-feature-title {
   color: #c9584f;
-  font-size: clamp(1.46rem, 2.84vw, 2.84rem);
+  font-size: clamp(1.45rem, 2.22vw, 2.05rem);
   font-weight: 600;
   letter-spacing: -0.055em;
   line-height: 0.95;

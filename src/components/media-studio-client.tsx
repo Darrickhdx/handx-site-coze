@@ -220,13 +220,13 @@ export function MediaStudioClient() {
               <LockKeyhole className="size-3.5" aria-hidden="true" />
               主人工作台 · 仅本机
             </p>
-            <h1 className="mt-7 font-serif text-[clamp(1.54rem,3.07vw,2.94rem)] font-semibold leading-[0.92] tracking-[-0.06em]">
+            <h1 className="mt-7 font-serif text-[clamp(1.53rem,3.05vw,2.92rem)] font-semibold leading-[0.92] tracking-[-0.06em]">
               媒体矩阵
               <span className="block text-[#c38a82]">审稿台</span>
             </h1>
           </div>
           <div>
-            <p className="font-serif text-2xl leading-relaxed text-[#e1dbd1] sm:text-xl">
+            <p className="font-serif text-lg leading-relaxed text-[#e1dbd1] sm:text-base">
               一键生成的是审稿包，
               <br />
               不是未经确认的自动发布。
@@ -243,7 +243,7 @@ export function MediaStudioClient() {
         <div className="personal-shell grid gap-px bg-foreground/15 sm:grid-cols-3">
           <div className="bg-[#f4f0e8] p-6 sm:p-8">
             <ShieldCheck className="size-5 text-primary" aria-hidden="true" />
-            <strong className="mt-6 block font-serif text-3xl">
+            <strong className="mt-6 block font-serif text-xl">
               {mediaMotherContent.length}
             </strong>
             <span className="mt-1 block text-xs text-muted-foreground">
@@ -252,7 +252,7 @@ export function MediaStudioClient() {
           </div>
           <div className="bg-[#f4f0e8] p-6 sm:p-8">
             <FileWarning className="size-5 text-primary" aria-hidden="true" />
-            <strong className="mt-6 block font-serif text-3xl">
+            <strong className="mt-6 block font-serif text-xl">
               {blockedCount}
             </strong>
             <span className="mt-1 block text-xs text-muted-foreground">
@@ -261,7 +261,7 @@ export function MediaStudioClient() {
           </div>
           <div className="bg-[#f4f0e8] p-6 sm:p-8">
             <PackageCheck className="size-5 text-primary" aria-hidden="true" />
-            <strong className="mt-6 block font-serif text-3xl">
+            <strong className="mt-6 block font-serif text-xl">
               review_only
             </strong>
             <span className="mt-1 block text-xs text-muted-foreground">
@@ -423,7 +423,7 @@ export function MediaStudioClient() {
                 <p className="text-[10px] font-semibold tracking-[0.14em] text-primary uppercase">
                   平台预览
                 </p>
-                <h2 className="mt-2 font-serif text-3xl font-semibold">
+                <h2 className="mt-2 font-serif text-2xl font-semibold">
                   {platform.channelLabel}
                 </h2>
               </div>
@@ -627,7 +627,7 @@ export function MediaStudioClient() {
         <div className="personal-shell grid gap-8 lg:grid-cols-[auto_minmax(0,1fr)] lg:gap-8">
           <PackageCheck className="size-8 text-primary" aria-hidden="true" />
           <div>
-            <h2 className="font-serif text-3xl font-semibold">V0.1 发布门禁</h2>
+            <h2 className="font-serif text-2xl font-semibold">V0.1 发布门禁</h2>
             <div className="mt-5 grid gap-4 text-sm leading-[1.7] text-muted-foreground sm:grid-cols-2">
               <p>
                 只有 source_backed、主张与来源可定位、权利允许审稿复用，且不含未核身份、真人关键因果和家属私密材料的内容可以导出。问题、解释与文学内容必须显式标注，并停留在预览区。

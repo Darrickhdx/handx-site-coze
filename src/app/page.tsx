@@ -44,7 +44,7 @@ export default function HomePage() {
               一个人，
               <span className="block text-accent">把复杂的东西做完整。</span>
             </h1>
-            <p className="mt-6 max-w-2xl font-serif text-lg leading-relaxed text-foreground sm:text-xl">
+            <p className="mt-6 max-w-2xl font-serif text-lg leading-relaxed text-foreground sm:text-base">
               {personaBridge}
             </p>
             <p className="mt-4 max-w-2xl text-[15px] leading-[1.7] text-muted-foreground">
@@ -88,7 +88,7 @@ export default function HomePage() {
             </div>
             <div className="flex items-center justify-between gap-5 px-2 pb-1 pt-4">
               <span>
-                <strong className="block font-serif text-xl">{profile.displayName}</strong>
+                <strong className="block font-serif text-base">{profile.displayName}</strong>
                 <span className="mt-1 block text-xs text-muted-foreground">{profile.title}</span>
               </span>
               <ArrowRight className="size-5 text-primary transition-transform group-hover:translate-x-1" aria-hidden="true" />
@@ -122,8 +122,8 @@ export default function HomePage() {
               },
             ].map((route) => (
               <Link key={route.href} href={route.href} className="group bg-background p-6 transition-colors hover:bg-[#eee8dc] sm:p-7">
-                <span className="font-serif text-2xl text-primary/40">{route.number}</span>
-                <strong className="mt-5 flex items-center justify-between gap-4 font-serif text-2xl">
+                <span className="font-serif text-lg text-primary/40">{route.number}</span>
+                <strong className="mt-5 flex items-center justify-between gap-4 font-serif text-lg">
                   {route.title}
                   <ArrowRight className="size-4 text-primary transition-transform group-hover:translate-x-1" aria-hidden="true" />
                 </strong>
@@ -151,7 +151,7 @@ export default function HomePage() {
             <div className="grid gap-px overflow-hidden border border-foreground/15 bg-foreground/15 sm:grid-cols-3">
               {trustProofs.map((item) => (
                 <div key={item.value} className="bg-background p-6 sm:min-h-32 sm:p-7">
-                  <strong className="font-serif text-3xl text-primary sm:text-4xl">{item.value}</strong>
+                  <strong className="font-serif text-xl text-primary sm:text-xl">{item.value}</strong>
                   <p className="mt-5 text-sm leading-[1.7] text-muted-foreground">{item.label}</p>
                 </div>
               ))}
@@ -171,7 +171,7 @@ export default function HomePage() {
               Flagship project · 01
             </p>
             <h2 className="personal-feature-title mt-7">寻找苏开元</h2>
-            <p className="mt-4 font-serif text-2xl leading-relaxed text-[#d7cfc2] sm:text-xl">
+            <p className="mt-4 font-serif text-lg leading-relaxed text-[#d7cfc2] sm:text-base">
               一张 1936 年的校刊，带回一个被历史遗漏的名字。
             </p>
             <p className="mt-8 max-w-2xl text-[15px] leading-[1.7] text-[#bdb9b0]">
@@ -241,11 +241,11 @@ export default function HomePage() {
               return (
                 <article key={item.number} className="flex min-h-[16rem] flex-col bg-background p-7 sm:p-9">
                   <div className="flex items-center justify-between text-primary">
-                    <span className="font-serif text-3xl italic text-primary/35">{item.number}</span>
+                    <span className="font-serif text-xl italic text-primary/35">{item.number}</span>
                     <Icon className="size-6" strokeWidth={1.4} aria-hidden="true" />
                   </div>
                   <p className="mt-10 text-[11px] font-bold tracking-[0.18em] text-primary uppercase">{item.eyebrow}</p>
-                  <h3 className="mt-4 font-serif text-2xl font-semibold leading-snug tracking-[-0.025em]">{item.title}</h3>
+                  <h3 className="mt-4 font-serif text-lg font-semibold leading-snug tracking-[-0.025em]">{item.title}</h3>
                   <p className="mt-5 text-sm leading-[1.7] text-muted-foreground">{item.description}</p>
                   <p className="mt-auto border-t border-foreground/15 pt-5 text-xs leading-6 text-muted-foreground">{item.note}</p>
                 </article>
@@ -294,7 +294,7 @@ export default function HomePage() {
                       <Icon className="size-4" strokeWidth={1.5} aria-hidden="true" />
                       {item.kind}
                     </span>
-                    <strong className="mt-2 block font-serif text-2xl leading-snug text-foreground group-hover:text-primary">
+                    <strong className="mt-2 block font-serif text-lg leading-snug text-foreground group-hover:text-primary">
                       {item.title}
                     </strong>
                   </span>
@@ -314,7 +314,7 @@ export default function HomePage() {
                 <span aria-hidden="true" />
                 Let&apos;s talk
               </p>
-              <h2 className="mt-6 max-w-3xl font-serif text-3xl font-semibold leading-tight tracking-[-0.035em] sm:text-4xl">
+              <h2 className="mt-6 max-w-3xl font-serif text-2xl font-semibold leading-tight tracking-[-0.035em] sm:text-xl">
                 如果你正在做 AI 产品，或也想把一段家族历史重新整理出来。
               </h2>
               <p className="mt-5 max-w-2xl text-sm leading-[1.7] text-muted-foreground">

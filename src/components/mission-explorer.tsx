@@ -80,7 +80,7 @@ export function MissionExplorer() {
       <div className="border border-foreground/15 bg-card p-5 sm:p-7">
         <div className="flex items-center gap-3">
           <ListFilter className="size-5 text-primary" aria-hidden="true" />
-          <h3 className="font-serif text-xl font-semibold">筛选查档任务</h3>
+          <h3 className="font-serif text-lg font-semibold">筛选查档任务</h3>
         </div>
         <div className="mt-6 grid min-w-0 gap-4 lg:grid-cols-[0.75fr_1fr_1.25fr]">
           <label className="grid min-w-0 gap-2 text-xs font-semibold tracking-[0.08em] text-muted-foreground uppercase">
@@ -166,7 +166,7 @@ export function MissionExplorer() {
                 <span className="text-xs text-muted-foreground">{mission.missionId}</span>
               </div>
 
-              <h3 className="mt-5 break-words font-serif text-2xl font-semibold leading-snug tracking-[-0.025em]">
+              <h3 className="mt-5 break-words font-serif text-lg font-semibold leading-snug tracking-[-0.025em]">
                 {mission.researchQuestion}
               </h3>
 
@@ -203,7 +203,7 @@ export function MissionExplorer() {
         </div>
       ) : (
         <div className="mt-5 border border-foreground/15 bg-card p-8 text-center">
-          <p className="font-serif text-2xl font-semibold">没有符合当前条件的任务</p>
+          <p className="font-serif text-lg font-semibold">没有符合当前条件的任务</p>
           <p className="mt-3 text-sm leading-[1.7] text-muted-foreground">试试清除筛选，或只输入一个人物姓名。</p>
         </div>
       )}

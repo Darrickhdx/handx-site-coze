@@ -61,7 +61,7 @@ export default function AiProductPage() {
               不从模型出发，
               <span className="mt-2 block text-accent">从真实结果倒推 AI 产品。</span>
             </h1>
-            <p className="mt-6 max-w-3xl font-serif text-lg leading-relaxed text-foreground sm:text-xl">
+            <p className="mt-6 max-w-3xl font-serif text-lg leading-relaxed text-foreground sm:text-base">
               {profile.statement}
             </p>
             <p className="mt-4 max-w-3xl text-[15px] leading-[1.7] text-muted-foreground">
@@ -91,7 +91,7 @@ export default function AiProductPage() {
             <p className="mt-7 text-xs font-semibold tracking-[0.18em] text-primary uppercase">
               Working principle
             </p>
-            <h2 className="mt-3 font-serif text-2xl font-semibold leading-tight tracking-[-0.035em] sm:text-xl">
+            <h2 className="mt-3 font-serif text-xl font-semibold leading-tight tracking-[-0.035em] sm:text-base">
               判断一个 AI 项目是否值得做，我先问四个问题。
             </h2>
             <ol className="mt-6 space-y-4 text-sm leading-[1.7] text-muted-foreground">
@@ -102,7 +102,7 @@ export default function AiProductPage() {
                 '验证之后，能否稳定部署、维护并持续改进？',
               ].map((question, index) => (
                 <li key={question} className="grid grid-cols-[2rem_1fr] gap-3">
-                  <span className="font-serif text-xl text-primary">0{index + 1}</span>
+                  <span className="font-serif text-base text-primary">0{index + 1}</span>
                   <span>{question}</span>
                 </li>
               ))}
@@ -132,9 +132,9 @@ export default function AiProductPage() {
                 <article key={area.number} className="bg-background p-7 sm:p-9">
                   <div className="flex items-start justify-between gap-6">
                     <Icon className="size-8 text-primary" strokeWidth={1.4} aria-hidden="true" />
-                    <span className="font-serif text-4xl text-primary/30">{area.number}</span>
+                    <span className="font-serif text-xl text-primary/30">{area.number}</span>
                   </div>
-                  <h3 className="mt-8 font-serif text-3xl font-semibold tracking-[-0.035em]">
+                  <h3 className="mt-8 font-serif text-xl font-semibold tracking-[-0.035em]">
                     {area.title}
                   </h3>
                   <p className="mt-5 text-sm leading-[1.7] text-muted-foreground">{area.description}</p>
@@ -160,7 +160,7 @@ export default function AiProductPage() {
                 Product evidence
               </p>
               <Boxes className="mt-8 size-8 text-[#c38a82]" strokeWidth={1.4} aria-hidden="true" />
-              <h2 className="mt-7 max-w-xl font-serif text-4xl font-semibold leading-tight tracking-[-0.04em] sm:text-5xl">
+              <h2 className="mt-7 max-w-xl font-serif text-2xl font-semibold leading-tight tracking-[-0.04em] sm:text-2xl">
                 三个产品样本，
                 <span className="block text-[#c38a82]">证明的是方法，不是英雄叙事。</span>
               </h2>
@@ -181,7 +181,7 @@ export default function AiProductPage() {
                       <p className="text-xs font-semibold tracking-[0.16em] text-[#c38a82] uppercase">
                         Case 0{index + 1} · {item.industry}
                       </p>
-                      <h3 className="mt-3 font-serif text-2xl font-semibold tracking-[-0.025em] sm:text-xl">
+                      <h3 className="mt-3 font-serif text-lg font-semibold tracking-[-0.025em] sm:text-lg">
                         {item.projectTitle}
                       </h3>
                     </div>
@@ -263,9 +263,9 @@ export default function AiProductPage() {
             <div className="divide-y divide-foreground/15 border-y border-foreground/15">
               {collaborationModes.map((mode, index) => (
                 <article key={mode.title} className="grid gap-5 py-7 sm:grid-cols-[3.5rem_1fr] sm:py-9">
-                  <span className="font-serif text-3xl text-primary/45">0{index + 1}</span>
+                  <span className="font-serif text-xl text-primary/45">0{index + 1}</span>
                   <div>
-                    <h3 className="font-serif text-2xl font-semibold tracking-[-0.025em]">
+                    <h3 className="font-serif text-lg font-semibold tracking-[-0.025em]">
                       {mode.title}
                     </h3>
                     <p className="mt-3 max-w-3xl text-sm leading-[1.7] text-muted-foreground">

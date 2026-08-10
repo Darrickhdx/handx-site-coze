@@ -37,7 +37,7 @@ export default function NovelCompanionPage() {
             </div>
             <div>
               <BookMarked className="size-7 text-primary" strokeWidth={1.4} aria-hidden="true" />
-              <p className="mt-6 font-serif text-2xl leading-relaxed sm:text-xl">
+              <p className="mt-6 font-serif text-lg leading-relaxed sm:text-base">
                 先让小说把人带进历史，再让来源卡把判断带回纸面。
               </p>
               <p className="mt-6 max-w-2xl text-[15px] leading-[1.7] text-muted-foreground">
@@ -69,7 +69,7 @@ export default function NovelCompanionPage() {
                 </span>
               </div>
               <div>
-                <h2 className="font-serif text-3xl font-semibold tracking-[-0.03em]">{entry.title}</h2>
+                <h2 className="font-serif text-2xl font-semibold tracking-[-0.03em]">{entry.title}</h2>
                 <p className="mt-5 text-[15px] leading-[1.7] text-muted-foreground">{entry.lead}</p>
                 <div className="mt-6 grid gap-4 sm:grid-cols-2">
                   <div className="border-t border-emerald-800/30 pt-4">
@@ -111,7 +111,7 @@ export default function NovelCompanionPage() {
 
         <section className="mt-12 border border-foreground/15 bg-card p-7 sm:p-9">
           <p className="story-kicker">下一步</p>
-          <h2 className="mt-4 font-serif text-3xl font-semibold">下一版将把伴读做进每章侧栏。</h2>
+          <h2 className="mt-4 font-serif text-2xl font-semibold">下一版将把伴读做进每章侧栏。</h2>
           <p className="mt-5 max-w-3xl text-sm leading-[1.7] text-muted-foreground">
             先覆盖“举旗”“四十六个弹孔”“放乔”“延安”“一角城门”“破案不能认领”“无名”“没有人查过她”等高风险章节；每一条都必须先通过版本与来源门禁。
           </p>

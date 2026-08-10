@@ -142,7 +142,7 @@ export default function GraphPage() {
             </h1>
           </div>
           <div>
-            <p className="font-serif text-2xl leading-relaxed text-foreground sm:text-xl">
+            <p className="font-serif text-lg leading-relaxed text-foreground sm:text-base">
               先沿故事找到问题，
               <br />
               再回研究图谱查证。
@@ -174,7 +174,7 @@ export default function GraphPage() {
             aria-pressed={viewMode === 'atlas'}
           >
             <Network className="size-5 text-primary" aria-hidden="true" />
-            <strong className="mt-3 block font-serif text-2xl">全图</strong>
+            <strong className="mt-3 block font-serif text-lg">全图</strong>
             <span className="mt-2 block text-sm leading-6 text-muted-foreground">
               一屏看完全部人物、事件与机构，可自由缩放。
             </span>
@@ -192,7 +192,7 @@ export default function GraphPage() {
             aria-pressed={viewMode === 'story'}
           >
             <BookOpenText className="size-5 text-primary" aria-hidden="true" />
-            <strong className="mt-3 block font-serif text-2xl">故事模式</strong>
+            <strong className="mt-3 block font-serif text-lg">故事模式</strong>
             <span className="mt-2 block text-sm leading-6 text-muted-foreground">
               三条策展路线，适合第一次认识苏开元研究。
             </span>
@@ -210,7 +210,7 @@ export default function GraphPage() {
             aria-pressed={viewMode === 'research'}
           >
             <Database className="size-5 text-primary" aria-hidden="true" />
-            <strong className="mt-3 block font-serif text-2xl">研究模式</strong>
+            <strong className="mt-3 block font-serif text-lg">研究模式</strong>
             <span className="mt-2 block text-sm leading-6 text-muted-foreground">
               搜索、筛选、Wiki 回链；Legacy 线索默认关闭。
             </span>
@@ -223,7 +223,7 @@ export default function GraphPage() {
           <div className="personal-shell">
             <div className="mb-6 max-w-3xl">
               <p className="story-kicker">全图</p>
-              <h2 className="mt-3 font-serif text-4xl font-semibold tracking-[-0.04em]">
+              <h2 className="mt-3 font-serif text-2xl font-semibold tracking-[-0.04em]">
                 这些人，同时在一张图上。
               </h2>
               <p className="mt-4 text-sm leading-[1.7] text-muted-foreground">
@@ -255,10 +255,10 @@ export default function GraphPage() {
                 aria-pressed={activeRouteId === routeItem.id}
               >
                 <div className="flex items-center justify-between gap-4">
-                  <span className="font-serif text-3xl italic text-primary/35">{routeItem.number}</span>
+                  <span className="font-serif text-xl italic text-primary/35">{routeItem.number}</span>
                   <Route className="size-5 text-primary" strokeWidth={1.5} aria-hidden="true" />
                 </div>
-                <strong className="mt-7 block font-serif text-2xl font-semibold">{routeItem.title}</strong>
+                <strong className="mt-7 block font-serif text-lg font-semibold">{routeItem.title}</strong>
                 <span className="mt-3 block text-sm leading-[1.7] text-foreground">{routeItem.path}</span>
                 <span className="mt-4 block text-xs leading-6 text-muted-foreground">{routeItem.note}</span>
               </button>
@@ -318,7 +318,7 @@ export default function GraphPage() {
               {activeRoute && (
                 <div className="border-b border-foreground/15 pb-6">
                   <p className="text-[10px] font-bold tracking-[0.18em] text-primary uppercase">正在沿路线阅读</p>
-                  <h2 className="mt-3 font-serif text-2xl font-semibold">{activeRoute.title}</h2>
+                  <h2 className="mt-3 font-serif text-xl font-semibold">{activeRoute.title}</h2>
                   <p className="mt-3 text-sm leading-[1.7] text-muted-foreground">{activeRoute.note}</p>
                 </div>
               )}
@@ -328,7 +328,7 @@ export default function GraphPage() {
                   <p className="font-mono text-[10px] text-primary">
                     STEP {String(activeStepIndex + 1).padStart(2, '0')} / {activeRoute?.steps.length}
                   </p>
-                  <h3 className="mt-2 font-serif text-2xl font-semibold">{activeStep.title}</h3>
+                  <h3 className="mt-2 font-serif text-lg font-semibold">{activeStep.title}</h3>
                   <p className="mt-3 text-sm leading-[1.7]">{activeStep.moment}</p>
                   <p className="mt-4 border-l-2 border-primary pl-3 font-serif text-[15px] leading-[1.7] text-muted-foreground">
                     {activeStep.quote}
@@ -358,7 +358,7 @@ export default function GraphPage() {
                   <p className="text-xs font-semibold tracking-[0.14em] text-primary uppercase">
                     {entityTypeLabels[rawNode.entity_type] ?? rawNode.entity_type}
                   </p>
-                  <h2 className="mt-2 font-serif text-3xl font-semibold leading-tight">{rawNode.canonical_label}</h2>
+                  <h2 className="mt-2 font-serif text-2xl font-semibold leading-tight">{rawNode.canonical_label}</h2>
                   {rawNode.variant_label && rawNode.variant_label !== rawNode.canonical_label && (
                     <p className="mt-2 text-sm text-muted-foreground">文献异写：{rawNode.variant_label}</p>
                   )}
@@ -385,7 +385,7 @@ export default function GraphPage() {
               ) : (
                 <div className="flex min-h-72 flex-col justify-center">
                   <CircleHelp className="size-8 text-primary" strokeWidth={1.5} aria-hidden="true" />
-                  <h2 className="mt-5 font-serif text-2xl font-semibold">先选一条路线，或点一个节点。</h2>
+                  <h2 className="mt-5 font-serif text-xl font-semibold">先选一条路线，或点一个节点。</h2>
                   <p className="mt-3 text-sm leading-[1.7] text-muted-foreground">
                     右侧会告诉你这个节点是什么、边界在哪里，以及可以回到哪些来源。
                   </p>
@@ -400,7 +400,7 @@ export default function GraphPage() {
         <div className="personal-shell grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:gap-14">
           <div>
             <Network className="size-7 text-[#c38a82]" strokeWidth={1.4} aria-hidden="true" />
-            <h2 className="mt-6 font-serif text-4xl font-semibold tracking-[-0.04em]">这张图没有画什么，同样重要。</h2>
+            <h2 className="mt-6 font-serif text-2xl font-semibold tracking-[-0.04em]">这张图没有画什么，同样重要。</h2>
           </div>
           <div className="grid gap-6 sm:grid-cols-2">
             <p className="border-t border-white/20 pt-5 text-sm leading-[1.7] text-[#c9c5bd]">
@@ -423,7 +423,7 @@ export default function GraphPage() {
         <div className="personal-shell flex flex-col justify-between gap-8 border-b border-foreground/15 pb-12 md:flex-row md:items-end">
           <div>
             <BookOpenText className="size-6 text-primary" aria-hidden="true" />
-            <h2 className="mt-5 font-serif text-3xl font-semibold">看完图，回到故事与原件。</h2>
+            <h2 className="mt-5 font-serif text-2xl font-semibold">看完图，回到故事与原件。</h2>
             <p className="mt-3 max-w-xl text-sm leading-[1.7] text-muted-foreground">
               图谱是导航，不是结论本身。真正的判断仍发生在原文、上下文和冲突记录里。
             </p>

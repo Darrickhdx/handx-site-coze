@@ -28,7 +28,7 @@ export default function SuKaiyuanPage() {
               <strong>01</strong>
             </div>
             <h1 className="sukaiyuan-title mt-7">寻找苏开元</h1>
-            <p className="mt-4 font-serif text-2xl leading-relaxed text-[#d7cfc2] sm:text-xl">
+            <p className="mt-4 font-serif text-lg leading-relaxed text-[#d7cfc2] sm:text-base">
               一行旧字，把我带回曾祖父的名字。
             </p>
             <p className="mt-6 max-w-2xl text-[15px] leading-[1.7] text-[#bdb9b0] sm:text-lg">
@@ -115,7 +115,7 @@ export default function SuKaiyuanPage() {
               <span aria-hidden="true" />
               Start with a story
             </p>
-            <p className="mt-8 font-serif text-6xl italic text-primary/25">1936</p>
+            <p className="mt-8 font-serif text-2xl italic text-primary/25">1936</p>
           </div>
           <div className="max-w-4xl">
             <p className="story-kicker">第一站 · 平地泉</p>
@@ -145,7 +145,7 @@ export default function SuKaiyuanPage() {
               <span aria-hidden="true" />
               一个名字的历史踪迹
             </p>
-            <p className="mt-8 font-serif text-5xl italic text-primary/25">開／凱</p>
+            <p className="mt-8 font-serif text-2xl italic text-primary/25">開／凱</p>
           </div>
           <div>
             <p className="story-kicker">第二站 · 身份连接</p>
@@ -190,9 +190,9 @@ export default function SuKaiyuanPage() {
           <div className="grid gap-px border-x border-b border-foreground/15 bg-foreground/15 sm:grid-cols-2 xl:grid-cols-5">
             {supportingPeople.map((person) => (
               <Link key={person.entityId} href={`/persons/${person.entityId}`} className="group flex min-h-72 flex-col bg-background p-6 hover:bg-card">
-                <span className="grid size-14 place-items-center border border-primary/30 bg-primary/5 font-serif text-2xl text-primary" aria-hidden="true">{person.initials}</span>
+                <span className="grid size-14 place-items-center border border-primary/30 bg-primary/5 font-serif text-lg text-primary" aria-hidden="true">{person.initials}</span>
                 <p className="mt-7 text-[10px] font-semibold tracking-[0.12em] text-primary uppercase">{person.eyebrow}</p>
-                <h3 className="mt-3 font-serif text-2xl font-semibold">{person.displayName}</h3>
+                <h3 className="mt-3 font-serif text-lg font-semibold">{person.displayName}</h3>
                 <p className="mt-4 text-xs leading-6 text-muted-foreground">{person.roleInStory}</p>
                 <span className="story-text-link mt-auto pt-6">打开档案 <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" /></span>
               </Link>
@@ -232,10 +232,10 @@ export default function SuKaiyuanPage() {
                   className="group flex min-h-[15rem] flex-col bg-background p-7 transition-colors hover:bg-card sm:p-9"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="font-serif text-3xl italic text-primary/30">0{index + 1}</span>
+                    <span className="font-serif text-xl italic text-primary/30">0{index + 1}</span>
                     <Icon className="size-6 text-primary" strokeWidth={1.4} aria-hidden="true" />
                   </div>
-                  <h3 className="mt-12 font-serif text-2xl font-semibold">{item.title}</h3>
+                  <h3 className="mt-12 font-serif text-lg font-semibold">{item.title}</h3>
                   <p className="mt-4 text-sm leading-[1.7] text-muted-foreground">{item.description}</p>
                   <span className="story-text-link mt-auto">
                     {item.label}

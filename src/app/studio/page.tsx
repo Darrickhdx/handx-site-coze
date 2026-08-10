@@ -48,12 +48,12 @@ export default function StudioPage() {
               <span aria-hidden="true" />
               Family history studio
             </p>
-            <h1 className="personal-display mt-7 text-[clamp(1.54rem,3.07vw,2.99rem)] font-semibold leading-[0.94] tracking-[-0.06em]">
+            <h1 className="personal-display mt-7 text-[clamp(1.53rem,3.05vw,2.97rem)] font-semibold leading-[0.94] tracking-[-0.06em]">
               家族史工作室
             </h1>
           </div>
           <div>
-            <p className="font-serif text-2xl leading-relaxed text-foreground sm:text-xl">
+            <p className="font-serif text-lg leading-relaxed text-foreground sm:text-base">
               帮一个家庭把“听说过”，
               <br />
               变成“知道从哪里继续找”。
@@ -80,7 +80,7 @@ export default function StudioPage() {
         <div className="personal-shell">
           <div className="border-b border-foreground/15 pb-8">
             <p className="story-kicker">一次项目会怎样进行</p>
-            <h2 className="mt-4 font-serif text-4xl font-semibold tracking-[-0.035em] sm:text-5xl">四步，把家庭记忆变成可继续的研究。</h2>
+            <h2 className="mt-4 font-serif text-2xl font-semibold tracking-[-0.035em] sm:text-2xl">四步，把家庭记忆变成可继续的研究。</h2>
           </div>
           <div className="grid gap-px border-x border-b border-foreground/15 bg-foreground/15 md:grid-cols-2 xl:grid-cols-4">
             {workflow.map((item) => {
@@ -88,10 +88,10 @@ export default function StudioPage() {
               return (
                 <article key={item.number} className="bg-background p-7 sm:min-h-80">
                   <div className="flex items-center justify-between">
-                    <span className="font-serif text-4xl italic text-primary/35">{item.number}</span>
+                    <span className="font-serif text-xl italic text-primary/35">{item.number}</span>
                     <Icon className="size-6 text-primary" strokeWidth={1.4} />
                   </div>
-                  <h3 className="mt-12 font-serif text-2xl font-semibold">{item.title}</h3>
+                  <h3 className="mt-12 font-serif text-lg font-semibold">{item.title}</h3>
                   <p className="mt-4 text-sm leading-[1.7] text-muted-foreground">{item.description}</p>
                 </article>
               );
@@ -154,7 +154,7 @@ export default function StudioPage() {
         <div className="personal-shell grid gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-14">
           <div>
             <ShieldCheck className="size-8 text-[#c38a82]" />
-            <h2 className="mt-7 font-serif text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">先说清楚“不做什么”</h2>
+            <h2 className="mt-7 font-serif text-2xl font-semibold tracking-[-0.04em] sm:text-2xl">先说清楚“不做什么”</h2>
           </div>
           <div className="grid gap-6 sm:grid-cols-2">
             {[
@@ -175,7 +175,7 @@ export default function StudioPage() {
         <div className="personal-shell grid gap-10 lg:grid-cols-[minmax(0,1fr)_24rem] lg:items-end">
           <div>
             <p className="story-kicker">当前阶段</p>
-            <h2 className="mt-4 max-w-3xl font-serif text-4xl font-semibold leading-tight tracking-[-0.04em] sm:text-6xl">
+            <h2 className="mt-4 max-w-3xl font-serif text-2xl font-semibold leading-tight tracking-[-0.04em] sm:text-2xl">
               先把苏开元项目做成一份经得起追问的完整案例。
             </h2>
             <p className="mt-6 max-w-2xl text-[15px] leading-[1.7] text-muted-foreground">

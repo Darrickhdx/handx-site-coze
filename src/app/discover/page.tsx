@@ -25,7 +25,7 @@ export default function DiscoverPage() {
             </h1>
           </div>
           <div className="max-w-2xl">
-            <p className="font-serif text-2xl leading-relaxed text-foreground sm:text-xl">
+            <p className="font-serif text-lg leading-relaxed text-foreground sm:text-base">
               让档案先变成问题，
               <br />
               再变成读者愿意带走的故事。
@@ -43,7 +43,7 @@ export default function DiscoverPage() {
           <div className="flex flex-col justify-between gap-5 border-b border-foreground/15 pb-8 md:flex-row md:items-end">
             <div>
               <p className="story-kicker">从这里开始读</p>
-              <h2 className="mt-4 font-serif text-4xl font-semibold tracking-[-0.035em] sm:text-5xl">首批三篇完整专题</h2>
+              <h2 className="mt-4 font-serif text-2xl font-semibold tracking-[-0.035em] sm:text-2xl">首批三篇完整专题</h2>
             </div>
             <p className="text-sm text-muted-foreground">全部可读 · 全部标明内容层</p>
           </div>
@@ -98,7 +98,7 @@ export default function DiscoverPage() {
               <span aria-hidden="true" />
               Cover story
             </p>
-            <h2 className="mt-7 font-serif text-4xl font-semibold leading-tight tracking-[-0.04em] sm:text-5xl">
+            <h2 className="mt-7 font-serif text-2xl font-semibold leading-tight tracking-[-0.04em] sm:text-2xl">
               一张纸可以把一个名字带回现场，
               <span className="mt-2 block text-[#c38a82]">却不能替他写完一生。</span>
             </h2>
@@ -117,7 +117,7 @@ export default function DiscoverPage() {
         <div className="personal-shell grid gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-14">
           <div>
             <p className="story-kicker">编辑部选题板</p>
-            <h2 className="mt-4 font-serif text-4xl font-semibold tracking-[-0.035em] sm:text-5xl">接下来，沿这些问题继续。</h2>
+            <h2 className="mt-4 font-serif text-2xl font-semibold tracking-[-0.035em] sm:text-2xl">接下来，沿这些问题继续。</h2>
             <p className="mt-6 max-w-md text-[15px] leading-[1.7] text-muted-foreground">
               “筹备中”不是空页面，而是公开问题、研究边界与下一份要找的材料。
             </p>
@@ -130,7 +130,7 @@ export default function DiscoverPage() {
                   <span>{topic.label}</span>
                   <span className="text-muted-foreground">0{index + 4}</span>
                 </div>
-                <h3 className="mt-8 font-serif text-2xl font-semibold leading-snug tracking-[-0.025em]">{topic.title}</h3>
+                <h3 className="mt-8 font-serif text-lg font-semibold leading-snug tracking-[-0.025em]">{topic.title}</h3>
                 <p className="mt-4 text-sm leading-[1.7] text-muted-foreground">{topic.note}</p>
                 <span className="mt-7 inline-flex items-center gap-2 text-xs text-muted-foreground">
                   <FileSearch className="size-4" aria-hidden="true" />

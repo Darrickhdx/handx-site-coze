@@ -26,7 +26,7 @@ export default function FullNovelReaderPage() {
               <p className="text-[10px] font-semibold tracking-[0.16em] text-[#c38a82] uppercase">
                 Continuous reader
               </p>
-              <h1 className="mt-3 font-serif text-4xl font-semibold sm:text-6xl">
+              <h1 className="mt-3 font-serif text-xl font-semibold sm:text-2xl">
                 《英雄无名》全文
               </h1>
             </div>

@@ -30,7 +30,7 @@ export default function PersonsPage() {
               <br />是证据链的不同位置。
             </h1>
             <div>
-              <p className="font-serif text-2xl leading-relaxed text-[#d7cfc2] sm:text-xl">
+              <p className="font-serif text-lg leading-relaxed text-[#d7cfc2] sm:text-base">
                 有人留下证词，有人被写进表格，有人代表无法被主角取代的公共历史。
               </p>
               <p className="mt-6 max-w-2xl text-[15px] leading-[1.7] text-[#bdb9b0]">
@@ -45,7 +45,7 @@ export default function PersonsPage() {
               ['历史肖像冒用', 0],
             ].map(([label, value]) => (
               <div key={label} className="bg-[#202827] p-5">
-                <p className="font-serif text-4xl">{value}</p>
+                <p className="font-serif text-xl">{value}</p>
                 <p className="mt-2 text-xs text-[#bdb9b0]">{label}</p>
               </div>
             ))}
@@ -58,7 +58,7 @@ export default function PersonsPage() {
           {peopleDossiers.map((person, index) => (
             <article key={person.entityId} className="group grid min-h-[34rem] gap-8 bg-background p-6 sm:grid-cols-[8rem_minmax(0,1fr)] sm:p-8">
               <div>
-                <div className="grid size-28 place-items-center border border-primary/30 bg-primary/5 font-serif text-5xl text-primary" aria-hidden="true">
+                <div className="grid size-28 place-items-center border border-primary/30 bg-primary/5 font-serif text-2xl text-primary" aria-hidden="true">
                   {person.initials}
                 </div>
                 <p className="mt-4 font-mono text-[10px] text-muted-foreground">{person.entityId}</p>
@@ -66,7 +66,7 @@ export default function PersonsPage() {
               </div>
               <div className="flex min-w-0 flex-col">
                 <p className="text-xs font-semibold tracking-[0.12em] text-primary uppercase">{person.eyebrow}</p>
-                <h2 className="mt-3 font-serif text-4xl font-semibold tracking-[-0.04em]">{person.displayName}</h2>
+                <h2 className="mt-3 font-serif text-2xl font-semibold tracking-[-0.04em]">{person.displayName}</h2>
                 <p className="mt-3 text-xs font-semibold text-muted-foreground">{personDossierStatusLabels[person.status]}</p>
                 <p className="mt-7 font-serif text-lg leading-relaxed">{person.oneLine}</p>
                 <p className="mt-5 text-sm leading-[1.7] text-muted-foreground">{person.roleInStory}</p>
@@ -95,7 +95,7 @@ export default function PersonsPage() {
             return (
               <div key={String(title)} className="bg-card p-6">
                 <CardIcon className="size-5 text-primary" aria-hidden="true" />
-                <h2 className="mt-4 font-serif text-xl font-semibold">{String(title)}</h2>
+                <h2 className="mt-4 font-serif text-lg font-semibold">{String(title)}</h2>
                 <p className="mt-3 text-sm leading-[1.7] text-muted-foreground">{String(description)}</p>
               </div>
             );

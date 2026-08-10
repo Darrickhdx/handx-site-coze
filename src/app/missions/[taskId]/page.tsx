@@ -79,14 +79,14 @@ export default async function MissionDetailPage({ params }: MissionPageProps) {
               <h1 className="personal-display mt-6 max-w-5xl break-words text-[clamp(1.53rem,2.78vw,2.89rem)] font-semibold leading-[1.01] tracking-[-0.055em]">
                 {mission.researchQuestion}
               </h1>
-              <p className="mt-7 max-w-3xl font-serif text-lg leading-relaxed text-foreground sm:text-xl">
+              <p className="mt-7 max-w-3xl font-serif text-lg leading-relaxed text-foreground sm:text-base">
                 这项任务围绕“{mission.topic}”寻找可定位原文，不预设答案，也不把申请准备当成历史结论。
               </p>
             </div>
 
             <aside className="min-w-0 border border-foreground/15 bg-card p-6 sm:p-7">
               <p className="text-xs font-semibold tracking-[0.14em] text-primary uppercase">当前真实状态</p>
-              <p className="mt-3 font-serif text-3xl font-semibold">{mission.status.publicLabel}</p>
+              <p className="mt-3 font-serif text-xl font-semibold">{mission.status.publicLabel}</p>
               <p className="mt-4 text-sm leading-[1.7] text-muted-foreground">{mission.publicNextStep}</p>
               <p className="mt-5 border border-primary/25 bg-primary/5 px-3 py-2 text-xs font-semibold leading-6 text-primary">
                 研究议程 · 非调查结论 · 已取得并核读 = 0
@@ -135,14 +135,14 @@ export default async function MissionDetailPage({ params }: MissionPageProps) {
 
               <div className="mt-10">
                 <FileCheck2 className="size-8 text-primary" strokeWidth={1.4} aria-hidden="true" />
-                <h2 className="mt-6 font-serif text-4xl font-semibold tracking-[-0.04em]">拿到什么才算完成</h2>
+                <h2 className="mt-6 font-serif text-2xl font-semibold tracking-[-0.04em]">拿到什么才算完成</h2>
                 <p className="mt-6 max-w-3xl text-[15px] leading-[1.7]">{mission.completionStandard}</p>
                 <p className="mt-4 text-sm leading-[1.7] text-muted-foreground">目标材料类型：{mission.evidenceScope}</p>
               </div>
 
               <div className="mt-12 border-l-4 border-accent bg-[#eee8dc] p-6 sm:p-8">
                 <ShieldAlert className="size-6 text-accent" strokeWidth={1.4} aria-hidden="true" />
-                <h2 className="mt-5 font-serif text-2xl font-semibold">即使取得，也不能自动证明什么</h2>
+                <h2 className="mt-5 font-serif text-xl font-semibold">即使取得，也不能自动证明什么</h2>
                 <p className="mt-4 text-sm leading-[1.7] text-muted-foreground">{mission.boundary}</p>
               </div>
             </div>
@@ -153,7 +153,7 @@ export default async function MissionDetailPage({ params }: MissionPageProps) {
 
               <div className="mt-9 border-t border-foreground/15 pt-7">
                 <Users className="size-5 text-primary" aria-hidden="true" />
-                <h2 className="mt-4 font-serif text-xl font-semibold">相关人物</h2>
+                <h2 className="mt-4 font-serif text-lg font-semibold">相关人物</h2>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {mission.people.map((person) => (
                     <Link
@@ -188,7 +188,7 @@ export default async function MissionDetailPage({ params }: MissionPageProps) {
               <div>
                 <BookOpenCheck className="size-8 text-[#c38a82]" strokeWidth={1.4} aria-hidden="true" />
                 <p className="personal-kicker personal-kicker-light mt-7"><span aria-hidden="true" />Target detail</p>
-                <h2 className="mt-6 font-serif text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">这次到底申请哪一项</h2>
+                <h2 className="mt-6 font-serif text-2xl font-semibold tracking-[-0.04em] sm:text-2xl">这次到底申请哪一项</h2>
                 <p className="mt-5 text-sm leading-[1.7] text-[#bdb9b0]">同一目录号的别名、分别申请的材料和同一作品的不同载体，在这里明确分开。</p>
               </div>
               <div className="space-y-4">
@@ -203,7 +203,7 @@ export default async function MissionDetailPage({ params }: MissionPageProps) {
                       <p className="text-xs font-semibold tracking-[0.14em] text-[#c38a82] uppercase">目标 0{index + 1}</p>
                       <span className="text-xs text-[#aaa69f]">{targetRelationLabels[target.relation]}</span>
                     </div>
-                    <h3 className="mt-4 break-words font-serif text-2xl font-semibold">{target.institution}</h3>
+                    <h3 className="mt-4 break-words font-serif text-lg font-semibold">{target.institution}</h3>
                     <p className="mt-4 break-all text-sm leading-[1.7] text-[#d7cfc2]">{target.catalogReference}</p>
                     {target.locatorAliases.length > 0 && (
                       <div className="mt-5 border-t border-white/10 pt-4">
@@ -241,7 +241,7 @@ export default async function MissionDetailPage({ params }: MissionPageProps) {
                 {journal.length > 0 ? journal.map((entry, index) => (
                   <article key={`${entry.action}-${index}`} className="border border-foreground/15 bg-card p-6 sm:p-7">
                     <p className="text-xs font-semibold tracking-[0.12em] text-primary uppercase">决策记录 0{index + 1}</p>
-                    <h3 className="mt-4 font-serif text-2xl font-semibold leading-snug">{entry.decision}</h3>
+                    <h3 className="mt-4 font-serif text-lg font-semibold leading-snug">{entry.decision}</h3>
                     <dl className="mt-6 grid gap-5 text-sm leading-[1.7] sm:grid-cols-2">
                       <div>
                         <dt className="font-semibold">实际结果</dt>
@@ -258,7 +258,7 @@ export default async function MissionDetailPage({ params }: MissionPageProps) {
                   </article>
                 )) : (
                   <div className="border border-foreground/15 bg-card p-7">
-                    <p className="font-serif text-2xl font-semibold">还没有公开行动记录</p>
+                    <p className="font-serif text-lg font-semibold">还没有公开行动记录</p>
                     <p className="mt-3 text-sm leading-[1.7] text-muted-foreground">下一次真实推进后再添加，不用空白模板制造“正在忙”的印象。</p>
                   </div>
                 )}

@@ -178,7 +178,7 @@ export default async function WikiEntityPage({
               文献异写：{node.variant_label}
             </p>
           )}
-          <p className="mt-8 max-w-3xl border-l-2 border-primary pl-5 font-serif text-lg leading-relaxed text-foreground sm:text-xl">
+          <p className="mt-8 max-w-3xl border-l-2 border-primary pl-5 font-serif text-lg leading-relaxed text-foreground sm:text-base">
             {node.identity_status}
           </p>
           <p className="mt-5 max-w-3xl text-sm leading-[1.7] text-muted-foreground">
@@ -202,7 +202,7 @@ export default async function WikiEntityPage({
             ['Legacy 对应', legacyRecords.length],
           ].map(([label, value]) => (
             <div key={String(label)} className="bg-[#202827] p-5">
-              <p className="font-serif text-3xl">{value}</p>
+              <p className="font-serif text-xl">{value}</p>
               <p className="mt-1 text-xs text-[#bdb9b0]">{label}</p>
             </div>
           ))}
@@ -216,7 +216,7 @@ export default async function WikiEntityPage({
               <p className="text-xs font-bold tracking-[0.16em] text-primary uppercase">
                 Claim boundaries
               </p>
-              <h2 id="claim-boundaries-title" className="mt-2 font-serif text-3xl font-semibold">
+              <h2 id="claim-boundaries-title" className="mt-2 font-serif text-2xl font-semibold">
                 先分清三类主张
               </h2>
             </div>
@@ -234,8 +234,8 @@ export default async function WikiEntityPage({
                   <section key={bucket} className={`border p-5 ${display.className}`}>
                     <Icon className="size-5 text-primary" aria-hidden="true" />
                     <div className="mt-3 flex items-baseline justify-between gap-3">
-                      <h3 className="font-serif text-xl font-semibold">{display.title}</h3>
-                      <span className="font-serif text-2xl">{buckets[bucket].length}</span>
+                      <h3 className="font-serif text-lg font-semibold">{display.title}</h3>
+                      <span className="font-serif text-lg">{buckets[bucket].length}</span>
                     </div>
                     <p className="mt-2 min-h-12 text-xs leading-6 text-muted-foreground">
                       {display.note}
@@ -262,7 +262,7 @@ export default async function WikiEntityPage({
           <div>
             <div className="flex items-center gap-3">
               <Link2 className="size-5 text-primary" aria-hidden="true" />
-              <h2 className="font-serif text-3xl font-semibold">关系与苏开元交集</h2>
+              <h2 className="font-serif text-2xl font-semibold">关系与苏开元交集</h2>
             </div>
             {directSuEdges.length > 0 ? (
               <div className="mt-6 space-y-3">
@@ -354,7 +354,7 @@ export default async function WikiEntityPage({
           <aside>
             <div className="border border-foreground/15 bg-card p-5">
               <FileText className="size-5 text-primary" aria-hidden="true" />
-              <h2 className="mt-3 font-serif text-2xl font-semibold">来源与定位</h2>
+              <h2 className="mt-3 font-serif text-xl font-semibold">来源与定位</h2>
               <p className="mt-2 text-xs leading-6 text-muted-foreground">
                 本页只显示公开层元数据和定位。家属正文、本地绝对路径与受限原件不会发送到浏览器。
               </p>
@@ -383,7 +383,7 @@ export default async function WikiEntityPage({
         <section className="mt-16 border-y border-foreground/15 py-8">
           <div className="flex items-center gap-3">
             <TriangleAlert className="size-5 text-candidate" aria-hidden="true" />
-            <h2 className="font-serif text-3xl font-semibold">Legacy 如何迁移</h2>
+            <h2 className="font-serif text-2xl font-semibold">Legacy 如何迁移</h2>
           </div>
           {legacyRecords.length > 0 ? (
             <div className="mt-6 grid gap-4 md:grid-cols-2">

@@ -66,7 +66,7 @@ export default async function LegacyPage({ params }: LegacyPageProps) {
           <h1 className="mt-5 font-serif text-[clamp(1.22rem,2.84vw,2.51rem)] font-semibold leading-[0.96] tracking-[-0.055em]">
             {node.label}
           </h1>
-          <p className="mt-6 max-w-3xl font-serif text-lg leading-relaxed text-[#d7cfc2] sm:text-xl">
+          <p className="mt-6 max-w-3xl font-serif text-lg leading-relaxed text-[#d7cfc2] sm:text-base">
             {node.title || '旧图只登记了这一线索名称。'}
           </p>
           <div className="mt-8 max-w-3xl border-l-2 border-[#d8a45e] pl-5 text-sm leading-[1.7] text-[#c9c5bd]">
@@ -81,7 +81,7 @@ export default async function LegacyPage({ params }: LegacyPageProps) {
           <div className="border border-candidate/30 bg-candidate/5 p-5">
             <TriangleAlert className="size-5 text-candidate" aria-hidden="true" />
             <p className="mt-3 text-xs text-muted-foreground">旧评级，仅作历史字段</p>
-            <p className="mt-1 font-serif text-3xl">
+            <p className="mt-1 font-serif text-xl">
               {node.legacy_reliability || '未标注'}
             </p>
           </div>
@@ -95,14 +95,14 @@ export default async function LegacyPage({ params }: LegacyPageProps) {
           <div className="border border-candidate/30 bg-candidate/5 p-5">
             <Link2Off className="size-5 text-candidate" aria-hidden="true" />
             <p className="mt-3 text-xs text-muted-foreground">旧关系</p>
-            <p className="mt-1 font-serif text-3xl">{edges.length}</p>
+            <p className="mt-1 font-serif text-xl">{edges.length}</p>
           </div>
         </section>
 
         <section className="mt-10 border-2 border-candidate/40 bg-candidate/5 p-6">
           <div className="flex items-center gap-3">
             <ShieldAlert className="size-5 text-candidate" aria-hidden="true" />
-            <h2 className="font-serif text-2xl font-semibold">迁移裁决</h2>
+            <h2 className="font-serif text-xl font-semibold">迁移裁决</h2>
           </div>
           <p className="mt-4 text-sm leading-[1.7] text-muted-foreground">
             {node.migration.decision}
@@ -123,7 +123,7 @@ export default async function LegacyPage({ params }: LegacyPageProps) {
 
         <section className="mt-10 grid gap-8 lg:grid-cols-[1fr_0.8fr]">
           <div>
-            <h2 className="font-serif text-3xl font-semibold">旧关系原话</h2>
+            <h2 className="font-serif text-2xl font-semibold">旧关系原话</h2>
             <p className="mt-3 text-sm leading-[1.7] text-muted-foreground">
               下列文字来自旧图关系标签，只用于寻找待核问题。它们不进入新版事实图。
             </p>
@@ -165,7 +165,7 @@ export default async function LegacyPage({ params }: LegacyPageProps) {
 
           <aside className="space-y-6">
             <section className="border border-foreground/15 bg-card p-5">
-              <h2 className="font-serif text-2xl font-semibold">新版实体索引</h2>
+              <h2 className="font-serif text-xl font-semibold">新版实体索引</h2>
               <p className="mt-2 text-xs leading-6 text-muted-foreground">
                 下列链接只表示迁移表把旧名称指向了新版索引，不等于两个身份已经合并。
               </p>
@@ -191,7 +191,7 @@ export default async function LegacyPage({ params }: LegacyPageProps) {
             </section>
 
             <section className="border border-foreground/15 bg-card p-5">
-              <h2 className="font-serif text-2xl font-semibold">候选主张定位</h2>
+              <h2 className="font-serif text-xl font-semibold">候选主张定位</h2>
               <p className="mt-2 text-xs leading-6 text-muted-foreground">
                 候选主张只是核验入口，不是对旧标题的背书。
               </p>

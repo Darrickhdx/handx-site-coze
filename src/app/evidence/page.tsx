@@ -36,7 +36,7 @@ export default function EvidenceIndexPage() {
               <br />沿线回到原件。
             </h1>
             <div>
-              <p className="font-serif text-2xl leading-relaxed text-[#d7cfc2] sm:text-xl">
+              <p className="font-serif text-lg leading-relaxed text-[#d7cfc2] sm:text-base">
                 每条路径只回答一件事：这句话到底走过了哪几张纸？
               </p>
               <p className="mt-6 max-w-2xl text-[15px] leading-[1.7] text-[#bdb9b0]">
@@ -52,7 +52,7 @@ export default function EvidenceIndexPage() {
             ].map(([label, count]) => (
               <div key={label} className="bg-[#202827] p-5">
                 <dt className="text-xs text-[#bdb9b0]">{label}</dt>
-                <dd className="mt-2 font-serif text-4xl">{count}</dd>
+                <dd className="mt-2 font-serif text-xl">{count}</dd>
               </div>
             ))}
           </dl>
@@ -73,7 +73,7 @@ export default function EvidenceIndexPage() {
                 </div>
                 <Icon className="mt-12 size-7 text-primary" strokeWidth={1.35} aria-hidden="true" />
                 <p className="mt-6 text-xs font-semibold tracking-[0.12em] text-primary uppercase">{path.eyebrow} · {path.period}</p>
-                <h2 className="mt-4 font-serif text-3xl font-semibold tracking-[-0.035em] sm:text-4xl">{path.title}</h2>
+                <h2 className="mt-4 font-serif text-2xl font-semibold tracking-[-0.035em] sm:text-xl">{path.title}</h2>
                 <p className="mt-5 text-sm leading-[1.7] text-muted-foreground">{path.deck}</p>
                 <div className="mt-auto pt-8">
                   <Link href={`/evidence/${path.id}`} className="story-text-link">

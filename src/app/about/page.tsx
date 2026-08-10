@@ -31,7 +31,7 @@ export default function AboutPage() {
             <h1 className="personal-display mt-4 text-[clamp(1.63rem,2.71vw,2.85rem)] font-semibold leading-[0.92] tracking-[-0.065em]">
               {profile.displayName}
             </h1>
-            <p className="mt-6 max-w-2xl font-serif text-2xl leading-relaxed text-foreground sm:text-xl">
+            <p className="mt-6 max-w-2xl font-serif text-lg leading-relaxed text-foreground sm:text-base">
               工程师的底子，产品人的方法，
               <br />
               现在重新投入 AI。
@@ -134,9 +134,9 @@ export default function AboutPage() {
                 key={item.organization}
                 className="grid gap-5 py-7 sm:grid-cols-[3rem_minmax(13rem,0.72fr)_minmax(0,1.28fr)] sm:items-start"
               >
-                <span className="font-serif text-2xl text-primary/40">0{index + 1}</span>
+                <span className="font-serif text-lg text-primary/40">0{index + 1}</span>
                 <span>
-                  <strong className="block font-serif text-xl">{item.organization}</strong>
+                  <strong className="block font-serif text-base">{item.organization}</strong>
                   <span className="mt-2 block text-xs font-semibold tracking-[0.08em] text-primary uppercase">
                     {item.role}
                   </span>
@@ -167,7 +167,7 @@ export default function AboutPage() {
               Contact
             </p>
             <MessageCircle className="mt-8 size-8 text-[#c38a82]" strokeWidth={1.4} aria-hidden="true" />
-            <h2 className="mt-7 max-w-3xl font-serif text-4xl font-semibold leading-tight tracking-[-0.04em] sm:text-6xl">
+            <h2 className="mt-7 max-w-3xl font-serif text-2xl font-semibold leading-tight tracking-[-0.04em] sm:text-2xl">
               如果你也在思考 AI、产品或一段家族历史，欢迎联系我。
             </h2>
             <p className="mt-7 max-w-2xl text-[15px] leading-[1.7] text-[#bdb9b0]">

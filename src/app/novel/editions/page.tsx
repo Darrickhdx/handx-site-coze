@@ -49,7 +49,7 @@ export default function NovelEditionsPage() {
               </h1>
             </div>
             <div>
-              <p className="font-serif text-2xl leading-relaxed text-[#d7cfc2] sm:text-xl">
+              <p className="font-serif text-lg leading-relaxed text-[#d7cfc2] sm:text-base">
                 章节、页码、评论、阅读进度与图版权利，都必须跟着版本一起迁移。
               </p>
               {/* Counts come from the registry: V1.3 was re-rendered and frozen,
@@ -69,7 +69,7 @@ export default function NovelEditionsPage() {
           <div className="grid gap-px border border-foreground/15 bg-foreground/15 lg:grid-cols-3">
             <article className="bg-background p-6 sm:p-8">
               <p className="font-mono text-[10px] tracking-[0.15em] text-primary uppercase">Now reading</p>
-              <h2 className="mt-5 font-serif text-4xl font-semibold">V{novelEditionRegistry.current_reader.version}</h2>
+              <h2 className="mt-5 font-serif text-2xl font-semibold">V{novelEditionRegistry.current_reader.version}</h2>
               <p className="mt-3 text-sm font-semibold">当前网页阅读版</p>
               <p className="mt-5 text-sm leading-[1.7] text-muted-foreground">
                 {novelEditionRegistry.current_reader.pages} 页、{novelEditionRegistry.current_reader.numbered_chapters} 章，全书免费阅读；页图带像素水印，评论按版本隔离。
@@ -81,7 +81,7 @@ export default function NovelEditionsPage() {
 
             <article className="bg-background p-6 sm:p-8">
               <p className="font-mono text-[10px] tracking-[0.15em] text-primary uppercase">Frozen baseline</p>
-              <h2 className="mt-5 font-serif text-4xl font-semibold">V{frozenNovelBaseline.version}</h2>
+              <h2 className="mt-5 font-serif text-2xl font-semibold">V{frozenNovelBaseline.version}</h2>
               <p className="mt-3 text-sm font-semibold">冻结对照，不提供阅读</p>
               <p className="mt-5 text-sm leading-[1.7] text-muted-foreground">
                 {frozenNovelBaseline.pages} 页、{frozenNovelBaseline.numbered_chapters} 章、{frozenNovelBaseline.figure_plates} 幅图版；只用于差异核对和回滚。
@@ -94,7 +94,7 @@ export default function NovelEditionsPage() {
 
             <article className="bg-[#eee9df] p-6 sm:p-8">
               <p className="font-mono text-[10px] tracking-[0.15em] text-primary uppercase">Next candidate</p>
-              <h2 className="mt-5 font-serif text-4xl font-semibold">V{candidateNovelEdition.version}</h2>
+              <h2 className="mt-5 font-serif text-2xl font-semibold">V{candidateNovelEdition.version}</h2>
               <p className="mt-3 text-sm font-semibold">正在编辑，尚未接入</p>
               <p className="mt-5 text-sm leading-[1.7] text-muted-foreground">
                 {candidateNovelEdition.pages} 页、{candidateNovelEdition.numbered_chapters} 章＋{candidateNovelEdition.unnumbered_openings} 个序章、{candidateNovelEdition.figure_plates} 幅图版。
@@ -112,7 +112,7 @@ export default function NovelEditionsPage() {
             <div>
               <p className="personal-kicker"><span aria-hidden="true" />Switch gates</p>
               <ShieldAlert className="mt-8 size-7 text-primary" strokeWidth={1.4} aria-hidden="true" />
-              <h2 className="mt-6 font-serif text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">V{candidateNovelEdition.version} 何时才能切换？</h2>
+              <h2 className="mt-6 font-serif text-2xl font-semibold tracking-[-0.04em] sm:text-2xl">V{candidateNovelEdition.version} 何时才能切换？</h2>
               <p className="mt-6 text-sm leading-[1.7] text-muted-foreground">
                 门禁由本地源文件实时生成。读者点击、评论或人工选择都不能绕过它。
               </p>
@@ -142,7 +142,7 @@ export default function NovelEditionsPage() {
           <div className="grid gap-8 lg:grid-cols-[1fr_24rem] lg:items-end">
             <div>
               <p className="story-kicker">迁移原则</p>
-              <h2 className="mt-4 max-w-3xl font-serif text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">并行导入，完整核对，最后一次性切换。</h2>
+              <h2 className="mt-4 max-w-3xl font-serif text-2xl font-semibold tracking-[-0.04em] sm:text-2xl">并行导入，完整核对，最后一次性切换。</h2>
               <p className="mt-6 max-w-3xl text-[15px] leading-[1.7] text-muted-foreground">
                 V1.3 不覆盖当前阅读版；旧评论和阅读进度不自动迁移。每一页继承该页最高风险素材的权利状态，禁止页不会进入浏览器、Git 或媒体导出包。
               </p>

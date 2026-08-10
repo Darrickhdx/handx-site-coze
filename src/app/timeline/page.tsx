@@ -38,7 +38,7 @@ export default function TimelinePage() {
       </section>
 
       <div className="mt-12 bg-surface-container-lowest border border-border/40 rounded-xl p-6">
-        <h2 className="font-serif text-xl font-semibold text-foreground mb-4">逐组边界</h2>
+        <h2 className="font-serif text-lg font-semibold text-foreground mb-4">逐组边界</h2>
         <div className="space-y-4">
           {eventRecords.map((event) => (
             <div key={event.event_id} className="border-b border-border/30 last:border-0 pb-4 last:pb-0">

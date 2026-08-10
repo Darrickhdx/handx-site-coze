@@ -88,7 +88,7 @@ export default function RightsPage() {
             <span aria-hidden="true" />
             Rights &amp; republication
           </p>
-          <h1 className="mt-7 max-w-5xl font-serif text-5xl font-semibold leading-[1.08] tracking-[-0.05em] sm:text-7xl">
+          <h1 className="mt-7 max-w-5xl font-serif text-2xl font-semibold leading-[1.08] tracking-[-0.05em] sm:text-3xl">
             让内容传播得更远，
             <span className="block text-[#d5a09a]">也让作者、原文与史料出处一起被看见。</span>
           </h1>
@@ -118,7 +118,7 @@ export default function RightsPage() {
               return (
                 <article key={layer.title} className="bg-[#f4f0e8] p-7 sm:p-9">
                   <Icon className={`size-7 ${layer.tone}`} strokeWidth={1.4} aria-hidden="true" />
-                  <h2 className="mt-7 font-serif text-3xl font-semibold">{layer.title}</h2>
+                  <h2 className="mt-7 font-serif text-2xl font-semibold">{layer.title}</h2>
                   <p className="mt-3 text-xs font-semibold tracking-[0.1em] text-primary uppercase">
                     {layer.policy}
                   </p>
@@ -233,7 +233,7 @@ export default function RightsPage() {
               <p className="text-[10px] font-semibold tracking-[0.16em] text-primary uppercase">
                 许可生效后的拟议署名格式
               </p>
-              <blockquote className="mt-4 font-serif text-xl leading-9">
+              <blockquote className="mt-4 font-serif text-base leading-9">
                 若原页面已经明确标注 CC BY-NC-SA 4.0：本文节选／改编自鉴真小秃驴《文章标题》，原文：
                 <span className="break-all text-primary"> https://原文地址</span>。
                 已按原页面许可使用；内容已经节选／翻译／编辑。
@@ -256,7 +256,7 @@ export default function RightsPage() {
               Media review packages
             </p>
             <PackageCheck className="mt-8 size-8 text-[#d5a09a]" strokeWidth={1.4} aria-hidden="true" />
-            <h2 className="mt-6 font-serif text-4xl font-semibold leading-tight sm:text-5xl">
+            <h2 className="mt-6 font-serif text-2xl font-semibold leading-tight sm:text-2xl">
               一键导出是审稿动作，不是发布授权。
             </h2>
           </div>
@@ -302,7 +302,7 @@ export default function RightsPage() {
 
           <div className="border border-foreground/15 bg-[#f4f0e8] p-7 sm:p-9">
             <p className="text-xs font-semibold tracking-[0.14em] text-primary uppercase">拟议媒体绿色通道</p>
-            <h3 className="mt-4 font-serif text-3xl font-semibold">传播可以免费，授权不能含糊。</h3>
+            <h3 className="mt-4 font-serif text-xl font-semibold">传播可以免费，授权不能含糊。</h3>
             <p className="mt-5 text-sm leading-[1.7] text-muted-foreground">
               可信新闻媒体、纪录片团队和公益文化项目，可邮件申请一次性零费用传播授权。
               影视开发、出版整合、付费产品和商业 AI 使用仍需单独议价并明确作品版本、平台、期限、署名与改编范围。
@@ -347,7 +347,7 @@ export default function RightsPage() {
       <section className="border-t border-foreground/15 bg-white/35 py-8 sm:py-10">
         <div className="personal-shell grid gap-10 lg:grid-cols-2 lg:gap-14">
           <div>
-            <h2 className="font-serif text-3xl font-semibold">投诉、纠错与下架</h2>
+            <h2 className="font-serif text-2xl font-semibold">投诉、纠错与下架</h2>
             <p className="mt-5 text-sm leading-[1.7] text-muted-foreground">
               请发送争议页面、具体位置、权利证明或反证、希望采取的措施与联系方式。
               收到后将先确认、保存版本证据；必要时临时隐藏，再根据核查结果补署名、更正、恢复或删除。
@@ -361,7 +361,7 @@ export default function RightsPage() {
             </a>
           </div>
           <div>
-            <h2 className="font-serif text-3xl font-semibold">规则依据</h2>
+            <h2 className="font-serif text-2xl font-semibold">规则依据</h2>
             <div className="mt-4 border-t border-foreground/15">
               {legalReferences.map((reference) => (
                 <a

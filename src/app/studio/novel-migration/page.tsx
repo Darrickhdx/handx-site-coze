@@ -24,7 +24,7 @@ export default function NovelMigrationStudioPage() {
             返回站主管理台
           </Link>
           <p className="mt-9 text-[10px] font-semibold tracking-[0.16em] text-[#c38a82] uppercase">Owner only · migration gate</p>
-          <h1 className="mt-4 font-serif text-5xl font-semibold tracking-[-0.05em] sm:text-7xl">小说版本迁移</h1>
+          <h1 className="mt-4 font-serif text-2xl font-semibold tracking-[-0.05em] sm:text-3xl">小说版本迁移</h1>
           <p className="mt-6 max-w-3xl text-sm leading-[1.7] text-[#bdb9b0]">
             当前读者仍在 V{novelEditionRegistry.current_reader.version}。V1.3 的源文件只被读取、计算哈希与结构，不生成候选页图，也不向浏览器暴露本地路径或原始正文。
           </p>
@@ -41,7 +41,7 @@ export default function NovelMigrationStudioPage() {
           ].map(([label, value]) => (
             <div key={label} className="border border-foreground/15 bg-card p-5">
               <p className="text-xs text-muted-foreground">{label}</p>
-              <strong className="mt-3 block font-serif text-4xl">{value}</strong>
+              <strong className="mt-3 block font-serif text-xl">{value}</strong>
             </div>
           ))}
         </div>
@@ -50,7 +50,7 @@ export default function NovelMigrationStudioPage() {
           <section className="border border-foreground/15 bg-background p-6 sm:p-8">
             <div className="flex items-center gap-3">
               <FileClock className="size-5 text-primary" aria-hidden="true" />
-              <h2 className="font-serif text-3xl font-semibold">逐项门禁</h2>
+              <h2 className="font-serif text-2xl font-semibold">逐项门禁</h2>
             </div>
             <ol className="mt-7 divide-y divide-foreground/15 border-y border-foreground/15">
               {checks.map(([key, value]) => (
@@ -71,7 +71,7 @@ export default function NovelMigrationStudioPage() {
 
           <aside className="border border-amber-800/20 bg-amber-50 p-6 sm:p-8">
             <ShieldAlert className="size-6 text-amber-900" aria-hidden="true" />
-            <h2 className="mt-5 font-serif text-3xl font-semibold text-amber-950">停止条件</h2>
+            <h2 className="mt-5 font-serif text-2xl font-semibold text-amber-950">停止条件</h2>
             <p className="mt-5 text-sm leading-[1.7] text-amber-950/75">
               只要任一关键门禁未通过，`candidate_static_pages_generated` 必须保持 false；V1.3 原始 PDF、DOCX、Markdown 和整套页图都不得进入静态目录、Git 或媒体包。
             </p>

@@ -98,7 +98,7 @@ export function RightsPassportLedger({ registry }: { registry: RightsPassportReg
             <span aria-hidden="true" />
             Rights passport ledger
           </p>
-          <h1 className="mt-7 max-w-5xl font-serif text-5xl font-semibold leading-[1.04] tracking-[-0.05em] sm:text-7xl">
+          <h1 className="mt-7 max-w-5xl font-serif text-2xl font-semibold leading-[1.04] tracking-[-0.05em] sm:text-3xl">
             先回答“有没有权利”，
             <span className="block text-[#d5a09a]">再回答“能不能传播”。</span>
           </h1>
@@ -114,7 +114,7 @@ export function RightsPassportLedger({ registry }: { registry: RightsPassportReg
               ['可以公开', registry._meta.counts.public_ready],
             ].map(([label, value]) => (
               <div key={label} className="bg-[#202827] p-5">
-                <strong className="block font-serif text-4xl text-[#f3efe7]">{value}</strong>
+                <strong className="block font-serif text-xl text-[#f3efe7]">{value}</strong>
                 <span className="mt-2 block text-xs tracking-[0.08em] text-[#a9a69f] uppercase">{label}</span>
               </div>
             ))}
@@ -146,7 +146,7 @@ export function RightsPassportLedger({ registry }: { registry: RightsPassportReg
               return (
                 <article key={item.title} className="bg-[#f4f0e8] p-7 sm:p-9">
                   <Icon className="size-7 text-primary" strokeWidth={1.4} aria-hidden="true" />
-                  <h2 className="mt-6 font-serif text-3xl font-semibold">{item.title}</h2>
+                  <h2 className="mt-6 font-serif text-2xl font-semibold">{item.title}</h2>
                   <p className="mt-4 text-sm leading-[1.7] text-muted-foreground">{item.body}</p>
                 </article>
               );
@@ -292,7 +292,7 @@ function PassportCard({ record }: { record: RightsPassportRecord }) {
       </div>
 
       <p className="mt-5 font-mono text-[10px] tracking-[0.08em] text-primary">{record.passport_id}</p>
-      <h3 className="mt-2 font-serif text-2xl font-semibold leading-snug">{record.title}</h3>
+      <h3 className="mt-2 font-serif text-lg font-semibold leading-snug">{record.title}</h3>
       <p className="mt-4 text-sm leading-[1.7] text-muted-foreground">{record.block_reason}</p>
 
       <dl className="mt-6 grid gap-4 border-t border-foreground/15 pt-5 text-xs sm:grid-cols-2">

@@ -62,10 +62,10 @@ export default async function EvidencePathPage({ params }: EvidencePathPageProps
             </span>
             <span className="font-mono text-xs text-muted-foreground">{path.period}</span>
           </div>
-          <h1 className="mt-6 font-serif text-[clamp(1.45rem,3.07vw,2.94rem)] font-semibold leading-[0.94] tracking-[-0.06em]">
+          <h1 className="mt-6 font-serif text-[clamp(1.44rem,3.05vw,2.92rem)] font-semibold leading-[0.94] tracking-[-0.06em]">
             {path.title}
           </h1>
-          <p className="mt-8 max-w-3xl font-serif text-lg leading-relaxed text-muted-foreground sm:text-xl">
+          <p className="mt-8 max-w-3xl font-serif text-lg leading-relaxed text-muted-foreground sm:text-base">
             {path.deck}
           </p>
         </div>
@@ -88,7 +88,7 @@ export default async function EvidencePathPage({ params }: EvidencePathPageProps
             </div>
             <div>
               <p className="text-xs font-semibold tracking-[0.13em] text-primary uppercase">故事入口</p>
-              <h2 className="mt-4 font-serif text-3xl font-semibold">{path.storyLabel}</h2>
+              <h2 className="mt-4 font-serif text-2xl font-semibold">{path.storyLabel}</h2>
               <p className="mt-5 text-[15px] leading-[1.7] text-muted-foreground">{path.storyQuestion}</p>
               <Link href={path.storyHref} className="story-button story-button-secondary mt-7">
                 打开故事现场 <ArrowRight className="size-4" aria-hidden="true" />
@@ -132,7 +132,7 @@ export default async function EvidencePathPage({ params }: EvidencePathPageProps
               ) : (
                 <div className="mt-5 border border-rose-800/25 bg-rose-50 p-6 text-rose-950">
                   <CircleStop className="size-6" aria-hidden="true" />
-                  <p className="mt-4 font-serif text-2xl font-semibold">没有可用主张</p>
+                  <p className="mt-4 font-serif text-lg font-semibold">没有可用主张</p>
                   <p className="mt-3 text-sm leading-[1.7]">这不是“暂时省略脚注”，而是明确禁止把小说场景写回人物史。</p>
                 </div>
               )}
@@ -155,7 +155,7 @@ export default async function EvidencePathPage({ params }: EvidencePathPageProps
                     return (
                       <article key={source.source_id} className="flex flex-col border border-foreground/15 bg-card p-5">
                         <span className="font-mono text-xs text-primary">{source.source_id}</span>
-                        <h3 className="mt-3 font-serif text-2xl font-semibold">{source.title}</h3>
+                        <h3 className="mt-3 font-serif text-lg font-semibold">{source.title}</h3>
                         <p className="mt-4 text-xs leading-6 text-muted-foreground">{source.verified_extent}</p>
                         <p className="mt-4 text-[10px] text-muted-foreground">{source.source_type} · {source.evidence_tier} · {source.content_scope}</p>
                         <Link
@@ -185,7 +185,7 @@ export default async function EvidencePathPage({ params }: EvidencePathPageProps
             </div>
             <div>
               <p className="text-xs font-semibold tracking-[0.13em] text-[#c38a82] uppercase">边界裁决</p>
-              <h2 className="mt-4 font-serif text-3xl font-semibold">{path.readerVerdict}</h2>
+              <h2 className="mt-4 font-serif text-2xl font-semibold">{path.readerVerdict}</h2>
               <div className="mt-7 grid gap-px bg-white/15 sm:grid-cols-2">
                 <div className="bg-[#202827] p-5">
                   <p className="text-xs font-semibold text-emerald-300">可以说</p>

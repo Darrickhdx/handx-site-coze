@@ -32,7 +32,7 @@ export default function WikiPage() {
               Wiki
             </h1>
             <div>
-              <p className="font-serif text-2xl leading-relaxed sm:text-xl">
+              <p className="font-serif text-lg leading-relaxed sm:text-base">
                 不是一篇“完整传记”，
                 <br />
                 而是一套可逐条返回来源的研究导航。
@@ -50,17 +50,17 @@ export default function WikiPage() {
         <div className="personal-shell grid gap-px bg-white/15 sm:grid-cols-3">
           <div className="bg-[#202827] p-6">
             <ShieldCheck className="size-5 text-[#c38a82]" aria-hidden="true" />
-            <p className="mt-4 font-serif text-3xl">{graphManifest.counts.audit_nodes}</p>
+            <p className="mt-4 font-serif text-xl">{graphManifest.counts.audit_nodes}</p>
             <p className="mt-1 text-xs text-[#bdb9b0]">公开审计实体</p>
           </div>
           <div className="bg-[#202827] p-6">
             <Network className="size-5 text-[#c38a82]" aria-hidden="true" />
-            <p className="mt-4 font-serif text-3xl">{graphManifest.counts.audit_edges}</p>
+            <p className="mt-4 font-serif text-xl">{graphManifest.counts.audit_edges}</p>
             <p className="mt-1 text-xs text-[#bdb9b0]">可回到主张的关系</p>
           </div>
           <div className="bg-[#202827] p-6">
             <TriangleAlert className="size-5 text-[#c38a82]" aria-hidden="true" />
-            <p className="mt-4 font-serif text-3xl">{graphManifest.counts.crosswalk_records}</p>
+            <p className="mt-4 font-serif text-xl">{graphManifest.counts.crosswalk_records}</p>
             <p className="mt-1 text-xs text-[#bdb9b0]">旧图迁移裁决记录</p>
           </div>
         </div>
@@ -72,7 +72,7 @@ export default function WikiPage() {
             <p className="text-xs font-bold tracking-[0.16em] text-primary uppercase">
               公开审计索引
             </p>
-            <h2 className="mt-2 font-serif text-3xl font-semibold">
+            <h2 className="mt-2 font-serif text-2xl font-semibold">
               六类实体，一套来源闭环
             </h2>
           </div>

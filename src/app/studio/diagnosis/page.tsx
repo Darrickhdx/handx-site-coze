@@ -23,7 +23,7 @@ export default function FamilyHistoryDiagnosisPage() {
               先别上传原件。
               <span className="mt-2 block text-accent">先判断，你家应该从哪一步开始。</span>
             </h1>
-            <p className="mt-7 max-w-3xl font-serif text-lg leading-relaxed sm:text-xl">
+            <p className="mt-7 max-w-3xl font-serif text-lg leading-relaxed sm:text-base">
               给手里有口述、照片、旧信、扫描件或馆藏线索，却不知道怎样开始的人。
             </p>
           </div>
@@ -48,7 +48,7 @@ export default function FamilyHistoryDiagnosisPage() {
           <div className="grid gap-10 lg:grid-cols-[0.68fr_1.32fr] lg:gap-14">
             <div>
               <SearchCheck className="size-8 text-[#c38a82]" strokeWidth={1.4} aria-hidden="true" />
-              <h2 className="mt-7 font-serif text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">
+              <h2 className="mt-7 font-serif text-2xl font-semibold tracking-[-0.04em] sm:text-2xl">
                 诊断不是问卷营销，方法可以当场核对。
               </h2>
               <p className="mt-6 text-sm leading-[1.7] text-[#bdb9b0]">
@@ -65,7 +65,7 @@ export default function FamilyHistoryDiagnosisPage() {
                   <p className="text-xs font-semibold tracking-[0.14em] text-[#c38a82] uppercase">
                     {demo.id} · {demo.publicationStatus}
                   </p>
-                  <h3 className="mt-3 font-serif text-2xl font-semibold">{demo.title}</h3>
+                  <h3 className="mt-3 font-serif text-lg font-semibold">{demo.title}</h3>
                   <p className="mt-4 text-sm leading-[1.7] text-[#c6c1b8]">{demo.conclusion}</p>
                   <div className="mt-5 flex flex-wrap gap-2 text-xs text-[#bdb9b0]">
                     {demo.claimIds.map((claimId) => <span key={claimId} className="border border-white/15 px-2 py-1">{claimId}</span>)}
@@ -89,21 +89,21 @@ export default function FamilyHistoryDiagnosisPage() {
         <div className="personal-shell grid gap-px overflow-hidden border border-foreground/15 bg-foreground/15 lg:grid-cols-3">
           <article className="bg-[#f4f0e8] p-7 sm:p-9">
             <CircleDotDashed className="size-7 text-primary" strokeWidth={1.4} aria-hidden="true" />
-            <h2 className="mt-6 font-serif text-2xl font-semibold">现在开放什么</h2>
+            <h2 className="mt-6 font-serif text-xl font-semibold">现在开放什么</h2>
             <p className="mt-4 text-sm leading-[1.7] text-muted-foreground">
               只开放方法演示，以及不涉及原件正文的小范围需求访谈；不是付费订单、档案鉴定或服务报价。
             </p>
           </article>
           <article className="bg-[#f4f0e8] p-7 sm:p-9">
             <LockKeyhole className="size-7 text-primary" strokeWidth={1.4} aria-hidden="true" />
-            <h2 className="mt-6 font-serif text-2xl font-semibold">现在不接收什么</h2>
+            <h2 className="mt-6 font-serif text-xl font-semibold">现在不接收什么</h2>
             <p className="mt-4 text-sm leading-[1.7] text-muted-foreground">
               不接收原件、私人通信、身份证件、精确住址、活人敏感信息或未成年人材料；这些内容也不要粘贴到普通留言。
             </p>
           </article>
           <article className="bg-[#f4f0e8] p-7 sm:p-9">
             <SearchCheck className="size-7 text-primary" strokeWidth={1.4} aria-hidden="true" />
-            <h2 className="mt-6 font-serif text-2xl font-semibold">怎样继续</h2>
+            <h2 className="mt-6 font-serif text-xl font-semibold">怎样继续</h2>
             <p className="mt-4 text-sm leading-[1.7] text-muted-foreground">
               完成自评后，只复制不含姓名和正文的摘要；若结果允许，可由你主动打开邮件申请访谈，本站不会自动发送。
             </p>

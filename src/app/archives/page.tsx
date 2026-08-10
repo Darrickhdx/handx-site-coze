@@ -38,7 +38,7 @@ export default function ArchivesPage() {
           </div>
 
           <aside className="border-l-2 border-primary pl-6 pb-1 sm:pl-8">
-            <p className="font-serif text-3xl leading-relaxed text-foreground sm:text-4xl">
+            <p className="font-serif text-xl leading-relaxed text-foreground sm:text-xl">
               “档案的价值，不是替读者下结论；而是把人带到一个能自己感受历史的瞬间。”
             </p>
             <p className="mt-6 text-xs leading-6 text-muted-foreground">
@@ -71,19 +71,19 @@ export default function ArchivesPage() {
           <div className="bg-background p-7 sm:p-9">
             <BookOpenText className="size-6 text-primary" strokeWidth={1.4} aria-hidden="true" />
             <p className="mt-8 text-[10px] font-semibold tracking-[0.13em] text-primary uppercase">01 · 先读人</p>
-            <h2 className="mt-4 font-serif text-2xl font-semibold">从一个场景进入，不从表格进入。</h2>
+            <h2 className="mt-4 font-serif text-xl font-semibold">从一个场景进入，不从表格进入。</h2>
             <p className="mt-4 text-sm leading-[1.7] text-muted-foreground">先知道这里发生了什么，再决定自己想不想继续往下找。</p>
           </div>
           <div className="bg-background p-7 sm:p-9">
             <FileSearch className="size-6 text-primary" strokeWidth={1.4} aria-hidden="true" />
             <p className="mt-8 text-[10px] font-semibold tracking-[0.13em] text-primary uppercase">02 · 再看原文</p>
-            <h2 className="mt-4 font-serif text-2xl font-semibold">放大一页，而不是丢给你一堵材料墙。</h2>
+            <h2 className="mt-4 font-serif text-xl font-semibold">放大一页，而不是丢给你一堵材料墙。</h2>
             <p className="mt-4 text-sm leading-[1.7] text-muted-foreground">每一页会告诉你从哪里读起，也会把你送回原来的保存机构。</p>
           </div>
           <div className="bg-background p-7 sm:p-9">
             <Compass className="size-6 text-primary" strokeWidth={1.4} aria-hidden="true" />
             <p className="mt-8 text-[10px] font-semibold tracking-[0.13em] text-primary uppercase">03 · 留下问题</p>
-            <h2 className="mt-4 font-serif text-2xl font-semibold">真正有力量的故事，允许一部分还没有答案。</h2>
+            <h2 className="mt-4 font-serif text-xl font-semibold">真正有力量的故事，允许一部分还没有答案。</h2>
             <p className="mt-4 text-sm leading-[1.7] text-muted-foreground">下一页要去哪找、还缺哪一块，才是读者能一起参与的旅程。</p>
           </div>
         </section>
@@ -92,7 +92,7 @@ export default function ArchivesPage() {
           <p className="story-kicker text-[#c38a82]">继续寻找</p>
           <div className="mt-5 grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
             <div>
-              <h2 className="font-serif text-3xl font-semibold sm:text-4xl">故事走到档案的边缘，才知道下一步该去哪里。</h2>
+              <h2 className="font-serif text-2xl font-semibold sm:text-xl">故事走到档案的边缘，才知道下一步该去哪里。</h2>
               <p className="mt-5 max-w-3xl text-sm leading-[1.7] text-[#bdb9b0]">
                 还有一批材料尚未取得。它们不是“已知事实”的补充，而是这场寻找接下来真正要抵达的地方。
               </p>

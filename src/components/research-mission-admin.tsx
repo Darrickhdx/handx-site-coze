@@ -305,7 +305,7 @@ export function ResearchMissionAdmin() {
       <section className="grid min-w-0 gap-8 border-b border-foreground/15 pb-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-end">
         <div className="min-w-0">
           <p className="story-kicker">Owner only · local runtime</p>
-          <h1 className="mt-4 break-words font-serif text-5xl font-semibold tracking-[-0.05em] sm:text-6xl">
+          <h1 className="mt-4 break-words font-serif text-2xl font-semibold tracking-[-0.05em] sm:text-2xl">
             史料行动执行台
           </h1>
         </div>
@@ -327,7 +327,7 @@ export function ResearchMissionAdmin() {
       <section className="mt-8 min-w-0 border border-foreground/15 bg-card p-5 sm:p-7" aria-labelledby="mission-unlock-title">
         <div className="flex items-center gap-3">
           <KeyRound className="size-5 shrink-0 text-primary" aria-hidden="true" />
-          <h2 id="mission-unlock-title" className="font-serif text-2xl font-semibold">
+          <h2 id="mission-unlock-title" className="font-serif text-xl font-semibold">
             读取本机私密基线
           </h2>
         </div>
@@ -400,7 +400,7 @@ export function ResearchMissionAdmin() {
             <div className="flex min-w-0 flex-col gap-3 border-b border-foreground/15 pb-5 sm:flex-row sm:items-end sm:justify-between">
               <div className="min-w-0">
                 <p className="story-kicker">Baseline snapshot</p>
-                <h2 id="mission-summary-title" className="mt-3 break-words font-serif text-3xl font-semibold">
+                <h2 id="mission-summary-title" className="mt-3 break-words font-serif text-2xl font-semibold">
                   行动基线概览
                 </h2>
               </div>
@@ -417,7 +417,7 @@ export function ResearchMissionAdmin() {
               ].map(([label, value, note]) => (
                 <div key={label} className="min-w-0 bg-card p-5">
                   <dt className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">{label}</dt>
-                  <dd className="mt-3 font-serif text-4xl font-semibold text-foreground">{value}</dd>
+                  <dd className="mt-3 font-serif text-xl font-semibold text-foreground">{value}</dd>
                   <dd className="mt-2 break-words text-xs text-muted-foreground">{note}</dd>
                 </div>
               ))}
@@ -441,7 +441,7 @@ export function ResearchMissionAdmin() {
           <section className="mt-10 min-w-0" aria-labelledby="mission-filter-title">
             <div className="flex items-center gap-3">
               <ListFilter className="size-5 shrink-0 text-primary" aria-hidden="true" />
-              <h2 id="mission-filter-title" className="font-serif text-2xl font-semibold">筛选任务</h2>
+              <h2 id="mission-filter-title" className="font-serif text-xl font-semibold">筛选任务</h2>
             </div>
             <div className="mt-5 grid min-w-0 gap-4 border border-foreground/15 bg-card p-5 md:grid-cols-3">
               <label className="grid min-w-0 gap-2 text-xs font-semibold text-muted-foreground" htmlFor="mission-query">
@@ -513,7 +513,7 @@ export function ResearchMissionAdmin() {
                               {mission.planningState}
                             </span>
                           </div>
-                          <h3 className="mt-3 break-words font-serif text-2xl font-semibold leading-snug">
+                          <h3 className="mt-3 break-words font-serif text-lg font-semibold leading-snug">
                             {mission.researchTarget}
                           </h3>
                           <p className="mt-2 break-words text-xs leading-6 text-muted-foreground">
@@ -584,7 +584,7 @@ export function ResearchMissionAdmin() {
             <div className="flex min-w-0 flex-wrap items-center justify-between gap-3">
               <div className="min-w-0">
                 <p className="story-kicker">Append-only roadmap</p>
-                <h2 id="mission-roadmap-title" className="mt-3 break-words font-serif text-3xl font-semibold">
+                <h2 id="mission-roadmap-title" className="mt-3 break-words font-serif text-2xl font-semibold">
                   事件日志路线图
                 </h2>
               </div>

@@ -75,14 +75,14 @@ export default async function PersonDossierPage({ params }: PersonDossierPagePro
           </Link>
           <div className="mt-9 grid gap-10 lg:grid-cols-[12rem_minmax(0,1fr)] lg:items-end lg:gap-16">
             <div>
-              <div className="grid size-40 place-items-center border border-[#c38a82]/50 bg-[#c38a82]/10 font-serif text-7xl text-[#c38a82]" aria-hidden="true">
+              <div className="grid size-40 place-items-center border border-[#c38a82]/50 bg-[#c38a82]/10 font-serif text-3xl text-[#c38a82]" aria-hidden="true">
                 {dossier.initials}
               </div>
               <p className="mt-4 font-mono text-xs text-[#bdb9b0]">{dossier.entityId}</p>
             </div>
             <div>
               <p className="text-xs font-semibold tracking-[0.14em] text-[#c38a82] uppercase">{dossier.eyebrow}</p>
-              <h1 className="mt-4 font-serif text-[clamp(1.58rem,3.16vw,3.16rem)] font-semibold leading-[0.86] tracking-[-0.07em]">{dossier.displayName}</h1>
+              <h1 className="mt-4 font-serif text-[clamp(1.52rem,3.05vw,3.05rem)] font-semibold leading-[0.86] tracking-[-0.07em]">{dossier.displayName}</h1>
               <div className="mt-6 flex flex-wrap gap-2 text-xs font-semibold">
                 <span className="border border-white/20 px-3 py-1.5 text-[#d7cfc2]">{personDossierStatusLabels[dossier.status]}</span>
                 <span
@@ -92,7 +92,7 @@ export default async function PersonDossierPage({ params }: PersonDossierPagePro
                   本地审阅 · 非完整传记
                 </span>
               </div>
-              <p className="mt-7 max-w-4xl font-serif text-2xl leading-relaxed text-[#d7cfc2] sm:text-xl">{dossier.oneLine}</p>
+              <p className="mt-7 max-w-4xl font-serif text-lg leading-relaxed text-[#d7cfc2] sm:text-base">{dossier.oneLine}</p>
             </div>
           </div>
         </div>
@@ -102,7 +102,7 @@ export default async function PersonDossierPage({ params }: PersonDossierPagePro
         <section className="grid gap-10 border-b border-foreground/15 pb-12 lg:grid-cols-[0.75fr_1.25fr] lg:gap-14">
           <div>
             <p className="story-kicker">为什么他在这里</p>
-            <h2 className="mt-4 font-serif text-3xl font-semibold">{dossier.roleInStory}</h2>
+            <h2 className="mt-4 font-serif text-2xl font-semibold">{dossier.roleInStory}</h2>
           </div>
           <div>
             <p className="text-[15px] leading-[1.7] text-muted-foreground">{dossier.whyHere}</p>
@@ -116,7 +116,7 @@ export default async function PersonDossierPage({ params }: PersonDossierPagePro
         <section className="py-8 sm:py-8">
           <div className="border-b border-foreground/15 pb-7">
             <p className="story-kicker">可追溯人生切面</p>
-            <h2 className="mt-4 font-serif text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">不是年谱，是几组能回到纸面的节点。</h2>
+            <h2 className="mt-4 font-serif text-2xl font-semibold tracking-[-0.04em] sm:text-2xl">不是年谱，是几组能回到纸面的节点。</h2>
           </div>
           <div className="mt-8 border-l border-foreground/20 pl-6 sm:pl-10">
             {dossier.milestones.map((milestone, index) => {
@@ -127,12 +127,12 @@ export default async function PersonDossierPage({ params }: PersonDossierPagePro
                   <span className="absolute -left-[1.9rem] top-10 size-3 rounded-full border-2 border-primary bg-[#f4f0e8] sm:-left-[2.85rem] first:top-1" aria-hidden="true" />
                   <div className="grid min-w-0 gap-6 lg:grid-cols-[10rem_minmax(0,1fr)]">
                     <div className="min-w-0">
-                      <p className="font-serif text-3xl text-primary">{milestone.period}</p>
+                      <p className="font-serif text-xl text-primary">{milestone.period}</p>
                       <p className="mt-2 text-[10px] font-semibold text-muted-foreground">{personMilestoneModeLabels[milestone.mode]}</p>
                       <p className="mt-2 font-mono text-[10px] text-muted-foreground">节点 {String(index + 1).padStart(2, '0')}</p>
                     </div>
                     <div className="min-w-0">
-                      <h3 className="font-serif text-3xl font-semibold tracking-[-0.03em]">{milestone.title}</h3>
+                      <h3 className="font-serif text-xl font-semibold tracking-[-0.03em]">{milestone.title}</h3>
                       <p className="mt-4 text-sm leading-[1.7] text-muted-foreground">{milestone.summary}</p>
                       <div className="mt-6 grid min-w-0 gap-3">
                         {claims.map((claim) => claim && (
@@ -202,7 +202,7 @@ export default async function PersonDossierPage({ params }: PersonDossierPagePro
           <div>
             <div className="flex items-center gap-3">
               <Link2 className="size-5 text-primary" aria-hidden="true" />
-              <h2 className="font-serif text-3xl font-semibold">材料如何把他们放在一起</h2>
+              <h2 className="font-serif text-2xl font-semibold">材料如何把他们放在一起</h2>
             </div>
             {entityId === 'P-001' ? (
               <p className="mt-5 text-sm leading-[1.7] text-muted-foreground">这是研究中心人物；请从其他人物档案查看关系如何回到主张。</p>
@@ -239,7 +239,7 @@ export default async function PersonDossierPage({ params }: PersonDossierPagePro
           </div>
           <aside className="border border-foreground/15 bg-card p-5 sm:p-6">
             <FileSearch className="size-5 text-primary" aria-hidden="true" />
-            <h2 className="mt-4 font-serif text-2xl font-semibold">优先来源</h2>
+            <h2 className="mt-4 font-serif text-xl font-semibold">优先来源</h2>
             <div className="mt-5 space-y-4">
               {sourceCards.map((source) => source && (
                 <Link

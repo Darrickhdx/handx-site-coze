@@ -96,7 +96,7 @@ export function ClaimCard({
       )}
     >
       <div className="flex flex-wrap items-start justify-between gap-2 mb-2">
-        <h3 className="font-serif font-semibold text-base sm:text-lg text-foreground leading-snug pr-2">
+        <h3 className="font-serif font-semibold text-lg sm:text-lg text-foreground leading-snug pr-2">
           {title}
         </h3>
         <EvidenceBadge level={evidenceLevel} size="xs" />

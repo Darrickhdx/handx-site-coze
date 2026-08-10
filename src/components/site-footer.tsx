@@ -29,7 +29,7 @@ export function SiteFooter() {
               <BookOpen className="size-5" strokeWidth={1.6} />
               <span className="text-xs font-semibold tracking-[0.2em] uppercase">{profile.displayName}</span>
             </div>
-            <p className="mt-7 max-w-2xl font-serif text-2xl leading-relaxed sm:text-xl">
+            <p className="mt-7 max-w-2xl font-serif text-lg leading-relaxed sm:text-base">
               一个人，
               <br />
               把复杂的东西做完整。

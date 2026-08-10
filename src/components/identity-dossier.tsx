@@ -98,7 +98,7 @@ export function IdentityDossier() {
               <span className="block font-mono text-[10px] tracking-[0.14em] text-primary">
                 0{index + 1}
               </span>
-              <strong className="mt-2 block font-serif text-2xl">{item.year}</strong>
+              <strong className="mt-2 block font-serif text-lg">{item.year}</strong>
               <span className="mt-1 block max-w-32 text-xs leading-5 text-muted-foreground">
                 {item.title}
               </span>
@@ -123,7 +123,7 @@ export function IdentityDossier() {
                 </p>
                 <p className="mt-2 text-xs leading-6 text-muted-foreground">{active.sourceKind}</p>
               </div>
-              <span className="font-serif text-4xl italic text-primary/25">{active.year}</span>
+              <span className="font-serif text-xl italic text-primary/25">{active.year}</span>
             </div>
 
             {active.image ? (
@@ -142,7 +142,7 @@ export function IdentityDossier() {
                 <div>
                   <ScanText className="mx-auto size-6 text-primary" strokeWidth={1.3} aria-hidden="true" />
                   <p className="mt-6 text-xs tracking-[0.13em] text-muted-foreground">{active.recordHeading}</p>
-                  <blockquote className="mt-7 font-serif text-2xl leading-relaxed tracking-[0.03em] text-foreground sm:text-xl">
+                  <blockquote className="mt-7 font-serif text-lg leading-relaxed tracking-[0.03em] text-foreground sm:text-base">
                     {active.recordText}
                   </blockquote>
                 </div>
@@ -180,7 +180,7 @@ export function IdentityDossier() {
                 第 {activeIndex + 1} / {identityDossierItems.length} 份材料
               </span>
             </div>
-            <h2 className="mt-6 font-serif text-4xl font-semibold leading-tight tracking-[-0.04em] sm:text-5xl">
+            <h2 className="mt-6 font-serif text-2xl font-semibold leading-tight tracking-[-0.04em] sm:text-2xl">
               {active.title}
             </h2>
 
@@ -286,7 +286,7 @@ export function IdentityDossier() {
                 Compare the two tracks
               </p>
               <GitCompareArrows className="mt-7 size-7 text-primary" strokeWidth={1.4} aria-hidden="true" />
-              <h2 className="mt-5 font-serif text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">
+              <h2 className="mt-5 font-serif text-2xl font-semibold tracking-[-0.04em] sm:text-2xl">
                 如果把两个名字合并，会发生什么？
               </h2>
             </div>
@@ -327,7 +327,7 @@ export function IdentityDossier() {
             <div className="mt-7 grid gap-5 lg:grid-cols-2">
               {identityTrackComparison.openTrack.map((track) => (
                 <article key={track.label} className="border border-foreground/15 bg-background p-6 sm:p-8">
-                  <h3 className="font-serif text-3xl font-semibold">{track.label}</h3>
+                  <h3 className="font-serif text-xl font-semibold">{track.label}</h3>
                   <ol className="mt-6 space-y-0">
                     {track.records.map((record) => (
                       <li key={record} className="relative border-l border-primary/35 pb-6 pl-6 text-sm leading-[1.7] text-muted-foreground last:pb-0">
@@ -371,7 +371,7 @@ export function IdentityDossier() {
               Current verdict
             </p>
             <ShieldAlert className="mt-8 size-7 text-[#c38a82]" strokeWidth={1.4} aria-hidden="true" />
-            <h2 className="mt-6 font-serif text-4xl font-semibold leading-tight tracking-[-0.04em] sm:text-5xl">
+            <h2 className="mt-6 font-serif text-2xl font-semibold leading-tight tracking-[-0.04em] sm:text-2xl">
               {identityDossierVerdict.label}
             </h2>
             <p className="mt-6 text-sm leading-[1.7] text-[#bdb9b0]">{identityDossierVerdict.summary}</p>
@@ -414,7 +414,7 @@ export function IdentityDossier() {
         <div className="personal-shell grid gap-8 lg:grid-cols-[minmax(0,1fr)_24rem] lg:items-end">
           <div>
             <p className="story-kicker">继续探索</p>
-            <h2 className="mt-4 max-w-3xl font-serif text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">
+            <h2 className="mt-4 max-w-3xl font-serif text-2xl font-semibold tracking-[-0.04em] sm:text-2xl">
               案卷负责提出问题，图谱负责继续追踪关系。
             </h2>
           </div>

@@ -69,7 +69,7 @@ export default function PersonPage() {
       </div>
 
       <section className="mb-14">
-        <h2 className="font-serif text-2xl font-bold text-foreground mb-4">目前能安全说到哪里</h2>
+        <h2 className="font-serif text-xl font-bold text-foreground mb-4">目前能安全说到哪里</h2>
         <div className="bg-card border border-border/40 rounded-xl p-6 shadow-card space-y-4 text-foreground/90 leading-relaxed">
           <p>
             当前公开预览层保留了三组彼此分离的史料记录：1933年团长任命公报、
@@ -88,7 +88,7 @@ export default function PersonPage() {
       </section>
 
       <section className="mb-14">
-        <h2 className="font-serif text-2xl font-bold text-foreground mb-3">候选身份说明</h2>
+        <h2 className="font-serif text-xl font-bold text-foreground mb-3">候选身份说明</h2>
         <div className="rounded-xl border border-candidate/30 bg-candidate/10 p-6">
           <div className="flex items-start gap-3">
             <AlertTriangle className="w-5 h-5 text-candidate shrink-0 mt-0.5" />
@@ -117,7 +117,7 @@ export default function PersonPage() {
       </section>
 
       <section className="mb-14">
-        <h2 className="font-serif text-2xl font-bold text-foreground mb-4">真实预览图谱</h2>
+        <h2 className="font-serif text-xl font-bold text-foreground mb-4">真实预览图谱</h2>
         <p className="text-muted-foreground mb-6 text-sm">
           图中包含人物、地点、机构、职务和文献节点；仅绘制当前图谱中已有的{edgeRecords.length}条关系，不补画被暂缓或推测关系。
         </p>
@@ -127,7 +127,7 @@ export default function PersonPage() {
       <section className="mb-14">
         <div className="flex items-end justify-between mb-6">
           <div>
-            <h2 className="font-serif text-2xl font-bold text-foreground mb-2">{claimRecords.length}条原子主张</h2>
+            <h2 className="font-serif text-xl font-bold text-foreground mb-2">{claimRecords.length}条原子主张</h2>
             <p className="text-muted-foreground text-sm">载体数量与独立来源数量分开显示。</p>
           </div>
           <Link href="/methodology" className="text-sm text-primary hover:underline hidden sm:inline">
@@ -143,7 +143,7 @@ export default function PersonPage() {
 
       <section className="mb-14">
         <div className="flex items-end justify-between mb-6">
-          <h2 className="font-serif text-2xl font-bold text-foreground">当前人物节点</h2>
+          <h2 className="font-serif text-xl font-bold text-foreground">当前人物节点</h2>
           <Link href="/persons" className="text-sm text-primary hover:underline">
             人物索引 →
           </Link>
@@ -165,7 +165,7 @@ export default function PersonPage() {
 
       <section className="mb-14">
         <div className="flex items-end justify-between mb-6">
-          <h2 className="font-serif text-2xl font-bold text-foreground">{eventRecords.length}组分离的文献姓名记录</h2>
+          <h2 className="font-serif text-xl font-bold text-foreground">{eventRecords.length}组分离的文献姓名记录</h2>
           <Link href="/timeline" className="text-sm text-primary hover:underline">
             完整时间线 →
           </Link>
@@ -175,7 +175,7 @@ export default function PersonPage() {
 
       <section className="mb-14">
         <div className="flex items-end justify-between mb-6">
-          <h2 className="font-serif text-2xl font-bold text-foreground">代表性来源</h2>
+          <h2 className="font-serif text-xl font-bold text-foreground">代表性来源</h2>
           <Link href="/archives" className="text-sm text-primary hover:underline">
             {sourceCards.length}项来源 →
           </Link>
@@ -188,7 +188,7 @@ export default function PersonPage() {
       </section>
 
       <section>
-        <h2 className="font-serif text-2xl font-bold text-foreground mb-6">禁止用推测填满的空白</h2>
+        <h2 className="font-serif text-xl font-bold text-foreground mb-6">禁止用推测填满的空白</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {openQuestions.map((question) => (
             <div key={question.title} className="bg-card border border-border/40 rounded-xl p-5 shadow-card">

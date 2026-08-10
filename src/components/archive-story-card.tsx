@@ -14,10 +14,10 @@ export function ArchiveStoryCard({ moment, index }: ArchiveStoryCardProps) {
         <p className="text-[10px] font-bold tracking-[0.15em] text-primary uppercase">
           {moment.era}
         </p>
-        <span className="font-serif text-4xl italic text-primary/20">0{index + 1}</span>
+        <span className="font-serif text-xl italic text-primary/20">0{index + 1}</span>
       </div>
 
-      <h2 className="mt-9 max-w-md font-serif text-3xl font-semibold leading-tight sm:text-4xl">
+      <h2 className="mt-9 max-w-md font-serif text-2xl font-semibold leading-tight sm:text-xl">
         {moment.title}
       </h2>
 

@@ -93,7 +93,7 @@ export default async function ArchiveSourcePage({
               <BookOpenText className="mt-0.5 size-5 shrink-0 text-primary" aria-hidden="true" />
               <div className="min-w-0">
                 <p className="text-xs font-semibold tracking-[0.13em] text-primary uppercase">从故事来到这里</p>
-                <p className="mt-3 font-serif text-lg leading-relaxed sm:text-xl">{relatedPaths[0].readerVerdict}</p>
+                <p className="mt-3 font-serif text-lg leading-relaxed sm:text-base">{relatedPaths[0].readerVerdict}</p>
                 <div className="mt-4 flex flex-wrap gap-3">
                   {relatedPaths.map((path) => (
                     <Link key={path.id} href={`/evidence/${path.id}`} className="story-text-link">
@@ -139,7 +139,7 @@ export default async function ArchiveSourcePage({
             <div className="border border-foreground/15 bg-background p-5">
               <TriangleAlert className="size-5 text-primary" aria-hidden="true" />
               <p className="mt-3 text-xs text-muted-foreground">关联主张</p>
-              <p className="mt-1 font-serif text-3xl">{claims.length}</p>
+              <p className="mt-1 font-serif text-xl">{claims.length}</p>
             </div>
             <div className="border border-foreground/15 bg-background p-5">
               <HardDrive className="size-5 text-primary" aria-hidden="true" />
@@ -157,7 +157,7 @@ export default async function ArchiveSourcePage({
           </summary>
           <section className="mt-7 grid gap-8 lg:grid-cols-[1fr_0.65fr]">
             <div>
-              <h2 className="font-serif text-3xl font-semibold">完整主张清单</h2>
+              <h2 className="font-serif text-2xl font-semibold">完整主张清单</h2>
             <div className="mt-6 space-y-4">
               {claims.length > 0 ? (
                 claims.map((claim) => (
@@ -192,7 +192,7 @@ export default async function ArchiveSourcePage({
             </div>
 
             <aside className="border border-foreground/15 bg-card p-5">
-              <h2 className="font-serif text-2xl font-semibold">关联实体</h2>
+              <h2 className="font-serif text-xl font-semibold">关联实体</h2>
               <div className="mt-4 space-y-2">
               {nodes.map((node) => (
                 <Link

@@ -227,7 +227,7 @@ export function PublicLocatorBuilder({ missionId }: { missionId: string }) {
       <div className="flex flex-col gap-5 border-b border-foreground/15 pb-6 sm:flex-row sm:items-start sm:justify-between">
         <div className="min-w-0">
           <p className="story-kicker">公开线索草稿</p>
-          <h2 id="locator-builder-title" className="mt-3 font-serif text-3xl font-semibold tracking-[-0.035em]">
+          <h2 id="locator-builder-title" className="mt-3 font-serif text-2xl font-semibold tracking-[-0.035em]">
             把一个公开定位整理成可核对的 JSON
           </h2>
           <p className="mt-4 max-w-3xl text-sm leading-[1.7] text-muted-foreground">

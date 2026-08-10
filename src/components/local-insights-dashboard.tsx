@@ -260,7 +260,7 @@ export function LocalInsightsDashboard() {
                 <LockKeyhole className="size-3.5" aria-hidden="true" />
                 只读 · 仅本机
               </div>
-              <h1 className="mt-7 font-serif text-5xl font-semibold tracking-[-0.05em] sm:text-7xl">
+              <h1 className="mt-7 font-serif text-2xl font-semibold tracking-[-0.05em] sm:text-3xl">
                 访问与留言看板
               </h1>
               <p className="mt-5 max-w-2xl text-sm leading-[1.7] text-[#bdb9b0]">
@@ -299,7 +299,7 @@ export function LocalInsightsDashboard() {
             return (
               <article key={metric.label} className="bg-[#f4f0e8] px-6 py-9 sm:px-8">
                 <Icon className="size-5 text-primary" strokeWidth={1.5} aria-hidden="true" />
-                <strong className="mt-8 block font-serif text-5xl font-semibold tracking-[-0.04em]">
+                <strong className="mt-8 block font-serif text-2xl font-semibold tracking-[-0.04em]">
                   {metric.value}
                 </strong>
                 <span className="mt-2 block text-xs tracking-[0.12em] text-muted-foreground uppercase">
@@ -331,7 +331,7 @@ export function LocalInsightsDashboard() {
             <div className="flex items-center gap-3">
               <Activity className="size-5 text-primary" aria-hidden="true" />
               <div>
-                <h2 className="font-serif text-2xl font-semibold">30 日访问趋势</h2>
+                <h2 className="font-serif text-xl font-semibold">30 日访问趋势</h2>
                 <p className="mt-1 text-xs text-muted-foreground">按 Asia/Shanghai 自然日补齐零值</p>
               </div>
             </div>
@@ -376,7 +376,7 @@ export function LocalInsightsDashboard() {
         <div className="personal-shell grid gap-14 lg:grid-cols-2 lg:gap-14">
           <article>
             <div className="border-b border-foreground/15 pb-5">
-              <h2 className="font-serif text-2xl font-semibold">来源质量</h2>
+              <h2 className="font-serif text-xl font-semibold">来源质量</h2>
               <p className="mt-1 text-xs text-muted-foreground">
                 只保存预设渠道类别与非个人化活动编号，不保存完整 referrer
               </p>
@@ -414,7 +414,7 @@ export function LocalInsightsDashboard() {
 
           <article>
             <div className="border-b border-foreground/15 pb-5">
-                <h2 className="font-serif text-2xl font-semibold">文章阅读路径</h2>
+                <h2 className="font-serif text-xl font-semibold">文章阅读路径</h2>
                 <p className="mt-1 text-xs text-muted-foreground">
                   进入 → 有效阅读；“读到文末”和“继续探索”是有效阅读后的两个并行结果
               </p>
@@ -452,7 +452,7 @@ export function LocalInsightsDashboard() {
             <div className="flex items-center gap-3 border-b border-foreground/15 pb-5">
               <BarChart3 className="size-5 text-primary" aria-hidden="true" />
               <div>
-                <h2 className="font-serif text-2xl font-semibold">页面浏览排行</h2>
+                <h2 className="font-serif text-xl font-semibold">页面浏览排行</h2>
                 <p className="mt-1 text-xs text-muted-foreground">只统计页面路径，不保留查询参数</p>
               </div>
             </div>
@@ -483,7 +483,7 @@ export function LocalInsightsDashboard() {
             <div className="flex items-center gap-3 border-b border-foreground/15 pb-5">
               <MousePointerClick className="size-5 text-primary" aria-hidden="true" />
               <div>
-                <h2 className="font-serif text-2xl font-semibold">关键操作</h2>
+                <h2 className="font-serif text-xl font-semibold">关键操作</h2>
                 <p className="mt-1 text-xs text-muted-foreground">来自页面上已标注的阅读与导航入口</p>
               </div>
             </div>
@@ -509,7 +509,7 @@ export function LocalInsightsDashboard() {
           <div className="flex items-center gap-3 border-b border-white/15 pb-5">
             <BookOpenCheck className="size-5 text-[#d5a09a]" aria-hidden="true" />
             <div>
-              <h2 className="font-serif text-2xl font-semibold">三篇内容的阅读质量</h2>
+              <h2 className="font-serif text-xl font-semibold">三篇内容的阅读质量</h2>
               <p className="mt-1 text-xs text-[#a9a59e]">“0”可能只是尚未达到里程碑，不代表内容没有价值</p>
             </div>
           </div>
@@ -552,7 +552,7 @@ export function LocalInsightsDashboard() {
                 <span aria-hidden="true" />
                 Private inbox
               </p>
-              <h2 className="mt-5 font-serif text-4xl font-semibold">待查看留言</h2>
+              <h2 className="mt-5 font-serif text-2xl font-semibold">待查看留言</h2>
             </div>
             <p className="max-w-xl text-xs leading-6 text-muted-foreground">
               当前为本机原型：只读展示，不提供公开发布、审批或自动回复。联系方式始终仅在本机显示。
@@ -568,7 +568,7 @@ export function LocalInsightsDashboard() {
                 <div className="flex items-start gap-4">
                   <KeyRound className="mt-1 size-5 shrink-0 text-primary" aria-hidden="true" />
                   <div className="max-w-3xl">
-                    <h3 className="font-serif text-2xl font-semibold">私密内容需要本机看板密钥</h3>
+                    <h3 className="font-serif text-lg font-semibold">私密内容需要本机看板密钥</h3>
                     <p className="mt-3 text-sm leading-[1.7] text-muted-foreground">
                       访问统计可以直接查看；留言正文与回复方式另行保护。密钥保存在网站目录下的
                       <code className="mx-1 border border-foreground/15 bg-white/45 px-1.5 py-0.5 text-xs">
@@ -615,7 +615,7 @@ export function LocalInsightsDashboard() {
               <article key={message.id} className="border border-foreground/15 bg-[#f4f0e8] p-6">
                 <div className="flex items-start justify-between gap-4">
                   <div>
-                    <h3 className="font-serif text-xl font-semibold">{message.display_name}</h3>
+                    <h3 className="font-serif text-lg font-semibold">{message.display_name}</h3>
                     <p className="mt-1 text-xs text-muted-foreground">{formatLocalTime(message.occurred_at)}</p>
                   </div>
                   <span className="border border-[#8c6d2b]/30 px-2 py-1 text-[10px] text-[#8c6d2b] uppercase">
@@ -635,7 +635,7 @@ export function LocalInsightsDashboard() {
             <div className="mt-12">
               <div className="flex flex-col gap-3 border-b border-foreground/15 pb-5 sm:flex-row sm:items-end sm:justify-between">
                 <div>
-                  <h3 className="font-serif text-3xl font-semibold">最近访问记录</h3>
+                  <h3 className="font-serif text-xl font-semibold">最近访问记录</h3>
                   <p className="mt-2 text-xs text-muted-foreground">
                     只在密钥解锁后显示；S01 等临时编号每次刷新重新生成，不返回会话哈希。
                   </p>

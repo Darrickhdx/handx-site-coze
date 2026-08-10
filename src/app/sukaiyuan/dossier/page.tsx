@@ -26,14 +26,14 @@ export default function SuKaiyuanDossierPage() {
                 <span aria-hidden="true" />
                 一个名字的历史踪迹
               </p>
-              <h1 className="personal-display mt-7 text-[clamp(1.54rem,3.07vw,3.07rem)] font-semibold leading-[0.92] tracking-[-0.065em]">
+              <h1 className="personal-display mt-7 text-[clamp(1.53rem,3.05vw,3.05rem)] font-semibold leading-[0.92] tracking-[-0.065em]">
                 蘇開元与蘇凱元，
                 <br />
                 是同一个人吗？
               </h1>
             </div>
             <div>
-              <p className="font-serif text-2xl leading-relaxed text-foreground sm:text-xl">
+              <p className="font-serif text-lg leading-relaxed text-foreground sm:text-base">
                 蘇開元、蘇凱元、Su Kai-yuan。
                 <br />
                 名字越来越像，证据却必须一格一格对齐。
@@ -56,17 +56,17 @@ export default function SuKaiyuanDossierPage() {
               <div className="mt-8 grid gap-px border border-foreground/15 bg-foreground/15 sm:grid-cols-3">
                 <div className="bg-background p-4">
                   <Files className="size-4 text-primary" aria-hidden="true" />
-                  <strong className="mt-3 block font-serif text-2xl">{identityDossierItems.length}</strong>
+                  <strong className="mt-3 block font-serif text-lg">{identityDossierItems.length}</strong>
                   <span className="text-xs text-muted-foreground">份来源卡</span>
                 </div>
                 <div className="bg-background p-4">
                   <Fingerprint className="size-4 text-primary" aria-hidden="true" />
-                  <strong className="mt-3 block font-serif text-2xl">3</strong>
+                  <strong className="mt-3 block font-serif text-lg">3</strong>
                   <span className="text-xs text-muted-foreground">种姓名写法</span>
                 </div>
                 <div className="bg-background p-4">
                   <Route className="size-4 text-primary" aria-hidden="true" />
-                  <strong className="mt-3 block font-serif text-2xl">1</strong>
+                  <strong className="mt-3 block font-serif text-lg">1</strong>
                   <span className="text-xs text-muted-foreground">条候选身份桥</span>
                 </div>
               </div>

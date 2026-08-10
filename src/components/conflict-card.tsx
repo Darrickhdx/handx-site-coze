@@ -69,7 +69,7 @@ export function ConflictCard({
               {statusCfg.label}
             </span>
           </div>
-          <h3 className="font-serif font-semibold text-base sm:text-lg text-foreground leading-snug">
+          <h3 className="font-serif font-semibold text-lg sm:text-lg text-foreground leading-snug">
             {title}
           </h3>
         </div>

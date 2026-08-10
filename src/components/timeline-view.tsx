@@ -144,7 +144,7 @@ export function TimelineView({ items }: { items: TimelineItem[] }) {
                     )}
                   </div>
 
-                  <h3 className="font-serif font-semibold text-foreground mb-1.5 text-base">
+                  <h3 className="font-serif font-semibold text-foreground mb-1.5 text-lg">
                     {item.title}
                   </h3>
 

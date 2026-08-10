@@ -85,7 +85,7 @@ export function WikiIndex({ nodes }: { nodes: AuditNode[] }) {
                 {entityTypeLabels[node.entity_type]}
               </span>
             </div>
-            <h2 className="mt-5 font-serif text-2xl font-semibold">
+            <h2 className="mt-5 font-serif text-xl font-semibold">
               {node.canonical_label}
             </h2>
             {node.variant_label &&
@@ -110,7 +110,7 @@ export function WikiIndex({ nodes }: { nodes: AuditNode[] }) {
 
       {filtered.length === 0 && (
         <div className="mt-4 border border-foreground/15 bg-card p-10 text-center">
-          <p className="font-serif text-xl font-semibold">没有匹配的 Wiki 实体</p>
+          <p className="font-serif text-base font-semibold">没有匹配的 Wiki 实体</p>
           <p className="mt-2 text-sm text-muted-foreground">
             尝试移除筛选条件，或使用实体编号搜索。
           </p>

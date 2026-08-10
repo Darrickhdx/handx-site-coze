@@ -69,7 +69,7 @@ export function OwnerCorpusHits({ entityId }: { entityId: string }) {
         <div>
           <div className="flex items-center gap-3">
             <FileSearch className="size-5 text-primary" aria-hidden="true" />
-            <h2 className="font-serif text-2xl font-semibold">主人资料命中索引</h2>
+            <h2 className="font-serif text-xl font-semibold">主人资料命中索引</h2>
           </div>
           <p className="mt-3 max-w-3xl text-sm leading-[1.7] text-muted-foreground">
             这是只读检索结果，只显示 P1 文档标题、定位和材料类别。自动命中不会创建主张或关系；
