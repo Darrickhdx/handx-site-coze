@@ -14,6 +14,8 @@ import {
 import { ProjectSectionNav } from '@/components/project-section-nav';
 import { RelationGraph, type GraphNode } from '@/components/relation-graph';
 import { ResearchGraphExplorer } from '@/components/research-graph-explorer';
+import { KnowledgeGraphAtlas } from '@/components/knowledge-graph-atlas';
+import legacyGraph from '../../../public/data/graph/legacy-graph.json';
 import { graphStoryRoutes } from '@/content/editorial';
 import {
   graphEdges,
@@ -42,7 +44,7 @@ const readerBoundaries: Record<string, string> = {
 };
 
 export default function GraphPage() {
-  const [viewMode, setViewMode] = useState<'story' | 'research'>('story');
+  const [viewMode, setViewMode] = useState<'atlas' | 'story' | 'research'>('atlas');
   const [selectedNode, setSelectedNode] = useState<GraphNode | null>(
     () => graphNodes.find((node) => node.id === graphStoryRoutes[0]?.focusNodeId) ?? null,
   );
@@ -58,7 +60,7 @@ export default function GraphPage() {
   const activeStep = activeRoute?.steps[activeStepIndex];
 
   const replaceGraphUrl = (values: {
-    mode: 'story' | 'research';
+    mode: 'atlas' | 'story' | 'research';
     route?: string | null;
     step?: number;
     focus?: string | null;
@@ -158,7 +160,25 @@ export default function GraphPage() {
       </section>
 
       <section className="border-b border-foreground/15 bg-card">
-        <div className="personal-shell grid gap-px bg-foreground/15 sm:grid-cols-2">
+        <div className="personal-shell grid gap-px bg-foreground/15 sm:grid-cols-3">
+          <button
+            type="button"
+            onClick={() => {
+              setViewMode('atlas');
+              replaceGraphUrl({ mode: 'atlas', focus: null });
+            }}
+            className={cn(
+              'group min-h-32 bg-background p-6 text-left transition-colors hover:bg-card focus-visible:outline-2 focus-visible:outline-offset-[-3px] focus-visible:outline-primary',
+              viewMode === 'atlas' && 'bg-card',
+            )}
+            aria-pressed={viewMode === 'atlas'}
+          >
+            <Network className="size-5 text-primary" aria-hidden="true" />
+            <strong className="mt-3 block font-serif text-2xl">全图</strong>
+            <span className="mt-2 block text-sm leading-6 text-muted-foreground">
+              一屏看完全部人物、事件与机构，可自由缩放。
+            </span>
+          </button>
           <button
             type="button"
             onClick={() => {
@@ -198,7 +218,27 @@ export default function GraphPage() {
         </div>
       </section>
 
-      {viewMode === 'story' ? (
+      {viewMode === 'atlas' ? (
+        <section className="border-b border-foreground/15 py-10 sm:py-14">
+          <div className="personal-shell">
+            <div className="mb-6 max-w-3xl">
+              <p className="story-kicker">全图</p>
+              <h2 className="mt-3 font-serif text-4xl font-semibold tracking-[-0.04em]">
+                这些人，同时在一张图上。
+              </h2>
+              <p className="mt-4 text-sm leading-7 text-muted-foreground">
+                圆点是人，菱形是事件，方框是机构与部队；圆点越大，连接越多。
+                这是旧研究阶段的线索索引，用来看清关系的形状——每一条要当成事实，仍要回到来源与主张。
+              </p>
+            </div>
+            <KnowledgeGraphAtlas
+              nodes={legacyGraph.nodes as never}
+              edges={legacyGraph.edges as never}
+              notice={legacyGraph.warning}
+            />
+          </div>
+        </section>
+      ) : viewMode === 'story' ? (
         <>
           <section className="border-b border-foreground/15 py-10 sm:py-14">
         <div className="personal-shell">

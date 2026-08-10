@@ -24,7 +24,7 @@ export const primaryNavigation: readonly PrimaryNavigationItem[] = [
   },
   {
     href: '/ai',
-    label: 'AI 与产品',
+    label: '独立开发',
     activePaths: ['/ai', '/studio'],
   },
   {
@@ -38,7 +38,6 @@ export const primaryNavigation: readonly PrimaryNavigationItem[] = [
       '/archives',
       '/missions',
       '/topics',
-      '/novel',
       '/person',
       '/persons',
       '/events',
@@ -47,6 +46,11 @@ export const primaryNavigation: readonly PrimaryNavigationItem[] = [
       '/methodology',
       '/legacy',
     ],
+  },
+  {
+    href: '/novel',
+    label: '小说',
+    activePaths: ['/novel'],
   },
   {
     href: '/discover',
@@ -67,27 +71,27 @@ export type AiProof = {
 export const aiProofs: readonly AiProof[] = [
   {
     number: '01',
-    eyebrow: 'AI × 硬件',
-    title: '让模型能力进入真实设备',
-    description: '从场景、传感器和边缘能力出发，把 AI 变成可制造、可部署、可维护的终端产品。',
-    note: '能力来自二十多年软硬一体产品实践',
-    icon: Cpu,
-  },
-  {
-    number: '02',
-    eyebrow: 'AI × 行业系统',
-    title: '让新能力接进旧世界',
-    description: '理解支付、零售和运营系统的真实约束，让 AI 改善流程，而不是只停留在演示。',
-    note: '重点是系统连接、业务闭环与规模化落地',
+    eyebrow: 'AI × 内容流水线',
+    title: '一份材料，一路走到成品',
+    description: '结构化、分层标注、版本冻结、批量产出。538 页的书和它的网页页图，来自同一条能重跑的管线。',
+    note: 'Markdown 是唯一真源，排版与页图都是产物',
     icon: Boxes,
   },
   {
-    number: '03',
-    eyebrow: 'AI × 个人知识',
+    number: '02',
+    eyebrow: 'AI × 知识工程',
     title: '一个人也能做复杂知识工程',
-    description: '以苏开元计划为样本，连接来源台账、知识图谱、写作、网站与多媒体内容。',
+    description: '来源登记、主张拆解、实体消歧、关系图谱。AI 负责整理和提问，"算不算事实"留给人。',
     note: '技术提高效率，历史判断仍回到材料',
     icon: Network,
+  },
+  {
+    number: '03',
+    eyebrow: 'AI × 硬件与行业系统',
+    title: '知道真实世界会在哪里卡住',
+    description: '智能终端、移动支付与线下商业系统的二十多年（本人履历）。现在它是判断约束的底子。',
+    note: '不是当前主业，是判断力的来源',
+    icon: Cpu,
   },
 ] as const;
 
@@ -111,7 +115,7 @@ export const selectedContents: readonly SelectedContent[] = [
   },
   {
     href: '/discover/ai-family-history',
-    kind: '给 AI 实践者',
+    kind: '给独立开发者',
     title: '怎样用 AI 重建一段家族史',
     description: '从混乱文件到来源台账、人物关系和可读叙事，一套仍在持续迭代的真实工作流。',
     meta: '方法手记',
@@ -122,7 +126,7 @@ export const selectedContents: readonly SelectedContent[] = [
     kind: '给小说读者',
     title: '《英雄无名》全文阅读',
     description: '全书 538 页、36 章，免费阅读。史实、合理外推与文学虚构分层标记，小说不反向充当史料。',
-    meta: '完整本地审阅版',
+    meta: '538 页 · 免费读',
     icon: BookOpenText,
   },
 ] as const;

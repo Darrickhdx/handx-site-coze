@@ -86,7 +86,7 @@
   ],
   "product_artifacts": [
     {
-      "id": "novel-reader-v0-3",
+      "id": "novel-reader",
       "label": "《英雄无名》本地阅读器",
       "version": "1.5",
       "state": "local_reader",
@@ -230,5 +230,5 @@
       "sha256": "46fb9fa2629ca6f4dff39351c55acbfb3d009dea42f2389cea33c4969b3411a5"
     }
   ],
-  "generation_id": "status-fe0a3d091912bae2c18fbd3c61ab60a6790ca9cda104fcee2177546ad0bbb7bc"
+  "generation_id": "status-079fdd58bc4c10036f82c701ef08a9790d8ab91eb683ff4e46d402bcda89e8bd"
 }

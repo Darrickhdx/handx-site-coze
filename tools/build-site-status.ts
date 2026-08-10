@@ -438,7 +438,7 @@ export function buildSiteStatus(): JsonObject {
     ],
     product_artifacts: [
       {
-        id: 'novel-reader-v0-3',
+        id: 'novel-reader',
         label: '《英雄无名》本地阅读器',
         version: asString(novelBook.version, 'novel version'),
         state: 'local_reader',

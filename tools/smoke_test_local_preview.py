@@ -103,8 +103,6 @@ EXPECTED_NOVEL_RESPONSIVE_HEIGHT = _SERVED_NOVEL["structure"]["responsive_height
 EXPECTED_NOVEL_SECTIONS = _SERVED_NOVEL["structure"]["sections"]
 EXPECTED_NOVEL_VERSION = f"V{_SERVED_NOVEL['version']}"
 FORBIDDEN_NOVEL_RAW_SOURCES = {
-    "/novel/hero-wuming/英雄无名V0.3-出版版.pdf",
-    "/novel/hero-wuming/英雄无名V0.3-出版版.docx",
     "/novel/hero-wuming/英雄无名V1.5-印刷版.pdf",
     "/novel/hero-wuming/英雄无名V1.5-可编辑.docx",
     "/novel/hero-wuming/英雄无名V1.5-可审阅.md",

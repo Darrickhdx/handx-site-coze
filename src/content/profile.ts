@@ -1,53 +1,92 @@
 export const profile = {
   displayName: '鉴真小秃驴',
-  title: 'AI 产业产品化实践者 · 软硬一体产品负责人',
-  statement: '把 AI 从模型能力，变成传统行业真正能运行的设备、系统与产品。',
+  title: '独立开发者 · AI 工作流 / 内容流水线',
+  statement:
+    '一个人，用 AI 把复杂的东西做完整——从一份档案到一本书，从一条流水线到一座网站。',
   email: 'hdx13466545299@qq.com',
   portrait: '/assets/personal/jian-zhen-xiao-tu-lv-portrait.jpg',
   wechatQr: '/assets/personal/jian-zhen-xiao-tu-lv-wechat-qr.png',
   shortBio:
-    '据本人履历，拥有 20 年以上软硬一体智能终端、支付硬件与系统平台经验，长期参与从 0 到 1 的产品创新与规模化落地。现在专注把 AI、硬件、行业系统与真实业务连接起来，也用“苏开元计划”实践 AI 时代的个人知识工程。',
+    '独立开发者。我用 AI 做完整的东西：一本 538 页的书、一座自己写的网站、一条能重复跑的考据流水线——起点是一个被历史漏掉的人。此前二十多年做智能终端、移动支付与线下商业系统（本人履历），那段经历现在是判断力的来源，不是当前主业。',
   homeBio:
-    '我是鉴真小秃驴。过去二十多年，我一直在智能终端、移动支付与线下商业系统里，把复杂技术变成真正可以生产、部署和规模化使用的产品。现在，我把同样的产品方法带进 AI：既研究它怎样改变传统行业，也用它追索曾祖父苏开元，把散落的家族档案连接成可以阅读、核对和继续生长的故事。',
+    '我是鉴真小秃驴，一个独立开发者。我关心的不是模型能做什么，而是一个人能不能用它把一件复杂的事做到底：把一份 1936 年的旧文献，变成可核验的主张、一张关系图、一本读得下去的小说，再变成一座能自己跑起来的网站。这个站就是那条流水线的现场，也是它的产物。',
 } as const;
 
+/**
+ * The bridging claim for the whole site: the indie-developer identity is
+ * evidenced by the delivered work, not by a résumé.
+ */
+export const personaBridge =
+  '独立开发者的证明不是简历，是交付物。我的交付物是一个人的名字。';
+
 export const profileHighlights = [
+  {
+    value: '538 页',
+    label: '《英雄无名》从 Markdown 到印刷版，全书免费读',
+  },
+  {
+    value: '1 人',
+    label: '这座网站：Next.js 16，构建前跑完整条数据校验链',
+  },
+  {
+    value: '123 份',
+    label: '来源登记与逐条主张核验，构成一条可重跑的考据流水线',
+  },
   {
     value: '20 年+',
     label: '软硬一体与智能终端经验（本人提供）',
   },
+] as const;
+
+/** Delivered work, in the order it best proves the claim above. */
+export const indieBuilds = [
   {
-    value: '0 → 1',
-    label: '产品创新、系统设计与商业落地（本人提供）',
+    number: '01',
+    title: '《英雄无名》V1.5',
+    metric: '538 页 · 36 章 · 62 幅图版',
+    description:
+      'Markdown 是唯一真源，排版、印刷版 PDF 与网页水印页图都是产物。换一版，全书页码、章节、评论与阅读进度一起迁移。',
+    href: '/novel',
+    status: '全书可读',
   },
   {
-    value: '100 万+*',
-    label: '小白盒累计出货（公开报道，非个人 KPI）',
+    number: '02',
+    title: '苏开元考据流水线',
+    metric: '123 来源 · 107 节点关系图',
+    description:
+      '一份材料进来，先登记来源，再拆成可定位的主张，然后才允许进入图谱和正文。证据不足时标未知，出现反证时留修订记录。',
+    href: '/graph',
+    status: '持续运行',
   },
   {
-    value: '中国 × 日本',
-    label: '跨市场产品设计与推广经历（本人提供）',
+    number: '03',
+    title: 'handx：这座网站',
+    metric: 'Next.js 16 · 全链路数据校验',
+    description:
+      '页面不允许比数据更完整。章节页码、图谱节点、权利状态全部由生成脚本产出并校验，改文案改不动事实。',
+    href: '/about',
+    status: '本地审阅版',
   },
 ] as const;
 
 export const aiPracticeAreas = [
   {
     number: '01',
-    title: 'AI × 硬件',
+    title: 'AI × 内容流水线',
     description:
-      '关注模型能力怎样进入智能终端、传感设备和边缘场景，最终转化为稳定、可制造、可维护的产品。',
+      '把一堆散落的材料变成可发布的成品：结构化、分层标注、版本冻结、批量产出，中间每一步都能重跑和复核。',
   },
   {
     number: '02',
-    title: 'AI × 行业系统',
+    title: 'AI × 知识工程',
     description:
-      '把 AI 接入传统行业已有的支付、运营与系统平台，让它真正改善流程、决策和现场效率。',
+      '来源登记、主张拆解、实体消歧、关系图谱。让 AI 负责整理和提问，把"这一条能不能算事实"留给人。',
   },
   {
     number: '03',
-    title: 'AI × 个人知识',
+    title: 'AI × 硬件与行业系统',
     description:
-      '以苏开元计划为长期样本，实践档案整理、来源核验、知识图谱、内容生产与历史叙事。',
+      '二十多年智能终端、移动支付与线下商业系统的经验（本人履历）。现在它是判断真实约束的底子，不是当前主业。',
   },
 ] as const;
 

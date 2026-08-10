@@ -6,21 +6,24 @@ import {
   Mail,
   ShieldCheck,
 } from 'lucide-react';
-import { profile } from '@/content/profile';
+import { personaBridge, profile } from '@/content/profile';
 import { aiProofs, selectedContents } from '@/content/site';
 
+// Delivered work, not a résumé. The twenty-year hardware record still matters
+// and stays on /about; leading with it here pulled the persona back toward
+// "product director at a large company", which is what this rewrite moves away from.
 const trustProofs = [
   {
-    value: '20 年+',
-    label: '智能终端、移动支付与线下商业系统（本人履历）',
+    value: '538 页',
+    label: '《英雄无名》从 Markdown 到印刷版与网页页图，全书免费读',
   },
   {
-    value: '0 → 1',
-    label: '支付终端、收银硬件与多传感商业系统（本人履历）',
+    value: '123 份',
+    label: '来源登记与逐条主张核验，一条可重跑的考据流水线',
   },
   {
-    value: '中国 × 日本',
-    label: '参与中国支付设备与日本贩卖机终端产品化（本人履历）',
+    value: '1 人',
+    label: '这座网站：Next.js 16，构建前跑完整条数据校验链',
   },
 ] as const;
 
@@ -32,37 +35,37 @@ export default function HomePage() {
           <div className="relative z-10 max-w-[45rem]">
             <p className="personal-kicker">
               <span aria-hidden="true" />
-              AI product builder · Family storyteller
+              Indie developer · AI workflows
             </p>
             <p className="mt-6 text-sm font-semibold tracking-[0.15em] text-primary uppercase">
               {profile.displayName}
             </p>
             <h1 className="personal-display mt-4 text-[clamp(3.15rem,4.9vw,5.2rem)] font-semibold leading-[1.01] tracking-[-0.058em]">
-              把 AI 变成
-              <span className="block text-accent">真实世界里的产品。</span>
+              一个人，
+              <span className="block text-accent">把复杂的东西做完整。</span>
             </h1>
             <p className="mt-6 max-w-2xl font-serif text-xl leading-relaxed text-foreground sm:text-2xl">
-              我是一个把 AI 带进硬件与行业系统的产品人，也在用同一套方法重建曾祖父苏开元的家族史。
+              {personaBridge}
             </p>
             <p className="mt-4 max-w-2xl text-base leading-8 text-muted-foreground">
-              二十多年软硬一体与行业产品经验。现在专注 AI × 硬件 × 行业系统，
-              并公开记录一个人如何借助 AI 完成复杂知识工程。
+              我用 AI 做完整的东西：一本 538 页的书、一座自己写的网站、一条能重复跑的考据流水线——
+              起点是一个被历史漏掉的人。
             </p>
             <div className="mt-7 flex flex-col gap-4 sm:flex-row sm:items-center">
               <Link
-                href="/ai"
+                href="/novel"
                 className="story-button personal-button-primary"
-                data-amplitude-event="home_profile_opened"
+                data-amplitude-event="home_sukaiyuan_opened"
               >
-                看 AI 与产品实践
+                免费读整本书
                 <ArrowRight className="size-4" aria-hidden="true" />
               </Link>
               <Link
-                href="/discover/1936-pingdiquan"
+                href="/ai"
                 className="story-text-link"
-                data-amplitude-event="home_sukaiyuan_opened"
+                data-amplitude-event="home_profile_opened"
               >
-                读 1936 年的故事
+                看我是怎么做出来的
                 <ArrowRight className="size-4" aria-hidden="true" />
               </Link>
             </div>
@@ -101,20 +104,20 @@ export default function HomePage() {
             {[
               {
                 number: '01',
-                title: '我有 AI／产品问题',
-                description: '看软硬一体、行业系统与 AI 产品方法。',
-                href: '/ai',
+                title: '我想读那本书',
+                description: '《英雄无名》538 页全书免费读，不注册、不收费。',
+                href: '/novel',
               },
               {
                 number: '02',
-                title: '我想整理家族史',
-                description: '先做不上传、不保存答案的 3 分钟起步诊断。',
-                href: '/studio/diagnosis',
+                title: '我想看是怎么做的',
+                description: '一个人的 AI 内容流水线、知识工程与这座网站本身。',
+                href: '/ai',
               },
               {
                 number: '03',
                 title: '我想了解苏开元',
-                description: '从故事、人物与原件入口进入完整项目。',
+                description: '从故事、人物群像、关系图与原件入口进入完整项目。',
                 href: '/sukaiyuan',
               },
             ].map((route) => (
@@ -138,9 +141,10 @@ export default function HomePage() {
               <span aria-hidden="true" />
               What I bring
             </p>
-            <h2 className="personal-heading mt-6">先解决真实问题，再谈技术有多新。</h2>
+            <h2 className="personal-heading mt-6">先做完，再说做得多新。</h2>
             <p className="mt-6 max-w-lg text-base leading-8 text-muted-foreground">
-              我更关心一项能力能不能接进设备、系统和业务现场，最后成为用户愿意使用、团队能够维护的产品。
+              一个能力有没有用，看它能不能一路走到成品：能重跑、能核对、能交给别人读。
+              下面这些数字是交付物，不是简历。
             </p>
           </div>
           <div>
