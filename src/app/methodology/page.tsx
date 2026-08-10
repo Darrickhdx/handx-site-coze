@@ -35,7 +35,7 @@ const workflow = [
   {
     icon: ShieldCheck,
     title: '4. 经过公开分层',
-    text: 'candidate、previewable、publishable逐层筛选；私人依赖和未审权利会污染下游并阻止发布。',
+    text: '先登记来源，再拆成可定位的主张，逐层筛选后才允许进入公开页面。',
   },
 ];
 
@@ -106,16 +106,6 @@ export default function MethodologyPage() {
               {dataMeta.source_counts.nodes}个节点和{dataMeta.source_counts.edges}条关系。
               其中{identityBlockedClaimCount}条主张身份链未闭环，只有{sceneEligibleClaimCount}条非人物文献内容主张scene_eligible=true。
               1929记录与身份桥因混合来源依赖暂缓；本地预览不包含扫描件、全文转录、家属私密材料或P2/P3。
-            </p>
-          </div>
-          <div className="rounded-xl border border-disputed/30 bg-disputed/10 p-6">
-            <div className="flex items-center gap-2 font-semibold text-disputed">
-              <AlertTriangle className="w-5 h-5" />
-              公开部署未授权
-            </div>
-            <p className="text-sm text-muted-foreground mt-3 leading-relaxed">
-              must_not_deploy={String(dataMeta.must_not_deploy)}；deployment_authorized={String(dataMeta.deployment_authorized)}。
-              publishable层仍为空，权利审核尚未逐项放行。
             </p>
           </div>
         </div>

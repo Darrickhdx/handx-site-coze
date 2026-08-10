@@ -59,7 +59,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           <p className="article-dek mt-8">{article.dek}</p>
           <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-foreground/15 pt-6 text-xs text-muted-foreground">
             <span>{article.dateLine}</span>
-            <span>本地审阅版</span>
+            <span>仅供站内阅读</span>
             <span>最后整理：2026-07-24</span>
           </div>
           <Link

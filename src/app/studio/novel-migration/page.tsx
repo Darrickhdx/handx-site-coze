@@ -80,7 +80,6 @@ export default function NovelMigrationStudioPage() {
               deployment_authorized=false<br />
               strategy=parallel_import_then_atomic_switch
             </p>
-            <Link href="/novel/editions" className="story-text-link mt-7">查看读者版说明</Link>
           </aside>
         </div>
       </section>

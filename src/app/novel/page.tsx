@@ -76,16 +76,6 @@ export default function NovelPage() {
               <span>{novelManifest.totals.commentable_sections} 个讨论区</span>
               <span>原始 PDF／DOCX 不在网页中</span>
             </div>
-            <Link
-              href="/novel/editions"
-              className="mt-7 flex max-w-2xl items-start gap-3 border border-white/15 bg-white/5 p-4 text-xs leading-6 text-[#bdb9b0] transition hover:border-[#c38a82]/50 hover:text-white"
-            >
-              <FileClock className="mt-0.5 size-4 shrink-0 text-[#c38a82]" aria-hidden="true" />
-              <span>
-                V1.3 候选版已发现：{candidateNovelEdition.pages} 页、{candidateNovelEdition.numbered_chapters} 章＋序章。
-                它仍缺冻结、完整审权与迁移验收，点此查看为什么尚未替换。
-              </span>
-            </Link>
           </div>
 
           <figure className="mx-auto w-full max-w-md">
@@ -100,7 +90,7 @@ export default function NovelPage() {
               />
             </div>
             <figcaption className="mt-4 text-center text-[10px] text-[#918d86]">
-              水印派生封面 · 本地审阅
+              水印派生封面
             </figcaption>
           </figure>
         </div>
@@ -216,24 +206,10 @@ export default function NovelPage() {
             </p>
           </div>
           <div className="border border-foreground/15 bg-card p-6">
-            <FileClock className="size-5 text-primary" aria-hidden="true" />
-            <h2 className="mt-4 font-serif text-xl font-semibold">版本不混写</h2>
-            <p className="mt-3 text-sm leading-[1.7] text-muted-foreground">
-              {`V${novelManifest.book.version}、V1.2 与 V1.3 分别保存；`}旧评论和阅读进度不自动挂到重写后的章节。
-            </p>
-          </div>
-          <div className="border border-foreground/15 bg-card p-6">
             <MessageSquareText className="size-5 text-primary" aria-hidden="true" />
             <h2 className="mt-4 font-serif text-xl font-semibold">先审后显</h2>
             <p className="mt-3 text-sm leading-[1.7] text-muted-foreground">
-              评论永远先进入 pending。本地管理员批准后才出现在相应章节，且不会成为史料或图谱主张。
-            </p>
-          </div>
-          <div className="border border-foreground/15 bg-card p-6">
-            <ShieldAlert className="size-5 text-primary" aria-hidden="true" />
-            <h2 className="mt-4 font-serif text-xl font-semibold">打赏在二期</h2>
-            <p className="mt-3 text-sm leading-[1.7] text-muted-foreground">
-              V0.1 不接支付、不保存支付信息。待公开授权、账号体系和法务边界完成后再评估。
+              读者留言我会先看过再放出来。它们不会被当成史料，也不会写进人物关系。
             </p>
           </div>
         </div>
@@ -249,10 +225,6 @@ export default function NovelPage() {
           <Link href="/novel/companion" className="story-button story-button-secondary">
             <FileCheck2 className="size-4" aria-hidden="true" />
             打开史实来源伴读
-          </Link>
-          <Link href="/novel/editions" className="story-text-link">
-            查看版本大厅
-            <ArrowRight className="size-4" aria-hidden="true" />
           </Link>
         </div>
       </section>

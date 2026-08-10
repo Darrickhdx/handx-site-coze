@@ -159,13 +159,6 @@ export default function RightsPage() {
               水印、降低分辨率、禁止选择或禁止右键只能提高直接复制成本，不能阻止截图、抓包或 OCR，
               更不能代替权利核验、访问控制与依法维权。
             </p>
-            <p>
-              新发现的 V1.3 候选版含 47 幅正文图版，但当前结构化权利台账只有 26 条；因此新版 519 页尚未生成网站页图。
-              <Link href="/novel/editions" className="ml-1 text-foreground underline decoration-foreground/25 underline-offset-4">
-                查看版本与审权门禁
-              </Link>
-              。
-            </p>
           </div>
         </div>
       </section>
@@ -182,7 +175,7 @@ export default function RightsPage() {
           <div>
             <p className="text-sm leading-[1.7] text-muted-foreground">
               当前三篇文章均已生成独立权利身份证，记录作者、版本、来源、第三方材料与复用边界；
-              全部仍是本地审阅稿，许可状态统一为
+              全书文字与页图的许可状态统一为
               <code className="mx-1 border border-foreground/15 bg-white/45 px-1.5 py-0.5 text-xs">
                 no-license-granted
               </code>

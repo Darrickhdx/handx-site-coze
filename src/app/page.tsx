@@ -213,7 +213,7 @@ export default function HomePage() {
             />
             <span className="personal-feature-stamp">朱自清<br />绥行纪略</span>
             <span className="personal-feature-caption">
-              1936 · 第三方校刊影印局部 · 本地审阅 · 不随文授权
+              1936 · 第三方校刊影印局部 · 仅供站内阅读
               <ArrowRight className="size-4" aria-hidden="true" />
             </span>
           </Link>

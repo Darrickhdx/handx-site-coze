@@ -27,7 +27,6 @@ PAGES = [
     "/evidence/beiping-boundary",
     "/novel",
     "/novel/read",
-    "/novel/editions",
     "/novel/companion",
     "/novel/chapter/prologue",
     "/novel/chapter/chapter-01",
@@ -452,7 +451,7 @@ def main() -> int:
             errors.append("/persons: curated ensemble, people, or portrait boundary is incomplete")
         if path.startswith("/persons/P-") and (
             'data-publication-status="local_review_only"' not in html
-            or "本地审阅 · 非完整传记" not in html
+            or "仍在补充 · 非完整传记" not in html
             or "材料如何把他们放在一起" not in html
             or "独立来源按" not in html
         ):
@@ -583,20 +582,8 @@ def main() -> int:
             or "研究旁注，不认证本场" not in html
         ):
             errors.append("/novel/chapter/chapter-19: evidence companion entry is missing")
-        if path == "/novel/editions" and (
-            "换一本书" not in html
-            or "V1.2" not in html
-            or "V1.3" not in html
-            or "冻结对照，不提供阅读" not in html
-            or "正在编辑，尚未接入" not in html
-            or "26" not in html
-            or "47" not in html
-            or "并行导入" not in html
-        ):
-            errors.append("/novel/editions: edition states or atomic-switch boundary is incomplete")
         if path == "/novel/companion" and (
             "故事从哪里来" not in html
-            or EXPECTED_NOVEL_VERSION not in html
             or "SRC-013" not in html
             or "SRC-103" not in html
             or "不能替小说证明" not in html
@@ -1203,6 +1190,13 @@ def main() -> int:
                 errors.append(
                     f"{responsive_path}: expected image/webp Content-Type"
                 )
+
+    # The edition hall was reader-facing surface for an internal concern
+    # (freeze baselines, switch gates, migration acceptance). It is removed;
+    # this keeps it from being reintroduced by accident.
+    status, _headers, _body = fetch(args.base_url, "/novel/editions")
+    if status != 404:
+        errors.append(f"/novel/editions: retired reader-facing edition hall is reachable ({status})")
 
     for path in sorted(FORBIDDEN_NOVEL_RAW_SOURCES):
         status, headers, _body = fetch(args.base_url, path)

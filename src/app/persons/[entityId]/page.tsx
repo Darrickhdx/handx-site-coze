@@ -89,7 +89,7 @@ export default async function PersonDossierPage({ params }: PersonDossierPagePro
                   className="border border-[#c38a82]/40 bg-[#c38a82]/10 px-3 py-1.5 text-[#e2b8b1]"
                   data-publication-status={dossier.publicationStatus}
                 >
-                  本地审阅 · 非完整传记
+                  仍在补充 · 非完整传记
                 </span>
               </div>
               <p className="mt-7 max-w-4xl font-serif text-lg leading-relaxed text-[#d7cfc2] sm:text-base">{dossier.oneLine}</p>

@@ -90,7 +90,7 @@ export default function DiscoverPage() {
               className="h-full w-full object-cover grayscale transition-transform duration-500 group-hover:scale-[1.015]"
               sizes="(min-width: 1024px) 54vw, 100vw"
             />
-            <span>第三方史料 · 本地审阅 · 不随文授权</span>
+            <span>第三方史料 · 仅供站内阅读 · 不随文授权</span>
           </Link>
 
           <div>

@@ -52,7 +52,7 @@ export default function NovelCompanionPage() {
         <div className="mb-9 flex items-start gap-3 border border-amber-800/20 bg-amber-50 p-5 text-sm leading-[1.7] text-amber-950">
           <ShieldAlert className="mt-1 size-5 shrink-0" aria-hidden="true" />
           <p>
-            {`当前伴读对应网站正在提供阅读的 V${novelManifest.book.version}。`}其他版本只作冻结对照，不在这里伪装成已经上线的新版本。
+            这里把小说里的场景，对回它依据的材料，并写明哪一部分是材料没说的。
           </p>
         </div>
 
@@ -113,11 +113,8 @@ export default function NovelCompanionPage() {
           <p className="story-kicker">下一步</p>
           <h2 className="mt-4 font-serif text-2xl font-semibold">下一版将把伴读做进每章侧栏。</h2>
           <p className="mt-5 max-w-3xl text-sm leading-[1.7] text-muted-foreground">
-            先覆盖“举旗”“四十六个弹孔”“放乔”“延安”“一角城门”“破案不能认领”“无名”“没有人查过她”等高风险章节；每一条都必须先通过版本与来源门禁。
+            先覆盖“举旗”“四十六个弹孔”“放乔”“延安”“一角城门”“破案不能认领”“无名”“没有人查过她”等高风险章节。
           </p>
-          <Link href="/novel/editions" className="story-button story-button-primary mt-7">
-            查看版本切换门禁 <ArrowRight className="size-4" aria-hidden="true" />
-          </Link>
         </section>
       </div>
     </div>
