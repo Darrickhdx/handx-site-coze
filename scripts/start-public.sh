@@ -12,7 +12,10 @@ COZE_WORKSPACE_PATH="${COZE_WORKSPACE_PATH:-$(pwd)}"
 cd "${COZE_WORKSPACE_PATH}"
 
 PORT="${DEPLOY_RUN_PORT:-${PORT:-3000}}"
-HOSTNAME="${HOSTNAME:-0.0.0.0}"
+# Bind on every interface. Deliberately NOT read from HOSTNAME: in a container
+# that variable holds the machine's name, not an address, so honouring it binds
+# to one interface and the platform's health check never reaches the server.
+BIND_HOST="${PUBLIC_BIND_HOST:-0.0.0.0}"
 
 # Search engine indexing stays closed unless the owner opens it deliberately:
 # a page that has been crawled and cached cannot be recalled.
@@ -26,5 +29,5 @@ if [[ ! -f dist/server-public.js ]]; then
     exit 1
 fi
 
-echo "Starting public edition on ${HOSTNAME}:${PORT} (indexing: ${PUBLIC_SEARCH_INDEXING})"
-exec env NODE_ENV=production HOSTNAME="${HOSTNAME}" PORT="${PORT}" node dist/server-public.js
+echo "Starting public edition on ${BIND_HOST}:${PORT} (indexing: ${PUBLIC_SEARCH_INDEXING})"
+exec env NODE_ENV=production PUBLIC_BIND_HOST="${BIND_HOST}" PORT="${PORT}" node dist/server-public.js

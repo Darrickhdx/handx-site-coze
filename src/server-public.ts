@@ -9,7 +9,9 @@ import {
  * Entry point for the public edition. src/server.ts stays the workbench entry
  * and keeps refusing anything but loopback; neither file imports the other.
  */
-const hostname = process.env.HOSTNAME || '0.0.0.0';
+// PUBLIC_BIND_HOST, not HOSTNAME: in a container HOSTNAME is the machine
+// name, and binding to it leaves the platform's health check unanswered.
+const hostname = process.env.PUBLIC_BIND_HOST || '0.0.0.0';
 const port = Number.parseInt(process.env.PORT || '3000', 10);
 const searchIndexing =
   process.env.PUBLIC_SEARCH_INDEXING === 'allowed' ? 'allowed' : 'blocked';
