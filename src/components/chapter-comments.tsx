@@ -1,5 +1,7 @@
 'use client';
 
+import { isPublicEdition } from '@/lib/edition';
+
 import Link from 'next/link';
 import { FormEvent, useCallback, useEffect, useState } from 'react';
 import {
@@ -134,6 +136,30 @@ export function ChapterComments({
           : '评论没有保存成功，请稍后再试。',
       );
     }
+  }
+
+  // Comments are backed by the loopback-only runtime. The public edition has no
+  // comment store yet, so it says so rather than presenting a form that fails.
+  if (isPublicEdition) {
+    return (
+      <section
+        aria-labelledby="chapter-comments-title"
+        className="border-t border-foreground/15 bg-[#f4f0e8]"
+      >
+        <div className="personal-shell py-8">
+          <p className="story-kicker">Reader discussion</p>
+          <h2 id="chapter-comments-title" className="mt-4 font-serif text-2xl font-semibold tracking-[-0.04em]">
+            读者留言即将开放
+          </h2>
+          <p className="mt-4 max-w-2xl text-[15px] leading-[1.7] text-muted-foreground">
+            这一章的讨论区还在建。想说点什么，先写信给我：
+            <a className="story-text-link ml-1" href="mailto:hdx13466545299@qq.com">
+              hdx13466545299@qq.com
+            </a>
+          </p>
+        </div>
+      </section>
+    );
   }
 
   return (

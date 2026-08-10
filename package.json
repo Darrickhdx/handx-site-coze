@@ -40,7 +40,11 @@
     "start": "bash ./scripts/start.sh",
     "test:local-runtime": "tsx --test tests/server/local-preview-runtime.test.ts",
     "ts-check": "tsc -p tsconfig.json",
-    "validate": "pnpm data:verify && pnpm graph:verify && pnpm novel:verify && pnpm novel:editions:verify && pnpm evidence:verify && pnpm people:verify && pnpm family-history:verify && pnpm missions:verify && pnpm rights:passports:verify && pnpm media:verify && pnpm status:verify && pnpm rights:verify && pnpm security:verify && pnpm gate:local && pnpm release:verify && pnpm test:local-runtime && pnpm dlx concurrently --group --names lint-tsc,lint-build,lint-style \"pnpm ts-check\" \"pnpm lint:build\" \"pnpm lint:style\""
+    "validate": "pnpm data:verify && pnpm graph:verify && pnpm novel:verify && pnpm novel:editions:verify && pnpm evidence:verify && pnpm people:verify && pnpm family-history:verify && pnpm missions:verify && pnpm rights:passports:verify && pnpm media:verify && pnpm status:verify && pnpm rights:verify && pnpm security:verify && pnpm gate:local && pnpm release:verify && pnpm test:local-runtime && pnpm dlx concurrently --group --names lint-tsc,lint-build,lint-style \"pnpm ts-check\" \"pnpm lint:build\" \"pnpm lint:style\"",
+    "build:public": "bash ./scripts/build-public.sh",
+    "start:public": "bash ./scripts/start-public.sh",
+    "public:verify": "node tools/verify-public-edition.mjs",
+    "smoke:public": "bash ./scripts/smoke-public.sh"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.958.0",

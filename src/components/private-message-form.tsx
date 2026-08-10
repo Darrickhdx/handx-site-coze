@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { FormEvent, useRef, useState } from 'react';
 import { CheckCircle2, LoaderCircle, Send } from 'lucide-react';
 import { getLocalSessionId, sendLocalAnalytics } from '@/lib/local-engagement';
+import { isPublicEdition } from '@/lib/edition';
 
 type SubmissionState =
   | { status: 'idle'; message: string }
@@ -17,6 +18,19 @@ export function PrivateMessageForm() {
     status: 'idle',
     message: '',
   });
+
+  // The private inbox writes to the owner's local runtime, which does not exist
+  // on a public host. Offer the mailbox instead of a form that cannot deliver.
+  if (isPublicEdition) {
+    return (
+      <p className="text-[15px] leading-[1.7] text-muted-foreground">
+        想说点什么，直接写信给我：
+        <a className="story-text-link ml-1" href="mailto:hdx13466545299@qq.com">
+          hdx13466545299@qq.com
+        </a>
+      </p>
+    );
+  }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();

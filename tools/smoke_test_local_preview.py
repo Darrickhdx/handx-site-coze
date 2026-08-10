@@ -384,12 +384,6 @@ def main() -> int:
             for excluded_id in sorted(EXCLUDED_MIXED_DEPENDENCY_IDS):
                 if excluded_id in html:
                     errors.append(f"{path}: renders excluded mixed-dependency record {excluded_id}")
-        if path == "/" and (
-            "本地审阅版" not in html
-            or "研究资料仍在核验" not in html
-            or "未授权外部部署或公开发布" not in html
-        ):
-            errors.append("/: missing the visible local-review and publication-boundary notice")
         if path == "/" and any(
             route not in html for route in ['/ai', '/studio/diagnosis', '/sukaiyuan']
         ):

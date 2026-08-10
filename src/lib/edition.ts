@@ -17,7 +17,10 @@ export const siteEditions = ['workbench', 'public'] as const;
 export type SiteEdition = (typeof siteEditions)[number];
 
 function resolveEdition(): SiteEdition {
-  const raw = process.env.SITE_EDITION;
+  // NEXT_PUBLIC_ is read first because client components only ever receive that
+  // form; without it a browser bundle would always resolve to 'workbench' and
+  // would keep calling the loopback-only endpoints on a public host.
+  const raw = process.env.NEXT_PUBLIC_SITE_EDITION ?? process.env.SITE_EDITION;
   // Absent means workbench: the closed edition is the safe default, so a
   // missing variable can never silently produce a public build.
   if (raw === undefined || raw === '') return 'workbench';

@@ -1,0 +1,117 @@
+import type { IncomingMessage, RequestListener, ServerResponse } from 'node:http';
+
+/**
+ * The public edition's HTTP shell.
+ *
+ * Deliberately a separate module from local-preview-runtime rather than a flag
+ * on it. That runtime refuses to serve anywhere but loopback and refuses a PROD
+ * deployment environment, and it must keep refusing: the workbench is where the
+ * unreleased research material lives. This one is the mirror image — it refuses
+ * to start unless a human has explicitly said "publish", and it refuses to carry
+ * the owner's private runtime with it.
+ *
+ * Workbench refuses to run anywhere but loopback.
+ * Public edition refuses to run without an explicit acknowledgement.
+ * Both fail closed, from opposite directions.
+ */
+export interface PublicEditionRuntimeOptions {
+  readonly bind: Readonly<{ hostname: string; port: number }>;
+  /** Must equal PUBLIC_EDITION_SCOPE; absent means "not authorised", not "default". */
+  readonly acknowledgement: string | undefined;
+  /** Whether search engines may index. Owner keeps this closed until they say otherwise. */
+  readonly searchIndexing: 'blocked' | 'allowed';
+  readonly fallback: RequestListener;
+}
+
+export const PUBLIC_EDITION_SCOPE = 'owner_authored_public_edition_v1';
+
+/**
+ * Same headers as the workbench minus the loopback assumptions. The robots tag
+ * stays until the owner opens indexing: a page that has been crawled and cached
+ * cannot be recalled, so this is the one setting that defaults closed even in
+ * the public edition.
+ */
+function publicHeaders(searchIndexing: 'blocked' | 'allowed') {
+  return {
+    'Cache-Control': 'public, max-age=0, s-maxage=300, stale-while-revalidate=86400',
+    ...(searchIndexing === 'blocked'
+      ? { 'X-Robots-Tag': 'noindex, nofollow, noarchive, nosnippet' }
+      : {}),
+    'X-Content-Type-Options': 'nosniff',
+    'X-Frame-Options': 'DENY',
+    'Referrer-Policy': 'no-referrer',
+    'Permissions-Policy':
+      'camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()',
+    'Cross-Origin-Opener-Policy': 'same-origin',
+    'Cross-Origin-Resource-Policy': 'same-origin',
+    'Content-Security-Policy': [
+      "default-src 'self'",
+      "base-uri 'self'",
+      "form-action 'self'",
+      "frame-ancestors 'none'",
+      "object-src 'none'",
+      "frame-src 'none'",
+      "img-src 'self' data: blob:",
+      "media-src 'self'",
+      "font-src 'self' data:",
+      "style-src 'self' 'unsafe-inline'",
+      "script-src 'self' 'unsafe-inline'",
+      "connect-src 'self'",
+      "worker-src 'self' blob:",
+      "manifest-src 'self'",
+    ].join('; '),
+  };
+}
+
+/** Paths that exist only for the owner and must never answer on a public host. */
+const ownerOnlyPrefixes = ['/studio', '/insights', '/api/local'];
+
+export function requirePublicEditionStartup(
+  options: Readonly<PublicEditionRuntimeOptions>,
+): void {
+  if (options.acknowledgement !== PUBLIC_EDITION_SCOPE) {
+    throw new Error(
+      `Public edition refuses to start without PUBLIC_EDITION_ACK=${PUBLIC_EDITION_SCOPE}; ` +
+        'this is the deliberate human step that authorises serving to the public.',
+    );
+  }
+  if (!Number.isInteger(options.bind.port) || options.bind.port <= 0) {
+    throw new Error(`Public edition refuses an invalid port: ${options.bind.port}`);
+  }
+}
+
+export function createPublicEditionRuntime(
+  options: Readonly<PublicEditionRuntimeOptions>,
+): RequestListener {
+  requirePublicEditionStartup(options);
+  const headers = publicHeaders(options.searchIndexing);
+
+  return function handleRequest(
+    request: IncomingMessage,
+    response: ServerResponse,
+  ): void {
+    for (const [name, value] of Object.entries(headers)) {
+      response.setHeader(name, value);
+    }
+
+    const path = (request.url ?? '/').split('?')[0];
+    if (ownerOnlyPrefixes.some((prefix) => path === prefix || path.startsWith(`${prefix}/`))) {
+      // Not a redirect and not an error page: on a public host these paths
+      // should be indistinguishable from paths that were never built.
+      response.statusCode = 404;
+      response.setHeader('Content-Type', 'text/plain; charset=utf-8');
+      response.end('Not found');
+      return;
+    }
+
+    try {
+      options.fallback(request, response);
+    } catch {
+      if (!response.headersSent) {
+        response.statusCode = 500;
+        response.setHeader('Content-Type', 'text/plain; charset=utf-8');
+      }
+      response.end('Internal server error');
+    }
+  };
+}

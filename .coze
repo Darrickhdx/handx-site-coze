@@ -11,7 +11,10 @@ run = [ "bash", "./scripts/dev.sh" ]
 validate = [ "bash", "./scripts/validate.sh" ]
 deps = [ "git" ]
 
+# Deploy runs the public edition. scripts/build.sh and scripts/start.sh remain
+# the workbench lane and keep refusing COZE_PROJECT_ENV=PROD; pointing deploy at
+# them is what made deployment impossible by construction.
 [deploy]
-build = [ "bash", "./scripts/build.sh" ]
-run = [ "bash", "./scripts/start.sh" ]
+build = [ "bash", "./scripts/build-public.sh" ]
+run = [ "bash", "./scripts/start-public.sh" ]
 deps = [ "git" ]

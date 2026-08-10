@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import { isPublicEdition } from '@/lib/edition';
 
 export const metadata: Metadata = {
   title: '本机访问与留言看板',
@@ -6,5 +8,8 @@ export const metadata: Metadata = {
 };
 
 export default function InsightsLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  // Owner tooling. The public runtime also 404s these prefixes at the edge; this
+  // is the second layer, so a misconfigured runtime cannot expose them.
+  if (isPublicEdition) notFound();
   return children;
 }

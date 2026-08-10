@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { SiteHeader } from '@/components/site-header';
 import { SiteFooter } from '@/components/site-footer';
-import { PreviewBanner } from '@/components/preview-banner';
 import { LocalAnalyticsProvider } from '@/components/local-analytics-provider';
 
 export const metadata: Metadata = {
@@ -57,7 +56,6 @@ export default function RootLayout({
           跳到主要内容
         </a>
         <SiteHeader />
-        <PreviewBanner />
         <main id="main-content" tabIndex={-1} className="flex-1 scroll-mt-16">{children}</main>
         <SiteFooter />
       </body>

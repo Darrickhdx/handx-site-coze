@@ -1,3 +1,4 @@
+import { isPublicEdition } from '@/lib/edition';
 const sessionStorageKey = 'jian-zhen-local-session';
 const acquisitionStorageKey = 'jian-zhen-local-acquisition-v2';
 
@@ -152,6 +153,9 @@ export function sendLocalAnalytics(
   path: string,
   properties: AnalyticsProperties = {},
 ): void {
+  // The analytics endpoint belongs to the loopback-only runtime; the public
+  // edition has no equivalent yet, so nothing is recorded there.
+  if (isPublicEdition) return;
   if (trackingIsDisabled()) return;
   const sessionId = getLocalSessionId();
   if (!sessionId) return;
