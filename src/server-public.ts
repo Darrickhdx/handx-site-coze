@@ -24,6 +24,7 @@ const app = next({ dev: false, hostname, port });
 const listener = createPublicEditionRuntime({
   bind: { hostname, port },
   acknowledgement: process.env.PUBLIC_EDITION_ACK,
+  siteOrigin: process.env.PUBLIC_SITE_ORIGIN ?? publicEditionConfig.site_origin,
   searchIndexing,
   fallback: app.getRequestHandler(),
 });

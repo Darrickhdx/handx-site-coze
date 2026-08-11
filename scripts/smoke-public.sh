@@ -73,15 +73,40 @@ echo "ok: owner tooling and loopback endpoints are absent"
 code=$(status_of /novel/editions)
 [[ "${code}" == "404" ]] || fail "/novel/editions returned ${code}, expected 404"
 
-# Indexing stays closed until the owner opens it.
+# Indexing must match the committed decision in src/data/public-edition.json,
+# in every place that expresses it — header, robots.txt and page metadata.
+INDEXING=$(node -p "require('./src/data/public-edition.json').search_indexing")
 headers=$(curl -sI --max-time 10 "${BASE}/")
-grep -qi 'x-robots-tag: *noindex' <<<"${headers}" || fail "noindex header is missing"
+robots=$(curl -s --max-time 10 "${BASE}/robots.txt")
 grep -qi 'content-security-policy' <<<"${headers}" || fail "CSP header is missing"
-echo "ok: noindex and CSP present"
+if [[ "${INDEXING}" == "allowed" ]]; then
+    grep -qi 'x-robots-tag: *noindex' <<<"${headers}" && fail "indexing is allowed but the noindex header is still sent"
+    grep -q 'Allow: /' <<<"${robots}" || fail "indexing is allowed but robots.txt does not allow"
+    grep -q 'Disallow: /studio/' <<<"${robots}" || fail "owner tooling is not disallowed in robots.txt"
+    [[ "$(curl -s --max-time 10 "${BASE}/sitemap.xml" | grep -c '<url>')" -gt 0 ]] || fail "sitemap is empty while indexing is allowed"
+    echo "ok: indexing open — no noindex, robots allows, owner tooling disallowed, sitemap populated"
+else
+    grep -qi 'x-robots-tag: *noindex' <<<"${headers}" || fail "indexing is blocked but the noindex header is missing"
+    grep -q 'Disallow: /' <<<"${robots}" || fail "indexing is blocked but robots.txt does not disallow"
+    echo "ok: indexing closed — noindex present and robots disallows"
+fi
 
 # A page a reader will actually open, with its images.
 page=$(curl -s --max-time 15 "${BASE}/novel/chapter/chapter-01")
 grep -q 'pages-responsive/page-' <<<"${page}" || fail "chapter page is missing novel page images"
 echo "ok: novel chapter serves watermarked page images"
+
+# Analytics must accept a well-formed beacon and reject a malformed one, whether
+# or not a database is configured — it must never break a page render.
+code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 10 -X POST "${BASE}/api/site/view" \
+    -H 'Content-Type: application/json' \
+    -d '{"path":"/","session_id":"smoketestsession1","referrer_class":"direct"}')
+[[ "${code}" == "204" || "${code}" == "202" ]] || fail "analytics beacon returned ${code}"
+code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 10 -X POST "${BASE}/api/site/view" \
+    -H 'Content-Type: application/json' -d '{"path":"not-a-path","session_id":"x"}')
+[[ "${code}" == "400" ]] || fail "analytics accepted a malformed event (${code})"
+code=$(status_of /api/site/summary)
+[[ "${code}" == "404" ]] || fail "analytics summary is reachable without a token (${code})"
+echo "ok: analytics accepts valid beacons, rejects malformed ones, hides the summary"
 
 echo "PASS: public edition smoke passed on ${BASE}"

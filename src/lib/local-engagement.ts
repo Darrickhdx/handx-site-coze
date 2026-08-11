@@ -153,9 +153,6 @@ export function sendLocalAnalytics(
   path: string,
   properties: AnalyticsProperties = {},
 ): void {
-  // The analytics endpoint belongs to the loopback-only runtime; the public
-  // edition has no equivalent yet, so nothing is recorded there.
-  if (isPublicEdition) return;
   if (trackingIsDisabled()) return;
   const sessionId = getLocalSessionId();
   if (!sessionId) return;
@@ -170,18 +167,31 @@ export function sendLocalAnalytics(
     },
   });
 
+  // The two editions record to different places: the workbench writes NDJSON
+  // through its loopback runtime, the public edition writes page views to the
+  // hosted database. Neither ever sees an IP address, a user agent or a raw
+  // referrer — the session is a random per-browser value, hashed server-side.
+  const endpoint = isPublicEdition ? '/api/site/view' : '/api/local/analytics';
+  const body = isPublicEdition
+    ? JSON.stringify({
+        path,
+        session_id: sessionId,
+        referrer_class: getAcquisitionProperties().acquisition_channel ?? 'unknown',
+      })
+    : payload;
+
   if (typeof navigator.sendBeacon === 'function') {
     const accepted = navigator.sendBeacon(
-      '/api/local/analytics',
-      new Blob([payload], { type: 'application/json' }),
+      endpoint,
+      new Blob([body], { type: 'application/json' }),
     );
     if (accepted) return;
   }
 
-  void fetch('/api/local/analytics', {
+  void fetch(endpoint, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: payload,
+    body,
     keepalive: true,
   }).catch(() => undefined);
 }

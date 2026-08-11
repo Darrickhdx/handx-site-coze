@@ -1,4 +1,5 @@
 import type { IncomingMessage, RequestListener, ServerResponse } from 'node:http';
+import { handleAnalytics, handleAnalyticsSummary } from './public-analytics';
 
 /**
  * The public edition's HTTP shell.
@@ -21,6 +22,8 @@ export interface PublicEditionRuntimeOptions {
   /** Whether search engines may index. Owner keeps this closed until they say otherwise. */
   readonly searchIndexing: 'blocked' | 'allowed';
   readonly fallback: RequestListener;
+  /** Absolute origin, used for the same-origin check on the analytics beacon. */
+  readonly siteOrigin: string;
 }
 
 export const PUBLIC_EDITION_SCOPE = 'owner_authored_public_edition_v1';
@@ -95,6 +98,18 @@ export function createPublicEditionRuntime(
     }
 
     const path = (request.url ?? '/').split('?')[0];
+
+    // First-party analytics. Handled here rather than as a Next.js route so the
+    // workbench can keep asserting that src/app/api does not exist.
+    if (path === '/api/site/view') {
+      void handleAnalytics(request, response, options.siteOrigin);
+      return;
+    }
+    if (path === '/api/site/summary') {
+      void handleAnalyticsSummary(request, response);
+      return;
+    }
+
     if (ownerOnlyPrefixes.some((prefix) => path === prefix || path.startsWith(`${prefix}/`))) {
       // Not a redirect and not an error page: on a public host these paths
       // should be indistinguishable from paths that were never built.
