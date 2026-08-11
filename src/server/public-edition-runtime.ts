@@ -1,6 +1,7 @@
 import type { IncomingMessage, RequestListener, ServerResponse } from 'node:http';
 import { handleAnalytics, handleAnalyticsSummary } from './public-analytics';
 import { handleCommentRead, handleCommentWrite } from './feishu-comments';
+import { isPublishedPath } from '../data/public-routes';
 
 /**
  * The public edition's HTTP shell.
@@ -67,8 +68,22 @@ function publicHeaders(searchIndexing: 'blocked' | 'allowed') {
   };
 }
 
-/** Paths that exist only for the owner and must never answer on a public host. */
-const ownerOnlyPrefixes = ['/studio', '/insights', '/api/local'];
+/**
+ * Path traversal and encoding tricks are decided before the allow-list sees the
+ * path, so that `/discover/../wiki` cannot be spelled past it.
+ */
+function normalisePath(rawPath: string): string | null {
+  let decoded: string;
+  try {
+    decoded = decodeURIComponent(rawPath);
+  } catch {
+    return null;
+  }
+  if (decoded.includes('\0') || decoded.includes('\\')) return null;
+  if (!decoded.startsWith('/')) return null;
+  if (decoded.split('/').some((segment) => segment === '..')) return null;
+  return decoded;
+}
 
 export function requirePublicEditionStartup(
   options: Readonly<PublicEditionRuntimeOptions>,
@@ -98,7 +113,17 @@ export function createPublicEditionRuntime(
       response.setHeader(name, value);
     }
 
-    const path = (request.url ?? '/').split('?')[0];
+    const path = normalisePath((request.url ?? '/').split('?')[0]);
+
+    // Closed by default. Anything not on the published list — owner tooling,
+    // research projections, static data files, a route added later and not yet
+    // written down — is indistinguishable from a path that was never built.
+    if (path === null || !isPublishedPath(path)) {
+      response.statusCode = 404;
+      response.setHeader('Content-Type', 'text/plain; charset=utf-8');
+      response.end('Not found');
+      return;
+    }
 
     // First-party analytics. Handled here rather than as a Next.js route so the
     // workbench can keep asserting that src/app/api does not exist.
@@ -116,15 +141,6 @@ export function createPublicEditionRuntime(
     if (path === '/api/site/comments') {
       if (request.method === 'POST') void handleCommentWrite(request, response, options.siteOrigin);
       else void handleCommentRead(request, response);
-      return;
-    }
-
-    if (ownerOnlyPrefixes.some((prefix) => path === prefix || path.startsWith(`${prefix}/`))) {
-      // Not a redirect and not an error page: on a public host these paths
-      // should be indistinguishable from paths that were never built.
-      response.statusCode = 404;
-      response.setHeader('Content-Type', 'text/plain; charset=utf-8');
-      response.end('Not found');
       return;
     }
 

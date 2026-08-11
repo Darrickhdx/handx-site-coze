@@ -42,6 +42,9 @@ pnpm exec tsx tools/verify-evidence-paths.ts
 pnpm exec tsx tools/verify-people-dossiers.ts
 pnpm exec tsx tools/verify-rights-passports.ts
 pnpm exec tsx tools/verify-site-status.ts
+node tools/build-public-atlas.mjs --check
+pnpm exec tsx tools/build-public-story.ts --check
+pnpm exec tsx tools/verify-client-payload.ts
 
 echo "Building public edition..."
 pnpm next build
@@ -52,5 +55,6 @@ pnpm tsup src/server-public.ts --format cjs --platform node --target node20 \
 
 echo "Verifying the public build..."
 node tools/verify-public-edition.mjs
+pnpm exec tsx tools/verify-public-bundle.ts
 
 echo "Public edition build complete."

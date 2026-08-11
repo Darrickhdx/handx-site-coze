@@ -7,7 +7,7 @@
  * owner's tooling and private runtime did not come along, and that the workbench
  * contract was not quietly opened to make the build succeed.
  */
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 
 const projectRoot = resolve(process.cwd());
@@ -20,7 +20,7 @@ const closedGateFiles = [
   'src/data/research.json',
   'src/data/site-status.json',
   'src/data/novel-editions.json',
-  'public/data/graph/manifest.json',
+  'research-data/graph/manifest.json',
   'public/novel/hero-wuming/novel-manifest.json',
 ];
 /** These flags are nested differently per file, so search rather than guess. */
@@ -104,6 +104,19 @@ if (existsSync(manifestPath)) {
   console.log(
     `novel: ${manifest.pages.length} pages, ${(total / 1e6).toFixed(0)} MB, edition ${manifest.book.id}`,
   );
+}
+
+// 6. What the browser downloads is scanned by tools/verify-public-bundle.ts,
+//    which needs the published-route list from TypeScript and so runs under
+//    tsx from scripts/build-public.sh rather than here.
+
+// 7. The research projections must not be under a statically served directory.
+//    A file in public/ is served by filename with no route involved, so no
+//    route guard, edition check or layout can reach it.
+for (const stray of ['public/data/graph', 'public/data/research.json']) {
+  if (existsSync(join(projectRoot, stray))) {
+    fail(`${stray} is inside the statically served directory; move it to research-data/`);
+  }
 }
 
 if (failures.length > 0) {

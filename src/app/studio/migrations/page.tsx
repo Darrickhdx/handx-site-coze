@@ -9,7 +9,7 @@ import {
   GitCompareArrows,
   ShieldCheck,
 } from 'lucide-react';
-import driftSummaryJson from '../../../../public/data/graph/legacy-drift-summary.json';
+import driftSummaryJson from '../../../../research-data/graph/legacy-drift-summary.json';
 
 export const metadata: Metadata = {
   title: '图谱迁移收件箱｜Handx web0.1',

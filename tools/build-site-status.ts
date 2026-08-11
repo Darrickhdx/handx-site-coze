@@ -21,7 +21,7 @@ const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 
 const inputPaths = [
   'src/data/research.json',
-  'public/data/graph/manifest.json',
+  'research-data/graph/manifest.json',
   'src/data/archive-missions-manifest.json',
   'src/data/archive-missions.json',
   'public/novel/hero-wuming/novel-manifest.json',
@@ -161,7 +161,7 @@ export function buildSiteStatus(): JsonObject {
     expectEqual(asNumber(researchCounts[key], `research source_counts.${key}`), value, `research ${key} count`);
   }
 
-  const graph = parseJson('public/data/graph/manifest.json');
+  const graph = parseJson('research-data/graph/manifest.json');
   expectExactKeys(
     graph,
     ['schema_version', 'project', 'must_not_deploy', 'source_generated_at_utc', 'inputs', 'quarantine', 'counts', 'privacy', 'outputs'],

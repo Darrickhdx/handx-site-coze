@@ -33,7 +33,7 @@ import {
   claimStatusLabels,
   entityTypeLabels,
   migrationStatusLabels,
-} from '@/lib/graph-wiki-data';
+} from '@/lib/graph-wiki-types';
 import { cn } from '@/lib/utils';
 
 cytoscape.use(fcose);
@@ -354,7 +354,9 @@ export function ResearchGraphExplorer() {
 
   useEffect(() => {
     const controller = new AbortController();
-    fetch('/data/graph/audit-graph.json', {
+    // Loopback endpoint, not a static file: the research graphs are no longer
+    // under public/, because the public edition serves public/ wholesale.
+    fetch('/api/local/research-graph?graph=audit', {
       cache: 'no-store',
       signal: controller.signal,
     })
@@ -466,7 +468,7 @@ export function ResearchGraphExplorer() {
   const loadLegacy = async () => {
     setLoadError('');
     try {
-      const response = await fetch('/data/graph/legacy-graph.json', {
+      const response = await fetch('/api/local/research-graph?graph=legacy', {
         cache: 'no-store',
       });
       if (!response.ok) throw new Error(`HTTP ${response.status}`);

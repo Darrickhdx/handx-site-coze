@@ -9,7 +9,7 @@ const SOURCE_PATH = process.env.ARCHIVE_MISSIONS_SOURCE
   : resolve(PROJECT_ROOT, '..', '..', '..', 'AI小说', '苏开元重启', SOURCE_FILENAME);
 const AUDIT_GRAPH_PATH = process.env.ARCHIVE_MISSIONS_AUDIT_GRAPH
   ? resolve(process.env.ARCHIVE_MISSIONS_AUDIT_GRAPH)
-  : resolve(PROJECT_ROOT, 'public', 'data', 'graph', 'audit-graph.json');
+  : resolve(PROJECT_ROOT, 'research-data', 'graph', 'audit-graph.json');
 const SOURCE_SHA256 = '17003ece343e5768c9f09e5f7d0d94bfd5c8e06860af1410f2ef638608502b6c';
 const AUDIT_GRAPH_SHA256 = 'ca0325a38ea803e42985026c4552e061584f760457dfd56f84c9ac2b729c870c';
 

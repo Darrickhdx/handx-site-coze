@@ -10,7 +10,11 @@ import {
   RotateCcw,
   ShieldAlert,
 } from 'lucide-react';
-import { novelManifest, novelProgressKey, type NovelPage, type NovelSection } from '@/lib/novel';
+import {
+  novelProgressKeyFor,
+  type NovelReaderPage,
+  type NovelSection,
+} from '@/lib/novel-types';
 
 function tocHref(section: NovelSection, mode: 'continuous' | 'chapter') {
   if (mode === 'continuous') return `#page-${section.start_page}`;
@@ -62,12 +66,17 @@ export function NovelReader({
   sections,
   initialSectionId,
   mode,
+  editionId,
+  totalPages,
 }: {
-  pages: NovelPage[];
+  pages: NovelReaderPage[];
   sections: NovelSection[];
   initialSectionId: string;
   mode: 'continuous' | 'chapter';
+  editionId: string;
+  totalPages: number;
 }) {
+  const progressKey = novelProgressKeyFor(editionId);
   const [loaded, setLoaded] = useState<Set<number>>(
     () => new Set(pages.slice(0, 2).map((page) => page.number)),
   );
@@ -121,9 +130,9 @@ export function NovelReader({
             setActivePage(number);
             const page = pages[pageIndex.get(number) ?? 0];
             window.localStorage.setItem(
-              novelProgressKey,
+              progressKey,
               JSON.stringify({
-                edition_id: novelManifest.book.id,
+                edition_id: editionId,
                 page: number,
                 section_id: page?.section_id ?? initialSectionId,
                 saved_at: new Date().toISOString(),
@@ -136,7 +145,7 @@ export function NovelReader({
     );
     for (const element of figureRefs.current.values()) observer.observe(element);
     return () => observer.disconnect();
-  }, [initialSectionId, loadAround, pageIndex, pages]);
+  }, [editionId, initialSectionId, loadAround, pageIndex, pages, progressKey]);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -274,7 +283,7 @@ export function NovelReader({
                   )}
                 </div>
                 <figcaption className="mt-2 flex items-center justify-between gap-4 text-[10px] text-muted-foreground">
-                  <span>PDF 第 {page.number}／{novelManifest.totals.pages} 页</span>
+                  <span>PDF 第 {page.number}／{totalPages} 页</span>
                   <span>{page.local_only ? '含受限图版 · 仅本机' : '作者水印派生页'}</span>
                 </figcaption>
               </figure>

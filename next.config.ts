@@ -16,9 +16,26 @@ const indexable =
 // public build, with /insights 404ing because the public edition excludes it.
 const distDir = process.env.SITE_EDITION === 'public' ? '.next-public' : '.next';
 
+const isPublic = process.env.SITE_EDITION === 'public';
+
 const nextConfig: NextConfig = {
   distDir,
   poweredByHeader: false,
+  // The research explorer is excluded from the public bundle at resolve time,
+  // not by a runtime branch. A runtime branch stops it rendering; only this
+  // stops its code — and the research field names inside it — from being
+  // downloaded. The edition check in src/app/graph/page.tsx stays as well:
+  // this makes the exclusion physical, that makes it visible in the source.
+  ...(isPublic
+    ? {
+        turbopack: {
+          resolveAlias: {
+            '@/components/research-graph-explorer':
+              './src/components/research-graph-explorer.public-stub.tsx',
+          },
+        },
+      }
+    : {}),
   async headers() {
     return [
       {

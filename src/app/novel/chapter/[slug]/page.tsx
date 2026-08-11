@@ -9,8 +9,10 @@ import {
   adjacentCommentableSections,
   commentableNovelSections,
   novelCommentChapterId,
+  novelReaderContext,
   novelSectionBySlug,
   pagesForNovelSection,
+  readerPages,
 } from '@/lib/novel';
 
 interface ChapterPageProps {
@@ -87,10 +89,12 @@ export default async function NovelChapterPage({ params }: ChapterPageProps) {
 
       <section className="personal-shell py-8 sm:py-8">
         <NovelReader
-          pages={pages}
+          pages={readerPages(pages)}
           sections={[section]}
           initialSectionId={section.id}
           mode="chapter"
+          editionId={novelReaderContext.editionId}
+          totalPages={novelReaderContext.totalPages}
         />
 
         {evidenceForChapter.length > 0 && (

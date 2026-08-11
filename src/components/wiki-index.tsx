@@ -7,7 +7,7 @@ import {
   type AuditNode,
   type EntityType,
   entityTypeLabels,
-} from '@/lib/graph-wiki-data';
+} from '@/lib/graph-wiki-types';
 
 export function WikiIndex({ nodes }: { nodes: AuditNode[] }) {
   const [query, setQuery] = useState('');

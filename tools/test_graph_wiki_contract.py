@@ -17,7 +17,7 @@ from graph_wiki_contract import assess_quarantinable_legacy_drift
 
 SITE_ROOT = Path(__file__).resolve().parents[1]
 CORPUS_ROOT = SITE_ROOT.parents[2] / "AI小说"
-OUTPUT_ROOT = SITE_ROOT / "public" / "data" / "graph"
+OUTPUT_ROOT = SITE_ROOT / "research-data" / "graph"
 BASELINE = CORPUS_ROOT / "知识图谱" / "graph-data.backup-20260720.json"
 LIVE = CORPUS_ROOT / "知识图谱" / "graph-data.json"
 LEGACY_HTML = CORPUS_ROOT / "知识图谱" / "苏开元知识图谱-交互版.html"

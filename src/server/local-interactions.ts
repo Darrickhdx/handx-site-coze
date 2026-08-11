@@ -1670,8 +1670,55 @@ export function createLocalInteractionRouter(
     }
   }
 
+  /**
+   * Serve the research graph files to the workbench only.
+   *
+   * These used to live under public/, which meant Next served them as static
+   * assets — and the public edition serves public/ wholesale, so the audit
+   * graph was downloadable from the open internet. They now live in
+   * research-data/, outside any statically served directory, and reach the
+   * research explorer through this loopback endpoint instead. The allow-list
+   * is a fixed set of filenames, not a path parameter, so no request can walk
+   * out of the directory.
+   */
+  function handleResearchGraph(
+    request: IncomingMessage,
+    response: ServerResponse,
+    requestUrl: URL,
+  ): void {
+    if (request.method !== 'GET') {
+      sendJson(response, 405, { error: 'method_not_allowed' });
+      return;
+    }
+    const allowed = new Map([
+      ['audit', 'audit-graph.json'],
+      ['legacy', 'legacy-graph.json'],
+    ]);
+    const filename = allowed.get(requestUrl.searchParams.get('graph') ?? '');
+    if (!filename) {
+      sendJson(response, 400, { error: 'unknown_graph' });
+      return;
+    }
+    // Repo-relative, not an option: this is committed repository content, not
+    // private runtime state, and nothing should be able to point it elsewhere.
+    const target = resolve(process.cwd(), 'research-data', 'graph', filename);
+    if (!existsSync(target)) {
+      sendJson(response, 404, { error: 'not_generated' });
+      return;
+    }
+    try {
+      sendJson(response, 200, readPrivateJsonObject(target, 4_000_000));
+    } catch {
+      sendJson(response, 500, { error: 'unreadable' });
+    }
+  }
+
   return async (request, response, requestUrl) => {
     const pathname = requestUrl.pathname;
+    if (pathname === "/api/local/research-graph") {
+      handleResearchGraph(request, response, requestUrl);
+      return true;
+    }
     if (pathname === "/api/local/analytics") {
       await handleLocalAnalytics(request, response);
       return true;

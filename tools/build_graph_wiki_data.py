@@ -30,7 +30,7 @@ CROSSWALK = CORPUS_ROOT / "苏开元重启" / "28-旧知识图谱交叉映射.cs
 DRIFT_INVENTORY = CORPUS_ROOT / "苏开元重启" / "40-Legacy增量隔离处置.csv"
 SOURCE_REGISTRY = CORPUS_ROOT / "苏开元重启" / "01-来源登记表.csv"
 
-OUTPUT_ROOT = SITE_ROOT / "public" / "data" / "graph"
+OUTPUT_ROOT = SITE_ROOT / "research-data" / "graph"
 PRIVATE_RUNTIME_ROOT = SITE_ROOT / "private-runtime"
 PRIVATE_MIGRATION_INBOX = PRIVATE_RUNTIME_ROOT / "graph-migration-inbox.json"
 

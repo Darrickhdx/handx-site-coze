@@ -69,6 +69,36 @@ for path in /studio /studio/comments /insights /api/local/analytics /api/local/m
 done
 echo "ok: owner tooling and loopback endpoints are absent"
 
+# The research layer. Every path below answered 200 on the live site once,
+# because the shell carried a deny-list naming only the three prefixes above.
+# These are listed one by one rather than as a loop over a variable, so that
+# deleting one from the allow-list shows up here as a named failure.
+for path in /wiki /wiki/P-001 /missions /timeline /topics /events /evidence \
+            /person /controversies /legacy /sukaiyuan/dossier; do
+    code=$(status_of "${path}")
+    [[ "${code}" == "404" ]] || fail "${path} returned ${code}; the research layer must not answer publicly"
+done
+echo "ok: research routes are absent"
+
+# Static data files. No route is involved in serving these, so no route guard
+# could ever have stopped them — public/data/graph is why they now live in
+# research-data/, and why the shell answers on an allow-list.
+for path in /data/graph/audit-graph.json /data/graph/legacy-graph.json \
+            /data/graph/legacy-crosswalk.json /data/sources.json /data/persons.json \
+            /data/events.json /data/timeline.json /data/archive-missions.json \
+            /data/site-status.json; do
+    code=$(status_of "${path}")
+    [[ "${code}" == "404" ]] || fail "${path} returned ${code}; research data must not be downloadable"
+done
+echo "ok: research data files are not downloadable"
+
+# The allow-list must not be walkable.
+for path in /discover/../wiki /%2e%2e/wiki /assets/../data/sources.json; do
+    code=$(status_of "${path}")
+    [[ "${code}" == "404" || "${code}" == "400" ]] || fail "${path} returned ${code}; path traversal must not reach past the allow-list"
+done
+echo "ok: allow-list resists traversal"
+
 # The retired edition hall must stay retired.
 code=$(status_of /novel/editions)
 [[ "${code}" == "404" ]] || fail "/novel/editions returned ${code}, expected 404"

@@ -12,6 +12,7 @@ import { ProjectSectionNav } from '@/components/project-section-nav';
 import {
   commentableNovelSections,
   novelManifest,
+  novelReaderContext,
 } from '@/lib/novel';
 import { candidateNovelEdition } from '@/lib/novel-editions';
 
@@ -64,7 +65,10 @@ export default function NovelPage() {
                 先读 7 页楔子
                 <ArrowRight className="size-4" aria-hidden="true" />
               </Link>
-              <ContinueNovelButton />
+              <ContinueNovelButton
+                editionId={novelReaderContext.editionId}
+                totalPages={novelReaderContext.totalPages}
+              />
               <Link href="/novel/read" className="story-button personal-button-light">
                 从头连续阅读
                 <ArrowRight className="size-4" aria-hidden="true" />

@@ -3,7 +3,7 @@ import {
   personSourceCarrierFamilyById,
   type PersonMilestoneMode,
 } from '../src/content/people-dossiers';
-import auditGraph from '../public/data/graph/audit-graph.json';
+import auditGraph from '../research-data/graph/audit-graph.json';
 
 function fail(message: string): never {
   throw new Error(message);

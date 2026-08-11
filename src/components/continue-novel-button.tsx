@@ -3,29 +3,36 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { ArrowRight, BookOpenText } from 'lucide-react';
-import { novelManifest, novelProgressKey } from '@/lib/novel';
+import { novelProgressKeyFor } from '@/lib/novel-types';
 
-export function ContinueNovelButton() {
+export function ContinueNovelButton({
+  editionId,
+  totalPages,
+}: {
+  editionId: string;
+  totalPages: number;
+}) {
   const [page, setPage] = useState<number | null>(null);
 
   useEffect(() => {
-    const stored = window.localStorage.getItem(novelProgressKey);
+    const progressKey = novelProgressKeyFor(editionId);
+    const stored = window.localStorage.getItem(progressKey);
     if (!stored) return;
     try {
       const parsed = JSON.parse(stored) as { edition_id?: string; page?: number };
       if (
-        parsed.edition_id === novelManifest.book.id &&
+        parsed.edition_id === editionId &&
         typeof parsed.page === 'number' &&
         Number.isInteger(parsed.page) &&
         parsed.page >= 1 &&
-        parsed.page <= novelManifest.totals.pages
+        parsed.page <= totalPages
       ) {
         setPage(parsed.page);
       }
     } catch {
-      window.localStorage.removeItem(novelProgressKey);
+      window.localStorage.removeItem(progressKey);
     }
-  }, []);
+  }, [editionId, totalPages]);
 
   return (
     <Link

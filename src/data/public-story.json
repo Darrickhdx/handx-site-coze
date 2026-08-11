@@ -1,0 +1,182 @@
+{
+  "schema_version": "handx-public-story-1",
+  "derived_from": "src/data/research.json",
+  "node_count": 7,
+  "nodes": [
+    {
+      "id": "P-001",
+      "name": "苏开元",
+      "x": 0,
+      "y": 0,
+      "status": "candidate",
+      "isCore": true,
+      "entityType": "人物",
+      "sourceCount": 5,
+      "relationCount": 5
+    },
+    {
+      "id": "P-006",
+      "name": "朱自清",
+      "x": 245,
+      "y": -165,
+      "status": "confirmed",
+      "isCore": false,
+      "entityType": "人物",
+      "sourceCount": 1,
+      "relationCount": 1
+    },
+    {
+      "id": "O-012",
+      "name": "学生救国会",
+      "x": 255,
+      "y": -25,
+      "status": "confirmed",
+      "isCore": false,
+      "entityType": "机构",
+      "sourceCount": 1,
+      "relationCount": 1
+    },
+    {
+      "id": "L-002",
+      "name": "平地泉",
+      "x": 245,
+      "y": 150,
+      "status": "confirmed",
+      "isCore": false,
+      "entityType": "地点",
+      "sourceCount": 1,
+      "relationCount": 1
+    },
+    {
+      "id": "R-002",
+      "name": "第435团团长",
+      "x": -75,
+      "y": 185,
+      "status": "confirmed",
+      "isCore": false,
+      "entityType": "职务",
+      "sourceCount": 2,
+      "relationCount": 1
+    },
+    {
+      "id": "D-027",
+      "name": "1942编成表",
+      "x": -245,
+      "y": 150,
+      "status": "confirmed",
+      "isCore": false,
+      "entityType": "文献",
+      "sourceCount": 1,
+      "relationCount": 0
+    },
+    {
+      "id": "R-039",
+      "name": "高级参议",
+      "x": -115,
+      "y": -160,
+      "status": "confirmed",
+      "isCore": false,
+      "entityType": "职务",
+      "sourceCount": 1,
+      "relationCount": 1
+    }
+  ],
+  "edges": [
+    {
+      "id": "REL-010",
+      "source": "P-001",
+      "target": "P-006",
+      "label": "朱自清文中记为遇见",
+      "status": "candidate"
+    },
+    {
+      "id": "REL-011",
+      "source": "P-001",
+      "target": "L-002",
+      "label": "文中记录于",
+      "status": "candidate"
+    },
+    {
+      "id": "REL-012",
+      "source": "P-001",
+      "target": "O-012",
+      "label": "朱自清文中记为向其表态",
+      "status": "candidate"
+    },
+    {
+      "id": "REL-084",
+      "source": "P-001",
+      "target": "R-002",
+      "label": "公报中被列为获任命",
+      "status": "candidate"
+    },
+    {
+      "id": "REL-122",
+      "source": "P-001",
+      "target": "R-039",
+      "label": "编成表中被列为",
+      "status": "candidate"
+    }
+  ],
+  "details": [
+    {
+      "entity_id": "P-001",
+      "entity_type": "Person",
+      "canonical_label": "苏开元",
+      "variant_label": "蘇開元",
+      "source_ids": [
+        "SRC-013",
+        "SRC-039",
+        "SRC-095"
+      ]
+    },
+    {
+      "entity_id": "P-006",
+      "entity_type": "Person",
+      "canonical_label": "朱自清",
+      "variant_label": "朱自清",
+      "source_ids": []
+    },
+    {
+      "entity_id": "O-012",
+      "entity_type": "Organization",
+      "canonical_label": "学生救国会",
+      "variant_label": "学生救国会",
+      "source_ids": []
+    },
+    {
+      "entity_id": "L-002",
+      "entity_type": "Place",
+      "canonical_label": "平地泉（今集宁一带）",
+      "variant_label": "平地泉",
+      "source_ids": []
+    },
+    {
+      "entity_id": "R-002",
+      "entity_type": "Role",
+      "canonical_label": "陆军第七十二师第二百十八旅第四百三十五团团长",
+      "variant_label": "第435团团长",
+      "source_ids": [
+        "SRC-039"
+      ]
+    },
+    {
+      "entity_id": "D-027",
+      "entity_type": "Document",
+      "canonical_label": "《第八战区编成表》（除胡宗南军、回教军）",
+      "variant_label": "1942第八战区编成表",
+      "source_ids": [
+        "SRC-095"
+      ]
+    },
+    {
+      "entity_id": "R-039",
+      "entity_type": "Role",
+      "canonical_label": "第八战区副司令傅作义指挥部队高级参议（日方编成表称）",
+      "variant_label": "高级参议",
+      "source_ids": [
+        "SRC-095"
+      ]
+    }
+  ]
+}

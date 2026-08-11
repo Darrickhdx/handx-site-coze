@@ -1,43 +1,18 @@
 import manifestJson from '../../public/novel/hero-wuming/novel-manifest.json';
+import {
+  novelProgressKeyFor,
+  toReaderPage,
+  type NovelPage,
+  type NovelReaderPage,
+  type NovelSection,
+} from './novel-types';
 
-export type NovelSectionKind = 'frontmatter' | 'paratext' | 'part' | 'chapter';
-
-export interface NovelSection {
-  id: string;
-  slug: string;
-  title: string;
-  kind: NovelSectionKind;
-  order: number;
-  part: number | null;
-  chapter_number: number | null;
-  start_page: number;
-  end_page: number;
-  page_count: number;
-  commentable: boolean;
-  summary: string;
-}
-
-export interface NovelPage {
-  number: number;
-  section_id: string;
-  path: string;
-  sha256: string;
-  byte_size: number;
-  width: number;
-  height: number;
-  responsive_path: string;
-  responsive_sha256: string;
-  responsive_byte_size: number;
-  responsive_width: number;
-  responsive_height: number;
-  watermark: string;
-  rights_status:
-    | 'author_watermarked_derivative'
-    | 'local_only_third_party_review';
-  local_only: boolean;
-  git_eligible: boolean;
-  not_for_media: boolean;
-}
+export type {
+  NovelPage,
+  NovelReaderPage,
+  NovelSection,
+  NovelSectionKind,
+} from './novel-types';
 
 export interface NovelManifest {
   schema_version: 'handx-novel-manifest-1.0';
@@ -90,8 +65,21 @@ export interface NovelManifest {
 }
 
 export const novelManifest = manifestJson as unknown as NovelManifest;
-export const novelProgressKey = `handx-novel-progress:${novelManifest.book.id}`;
+export const novelProgressKey = novelProgressKeyFor(novelManifest.book.id);
 export const novelCommentNamespace = novelManifest.book.id;
+
+/**
+ * The manifest values the reader needs as scalars. Passing these as props is
+ * what keeps client components from importing the manifest — see novel-types.
+ */
+export const novelReaderContext = {
+  editionId: novelManifest.book.id,
+  totalPages: novelManifest.totals.pages,
+} as const;
+
+export function readerPages(pages: NovelPage[]): NovelReaderPage[] {
+  return pages.map(toReaderPage);
+}
 
 export function novelCommentChapterId(sectionId: string): string {
   return `${novelCommentNamespace}--${sectionId}`;

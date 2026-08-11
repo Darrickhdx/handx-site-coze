@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowLeft, List } from 'lucide-react';
 import { NovelReader } from '@/components/novel-reader';
-import { novelManifest } from '@/lib/novel';
+import { novelManifest, novelReaderContext, readerPages } from '@/lib/novel';
 
 export const metadata: Metadata = {
   title: '《英雄无名》连续阅读',
@@ -46,10 +46,12 @@ export default function FullNovelReaderPage() {
           </p>
         </div>
         <NovelReader
-          pages={novelManifest.pages}
+          pages={readerPages(novelManifest.pages)}
           sections={novelManifest.sections}
           initialSectionId={novelManifest.sections[0].id}
           mode="continuous"
+          editionId={novelReaderContext.editionId}
+          totalPages={novelReaderContext.totalPages}
         />
       </section>
     </main>

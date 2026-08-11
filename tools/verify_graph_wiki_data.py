@@ -17,7 +17,7 @@ from graph_wiki_contract import (
 SITE_ROOT = Path(__file__).resolve().parents[1]
 WORKSPACE_ROOT = SITE_ROOT.parents[2]
 CORPUS_ROOT = WORKSPACE_ROOT / "AI小说"
-OUTPUT_ROOT = SITE_ROOT / "public" / "data" / "graph"
+OUTPUT_ROOT = SITE_ROOT / "research-data" / "graph"
 
 APPROVED_INPUTS = {
     "legacy_baseline": CORPUS_ROOT / "知识图谱" / "graph-data.backup-20260720.json",

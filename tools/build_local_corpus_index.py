@@ -20,7 +20,7 @@ from xml.etree import ElementTree
 
 
 ROOT = Path(__file__).resolve().parents[1]
-AUDIT_GRAPH = ROOT / "public" / "data" / "graph" / "audit-graph.json"
+AUDIT_GRAPH = ROOT / "research-data" / "graph" / "audit-graph.json"
 DEFAULT_OUTPUT = ROOT / "private-runtime" / "local-corpus-index.json"
 DEFAULT_PATH_MAP = ROOT / "private-runtime" / "local-corpus-paths.json"
 SUPPORTED_SUFFIXES = {

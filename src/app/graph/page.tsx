@@ -14,16 +14,25 @@ import {
 import { ProjectSectionNav } from '@/components/project-section-nav';
 import { RelationGraph, type GraphNode } from '@/components/relation-graph';
 import { ResearchGraphExplorer } from '@/components/research-graph-explorer';
-import { KnowledgeGraphAtlas } from '@/components/knowledge-graph-atlas';
-import legacyGraph from '../../../public/data/graph/legacy-graph.json';
-import { graphStoryRoutes } from '@/content/editorial';
 import {
-  graphEdges,
-  graphNodes,
-  nodeById,
-  nodeRecords,
-} from '@/lib/research-data';
+  KnowledgeGraphAtlas,
+  type AtlasEdge,
+  type AtlasNode,
+} from '@/components/knowledge-graph-atlas';
+import publicAtlas from '@/data/public-atlas.json';
+import { graphStoryRoutes } from '@/content/editorial';
+// The derived story slice, not @/lib/research-data: that module imports
+// research.json, so importing it from this client component put all eight of
+// its arrays — claims, locators, boundary claims — into the browser bundle.
+// tools/build-public-story.ts emits only what the panel below renders.
+import publicStory from '@/data/public-story.json';
+import type { GraphEdge } from '@/components/relation-graph';
+import { isPublicEdition } from '@/lib/edition';
 import { cn } from '@/lib/utils';
+
+const graphNodes = publicStory.nodes as GraphNode[];
+const graphEdges = publicStory.edges as GraphEdge[];
+const nodeById = new Map(publicStory.details.map((node) => [node.entity_id, node]));
 
 const entityTypeLabels: Record<string, string> = {
   Person: '人物',
@@ -151,7 +160,7 @@ export default function GraphPage() {
               故事模式用三条路线帮助普通读者进入；研究模式按需加载完整公开审计投影，并把每条关系接回主张与来源定位。
             </p>
             <div className="mt-7 flex flex-wrap gap-x-7 gap-y-3 text-xs text-muted-foreground">
-              <span>故事模式 {nodeRecords.length} 个审阅节点</span>
+              <span>故事模式 {publicStory.node_count} 个审阅节点</span>
               <span>研究模式 229 个实体／127 条关系</span>
               <span>{graphStoryRoutes.length} 条策展路线</span>
             </div>
@@ -160,7 +169,7 @@ export default function GraphPage() {
       </section>
 
       <section className="border-b border-foreground/15 bg-card">
-        <div className="personal-shell grid gap-px bg-foreground/15 sm:grid-cols-3">
+        <div className={cn('personal-shell grid gap-px bg-foreground/15', isPublicEdition ? 'sm:grid-cols-2' : 'sm:grid-cols-3')}>
           <button
             type="button"
             onClick={() => {
@@ -197,6 +206,10 @@ export default function GraphPage() {
               三条策展路线，适合第一次认识苏开元研究。
             </span>
           </button>
+          {/* Research mode reads the audit graph from a loopback-only endpoint,
+              so on the public edition the button would open a view that can
+              never load. The grid drops to two columns with it gone. */}
+          {!isPublicEdition && (
           <button
             type="button"
             onClick={() => {
@@ -215,6 +228,7 @@ export default function GraphPage() {
               搜索、筛选、Wiki 回链；Legacy 线索默认关闭。
             </span>
           </button>
+          )}
         </div>
       </section>
 
@@ -231,10 +245,14 @@ export default function GraphPage() {
                 这是旧研究阶段的线索索引，用来看清关系的形状——每一条要当成事实，仍要回到来源与主张。
               </p>
             </div>
+            {/* `as AtlasNode[]`, not `as never`: a JSON import widens the
+                group field to string, but everything else must still line up.
+                The old `as never` silenced the checker on a record that
+                carried migration bookkeeping the atlas never reads. */}
             <KnowledgeGraphAtlas
-              nodes={legacyGraph.nodes as never}
-              edges={legacyGraph.edges as never}
-              notice={legacyGraph.warning}
+              nodes={publicAtlas.nodes as AtlasNode[]}
+              edges={publicAtlas.edges as AtlasEdge[]}
+              notice={publicAtlas.notice}
             />
           </div>
         </section>
@@ -444,7 +462,7 @@ export default function GraphPage() {
       ) : (
         <section className="py-7 sm:py-8">
           <div className="personal-shell">
-            <ResearchGraphExplorer />
+            {!isPublicEdition && <ResearchGraphExplorer />}
           </div>
         </section>
       )}

@@ -186,12 +186,12 @@
       "sha256": "2b56200c7b5c13befa7c29dfb03d881dbc181112ebae1ba755dabd589ca07823"
     },
     {
-      "path": "public/data/graph/manifest.json",
+      "path": "research-data/graph/manifest.json",
       "sha256": "409da590745f7de894edcefa8161459dcaa340b761e0bb8dda67ca709a654e78"
     },
     {
       "path": "src/data/archive-missions-manifest.json",
-      "sha256": "fb1aa05cf2486b4dc9dec9fb259bd167a270d3d95d39ce805c8f6286b33b4023"
+      "sha256": "e35d7003b0767da14b875342f0c356eee260aaa91e6b6839b704bec2aa6cd564"
     },
     {
       "path": "src/data/archive-missions.json",
@@ -230,5 +230,5 @@
       "sha256": "46fb9fa2629ca6f4dff39351c55acbfb3d009dea42f2389cea33c4969b3411a5"
     }
   ],
-  "generation_id": "status-b9a691769961a9ee5a111cf18901bc31554ed640918fe74ebc338b6586c98803"
+  "generation_id": "status-870a539cd5217623c052527902c40c2704acb4b4fd1759cc55bdd5fec8fdea17"
 }

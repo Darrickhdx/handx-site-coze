@@ -61,7 +61,7 @@ function cloneContent(
 
 const auditGraph = JSON.parse(
   readFileSync(
-    resolve(process.cwd(), 'public/data/graph/audit-graph.json'),
+    resolve(process.cwd(), 'research-data/graph/audit-graph.json'),
     'utf8',
   ),
 ) as {

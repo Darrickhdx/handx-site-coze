@@ -8,7 +8,7 @@ import {
   resolveDiagnosticTrack,
 } from '../src/content/family-history-diagnostic';
 import { analyticsFreeRoutes, localAnalyticsIsSuppressed } from '../src/lib/analytics-policy';
-import auditGraph from '../public/data/graph/audit-graph.json';
+import auditGraph from '../research-data/graph/audit-graph.json';
 
 function fail(message: string): never {
   throw new Error(message);
