@@ -3,6 +3,9 @@ import './globals.css';
 import { SiteHeader } from '@/components/site-header';
 import { SiteFooter } from '@/components/site-footer';
 import { LocalAnalyticsProvider } from '@/components/local-analytics-provider';
+import { isPublicEdition, searchIndexingAllowed } from '@/lib/edition';
+
+const indexable = isPublicEdition && searchIndexingAllowed;
 
 export const metadata: Metadata = {
   title: {
@@ -29,13 +32,13 @@ export const metadata: Metadata = {
     locale: 'zh_CN',
   },
   robots: {
-    index: false,
-    follow: false,
-    nocache: true,
+    index: indexable,
+    follow: indexable,
+    nocache: !indexable,
     googleBot: {
-      index: false,
-      follow: false,
-      noimageindex: true,
+      index: indexable,
+      follow: indexable,
+      noimageindex: !indexable,
     },
   },
 };

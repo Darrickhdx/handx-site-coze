@@ -1,5 +1,11 @@
 import type { NextConfig } from 'next';
 
+// Resolved here rather than imported from src/lib/edition: next.config runs
+// before path aliases exist.
+const indexable =
+  process.env.SITE_EDITION === 'public'
+  && process.env.PUBLIC_SEARCH_INDEXING === 'allowed';
+
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   async headers() {
@@ -9,11 +15,19 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'private, no-store, max-age=0, must-revalidate',
+            value: indexable
+              ? 'public, max-age=0, s-maxage=300, stale-while-revalidate=86400'
+              : 'private, no-store, max-age=0, must-revalidate',
           },
           { key: 'Pragma', value: 'no-cache' },
           { key: 'Expires', value: '0' },
-          { key: 'X-Robots-Tag', value: 'noindex, nofollow, noarchive, nosnippet' },
+          // Indexing is closed unless the public edition explicitly opens it.
+          // Every other header here is unconditional; this is the only one that
+          // depends on the edition, because it is the only one the owner ever
+          // means to relax.
+          ...(indexable
+            ? []
+            : [{ key: 'X-Robots-Tag', value: 'noindex, nofollow, noarchive, nosnippet' }]),
           { key: 'X-Content-Type-Options', value: 'nosniff' },
           { key: 'X-Frame-Options', value: 'DENY' },
           { key: 'Referrer-Policy', value: 'no-referrer' },

@@ -13,6 +13,10 @@ cd "${COZE_WORKSPACE_PATH}"
 
 export SITE_EDITION=public
 export NEXT_PUBLIC_SITE_EDITION=public
+# Indexing is decided at build time as well as at runtime, because robots.txt,
+# the sitemap and the page metadata are all baked into the build.
+export PUBLIC_SEARCH_INDEXING="${PUBLIC_SEARCH_INDEXING:-blocked}"
+export NEXT_PUBLIC_SEARCH_INDEXING="${PUBLIC_SEARCH_INDEXING}"
 
 # Dependencies first: the verifiers below run through tsx, which does not exist
 # until node_modules does. On a fresh checkout — which is exactly what the build

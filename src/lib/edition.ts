@@ -50,3 +50,11 @@ export function assertWorkbenchEdition(context: string): void {
     throw new Error(`${context} is workbench-only; SITE_EDITION is ${siteEdition}`);
   }
 }
+
+/**
+ * Whether search engines may index the public edition. Defaults closed: a page
+ * that has been crawled and cached cannot be recalled, so opening indexing is
+ * always a deliberate act, never a side effect of building the public edition.
+ */
+export const searchIndexingAllowed =
+  (process.env.NEXT_PUBLIC_SEARCH_INDEXING ?? process.env.PUBLIC_SEARCH_INDEXING) === 'allowed';

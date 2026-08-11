@@ -1,10 +1,21 @@
 import { MetadataRoute } from 'next';
+import { isPublicEdition, searchIndexingAllowed } from '@/lib/edition';
 
+/**
+ * The workbench is never indexable. The public edition is indexable only when
+ * the owner opens it, because a crawled and cached page cannot be recalled.
+ * Owner tooling stays disallowed either way.
+ */
 export default function robots(): MetadataRoute.Robots {
+  if (!isPublicEdition || !searchIndexingAllowed) {
+    return { rules: { userAgent: '*', disallow: '/' } };
+  }
   return {
     rules: {
       userAgent: '*',
-      disallow: '/',
+      allow: '/',
+      disallow: ['/studio/', '/insights', '/api/'],
     },
+    sitemap: `${process.env.PUBLIC_SITE_ORIGIN ?? 'https://7x84grz8mb.coze.site'}/sitemap.xml`,
   };
 }

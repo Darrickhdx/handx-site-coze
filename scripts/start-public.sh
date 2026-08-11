@@ -23,6 +23,7 @@ export PUBLIC_SEARCH_INDEXING="${PUBLIC_SEARCH_INDEXING:-blocked}"
 export PUBLIC_EDITION_ACK="${PUBLIC_EDITION_ACK:-owner_authored_public_edition_v1}"
 export SITE_EDITION=public
 export NEXT_PUBLIC_SITE_EDITION=public
+export NEXT_PUBLIC_SEARCH_INDEXING="${PUBLIC_SEARCH_INDEXING}"
 
 if [[ ! -f dist/server-public.js ]]; then
     echo "dist/server-public.js is missing; run scripts/build-public.sh first." >&2
