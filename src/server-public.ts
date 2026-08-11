@@ -13,8 +13,12 @@ import {
 // name, and binding to it leaves the platform's health check unanswered.
 const hostname = process.env.PUBLIC_BIND_HOST || '0.0.0.0';
 const port = Number.parseInt(process.env.PORT || '3000', 10);
+import publicEditionConfig from './data/public-edition.json';
+
 const searchIndexing =
-  process.env.PUBLIC_SEARCH_INDEXING === 'allowed' ? 'allowed' : 'blocked';
+  (process.env.PUBLIC_SEARCH_INDEXING ?? publicEditionConfig.search_indexing) === 'allowed'
+    ? 'allowed'
+    : 'blocked';
 
 const app = next({ dev: false, hostname, port });
 const listener = createPublicEditionRuntime({

@@ -56,5 +56,12 @@ export function assertWorkbenchEdition(context: string): void {
  * that has been crawled and cached cannot be recalled, so opening indexing is
  * always a deliberate act, never a side effect of building the public edition.
  */
+import publicEdition from '@/data/public-edition.json';
+
 export const searchIndexingAllowed =
-  (process.env.NEXT_PUBLIC_SEARCH_INDEXING ?? process.env.PUBLIC_SEARCH_INDEXING) === 'allowed';
+  (process.env.NEXT_PUBLIC_SEARCH_INDEXING
+    ?? process.env.PUBLIC_SEARCH_INDEXING
+    ?? publicEdition.search_indexing) === 'allowed';
+
+export const publicSiteOrigin =
+  process.env.PUBLIC_SITE_ORIGIN ?? publicEdition.site_origin;

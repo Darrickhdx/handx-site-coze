@@ -14,9 +14,13 @@ cd "${COZE_WORKSPACE_PATH}"
 export SITE_EDITION=public
 export NEXT_PUBLIC_SITE_EDITION=public
 # Indexing is decided at build time as well as at runtime, because robots.txt,
-# the sitemap and the page metadata are all baked into the build.
-export PUBLIC_SEARCH_INDEXING="${PUBLIC_SEARCH_INDEXING:-blocked}"
-export NEXT_PUBLIC_SEARCH_INDEXING="${PUBLIC_SEARCH_INDEXING}"
+# the sitemap and the page metadata are all baked into the build. The decision
+# itself lives in src/data/public-edition.json; only forward an override when one
+# was actually given, otherwise this would shadow the committed value.
+if [[ -n "${PUBLIC_SEARCH_INDEXING:-}" ]]; then
+    export PUBLIC_SEARCH_INDEXING
+    export NEXT_PUBLIC_SEARCH_INDEXING="${PUBLIC_SEARCH_INDEXING}"
+fi
 
 # Dependencies first: the verifiers below run through tsx, which does not exist
 # until node_modules does. On a fresh checkout — which is exactly what the build

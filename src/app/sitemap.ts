@@ -1,9 +1,9 @@
 import { MetadataRoute } from 'next';
-import { isPublicEdition, searchIndexingAllowed } from '@/lib/edition';
+import { isPublicEdition, publicSiteOrigin, searchIndexingAllowed } from '@/lib/edition';
 import { articleBodies } from '@/content/editorial';
 import { commentableNovelSections } from '@/lib/novel';
 
-const origin = process.env.PUBLIC_SITE_ORIGIN ?? 'https://7x84grz8mb.coze.site';
+const origin = publicSiteOrigin;
 
 /**
  * Reader routes only. Owner tooling is excluded from the public edition

@@ -1,0 +1,7 @@
+{
+  "schema_version": "handx-public-edition-1.0",
+  "note": "公开版的发布决定。放在仓库里而不是平台环境变量里：开放收录是一次需要留痕的决定，应该是一条能被看见的提交，而不是某个后台里被人悄悄拨动的开关。",
+  "search_indexing": "allowed",
+  "search_indexing_note": "allowed 表示允许搜索引擎收录。改回 blocked 会同时关闭 robots.txt、sitemap、页面 metadata 与响应头——但已经被抓取和缓存的页面无法收回。",
+  "site_origin": "https://7x84grz8mb.coze.site"
+}

@@ -1,10 +1,14 @@
+import { readFileSync } from 'node:fs';
 import type { NextConfig } from 'next';
 
 // Resolved here rather than imported from src/lib/edition: next.config runs
 // before path aliases exist.
+const publicEdition = JSON.parse(
+  readFileSync(new URL('./src/data/public-edition.json', import.meta.url), 'utf8'),
+) as { search_indexing: string };
 const indexable =
   process.env.SITE_EDITION === 'public'
-  && process.env.PUBLIC_SEARCH_INDEXING === 'allowed';
+  && (process.env.PUBLIC_SEARCH_INDEXING ?? publicEdition.search_indexing) === 'allowed';
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
