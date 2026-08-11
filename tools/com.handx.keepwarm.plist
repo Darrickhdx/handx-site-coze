@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Keep-warm ping from this Mac, as a stopgap until the repository is public and
+  .github/workflows/keep-warm.yml can run.
+
+  It only fires while the Mac is awake, which is the honest limitation: traffic
+  from short videos arrives at all hours, and this covers the hours you are at
+  the machine. Treat it as better than nothing, not as the answer.
+
+  Install:
+    cp tools/com.handx.keepwarm.plist ~/Library/LaunchAgents/
+    launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.handx.keepwarm.plist
+
+  Remove:
+    launchctl bootout gui/$(id -u)/com.handx.keepwarm
+    rm ~/Library/LaunchAgents/com.handx.keepwarm.plist
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.handx.keepwarm</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/bin/curl</string>
+        <string>-s</string>
+        <string>-o</string>
+        <string>/dev/null</string>
+        <string>--max-time</string>
+        <string>30</string>
+        <string>https://7x84grz8mb.coze.site/robots.txt</string>
+    </array>
+    <key>StartInterval</key>
+    <integer>480</integer>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>ProcessType</key>
+    <string>Background</string>
+    <key>LowPriorityIO</key>
+    <true/>
+</dict>
+</plist>

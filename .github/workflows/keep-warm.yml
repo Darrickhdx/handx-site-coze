@@ -1,0 +1,46 @@
+name: keep-warm
+
+# Keep the Coze instance from scaling to zero.
+#
+# Measured on the live site: fully warm after 10 minutes idle (0.23s), starting
+# to cool at 15 (1.75s), and 11.5s on the first request after a long idle. The
+# people who pay that 11.5s are exactly the ones who matter — someone arriving
+# alone from a short video, hours after the last visitor. They do not wait.
+#
+# The schedule is every 5 minutes rather than every 10 because GitHub's cron is
+# best effort and is routinely late by 5-15 minutes under load. The margin is
+# for the lateness, not for the instance.
+#
+# A request to robots.txt is enough: cold start is process start, so any request
+# pays it. It also keeps the traffic dashboard honest — page views are recorded
+# by a browser beacon, so curl never appears in the numbers.
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: keep-warm
+  cancel-in-progress: true
+
+permissions: {}
+
+jobs:
+  ping:
+    # Scheduled workflows bill against the free minutes on a private repository,
+    # and 288 runs a day would exhaust the monthly allowance several times over.
+    # On a public repository they are free. This job is therefore inert until
+    # the repository is public, rather than being a bill that arrives quietly.
+    if: github.event.repository.private == false
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Ping the public site
+        run: |
+          code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 30 \
+            https://7x84grz8mb.coze.site/robots.txt)
+          echo "robots.txt -> ${code}"
+          # A non-200 here means the site is down, not merely cold. Failing makes
+          # that visible in the Actions tab instead of silently pinging nothing.
+          [ "${code}" = "200" ]
