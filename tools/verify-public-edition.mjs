@@ -77,7 +77,7 @@ if (!existsSync(join(projectRoot, 'dist/server-public.js'))) {
 }
 
 // 3. The owner's private runtime must not be part of the build output.
-if (existsSync(join(projectRoot, '.next/standalone/private-runtime'))) {
+if (existsSync(join(projectRoot, '.next-public/standalone/private-runtime'))) {
   fail('private-runtime was copied into the build output');
 }
 

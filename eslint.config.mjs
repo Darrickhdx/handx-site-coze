@@ -39,6 +39,8 @@ const eslintConfig = defineConfig([
   globalIgnores([
     // Default ignores of eslint-config-next:
     '.next/**',
+    // The public edition builds here; both outputs must be ignored.
+    '.next-public/**',
     'out/**',
     'build/**',
     'next-env.d.ts',

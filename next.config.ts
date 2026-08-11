@@ -10,7 +10,14 @@ const indexable =
   process.env.SITE_EDITION === 'public'
   && (process.env.PUBLIC_SEARCH_INDEXING ?? publicEdition.search_indexing) === 'allowed';
 
+// The two editions must not share a build directory. They differ in robots,
+// headers and which routes exist, so whichever built last would otherwise be
+// served by whichever server started — a workbench process happily serving a
+// public build, with /insights 404ing because the public edition excludes it.
+const distDir = process.env.SITE_EDITION === 'public' ? '.next-public' : '.next';
+
 const nextConfig: NextConfig = {
+  distDir,
   poweredByHeader: false,
   async headers() {
     return [

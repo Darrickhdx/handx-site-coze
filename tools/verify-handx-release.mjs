@@ -75,6 +75,8 @@ function walk(path) {
       || relPath.startsWith('node_modules/')
       || relPath === '.next'
       || relPath.startsWith('.next/')
+      || relPath === '.next-public'
+      || relPath.startsWith('.next-public/')
       || relPath === 'dist'
       || relPath.startsWith('dist/')
       || relPath === 'private-runtime'
