@@ -21,6 +21,12 @@ const isPublic = process.env.SITE_EDITION === 'public';
 const nextConfig: NextConfig = {
   distDir,
   poweredByHeader: false,
+  // Each edition type-checks against its own generated route types. Next writes
+  // them into distDir and registers them in whichever tsconfig it is handed, so
+  // a shared one ends up holding both editions' route unions at once — and once
+  // the two editions genuinely build different route sets, neither union
+  // satisfies the other and the build fails on a file nobody wrote.
+  typescript: { tsconfigPath: isPublic ? 'tsconfig.public.json' : 'tsconfig.json' },
   // The research explorer is excluded from the public bundle at resolve time,
   // not by a runtime branch. A runtime branch stops it rendering; only this
   // stops its code — and the research field names inside it — from being

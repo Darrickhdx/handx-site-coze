@@ -20,12 +20,23 @@ import {
   auditSourceById,
   claimStatusLabels,
 } from '@/lib/graph-wiki-data';
+import { isPublicEdition } from '@/lib/edition';
+import { publicArchivePaths } from '@/data/public-routes';
 
 type ArchiveSourcePageProps = {
   params: Promise<{ sourceId: string }>;
 };
 
 export function generateStaticParams() {
+  // The workbench renders every registered source. The public edition renders
+  // only the ones it serves — otherwise 131 pages are prerendered so that 26
+  // can be reached, and the other 105 sit in the deployment as files whose
+  // only protection is that their URL returns 404.
+  if (isPublicEdition) {
+    return publicArchivePaths.map((path) => ({
+      sourceId: path.replace('/archives/', ''),
+    }));
+  }
   return auditGraph.sources.map((source) => ({ sourceId: source.source_id }));
 }
 

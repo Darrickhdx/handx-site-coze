@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { isPublicEdition, publicSiteOrigin, searchIndexingAllowed } from '@/lib/edition';
 import { articleBodies } from '@/content/editorial';
 import { commentableNovelSections } from '@/lib/novel';
-import { publicPagePaths } from '@/data/public-routes';
+import { publicArchivePaths, publicPagePaths } from '@/data/public-routes';
 
 const origin = publicSiteOrigin;
 
@@ -39,6 +39,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${origin}${path}`,
       changeFrequency: 'weekly' as const,
       priority: priorities[path] ?? 0.5,
+    })),
+    // The archive pages the allow-list opens. Advertising exactly what is
+    // served is the reason both read publicPagePaths/publicArchivePaths.
+    ...publicArchivePaths.map((path) => ({
+      url: `${origin}${path}`,
+      changeFrequency: 'monthly' as const,
+      priority: 0.4,
     })),
     ...Object.keys(articleBodies).map((slug) => ({
       url: `${origin}/discover/${slug}`,

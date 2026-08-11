@@ -1,0 +1,14 @@
+{
+  "//": "The public edition's TypeScript program. next.config.ts points the public build at this file.",
+  "//why": "Next generates route types into its distDir and adds them to whichever tsconfig it is using. With one shared tsconfig, both editions' generated types land in the same program and collide — .next/types declares LayoutRoutes including '/insights', .next-public/types declares it without, and neither satisfies the other. Each edition gets its own file so each program sees only its own routes.",
+  "extends": "./tsconfig.json",
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.mts",
+    ".next-public/types/**/*.ts",
+    ".next-public/dev/types/**/*.ts"
+  ],
+  "exclude": ["node_modules", "dist", ".next", ".next-public/standalone"]
+}

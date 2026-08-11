@@ -92,6 +92,27 @@ for path in /data/graph/audit-graph.json /data/graph/legacy-graph.json \
 done
 echo "ok: research data files are not downloadable"
 
+# Archive pages: the three curated anchors plus every source a published page
+# cites, and nothing else. The register holds 131; the rest must not answer.
+# Both lists are derived from the register and the committed citation set, not
+# typed out here: a hand-picked "uncited" id silently becomes a no-op the day
+# someone cites it, and the test goes on passing while proving nothing.
+CITED=$(node -p "require('./src/data/public-cited-sources.json').source_ids.slice(0,5).join(' ')")
+UNCITED=$(node -p "
+  const cited = new Set(require('./src/data/public-cited-sources.json').source_ids);
+  require('./research-data/graph/audit-graph.json').sources
+    .map(s => s.source_id).filter(id => !cited.has(id)).slice(0, 5).join(' ')")
+[[ -n "${UNCITED}" ]] || fail "no uncited sources found; the negative case would prove nothing"
+for id in ${CITED}; do
+    code=$(status_of "/archives/${id}")
+    [[ "${code}" == "200" ]] || fail "/archives/${id} returned ${code}; cited archive pages must serve"
+done
+for id in ${UNCITED}; do
+    code=$(status_of "/archives/${id}")
+    [[ "${code}" == "404" ]] || fail "/archives/${id} returned ${code}; uncited sources must not be published"
+done
+echo "ok: archive pages are limited to cited sources"
+
 # The allow-list must not be walkable.
 for path in /discover/../wiki /%2e%2e/wiki /assets/../data/sources.json; do
     code=$(status_of "${path}")

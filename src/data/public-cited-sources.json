@@ -1,0 +1,33 @@
+{
+  "schema_version": "handx-public-cited-sources-1",
+  "derived_from": "citations rendered on published pages of the public build",
+  "scanned_pages": 69,
+  "source_ids": [
+    "SRC-001",
+    "SRC-002",
+    "SRC-004",
+    "SRC-010",
+    "SRC-011",
+    "SRC-013",
+    "SRC-014",
+    "SRC-017",
+    "SRC-022",
+    "SRC-023",
+    "SRC-026",
+    "SRC-028",
+    "SRC-029",
+    "SRC-036",
+    "SRC-037",
+    "SRC-039",
+    "SRC-040",
+    "SRC-042",
+    "SRC-083",
+    "SRC-088",
+    "SRC-090",
+    "SRC-091",
+    "SRC-092",
+    "SRC-095",
+    "SRC-103",
+    "SRC-104"
+  ]
+}

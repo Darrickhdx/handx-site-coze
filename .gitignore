@@ -194,3 +194,7 @@ Desktop.ini
 # Misc
 .coze-logs
 .codegraph/
+
+# Route directories moved aside during a public build (tools/stage-public-routes.mjs).
+# Present only while a build is running; restored by the build trap.
+.public-build-excluded

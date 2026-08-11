@@ -50,7 +50,9 @@
     "payload:verify": "tsx tools/verify-client-payload.ts",
     "story:build": "tsx tools/build-public-story.ts",
     "story:verify": "tsx tools/build-public-story.ts --check",
-    "bundle:verify": "tsx tools/verify-public-bundle.ts"
+    "bundle:verify": "tsx tools/verify-public-bundle.ts",
+    "cited:build": "tsx tools/build-cited-sources.ts",
+    "cited:verify": "tsx tools/build-cited-sources.ts --check"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.958.0",

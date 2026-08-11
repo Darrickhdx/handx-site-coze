@@ -15,6 +15,7 @@
  */
 
 import { archiveReadingMoments } from '@/content/archive-reading';
+import citedSources from '@/data/public-cited-sources.json';
 
 /** Reader pages, matched exactly. */
 export const publicPagePaths = [
@@ -46,17 +47,26 @@ export const publicPagePrefixes = [
 ] as const;
 
 /**
- * Archive pages are the exception, and are listed one by one.
+ * Archive pages are the exception, and are enumerated rather than prefixed.
  *
  * /archives/[sourceId] builds its params from auditGraph.sources, so it
- * prerenders a page for every registered source — 131 of them, each with the
- * source's metadata, locator and related claims. Three of those are cleared
- * for publication. A prefix rule here would publish the other 128, which is
- * exactly what was happening.
+ * prerenders a page for every registered source — 131 of them. A prefix rule
+ * here would publish all 131, which is exactly what was happening.
+ *
+ * The published subset is the three curated anchors plus every source a
+ * published page actually cites, derived by tools/build-cited-sources.ts from
+ * the built pages themselves. The owner's rule is that a citation shown to a
+ * reader should lead somewhere; deriving it means the set follows the writing
+ * instead of being a second list to keep in step with it.
  */
-export const publicArchivePaths = archiveReadingMoments.map(
-  (moment) => `/archives/${moment.sourceId}`,
-);
+export const publicArchivePaths = [
+  ...new Set([
+    ...archiveReadingMoments.map((moment) => moment.sourceId),
+    ...citedSources.source_ids,
+  ]),
+]
+  .sort()
+  .map((sourceId) => `/archives/${sourceId}`);
 
 /**
  * Everything a published page needs to render, and nothing else. Note what is

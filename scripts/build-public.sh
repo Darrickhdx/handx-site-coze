@@ -11,6 +11,14 @@ set -Eeuo pipefail
 COZE_WORKSPACE_PATH="${COZE_WORKSPACE_PATH:-$(pwd)}"
 cd "${COZE_WORKSPACE_PATH}"
 
+# Unpublished routes are moved out of src/app for the duration of the build and
+# restored by the trap below. The allow-list stops them answering; this stops
+# them being compiled, so their HTML and chunks are not in the deployment at all.
+# The trap covers ordinary failures and Ctrl-C; --exclude also restores first,
+# so even a killed build cannot leave the tree short of its workbench routes.
+restore_routes() { node tools/stage-public-routes.mjs --restore || true; }
+trap restore_routes EXIT INT TERM
+
 export SITE_EDITION=public
 export NEXT_PUBLIC_SITE_EDITION=public
 # Indexing is decided at build time as well as at runtime, because robots.txt,
@@ -46,6 +54,9 @@ node tools/build-public-atlas.mjs --check
 pnpm exec tsx tools/build-public-story.ts --check
 pnpm exec tsx tools/verify-client-payload.ts
 
+echo "Excluding unpublished routes from the build..."
+node tools/stage-public-routes.mjs --exclude
+
 echo "Building public edition..."
 pnpm next build
 
@@ -54,6 +65,10 @@ pnpm tsup src/server-public.ts --format cjs --platform node --target node20 \
   --outDir dist --no-splitting --no-minify
 
 echo "Verifying the public build..."
+# After the build, because it reads the citations off the built pages. If it
+# reports staleness, regenerate with `pnpm cited:build`, commit, and build
+# again: the allow-list is committed data, not a build-time discovery.
+pnpm exec tsx tools/build-cited-sources.ts --check
 node tools/verify-public-edition.mjs
 pnpm exec tsx tools/verify-public-bundle.ts
 
