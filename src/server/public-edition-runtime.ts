@@ -1,5 +1,6 @@
 import type { IncomingMessage, RequestListener, ServerResponse } from 'node:http';
 import { handleAnalytics, handleAnalyticsSummary } from './public-analytics';
+import { handleCommentRead, handleCommentWrite } from './feishu-comments';
 
 /**
  * The public edition's HTTP shell.
@@ -107,6 +108,14 @@ export function createPublicEditionRuntime(
     }
     if (path === '/api/site/summary') {
       void handleAnalyticsSummary(request, response);
+      return;
+    }
+
+    // Reader comments. Stored in a Feishu Bitable so the owner moderates in an
+    // app they already use; nothing submitted here is visible until they do.
+    if (path === '/api/site/comments') {
+      if (request.method === 'POST') void handleCommentWrite(request, response, options.siteOrigin);
+      else void handleCommentRead(request, response);
       return;
     }
 

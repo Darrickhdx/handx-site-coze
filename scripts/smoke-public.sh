@@ -109,4 +109,22 @@ code=$(status_of /api/site/summary)
 [[ "${code}" == "404" ]] || fail "analytics summary is reachable without a token (${code})"
 echo "ok: analytics accepts valid beacons, rejects malformed ones, hides the summary"
 
+# Comments must validate independently of whether Feishu is configured, and
+# reading must degrade to an empty list rather than an error: a comment backend
+# being unreachable can never break a chapter page.
+code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 10 \
+    "${BASE}/api/site/comments?chapter=hero-wuming-v1-5--chapter-01")
+[[ "${code}" == "200" ]] || fail "comment read returned ${code}, expected 200"
+code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 10 "${BASE}/api/site/comments?chapter=../etc")
+[[ "${code}" == "400" ]] || fail "comment read accepted a malformed chapter id (${code})"
+code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 10 -X POST "${BASE}/api/site/comments" \
+    -H 'Content-Type: application/json' \
+    -d '{"chapter_id":"chapter-01","body":"a","session_id":"smoketestsession1"}')
+[[ "${code}" == "400" ]] || fail "comment write accepted a too-short body (${code})"
+code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 10 -X POST "${BASE}/api/site/comments" \
+    -H 'Content-Type: application/json' \
+    -d '{"chapter_id":"chapter-01","body":"来看 https://spam.example.com 啊","session_id":"smoketestsession1"}')
+[[ "${code}" == "400" ]] || fail "comment write accepted a link (${code})"
+echo "ok: comments validate, and reading degrades safely when unconfigured"
+
 echo "PASS: public edition smoke passed on ${BASE}"

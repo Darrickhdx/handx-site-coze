@@ -36,6 +36,7 @@ export type LocalInteractionRouter = (
   requestUrl: URL,
 ) => Promise<boolean>;
 
+
 export function createLocalInteractionRouter(
   options: Readonly<LocalInteractionOptions>,
 ): LocalInteractionRouter {
@@ -1643,6 +1644,32 @@ export function createLocalInteractionRouter(
   }
   
   
+  /**
+   * Serve the traffic snapshot written by tools/sync-public-traffic.mjs.
+   * Read-only and loopback-only like every other endpoint here; the fetch that
+   * produced it happens in tools/, because src/ must stay free of network
+   * egress and the workbench CSP is connect-src 'self'.
+   */
+  function handlePublicTrafficSnapshot(
+    request: IncomingMessage,
+    response: ServerResponse,
+  ): void {
+    if (request.method !== 'GET') {
+      sendJson(response, 405, { error: 'method_not_allowed' });
+      return;
+    }
+    const target = resolve(options.privateDataDirectory, 'public-traffic.json');
+    if (!existsSync(target)) {
+      sendJson(response, 200, { rows: [], status: 'never_synced' });
+      return;
+    }
+    try {
+      sendJson(response, 200, readPrivateJsonObject(target, 2_000_000));
+    } catch {
+      sendJson(response, 200, { rows: [], status: 'unreadable' });
+    }
+  }
+
   return async (request, response, requestUrl) => {
     const pathname = requestUrl.pathname;
     if (pathname === "/api/local/analytics") {
@@ -1675,6 +1702,10 @@ export function createLocalInteractionRouter(
     }
     if (pathname === "/api/local/corpus-hits") {
       handleLocalCorpusHits(request, response, requestUrl);
+      return true;
+    }
+    if (pathname === "/api/local/public-traffic") {
+      handlePublicTrafficSnapshot(request, response);
       return true;
     }
     if (pathname === "/api/local/research-missions") {
