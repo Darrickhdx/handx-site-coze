@@ -9,9 +9,7 @@ import {
 import { personaBridge, profile } from '@/content/profile';
 import { aiProofs, selectedContents } from '@/content/site';
 
-// Delivered work, not a résumé. The twenty-year hardware record still matters
-// and stays on /about; leading with it here pulled the persona back toward
-// "product director at a large company", which is what this rewrite moves away from.
+// Site deliverables complement the personal introduction and project experience.
 const trustProofs = [
   {
     value: '538 页',
@@ -35,21 +33,20 @@ export default function HomePage() {
           <div className="relative z-10 max-w-[45rem]">
             <p className="personal-kicker">
               <span aria-hidden="true" />
-              Indie developer · AI workflows
+              AI · Hardware · Product
             </p>
             <p className="mt-6 text-sm font-semibold tracking-[0.15em] text-primary uppercase">
               {profile.displayName}
             </p>
             <h1 className="personal-display mt-4 text-[clamp(1.95rem,3.05vw,2.9rem)] font-semibold leading-[1.01] tracking-[-0.058em]">
-              一个人，
-              <span className="block text-accent">把复杂的东西做完整。</span>
+              从真实现场，
+              <span className="block text-accent">连接产品、业务与 AI。</span>
             </h1>
             <p className="mt-6 max-w-2xl font-serif text-lg leading-relaxed text-foreground sm:text-base">
               {personaBridge}
             </p>
             <p className="mt-4 max-w-2xl text-[15px] leading-[1.7] text-muted-foreground">
-              我用 AI 做完整的东西：一本 538 页的书、一座自己写的网站、一条能重复跑的考据流水线——
-              起点是一个被历史漏掉的人。
+              {profile.homeBio}
             </p>
             <div className="mt-7 flex flex-col gap-4 sm:flex-row sm:items-center">
               <Link
@@ -65,7 +62,7 @@ export default function HomePage() {
                 className="story-text-link"
                 data-amplitude-event="home_profile_opened"
               >
-                看我是怎么做出来的
+                看 AI 与产品实践
                 <ArrowRight className="size-4" aria-hidden="true" />
               </Link>
             </div>
@@ -110,8 +107,8 @@ export default function HomePage() {
               },
               {
                 number: '02',
-                title: '我想看是怎么做的',
-                description: '一个人的 AI 内容流水线、知识工程与这座网站本身。',
+                title: '我想了解 AI 与产品',
+                description: '日本业务、软硬件产品、信息研究与传统行业数字化的实践。',
                 href: '/ai',
               },
               {

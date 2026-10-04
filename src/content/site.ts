@@ -89,8 +89,8 @@ export const aiProofs: readonly AiProof[] = [
     number: '03',
     eyebrow: 'AI × 硬件与行业系统',
     title: '知道真实世界会在哪里卡住',
-    description: '智能终端、移动支付与线下商业系统的二十多年（本人履历）。现在它是判断约束的底子。',
-    note: '不是当前主业，是判断力的来源',
+    description: '18 年多产品与工程经历（本人提供），连接嵌入式硬件、移动支付、客户交付与日本业务经营。',
+    note: '关注日本业务与传统行业数字化',
     icon: Cpu,
   },
 ] as const;

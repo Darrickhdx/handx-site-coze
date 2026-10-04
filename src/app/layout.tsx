@@ -9,14 +9,17 @@ const indexable = isPublicEdition && searchIndexingAllowed;
 
 export const metadata: Metadata = {
   title: {
-    default: '鉴真小秃驴｜独立开发者',
+    default: '鉴真小秃驴｜AI 产品与软硬件实践者',
     template: '%s · 鉴真小秃驴',
   },
   description:
-    '独立开发者鉴真小秃驴的个人网站：用 AI 把复杂的东西做完整——538 页的《英雄无名》全书免费读、一条可重跑的考据流水线，以及这座网站本身。',
+    '鉴真小秃驴的个人网站：AI 产品与软硬件实践者，关注日本业务与传统行业数字化。记录产品经历、AI 信息研究、苏开元研究与《英雄无名》创作。',
   keywords: [
     '鉴真小秃驴',
-    '独立开发者',
+    'AI 产品',
+    '软硬件产品',
+    '日本业务',
+    '传统行业数字化',
     'AI 工作流',
     '内容流水线',
     '知识图谱',
@@ -26,8 +29,8 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: '鉴真小秃驴' }],
   openGraph: {
-    title: '鉴真小秃驴｜独立开发者',
-    description: '一个人，用 AI 把复杂的东西做完整。',
+    title: '鉴真小秃驴｜AI 产品与软硬件实践者',
+    description: '从真实业务现场出发，连接硬件、软件、数据与 AI，关注日本业务与传统行业数字化。',
     type: 'website',
     locale: 'zh_CN',
   },

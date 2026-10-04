@@ -13,7 +13,14 @@ import {
   careerExperience,
   education,
   profile,
+  projectExperience,
 } from '@/content/profile';
+
+const backgroundExperience = [
+  careerExperience[1],
+  careerExperience[2],
+  careerExperience[4],
+] as const;
 
 export default function AboutPage() {
   return (
@@ -34,10 +41,13 @@ export default function AboutPage() {
             <p className="mt-6 max-w-2xl font-serif text-lg leading-relaxed text-foreground sm:text-base">
               工程师的底子，产品人的方法，
               <br />
-              现在重新投入 AI。
+              从真实现场连接软硬件与 AI。
             </p>
             <p className="mt-5 max-w-2xl text-[15px] leading-[1.7] text-muted-foreground">
               {profile.homeBio}
+            </p>
+            <p className="mt-4 max-w-2xl text-[15px] leading-[1.7] text-muted-foreground">
+              {profile.aboutBio}
             </p>
             <div className="mt-7 flex flex-col gap-4 sm:flex-row sm:items-center">
               <a href="#contact" className="story-button personal-button-primary">
@@ -45,7 +55,7 @@ export default function AboutPage() {
                 <ArrowRight className="size-4" aria-hidden="true" />
               </a>
               <Link href="/ai" className="story-text-link">
-                看独立开发实践
+                看 AI 与产品实践
                 <ArrowRight className="size-4" aria-hidden="true" />
               </Link>
             </div>
@@ -81,7 +91,7 @@ export default function AboutPage() {
           </div>
           <div className="max-w-3xl space-y-7 text-lg leading-9 text-muted-foreground">
             <p>
-              过去二十多年，我一直在智能终端、移动支付和线下商业系统里工作。
+              过去 18 年多，我从嵌入式硬件研发走向产品定义、软件平台、客户交付与日本业务经营。
               我喜欢的不是把一项技术讲得多玄，而是把它放进真实现场：设备能不能生产，系统能不能接通，
               用户愿不愿意使用，团队能不能长期维护。
             </p>
@@ -92,7 +102,7 @@ export default function AboutPage() {
             </p>
             <p>
               “苏开元计划”则让这件事有了私人而具体的起点。
-              我想寻找曾祖父的真实经历，也想验证：一个普通人能否借助 AI，把数百份杂乱材料变成一套可核验、
+              我想寻找家族先人的真实经历，也想验证：一个普通人能否借助 AI，把分散的材料变成一套可核验、
               可连接、可讲述的个人知识系统。
             </p>
 
@@ -120,26 +130,56 @@ export default function AboutPage() {
                 <span aria-hidden="true" />
                 Product journey
               </p>
-              <h2 className="personal-heading mt-6">一条从工程到产品的路径。</h2>
+              <h2 className="personal-heading mt-6">从工程到产品，再到真实业务。</h2>
             </div>
             <p className="max-w-2xl text-[15px] leading-[1.7] text-muted-foreground">
-              从大型技术组织，到移动支付、智能商业和日本自动贩卖机市场，
-              我的工作始终围绕软硬件、系统与真实业务的连接。
+              六项项目经历，连接日本业务、软硬件产品与传统行业数字化。
+              时间、职务与负责范围由本人提供，项目阶段按当前进展呈现。
             </p>
           </div>
 
           <ol className="divide-y divide-foreground/15 border-b border-foreground/15">
-            {careerExperience.map((item, index) => (
+            {projectExperience.map((item, index) => (
               <li
-                key={item.organization}
+                key={item.projectTitle}
                 className="grid gap-5 py-7 sm:grid-cols-[3rem_minmax(13rem,0.72fr)_minmax(0,1.28fr)] sm:items-start"
               >
                 <span className="font-serif text-lg text-primary/40">0{index + 1}</span>
                 <span>
-                  <strong className="block font-serif text-base">{item.organization}</strong>
+                  <strong className="block font-serif text-base">{item.projectTitle}</strong>
                   <span className="mt-2 block text-xs font-semibold tracking-[0.08em] text-primary uppercase">
-                    {item.role}
+                    {item.period ? `${item.period} · ` : ''}{item.role}
                   </span>
+                  <span className="mt-2 block text-xs text-muted-foreground">{item.status}</span>
+                </span>
+                <div className="text-sm leading-[1.7] text-muted-foreground">
+                  <p>{item.description}</p>
+                  {item.projectFact && <p className="mt-3">{item.projectFact}</p>}
+                  {item.evidenceBoundary && (
+                    <p className="mt-3 text-xs leading-6">{item.evidenceBoundary}</p>
+                  )}
+                  {item.sources && (
+                    <div className="mt-3 flex flex-wrap gap-x-4 gap-y-2 text-xs">
+                      {item.sources.map((source) => (
+                        <a key={source.url} href={source.url} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-primary">
+                          {source.label}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ol>
+
+          <h3 className="mt-9 font-serif text-lg font-semibold">既有产品与早期工程背景</h3>
+          <ol className="mt-4 divide-y divide-foreground/15 border-y border-foreground/15">
+            {backgroundExperience.map((item, index) => (
+              <li key={item.organization} className="grid gap-5 py-7 sm:grid-cols-[3rem_minmax(13rem,0.72fr)_minmax(0,1.28fr)] sm:items-start">
+                <span className="font-serif text-lg text-primary/40">0{index + 1}</span>
+                <span>
+                  <strong className="block font-serif text-base">{item.organization}</strong>
+                  <span className="mt-2 block text-xs font-semibold tracking-[0.08em] text-primary uppercase">{item.role}</span>
                 </span>
                 <span className="text-sm leading-[1.7] text-muted-foreground">{item.description}</span>
               </li>
@@ -155,6 +195,11 @@ export default function AboutPage() {
               查看代表案例
               <ArrowRight className="size-4" aria-hidden="true" />
             </Link>
+          </div>
+
+          <div className="mt-9 border-t border-foreground/15 pt-7">
+            <h3 className="font-serif text-lg font-semibold">我的工作方法</h3>
+            <p className="mt-4 max-w-3xl text-sm leading-[1.7] text-muted-foreground">{profile.workingMethod}</p>
           </div>
         </div>
       </section>

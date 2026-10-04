@@ -10,7 +10,7 @@ import {
   ShieldCheck,
   Sparkles,
 } from 'lucide-react';
-import { aiPracticeAreas, careerExperience, profile } from '@/content/profile';
+import { aiPracticeAreas, profile, projectExperience } from '@/content/profile';
 
 const capabilityIcons = [Cpu, Network, ScanSearch] as const;
 
@@ -18,12 +18,6 @@ const capabilityOutcomes = [
   '从使用场景、设备约束到量产与运维，形成可执行的 AI 硬件产品方案。',
   '梳理现有流程与系统边界，找到 AI 值得接入、能够验证的最小闭环。',
   '把分散资料整理成可追溯、可检索、可持续生产内容的个人知识系统。',
-] as const;
-
-const representativeCases = [
-  careerExperience[0],
-  careerExperience[1],
-  careerExperience[2],
 ] as const;
 
 const collaborationModes = [
@@ -65,9 +59,8 @@ export default function AiProductPage() {
               {profile.statement}
             </p>
             <p className="mt-4 max-w-3xl text-[15px] leading-[1.7] text-muted-foreground">
-              我把二十多年软硬一体、智能终端与行业系统经验，转化为一套面向 AI
-              时代的产品方法：先找到业务中的真实问题，再连接设备、数据、系统与人的工作流程，
-              最后用可以验证的结果决定是否继续投入。
+              18 年多产品与工程经历，覆盖嵌入式硬件、移动支付、视觉与边缘计算、客户交付和日本业务。
+              我关注 AI 信息研究、售货机智能运营和大型设施数字化，用可以验证的结果决定下一步投入。
             </p>
             <div className="mt-7 flex flex-col gap-4 sm:flex-row sm:items-center">
               <a href="#capabilities" className="story-button personal-button-primary">
@@ -92,14 +85,14 @@ export default function AiProductPage() {
               Working principle
             </p>
             <h2 className="mt-3 font-serif text-xl font-semibold leading-tight tracking-[-0.035em] sm:text-base">
-              判断一个 AI 项目是否值得做，我先问四个问题。
+              从现场问题到验收，先明确四件事。
             </h2>
             <ol className="mt-6 space-y-4 text-sm leading-[1.7] text-muted-foreground">
               {[
-                '它解决的是谁在现场反复遇到的问题？',
-                '它需要哪些设备、数据和系统共同工作？',
-                '最小可验证结果是什么，谁来判断它有效？',
-                '验证之后，能否稳定部署、维护并持续改进？',
+                '找到现场问题，明确目标、边界与优先级。',
+                '梳理数据、业务流程与系统接口，约定验收标准。',
+                '用原型和小试点验证，再决定投入范围。',
+                '组织研究、设计、开发与测试协作，跟进交付和验收。',
               ].map((question, index) => (
                 <li key={question} className="grid grid-cols-[2rem_1fr] gap-3">
                   <span className="font-serif text-base text-primary">0{index + 1}</span>
@@ -161,19 +154,19 @@ export default function AiProductPage() {
               </p>
               <Boxes className="mt-8 size-8 text-[#c38a82]" strokeWidth={1.4} aria-hidden="true" />
               <h2 className="mt-7 max-w-xl font-serif text-2xl font-semibold leading-tight tracking-[-0.04em] sm:text-2xl">
-                三个产品样本，
-                <span className="block text-[#c38a82]">证明的是方法，不是英雄叙事。</span>
+                六项项目经历，
+                <span className="block text-[#c38a82]">连接产品、现场与业务。</span>
               </h2>
               <p className="mt-6 max-w-xl text-sm leading-[1.7] text-[#bdb9b0]">
-                这些公开资料可以核验产品和时代背景；站主的任职、负责范围与具体贡献目前以本人履历为主，
-                因此两类信息始终分开呈现。
+                个人任职、项目时间与负责范围由本人提供。已有公开资料用于核对产品背景与获奖；
+                研发验证和试点准备中的项目，按当前阶段呈现。
               </p>
             </div>
 
             <div className="space-y-5">
-              {representativeCases.map((item, index) => (
+              {projectExperience.map((item, index) => (
                 <article
-                  key={item.organization}
+                  key={item.projectTitle}
                   className="border border-white/15 bg-white/[0.035] p-6 sm:p-8"
                 >
                   <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
@@ -186,9 +179,13 @@ export default function AiProductPage() {
                       </h3>
                     </div>
                     <span className="shrink-0 border border-white/15 px-3 py-2 text-xs text-[#bdb9b0]">
-                      {item.organization}
+                      {item.status}
                     </span>
                   </div>
+
+                  <p className="mt-4 text-xs leading-6 text-[#bdb9b0]">
+                    {item.period ? `${item.period} · ` : ''}{item.role} · {item.organization}
+                  </p>
 
                   {item.projectFact && (
                     <div className="mt-6 grid gap-3 sm:grid-cols-[8rem_1fr]">
@@ -213,6 +210,16 @@ export default function AiProductPage() {
                       </summary>
                       <p className="mt-3 leading-7">{item.evidenceBoundary}</p>
                     </details>
+                  )}
+
+                  {item.sources && (
+                    <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 border-t border-white/10 pt-5 text-xs text-[#c38a82]">
+                      {item.sources.map((source) => (
+                        <a key={source.url} href={source.url} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-[#f3efe7]">
+                          {source.label}
+                        </a>
+                      ))}
+                    </div>
                   )}
                 </article>
               ))}
