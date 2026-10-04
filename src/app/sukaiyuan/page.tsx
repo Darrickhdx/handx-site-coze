@@ -11,7 +11,9 @@ import {
 import { ProjectSectionNav } from '@/components/project-section-nav';
 import { peopleDossiers } from '@/content/people-dossiers';
 import { suKaiyuanArchiveGroups } from '@/content/site';
+import { recentResearchReadings, researchUpdateDate, researchUpdateOpenQuestions } from '@/content/research-updates';
 import { graphManifest } from '@/lib/graph-wiki-data';
+import { novelManifest } from '@/lib/novel';
 
 export default function SuKaiyuanPage() {
   const supportingPeople = peopleDossiers.filter((person) => person.entityId !== 'P-001');
@@ -29,11 +31,11 @@ export default function SuKaiyuanPage() {
             </div>
             <h1 className="sukaiyuan-title mt-7">寻找苏开元</h1>
             <p className="mt-4 font-serif text-lg leading-relaxed text-[#d7cfc2] sm:text-base">
-              一行旧字，把我带回曾祖父的名字。
+              一行旧字，把我带回家族记忆中的名字。
             </p>
             <p className="mt-6 max-w-2xl text-[15px] leading-[1.7] text-[#bdb9b0] sm:text-lg">
               1936 年，一位作家在边地的一次会场里写下“留守司令蘇開元團長”。九十年后，
-              这行字把我带回一个家族问题：被写下的人，究竟是不是我的曾祖父？
+              这行字把我带回一个家族问题：被写下的人，究竟是不是家族记忆中的那位先人？
             </p>
             <p className="mt-4 max-w-2xl text-sm leading-[1.7] text-[#aaa69f]">
               我还不能替历史下结论；但我想带你去看，为什么这行字值得继续寻找。
@@ -70,7 +72,7 @@ export default function SuKaiyuanPage() {
               </div>
               <div className="bg-[#1d2524] p-4">
                 <strong className="block text-[#f3efe7]">一个问题</strong>
-                <p className="mt-2 text-[#aaa69f]">这位“蘇開元”，是不是我的曾祖父？</p>
+                <p className="mt-2 text-[#aaa69f]">这位“蘇開元”，是不是家族记忆中的那个人？</p>
               </div>
             </div>
           </div>
@@ -126,7 +128,7 @@ export default function SuKaiyuanPage() {
                 他在平地泉遇到“留守司令苏开元团长”。这行文字让一个姓名重新出现在确切的日期、地点与版面中。
               </p>
               <p>
-                但它没有告诉我们，这个人是不是我的曾祖父。完整专题会带你看原文、现场背景、能够确认的事实，
+                但它没有告诉我们，这个人是不是家族记忆中的那位先人。完整专题会带你看原文、现场背景、能够确认的事实，
                 以及为什么研究必须停在尚未证明的地方。
               </p>
             </div>
@@ -198,6 +200,35 @@ export default function SuKaiyuanPage() {
               </Link>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section id="research-updates" className="scroll-mt-32 border-y border-foreground/15 py-8 sm:py-10">
+        <div className="story-shell">
+          <p className="personal-kicker"><span aria-hidden="true" />研究近况 · {researchUpdateDate}</p>
+          <h2 className="personal-heading mt-6">新材料带来新问题，也让旧注记更准确。</h2>
+          <p className="mt-6 max-w-3xl text-[15px] leading-[1.7] text-muted-foreground">
+            这次更新区分同期记录、后出回忆与待查原文。每项核读只覆盖注明的页段，不表示整份档案或全部生平都已核实。
+          </p>
+          <div className="mt-8 grid gap-px overflow-hidden border border-foreground/15 bg-foreground/15 md:grid-cols-2">
+            {recentResearchReadings.map((reading) => (
+              <article key={reading.id} className="flex flex-col bg-background p-6 sm:p-8">
+                <p className="text-xs font-semibold text-primary">{reading.period}</p>
+                <h3 className="mt-4 font-serif text-xl font-semibold">{reading.title}</h3>
+                <p className="mt-4 text-xs leading-6 text-muted-foreground">{reading.locator}</p>
+                <p className="mt-5 text-sm leading-[1.7]">{reading.summary}</p>
+                <p className="mt-5 border-l-2 border-primary/40 pl-4 text-xs leading-6 text-muted-foreground">{reading.boundary}</p>
+                <a href={reading.href} className="story-text-link mt-auto pt-6">
+                  {reading.linkLabel}<ArrowRight className="size-4" aria-hidden="true" />
+                </a>
+              </article>
+            ))}
+          </div>
+          <p className="mt-6 max-w-4xl text-xs leading-6 text-muted-foreground">{researchUpdateOpenQuestions}</p>
+          <p className="mt-3 text-xs leading-6 text-muted-foreground">
+            新取得的1948年8月29日《温州日报》原版，仅核读《七五事件之分析》标题及“王大有”局部；该范围未提供苏开元或纪清漪的行动证明。
+            <a href="https://zjdy.zjdafw.gov.cn/old/file/X021/194808/29/X021-194808-29.pdf" className="ml-2 underline underline-offset-4">查看档案平台原载体</a>
+          </p>
         </div>
       </section>
 
@@ -283,7 +314,7 @@ export default function SuKaiyuanPage() {
             <h2 className="personal-heading mt-6">《英雄无名》：让空白变成文学，但不冒充历史。</h2>
             <p className="mt-7 max-w-xl text-[15px] leading-[1.7] text-muted-foreground">
               小说以真实时代和已核材料为骨架，对话、行动细节与部分人物关系属于合理外推或纯虚构。
-              读者可以阅读 182 页、32 章全文；小说内容不会反向进入研究图谱。
+              读者可以阅读 {novelManifest.book.edition} 的 {novelManifest.totals.pages} 页、{novelManifest.totals.numbered_chapters} 章全文；小说内容不会反向进入研究图谱。
             </p>
             <div className="mt-7 border-l-2 border-primary pl-5 text-sm leading-[1.7] text-muted-foreground">
               历史研究回答“目前知道什么”；小说追问“一个人在不知道结局时，会怎样选择”。

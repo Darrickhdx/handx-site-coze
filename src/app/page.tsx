@@ -18,7 +18,7 @@ const trustProofs = [
     label: '《英雄无名》从 Markdown 到印刷版与网页页图，全书免费读',
   },
   {
-    value: '123 份',
+    value: '逐条回源',
     label: '来源登记与逐条主张核验，一条可重跑的考据流水线',
   },
   {
@@ -175,7 +175,7 @@ export default function HomePage() {
               一张 1936 年的校刊，带回一个被历史遗漏的名字。
             </p>
             <p className="mt-8 max-w-2xl text-[15px] leading-[1.7] text-[#bdb9b0]">
-              苏开元是我的曾祖父。家族记忆里有他，朱自清的《绥行纪略》中也出现了“苏开元团长”。
+              家族记忆里有苏开元，朱自清的《绥行纪略》中也出现了“苏开元团长”。
               这项计划从一份可以核对的原件开始，慢慢寻找人物、事件和时代之间真正站得住的连接。
             </p>
             <div className="mt-9 flex items-start gap-3 border-t border-white/15 pt-6 text-xs leading-6 text-[#aaa69f]">

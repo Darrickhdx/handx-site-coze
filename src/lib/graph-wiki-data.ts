@@ -2,6 +2,7 @@ import auditGraphJson from '../../research-data/graph/audit-graph.json';
 import graphManifestJson from '../../research-data/graph/manifest.json';
 import legacyCrosswalkJson from '../../research-data/graph/legacy-crosswalk.json';
 import legacyGraphJson from '../../research-data/graph/legacy-graph.json';
+import { claimLocatorCorrections, sourceLocatorCorrections } from '@/content/research-updates';
 
 
 // Types, label maps and claimBucket now live in ./graph-wiki-types, which
@@ -20,7 +21,36 @@ import type {
 } from './graph-wiki-types';
 
 
-export const auditGraph = auditGraphJson as unknown as AuditGraphBundle;
+// Keep the generated research snapshot reproducible. Dated reading corrections
+// change the displayed locator/transcription, never an evidence or identity status.
+const storedAuditGraph = auditGraphJson as unknown as AuditGraphBundle;
+const correctedYearClaims = new Set(['CL-149', 'CL-176', 'CL-177', 'CL-179']);
+export const auditGraph: AuditGraphBundle = {
+  ...storedAuditGraph,
+  sources: storedAuditGraph.sources.map((source) => ({
+    ...source,
+    locator: sourceLocatorCorrections[source.source_id] ?? source.locator,
+  })),
+  claims: storedAuditGraph.claims.map((claim) => {
+    const correctYear = (value: string) => correctedYearClaims.has(claim.claim_id)
+      ? value.replaceAll('三年生', '二年生')
+      : value;
+    return {
+      ...claim,
+      object_or_value: correctYear(claim.object_or_value),
+      quote_or_assertion: correctYear(claim.quote_or_assertion),
+      writing_use: correctYear(claim.writing_use),
+      locator: claimLocatorCorrections[claim.claim_id] ?? correctYear(claim.locator),
+    };
+  }),
+  nodes: storedAuditGraph.nodes.map((node) => node.entity_id === 'R-042'
+    ? {
+        ...node,
+        canonical_label: node.canonical_label.replaceAll('三年生', '二年生'),
+        variant_label: node.variant_label.replaceAll('三年生', '二年生'),
+      }
+    : node),
+};
 export const legacyGraph = legacyGraphJson as unknown as LegacyGraphBundle;
 export const legacyCrosswalk = legacyCrosswalkJson as unknown as LegacyCrosswalkBundle;
 export const graphManifest = graphManifestJson as unknown as GraphManifest;

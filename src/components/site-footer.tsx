@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { ArrowUpRight, BookOpen, Cpu, ShieldCheck } from 'lucide-react';
 import { profile } from '@/content/profile';
 import { projectRelease } from '@/content/project';
+import { isPublicEdition } from '@/lib/edition';
 
 const personalLinks = [
   { href: '/about', label: '关于我' },
@@ -80,7 +81,7 @@ export function SiteFooter() {
 
         <div className="flex flex-col gap-2 border-t border-white/15 pt-6 text-[11px] leading-5 text-[#aaa69f] lg:flex-row lg:items-center lg:justify-between">
           <p>
-            © {profile.displayName} · {projectRelease.displayName} · no-license-granted · 当前仅供本地审阅
+            © {profile.displayName} · {projectRelease.displayName} · no-license-granted · {isPublicEdition ? '公开阅读版' : '当前仅供本地审阅'}
           </p>
           <p>
             <Link href="/rights" className="text-[#f3efe7] underline decoration-white/25 underline-offset-4 hover:decoration-white">

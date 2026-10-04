@@ -32,7 +32,7 @@ export const identityDossierItems: readonly IdentityDossierItem[] = [
     sourceKind: '外务省档案所存满铁调查转报',
     title: '调查表中的“蘇開元”',
     recordHeading: '黑龙江省出身日本在留学生一览',
-    recordText: '蘇開元｜二六｜陸軍士官學校步兵科三年生｜青岡縣',
+    recordText: '蘇開元｜二六｜陸軍士官學校步兵科二年生｜青岡縣',
     status: 'document_verified',
     statusLabel: '原表字段已核',
     canConfirm: [
@@ -184,7 +184,7 @@ export const identityTrackComparison = {
       label: '蘇開元轨',
       tone: 'primary',
       records: [
-        '1929｜同期调查表：青冈、陆士步兵科三年生',
+        '1929｜同期调查表：青冈、陆士步兵科二年生',
         '1933｜公报：第 435 团团长',
         '1935.05.24｜官职资料索引：陆军步兵中校',
         '1936｜朱自清平地泉记录',
@@ -204,7 +204,7 @@ export const identityTrackComparison = {
     },
   ],
   assumedBridge: [
-    '1929｜陆士步兵科三年生',
+    '1929｜陆士步兵科二年生',
     '1932—1933｜两条不同番号的军职记录',
     '1935.05.23—24｜两种姓名相隔一天的中校记录',
     '1936｜平地泉现场称谓',

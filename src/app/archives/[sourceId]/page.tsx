@@ -22,6 +22,7 @@ import {
 } from '@/lib/graph-wiki-data';
 import { isPublicEdition } from '@/lib/edition';
 import { publicArchivePaths } from '@/data/public-routes';
+import { researchUpdateDate, sourceLocatorCorrections } from '@/content/research-updates';
 
 type ArchiveSourcePageProps = {
   params: Promise<{ sourceId: string }>;
@@ -98,6 +99,11 @@ export default async function ArchiveSourcePage({
       </header>
 
       <div className="article-shell py-9 sm:py-10">
+        {sourceLocatorCorrections[sourceId] && (
+          <p className="mb-8 border-l-2 border-primary pl-5 text-sm leading-[1.7] text-muted-foreground">
+            {researchUpdateDate} 核读注记：{sourceLocatorCorrections[sourceId]}
+          </p>
+        )}
         {relatedPaths.length > 0 && (
           <section className="border border-foreground/15 bg-card p-5 sm:p-7">
             <div className="flex items-start gap-3">

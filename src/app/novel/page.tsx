@@ -53,10 +53,10 @@ export default function NovelPage() {
               无名
             </h1>
             <p className="mt-8 font-serif text-lg leading-relaxed text-[#d7cfc2] sm:text-base">
-              我的曾外祖父苏开元
+              家族记忆中的苏开元
             </p>
             <p className="mt-6 max-w-2xl text-[15px] leading-[1.7] text-[#bdb9b0]">
-              一个曾孙从搜索框里的三个字出发，追问一个人为何把名字交给时代，又为何没有被时代完整喊回来。
+              一个后人从搜索框里的三个字出发，追问一个人为何把名字交给时代，又为何没有被时代完整喊回来。
               当前网页版本为 {novelManifest.book.edition}：{novelManifest.totals.pages} 页、
               {novelManifest.totals.numbered_chapters} 章，全书可读。
             </p>

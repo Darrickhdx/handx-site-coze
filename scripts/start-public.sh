@@ -30,5 +30,5 @@ if [[ ! -f dist/server-public.js ]]; then
     exit 1
 fi
 
-echo "Starting public edition on ${BIND_HOST}:${PORT} (indexing: ${PUBLIC_SEARCH_INDEXING})"
+echo "Starting public edition on ${BIND_HOST}:${PORT} (indexing: ${PUBLIC_SEARCH_INDEXING:-committed decision})"
 exec env NODE_ENV=production PUBLIC_BIND_HOST="${BIND_HOST}" PORT="${PORT}" node dist/server-public.js

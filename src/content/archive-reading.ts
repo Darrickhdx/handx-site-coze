@@ -21,7 +21,7 @@ export const archiveReadingMoments: readonly ArchiveReadingMoment[] = [
     title: '一行字，把家史带回平地泉',
     opening: '朱自清在校刊里写下：他在一次公开会面中，遇见“留守司令蘇開元團長”。',
     whatWeCanSee: '这一页把日期、地点、称谓与一次会面的轮廓，同时留在了纸上。',
-    unanswered: '被写下的人是不是我的曾祖父？这一问，还需要更多原件回答。',
+    unanswered: '被写下的人是不是家族记忆中的那位先人？这一问，还需要更多原件回答。',
     readingHref: '/archives/SRC-013',
     storyHref: '/discover/1936-pingdiquan',
   },
