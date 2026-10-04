@@ -1,0 +1,41 @@
+{
+  "schema_version": "profile-media-authorization-1.0",
+  "authorization_id": "owner-personal-introduction-2026-10-04",
+  "authorized_pages": ["/about", "/ai"],
+  "reuse_license": "per_asset_license",
+  "scope": "站主明确授权将2026年9月15日个人介绍的有用信息及相关项目图片用于现有网站；仅展示下列逐项核对的公开官方图片，不公开原私有介绍站或内部项目材料。",
+  "assets": [
+    {
+      "path": "assets/personal-projects/pps7700-product.webp",
+      "sha256": "2787bc20c7c5bac78c8aeee785d82d9b6ede7b69f47b1676950f9fbf28426c48",
+      "width": 899,
+      "height": 720,
+      "alt": "Good Design Award 官方展示的 INSPIRY PPS7700 无现金支付终端，白底三分之四角视图",
+      "caption": "INSPIRY PPS7700 官方产品展示图，受赏企业为 INSPIRY JAPAN 株式会社。",
+      "visual_kind": "official_product_display",
+      "source_url": "https://award-attachments.g-mark.io/winners/2022/7551/main.jpg?size=large",
+      "source_page": "https://www.g-mark.org/gallery/winners/7551",
+      "license": "CC BY-ND 2.1 JP",
+      "license_url": "https://creativecommons.org/licenses/by-nd/2.1/jp/deed.ja",
+      "attribution": "INSPIRY PPS7700 · ©JDP / GOOD DESIGN AWARD · CC BY-ND 2.1 JP",
+      "original_site_bytes_compared": false,
+      "display_policy": "完整、等比展示原文件；不裁剪、叠字、滤镜或改图。"
+    },
+    {
+      "path": "assets/personal-projects/pps7700-payment-flow.webp",
+      "sha256": "2bc8241d6123a0c1fc0ebf73657ce25897c9de4aeed58bca8f215c1b61727101",
+      "width": 1280,
+      "height": 566,
+      "alt": "Good Design Award 官方 PPS7700 应用图，展示售货机选品、手机付款码支付与取货流程",
+      "caption": "PPS7700 官方使用示例：在售货机选品、出示手机付款码与取货。",
+      "visual_kind": "official_application_example",
+      "source_url": "https://award-attachments.g-mark.io/winners/2022/7551/use.jpg?size=large",
+      "source_page": "https://www.g-mark.org/gallery/winners/7551",
+      "license": "CC BY-ND 2.1 JP",
+      "license_url": "https://creativecommons.org/licenses/by-nd/2.1/jp/deed.ja",
+      "attribution": "INSPIRY PPS7700 · ©JDP / GOOD DESIGN AWARD · CC BY-ND 2.1 JP",
+      "original_site_bytes_compared": false,
+      "display_policy": "完整、等比展示原文件；不裁剪、叠字、滤镜或改图。"
+    }
+  ]
+}

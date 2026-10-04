@@ -9,6 +9,7 @@ import {
   ShieldCheck,
 } from 'lucide-react';
 import { PrivateMessageForm } from '@/components/private-message-form';
+import profileMediaAuthorization from '@/data/profile-media-authorization.json';
 import {
   careerExperience,
   education,
@@ -50,8 +51,8 @@ export default function AboutPage() {
               {profile.aboutBio}
             </p>
             <div className="mt-7 flex flex-col gap-4 sm:flex-row sm:items-center">
-              <a href="#contact" className="story-button personal-button-primary">
-                联系我
+              <a href="#projects" className="story-button personal-button-primary">
+                看项目经历
                 <ArrowRight className="size-4" aria-hidden="true" />
               </a>
               <Link href="/ai" className="story-text-link">
@@ -102,7 +103,7 @@ export default function AboutPage() {
             </p>
             <p>
               “苏开元计划”则让这件事有了私人而具体的起点。
-              我想寻找家族先人的真实经历，也想验证：一个普通人能否借助 AI，把分散的材料变成一套可核验、
+              我想从家族线索出发，核验与苏开元有关的候选记录，也想验证：一个普通人能否借助 AI，把分散的材料变成一套可核验、
               可连接、可讲述的个人知识系统。
             </p>
 
@@ -114,7 +115,7 @@ export default function AboutPage() {
                   {education.school} · {education.program} · {education.degree}
                 </strong>
                 <span className="mt-1 block text-xs font-normal text-muted-foreground">
-                  本人提供 · 正式公开前按学位证书核对专业名称
+                  本人提供 · 专业名称以学位证书为准
                 </span>
               </div>
             </div>
@@ -122,7 +123,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-16 sm:py-10">
+      <section id="projects" className="scroll-mt-28 py-16 sm:py-10">
         <div className="personal-shell">
           <div className="grid gap-8 border-b border-foreground/15 pb-9 lg:grid-cols-[0.72fr_1.28fr] lg:items-end lg:gap-14">
             <div>
@@ -138,28 +139,39 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <ol className="divide-y divide-foreground/15 border-b border-foreground/15">
+          <ol className="mt-8 grid gap-6 lg:grid-cols-2">
             {projectExperience.map((item, index) => (
               <li
                 key={item.projectTitle}
-                className="grid gap-5 py-7 sm:grid-cols-[3rem_minmax(13rem,0.72fr)_minmax(0,1.28fr)] sm:items-start"
+                className={`min-w-0 border border-foreground/15 bg-white/40 p-5 sm:p-8 ${item.projectId === 'pps7700' || index === projectExperience.length - 1 ? 'lg:col-span-2' : ''}`}
               >
-                <span className="font-serif text-lg text-primary/40">0{index + 1}</span>
-                <span>
-                  <strong className="block font-serif text-base">{item.projectTitle}</strong>
-                  <span className="mt-2 block text-xs font-semibold tracking-[0.08em] text-primary uppercase">
+                <div className="flex items-start justify-between gap-4">
+                  <p className="text-xs font-semibold tracking-[0.1em] text-primary">{item.industry}</p>
+                  <span className="shrink-0 font-serif text-2xl text-primary/40">0{index + 1}</span>
+                </div>
+                <h3 className="mt-4 font-serif text-xl font-semibold leading-snug tracking-[-0.025em]">{item.projectTitle}</h3>
+                <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-3">
+                  <p className="text-xs font-semibold text-primary">
                     {item.period ? `${item.period} · ` : ''}{item.role}
-                  </span>
-                  <span className="mt-2 block text-xs text-muted-foreground">{item.status}</span>
-                </span>
-                <div className="text-sm leading-[1.7] text-muted-foreground">
+                  </p>
+                  <span className="border border-primary/25 bg-primary/5 px-3 py-1 text-xs text-primary">{item.status}</span>
+                </div>
+                <div className="mt-6 text-sm leading-7 text-muted-foreground">
                   <p>{item.description}</p>
-                  {item.projectFact && <p className="mt-3">{item.projectFact}</p>}
+                  {item.projectFact && (
+                    <div className="mt-5 border-l-2 border-primary/40 bg-[#eee8dc]/60 px-4 py-3">
+                      <p className="text-xs font-semibold text-primary">产品背景</p>
+                      <p className="mt-2">{item.projectFact}</p>
+                    </div>
+                  )}
                   {item.evidenceBoundary && (
-                    <p className="mt-3 text-xs leading-6">{item.evidenceBoundary}</p>
+                    <details className="mt-5 border-t border-foreground/10 pt-4 text-xs leading-6">
+                      <summary className="cursor-pointer font-semibold text-primary">资料说明</summary>
+                      <p className="mt-2">{item.evidenceBoundary}</p>
+                    </details>
                   )}
                   {item.sources && (
-                    <div className="mt-3 flex flex-wrap gap-x-4 gap-y-2 text-xs">
+                    <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-xs">
                       {item.sources.map((source) => (
                         <a key={source.url} href={source.url} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-primary">
                           {source.label}
@@ -168,6 +180,37 @@ export default function AboutPage() {
                     </div>
                   )}
                 </div>
+                {item.projectId === 'pps7700' && (
+                  <div className="mt-7 grid gap-6 border-t border-foreground/15 pt-7 md:grid-cols-[0.72fr_1.28fr]">
+                    {profileMediaAuthorization.assets.map((asset) => (
+                      <figure key={asset.path} className="min-w-0">
+                        <div className="border border-foreground/15 bg-white p-3">
+                          <Image
+                            src={`/${asset.path}`}
+                            alt={asset.alt}
+                            width={asset.width}
+                            height={asset.height}
+                            unoptimized
+                            className="h-auto w-full object-contain"
+                          />
+                        </div>
+                        <figcaption className="mt-3 space-y-2 text-xs leading-6 text-muted-foreground">
+                          <p>{asset.caption}</p>
+                          <p>
+                            INSPIRY PPS7700 · ©JDP /{' '}
+                            <a href={asset.source_page} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-primary">
+                              GOOD DESIGN AWARD
+                            </a>
+                            {' · '}
+                            <a href={asset.license_url} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-primary">
+                              {asset.license}
+                            </a>
+                          </p>
+                        </figcaption>
+                      </figure>
+                    ))}
+                  </div>
+                )}
               </li>
             ))}
           </ol>
@@ -189,7 +232,7 @@ export default function AboutPage() {
           <div className="mt-6 flex flex-col gap-5 text-xs leading-6 text-muted-foreground sm:flex-row sm:items-start sm:justify-between">
             <p className="max-w-3xl">
               职业经历属于“本人履历｜本人提供”。外部公开资料只用于核验产品和时代背景，
-              不替代个人任职证明；相关视觉若出现，均为原创系统示意图，非产品实物复刻。
+              不替代个人任职证明。项目图片来自公开官方页面，按图旁许可完整展示。
             </p>
             <Link href="/ai" className="story-text-link shrink-0">
               查看代表案例

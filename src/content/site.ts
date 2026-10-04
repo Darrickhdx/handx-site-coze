@@ -24,7 +24,7 @@ export const primaryNavigation: readonly PrimaryNavigationItem[] = [
   },
   {
     href: '/ai',
-    label: '独立开发',
+    label: 'AI 与产品',
     activePaths: ['/ai', '/studio'],
   },
   {

@@ -92,6 +92,7 @@ export const aiPracticeAreas = [
 ] as const;
 
 export interface CareerExperience {
+  projectId?: string;
   organization: string;
   role: string;
   description: string;
@@ -269,6 +270,7 @@ export const careerExperience: readonly CareerExperience[] = [
 /** Personal project experience; public sources support product background only. */
 export const projectExperience: readonly CareerExperience[] = [
   {
+    projectId: 'pps7700',
     organization: 'INSPIRY JAPAN 株式会社',
     projectTitle: 'PPS7700：日本自动售货机移动支付',
     role: '产品与日本业务负责人',
