@@ -10,12 +10,15 @@ import {
 } from 'lucide-react';
 import { PrivateMessageForm } from '@/components/private-message-form';
 import profileMediaAuthorization from '@/data/profile-media-authorization.json';
+import { collaborationBrief, pps7700Case, productPositioning } from '@/content/product-positioning';
 import {
   careerExperience,
   education,
   profile,
   projectExperience,
 } from '@/content/profile';
+
+const cooperationEmail = `mailto:${profile.email}?subject=${encodeURIComponent('业务合作｜现场问题与产品阶段')}&body=${encodeURIComponent('业务问题：\n\n当前阶段：\n\n希望参与的部分：\n')}`;
 
 const backgroundExperience = [
   careerExperience[1],
@@ -27,7 +30,7 @@ export default function AboutPage() {
   return (
     <div className="profile-page overflow-hidden">
       <section className="profile-hero border-b border-foreground/15">
-        <div className="personal-shell grid gap-12 py-8 sm:py-7 lg:min-h-[24rem] lg:grid-cols-[minmax(0,0.92fr)_minmax(25rem,0.78fr)] lg:items-start lg:gap-16">
+        <div className="personal-shell grid gap-12 py-12 sm:py-16 lg:min-h-[24rem] lg:grid-cols-[minmax(0,0.92fr)_minmax(25rem,0.78fr)] lg:items-start lg:gap-16">
           <div>
             <p className="personal-kicker">
               <span aria-hidden="true" />
@@ -36,7 +39,7 @@ export default function AboutPage() {
             <p className="mt-6 text-sm font-semibold tracking-[0.16em] text-primary uppercase">
               {profile.title}
             </p>
-            <h1 className="personal-display mt-4 text-[clamp(1.63rem,2.71vw,2.85rem)] font-semibold leading-[0.92] tracking-[-0.065em]">
+            <h1 className="personal-display mt-4 text-[clamp(1.63rem,2.71vw,2.85rem)] font-semibold leading-[1.14] tracking-[-0.045em]">
               {profile.displayName}
             </h1>
             <p className="mt-6 max-w-2xl font-serif text-lg leading-relaxed text-foreground sm:text-base">
@@ -45,14 +48,14 @@ export default function AboutPage() {
               从真实现场连接软硬件与 AI。
             </p>
             <p className="mt-5 max-w-2xl text-[15px] leading-[1.7] text-muted-foreground">
-              {profile.homeBio}
+              {productPositioning.introduction}
             </p>
             <p className="mt-4 max-w-2xl text-[15px] leading-[1.7] text-muted-foreground">
               {profile.aboutBio}
             </p>
             <div className="mt-7 flex flex-col gap-4 sm:flex-row sm:items-center">
-              <a href="#projects" className="story-button personal-button-primary">
-                看项目经历
+              <a href="#pps7700" className="story-button personal-button-primary">
+                看 PPS7700 案例
                 <ArrowRight className="size-4" aria-hidden="true" />
               </a>
               <Link href="/ai" className="story-text-link">
@@ -143,7 +146,8 @@ export default function AboutPage() {
             {projectExperience.map((item, index) => (
               <li
                 key={item.projectTitle}
-                className={`min-w-0 border border-foreground/15 bg-white/40 p-5 sm:p-8 ${item.projectId === 'pps7700' || index === projectExperience.length - 1 ? 'lg:col-span-2' : ''}`}
+                id={item.projectId === 'pps7700' ? 'pps7700' : undefined}
+                className={`min-w-0 scroll-mt-28 border border-foreground/15 bg-white/40 p-5 sm:p-8 ${item.projectId === 'pps7700' || index === projectExperience.length - 1 ? 'lg:col-span-2' : ''}`}
               >
                 <div className="flex items-start justify-between gap-4">
                   <p className="text-xs font-semibold tracking-[0.1em] text-primary">{item.industry}</p>
@@ -157,7 +161,46 @@ export default function AboutPage() {
                   <span className="border border-primary/25 bg-primary/5 px-3 py-1 text-xs text-primary">{item.status}</span>
                 </div>
                 <div className="mt-6 text-sm leading-7 text-muted-foreground">
-                  <p>{item.description}</p>
+                  {item.projectId === 'pps7700' ? (
+                    <div className="space-y-8">
+                      <div className="grid gap-7 border-t border-foreground/15 pt-7 lg:grid-cols-2 lg:gap-10">
+                        <section>
+                          <h4 className="text-xs font-semibold tracking-widest text-primary">01 · 业务问题</h4>
+                          <p className="mt-3">{pps7700Case.problem}</p>
+                        </section>
+                        <section>
+                          <h4 className="text-xs font-semibold tracking-widest text-primary">02 · 本人职责</h4>
+                          <p className="mt-3">{pps7700Case.responsibility}</p>
+                          <p className="mt-3 text-xs leading-6">{pps7700Case.responsibilityNote}</p>
+                        </section>
+                      </div>
+                      <section>
+                        <h4 className="text-xs font-semibold tracking-widest text-primary">03 · 需要协调的约束与取舍</h4>
+                        <div className="mt-4 grid gap-4 md:grid-cols-3">
+                          {pps7700Case.constraints.map((constraint) => (
+                            <div key={constraint.title} className="border-l-2 border-accent/40 bg-muted/50 p-4">
+                              <strong className="text-sm font-semibold text-foreground">{constraint.title}</strong>
+                              <p className="mt-2 text-sm leading-7">{constraint.description}</p>
+                            </div>
+                          ))}
+                        </div>
+                        <p className="mt-3 text-xs leading-6">{pps7700Case.constraintsNote}</p>
+                      </section>
+                      <div className="grid gap-7 border-t border-foreground/15 pt-7 lg:grid-cols-2 lg:gap-10">
+                        <section>
+                          <h4 className="text-xs font-semibold tracking-widest text-primary">04 · 产品交付</h4>
+                          <p className="mt-3">{pps7700Case.delivery}</p>
+                        </section>
+                        <section>
+                          <h4 className="text-xs font-semibold tracking-widest text-primary">05 · 官方产品奖项</h4>
+                          <a href={pps7700Case.awardUrl} target="_blank" rel="noopener noreferrer" className="mt-3 inline-block font-semibold text-foreground underline decoration-primary/40 underline-offset-4 hover:text-primary">
+                            {pps7700Case.award}
+                          </a>
+                          <p className="mt-2 text-xs leading-6">{pps7700Case.awardNote}</p>
+                        </section>
+                      </div>
+                    </div>
+                  ) : <p>{item.description}</p>}
                   {item.projectFact && (
                     <div className="mt-5 border-l-2 border-primary/40 bg-[#eee8dc]/60 px-4 py-3">
                       <p className="text-xs font-semibold text-primary">产品背景</p>
@@ -247,56 +290,49 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section id="contact" className="scroll-mt-24 border-y border-white/15 bg-[#202827] py-16 text-[#f3efe7] sm:py-10">
-        <div className="personal-shell grid gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(20rem,0.58fr)] lg:items-center lg:gap-24">
+      <section id="contact" className="scroll-mt-24 border-y border-white/15 bg-[#202827] py-14 text-[#f3efe7] sm:py-20">
+        <div className="personal-shell grid gap-10 lg:grid-cols-[minmax(0,1.3fr)_minmax(17rem,0.7fr)] lg:gap-16">
           <div>
-            <p className="personal-kicker personal-kicker-light">
-              <span aria-hidden="true" />
-              Contact
-            </p>
-            <MessageCircle className="mt-8 size-8 text-[#c38a82]" strokeWidth={1.4} aria-hidden="true" />
-            <h2 className="mt-7 max-w-3xl font-serif text-2xl font-semibold leading-tight tracking-[-0.04em] sm:text-2xl">
-              如果你也在思考 AI、产品或一段家族历史，欢迎联系我。
-            </h2>
-            <p className="mt-7 max-w-2xl text-[15px] leading-[1.7] text-[#bdb9b0]">
-              可交流 AI 与传统行业、软硬一体产品、智能终端、家族史研究和内容合作，
-              也欢迎提供与苏开元有关、能够追溯来源的线索。
-            </p>
-
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
-              <a href={`mailto:${profile.email}`} className="story-button personal-button-light">
-                <Mail className="size-4" aria-hidden="true" />
-                {profile.email}
-              </a>
-              <Link href="/studio" className="personal-dark-link">
-                了解家族史工作室
-                <ArrowRight className="size-4" aria-hidden="true" />
-              </Link>
-            </div>
-
-            <div className="mt-10 flex items-start gap-3 border-t border-white/15 pt-6 text-xs leading-6 text-[#aaa69f]">
-              <ShieldCheck className="mt-0.5 size-4 shrink-0 text-[#c38a82]" aria-hidden="true" />
-              <p>
-                家属原件和私人资料默认不公开。提供历史线索时，来源标题、年代、馆藏、档号与页码，
-                比没有出处的转述更有价值。
-              </p>
-            </div>
+            <p className="personal-kicker personal-kicker-light"><span aria-hidden="true" />业务合作</p>
+            <MessageCircle className="mt-7 size-7 text-[#c38a82]" strokeWidth={1.4} aria-hidden="true" />
+            <h2 className="mt-5 max-w-3xl font-serif text-2xl font-semibold leading-snug tracking-[-0.03em] sm:text-3xl">先说说，你的现场正在发生什么。</h2>
+            <p className="mt-5 max-w-2xl text-[15px] leading-7 text-[#bdb9b0]">如果正在做 AI、软硬件产品或日本业务，可以从一封邮件开始。请带上这三件事，方便判断怎样参与。</p>
+            <ol className="mt-7 space-y-4">
+              {collaborationBrief.map((item, index) => (
+                <li key={item.title} className="grid grid-cols-[2rem_1fr] gap-3 border-t border-white/15 pt-4">
+                  <span className="font-serif text-lg text-[#c38a82]">0{index + 1}</span>
+                  <div>
+                    <strong className="text-sm text-[#f3efe7]">{item.title}</strong>
+                    <p className="mt-1 text-sm leading-7 text-[#bdb9b0]">{item.description}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+            <a href={cooperationEmail} className="story-button personal-button-light mt-8">
+              <Mail className="size-4" aria-hidden="true" />写信讨论业务合作
+            </a>
+            <p className="mt-3 break-all text-xs leading-6 text-[#bdb9b0]">{profile.email}</p>
           </div>
-
-          <figure className="profile-wechat-card">
-            <Image
-              src={profile.wechatQr}
-              alt={`${profile.displayName}的微信二维码，扫码添加微信`}
-              width={968}
-              height={1433}
-              sizes="(min-width: 1024px) 360px, 82vw"
-              className="h-auto w-full object-contain"
-            />
-            <figcaption>微信扫码添加 · 请简单说明来意</figcaption>
-          </figure>
-
-          <div className="lg:col-span-2">
-            <PrivateMessageForm />
+          <aside className="min-w-0 border border-white/15 bg-white/[0.035] p-6 sm:p-8">
+            <p className="text-xs font-semibold tracking-[0.12em] text-[#c38a82]">历史与小说读者</p>
+            <h3 className="mt-4 font-serif text-xl font-semibold leading-snug">为了一个名字，或一个故事而来。</h3>
+            <p className="mt-4 text-sm leading-7 text-[#bdb9b0]">欢迎阅读、讨论，也欢迎提供能回到来源的苏开元线索。</p>
+            <div className="mt-5 flex flex-col items-start gap-3">
+              <Link href="/sukaiyuan" className="personal-dark-link">进入研究项目<ArrowRight className="size-4" aria-hidden="true" /></Link>
+              <Link href="/novel" className="personal-dark-link">免费阅读《英雄无名》<ArrowRight className="size-4" aria-hidden="true" /></Link>
+              <a href={`mailto:${profile.email}?subject=${encodeURIComponent('研究线索或阅读反馈')}`} className="personal-dark-link">提供线索或阅读反馈<Mail className="size-4" aria-hidden="true" /></a>
+            </div>
+            <div className="mt-6 flex items-start gap-3 border-t border-white/15 pt-5 text-xs leading-6 text-[#bdb9b0]">
+              <ShieldCheck className="mt-1 size-4 shrink-0 text-[#c38a82]" aria-hidden="true" />
+              <p>线索请附题名、年代、馆藏、档号与页码。家属原件和私人资料默认不公开；小说不作为史料。</p>
+            </div>
+          </aside>
+          <div className="grid gap-7 border-t border-white/15 pt-8 sm:grid-cols-[9rem_1fr] lg:col-span-2">
+            <figure className="max-w-36">
+              <Image src={profile.wechatQr} alt={`${profile.displayName}的微信二维码，扫码添加微信`} width={968} height={1433} sizes="144px" className="h-auto w-full object-contain" />
+              <figcaption className="mt-3 text-xs leading-6 text-[#bdb9b0]">微信添加 · 请说明来意</figcaption>
+            </figure>
+            <div className="min-w-0 self-center"><PrivateMessageForm /></div>
           </div>
         </div>
       </section>

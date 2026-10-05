@@ -6,7 +6,7 @@ import { isPublicEdition } from '@/lib/edition';
 
 const personalLinks = [
   { href: '/about', label: '关于我' },
-  { href: '/ai', label: '独立开发' },
+  { href: '/ai', label: 'AI 与产品' },
   { href: '/discover', label: '文章与手记' },
   { href: '/studio', label: '家族史工作室' },
 ] as const;

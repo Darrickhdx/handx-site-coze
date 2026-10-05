@@ -1,102 +1,73 @@
 import Link from 'next/link';
-import {
-  ArrowRight,
-  Boxes,
-  CheckCircle2,
-  Cpu,
-  Mail,
-  Network,
-  ScanSearch,
-  ShieldCheck,
-  Sparkles,
-} from 'lucide-react';
+import { ArrowRight, Cpu, Mail, Network, ScanSearch } from 'lucide-react';
 import { aiPracticeAreas, profile, projectExperience } from '@/content/profile';
+import {
+  collaborationBrief,
+  deliveryStages,
+  pps7700Case,
+  productPositioning,
+  researchAndCreation,
+} from '@/content/product-positioning';
 
 const capabilityIcons = [Cpu, Network, ScanSearch] as const;
 
-const capabilityOutcomes = [
-  '从使用场景、设备约束到量产与运维，形成可执行的 AI 硬件产品方案。',
-  '梳理现有流程与系统边界，找到 AI 值得接入、能够验证的最小闭环。',
-  '把分散资料整理成可追溯、可检索、可持续生产内容的个人知识系统。',
-] as const;
-
-const collaborationModes = [
-  {
-    title: '产品诊断与路线梳理',
-    description:
-      '适合已有业务或产品方向，但还不确定 AI 应该放在哪里。一起识别真正的问题、约束与验证顺序。',
-    result: '交付：问题地图、机会排序与下一步验证建议',
-  },
-  {
-    title: 'AI 软硬一体方案共创',
-    description:
-      '面向智能终端、线下场景和行业系统，把模型、设备、数据、流程与运营要求放在一张图里设计。',
-    result: '交付：场景方案、系统边界与原型／试点范围',
-  },
-  {
-    title: '个人知识工程陪跑',
-    description:
-      '适合希望整理家族史、专业经验或长期主题的人，从资料分层开始，逐步形成知识库与内容资产。',
-    result: '交付：资料结构、证据规则与内容生产工作流',
-  },
+const participationFocus = [
+  '产品定义、软硬件协同、原型验证与客户导入。',
+  '梳理现场流程、数据与系统接口，明确能够验证的试点范围。',
+  '建立资料结构、来源规则、检索与内容生产流程，保留人的核对与验收。',
 ] as const;
 
 export default function AiProductPage() {
   return (
-    <div className="profile-page overflow-hidden">
+    <div className="profile-page">
       <section className="profile-hero border-b border-foreground/15">
-        <div className="personal-shell grid gap-10 py-8 sm:py-8 lg:min-h-[24rem] lg:grid-cols-[minmax(0,1.18fr)_minmax(21rem,0.64fr)] lg:items-center lg:gap-14">
-          <div>
-            <p className="personal-kicker">
-              <span aria-hidden="true" />
-              AI &amp; Product
+        <div className="personal-shell grid gap-10 py-12 sm:py-16 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-center lg:gap-16">
+          <div className="min-w-0">
+            <p className="personal-kicker"><span aria-hidden="true" />AI &amp; Product</p>
+            <p className="mt-6 text-sm font-semibold tracking-[0.12em] text-primary">
+              {productPositioning.focus}
             </p>
-            <h1 className="personal-display mt-6 max-w-4xl text-[clamp(1.75rem,2.92vw,3.11rem)] font-semibold leading-[0.97] tracking-[-0.06em]">
-              不从模型出发，
-              <span className="mt-2 block text-accent">从真实结果倒推 AI 产品。</span>
+            <h1 className="personal-display mt-4 max-w-3xl text-[clamp(2rem,3.4vw,3.5rem)] font-semibold leading-[1.15] tracking-[-0.055em]">
+              从现场需求，
+              <span className="block text-accent">一起走到产品交付。</span>
             </h1>
-            <p className="mt-6 max-w-3xl font-serif text-lg leading-relaxed text-foreground sm:text-base">
-              {profile.statement}
+            <p className="mt-6 max-w-2xl text-[15px] leading-7 text-muted-foreground">
+              {productPositioning.introduction}
             </p>
-            <p className="mt-4 max-w-3xl text-[15px] leading-[1.7] text-muted-foreground">
-              18 年多产品与工程经历，覆盖嵌入式硬件、移动支付、视觉与边缘计算、客户交付和日本业务。
-              我关注 AI 信息研究、售货机智能运营和大型设施数字化，用可以验证的结果决定下一步投入。
+            <p className="mt-4 max-w-2xl text-[15px] leading-7 text-muted-foreground">
+              {productPositioning.currentFocus}
             </p>
+            <p className="mt-5 text-xs leading-6 text-muted-foreground">{productPositioning.evidence}</p>
             <div className="mt-7 flex flex-col gap-4 sm:flex-row sm:items-center">
-              <a href="#capabilities" className="story-button personal-button-primary">
-                看我能交付什么
+              <a href="#projects" className="story-button personal-button-primary">
+                看项目与参与范围
                 <ArrowRight className="size-4" aria-hidden="true" />
               </a>
               <Link href="/about#contact" className="story-text-link">
-                讨论一个具体问题
+                讨论业务问题
                 <ArrowRight className="size-4" aria-hidden="true" />
               </Link>
             </div>
-            <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-xs leading-6 text-muted-foreground">
-              <span><strong className="font-semibold text-foreground">适合：</strong>有具体设备、系统或业务场景的团队</span>
-              <span><strong className="font-semibold text-foreground">输出：</strong>问题地图、系统边界与验证路径</span>
-              <span><strong className="font-semibold text-foreground">起步：</strong>先说明场景与最想验证的问题</span>
-            </div>
+            <a href="#research" className="mt-6 inline-flex items-center gap-2 text-sm text-muted-foreground underline underline-offset-4 hover:text-primary">
+              来读研究或小说？从这里开始
+              <ArrowRight className="size-4" aria-hidden="true" />
+            </a>
           </div>
 
-          <aside className="border border-foreground/15 bg-white/55 p-7 shadow-[0_24px_70px_rgba(32,40,39,0.08)] sm:p-8">
-            <Sparkles className="size-8 text-primary" strokeWidth={1.4} aria-hidden="true" />
-            <p className="mt-7 text-xs font-semibold tracking-[0.18em] text-primary uppercase">
-              Working principle
-            </p>
-            <h2 className="mt-3 font-serif text-xl font-semibold leading-tight tracking-[-0.035em] sm:text-base">
-              从现场问题到验收，先明确四件事。
+          <aside className="min-w-0 border border-foreground/15 bg-white/55 p-6 sm:p-8">
+            <p className="personal-kicker"><span aria-hidden="true" />My part in the process</p>
+            <h2 className="mt-5 font-serif text-2xl font-semibold leading-snug tracking-[-0.035em]">
+              问题、方案与验证，
+              <span className="block">需要放在同一条线上。</span>
             </h2>
-            <ol className="mt-6 space-y-4 text-sm leading-[1.7] text-muted-foreground">
-              {[
-                '找到现场问题，明确目标、边界与优先级。',
-                '梳理数据、业务流程与系统接口，约定验收标准。',
-                '用原型和小试点验证，再决定投入范围。',
-                '组织研究、设计、开发与测试协作，跟进交付和验收。',
-              ].map((question, index) => (
-                <li key={question} className="grid grid-cols-[2rem_1fr] gap-3">
-                  <span className="font-serif text-base text-primary">0{index + 1}</span>
-                  <span>{question}</span>
+            <ol className="mt-6 divide-y divide-foreground/15">
+              {deliveryStages.map((stage) => (
+                <li key={stage.number} className="grid grid-cols-[2rem_minmax(0,1fr)] gap-4 py-5 first:pt-0 last:pb-0">
+                  <span className="font-serif text-xl text-primary/60">{stage.number}</span>
+                  <div>
+                    <h3 className="text-sm font-semibold">{stage.title}</h3>
+                    <p className="mt-2 text-sm leading-7 text-muted-foreground">{stage.description}</p>
+                  </div>
                 </li>
               ))}
             </ol>
@@ -104,38 +75,130 @@ export default function AiProductPage() {
         </div>
       </section>
 
-      <section id="capabilities" className="scroll-mt-28 py-16 sm:py-10">
+      <section id="projects" className="scroll-mt-28 border-b border-foreground/15 py-12 sm:py-16">
         <div className="personal-shell">
-          <div className="max-w-4xl">
-            <p className="personal-kicker">
-              <span aria-hidden="true" />
-              Deliverables
-            </p>
-            <h2 className="personal-heading mt-7">三类能力，都指向可继续执行的下一步。</h2>
-            <p className="mt-6 max-w-3xl text-[15px] leading-[1.7] text-muted-foreground">
-              不把“会使用某个工具”当作最终成果。每次合作都应留下清楚的产品判断、系统边界和验证路径。
+          <div className="grid gap-6 lg:grid-cols-[1fr_0.8fr] lg:items-end lg:gap-14">
+            <div>
+              <p className="personal-kicker"><span aria-hidden="true" />Project evidence</p>
+              <h2 className="personal-heading mt-6">项目处在什么阶段，我参与了什么。</h2>
+            </div>
+            <p className="max-w-2xl text-sm leading-7 text-muted-foreground">
+              个人任职、项目时间与负责范围由本人提供。公开资料用于核对产品背景与奖项；
+              每项经历都保留当前阶段与资料说明。
             </p>
           </div>
 
-          <div className="mt-9 grid gap-px overflow-hidden border border-foreground/15 bg-foreground/15 lg:grid-cols-3">
+          <div className="mt-8 grid gap-5 lg:grid-cols-2">
+            {projectExperience.map((item, index) => {
+              const isPps7700 = item.projectId === 'pps7700';
+
+              return (
+                <article
+                  key={item.projectTitle}
+                  className={`min-w-0 border border-foreground/15 p-6 sm:p-8 ${isPps7700 ? 'bg-[#202827] text-[#f3efe7] lg:col-span-2' : 'bg-white/40'}`}
+                >
+                  <div className={isPps7700 ? 'grid gap-7 lg:grid-cols-[1fr_0.7fr] lg:gap-14' : ''}>
+                    <div className="min-w-0">
+                      <div className="flex items-start justify-between gap-4">
+                        <p className={`text-xs leading-6 ${isPps7700 ? 'text-[#c38a82]' : 'text-primary'}`}>
+                          0{index + 1} · {item.industry}
+                        </p>
+                        <span className={`shrink-0 border px-3 py-1.5 text-xs leading-5 ${isPps7700 ? 'border-white/20 text-[#f3efe7]' : 'border-foreground/20 text-foreground'}`}>
+                          {item.status}
+                        </span>
+                      </div>
+                      <h3 className="mt-4 font-serif text-xl font-semibold leading-snug tracking-[-0.025em] sm:text-2xl">
+                        {item.projectTitle}
+                      </h3>
+                      <p className={`mt-3 text-xs leading-6 ${isPps7700 ? 'text-[#c6c1b8]' : 'text-muted-foreground'}`}>
+                        {item.period ? `${item.period} · ` : ''}{item.role} · {item.organization}
+                      </p>
+                      <p className={`mt-5 text-sm leading-7 ${isPps7700 ? 'text-[#d9d4ca]' : 'text-muted-foreground'}`}>
+                        {item.description}
+                      </p>
+                    </div>
+
+                    {isPps7700 && (
+                      <div className="border-t border-white/15 pt-6 lg:border-t-0 lg:border-l lg:pl-8 lg:pt-0">
+                        <p className="text-xs font-semibold tracking-[0.12em] text-[#c38a82]">完整案例</p>
+                        <p className="mt-3 font-serif text-lg leading-8">
+                          业务问题 → 本人职责 → 项目约束 → 商业化交付
+                        </p>
+                        <p className="mt-4 text-sm leading-7 text-[#c6c1b8]">
+                          {pps7700Case.award}。奖项属于产品与受赏企业，个人职责按本人提供的经历呈现。
+                        </p>
+                        <Link href="/about#pps7700" className="story-button personal-button-light mt-6">
+                          查看 PPS7700 案例与官方图片
+                          <ArrowRight className="size-4" aria-hidden="true" />
+                        </Link>
+                      </div>
+                    )}
+                  </div>
+
+                  {item.projectFact && (
+                    <div className={`mt-6 border-t pt-5 ${isPps7700 ? 'border-white/15' : 'border-foreground/15'}`}>
+                      <p className={`text-xs font-semibold ${isPps7700 ? 'text-[#c38a82]' : 'text-primary'}`}>产品背景 · 公开资料</p>
+                      <p className={`mt-2 text-sm leading-7 ${isPps7700 ? 'text-[#c6c1b8]' : 'text-muted-foreground'}`}>
+                        {item.projectFact}
+                      </p>
+                    </div>
+                  )}
+
+                  {(item.evidenceBoundary || item.sources) && (
+                    <details className={`mt-5 border-t pt-5 text-sm ${isPps7700 ? 'border-white/15' : 'border-foreground/15'}`}>
+                      <summary className={`cursor-pointer font-semibold ${isPps7700 ? 'text-[#c38a82]' : 'text-primary'}`}>
+                        资料说明{item.sources ? '与来源' : ''}
+                      </summary>
+                      {item.evidenceBoundary && (
+                        <p className={`mt-3 leading-7 ${isPps7700 ? 'text-[#c6c1b8]' : 'text-muted-foreground'}`}>
+                          {item.evidenceBoundary}
+                        </p>
+                      )}
+                      {item.sources && (
+                        <ul className="mt-4 space-y-3">
+                          {item.sources.map((source) => (
+                            <li key={source.url}>
+                              <a href={source.url} target="_blank" rel="noopener noreferrer" className={`underline underline-offset-4 ${isPps7700 ? 'text-[#f3efe7] hover:text-[#c38a82]' : 'text-primary hover:text-accent'}`}>
+                                {source.label}
+                              </a>
+                              <p className={`mt-1 text-xs leading-6 ${isPps7700 ? 'text-[#c6c1b8]' : 'text-muted-foreground'}`}>
+                                {source.note}
+                              </p>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </details>
+                  )}
+                </article>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section id="capabilities" className="scroll-mt-28 py-12 sm:py-16">
+        <div className="personal-shell">
+          <p className="personal-kicker"><span aria-hidden="true" />Where I can contribute</p>
+          <h2 className="personal-heading mt-6">从这些经历，找到适合参与的部分。</h2>
+          <p className="mt-5 max-w-3xl text-sm leading-7 text-muted-foreground">
+            可以从已有业务、设备或资料开始，先明确目标和现有条件，再讨论产品定义、验证或交付协作的范围。
+          </p>
+          <div className="mt-8 grid gap-px border border-foreground/15 bg-foreground/15 lg:grid-cols-3">
             {aiPracticeAreas.map((area, index) => {
               const Icon = capabilityIcons[index];
 
               return (
-                <article key={area.number} className="bg-background p-7 sm:p-9">
+                <article key={area.number} className="min-w-0 bg-background p-6 sm:p-8">
                   <div className="flex items-start justify-between gap-6">
                     <Icon className="size-8 text-primary" strokeWidth={1.4} aria-hidden="true" />
-                    <span className="font-serif text-xl text-primary/30">{area.number}</span>
+                    <span className="font-serif text-2xl text-primary/40">{area.number}</span>
                   </div>
-                  <h3 className="mt-8 font-serif text-xl font-semibold tracking-[-0.035em]">
-                    {area.title}
-                  </h3>
-                  <p className="mt-5 text-sm leading-[1.7] text-muted-foreground">{area.description}</p>
-                  <div className="mt-7 border-t border-foreground/15 pt-6">
-                    <p className="text-xs font-semibold tracking-[0.14em] text-primary uppercase">
-                      可以带走的结果
-                    </p>
-                    <p className="mt-3 text-sm leading-[1.7]">{capabilityOutcomes[index]}</p>
+                  <h3 className="mt-6 font-serif text-xl font-semibold leading-snug tracking-[-0.025em]">{area.title}</h3>
+                  <p className="mt-4 text-sm leading-7 text-muted-foreground">{area.description}</p>
+                  <div className="mt-6 border-t border-foreground/15 pt-5">
+                    <p className="text-xs font-semibold text-primary">可以参与</p>
+                    <p className="mt-2 text-sm leading-7">{participationFocus[index]}</p>
                   </div>
                 </article>
               );
@@ -144,186 +207,77 @@ export default function AiProductPage() {
         </div>
       </section>
 
-      <section className="border-y border-white/15 bg-[#202827] py-16 text-[#f3efe7] sm:py-10">
+      <section id="research" className="scroll-mt-28 border-y border-foreground/15 bg-[#eee8dc] py-12 sm:py-16">
         <div className="personal-shell">
-          <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:gap-14">
+          <div className="grid gap-6 lg:grid-cols-[1fr_0.8fr] lg:items-end lg:gap-14">
             <div>
-              <p className="personal-kicker personal-kicker-light">
-                <span aria-hidden="true" />
-                Product evidence
-              </p>
-              <Boxes className="mt-8 size-8 text-[#c38a82]" strokeWidth={1.4} aria-hidden="true" />
-              <h2 className="mt-7 max-w-xl font-serif text-2xl font-semibold leading-tight tracking-[-0.04em] sm:text-2xl">
-                六项项目经历，
-                <span className="block text-[#c38a82]">连接产品、现场与业务。</span>
-              </h2>
-              <p className="mt-6 max-w-xl text-sm leading-[1.7] text-[#bdb9b0]">
-                个人任职、项目时间与负责范围由本人提供。已有公开资料用于核对产品背景与获奖；
-                研发验证和试点准备中的项目，按当前阶段呈现。
-              </p>
+              <p className="personal-kicker"><span aria-hidden="true" />Research &amp; creation</p>
+              <h2 className="personal-heading mt-6">另一种产品实践：把材料做成能核验、能阅读的作品。</h2>
             </div>
-
-            <div className="space-y-5">
-              {projectExperience.map((item, index) => (
-                <article
-                  key={item.projectTitle}
-                  className="border border-white/15 bg-white/[0.035] p-6 sm:p-8"
-                >
-                  <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
-                    <div>
-                      <p className="text-xs font-semibold tracking-[0.16em] text-[#c38a82] uppercase">
-                        Case 0{index + 1} · {item.industry}
-                      </p>
-                      <h3 className="mt-3 font-serif text-lg font-semibold tracking-[-0.025em] sm:text-lg">
-                        {item.projectTitle}
-                      </h3>
-                    </div>
-                    <span className="shrink-0 border border-white/15 px-3 py-2 text-xs text-[#bdb9b0]">
-                      {item.status}
-                    </span>
-                  </div>
-
-                  <p className="mt-4 text-xs leading-6 text-[#bdb9b0]">
-                    {item.period ? `${item.period} · ` : ''}{item.role} · {item.organization}
-                  </p>
-
-                  {item.projectFact && (
-                    <div className="mt-6 grid gap-3 sm:grid-cols-[8rem_1fr]">
-                      <strong className="text-xs tracking-[0.12em] text-[#d9d4ca] uppercase">
-                        公开可核验
-                      </strong>
-                      <p className="text-sm leading-[1.7] text-[#c6c1b8]">{item.projectFact}</p>
-                    </div>
-                  )}
-
-                  <div className="mt-5 grid gap-3 border-t border-white/10 pt-5 sm:grid-cols-[8rem_1fr]">
-                    <strong className="text-xs tracking-[0.12em] text-[#d9d4ca] uppercase">
-                      本人履历
-                    </strong>
-                    <p className="text-sm leading-[1.7] text-[#aaa69f]">{item.description}</p>
-                  </div>
-
-                  {item.evidenceBoundary && (
-                    <details className="mt-5 border-t border-white/10 pt-5 text-sm text-[#99958e]">
-                      <summary className="cursor-pointer font-semibold text-[#c38a82]">
-                        查看证据边界
-                      </summary>
-                      <p className="mt-3 leading-7">{item.evidenceBoundary}</p>
-                    </details>
-                  )}
-
-                  {item.sources && (
-                    <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 border-t border-white/10 pt-5 text-xs text-[#c38a82]">
-                      {item.sources.map((source) => (
-                        <a key={source.url} href={source.url} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-[#f3efe7]">
-                          {source.label}
-                        </a>
-                      ))}
-                    </div>
-                  )}
-                </article>
-              ))}
+            <p className="max-w-2xl text-sm leading-7 text-muted-foreground">
+              研究需要回到来源，创作需要完成作品。本站把两者分别呈现，也留下整理信息、组织证据与内容交付的实际成果。
+            </p>
+          </div>
+          <div className="mt-8 grid gap-5 md:grid-cols-2">
+            {researchAndCreation.map((item) => (
+              <article key={item.title} className="min-w-0 border border-foreground/15 bg-background/70 p-6 sm:p-8">
+                <p className="text-xs font-semibold text-primary">{item.label}</p>
+                <h3 className="mt-4 font-serif text-2xl font-semibold tracking-[-0.035em]">{item.title}</h3>
+                <p className="mt-4 text-sm leading-7 text-muted-foreground">{item.description}</p>
+                <p className="mt-4 border-l-2 border-primary/35 pl-3 text-xs leading-6 text-muted-foreground">{item.note}</p>
+                <Link href={item.href} className="story-text-link mt-6">
+                  {item.linkLabel}
+                  <ArrowRight className="size-4" aria-hidden="true" />
+                </Link>
+              </article>
+            ))}
+          </div>
+          <div className="mt-7 grid gap-5 border-t border-foreground/15 pt-6 lg:grid-cols-[1fr_auto] lg:items-center">
+            <p className="max-w-3xl text-sm leading-7 text-muted-foreground">
+              想开始自己的家族史研究？现有起步诊断以五个选择题帮助判断研究起点，不上传材料、不保存答案、不调用外部模型。
+            </p>
+            <div className="flex flex-wrap gap-x-6 gap-y-3">
+              <Link href="/studio/diagnosis" className="story-text-link">
+                起步诊断<ArrowRight className="size-4" aria-hidden="true" />
+              </Link>
+              <Link href="/discover/ai-family-history" className="story-text-link">
+                阅读研究方法<ArrowRight className="size-4" aria-hidden="true" />
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="border-y border-foreground/15 bg-[#eee8dc] py-8 sm:py-10">
-        <div className="personal-shell grid gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(18rem,0.8fr)] lg:items-end lg:gap-14">
+      <section className="py-12 sm:py-16">
+        <div className="personal-shell grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
           <div>
-            <p className="personal-kicker"><span aria-hidden="true" />Method in public</p>
-            <h2 className="personal-heading mt-6">想看 AI 怎样参与一项真实、长期又不能乱猜的工程？</h2>
-            <p className="mt-6 max-w-3xl text-[15px] leading-[1.7] text-muted-foreground">
-              AI 家族史实验室把资料去重、身份分流、调档路线与叙事边界做成可操作工具。
-              第一个入口只用五个选择题判断研究起点，不上传材料、不保存答案、不调用外部模型。
+            <p className="personal-kicker"><span aria-hidden="true" />Work together</p>
+            <h2 className="personal-heading mt-6">先说说你正在解决的问题。</h2>
+            <p className="mt-5 max-w-xl text-sm leading-7 text-muted-foreground">
+              有设备、系统或业务现场的团队，可以从一个具体问题开始交流。无需准备完整方案，来信说明以下三件事即可。
             </p>
-          </div>
-          <div className="flex flex-col gap-3">
-            <Link href="/studio/diagnosis" className="story-button personal-button-primary">
-              做一次 3 分钟起步诊断
-              <ArrowRight className="size-4" aria-hidden="true" />
-            </Link>
-            <Link href="/discover/ai-family-history" className="story-text-link">
-              阅读背后的研究方法
-              <ArrowRight className="size-4" aria-hidden="true" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 sm:py-10">
-        <div className="personal-shell">
-          <div className="grid gap-10 lg:grid-cols-[0.68fr_1.32fr] lg:gap-14">
-            <div>
-              <p className="personal-kicker">
-                <span aria-hidden="true" />
-                Collaboration
-              </p>
-              <ShieldCheck className="mt-8 size-8 text-primary" strokeWidth={1.4} aria-hidden="true" />
-              <h2 className="personal-heading mt-6">先把问题说清楚，再决定做多大。</h2>
-              <p className="mt-6 max-w-xl text-sm leading-[1.7] text-muted-foreground">
-                合作可以从一次短诊断开始。没有必要为了使用 AI 而扩大项目；
-                如果当前问题不适合 AI，也应该尽早得到这个结论。
-              </p>
-            </div>
-
-            <div className="divide-y divide-foreground/15 border-y border-foreground/15">
-              {collaborationModes.map((mode, index) => (
-                <article key={mode.title} className="grid gap-5 py-7 sm:grid-cols-[3.5rem_1fr] sm:py-9">
-                  <span className="font-serif text-xl text-primary/45">0{index + 1}</span>
-                  <div>
-                    <h3 className="font-serif text-lg font-semibold tracking-[-0.025em]">
-                      {mode.title}
-                    </h3>
-                    <p className="mt-3 max-w-3xl text-sm leading-[1.7] text-muted-foreground">
-                      {mode.description}
-                    </p>
-                    <p className="mt-4 flex items-start gap-2 text-sm font-semibold text-foreground">
-                      <CheckCircle2
-                        className="mt-0.5 size-4 shrink-0 text-primary"
-                        aria-hidden="true"
-                      />
-                      {mode.result}
-                    </p>
-                  </div>
-                </article>
-              ))}
+            <div className="mt-7 flex flex-col items-start gap-4">
+              <Link href="/about#contact" className="story-button personal-button-primary" data-amplitude-event="ai_contact_opened">
+                联系合作
+                <ArrowRight className="size-4" aria-hidden="true" />
+              </Link>
+              <a href={`mailto:${profile.email}`} className="inline-flex max-w-full items-center gap-2 text-sm text-muted-foreground hover:text-primary">
+                <Mail className="size-4 shrink-0" aria-hidden="true" />
+                <span className="break-all">{profile.email}</span>
+              </a>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section className="border-t border-foreground/15 bg-[#eee8dc] py-16 sm:py-10">
-        <div className="personal-shell grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
-          <div>
-            <p className="personal-kicker">
-              <span aria-hidden="true" />
-              Start with a real problem
-            </p>
-            <h2 className="personal-heading mt-7 max-w-4xl">
-              如果你手里正有一个“技术看起来可行，但产品还没想清楚”的问题，我们可以从它开始。
-            </h2>
-            <p className="mt-6 max-w-2xl text-sm leading-[1.7] text-muted-foreground">
-              来信时只需说明场景、目前最困扰你的问题，以及你希望先验证什么。无需准备完整方案。
-            </p>
-          </div>
-          <div className="flex flex-col gap-3 lg:items-end">
-            <Link
-              href="/about#contact"
-              className="story-button personal-button-primary"
-              data-amplitude-event="ai_contact_opened"
-            >
-              联系合作
-              <ArrowRight className="size-4" aria-hidden="true" />
-            </Link>
-            <a
-              href={`mailto:${profile.email}`}
-              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary"
-            >
-              <Mail className="size-4" aria-hidden="true" />
-              {profile.email}
-            </a>
-          </div>
+          <ol className="divide-y divide-foreground/15 border-y border-foreground/15">
+            {collaborationBrief.map((item, index) => (
+              <li key={item.title} className="grid grid-cols-[2rem_minmax(0,1fr)] gap-4 py-6 sm:gap-6">
+                <span className="font-serif text-2xl text-primary/50">0{index + 1}</span>
+                <div>
+                  <h3 className="font-serif text-lg font-semibold">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-7 text-muted-foreground">{item.description}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
     </div>

@@ -23,9 +23,9 @@ export function PrivateMessageForm() {
   // on a public host. Offer the mailbox instead of a form that cannot deliver.
   if (isPublicEdition) {
     return (
-      <p className="text-[15px] leading-[1.7] text-muted-foreground">
+      <p className="text-[15px] leading-[1.7] text-[#bdb9b0]">
         想说点什么，直接写信给我：
-        <a className="story-text-link ml-1" href="mailto:hdx13466545299@qq.com">
+        <a className="personal-dark-link ml-1" href="mailto:hdx13466545299@qq.com">
           hdx13466545299@qq.com
         </a>
       </p>

@@ -1,9 +1,13 @@
 {
   "schema_version": "profile-media-authorization-1.0",
   "authorization_id": "owner-personal-introduction-2026-10-04",
-  "authorized_pages": ["/about", "/ai"],
+  "authorized_pages": [
+    "/",
+    "/about",
+    "/ai"
+  ],
   "reuse_license": "per_asset_license",
-  "scope": "站主明确授权将2026年9月15日个人介绍的有用信息及相关项目图片用于现有网站；仅展示下列逐项核对的公开官方图片，不公开原私有介绍站或内部项目材料。",
+  "scope": "站主明确授权将2026年9月15日个人介绍的有用信息及相关项目图片用于现有网站；仅展示下列逐项核对的公开官方图片，不公开原私有介绍站或内部项目材料。 2026年10月5日站主要求先完成本地升级预览，沿用真实项目素材展示首页与案例；本轮未授权发布。",
   "assets": [
     {
       "path": "assets/personal-projects/pps7700-product.webp",

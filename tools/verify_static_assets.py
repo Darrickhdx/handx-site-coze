@@ -75,8 +75,8 @@ def profile_authorization(errors: list[str]) -> dict[str, dict[str, object]]:
     if payload.get("authorization_id") != PROFILE_AUTHORIZATION_ID:
         errors.append("profile media authorization ID is invalid")
     pages = payload.get("authorized_pages")
-    if not isinstance(pages, list) or sorted(page for page in pages if isinstance(page, str)) != ["/about", "/ai"] or len(pages) != 2:
-        errors.append("profile media authorization must be limited to /about and /ai")
+    if not isinstance(pages, list) or sorted(page for page in pages if isinstance(page, str)) != ["/", "/about", "/ai"] or len(pages) != 3:
+        errors.append("profile media authorization must be limited to /, /about and /ai")
     if payload.get("reuse_license") != "per_asset_license":
         errors.append("profile media reuse license must refer to each asset's license")
     rows = payload.get("assets")
