@@ -52,7 +52,7 @@ export default function HomePage() {
             <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3 border-t border-foreground/15 pt-5 text-sm text-muted-foreground">
               <span>来读历史或小说？</span>
               <Link href="/sukaiyuan" className="underline underline-offset-4 hover:text-primary">寻找苏开元</Link>
-              <Link href="/novel" className="underline underline-offset-4 hover:text-primary">免费读《英雄无名》</Link>
+              <Link href="/novel" className="underline underline-offset-4 hover:text-primary" data-amplitude-event="home_sukaiyuan_opened">免费读《英雄无名》</Link>
             </div>
           </div>
 
@@ -89,7 +89,7 @@ export default function HomePage() {
               <p className="personal-kicker"><span aria-hidden="true" />产品与现场</p>
               <h2 id="product-work-heading" className="personal-heading mt-5">从需求到交付，看具体做了什么。</h2>
             </div>
-            <Link href="/ai" className="story-text-link min-h-12">
+            <Link href="/ai" className="story-text-link min-h-12" data-amplitude-event="home_profile_opened">
               更多 AI 与产品实践
               <ArrowRight className="size-4" aria-hidden="true" />
             </Link>
@@ -205,7 +205,7 @@ export default function HomePage() {
                   {work.note}
                 </p>
                 <div className="mt-auto pt-6">
-                  <Link href={work.href} className="personal-dark-link">
+                  <Link href={work.href} className="personal-dark-link" data-amplitude-event={work.href === '/sukaiyuan' ? 'home_flagship_story_opened' : undefined}>
                     {work.linkLabel}
                     <ArrowRight className="size-4" aria-hidden="true" />
                   </Link>
@@ -227,7 +227,7 @@ export default function HomePage() {
           </div>
           <div className="mt-7 divide-y divide-foreground/15 border-y border-foreground/15">
             {selectedContents.map((item) => (
-              <Link key={item.href} href={item.href} className="group grid gap-3 py-6 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto] sm:items-center sm:gap-7">
+              <Link key={item.href} href={item.href} className="group grid gap-3 py-6 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto] sm:items-center sm:gap-7" data-amplitude-event="home_selected_content_opened" data-amplitude-destination={item.href}>
                 <span>
                   <span className="text-xs font-semibold text-primary">{item.kind}</span>
                   <strong className="mt-2 block font-serif text-lg font-semibold leading-snug group-hover:text-primary">{item.title}</strong>
